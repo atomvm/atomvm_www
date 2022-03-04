@@ -44,11 +44,11 @@ The "Hello world!" of the IoT world is "Blinky", a program that toggles an LED o
     toggle(Pin, SleepMs, low) ->
         gpio:digital_write(Pin, low),
         timer:sleep(SleepMs),
-        toggle(Pin, high);
+        toggle(Pin, SleepMs, high);
     toggle(Pin, SleepMs, high) ->
         gpio:digital_write(Pin, high),
         timer:sleep(SleepMs),
-        toggle(Pin, low).
+        toggle(Pin, SleepMs, low).
 
 Like the Hello World program, this program declares a module and exports the `start/0` function.
 
@@ -63,11 +63,11 @@ We then enter the toggle "loop" in the `toggle` function.  We start by setting t
     toggle(Pin, SleepMs, low) ->
         gpio:digital_write(Pin, low),
         timer:sleep(SleepMs),
-        toggle(Pin, high);
+        toggle(Pin, SleepMs,  high);
     toggle(Pin, SleepMs, high) ->
         gpio:digital_write(Pin, high),
         timer:sleep(SleepMs),
-        toggle(Pin, low).
+        toggle(Pin, SleepMs, low).
 
 For newcomers to Erlang, this function definition may look strange.  There are two definitions of the same function!  How can that be?  Well, in Erlang, the parameters that match the head of the function definition will be the portion of the function that will be executed.  This is exactly the way we define many functions in mathematics.
 
@@ -117,11 +117,11 @@ Here is the full program, in its entirety:
     toggle(Pin, SleepMs, low) ->
         gpio:digital_write(Pin, low),
         timer:sleep(SleepMs),
-        toggle(Pin, high);
+        toggle(Pin, SleepMs, high);
     toggle(Pin, SleepMs, high) ->
         gpio:digital_write(Pin, high),
         timer:sleep(SleepMs),
-        toggle(Pin, low).
+        toggle(Pin, SleepMs, low).
 
 
 
