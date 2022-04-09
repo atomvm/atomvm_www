@@ -1,0 +1,63 @@
+#
+#  Copyright 2022 Winford <dwinford@pm.me>
+#
+#  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+#
+# This is a workflow for atomvm_www to Publish atomvm.net documentation to atomvm.github.io (GitHub Pages)
+
+name: Publish
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v1
+        id: gem-cache
+        with:
+          path: /home/runner/.gem
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+  
+      - name: Install Bundler
+        if: steps.cache.outputs.gem-cache-hit != 'true'
+        run: gem install bundler --user-install
+
+      - uses: actions/cache@v1
+        id: bundler-cache
+        with:
+          path: ./vendor/bundle
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+  
+      - name: Install Bundler Deps
+        if: steps.cache.outputs.bundler-cache-hit != 'true'
+        run: /home/runner/.gem/ruby/2.7.0/bin/bundle config set --local path 'vendor/bundle' &&
+             /home/runner/.gem/ruby/2.7.0/bin/bundle install
+             
+      - name: Build Site
+        run: /home/runner/.gem/ruby/2.7.0/bin/bundle exec jekyll build -d www
+
+      - name: Publish generated content to GitHub Pages
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.2
+        with:
+          #repo: UncleGrumpy.github.io
+          name: atomvm
+          repo: "atomvm/atomvm.github.io"
+          dir: www
+          branch: main
+          token: ${{ secrets.ACCESS_TOKEN }}
