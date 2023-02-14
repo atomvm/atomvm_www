@@ -19,6 +19,7 @@ Several users in the AtomVM community have provided extensions to AtomVM to supp
     * SHT3X Temperature and humidity sensor
     * LEDC PWM
     * SX127X LoRa modems
+* [`atomvm_m5`](https://github.com/pguyot/atomvm_m5) A port of [`M5Unified`](https://github.com/m5stack/M5Unified) for the AtomVM platform.
 * [`atomvm_mqtt_client`](https://github.com/atomvm/atomvm_mqtt_client) An MQTT client library for AtomVM
 * [`atomvm_neopixel`](https://github.com/atomvm/atomvm_neopixel) AtomVM driver for WS2812 “neopixel” LEDs
 * [`atomvm_nvs_reset`](https://github.com/atomvm/atomvm_nvs_reset) An IDF component that supports resetting NVS by holding a pin
