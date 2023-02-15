@@ -30,44 +30,50 @@ And in this case, the function just prints "Hello world!" to the console, and ex
 
 # Blinky
 
-The "Hello world!" of the IoT world is "Blinky", a program that toggles an LED on and off, every second.  It is a good program to use to test basic functionality of an application.
+The "Hello world!" of the IoT world is "blinky", a program that toggles an LED on and off, every second.  It is a good program to use to test basic functionality of an application.
 
-    %% erlang
     -module(blinky).
-
     -export([start/0]).
 
-    start() ->
-        gpio:set_direction(2, output),
-        toggle(2, 1000, low).
+    -define(PIN, 2).
 
-    toggle(Pin, SleepMs, low) ->
-        gpio:digital_write(Pin, low),
-        timer:sleep(SleepMs),
-        toggle(Pin, SleepMs, high);
-    toggle(Pin, SleepMs, high) ->
-        gpio:digital_write(Pin, high),
-        timer:sleep(SleepMs),
-        toggle(Pin, SleepMs, low).
+    start() ->
+        gpio:set_direction(?PIN, output),
+        loop(?PIN, low).
+
+    loop(Pin, Level) ->
+        io:format("Setting pin ~p ~p~n", [Pin, Level]),
+        gpio:digital_write(Pin, Level),
+        timer:sleep(1000),
+        loop(Pin, toggle(Level)).
+
+    toggle(high) ->
+        low;
+    toggle(low) ->
+        high.
 
 Like the Hello World program, this program declares a module and exports the `start/0` function.
 
-Many development boards come with an LED on GPIO pin 2, so let's assume we are working with such a board, or that we have attached an LED (and accomanying resistor) to GPIO pin 2.
+Many development boards come with an LED on GPIO pin 2, so let's assume we are working with such a board, or that we have attached an LED (and accompanying resistor) to GPIO pin 2.
 
 We set the direction of pin 2 to `output`, so that we can change the pin's value:
 
-    gpio:set_direction(2, output)
+    gpio:set_direction(?PIN, output)
 
-We then enter the toggle "loop" in the `toggle` function.  We start by setting the pin `low` via the `gpio:digital_write/2` function, sleeping 1000 milliseconds (1 second), and then toggling the pin `high`.  When we toggle the pin `high`, we perform a similar action: Use the `gpio:digital_write/2` to set the pin high, sleep for 1 second, and then toggle the pin low:
+We then enter the "loop" in the `loop` function.  We start by setting the pin to the specified level via the `gpio:digital_write/2` function, sleeping 1000 milliseconds (1 second), and then calling the `loop` function recursively, passing in the toggled value of the input level:
 
-    toggle(Pin, SleepMs, low) ->
-        gpio:digital_write(Pin, low),
-        timer:sleep(SleepMs),
-        toggle(Pin, SleepMs,  high);
-    toggle(Pin, SleepMs, high) ->
-        gpio:digital_write(Pin, high),
-        timer:sleep(SleepMs),
-        toggle(Pin, SleepMs, low).
+    loop(Pin, Level) ->
+        io:format("Setting pin ~p ~p~n", [Pin, Level]),
+        gpio:digital_write(Pin, Level),
+        timer:sleep(1000),
+        loop(Pin, toggle(Level)).
+
+The toggling between high and low is done via the `toggle` function, which simply flips the value from `high` to `low`, and conversely:
+
+    toggle(high) ->
+        low;
+    toggle(low) ->
+        high.
 
 For newcomers to Erlang, this function definition may look strange.  There are two definitions of the same function!  How can that be?  Well, in Erlang, the parameters that match the head of the function definition will be the portion of the function that will be executed.  This is exactly the way we define many functions in mathematics.
 
