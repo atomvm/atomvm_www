@@ -41,14 +41,14 @@ jobs:
       - uses: actions/cache@v1
         id: bundler-cache
         with:
-          path: ./vendor/bundle
+          path: /home/runner/.local/vendor/bundle
           key: ${{ runner.os }}-${{ hashFiles('**/bundler-lockfiles') }}
 
       - name: Install Bundler Deps
         if: steps.cache.outputs.bundler-cache-hit != 'true'
         run: |
           export PATH=${PATH}:/home/runner/.local/share/gem/ruby/3.0.0/bin
-          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle config set --local path 'vendor/bundle'
+          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle config set --local path '/home/runner/.local/vendor/bundle'
           /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle install
 
       - uses: actions/checkout@v3
@@ -56,14 +56,16 @@ jobs:
         with:
           repository: atomvm/atomvm_www
           ref: Production
-          path: www
+          path: ./www
 
       - name: Build Site
         run: /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle exec jekyll build -d www
 
       - name: Commit files
-        working-directory: www
+        working-directory: ./www
         run: |
+          git checkout Production
+          git branch --show-current
           git config --local user.email "atomvm-doc-bot@object.stream"
           git config --local user.name "AtomVM Doc Bot"
           git add .
