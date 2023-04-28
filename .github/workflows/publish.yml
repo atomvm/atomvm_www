@@ -59,7 +59,9 @@ jobs:
           path: ./www
 
       - name: Build Site
-        run: /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle exec jekyll build -d www
+        run: |
+          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle exec jekyll build -d www
+          touch www/.nojekyll
 
       - name: Commit files
         working-directory: ./www
