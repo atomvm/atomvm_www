@@ -1063,183 +1063,176 @@ $(function() {
 <div class="line"><a name="l01501"></a><span class="lineno"> 1501</span>&#160;    boxed_value[2] = offset;</div>
 <div class="line"><a name="l01502"></a><span class="lineno"> 1502</span>&#160;}</div>
 <div class="line"><a name="l01503"></a><span class="lineno"> 1503</span>&#160; </div>
-<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_match_state_get_save_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l01504"></a><span class="lineno"> 1504</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_save_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state, <span class="keywordtype">int</span> index)</div>
 <div class="line"><a name="l01505"></a><span class="lineno"> 1505</span>&#160;{</div>
 <div class="line"><a name="l01506"></a><span class="lineno"> 1506</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
-<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;    <span class="keywordflow">return</span> boxed_value[4 + index];</div>
+<div class="line"><a name="l01507"></a><span class="lineno"> 1507</span>&#160;    boxed_value[4 + index] = boxed_value[2];</div>
 <div class="line"><a name="l01508"></a><span class="lineno"> 1508</span>&#160;}</div>
 <div class="line"><a name="l01509"></a><span class="lineno"> 1509</span>&#160; </div>
-<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_save_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l01510"></a><span class="lineno"> 1510</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_save_start_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state)</div>
 <div class="line"><a name="l01511"></a><span class="lineno"> 1511</span>&#160;{</div>
 <div class="line"><a name="l01512"></a><span class="lineno"> 1512</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
-<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;    boxed_value[4 + index] = boxed_value[2];</div>
+<div class="line"><a name="l01513"></a><span class="lineno"> 1513</span>&#160;    boxed_value[3] = boxed_value[2];</div>
 <div class="line"><a name="l01514"></a><span class="lineno"> 1514</span>&#160;}</div>
 <div class="line"><a name="l01515"></a><span class="lineno"> 1515</span>&#160; </div>
-<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;<span class="comment">// TODO: not sure we really need this function</span></div>
-<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_save_start_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state)</div>
-<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;{</div>
-<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
-<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;    boxed_value[3] = boxed_value[2];</div>
-<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160;}</div>
-<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160; </div>
-<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_restore_start_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state)</div>
-<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;{</div>
-<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
-<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;    boxed_value[2] = boxed_value[3];</div>
-<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160;}</div>
-<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160; </div>
-<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_restore_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state, <span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;{</div>
-<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
-<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;    boxed_value[2] = boxed_value[4 + index];</div>
-<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;}</div>
-<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160; </div>
-<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_bin_match_state(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> binary_or_state, <span class="keywordtype">int</span> slots, <a class="code" href="struct_context.html">Context</a> *ctx)</div>
-<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;{</div>
-<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_match_state = <a class="code" href="memory_8c.html#adbbbada4267e99697a685279cbe5272a">memory_heap_alloc</a>(ctx, <a class="code" href="term_8h.html#a638db1ba1255486f5776a96a22c31cf3">TERM_BOXED_BIN_MATCH_STATE_SIZE</a> + slots);</div>
-<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160; </div>
-<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;    boxed_match_state[0] = (((<a class="code" href="term_8h.html#a638db1ba1255486f5776a96a22c31cf3">TERM_BOXED_BIN_MATCH_STATE_SIZE</a> + slots) - 1) &lt;&lt; 6) | <a class="code" href="term_8h.html#a37f7dde61b823f11f83e3b3c873eb85a">TERM_BOXED_BIN_MATCH_STATE</a>;</div>
-<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;    <span class="keywordflow">if</span> (term_is_match_state(binary_or_state)) {</div>
-<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;        boxed_match_state[1] = term_get_match_state_binary(binary_or_state);</div>
-<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> offset = (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) term_get_match_state_offset(binary_or_state);</div>
-<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;        boxed_match_state[2] = offset;</div>
-<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;        <span class="comment">// TODO: not sure about the following</span></div>
-<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        boxed_match_state[3] = offset;</div>
-<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; slots; i++) {</div>
-<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;            boxed_match_state[4 + i] = offset;</div>
-<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;        }</div>
-<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;        boxed_match_state[1] = binary_or_state;</div>
-<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160;        <span class="comment">// TODO: initialize them with term_from_int(0)</span></div>
-<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;        boxed_match_state[2] = 0;</div>
-<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;        boxed_match_state[3] = 0;</div>
-<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; slots; i++) {</div>
-<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;            boxed_match_state[4 + i] = 0;</div>
-<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;        }</div>
-<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    }</div>
-<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160; </div>
-<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;    <span class="keywordflow">return</span> ((<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) boxed_match_state) | <a class="code" href="term_8h.html#acce951942a16553f750379e8ff77b6a8">TERM_BOXED_VALUE_TAG</a>;</div>
-<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;}</div>
-<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160; </div>
-<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_is_map(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
-<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160;{</div>
-<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;    <span class="keywordflow">if</span> (term_is_boxed(t)) {</div>
-<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;        <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
-<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160;        <span class="keywordflow">if</span> ((boxed_value[0] &amp; <a class="code" href="term_8h.html#a51977b2306d852804a4ca403481e8bdb">TERM_BOXED_TAG_MASK</a>) == <a class="code" href="term_8h.html#accea75ae6c8097ad86c750fa64521d02">TERM_BOXED_MAP</a>) {</div>
-<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;        }</div>
-<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;    }</div>
-<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160; </div>
-<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;}</div>
-<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160; </div>
-<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> term_get_map_keys_offset()</div>
-<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;{</div>
-<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;}</div>
-<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160; </div>
-<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> term_get_map_value_offset()</div>
-<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;{</div>
-<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160;    <span class="keywordflow">return</span> 2;</div>
-<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;}</div>
-<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160; </div>
-<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_map_size_in_terms_maybe_shared(<span class="keywordtype">size_t</span> num_entries, <span class="keywordtype">bool</span> is_shared)</div>
-<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;{</div>
-<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160;    <span class="keywordflow">return</span> 2 + (is_shared ? 0 : (1 + num_entries)) + num_entries;</div>
-<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;}</div>
-<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160; </div>
-<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_map_size_in_terms(<span class="keywordtype">size_t</span> num_entries)</div>
-<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;{</div>
-<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;    <span class="keywordflow">return</span> term_map_size_in_terms_maybe_shared(num_entries, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;}</div>
+<div class="line"><a name="l01516"></a><span class="lineno"> 1516</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_restore_start_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state)</div>
+<div class="line"><a name="l01517"></a><span class="lineno"> 1517</span>&#160;{</div>
+<div class="line"><a name="l01518"></a><span class="lineno"> 1518</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
+<div class="line"><a name="l01519"></a><span class="lineno"> 1519</span>&#160;    boxed_value[2] = boxed_value[3];</div>
+<div class="line"><a name="l01520"></a><span class="lineno"> 1520</span>&#160;}</div>
+<div class="line"><a name="l01521"></a><span class="lineno"> 1521</span>&#160; </div>
+<div class="line"><a name="l01522"></a><span class="lineno"> 1522</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_match_state_restore_offset(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> match_state, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l01523"></a><span class="lineno"> 1523</span>&#160;{</div>
+<div class="line"><a name="l01524"></a><span class="lineno"> 1524</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(match_state);</div>
+<div class="line"><a name="l01525"></a><span class="lineno"> 1525</span>&#160;    boxed_value[2] = boxed_value[4 + index];</div>
+<div class="line"><a name="l01526"></a><span class="lineno"> 1526</span>&#160;}</div>
+<div class="line"><a name="l01527"></a><span class="lineno"> 1527</span>&#160; </div>
+<div class="line"><a name="l01528"></a><span class="lineno"> 1528</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_bin_match_state(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> binary_or_state, <span class="keywordtype">int</span> slots, <a class="code" href="struct_context.html">Context</a> *ctx)</div>
+<div class="line"><a name="l01529"></a><span class="lineno"> 1529</span>&#160;{</div>
+<div class="line"><a name="l01530"></a><span class="lineno"> 1530</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_match_state = <a class="code" href="memory_8c.html#adbbbada4267e99697a685279cbe5272a">memory_heap_alloc</a>(ctx, <a class="code" href="term_8h.html#a638db1ba1255486f5776a96a22c31cf3">TERM_BOXED_BIN_MATCH_STATE_SIZE</a> + slots);</div>
+<div class="line"><a name="l01531"></a><span class="lineno"> 1531</span>&#160; </div>
+<div class="line"><a name="l01532"></a><span class="lineno"> 1532</span>&#160;    boxed_match_state[0] = (((<a class="code" href="term_8h.html#a638db1ba1255486f5776a96a22c31cf3">TERM_BOXED_BIN_MATCH_STATE_SIZE</a> + slots) - 1) &lt;&lt; 6) | <a class="code" href="term_8h.html#a37f7dde61b823f11f83e3b3c873eb85a">TERM_BOXED_BIN_MATCH_STATE</a>;</div>
+<div class="line"><a name="l01533"></a><span class="lineno"> 1533</span>&#160;    <span class="keywordflow">if</span> (term_is_match_state(binary_or_state)) {</div>
+<div class="line"><a name="l01534"></a><span class="lineno"> 1534</span>&#160;        boxed_match_state[1] = term_get_match_state_binary(binary_or_state);</div>
+<div class="line"><a name="l01535"></a><span class="lineno"> 1535</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> offset = (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) term_get_match_state_offset(binary_or_state);</div>
+<div class="line"><a name="l01536"></a><span class="lineno"> 1536</span>&#160;        boxed_match_state[2] = offset;</div>
+<div class="line"><a name="l01537"></a><span class="lineno"> 1537</span>&#160;        <span class="comment">// TODO: not sure about the following</span></div>
+<div class="line"><a name="l01538"></a><span class="lineno"> 1538</span>&#160;        boxed_match_state[3] = offset;</div>
+<div class="line"><a name="l01539"></a><span class="lineno"> 1539</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; slots; i++) {</div>
+<div class="line"><a name="l01540"></a><span class="lineno"> 1540</span>&#160;            boxed_match_state[4 + i] = offset;</div>
+<div class="line"><a name="l01541"></a><span class="lineno"> 1541</span>&#160;        }</div>
+<div class="line"><a name="l01542"></a><span class="lineno"> 1542</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l01543"></a><span class="lineno"> 1543</span>&#160;        boxed_match_state[1] = binary_or_state;</div>
+<div class="line"><a name="l01544"></a><span class="lineno"> 1544</span>&#160;        <span class="comment">// TODO: initialize them with term_from_int(0)</span></div>
+<div class="line"><a name="l01545"></a><span class="lineno"> 1545</span>&#160;        boxed_match_state[2] = 0;</div>
+<div class="line"><a name="l01546"></a><span class="lineno"> 1546</span>&#160;        boxed_match_state[3] = 0;</div>
+<div class="line"><a name="l01547"></a><span class="lineno"> 1547</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; slots; i++) {</div>
+<div class="line"><a name="l01548"></a><span class="lineno"> 1548</span>&#160;            boxed_match_state[4 + i] = 0;</div>
+<div class="line"><a name="l01549"></a><span class="lineno"> 1549</span>&#160;        }</div>
+<div class="line"><a name="l01550"></a><span class="lineno"> 1550</span>&#160;    }</div>
+<div class="line"><a name="l01551"></a><span class="lineno"> 1551</span>&#160; </div>
+<div class="line"><a name="l01552"></a><span class="lineno"> 1552</span>&#160;    <span class="keywordflow">return</span> ((<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) boxed_match_state) | <a class="code" href="term_8h.html#acce951942a16553f750379e8ff77b6a8">TERM_BOXED_VALUE_TAG</a>;</div>
+<div class="line"><a name="l01553"></a><span class="lineno"> 1553</span>&#160;}</div>
+<div class="line"><a name="l01554"></a><span class="lineno"> 1554</span>&#160; </div>
+<div class="line"><a name="l01555"></a><span class="lineno"> 1555</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_is_map(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
+<div class="line"><a name="l01556"></a><span class="lineno"> 1556</span>&#160;{</div>
+<div class="line"><a name="l01557"></a><span class="lineno"> 1557</span>&#160;    <span class="keywordflow">if</span> (term_is_boxed(t)) {</div>
+<div class="line"><a name="l01558"></a><span class="lineno"> 1558</span>&#160;        <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
+<div class="line"><a name="l01559"></a><span class="lineno"> 1559</span>&#160;        <span class="keywordflow">if</span> ((boxed_value[0] &amp; <a class="code" href="term_8h.html#a51977b2306d852804a4ca403481e8bdb">TERM_BOXED_TAG_MASK</a>) == <a class="code" href="term_8h.html#accea75ae6c8097ad86c750fa64521d02">TERM_BOXED_MAP</a>) {</div>
+<div class="line"><a name="l01560"></a><span class="lineno"> 1560</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l01561"></a><span class="lineno"> 1561</span>&#160;        }</div>
+<div class="line"><a name="l01562"></a><span class="lineno"> 1562</span>&#160;    }</div>
+<div class="line"><a name="l01563"></a><span class="lineno"> 1563</span>&#160; </div>
+<div class="line"><a name="l01564"></a><span class="lineno"> 1564</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l01565"></a><span class="lineno"> 1565</span>&#160;}</div>
+<div class="line"><a name="l01566"></a><span class="lineno"> 1566</span>&#160; </div>
+<div class="line"><a name="l01567"></a><span class="lineno"> 1567</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> term_get_map_keys_offset()</div>
+<div class="line"><a name="l01568"></a><span class="lineno"> 1568</span>&#160;{</div>
+<div class="line"><a name="l01569"></a><span class="lineno"> 1569</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l01570"></a><span class="lineno"> 1570</span>&#160;}</div>
+<div class="line"><a name="l01571"></a><span class="lineno"> 1571</span>&#160; </div>
+<div class="line"><a name="l01572"></a><span class="lineno"> 1572</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">size_t</span> term_get_map_value_offset()</div>
+<div class="line"><a name="l01573"></a><span class="lineno"> 1573</span>&#160;{</div>
+<div class="line"><a name="l01574"></a><span class="lineno"> 1574</span>&#160;    <span class="keywordflow">return</span> 2;</div>
+<div class="line"><a name="l01575"></a><span class="lineno"> 1575</span>&#160;}</div>
+<div class="line"><a name="l01576"></a><span class="lineno"> 1576</span>&#160; </div>
+<div class="line"><a name="l01577"></a><span class="lineno"> 1577</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_map_size_in_terms_maybe_shared(<span class="keywordtype">size_t</span> num_entries, <span class="keywordtype">bool</span> is_shared)</div>
+<div class="line"><a name="l01578"></a><span class="lineno"> 1578</span>&#160;{</div>
+<div class="line"><a name="l01579"></a><span class="lineno"> 1579</span>&#160;    <span class="keywordflow">return</span> 2 + (is_shared ? 0 : (1 + num_entries)) + num_entries;</div>
+<div class="line"><a name="l01580"></a><span class="lineno"> 1580</span>&#160;}</div>
+<div class="line"><a name="l01581"></a><span class="lineno"> 1581</span>&#160; </div>
+<div class="line"><a name="l01582"></a><span class="lineno"> 1582</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_map_size_in_terms(<span class="keywordtype">size_t</span> num_entries)</div>
+<div class="line"><a name="l01583"></a><span class="lineno"> 1583</span>&#160;{</div>
+<div class="line"><a name="l01584"></a><span class="lineno"> 1584</span>&#160;    <span class="keywordflow">return</span> term_map_size_in_terms_maybe_shared(num_entries, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l01585"></a><span class="lineno"> 1585</span>&#160;}</div>
+<div class="line"><a name="l01586"></a><span class="lineno"> 1586</span>&#160; </div>
+<div class="line"><a name="l01587"></a><span class="lineno"> 1587</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_map_maybe_shared(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> size, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> keys)</div>
+<div class="line"><a name="l01588"></a><span class="lineno"> 1588</span>&#160;{</div>
+<div class="line"><a name="l01589"></a><span class="lineno"> 1589</span>&#160;    keys = term_is_invalid_term(keys) ? term_alloc_tuple(size, ctx) : keys;</div>
+<div class="line"><a name="l01590"></a><span class="lineno"> 1590</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = <a class="code" href="memory_8c.html#adbbbada4267e99697a685279cbe5272a">memory_heap_alloc</a>(ctx, 2 + size);</div>
+<div class="line"><a name="l01591"></a><span class="lineno"> 1591</span>&#160;    boxed_value[0] = ((1 + size) &lt;&lt; 6) | <a class="code" href="term_8h.html#accea75ae6c8097ad86c750fa64521d02">TERM_BOXED_MAP</a>;</div>
+<div class="line"><a name="l01592"></a><span class="lineno"> 1592</span>&#160;    boxed_value[term_get_map_keys_offset()] = keys;</div>
 <div class="line"><a name="l01593"></a><span class="lineno"> 1593</span>&#160; </div>
-<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_map_maybe_shared(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> size, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> keys)</div>
-<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;{</div>
-<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160;    keys = term_is_invalid_term(keys) ? term_alloc_tuple(size, ctx) : keys;</div>
-<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = <a class="code" href="memory_8c.html#adbbbada4267e99697a685279cbe5272a">memory_heap_alloc</a>(ctx, 2 + size);</div>
-<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;    boxed_value[0] = ((1 + size) &lt;&lt; 6) | <a class="code" href="term_8h.html#accea75ae6c8097ad86c750fa64521d02">TERM_BOXED_MAP</a>;</div>
-<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;    boxed_value[term_get_map_keys_offset()] = keys;</div>
-<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160; </div>
-<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160;    <span class="keywordflow">return</span> ((<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) boxed_value) | <a class="code" href="term_8h.html#acce951942a16553f750379e8ff77b6a8">TERM_BOXED_VALUE_TAG</a>;</div>
-<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;}</div>
-<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160; </div>
-<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_map(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> size)</div>
-<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;{</div>
-<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;    <span class="keywordflow">return</span> term_alloc_map_maybe_shared(ctx, size, term_invalid_term());</div>
+<div class="line"><a name="l01594"></a><span class="lineno"> 1594</span>&#160;    <span class="keywordflow">return</span> ((<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) boxed_value) | <a class="code" href="term_8h.html#acce951942a16553f750379e8ff77b6a8">TERM_BOXED_VALUE_TAG</a>;</div>
+<div class="line"><a name="l01595"></a><span class="lineno"> 1595</span>&#160;}</div>
+<div class="line"><a name="l01596"></a><span class="lineno"> 1596</span>&#160; </div>
+<div class="line"><a name="l01597"></a><span class="lineno"> 1597</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_alloc_map(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> size)</div>
+<div class="line"><a name="l01598"></a><span class="lineno"> 1598</span>&#160;{</div>
+<div class="line"><a name="l01599"></a><span class="lineno"> 1599</span>&#160;    <span class="keywordflow">return</span> term_alloc_map_maybe_shared(ctx, size, term_invalid_term());</div>
+<div class="line"><a name="l01600"></a><span class="lineno"> 1600</span>&#160;}</div>
+<div class="line"><a name="l01601"></a><span class="lineno"> 1601</span>&#160; </div>
+<div class="line"><a name="l01602"></a><span class="lineno"> 1602</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_keys(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
+<div class="line"><a name="l01603"></a><span class="lineno"> 1603</span>&#160;{</div>
+<div class="line"><a name="l01604"></a><span class="lineno"> 1604</span>&#160;    <a class="code" href="term_8h.html#aea1f811d5cebaf60e3b38ddefd5acbdc">TERM_DEBUG_ASSERT</a>(term_is_map(t));</div>
+<div class="line"><a name="l01605"></a><span class="lineno"> 1605</span>&#160;    <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
+<div class="line"><a name="l01606"></a><span class="lineno"> 1606</span>&#160;    <span class="keywordflow">return</span> boxed_value[term_get_map_keys_offset()];</div>
 <div class="line"><a name="l01607"></a><span class="lineno"> 1607</span>&#160;}</div>
 <div class="line"><a name="l01608"></a><span class="lineno"> 1608</span>&#160; </div>
-<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_keys(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
+<div class="line"><a name="l01609"></a><span class="lineno"> 1609</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_get_map_size(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
 <div class="line"><a name="l01610"></a><span class="lineno"> 1610</span>&#160;{</div>
 <div class="line"><a name="l01611"></a><span class="lineno"> 1611</span>&#160;    <a class="code" href="term_8h.html#aea1f811d5cebaf60e3b38ddefd5acbdc">TERM_DEBUG_ASSERT</a>(term_is_map(t));</div>
-<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160;    <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
-<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="keywordflow">return</span> boxed_value[term_get_map_keys_offset()];</div>
+<div class="line"><a name="l01612"></a><span class="lineno"> 1612</span>&#160; </div>
+<div class="line"><a name="l01613"></a><span class="lineno"> 1613</span>&#160;    <span class="keywordflow">return</span> term_get_tuple_arity(term_get_map_keys(t));</div>
 <div class="line"><a name="l01614"></a><span class="lineno"> 1614</span>&#160;}</div>
 <div class="line"><a name="l01615"></a><span class="lineno"> 1615</span>&#160; </div>
-<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_get_map_size(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
+<div class="line"><a name="l01616"></a><span class="lineno"> 1616</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_set_map_assoc(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> value)</div>
 <div class="line"><a name="l01617"></a><span class="lineno"> 1617</span>&#160;{</div>
-<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    <a class="code" href="term_8h.html#aea1f811d5cebaf60e3b38ddefd5acbdc">TERM_DEBUG_ASSERT</a>(term_is_map(t));</div>
-<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160; </div>
-<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    <span class="keywordflow">return</span> term_get_tuple_arity(term_get_map_keys(t));</div>
+<div class="line"><a name="l01618"></a><span class="lineno"> 1618</span>&#160;    term_put_tuple_element(term_get_map_keys(map), pos, key);</div>
+<div class="line"><a name="l01619"></a><span class="lineno"> 1619</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(map);</div>
+<div class="line"><a name="l01620"></a><span class="lineno"> 1620</span>&#160;    boxed_value[term_get_map_value_offset() + pos] = value;</div>
 <div class="line"><a name="l01621"></a><span class="lineno"> 1621</span>&#160;}</div>
 <div class="line"><a name="l01622"></a><span class="lineno"> 1622</span>&#160; </div>
-<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> term_set_map_assoc(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> value)</div>
+<div class="line"><a name="l01623"></a><span class="lineno"> 1623</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_key(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos)</div>
 <div class="line"><a name="l01624"></a><span class="lineno"> 1624</span>&#160;{</div>
-<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;    term_put_tuple_element(term_get_map_keys(map), pos, key);</div>
-<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(map);</div>
-<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160;    boxed_value[term_get_map_value_offset() + pos] = value;</div>
-<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;}</div>
-<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160; </div>
-<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_key(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos)</div>
-<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;{</div>
-<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;    <span class="keywordflow">return</span> term_get_tuple_element(term_get_map_keys(map), pos);</div>
-<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160;}</div>
-<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160; </div>
-<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_value(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos)</div>
-<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;{</div>
-<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(map);</div>
-<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <span class="keywordflow">return</span> boxed_value[term_get_map_value_offset() + pos];</div>
-<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;}</div>
-<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160; </div>
-<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_find_map_pos(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="struct_global_context.html">GlobalContext</a> *global)</div>
-<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;{</div>
-<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> keys = term_get_map_keys(map);</div>
-<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;    <span class="keywordtype">int</span> arity = term_get_tuple_arity(keys);</div>
-<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; arity; ++i) {</div>
-<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> k = term_get_tuple_element(keys, i);</div>
-<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;        <span class="comment">// TODO: not sure if exact is the right choice here</span></div>
-<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160;        <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4a">TermCompareResult</a> result = <a class="code" href="term_8h.html#a28711edef0c7dc12d57d1b0dad50cb7c">term_compare</a>(key, k, <a class="code" href="term_8h.html#acabf9d87ccf85c239412dbf6631cb21da0c51a342f0fd479f41e91cec31ee4280">TermCompareExact</a>, global);</div>
-<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;        <span class="keywordflow">if</span> (result == <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aaea6f485013ae7d90be4bc10733c1a6c6">TermEquals</a>) {</div>
-<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;            <span class="keywordflow">return</span> i;</div>
-<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(result == <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aa6bde54f57c6eff8185efadfb9d353ef4">TermCompareMemoryAllocFail</a>)) {</div>
-<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="term_8h.html#ac666c95980d794db07c3818bc593a037">TERM_MAP_MEMORY_ALLOC_FAIL</a>;</div>
-<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160;        }</div>
-<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;    }</div>
-<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160; </div>
-<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="term_8h.html#ac5b9e2d39d00df1a1017a470d40b5a21">TERM_MAP_NOT_FOUND</a>;</div>
-<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;}</div>
-<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160; </div>
-<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="term_8h.html#aa01a54ef63ab7983bcd45e475ed973b1">term_get_map_assoc</a>(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key);</div>
-<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160; </div>
-<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_assoc_default(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value)</div>
-<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160;{</div>
-<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> ret = <a class="code" href="term_8h.html#aa01a54ef63ab7983bcd45e475ed973b1">term_get_map_assoc</a>(ctx, map, key);</div>
-<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;    <span class="keywordflow">if</span> (term_is_invalid_term(ret)) {</div>
-<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
-<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;    }</div>
-<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160;}</div>
-<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160; </div>
-<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_sub_binary_ref(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
-<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160;{</div>
-<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160;    <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
-<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;    <span class="keywordflow">return</span> boxed_value[3];</div>
-<div class="line"><a name="l01674"></a><span class="lineno"> 1674</span>&#160;}</div>
-<div class="line"><a name="l01675"></a><span class="lineno"> 1675</span>&#160; </div>
-<div class="line"><a name="l01676"></a><span class="lineno"> 1676</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l01677"></a><span class="lineno"> 1677</span>&#160;}</div>
-<div class="line"><a name="l01678"></a><span class="lineno"> 1678</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l01679"></a><span class="lineno"> 1679</span>&#160; </div>
-<div class="line"><a name="l01680"></a><span class="lineno"> 1680</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01625"></a><span class="lineno"> 1625</span>&#160;    <span class="keywordflow">return</span> term_get_tuple_element(term_get_map_keys(map), pos);</div>
+<div class="line"><a name="l01626"></a><span class="lineno"> 1626</span>&#160;}</div>
+<div class="line"><a name="l01627"></a><span class="lineno"> 1627</span>&#160; </div>
+<div class="line"><a name="l01628"></a><span class="lineno"> 1628</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_value(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a29e710c3900a880d8017c4da2a2de810">avm_uint_t</a> pos)</div>
+<div class="line"><a name="l01629"></a><span class="lineno"> 1629</span>&#160;{</div>
+<div class="line"><a name="l01630"></a><span class="lineno"> 1630</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_term_ptr(map);</div>
+<div class="line"><a name="l01631"></a><span class="lineno"> 1631</span>&#160;    <span class="keywordflow">return</span> boxed_value[term_get_map_value_offset() + pos];</div>
+<div class="line"><a name="l01632"></a><span class="lineno"> 1632</span>&#160;}</div>
+<div class="line"><a name="l01633"></a><span class="lineno"> 1633</span>&#160; </div>
+<div class="line"><a name="l01634"></a><span class="lineno"> 1634</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> term_find_map_pos(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="struct_global_context.html">GlobalContext</a> *global)</div>
+<div class="line"><a name="l01635"></a><span class="lineno"> 1635</span>&#160;{</div>
+<div class="line"><a name="l01636"></a><span class="lineno"> 1636</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> keys = term_get_map_keys(map);</div>
+<div class="line"><a name="l01637"></a><span class="lineno"> 1637</span>&#160;    <span class="keywordtype">int</span> arity = term_get_tuple_arity(keys);</div>
+<div class="line"><a name="l01638"></a><span class="lineno"> 1638</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; arity; ++i) {</div>
+<div class="line"><a name="l01639"></a><span class="lineno"> 1639</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> k = term_get_tuple_element(keys, i);</div>
+<div class="line"><a name="l01640"></a><span class="lineno"> 1640</span>&#160;        <span class="comment">// TODO: not sure if exact is the right choice here</span></div>
+<div class="line"><a name="l01641"></a><span class="lineno"> 1641</span>&#160;        <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4a">TermCompareResult</a> result = <a class="code" href="term_8h.html#a28711edef0c7dc12d57d1b0dad50cb7c">term_compare</a>(key, k, <a class="code" href="term_8h.html#acabf9d87ccf85c239412dbf6631cb21da0c51a342f0fd479f41e91cec31ee4280">TermCompareExact</a>, global);</div>
+<div class="line"><a name="l01642"></a><span class="lineno"> 1642</span>&#160;        <span class="keywordflow">if</span> (result == <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aaea6f485013ae7d90be4bc10733c1a6c6">TermEquals</a>) {</div>
+<div class="line"><a name="l01643"></a><span class="lineno"> 1643</span>&#160;            <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l01644"></a><span class="lineno"> 1644</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(result == <a class="code" href="term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aa6bde54f57c6eff8185efadfb9d353ef4">TermCompareMemoryAllocFail</a>)) {</div>
+<div class="line"><a name="l01645"></a><span class="lineno"> 1645</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="term_8h.html#ac666c95980d794db07c3818bc593a037">TERM_MAP_MEMORY_ALLOC_FAIL</a>;</div>
+<div class="line"><a name="l01646"></a><span class="lineno"> 1646</span>&#160;        }</div>
+<div class="line"><a name="l01647"></a><span class="lineno"> 1647</span>&#160;    }</div>
+<div class="line"><a name="l01648"></a><span class="lineno"> 1648</span>&#160; </div>
+<div class="line"><a name="l01649"></a><span class="lineno"> 1649</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="term_8h.html#ac5b9e2d39d00df1a1017a470d40b5a21">TERM_MAP_NOT_FOUND</a>;</div>
+<div class="line"><a name="l01650"></a><span class="lineno"> 1650</span>&#160;}</div>
+<div class="line"><a name="l01651"></a><span class="lineno"> 1651</span>&#160; </div>
+<div class="line"><a name="l01652"></a><span class="lineno"> 1652</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="term_8h.html#aa01a54ef63ab7983bcd45e475ed973b1">term_get_map_assoc</a>(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key);</div>
+<div class="line"><a name="l01653"></a><span class="lineno"> 1653</span>&#160; </div>
+<div class="line"><a name="l01654"></a><span class="lineno"> 1654</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_map_assoc_default(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value)</div>
+<div class="line"><a name="l01655"></a><span class="lineno"> 1655</span>&#160;{</div>
+<div class="line"><a name="l01656"></a><span class="lineno"> 1656</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> ret = <a class="code" href="term_8h.html#aa01a54ef63ab7983bcd45e475ed973b1">term_get_map_assoc</a>(ctx, map, key);</div>
+<div class="line"><a name="l01657"></a><span class="lineno"> 1657</span>&#160;    <span class="keywordflow">if</span> (term_is_invalid_term(ret)) {</div>
+<div class="line"><a name="l01658"></a><span class="lineno"> 1658</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><a name="l01659"></a><span class="lineno"> 1659</span>&#160;    }</div>
+<div class="line"><a name="l01660"></a><span class="lineno"> 1660</span>&#160;    <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l01661"></a><span class="lineno"> 1661</span>&#160;}</div>
+<div class="line"><a name="l01662"></a><span class="lineno"> 1662</span>&#160; </div>
+<div class="line"><a name="l01663"></a><span class="lineno"> 1663</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_get_sub_binary_ref(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t)</div>
+<div class="line"><a name="l01664"></a><span class="lineno"> 1664</span>&#160;{</div>
+<div class="line"><a name="l01665"></a><span class="lineno"> 1665</span>&#160;    <span class="keyword">const</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *boxed_value = term_to_const_term_ptr(t);</div>
+<div class="line"><a name="l01666"></a><span class="lineno"> 1666</span>&#160;    <span class="keywordflow">return</span> boxed_value[3];</div>
+<div class="line"><a name="l01667"></a><span class="lineno"> 1667</span>&#160;}</div>
+<div class="line"><a name="l01668"></a><span class="lineno"> 1668</span>&#160; </div>
+<div class="line"><a name="l01669"></a><span class="lineno"> 1669</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l01670"></a><span class="lineno"> 1670</span>&#160;}</div>
+<div class="line"><a name="l01671"></a><span class="lineno"> 1671</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l01672"></a><span class="lineno"> 1672</span>&#160; </div>
+<div class="line"><a name="l01673"></a><span class="lineno"> 1673</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amemory_8c_html_adbbbada4267e99697a685279cbe5272a"><div class="ttname"><a href="memory_8c.html#adbbbada4267e99697a685279cbe5272a">memory_heap_alloc</a></div><div class="ttdeci">HOT_FUNC term * memory_heap_alloc(Context *c, size_t size)</div><div class="ttdoc">allocates space for a certain amount of terms on the heap</div><div class="ttdef"><b>Definition:</b> <a href="memory_8c_source.html#l00042">memory.c:42</a></div></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div></div>
 <div class="ttc" id="amemory_8h_html_a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a"><div class="ttname"><a href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a></div><div class="ttdeci">@ MEMORY_GC_OK</div><div class="ttdef"><b>Definition:</b> <a href="memory_8h_source.html#l00043">memory.h:43</a></div></div>
