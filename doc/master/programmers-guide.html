@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.13c0b60 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.8c88350 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -52,6 +52,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started-guide.html">Getting Started Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Programmers Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#atomvm-features">AtomVM Features</a><ul>
@@ -78,6 +79,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#core-apis">Core APIs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#standard-libraries">Standard Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spawning-processes">Spawning Processes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#console-output">Console Output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#process-management">Process Management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-apis">System APIs</a></li>
@@ -131,7 +133,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api-reference-documentation.html">API Reference Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -169,7 +172,7 @@
 <p>This document describes the development workflow when writing AtomVM applications, as well as a high-level overview of the various APIs that are supported by AtomVM.  With an understanding of this guide, you should be able to design, implement, and deploy applications onto a device running the AtomVM virtual machine.</p>
 <section id="atomvm-features">
 <h2>AtomVM Features<a class="headerlink" href="#atomvm-features" title="Permalink to this heading"></a></h2>
-<p>Currently, AtomVM implements a strict subset of the BEAM instruction set, as of Erlang/OTP R21.  Previous versions of Erlang/OTP are not supported.</p>
+<p>Currently, AtomVM implements a strict subset of the BEAM instruction set.</p>
 <p>A high level overview of the supported language features include:</p>
 <ul class="simple">
 <li><p>All the major Erlang types, including</p>
@@ -229,7 +232,8 @@
 <p>This section describes the typical development environment and workflow most AtomVM developers are most likely to use.</p>
 <section id="development-environment">
 <h3>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this heading"></a></h3>
-<p>In general, for most development purposes, you should be able to get away with an Erlang/OTP development environment (OTP21 or later), and for Elixir developers, and Elixir version TODO development environment.  We assume most development will take place on some UNIX-like environment (e.g., Linux, FreeBSD, or MacOS).  Consult your local package manager for installation of these development environments.</p>
+<p>In general, for most development purposes, you should be able to get away with an Erlang/OTP development environment, and for Elixir developers, and Elixir development environment.  For specific version requirements, see the (Release Notes)(release-notes.md).</p>
+<p>We assume most development will take place on some UNIX-like environment (e.g., Linux, FreeBSD, or MacOS).  Consult your local package manager for installation of these development environments.</p>
 <p>Developers will want to make use of common Erlang or Elixir development tools, such as <code class="docutils literal notranslate"><span class="pre">rebar3</span></code> for Erlang developers or <code class="docutils literal notranslate"><span class="pre">mix</span></code> for Elixir developers.</p>
 <p>Developers will need to make use of some AtomVM tooling.  Fortunately, there are several choices for developers to use:</p>
 <ol class="arabic simple">
@@ -418,6 +422,64 @@ gnu.beam
 </ul>
 <p>For detailed information about these functions, please consult the <a class="reference internal" href="#api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.  These modules provide a strict subset of functionality from their Erlang/OTP counterparts.  However, they aim to be API-compatible with the Erlang/OTP interfaces, at least for the subset of provided functionality.</p>
 </section>
+<section id="spawning-processes">
+<h3>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Permalink to this heading"></a></h3>
+<p>AtomVM supports the actor concurrency model that is pioneered in the Erlang/OTP runtime.  As such, users can spawn processes, send messages to and receive message from processes, and can link or monitor processes to be notified if they have crashed.</p>
+<p>To spawn a process using a defined or anonymous function, pass the function to the <code class="docutils literal notranslate"><span class="pre">spawn/1</span></code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pid = spawn(fun run_some_code/0),
+</pre></div>
+</div>
+<p>The function you pass may admit closures, so for example you can pass variables defined outside of the scope of the function to the anonymous function to pass into <code class="docutils literal notranslate"><span class="pre">spawn/1</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Args = ...
+Pid = spawn(fun() -&gt; run_some_code_with_args(Args) end),
+</pre></div>
+</div>
+<p>Alternatively, you can pass a module, function name, and list of arguments to the <code class="docutils literal notranslate"><span class="pre">spawn/3</span></code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Args = ...
+Pid = spawn(?MODULE, run_some_code_with_args, [Args]),
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">spawn_opt/2,4</span></code> functions can be be used to spawn a function with additional options that control the behavior of the spawned processs, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pid = spawn_opt(fun run_some_code/0, [{min_heap_size, 1342}]),
+</pre></div>
+</div>
+<p>The options argument is a properties list containing optionally the following entries:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Default Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">min_heap_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>none</p></td>
+<td><p>Minimum heap size of the process.  The heap will shrink no smaller than this size.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">max_heap_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>unbounded</p></td>
+<td><p>Maximum heap size of the process.  The heap will grow no larger than this size.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether to link the spawned process to the spawning process.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">monitor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>Whether to link the spawning process should monitor the spawned process.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="console-output">
 <h3>Console Output<a class="headerlink" href="#console-output" title="Permalink to this heading"></a></h3>
 <p>There are several mechanisms for writing data to the console.</p>
@@ -444,12 +506,40 @@ io:format(&quot;The ~p did a ~p~n&quot;, [friddle, frop]).
 Pids = erlang:processes().
 </pre></div>
 </div>
-<p>And for each process, you can get detailed process information via the <code class="docutils literal notranslate"><span class="pre">erlang:process_info/1</span></code> function:</p>
+<p>And for each process, you can get detailed process information via the <code class="docutils literal notranslate"><span class="pre">erlang:process_info/2</span></code> function:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
-[io:format(&quot;Process info for Pid ~p: ~p~n&quot;, [Pid, erlang:process_info(Pid)]) || Pid &lt;- Pids].
+[io:format(&quot;Heap size for Pid ~p: ~p~n&quot;, [Pid, erlang:process_info(Pid, heap_size)]) || Pid &lt;- Pids].
 </pre></div>
 </div>
-<p>The return value is a property list containing values for <code class="docutils literal notranslate"><span class="pre">heap_size</span></code>, <code class="docutils literal notranslate"><span class="pre">stack_size</span></code>, <code class="docutils literal notranslate"><span class="pre">message_queue_len</span></code>,and <code class="docutils literal notranslate"><span class="pre">memory</span></code> consumed by the process.</p>
+<p>The return value is a tuple containing the key passed into the <code class="docutils literal notranslate"><span class="pre">erlang:process_info/2</span></code> function and its associated value.</p>
+<p>The currently supported keys are enumerated in the following table:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">heap_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>Number of terms (in machine words) used in the process heap</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">stack_size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>Number of terms (in machine words) used in the process stack</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message_queue_len</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>Number of unprocessed messages in the process mailbox</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">memory</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>Total number of bytes used by the process (estimate)</p></td>
+</tr>
+</tbody>
+</table>
+<p>See the <code class="docutils literal notranslate"><span class="pre">word_size</span></code> key in the <a class="reference internal" href="#System_APIs"><span class="xref myst">System APIs</span></a> section for information about how to find the number of bytes used in a machine word on the current platform.</p>
 </section>
 <section id="system-apis">
 <h3>System APIs<a class="headerlink" href="#system-apis" title="Permalink to this heading"></a></h3>
@@ -504,6 +594,16 @@ MilliSeconds = erlang:system_time(millisecond).
 MicroSeconds = erlang:system_time(microsecond).
 </pre></div>
 </div>
+<p>User <code class="docutils literal notranslate"><span class="pre">erlang:monotonic_time/1</span></code> to obtain a (possibly not strictly) monotonically increasing time measurement.  Use the same time units to convert to seconds, milliseconds, or microseconds:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Seconds = erlang:monotonic_time(second).
+MilliSeconds = erlang:monotonic_time(millisecond).
+MicroSeconds = erlang:monotonic_time(microsecond).
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  <code class="docutils literal notranslate"><span class="pre">erlang:monotonic_time/1</span></code> should not be used to calculate the wall clock time, but instead should be used by applications to compute time differences in a manner that is independent of the system time on the device, which might change, for example, due to NTP, leap seconds, or similar operations that may affect the wall time on the device.</p>
+</div></blockquote>
 <p>Use <code class="docutils literal notranslate"><span class="pre">erlang:universaltime/0</span></code> to get the current time at second resolution, to obtain the year, month, day, hour, minute, and second:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 {{Year, Month, Day}, {Hour, Minute, Second}} = erlang:universaltime().

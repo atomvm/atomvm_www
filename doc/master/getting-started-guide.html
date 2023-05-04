@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started Guide &mdash; AtomVM 0.6.0-dev+git.13c0b60 documentation</title>
+  <title>Getting Started Guide &mdash; AtomVM 0.6.0-dev+git.8c88350 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Programmers Guide" href="programmers-guide.html" />
-    <link rel="prev" title="Welcome to AtomVM!" href="welcome-to-atomvm.html" /> 
+    <link rel="prev" title="Release Notes" href="release-notes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,6 +52,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started Guide</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-on-the-esp32-platform">Getting Started on the ESP32 platform</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
@@ -84,7 +85,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api-reference-documentation.html">API Reference Documentation</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -136,11 +138,12 @@
 <li><p>An ESP32 module with a USB/UART connector (typically part of an ESP32 development board);</p></li>
 <li><p>A USB cable capable of connecting the ESP32 module or board to your development machine (laptop or PC);</p></li>
 <li><p>The <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program, for flashing the AtomVM image and AtomVM programs;</p></li>
-<li><p>An <a class="reference external" href="https://erlang.org">Erlang/OTP</a> release (21, 22, or 23);</p></li>
+<li><p>An <a class="reference external" href="https://erlang.org">Erlang/OTP</a>;</p></li>
 <li><p>A serial console program, such as <code class="docutils literal notranslate"><span class="pre">minicom</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code>, so that you can view console output from your AtomVM application.</p></li>
-<li><p>(optional) For Erlang programs, <a class="reference external" href="https://rebar3.org"><code class="docutils literal notranslate"><span class="pre">rebar3</span></code></a>;</p></li>
-<li><p>(optional) For Elixir programs, <a class="reference external" href="https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html"><code class="docutils literal notranslate"><span class="pre">mix</span></code></a>, which ships with the Elixir runtime;</p></li>
+<li><p>(recommended) For Erlang programs, <a class="reference external" href="https://rebar3.org"><code class="docutils literal notranslate"><span class="pre">rebar3</span></code></a>;</p></li>
+<li><p>(recommended) For Elixir programs, <a class="reference external" href="https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html"><code class="docutils literal notranslate"><span class="pre">mix</span></code></a>, which ships with the Elixir runtime;</p></li>
 </ul>
+<p>For information about specific versions of required software, see the <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 </section>
 <section id="deployment-overview">
 <h3>Deployment Overview<a class="headerlink" href="#deployment-overview" title="Permalink to this heading"></a></h3>
@@ -213,9 +216,9 @@
 <blockquote>
 <div><p>Note.  Specify the device port and baud settings and AtomVM image name to suit your particular environment.</p>
 </div></blockquote>
-<p>Next, download the latest stable or nightly ESP32 release image from the <a class="reference external" href="http://www.atomvm.net">AtomVM web site</a>.</p>
+<p>Next, download a stable or latest development ESP32 <a class="reference external" href="https://github.com/atomvm/AtomVM/releases">release image</a>.</p>
 <blockquote>
-<div><p>Note.  Nightly images may be unstable and may result in unpredictable behavior.</p>
+<div><p>Note.  Development images may be unstable and may result in unpredictable behavior.</p>
 </div></blockquote>
 <p>Finally, use the <code class="docutils literal notranslate"><span class="pre">esptool</span></code> to flash the image to the start address <code class="docutils literal notranslate"><span class="pre">0x1000</span></code> on the ESP32.  E.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ esptool.py --chip esp32 --port /dev/ttyUSB0 --baud 115200 \
@@ -241,12 +244,12 @@
 <p>This section describes both Erlang and Elixir tooling for deploying AtomVM applications to ESP32 devices.</p>
 <section id="erlang-tooling">
 <h4>Erlang Tooling<a class="headerlink" href="#erlang-tooling" title="Permalink to this heading"></a></h4>
-<p>Deployment of AtomVM applications written in the Erlang programming language is supported via the <a class="reference external" href="https://github.com/fadushin/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> plugin, a community-supported plugin to the <a class="reference external" href="https://rebar3.org"><code class="docutils literal notranslate"><span class="pre">rebar3</span></code></a> Erlang build tool.</p>
+<p>Deployment of AtomVM applications written in the Erlang programming language is supported via the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> plugin, a community-supported plugin to the <a class="reference external" href="https://rebar3.org"><code class="docutils literal notranslate"><span class="pre">rebar3</span></code></a> Erlang build tool.</p>
 <p>You can generate a simple application from scratch using the <code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code> template, as follows:</p>
 <p>Edit or create the <code class="docutils literal notranslate"><span class="pre">$HOME/.config/rebar3/rebar.config</span></code> file to include the <code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code> plugin:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% $HOME/.config/rebar3/rebar.config
 {plugins, [
-    {atomvm_rebar3_plugin, &quot;0.3.0&quot;},
+    atomvm_rebar3_plugin,
     ...
 ]}.
 </pre></div>
@@ -260,7 +263,7 @@
 <p>Specifically, note the following stanza in the generated <code class="docutils literal notranslate"><span class="pre">rebar.config</span></code> file:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% rebar.config
 {plugins, [
-    {atomvm_rebar3_plugin, &quot;0.3.0&quot;},
+    atomvm_rebar3_plugin,
     ...
 ]}.
 </pre></div>
@@ -276,7 +279,7 @@ start() -&gt;
 </div>
 <p>With this plugin installed, you have access to the <code class="docutils literal notranslate"><span class="pre">esp32_flash</span></code> target, which will build an AtomVM packbeam</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 esp32_flash --port /dev/ttyUSB0
-===&gt; Fetching atomvm_rebar3_plugin v0.3.0
+===&gt; Fetching atomvm_rebar3_plugin v0.6.0
 ===&gt; Fetching rebar3_hex v6.11.3
 ===&gt; Fetching hex_core v0.7.1
 ===&gt; Fetching verl v1.0.2
@@ -284,7 +287,7 @@ start() -&gt;
 ===&gt; Compiling verl
 ===&gt; Compiling hex_core
 ===&gt; Compiling rebar3_hex
-===&gt; Fetching atomvm_packbeam v0.3.0
+===&gt; Fetching atomvm_packbeam v0.6.0
 ===&gt; Analyzing applications...
 ===&gt; Compiling atomvm_rebar3_plugin
 ===&gt; Compiling packbeam
@@ -296,7 +299,7 @@ start() -&gt;
 </pre></div>
 </div>
 <blockquote>
-<div><p>Note. Consult the the <a class="reference external" href="https://github.com/fadushin/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> plugin documentation, for more detailed information about how to use this tool.</p>
+<div><p>Note. Consult the the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> plugin documentation, for more detailed information about how to use this tool.</p>
 </div></blockquote>
 <p>Once the application has been flashed, you may connect to the ESP32 over the serial port using <code class="docutils literal notranslate"><span class="pre">minicom</span></code>, <code class="docutils literal notranslate"><span class="pre">screen</span></code>, or equivalent.</p>
 </section>
@@ -340,7 +343,7 @@ start() -&gt;
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="welcome-to-atomvm.html" class="btn btn-neutral float-left" title="Welcome to AtomVM!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="release-notes.html" class="btn btn-neutral float-left" title="Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="programmers-guide.html" class="btn btn-neutral float-right" title="Programmers Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

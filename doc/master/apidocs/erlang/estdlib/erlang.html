@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.13c0b60 documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.8c88350 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -52,6 +52,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../example-programs.html">Example Programs</a></li>
@@ -94,7 +95,8 @@
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -125,16 +127,27 @@
 <h1>Module erlang<a class="headerlink" href="#module-erlang" title="Permalink to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
 </ul>
 <p>An implementation of the Erlang/OTP erlang module, for functions
 that are not already defined as NIFs.</p>
+<p><a name="types"></a></p>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="time-unit">
+<h3><a name="type-time_unit">time_unit()</a><a class="headerlink" href="#time-unit" title="Permalink to this heading"></a></h3>
+<pre><code>
+time_unit() = second | millisecond | microsecond
+</code></pre>
 <p><a name="index"></a></p>
+</section>
+</section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td></td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
-https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
+https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
 Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
@@ -227,6 +240,25 @@ https://www.ietf.org/rfc/rfc1321.txt</p>
 <p>Return the minimum value of two terms</p>
 <p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and follow the ordering principles defined in
 https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>
+<p><a name="monotonic_time-1"></a></p>
+</section>
+<section id="monotonic-time-1">
+<h3>monotonic_time/1<a class="headerlink" href="#monotonic-time-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+monotonic_time(Unit::<a href="#type-time_unit">time_unit()</a>) -&gt; integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Unit</span></code>: time unit<br /></p>
+<p>returns: monotonic time in the specified units</p>
+<p>Return the monotonic time in the specified units.</p>
+<p>Monotonic time varies from system to system, and should not be used
+to determine, for example the wall clock time.</p>
+<p>Instead, monotonic time should be used to compute time differences,
+where the function is guaranteed to return a (not necessarily strictly)
+monotonically increasing value.</p>
+<p>For example, on ESP32 system, monotonic time is reported as the difference from
+the current time and the time the ESP32 device was started, whereas on UNIX
+systems the value may vary among UNIX systems (e.g., Linux, macOS, FreeBSD).</p>
 <p><a name="process_info-2"></a></p>
 </section>
 <section id="process-info-2">
