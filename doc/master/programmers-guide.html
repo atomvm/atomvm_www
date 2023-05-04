@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.8c88350 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.12f023e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -578,6 +578,23 @@ Pid = ... %% get a reference to some pid
 ok = erlang:garbage_collect(Pid).
 </pre></div>
 </div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">erlang:memory/1</span></code> function to obtain information about allocated memory.</p>
+<p>Currently, AtomVM supports the following types:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">binary</span></code></p></td>
+<td><p>Return the total amount of memory (in bytes) occupied by (reference counted) binaries</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p>Note.  Binary data small enough to be stored in the Erlang process heap are not counted in this measurement.</p>
+</div></blockquote>
 </section>
 <section id="system-time">
 <h3>System Time<a class="headerlink" href="#system-time" title="Permalink to this heading"></a></h3>
