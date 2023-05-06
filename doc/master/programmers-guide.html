@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.4eabd38 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.6370504 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -214,8 +214,8 @@
 <h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a></h3>
 <p>While the list of supported features is long and growing, the currently unsupported Erlang/OTP and BEAM features include (but are not limited to):</p>
 <ul class="simple">
-<li><p>Bingnums.  Integer values are restricted to 64-bit values.</p></li>
-<li><p>Bit Syntax.  While packing and unpacking of arbitrary (but less than 64-) bit values is support, packing and unpacking of integer values at the start of end of a binary, or bordering binary packing or extraction must align on 8-bit boundaries.  Arbitrary-bitlength binaries are not currently supported.</p></li>
+<li><p>Bignums.  Integer values are restricted to 64-bit values.</p></li>
+<li><p>Bit Syntax.  While packing and unpacking of arbitrary (but less than 64-) bit values is support, packing and unpacking of integer values at the start or end of a binary, or bordering binary packing or extraction must align on 8-bit boundaries.  Arbitrary bit length binaries are not currently supported.</p></li>
 <li><p>SMP support.  The AtomVM VM is currently a single-threaded process.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">epmd</span></code> and the <code class="docutils literal notranslate"><span class="pre">disterl</span></code> protocols are not supported.</p></li>
 <li><p>There is no support for code hot swapping.</p></li>
@@ -232,7 +232,7 @@
 <p>This section describes the typical development environment and workflow most AtomVM developers are most likely to use.</p>
 <section id="development-environment">
 <h3>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this heading"></a></h3>
-<p>In general, for most development purposes, you should be able to get away with an Erlang/OTP development environment, and for Elixir developers, and Elixir development environment.  For specific version requirements, see the (Release Notes)(release-notes.md).</p>
+<p>In general, for most development purposes, you should be able to get away with an Erlang/OTP development environment, and for Elixir developers, and Elixir development environment.  For specific version requirements, see the <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 <p>We assume most development will take place on some UNIX-like environment (e.g., Linux, FreeBSD, or MacOS).  Consult your local package manager for installation of these development environments.</p>
 <p>Developers will want to make use of common Erlang or Elixir development tools, such as <code class="docutils literal notranslate"><span class="pre">rebar3</span></code> for Erlang developers or <code class="docutils literal notranslate"><span class="pre">mix</span></code> for Elixir developers.</p>
 <p>Developers will need to make use of some AtomVM tooling.  Fortunately, there are several choices for developers to use:</p>
@@ -261,7 +261,7 @@
 </section>
 <section id="development-workflow">
 <h3>Development Workflow<a class="headerlink" href="#development-workflow" title="Permalink to this heading"></a></h3>
-<p>For the majority of users, AtomVM applications are written in the Erlang or Elixir programming language.  These applications are compiled to BEAM (<code class="docutils literal notranslate"><span class="pre">.beam</span></code>) files using standard Erlang or Elixir compiler tool chains (<code class="docutils literal notranslate"><span class="pre">erlc</span></code>, <code class="docutils literal notranslate"><span class="pre">rebar</span></code>, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, etc).  The generated BEAM files contain byte-code that can be executed by the Erlang/OTP runtime, or by the AtomVM virtual machine.</p>
+<p>For the majority of users, AtomVM applications are written in the Erlang or Elixir programming language.  These applications are compiled to BEAM (<code class="docutils literal notranslate"><span class="pre">.beam</span></code>) files using standard Erlang or Elixir compiler tool chains (<code class="docutils literal notranslate"><span class="pre">erlc</span></code>, <code class="docutils literal notranslate"><span class="pre">rebar3</span></code>, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, etc).  The generated BEAM files contain byte-code that can be executed by the Erlang/OTP runtime, or by the AtomVM virtual machine.</p>
 <blockquote>
 <div><p>Note.  In a small number of cases, it may be useful to write parts of an application in the C programming language, as AtomVM nifs or ports.  However, writing AtomVM nifs and ports is outside of the scope of this document.</p>
 </div></blockquote>
@@ -395,7 +395,7 @@ gnu.beam
 <section id="core-apis">
 <h2>Core APIs<a class="headerlink" href="#core-apis" title="Permalink to this heading"></a></h2>
 <p>The AtomVM virtual machine provides a set of Erlang built-in functions (BIFs) and native functions (NIFs), as well as a collection of Erlang and Elixir libraries that can be used from your applications.</p>
-<p>This section provides an overview of these APIs.  For more detailed information about specific APIs, please consult the <a class="reference internal" href="#api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.</p>
+<p>This section provides an overview of these APIs.  For more detailed information about specific APIs, please consult the <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.</p>
 <section id="standard-libraries">
 <h3>Standard Libraries<a class="headerlink" href="#standard-libraries" title="Permalink to this heading"></a></h3>
 <p>AtomVM provides a limited implementations of standard library modules, including:</p>
@@ -420,7 +420,7 @@ gnu.beam
 <li><p><code class="docutils literal notranslate"><span class="pre">Process</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Console</span></code></p></li>
 </ul>
-<p>For detailed information about these functions, please consult the <a class="reference internal" href="#api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.  These modules provide a strict subset of functionality from their Erlang/OTP counterparts.  However, they aim to be API-compatible with the Erlang/OTP interfaces, at least for the subset of provided functionality.</p>
+<p>For detailed information about these functions, please consult the <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.  These modules provide a strict subset of functionality from their Erlang/OTP counterparts.  However, they aim to be API-compatible with the Erlang/OTP interfaces, at least for the subset of provided functionality.</p>
 </section>
 <section id="spawning-processes">
 <h3>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Permalink to this heading"></a></h3>
@@ -639,7 +639,7 @@ Hash = erlang:md5(&lt;&lt;foo&gt;&gt;).
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">atomvm:random/0</span></code> to generate a random unsigned 32-bit integer in the range <code class="docutils literal notranslate"><span class="pre">0..4294967295</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
-RandomInetger = atomvm:random().
+RandomInteger = atomvm:random().
 </pre></div>
 </div>
 <p>Use <code class="docutils literal notranslate"><span class="pre">atomvm:random_bytes/1</span></code> to return a randomly populated binary of a specified size:</p>
@@ -698,7 +698,7 @@ io:format(&quot;Stacktrace: ~p~n&quot;, [Stacktrace])
 </section>
 <section id="math">
 <h3>Math<a class="headerlink" href="#math" title="Permalink to this heading"></a></h3>
-<p>AtomvVM supports the following standard functions from the OTP <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
+<p>AtomVM supports the following standard functions from the OTP <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cos/1</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">acos/1</span></code></p></li>
@@ -1543,7 +1543,7 @@ echo() -&gt;
 </pre></div>
 </div>
 <p>In this case, the server program will continuosuly echo the received input back to the client, until the client closes the connection.</p>
-<p>For more information about the <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> server interface, consult the AtomVM <a class="reference internal" href="#api-reference-documentation.md"><span class="xref myst">API Reference Documentation</span></a>.</p>
+<p>For more information about the <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> server interface, consult the AtomVM <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API Reference Documentation</span></a>.</p>
 </section>
 <section id="client-side-tcp">
 <h4>Client-side TCP<a class="headerlink" href="#client-side-tcp" title="Permalink to this heading"></a></h4>

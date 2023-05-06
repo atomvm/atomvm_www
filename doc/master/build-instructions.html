@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.4eabd38 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.6370504 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -74,7 +74,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id3">Build Instructions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flash-layout">Flash Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-lib-avm-and-main-avm-partitions">The <code class="docutils literal notranslate"><span class="pre">lib.avm</span></code> and <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partitions</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#building-a-release-image">Building a Release Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-a-release-image">Building a Release Image</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flashing-release-images">Flashing Release Images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#flashing-applications">Flashing Applications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-custom-nifs-ports-and-third-party-components">Adding custom Nifs, Ports, and third-party components</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-custom-atomvm-nif">Adding a custom AtomVM Nif</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-custom-atomvm-port">Adding a custom AtomVM Port</a></li>
@@ -125,7 +129,7 @@
 -->
 <section id="build-instructions">
 <h1>Build Instructions<a class="headerlink" href="#build-instructions" title="Permalink to this heading"></a></h1>
-<p>This guide is intended for anyone interested in building the AtomVM virtual machine from source code.  You may be interested in building the AtomVM source code if you want to provide bug fixes or enhancements to the VM, or if you want to simply learn more about the platform.  In addition, some “downstream” drivers for specific devices may need to be built specifically for the target platfom (e.g., ESP32), in which case building the VM from source code is required.</p>
+<p>This guide is intended for anyone interested in building the AtomVM virtual machine from source code.  You may be interested in building the AtomVM source code if you want to provide bug fixes or enhancements to the VM, or if you want to simply learn more about the platform.  In addition, some “downstream” drivers for specific devices may need to be built specifically for the target platform (e.g., ESP32), in which case building the VM from source code is required.</p>
 <blockquote>
 <div><p>Note.  Many applications do not require building the AtomVM runtime from source code.  Instead, you can download pre-built VM images for platforms such as ESP32, and use Erlang and Elixir tooling to build and deploy your applications.</p>
 </div></blockquote>
@@ -175,13 +179,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gperf</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">zlib</span></code></p></li>
-<li><p>Erlang/OTP 21</p></li>
+<li><p>Erlang/OTP (consult <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for currently supported versions)</p></li>
 </ul>
 <p>Consult your local OS documentation for instructions about how to install these components.</p>
 </section>
 <section id="id1">
 <h3>Build Instructions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
-<p>The AtomVM build for generic UNIX systems makes use of the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> tool for generating <code class="docutils literal notranslate"><span class="pre">make</span></code> files from the top level AtomVM directory.  With CMake, you generally create a separate directory for all output files (make files, generated object files, linked binaries, etc).  A common pattern is to create a clcal <code class="docutils literal notranslate"><span class="pre">build</span></code> directory, and then point <code class="docutils literal notranslate"><span class="pre">cmake</span></code> to the parent directory for the root of the source tree:</p>
+<p>The AtomVM build for generic UNIX systems makes use of the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> tool for generating <code class="docutils literal notranslate"><span class="pre">make</span></code> files from the top level AtomVM directory.  With CMake, you generally create a separate directory for all output files (make files, generated object files, linked binaries, etc).  A common pattern is to create a local <code class="docutils literal notranslate"><span class="pre">build</span></code> directory, and then point <code class="docutils literal notranslate"><span class="pre">cmake</span></code> to the parent directory for the root of the source tree:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ mkdir build
 shell$ cd build
 shell$ cmake ..
@@ -244,14 +248,21 @@ shell$ open AtomVM.xcodeproj
 <p>The following software is required in order to build AtomVM for the ESP32 platform:</p>
 <ul class="simple">
 <li><p>Espressif Xtensa tool chains</p></li>
-<li><p><a class="reference external" href="https://www.espressif.com/en/products/sdks/esp-idf">Espressif IDF SDK</a> version 3.x (4.x support is currently <em>experimental</em>)</p></li>
+<li><p><a class="reference external" href="https://www.espressif.com/en/products/sdks/esp-idf">Espressif IDF SDK</a> (consult <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for currently supported versions)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
-<li><p>GNU <code class="docutils literal notranslate"><span class="pre">make</span></code> (for ESP-IDF versions lower than 4)</p></li>
 </ul>
-<p>Instructions for downloading and installing the Espressif IDF SDK and tool chains are outside of the scope of this document.  Please consult the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/release-v3.3/get-started/index.html">IDF SDKGetting Started</a> guide for more information.</p>
+<p>Instructions for downloading and installing the Espressif IDF SDK and tool chains are outside of the scope of this document.  Please consult the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/release-v4.4/get-started/index.html">IDF SDKGetting Started</a> guide for more information.</p>
 </section>
 <section id="id3">
 <h3>Build Instructions<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>To activate the ESP-IDF build environment change directories to the tree root of your local ESP-IDF:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd &lt;ESP-IDF-ROOT-DIR&gt;
+shell$ . ./export.sh
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note: If you followed Espressif’s installation guide the ESP-IDF directory is <code class="docutils literal notranslate"><span class="pre">${HOME}/esp/esp-idf</span></code></p>
+</div></blockquote>
 <p>Change directories to the <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code> directory under the AtomVM source tree root:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd &lt;atomvm-source-tree-root&gt;
 shell$ cd src/platforms/esp32
@@ -264,13 +275,13 @@ shell$ idf.py reconfigure
 </div>
 <blockquote>
 <div><p>Note.  For those familiar with esp-idf the build can be customized using <code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> instead of <code class="docutils literal notranslate"><span class="pre">reconfigure</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">shell$</span> <span class="pre">idf.py</span> <span class="pre">menuconfig</span></code></p>
+<p>shell$ idf.py menuconfig</p>
 <p>This command will bring up a curses dialog box where you can make adjustments such as not including AtomVM components that
 are not desired in a particular build. You can also change the behavior of a crash in the VM to print the error and reboot,
 or halt after the error is printed. Extreme caution should be used when changing any non AtomVM settings. You can quit the
 program by typing <code class="docutils literal notranslate"><span class="pre">Q</span></code>.  Save the changes, and the program will exit.</p>
 </div></blockquote>
-<p>You can now build AtomvVM using the build command:</p>
+<p>You can now build AtomVM using the build command:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ idf.py build
 ...
 </pre></div>
@@ -284,7 +295,7 @@ python /path/to/esp-idf-sdk/components/esptool_py/esptool/esptool.py --chip esp3
 --port /dev/ttyUSB0 --baud 115200 --before default_reset --after hard_reset write_flash
 -z --flash_mode dio --flash_freq 40m --flash_size detect
 0x1000 /path-to-atomvm-source-tree/Atomvm/src/platforms/esp32/build/bootloader/bootloader.bin
-0x10000 /path-to-atomvm-source-tree/Atomvm/src/platforms/esp32/build/atomvvm-esp32.bin
+0x10000 /path-to-atomvm-source-tree/Atomvm/src/platforms/esp32/build/atomvm-esp32.bin
 0x8000 /path-to-atomvm-source-tree/Atomvm/src/platforms/esp32/build/partitions.bin
 </pre></div>
 </div>
@@ -404,12 +415,12 @@ python /path/to/esp-idf-sdk/components/esptool_py/esptool/esptool.py --chip esp3
 <p>Running this script will generate a single <code class="docutils literal notranslate"><span class="pre">atomvm-&lt;sha&gt;.img</span></code> file in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory of the esp32 source tree, where <code class="docutils literal notranslate"><span class="pre">&lt;sha&gt;</span></code> is the git hash of the current checkout.  This image contains the ESP32 bootloader, AtomVM executable, and the <code class="docutils literal notranslate"><span class="pre">eavmlib</span></code> and <code class="docutils literal notranslate"><span class="pre">estdlib</span></code> Erlang libraries in one file, which can then be flashed to address <code class="docutils literal notranslate"><span class="pre">0x1000</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script is run from the src/platform/esp32 directory as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ ./build/mkimage.sh
-Writing output to /home/frege/AtomVM/src/platforms/esp32/build/atomvm-602e6bc.img
+Writing output to /home/frege/AtomVM/src/platforms/esp32/build/atomvm-esp32-0.6.0-dev+git.602e6bc.img
 =============================================
 Wrote bootloader at offset 0x1000 (4096)
 Wrote partition-table at offset 0x8000 (32768)
-Wrote AtomvVM Virtual Machine at offset 0x10000 (65536)
-Wrote AtomvVM Core BEAM Library at offset 0x110000 (1114112)
+Wrote AtomVM Virtual Machine at offset 0x10000 (65536)
+Wrote AtomVM Core BEAM Library at offset 0x110000 (1114112)
 </pre></div>
 </div>
 <p>Users can then use the <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly to flash the entire image to the ESP32 device, and then flash their applications to the <code class="docutils literal notranslate"><span class="pre">main.app</span></code> partition at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>,</p>
@@ -426,8 +437,14 @@ Chip erase completed successfully in 5.4s
 Hard resetting...
 </pre></div>
 </div>
-<p>You can then use the <code class="docutils literal notranslate"><span class="pre">./build/flash.sh</span></code> tool (or <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly, if you prefer), to flash the entire image to your device:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ FLASH_OFFSET=0x1000 ./build/flash.sh ./build/atomvm-602e6bc.img
+<section id="flashing-release-images">
+<h4>Flashing Release Images<a class="headerlink" href="#flashing-release-images" title="Permalink to this heading"></a></h4>
+<p>After preparing a release image you can use the <code class="docutils literal notranslate"><span class="pre">flashimage.sh</span></code>, which is generated with each build that will flash the full image using the correct flash offset for the chip the build was configured for.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ ./build/flashimage.sh
+</pre></div>
+</div>
+<p>To perform this action manually you can use the <code class="docutils literal notranslate"><span class="pre">./build/flash.sh</span></code> tool (or <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly, if you prefer):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ FLASH_OFFSET=0x1000 ./build/flash.sh ./build/atomvm-esp32-0.6.0-dev+git.602e6bc.img
 esptool.py v2.8-dev
 Serial port /dev/tty.SLAB_USBtoUART
 Connecting........_
@@ -449,13 +466,13 @@ Hard resetting via RTS pin...
 </pre></div>
 </div>
 <blockquote>
-<div><p>Note. Flashing the full AtomVM image will delete all entries in non-volatile storage.  Only flash the full image if you have a way to recover and re-write any such data.</p>
+<div><p>Note. Flashing the full AtomVM image will delete all entries in non-volatile storage.  Only flash the full image if you have a way to recover and re-write any such data, if you need to retain it.</p>
 </div></blockquote>
-<p>A <code class="docutils literal notranslate"><span class="pre">flashimage.sh</span></code> is also generated with each build that will flash the full image using the correct flash offset for the chip the build was configured for.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ ./build/flashimage.sh
-</pre></div>
-</div>
-<p>Finally, you can then flash your own application, e.g.,</p>
+</section>
+</section>
+<section id="flashing-applications">
+<h3>Flashing Applications<a class="headerlink" href="#flashing-applications" title="Permalink to this heading"></a></h3>
+<p>Applications can be flashed using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ ./build/flash.sh ../../../build/examples/erlang/esp32/blink.avm
 %%
 %% Flashing examples/erlang/esp32/blink.avm (size=4k)
@@ -481,7 +498,7 @@ Hard resetting via RTS pin...
 </pre></div>
 </div>
 <blockquote>
-<div><p>Note.  Since the Erlang core libraries are flashed to the ESP32 device, it is not necessary to include core libraries in your application AVM files.  Users may be interested in using downstream development tools, such as the Elixir <a href="https://github.com/atomvm/ExAtomVM">ExAtomVM Mix task</a>, or the Erlang <a href="https://github.com/fadushin/atomvm_rebar3_plugin">AtomVM Rebar3 Plugin</a> for doing day-to-day development of applications for the AtomVM platform.</p>
+<div><p>Note.  Since the Erlang core libraries are flashed to the ESP32 device, it is not necessary to include core libraries in your application AVM files.  Users may be interested in using downstream development tools, such as the Elixir <a href="https://github.com/atomvm/ExAtomVM">ExAtomVM Mix task</a>, or the Erlang <a href="https://github.com/atomvm/atomvm_rebar3_plugin">AtomVM Rebar3 Plugin</a> for doing day-to-day development of applications for the AtomVM platform.</p>
 </div></blockquote>
 </section>
 <section id="adding-custom-nifs-ports-and-third-party-components">
@@ -489,11 +506,11 @@ Hard resetting via RTS pin...
 <p>While AtomVM is a functional implementation of the Erlang virtual machine, it is nonetheless designed to allow developers to extend the VM to support additional integrations with peripherals and protocols that are not otherwise supported in the core virtual machine.</p>
 <p>AtomVM supports extensions to the VM via the implementation of custom native functions (Nifs) and processes (AtomVM Ports), allowing users to extend the VM for additional functionality, and you can add your own custom Nifs, ports, and additional third-party components to your ESP32 build by adding them to the <code class="docutils literal notranslate"><span class="pre">components</span></code> directory, and the ESP32 build will compile them automatically.</p>
 <blockquote>
-<div><p>For more information about building components for the IDF SDK, consult the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/v3.3.2/api-guides/build-system.html#">IDF SDK Build System</a> documentation.</p>
+<div><p>For more information about building components for the IDF SDK, consult the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/v4.4.4/api-guides/build-system.html#">IDF SDK Build System</a> documentation.</p>
 </div></blockquote>
 <p>The instructions for adding custom Nifs and ports differ in slight detail, but are otherwise quite similar.  In general, they involve:</p>
 <ol class="arabic simple">
-<li><p>Adding the custom Nif or Port to the <code class="docutils literal notranslate"><span class="pre">comonents</span></code> directory of the AtomVM source tree;</p></li>
+<li><p>Adding the custom Nif or Port to the <code class="docutils literal notranslate"><span class="pre">components</span></code> directory of the AtomVM source tree;</p></li>
 <li><p>Adding the component to the corresponding <code class="docutils literal notranslate"><span class="pre">main/component_nifs.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">main/component_ports.txt</span></code> files;</p></li>
 <li><p>Building the AtomVM binary.</p></li>
 </ol>

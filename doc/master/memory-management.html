@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Management &mdash; AtomVM 0.6.0-dev+git.4eabd38 documentation</title>
+  <title>Memory Management &mdash; AtomVM 0.6.0-dev+git.6370504 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -230,7 +230,7 @@
 </section>
 <section id="memory-graph">
 <h3>Memory Graph<a class="headerlink" href="#memory-graph" title="Permalink to this heading"></a></h3>
-<p>Memory is allocated in the execution context heap, and structured types, such as tuples and lists, generally include references to the blocks of memory that have beenn previously allocated.</p>
+<p>Memory is allocated in the execution context heap, and structured types, such as tuples and lists, generally include references to the blocks of memory that have been previously allocated.</p>
 <p>For example, if we look at the memory allocated for the term</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{foo, [{bar, self()}]}
 </pre></div>
@@ -263,7 +263,7 @@
 <p>The tuple <code class="docutils literal notranslate"><span class="pre">{bar,</span> <span class="pre">self()}</span></code> is allocated in a block, and the list <code class="docutils literal notranslate"><span class="pre">[{bar,</span> <span class="pre">self()}]</span></code> (or, technically, <code class="docutils literal notranslate"><span class="pre">[{bar,</span> <span class="pre">self()}</span> <span class="pre">|</span> <span class="pre">[]]</span></code>) contains elements that <em>point</em> to it elements (in this case, <code class="docutils literal notranslate"><span class="pre">[]</span></code> and <code class="docutils literal notranslate"><span class="pre">{bar,</span> <span class="pre">self()}</span></code> – note that in general, in AtomVM, the address of the tail of a list occupies the first byte in the list – more details on that below).  Finally, the tuple <code class="docutils literal notranslate"><span class="pre">{foo,</span> <span class="pre">[{bar,</span> <span class="pre">self()}]}</span></code> contains the atom <code class="docutils literal notranslate"><span class="pre">foo</span></code> and a <em>pointer</em> to the list it contains.</p>
 <p>In this way, the set of allocated blocks in the execution context heap forms a directed graph of objects, whose nodes are structured terms (lists, tuples, etc) and whose leaves are simple terms, like atoms, pids, and so forth.  Note that because BEAM-based languages such as Erlang and Elixir are true functional programming languages, these directed graphs have no cycles.</p>
 <p>The stack, registers, and process dictionary contain pointers to terms in the heap.  We call these terms “root” nodes, and any term in the heap that is referenced by a root node, or any term that is so referenced by such a term, is in the path of a root node.  Some terms in the heap are not in the path of a root node.  We call these terms “garbage”.</p>
-<p>Note that the values in the stack and register root nodes change over time as the result of the execution of Erlang opcodes, and are dependent on the BEAM output of the Erlang compiler, along with inputs to the program being executed.  Thus, a term in the process heap may become garbage, once it is no longer reachable from the root set.  But once garbage, the termill will always remain garbage, at least until it is reclaimed during a garbage collection event.  For more information about how the garbage collector works, see the Garbage Collection section, below.</p>
+<p>Note that the values in the stack and register root nodes change over time as the result of the execution of Erlang opcodes, and are dependent on the BEAM output of the Erlang compiler, along with inputs to the program being executed.  Thus, a term in the process heap may become garbage, once it is no longer reachable from the root set.  But once garbage, the term will always remain garbage, at least until it is reclaimed during a garbage collection event.  For more information about how the garbage collector works, see the Garbage Collection section, below.</p>
 </section>
 </section>
 <section id="simple-terms">
@@ -497,7 +497,7 @@
 <blockquote>
 <div><p>Note. The size of a reference counted binary is stored both in the process heap (in the boxed term), as well as in the off-heap storage.  The size count in the off-heap storage is needed in order to report the amount of data in use by binaries (e.g., via <code class="docutils literal notranslate"><span class="pre">erlang:memory/0,1</span></code>).</p>
 </div></blockquote>
-<p>In addition, a reference-counted boxed term contains a cons-cell appended to the end of the boxed term, which is used by the garbage collector for tracking references.  The <code class="docutils literal notranslate"><span class="pre">car</span></code> of this cell points to the boxed term, itself, and the <code class="docutils literal notranslate"><span class="pre">cdr</span></code> points to the “previous” cons cell associated with a reference counted binary in the heap, if there is one, or the empty list (<code class="docutils literal notranslate"><span class="pre">nil</span></code>), otherwise.  The cons cell forms an element in the “Mark and Sweep Object” (MSO) list, used to reclaim unreferenced storage during a garbage collection event..  See the Garabage Collection section, below, for more information about the critical role of this structure in the process of reclaiming unused memory in the AtomVM virtual machine.</p>
+<p>In addition, a reference-counted boxed term contains a cons-cell appended to the end of the boxed term, which is used by the garbage collector for tracking references.  The <code class="docutils literal notranslate"><span class="pre">car</span></code> of this cell points to the boxed term, itself, and the <code class="docutils literal notranslate"><span class="pre">cdr</span></code> points to the “previous” cons cell associated with a reference counted binary in the heap, if there is one, or the empty list (<code class="docutils literal notranslate"><span class="pre">nil</span></code>), otherwise.  The cons cell forms an element in the “Mark and Sweep Object” (MSO) list, used to reclaim unreferenced storage during a garbage collection event..  See the Garbage Collection section, below, for more information about the critical role of this structure in the process of reclaiming unused memory in the AtomVM virtual machine.</p>
 </section>
 <section id="const-binaries">
 <h4>Const Binaries<a class="headerlink" href="#const-binaries" title="Permalink to this heading"></a></h4>
@@ -505,7 +505,7 @@
 <ul class="simple">
 <li><p>The low order bit of the flags field (<code class="docutils literal notranslate"><span class="pre">boxed[2]</span></code>) is <code class="docutils literal notranslate"><span class="pre">1</span></code>, to indicate that the reference binary is constant;</p></li>
 <li><p>The ptr field (<code class="docutils literal notranslate"><span class="pre">boxed[3]</span></code>) points directly to the constant storage (e.g., literal data stored in a memory-mapped BEAM file);</p></li>
-<li><p>The trailing cons cell elements are unused, as dynamic memory management for static storage is uncesessary.  These values are initialized to <code class="docutils literal notranslate"><span class="pre">nil</span></code>.</p></li>
+<li><p>The trailing cons cell elements are unused, as dynamic memory management for static storage is unnecessary.  These values are initialized to <code class="docutils literal notranslate"><span class="pre">nil</span></code>.</p></li>
 </ul>
 <p>This heap structure has the following representation:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                          |&lt; 6  &gt;|
@@ -822,8 +822,8 @@ process dictionary
 <li><p>Starting with the newly created region used in the shallow copy phase in the new heap, iterate over every term in the region  (call this the “scan&amp;copy” region);</p></li>
 <li><p>If any term in this region is a reference to a term on the old heap that has <em>not</em> been marked as copied, perform a shallow copy of it (as described above) to the new heap, but starting at the next free address below the region being iterated over;</p></li>
 <li><p>Note that after iterating over all such terms in the scan and copy region, all terms are “complete”, in that there are no references to boxed terms in the old heap in that region.  We have, however, created a new region which may have references to boxed terms in the old heap;</p></li>
-<li><p>So we repeat the process on the new region, which will complete the current scan&amp;copy requion, but which in turn may create a new region of copied terms;</p></li>
-<li><p>The process is repeated until no new reqions have been introduced.</p></li>
+<li><p>So we repeat the process on the new region, which will complete the current scan&amp;copy region, but which in turn may create a new region of copied terms;</p></li>
+<li><p>The process is repeated until no new regions have been introduced.</p></li>
 </ul>
 <p>The following sequence of iterative additions to the new heap illustrates this process:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+---------------+ ===&gt; +---------------+ ===&gt; +---------------+ ...
@@ -865,7 +865,7 @@ process dictionary
 </section>
 <section id="mso-sweep">
 <h4>MSO Sweep<a class="headerlink" href="#mso-sweep" title="Permalink to this heading"></a></h4>
-<p>As mentioned in the section above on binaries, AtomVM supports refrence-counted binaries, whereby binaries of a sufficiently large size (&gt;64 bytes) are allocated outside of the process heap, and are instead referenced from boxed terms in the heap.  This way, binaries, which are immutable objects, can be shared between processes without incurring the time and space cost of a large data copy.</p>
+<p>As mentioned in the section above on binaries, AtomVM supports reference-counted binaries, whereby binaries of a sufficiently large size (&gt;64 bytes) are allocated outside of the process heap, and are instead referenced from boxed terms in the heap.  This way, binaries, which are immutable objects, can be shared between processes without incurring the time and space cost of a large data copy.</p>
 <p>In order to manage the memory associated with such binaries, AtomVM tracks references to these off-heap binaries via the “Mark and Sweep Object” list, a list that keeps track of which boxed terms in the process heap have a reference to an off-heap binary.   When such a boxed term is copied (e.g., from a heap to a mailbox on a <code class="docutils literal notranslate"><span class="pre">send</span></code>, or from a mailbox to a heap on a <code class="docutils literal notranslate"><span class="pre">receive</span></code>), the reference count is incremented on the off-heap binary.</p>
 <p>The MSO list is formed via the cons cells that are appended to reference counted binary boxed terms in the process heap.  The list is initially empty (nil), but as reference counted binaries are added to the process heap, they are pre-pended to the MSO list for the process (on the mailbox message, as reference-counted binaries in the mailbox need to be managed, as well).</p>
 <p>The following diagram illustrates a set of two reference counted binaries in a process heap:</p>
@@ -904,7 +904,7 @@ process dictionary
 </div>
 <p>After the new heap has been scanned and copied, as described above, the MSO list is traversed to determine if any reference-counted binaries are no longer referenced from the process heap.  If any reference counted binaries in the heap have not been marked as moved from the old heap, they are, effectively, no longer referenced from the root set, and the reference count on the corresponding off-heap binary can be decremented.  Furthermore, when the reference count reaches 0, the binaries can then be deleted.</p>
 <blockquote>
-<div><p>Note.  Const binaries, while they have slots for entry into the MSO list, nonetheless are never “stitched” into the MSO list, as the binary data they poont to is const, endures for the lifecycle of the program, and is never deleted.  Match binaries, on the other hand, do count as references, and can therefore be stitched into the MSO list.  However, when they are, the reference counted binaries they point to are the actual binaries in the process heap, not the match binaries, as with the case of refc binaries on the process heap.</p>
+<div><p>Note.  Const binaries, while they have slots for entry into the MSO list, nonetheless are never “stitched” into the MSO list, as the binary data they point to is const, endures for the lifecycle of the program, and is never deleted.  Match binaries, on the other hand, do count as references, and can therefore be stitched into the MSO list.  However, when they are, the reference counted binaries they point to are the actual binaries in the process heap, not the match binaries, as with the case of refc binaries on the process heap.</p>
 </div></blockquote>
 </section>
 <section id="deletion">
