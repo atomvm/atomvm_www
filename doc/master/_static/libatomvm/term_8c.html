@@ -132,6 +132,12 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a818b9cca761fe7bc18e4e417da772976"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="term_8c.html#a818b9cca761fe7bc18e4e417da772976">CONTAINER_OF</a>(ptr,  type,  member)&#160;&#160;&#160;    ((type *) (((char *) (ptr)) - offsetof(type, member)))</td></tr>
 <tr class="separator:a818b9cca761fe7bc18e4e417da772976"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab27de2bdce561b02013482aaff828238"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="term_8c.html#ab27de2bdce561b02013482aaff828238">BEGIN_MAP_KEY</a>&#160;&#160;&#160;<a class="el" href="term_8h.html#ac307b174fc487c3de6b43b31db3dc482">TERM_RESERVED_MARKER</a>(1)</td></tr>
+<tr class="separator:ab27de2bdce561b02013482aaff828238"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a811e0764314012ebd3ce9911f2bfdacf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="term_8c.html#a811e0764314012ebd3ce9911f2bfdacf">END_MAP_KEY</a>&#160;&#160;&#160;<a class="el" href="term_8h.html#ac307b174fc487c3de6b43b31db3dc482">TERM_RESERVED_MARKER</a>(0)</td></tr>
+<tr class="separator:a811e0764314012ebd3ce9911f2bfdacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6c56ef0cc80e4f6288bee44f9890298"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="term_8c.html#ae6c56ef0cc80e4f6288bee44f9890298">CMP_POP_AND_CONTINUE</a>()</td></tr>
+<tr class="separator:ae6c56ef0cc80e4f6288bee44f9890298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -170,6 +176,52 @@ Variables</h2></td></tr>
 <tr class="separator:ac04d344fdfa2ea9d687ac6ed07729d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ab27de2bdce561b02013482aaff828238"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab27de2bdce561b02013482aaff828238">&#9670;&nbsp;</a></span>BEGIN_MAP_KEY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BEGIN_MAP_KEY&#160;&#160;&#160;<a class="el" href="term_8h.html#ac307b174fc487c3de6b43b31db3dc482">TERM_RESERVED_MARKER</a>(1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00410">410</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+
+</div>
+</div>
+<a id="ae6c56ef0cc80e4f6288bee44f9890298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6c56ef0cc80e4f6288bee44f9890298">&#9670;&nbsp;</a></span>CMP_POP_AND_CONTINUE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CMP_POP_AND_CONTINUE</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    other = temp_stack_pop(&amp;temp_stack);                                                           \</div>
+<div class="line">    if (other == <a class="code" href="term_8c.html#ab27de2bdce561b02013482aaff828238">BEGIN_MAP_KEY</a>) {                                                                  \</div>
+<div class="line">        map_key_nesting++;                                                                       \</div>
+<div class="line">        other = temp_stack_pop(&amp;temp_stack);                                                       \</div>
+<div class="line">    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (other == <a class="code" href="term_8c.html#a811e0764314012ebd3ce9911f2bfdacf">END_MAP_KEY</a>) {                                                             \</div>
+<div class="line">        map_key_nesting--;                                                                       \</div>
+<div class="line">        other = temp_stack_pop(&amp;temp_stack);                                                       \</div>
+<div class="line">    }                                                                                              \</div>
+<div class="line">    t = temp_stack_pop(&amp;temp_stack);</div>
+<div class="ttc" id="aterm_8c_html_a811e0764314012ebd3ce9911f2bfdacf"><div class="ttname"><a href="term_8c.html#a811e0764314012ebd3ce9911f2bfdacf">END_MAP_KEY</a></div><div class="ttdeci">#define END_MAP_KEY</div><div class="ttdef"><b>Definition:</b> <a href="term_8c_source.html#l00411">term.c:411</a></div></div>
+<div class="ttc" id="aterm_8c_html_ab27de2bdce561b02013482aaff828238"><div class="ttname"><a href="term_8c.html#ab27de2bdce561b02013482aaff828238">BEGIN_MAP_KEY</a></div><div class="ttdeci">#define BEGIN_MAP_KEY</div><div class="ttdef"><b>Definition:</b> <a href="term_8c_source.html#l00410">term.c:410</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00413">413</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+
+</div>
+</div>
 <a id="a818b9cca761fe7bc18e4e417da772976"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a818b9cca761fe7bc18e4e417da772976">&#9670;&nbsp;</a></span>CONTAINER_OF</h2>
 
@@ -203,6 +255,22 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00037">37</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+
+</div>
+</div>
+<a id="a811e0764314012ebd3ce9911f2bfdacf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a811e0764314012ebd3ce9911f2bfdacf">&#9670;&nbsp;</a></span>END_MAP_KEY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define END_MAP_KEY&#160;&#160;&#160;<a class="el" href="term_8h.html#ac307b174fc487c3de6b43b31db3dc482">TERM_RESERVED_MARKER</a>(0)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00411">411</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
 
 </div>
 </div>
@@ -322,7 +390,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a term (reference) pointing to the newly allocated binary in the process heap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00630">630</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00656">656</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
 
 </div>
 </div>
@@ -376,7 +444,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a term (reference) pointing to the newly allocated sub-binary in the process heap. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00669">669</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00695">695</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
 
 </div>
 </div>
@@ -429,7 +497,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>any of TermEquals, TermLessThan, TermGreaterThan or TermCompareMemoryAllocFail error. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00410">410</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00424">424</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
 
 </div>
 </div>
@@ -605,7 +673,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00682">682</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="term_8c_source.html#l00708">708</a> of file <a class="el" href="term_8c_source.html">term.c</a>.</p>
 
 </div>
 </div>
