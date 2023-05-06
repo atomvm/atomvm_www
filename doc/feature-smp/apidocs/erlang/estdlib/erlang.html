@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.e9a0cbe documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/erlang.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Module gen_event" href="gen_event.html" />
+    <link rel="prev" title="Module calendar" href="calendar.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                feature-smp
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-programs.html">Example Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../../api-reference-documentation.html#estdlib">estdlib</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="README.html">The estdlib library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
+<li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_server.html">Module gen_server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_statem.html">Module gen_statem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_tcp.html">Module gen_tcp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="gen_udp.html">Module gen_udp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inet.html">Module inet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l4"><a class="reference internal" href="io_lib.html">Module io_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lists.html">Module lists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="maps.html">Module maps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="math.html">Module math</a></li>
+<li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
+<li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer.html">Module timer</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#eavmlib">eavmlib</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#alisp">alisp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#etest">etest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-internal-libraries">AtomVM ‘C’ Internal Libraries</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+      <li class="breadcrumb-item active">Module erlang</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-erlang">
+<h1>Module erlang<a class="headerlink" href="#module-erlang" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
+<li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
+<li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
+</ul>
+<p>An implementation of the Erlang/OTP erlang module, for functions
+that are not already defined as NIFs.</p>
+<p><a name="types"></a></p>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="mem-type">
+<h3><a name="type-mem_type">mem_type()</a><a class="headerlink" href="#mem-type" title="Permalink to this heading"></a></h3>
+<pre><code>
+mem_type() = binary
+</code></pre>
+</section>
+<section id="time-unit">
+<h3><a name="type-time_unit">time_unit()</a><a class="headerlink" href="#time-unit" title="Permalink to this heading"></a></h3>
+<pre><code>
+time_unit() = second | millisecond | microsecond
+</code></pre>
+<p><a name="index"></a></p>
+</section>
+</section>
+<section id="function-index">
+<h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td></td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
+https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
+Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
+<p><a name="functions"></a></p>
+</section>
+<section id="function-details">
+<h2>Function Details<a class="headerlink" href="#function-details" title="Permalink to this heading"></a></h2>
+<p><a name="apply-3"></a></p>
+<section id="apply-3">
+<h3>apply/3<a class="headerlink" href="#apply-3" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">apply(Module,</span> <span class="pre">Function,</span> <span class="pre">Args)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p><a name="is_map-1"></a></p>
+</section>
+<section id="is-map-1">
+<h3>is_map/1<a class="headerlink" href="#is-map-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+is_map(Map::map()) -&gt; boolean()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map to test<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is a map; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is a map; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
+<p>This function may be used in a guard expression.</p>
+<p><a name="map_get-2"></a></p>
+</section>
+<section id="map-get-2">
+<h3>map_get/2<a class="headerlink" href="#map-get-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+map_get(Key::term(), Map::map()) -&gt; Value::term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key to get<br /><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map from which to get the value<br /></p>
+<p>returns: the value in <code class="docutils literal notranslate"><span class="pre">Map</span></code> associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code>, if it exists.</p>
+<p>throws <code class="docutils literal notranslate"><span class="pre">{badkey,</span> <span class="pre">Key}</span> <span class="pre">|</span> <span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
+<p>Get the value in <code class="docutils literal notranslate"><span class="pre">Map</span></code> associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code>, if it exists.</p>
+<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badkey,</span> <span class="pre">Key}</span></code> exception if ‘Key’ does not occur in <code class="docutils literal notranslate"><span class="pre">Map</span></code> or
+a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function may be used in a guard expression.</p>
+<p><a name="map_is_key-2"></a></p>
+</section>
+<section id="map-is-key-2">
+<h3>map_is_key/2<a class="headerlink" href="#map-is-key-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+map_is_key(Key::term(), Map::map()) -&gt; boolean()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key<br /><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Key</span></code> is associated with a value in <code class="docutils literal notranslate"><span class="pre">Map</span></code>; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
+<p>throws <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
+<p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Key</span></code> is associated with a value in <code class="docutils literal notranslate"><span class="pre">Map</span></code>; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
+<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> exception if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function may be used in a guard expression.</p>
+<p><a name="map_size-1"></a></p>
+</section>
+<section id="map-size-1">
+<h3>map_size/1<a class="headerlink" href="#map-size-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+map_size(Map::map()) -&gt; non_neg_integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map<br /></p>
+<p>returns: the size of the map</p>
+<p>throws <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
+<p>Returns the size of (i.e., the number of entries in) the map</p>
+<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> exception if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function may be used in a guard expression.</p>
+<p><a name="max-2"></a></p>
+</section>
+<section id="max-2">
+<h3>max/2<a class="headerlink" href="#max-2" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">max(A,</span> <span class="pre">B)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p>Return the minimum value of two terms</p>
+<p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and follow the ordering principles defined in
+https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>
+<p><a name="md5-1"></a></p>
+</section>
+<section id="md5-1">
+<h3>md5/1<a class="headerlink" href="#md5-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+md5(Data::binary()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to compute hash of, as a binary.<br /></p>
+<p>returns: the md5 hash of the input Data, as a 16-byte binary.</p>
+<p>Computes the MD5 hash of an input binary, as defined by
+https://www.ietf.org/rfc/rfc1321.txt</p>
+<p><a name="memory-1"></a></p>
+</section>
+<section id="memory-1">
+<h3>memory/1<a class="headerlink" href="#memory-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+memory(Type::<a href="#type-mem_type">mem_type()</a>) -&gt; non_neg_integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: the type of memory to request<br /></p>
+<p>returns: the amount of memory (in bytes) used of the specified type</p>
+<p>Return the amount of memory (in bytes) used of the specified type</p>
+<p><a name="min-2"></a></p>
+</section>
+<section id="min-2">
+<h3>min/2<a class="headerlink" href="#min-2" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">min(A,</span> <span class="pre">B)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p>Return the minimum value of two terms</p>
+<p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and follow the ordering principles defined in
+https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>
+<p><a name="monotonic_time-1"></a></p>
+</section>
+<section id="monotonic-time-1">
+<h3>monotonic_time/1<a class="headerlink" href="#monotonic-time-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+monotonic_time(Unit::<a href="#type-time_unit">time_unit()</a>) -&gt; integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Unit</span></code>: time unit<br /></p>
+<p>returns: monotonic time in the specified units</p>
+<p>Return the monotonic time in the specified units.</p>
+<p>Monotonic time varies from system to system, and should not be used
+to determine, for example the wall clock time.</p>
+<p>Instead, monotonic time should be used to compute time differences,
+where the function is guaranteed to return a (not necessarily strictly)
+monotonically increasing value.</p>
+<p>For example, on ESP32 system, monotonic time is reported as the difference from
+the current time and the time the ESP32 device was started, whereas on UNIX
+systems the value may vary among UNIX systems (e.g., Linux, macOS, FreeBSD).</p>
+<p><a name="process_info-2"></a></p>
+</section>
+<section id="process-info-2">
+<h3>process_info/2<a class="headerlink" href="#process-info-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+process_info(Pid::pid(), Key::atom()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<p>returns: process information for the specified pid defined by the specified key.</p>
+<p>Return process information.</p>
+<p>This function returns information about the specified process.
+The type of information returned is dependent on the specified key.</p>
+<p>The following keys are supported:</p>
+<ul class="simple">
+<li><p><strong>heap_size</strong> the number of words used in the heap (integer)</p></li>
+<li><p><strong>stack_size</strong> the number of words used in the stack (integer)</p></li>
+<li><p><strong>message_queue_len</strong> the number of messages enqueued for the process (integer)</p></li>
+<li><p><strong>memory</strong> the estimated total number of bytes in use by the process (integer)</p></li>
+</ul>
+<p>Specifying an unsupported term or atom raises a bad_arg error.</p>
+<p><a name="send_after-3"></a></p>
+</section>
+<section id="send-after-3">
+<h3>send_after/3<a class="headerlink" href="#send-after-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+send_after(Time::non_neg_integer(), Dest::pid() | atom(), Msg::term()) -&gt; reference()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: time in milliseconds after which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Dest</span></code>: Pid or server name to which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Msg</span></code>: Message to send to Dest after Time ms.<br /></p>
+<p>returns: a reference that can be used to cancel the timer, if desired.</p>
+<p>Send Msg to Dest after Time ms.</p>
+<p><a name="start_timer-3"></a></p>
+</section>
+<section id="start-timer-3">
+<h3>start_timer/3<a class="headerlink" href="#start-timer-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+start_timer(Time::non_neg_integer(), Dest::pid() | atom(), Msg::term()) -&gt; reference()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: time in milliseconds after which to send the timeout message.<br /><code class="docutils literal notranslate"><span class="pre">Dest</span></code>: Pid or server name to which to send the timeout message.<br /><code class="docutils literal notranslate"><span class="pre">Msg</span></code>: Message to send to Dest after Time ms.<br /></p>
+<p>returns: a reference that can be used to cancel the timer, if desired.</p>
+<p>Start a timer, and send {timeout, TimerRef, Msg} to Dest after
+Time ms, where TimerRef is the reference returned from this function.</p>
+<p><a name="system_flag-2"></a></p>
+</section>
+<section id="system-flag-2">
+<h3>system_flag/2<a class="headerlink" href="#system-flag-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+system_flag(Key::atom(), Value::term()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to change system flag.<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: value to change<br /></p>
+<p>returns: previous value of the flag.</p>
+<p>Update system flags.</p>
+<p>This function allows to modify system flags at runtime.</p>
+<p>The following key is supported on SMP builds:</p>
+<ul class="simple">
+<li><p><strong>schedulers_online</strong> the number of schedulers online</p></li>
+</ul>
+<p>Specifying an unsupported atom key will result in a bad_arg error.
+Specifying a term that is not an atom will result in a bad_arg error.</p>
+<p><a name="system_info-1"></a></p>
+</section>
+<section id="system-info-1">
+<h3>system_info/1<a class="headerlink" href="#system-info-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+system_info(Key::atom()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find system information.<br /></p>
+<p>returns: system information defined by the specified key.</p>
+<p>Return system information.</p>
+<p>This function returns information about the system on which AtomVM is
+running. The type of information returned is dependent on the specified key.</p>
+<p>The following keys are supported on all platforms:</p>
+<ul class="simple">
+<li><p><strong>process_count</strong> the number of processes running in the node (integer)</p></li>
+<li><p><strong>port_count</strong> the number of ports running in the node (integer)</p></li>
+<li><p><strong>atom_count</strong> the number of atoms currently allocated (integer)</p></li>
+<li><p><strong>system_architecture</strong> the processor and OS architecture (binary)</p></li>
+<li><p><strong>version</strong> the version of the AtomVM executable image (binary)</p></li>
+<li><p><strong>wordsize</strong> the number of bytes in a machine word on the current platform (integer)</p></li>
+<li><p><strong>schedulers</strong> the number of schedulers, equal to the number of online processors (integer)</p></li>
+<li><p><strong>schedulers_online</strong> the current number of schedulers (integer)</p></li>
+</ul>
+<p>The following keys are supported on the ESP32 platform:</p>
+<ul class="simple">
+<li><p><strong>esp32_free_heap_size</strong> the number of (noncontiguous) free bytes in the ESP32 heap (integer)</p></li>
+<li><p><strong>esp_largest_free_block</strong> the number of the largest contiguous free bytes in the ESP32 heap (integer)</p></li>
+<li><p><strong>esp_get_minimum_free_size</strong> the smallest number of free bytes in the ESP32 heap since boot (integer)</p></li>
+</ul>
+<p>Additional keys may be supported on some platforms that are not documented here.</p>
+<p>Specifying an unsupported atom key will results in returning the atom ‘undefined’.</p>
+<p>Specifying a term that is not an atom will result in a bad_arg error.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="calendar.html" class="btn btn-neutral float-left" title="Module calendar" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gen_event.html" class="btn btn-neutral float-right" title="Module gen_event" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2023, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: feature-smp
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="/doc/master/">master</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.5/">release-0.5</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/feature-smp/pdf/AtomVM-feature-smp.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/feature-smp/epub/AtomVM-feature-smp.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

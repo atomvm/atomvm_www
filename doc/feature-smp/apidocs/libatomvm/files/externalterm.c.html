@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>externalterm.c &mdash; AtomVM 0.6.0-dev+git.e9a0cbe documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/files/externalterm.c.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="externalterm.h" href="externalterm.h.html" />
+    <link rel="prev" title="exportedfunction.h" href="exportedfunction.h.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                feature-smp
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example-programs.html">Example Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-internal-libraries">AtomVM ‘C’ Internal Libraries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../c_api_docs.html">libAtomVM</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../c_api_docs.html#libatomvm-source-files">libAtomVM Source Files</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomshashtable.c.html">atomshashtable.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomshashtable.h.html">atomshashtable.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avmpack.c.html">avmpack.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avmpack.h.html">avmpack.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bif.c.html">bif.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bif.h.html">bif.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bitstring.c.html">bitstring.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bitstring.h.html">bitstring.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ccontext.h.html">ccontext.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="context.c.html">context.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exportedfunction.h.html">exportedfunction.h</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">externalterm.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="externalterm.h.html">externalterm.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globalcontext.c.html">globalcontext.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globalcontext.h.html">globalcontext.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iff.c.html">iff.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iff.h.html">iff.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interop.c.html">interop.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interop.h.html">interop.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="linkedlist.h.html">linkedlist.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list.h.html">list.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mailbox.c.html">mailbox.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mailbox.h.html">mailbox.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="memory.c.html">memory.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="memory.h.html">memory.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module.c.html">module.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module.h.html">module.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overflow_helpers.h.html">overflow_helpers.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="platform_nifs.h.html">platform_nifs.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port.c.html">port.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port.h.html">port.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refc_binary.c.html">refc_binary.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="valueshashtable.c.html">valueshashtable.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="valueshashtable.h.html">valueshashtable.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html">libAtomVM Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../../c_api_docs.html">libAtomVM</a></li>
+      <li class="breadcrumb-item active">externalterm.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="externalterm-c">
+<h1>externalterm.c<a class="headerlink" href="#externalterm-c" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Include dependency graph for externalterm.c:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-0f6bb37e6a2ba66d43702e724df8d8347266a8c8.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;4&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
+    &quot;19&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
+    &quot;22&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
+    &quot;23&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;17&quot; [label=&quot;linkedlist.h&quot; tooltip=&quot;linkedlist.h&quot;]
+    &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
+    &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;20&quot; [label=&quot;context.h&quot; tooltip=&quot;context.h&quot;]
+    &quot;13&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;10&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
+    &quot;14&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;11&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
+    &quot;15&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
+    &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;25&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
+    &quot;3&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
+    &quot;18&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;21&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
+    &quot;9&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
+    &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;24&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
+    &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;16&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
+    &quot;12&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
+    &quot;2&quot; [label=&quot;externalterm.h&quot; tooltip=&quot;externalterm.h&quot;]
+    &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EXTERNAL_TERM_TAG">
+<span class="target" id="externalterm_8c_1a3a96eadf7fc17dff35db734895f6338a"></span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_TAG</span></span></span><a class="headerlink" href="#c.EXTERNAL_TERM_TAG" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NEW_FLOAT_EXT">
+<span class="target" id="externalterm_8c_1a2f16e99dd7fd42cc09cfec5be09f9ecf"></span><span class="sig-name descname"><span class="n"><span class="pre">NEW_FLOAT_EXT</span></span></span><a class="headerlink" href="#c.NEW_FLOAT_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_INTEGER_EXT">
+<span class="target" id="externalterm_8c_1ab87ed8705437bdfb9413423ffd1b82d3"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_INTEGER_EXT</span></span></span><a class="headerlink" href="#c.SMALL_INTEGER_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.INTEGER_EXT">
+<span class="target" id="externalterm_8c_1aff6ddf42b3c1b50eb5455f70ec802d0f"></span><span class="sig-name descname"><span class="n"><span class="pre">INTEGER_EXT</span></span></span><a class="headerlink" href="#c.INTEGER_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ATOM_EXT">
+<span class="target" id="externalterm_8c_1afc7bb84fd99bcc43d53bc3e575054be5"></span><span class="sig-name descname"><span class="n"><span class="pre">ATOM_EXT</span></span></span><a class="headerlink" href="#c.ATOM_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_TUPLE_EXT">
+<span class="target" id="externalterm_8c_1a4748f67b525ea3fdb05500c7ad3d020d"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_TUPLE_EXT</span></span></span><a class="headerlink" href="#c.SMALL_TUPLE_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NIL_EXT">
+<span class="target" id="externalterm_8c_1a92442b250f645b09a11c4d8df872c2ea"></span><span class="sig-name descname"><span class="n"><span class="pre">NIL_EXT</span></span></span><a class="headerlink" href="#c.NIL_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.STRING_EXT">
+<span class="target" id="externalterm_8c_1ae1847d5aa13c60c9cd3a2699d47b8a2c"></span><span class="sig-name descname"><span class="n"><span class="pre">STRING_EXT</span></span></span><a class="headerlink" href="#c.STRING_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LIST_EXT">
+<span class="target" id="externalterm_8c_1acbf9d34211d072c787fb66702b61e19b"></span><span class="sig-name descname"><span class="n"><span class="pre">LIST_EXT</span></span></span><a class="headerlink" href="#c.LIST_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BINARY_EXT">
+<span class="target" id="externalterm_8c_1a33221a22bc4fd9183788b7a02eb21a1b"></span><span class="sig-name descname"><span class="n"><span class="pre">BINARY_EXT</span></span></span><a class="headerlink" href="#c.BINARY_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_BIG_EXT">
+<span class="target" id="externalterm_8c_1a1b43d898c184392fabfa7a0c95c5ba51"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_BIG_EXT</span></span></span><a class="headerlink" href="#c.SMALL_BIG_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EXPORT_EXT">
+<span class="target" id="externalterm_8c_1a46a88f504b8af78b709de9cf1bc21537"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORT_EXT</span></span></span><a class="headerlink" href="#c.EXPORT_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MAP_EXT">
+<span class="target" id="externalterm_8c_1a56fd86bb8fde37e05821d9eb753c9a46"></span><span class="sig-name descname"><span class="n"><span class="pre">MAP_EXT</span></span></span><a class="headerlink" href="#c.MAP_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_ATOM_UTF8_EXT">
+<span class="target" id="externalterm_8c_1a29023d9400ef23d6df84f5d23d2040e5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_ATOM_UTF8_EXT</span></span></span><a class="headerlink" href="#c.SMALL_ATOM_UTF8_EXT" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.INVALID_TERM_SIZE">
+<span class="target" id="externalterm_8c_1a95edc96ce31de69eec04e8ce0ab4de16"></span><span class="sig-name descname"><span class="n"><span class="pre">INVALID_TERM_SIZE</span></span></span><a class="headerlink" href="#c.INVALID_TERM_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.NEW_FLOAT_EXT_SIZE">
+<span class="target" id="externalterm_8c_1a15148aa55588108dcc54bcf937c4ad63"></span><span class="sig-name descname"><span class="n"><span class="pre">NEW_FLOAT_EXT_SIZE</span></span></span><a class="headerlink" href="#c.NEW_FLOAT_EXT_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_INTEGER_EXT_SIZE">
+<span class="target" id="externalterm_8c_1a49595047ec08e9e946cb2139d042acc7"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_INTEGER_EXT_SIZE</span></span></span><a class="headerlink" href="#c.SMALL_INTEGER_EXT_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.INTEGER_EXT_SIZE">
+<span class="target" id="externalterm_8c_1abf8d021dbb4e838c842aa51f68b2e93b"></span><span class="sig-name descname"><span class="n"><span class="pre">INTEGER_EXT_SIZE</span></span></span><a class="headerlink" href="#c.INTEGER_EXT_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_BIG_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a092e021b336e2d1f5167dfd0744fa724"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_BIG_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.SMALL_BIG_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ATOM_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a89ddc9d6a504a06a2e6518544b2e77e5"></span><span class="sig-name descname"><span class="n"><span class="pre">ATOM_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.ATOM_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.STRING_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a5076a605edcbfb434635a2d56a382cf3"></span><span class="sig-name descname"><span class="n"><span class="pre">STRING_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.STRING_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.LIST_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1ace4e163744c0de97f4f0ae089e780627"></span><span class="sig-name descname"><span class="n"><span class="pre">LIST_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.LIST_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.BINARY_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a99153401c3d980f4cb75a3bdaff39d4a"></span><span class="sig-name descname"><span class="n"><span class="pre">BINARY_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.BINARY_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.MAP_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a58a83422e10c58ea4fa6bfd36e47869e"></span><span class="sig-name descname"><span class="n"><span class="pre">MAP_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.MAP_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMALL_ATOM_EXT_BASE_SIZE">
+<span class="target" id="externalterm_8c_1a81faf5124ab60f3b589765ca388cc8d7"></span><span class="sig-name descname"><span class="n"><span class="pre">SMALL_ATOM_EXT_BASE_SIZE</span></span></span><a class="headerlink" href="#c.SMALL_ATOM_EXT_BASE_SIZE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SIGNED_INT_TO_UNSIGNED">
+<span class="target" id="externalterm_8c_1a9825324afd3bb3d7578be5ba658d88ad"></span><span class="sig-name descname"><span class="n"><span class="pre">SIGNED_INT_TO_UNSIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">val</span></span>, <span class="n"><span class="pre">unsigned_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.SIGNED_INT_TO_UNSIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420parse_external_termsPK7uint8_tP6size_tP7Contextb">
+<span id="_CPPv320parse_external_termsPK7uint8_tP6size_tP7Contextb"></span><span id="_CPPv220parse_external_termsPK7uint8_tP6size_tP7Contextb"></span><span id="parse_external_terms__uint8_tCP.sP.ContextP.b"></span><span class="target" id="externalterm_8c_1a0c9a4dfc4ce1774d752067c798eae880"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parse_external_terms</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">external_term_buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">eterm_size</span></span>, <a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">copy</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420parse_external_termsPK7uint8_tP6size_tP7Contextb" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420calculate_heap_usagePK7uint8_t6size_tP6size_tbP7Context">
+<span id="_CPPv320calculate_heap_usagePK7uint8_t6size_tP6size_tbP7Context"></span><span id="_CPPv220calculate_heap_usagePK7uint8_t6size_tP6size_tbP7Context"></span><span id="calculate_heap_usage__uint8_tCP.s.sP.b.ContextP"></span><span class="target" id="externalterm_8c_1aa39d6c5fe77dd637e8288f48f4b86851"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">calculate_heap_usage</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">external_term_buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">remaining</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">eterm_size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">copy</span></span>, <a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420calculate_heap_usagePK7uint8_t6size_tP6size_tbP7Context" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421compute_external_sizeP7Context4term">
+<span id="_CPPv321compute_external_sizeP7Context4term"></span><span id="_CPPv221compute_external_sizeP7Context4term"></span><span id="compute_external_size__ContextP.term"></span><span class="target" id="externalterm_8c_1aa96471b3c6bd719f15114d999c7fe373"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">compute_external_size</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421compute_external_sizeP7Context4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422externalterm_from_termP7ContextPP7uint8_tP6size_t4term">
+<span id="_CPPv322externalterm_from_termP7ContextPP7uint8_tP6size_t4term"></span><span id="_CPPv222externalterm_from_termP7ContextPP7uint8_tP6size_t4term"></span><span id="externalterm_from_term__ContextP.uint8_tPP.sP.term"></span><span class="target" id="externalterm_8c_1a9a389b597cac7efd2e8b2187839ecb7f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_term</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">len</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422externalterm_from_termP7ContextPP7uint8_tP6size_t4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414serialize_termP7ContextP7uint8_t4term">
+<span id="_CPPv314serialize_termP7ContextP7uint8_t4term"></span><span id="_CPPv214serialize_termP7ContextP7uint8_t4term"></span><span id="serialize_term__ContextP.uint8_tP.term"></span><span class="target" id="externalterm_8c_1a8737277680987f804827f3f63ce9f901"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">serialize_term</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414serialize_termP7ContextP7uint8_t4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429externalterm_to_term_internalPKv6size_tP7Context16ExternalTermOptsP6size_tb">
+<span id="_CPPv329externalterm_to_term_internalPKv6size_tP7Context16ExternalTermOptsP6size_tb"></span><span id="_CPPv229externalterm_to_term_internalPKv6size_tP7Context16ExternalTermOptsP6size_tb"></span><span id="externalterm_to_term_internal__voidCP.s.ContextP.ExternalTermOpts.sP.b"></span><span class="target" id="externalterm_8c_1a8cf46ed5681bca94e6afbe51cbf4c352"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term_internal</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="externalterm.h.html#_CPPv416ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opts</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bytes_read</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">copy</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429externalterm_to_term_internalPKv6size_tP7Context16ExternalTermOptsP6size_tb" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420externalterm_to_termPKv6size_tP7Context16ExternalTermOpts">
+<span id="_CPPv320externalterm_to_termPKv6size_tP7Context16ExternalTermOpts"></span><span id="_CPPv220externalterm_to_termPKv6size_tP7Context16ExternalTermOpts"></span><span id="externalterm_to_term__voidCP.s.ContextP.ExternalTermOpts"></span><span class="target" id="externalterm_8c_1aad438929de43302a6dd3698b0e4d9bc2"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="externalterm.h.html#_CPPv416ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420externalterm_to_termPKv6size_tP7Context16ExternalTermOpts" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424externalterm_from_binaryP7ContextP4term4termP6size_t">
+<span id="_CPPv324externalterm_from_binaryP7ContextP4term4termP6size_t"></span><span id="_CPPv224externalterm_from_binaryP7ContextP4term4termP6size_t"></span><span id="externalterm_from_binary__ContextP.termP.term.sP"></span><span class="target" id="externalterm_8c_1a5af48d46cb956f28521530a58010e876"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="externalterm.h.html#_CPPv418ExternalTermResult" title="ExternalTermResult"><span class="n"><span class="pre">ExternalTermResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424externalterm_from_binaryP7ContextP4term4termP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422externalterm_to_binaryP7Context4term">
+<span id="_CPPv322externalterm_to_binaryP7Context4term"></span><span id="_CPPv222externalterm_to_binaryP7Context4term"></span><span id="externalterm_to_binary__ContextP.term"></span><span class="target" id="externalterm_8c_1ac206e81a0af456ae80d093af7b255a82"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422externalterm_to_binaryP7Context4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv413get_num_bytes12avm_uint64_t">
+<span id="_CPPv313get_num_bytes12avm_uint64_t"></span><span id="_CPPv213get_num_bytes12avm_uint64_t"></span><span id="get_num_bytes__avm_uint64_t"></span><span class="target" id="externalterm_8c_1af96fc847fad17a240ba2f3afb6e2aeb4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_num_bytes</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv412avm_uint64_t" title="avm_uint64_t"><span class="n"><span class="pre">avm_uint64_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv413get_num_bytes12avm_uint64_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411write_bytesP7uint8_t12avm_uint64_t">
+<span id="_CPPv311write_bytesP7uint8_t12avm_uint64_t"></span><span id="_CPPv211write_bytesP7uint8_t12avm_uint64_t"></span><span id="write_bytes__uint8_tP.avm_uint64_t"></span><span class="target" id="externalterm_8c_1a1697782a5fc2c2c62a93317d87d33ca7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write_bytes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv412avm_uint64_t" title="avm_uint64_t"><span class="n"><span class="pre">avm_uint64_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411write_bytesP7uint8_t12avm_uint64_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv410read_bytesPK7uint8_t7uint8_t">
+<span id="_CPPv310read_bytesPK7uint8_t7uint8_t"></span><span id="_CPPv210read_bytesPK7uint8_t7uint8_t"></span><span id="read_bytes__uint8_tCP.uint8_t"></span><span class="target" id="externalterm_8c_1a9ce9ed7e5029280c92d05892ac6085f4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv412avm_uint64_t" title="avm_uint64_t"><span class="n"><span class="pre">avm_uint64_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read_bytes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_bytes</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv410read_bytesPK7uint8_t7uint8_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exportedfunction.h.html" class="btn btn-neutral float-left" title="exportedfunction.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="externalterm.h.html" class="btn btn-neutral float-right" title="externalterm.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2023, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: feature-smp
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="/doc/master/">master</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.5/">release-0.5</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/feature-smp/pdf/AtomVM-feature-smp.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/feature-smp/epub/AtomVM-feature-smp.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
