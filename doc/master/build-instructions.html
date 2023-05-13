@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.8ca08f6 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.de76178 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -179,8 +179,10 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">gperf</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">zlib</span></code></p></li>
-<li><p>Erlang/OTP (consult <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for currently supported versions)</p></li>
+<li><p>Erlang/OTP compiler (<code class="docutils literal notranslate"><span class="pre">erlc</span></code>)</p></li>
+<li><p>Elixir compiler</p></li>
 </ul>
+<p>Consult <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for currently supported versions of required software.</p>
 <p>Consult your local OS documentation for instructions about how to install these components.</p>
 </section>
 <section id="id1">
@@ -202,6 +204,22 @@ shell$ cmake ..
 </div></blockquote>
 <p>Upon completion, the <code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> executable can be found in the <code class="docutils literal notranslate"><span class="pre">build/src</span></code> directory.</p>
 <p>The AtomVM core Erlang library can be found in the generated <code class="docutils literal notranslate"><span class="pre">libs/atomvmlib.avm</span></code> AVM file.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">install</span></code> target to install the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command and associated binary files.  On most UNIX systems, these artifacts will be installed in the <code class="docutils literal notranslate"><span class="pre">/usr/local</span></code> directory tree.</p>
+<blockquote>
+<div><p>Note.  On some systems, you may need to run this target with <code class="docutils literal notranslate"><span class="pre">root</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span></code> permissions.</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ sudo make install
+</pre></div>
+</div>
+<p>Once installed, you can use the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command to execute an AtomVM application.  E.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm /path/to/myapp.avm
+</pre></div>
+</div>
+<p>For users doing incremental development on the AtomVM virtual machine, you may want to run the <code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> binary directly instead of installing the VM on your machine.  If you do, you will typically need to also specify the path to the AtomVM core Erlang library.  For example,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd build
+shell$ ./src/AtomVM /path/to/myapp.avm ./libs/atomvmlib.avm
+</pre></div>
+</div>
 <section id="special-note-for-macos-users">
 <h4>Special Note for MacOS users<a class="headerlink" href="#special-note-for-macos-users" title="Permalink to this heading"></a></h4>
 <p>You may build an Apple Xcode project, for developing, testing, and debugging in the Xcode IDE, by specifying the Xcode generator.  For example, from the top level AtomVM directory:</p>
