@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['mailboxmessage_1757',['MailboxMessage',['../mailbox_8h.html#ae9c3e2d3b281f99211e8c269fc51ad89',1,'mailbox.h']]],
-  ['message_1758',['Message',['../mailbox_8h.html#a82fffef6ac8d8a796ab35b7d6a7a0dcb',1,'mailbox.h']]],
-  ['module_1759',['Module',['../exportedfunction_8h.html#af3a26d1aa4a6eb8196181f1b6bab5ff7',1,'Module():&#160;exportedfunction.h'],['../globalcontext_8h.html#af3a26d1aa4a6eb8196181f1b6bab5ff7',1,'Module():&#160;globalcontext.h']]],
-  ['mutex_1760',['Mutex',['../smp_8h.html#a1fdb53d93342fbedcbbec76e6b3ec87f',1,'smp.h']]]
+  ['heap_1764',['Heap',['../mailbox_8h.html#a705af815969c97892c0aaaa658f6c88c',1,'Heap():&#160;mailbox.h'],['../memory_8h.html#a705af815969c97892c0aaaa658f6c88c',1,'Heap():&#160;memory.h']]],
+  ['heapfragment_1765',['HeapFragment',['../memory_8h.html#a72e25f246c00c73366703f9e45899906',1,'memory.h']]]
 ];

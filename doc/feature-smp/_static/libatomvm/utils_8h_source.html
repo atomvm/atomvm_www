@@ -265,7 +265,7 @@ $(function() {
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="struct____attribute____.html">__attribute__</a>((always_inline)) <span class="keywordtype">void</span> *cast_func_to_void_ptr(<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a> func)</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#if __STDC_VERSION__ &gt;= 201112L</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    _Static_assert(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) &gt;= <span class="keyword">sizeof</span>(<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a>), <span class="stringliteral">&quot;function ptr cannot be casted to void *&quot;</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="mailbox_8c.html#ae1a34d69d9211205d2b698fa190ed60b">_Static_assert</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) &gt;= <span class="keyword">sizeof</span>(<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a>), <span class="stringliteral">&quot;function ptr cannot be casted to void *&quot;</span>);</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/*</span></div>
@@ -322,6 +322,7 @@ $(function() {
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amailbox_8c_html_ae1a34d69d9211205d2b698fa190ed60b"><div class="ttname"><a href="mailbox_8c.html#ae1a34d69d9211205d2b698fa190ed60b">_Static_assert</a></div><div class="ttdeci">_Static_assert(offsetof(struct Message, base)+offsetof(struct MailboxMessage, next)==offsetof(HeapFragment, next) ? 1 :0, &quot;Message.base.next doesn't match HeapFragment.next&quot;)</div></div>
 <div class="ttc" id="astruct____attribute_____html"><div class="ttname"><a href="struct____attribute____.html">__attribute__</a></div><div class="ttdef"><b>Definition:</b> <a href="module_8h_source.html#l00062">module.h:63</a></div></div>
 <div class="ttc" id="autils_8h_html_a770f699d7bfc60dfdd92e3c296fc55cd"><div class="ttname"><a href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a></div><div class="ttdeci">void(* func_ptr_t)(void)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00196">utils.h:196</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
