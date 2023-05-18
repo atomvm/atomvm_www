@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['interopbadarg_1806',['InteropBadArg',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38',1,'interop.h']]],
-  ['interopmemoryallocfail_1807',['InteropMemoryAllocFail',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6',1,'interop.h']]],
-  ['interopok_1808',['InteropOk',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13',1,'interop.h']]],
-  ['invalidfunctiontype_1809',['InvalidFunctionType',['../exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981',1,'exportedfunction.h']]]
+  ['gcsignal_1817',['GCSignal',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a3489e81b7f9576c0fb83b4608220978f',1,'mailbox.h']]]
 ];

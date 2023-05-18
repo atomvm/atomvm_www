@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['killed_1810',['Killed',['../context_8h.html#a5c9a39ccda8c700b8722f9027ef63f1da741d60e636de9c1cae81d082f954b0eb',1,'context.h']]],
-  ['killsignal_1811',['KillSignal',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a3921aa4b0cdc275b5ad7e80ac9fcc4bc',1,'mailbox.h']]]
+  ['interopbadarg_1818',['InteropBadArg',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38',1,'interop.h']]],
+  ['interopmemoryallocfail_1819',['InteropMemoryAllocFail',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6',1,'interop.h']]],
+  ['interopok_1820',['InteropOk',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13',1,'interop.h']]],
+  ['invalidfunctiontype_1821',['InvalidFunctionType',['../exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981',1,'exportedfunction.h']]]
 ];
