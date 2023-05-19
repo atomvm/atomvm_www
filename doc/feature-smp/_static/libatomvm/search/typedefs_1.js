@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['bifimpl_1757',['BifImpl',['../exportedfunction_8h.html#a8bb193fd880300356a6722cf3e460d96',1,'exportedfunction.h']]],
-  ['bifimpl0_1758',['BifImpl0',['../exportedfunction_8h.html#a93fc02d34dcfc50a9b5dbd10bd44cd08',1,'exportedfunction.h']]],
-  ['bifimpl1_1759',['BifImpl1',['../exportedfunction_8h.html#a2892fe5519f6d1ab6dd04d9eb7ad58ea',1,'exportedfunction.h']]],
-  ['bifimpl2_1760',['BifImpl2',['../exportedfunction_8h.html#af069851c58b7c0bcdfae0f2bbc8bc128',1,'exportedfunction.h']]],
-  ['binary_5fmath_5ff_1761',['binary_math_f',['../nifs_8c.html#a7740a26a7454c32f818b67507cf3d0b8',1,'nifs.c']]],
-  ['bitshift_5fop_1762',['bitshift_op',['../bif_8c.html#a4d0c8a07d404ff8b3ce81587e8bee909',1,'bif.c']]],
-  ['bitwise_5fop_1763',['bitwise_op',['../bif_8c.html#a556be8095aebf2a904dec8f3fef643b3',1,'bif.c']]]
+  ['bifimpl_1759',['BifImpl',['../exportedfunction_8h.html#a8bb193fd880300356a6722cf3e460d96',1,'exportedfunction.h']]],
+  ['bifimpl0_1760',['BifImpl0',['../exportedfunction_8h.html#a93fc02d34dcfc50a9b5dbd10bd44cd08',1,'exportedfunction.h']]],
+  ['bifimpl1_1761',['BifImpl1',['../exportedfunction_8h.html#a2892fe5519f6d1ab6dd04d9eb7ad58ea',1,'exportedfunction.h']]],
+  ['bifimpl2_1762',['BifImpl2',['../exportedfunction_8h.html#af069851c58b7c0bcdfae0f2bbc8bc128',1,'exportedfunction.h']]],
+  ['binary_5fmath_5ff_1763',['binary_math_f',['../nifs_8c.html#a7740a26a7454c32f818b67507cf3d0b8',1,'nifs.c']]],
+  ['bitshift_5fop_1764',['bitshift_op',['../bif_8c.html#a4d0c8a07d404ff8b3ce81587e8bee909',1,'bif.c']]],
+  ['bitwise_5fop_1765',['bitwise_op',['../bif_8c.html#a556be8095aebf2a904dec8f3fef643b3',1,'bif.c']]]
 ];
