@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Programming Guide &mdash; AtomVM 0.6.0-dev+git.e416516 documentation</title>
+  <title>Network Programming Guide &mdash; AtomVM 0.6.0-dev+git.d5481bf documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -284,11 +284,25 @@ end
 <section id="sntp-support">
 <h2>SNTP Support<a class="headerlink" href="#sntp-support" title="Permalink to this heading"></a></h2>
 <p>You may configure the networking layer to automatically synchronize time on the ESP32 with an NTP server accessible on the network.</p>
-<p>To synchronize time with an NTP server, add a property list with the tag <code class="docutils literal notranslate"><span class="pre">sntp</span></code> at the top level configuration passed into the <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> function.  Specify the NTP hostname or IP address with which your device should sync using the <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> property tag, e.g.,</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{sntp, [{endpoint, &lt;&lt;&quot;pool.ntp.org&quot;&gt;&gt;}]}
+<p>To synchronize time with an NTP server, add a property list with the tag <code class="docutils literal notranslate"><span class="pre">sntp</span></code> at the top level configuration passed into the <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> function.  Specify the NTP hostname or IP address with which your device should sync using the <code class="docutils literal notranslate"><span class="pre">host</span></code> property tag.  The <code class="docutils literal notranslate"><span class="pre">host</span></code> value can be a string or binary.</p>
+<p>You can also specify a callback function that will get called when the clock is synchronized with the SNTP server via the <code class="docutils literal notranslate"><span class="pre">synchronized</span></code> property tag.  This function takes a tuple with the updated time in seconds and microseconds.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+{sntp, [
+    {host, &lt;&lt;&quot;pool.ntp.org&quot;&gt;&gt;},
+    {synchronized, fun sntp_synchronized/1}
+]}
 </pre></div>
 </div>
-<p>The endpoint value can be a string or binary.</p>
+<p>where the <code class="docutils literal notranslate"><span class="pre">sntp_synchronized/1</span></code> function is defined as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+sntp_synchronized({TVSec, TVUsec}) -&gt;
+    io:format(&quot;Synchronized time with SNTP server. TVSec=~p TVUsec=~p~n&quot;, [TVSec, TVUsec]).
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note. The device must be in STA mode and connected to an access point in order to use an SNTP server on your network or on the internet.</p>
+</div></blockquote>
 </section>
 <section id="nvs-credentials">
 <h2>NVS Credentials<a class="headerlink" href="#nvs-credentials" title="Permalink to this heading"></a></h2>
