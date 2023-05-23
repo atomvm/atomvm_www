@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gpio &mdash; AtomVM 0.6.0-dev+git.d35a000 documentation</title>
+  <title>Module gpio &mdash; AtomVM 0.6.0-dev+git.a557047 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -134,7 +134,9 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>This module provides functions for interacting with micro-controller GPIO
-(General Purpose Input and Output) pins.
+(General Purpose Input and Output) pins.</p>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">-type</span> <span class="pre">pin()</span></code> used in this driver refers to a pin number on Espressif
+chips, or a tuple {GPIO_GROUP, PIN} for stm32 chips.
 <a name="types"></a></p>
 </section>
 <section id="data-types">
@@ -172,7 +174,7 @@ low_level() = low | 0
 <section id="pin">
 <h3><a name="type-pin">pin()</a><a class="headerlink" href="#pin" title="Permalink to this heading"></a></h3>
 <pre><code>
-pin() = non_neg_integer()
+pin() = non_neg_integer() | {atom(), non_neg_integer()}
 </code></pre>
 </section>
 <section id="pull">
