@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module network &mdash; AtomVM 0.6.0-dev+git.a557047 documentation</title>
+  <title>Module network &mdash; AtomVM 0.6.0-dev+git.2f71ace documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -279,8 +279,8 @@ sta_got_ip_config() = {got_ip, fun((<a href="#type-ip_info">ip_info()</a>) -&gt;
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#start-1">start/1</a></td><td>    Start a network_fsm.</td></tr><tr><td valign="top"><a href="#start_link-1">start_link/1</a></td><td></td></tr><tr><td valign="top"><a href="#stop-0">stop/0</a></td><td>    Stop a network_fsm.</td></tr><tr><td valign="top"><a href="#wait_for_ap-0">wait_for_ap/0</a></td><td>    Equivalent to wait_for_ap(15000).</td></tr><tr><td valign="top"><a href="#wait_for_ap-1">wait_for_ap/1</a></td><td>    Equivalent to wait_for_ap([], Timeout) or wait_for_ap(StaConfig, 15000).</td></tr><tr><td valign="top"><a href="#wait_for_ap-2">wait_for_ap/2</a></td><td>    Start a network_fsm in access point mode and wait the AP to be
-up and running.</td></tr><tr><td valign="top"><a href="#wait_for_sta-0">wait_for_sta/0</a></td><td>    Equivalent to wait_for_sta(15000).</td></tr><tr><td valign="top"><a href="#wait_for_sta-1">wait_for_sta/1</a></td><td>    Equivalent to wait_for_sta([], Timeout) or wait_for_sta(StaConfig, 15000).</td></tr><tr><td valign="top"><a href="#wait_for_sta-2">wait_for_sta/2</a></td><td>    Start a network_fsm in station mode and wait for a connection to be established.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#start-1">start/1</a></td><td>    Start a network interface.</td></tr><tr><td valign="top"><a href="#start_link-1">start_link/1</a></td><td></td></tr><tr><td valign="top"><a href="#stop-0">stop/0</a></td><td>    Stop a network interface.</td></tr><tr><td valign="top"><a href="#wait_for_ap-0">wait_for_ap/0</a></td><td>    Equivalent to wait_for_ap(15000).</td></tr><tr><td valign="top"><a href="#wait_for_ap-1">wait_for_ap/1</a></td><td>    Equivalent to wait_for_ap([], Timeout) or wait_for_ap(StaConfig, 15000).</td></tr><tr><td valign="top"><a href="#wait_for_ap-2">wait_for_ap/2</a></td><td>    Start a network interface in access point mode and wait the AP to be
+up and running.</td></tr><tr><td valign="top"><a href="#wait_for_sta-0">wait_for_sta/0</a></td><td>    Equivalent to wait_for_sta(15000).</td></tr><tr><td valign="top"><a href="#wait_for_sta-1">wait_for_sta/1</a></td><td>    Equivalent to wait_for_sta([], Timeout) or wait_for_sta(StaConfig, 15000).</td></tr><tr><td valign="top"><a href="#wait_for_sta-2">wait_for_sta/2</a></td><td>    Start a network interface in station mode and wait for a connection to be established.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -293,10 +293,10 @@ start(Config::<a href="#type-network_config">network_config()</a>) -&gt; ok | {e
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Config</span></code>: The network configuration<br /></p>
-<p>returns: ok, if the network_fsm was started, or {error, Reason} if
+<p>returns: ok, if the network interface was started, or {error, Reason} if
 a failure occurred (e.g., due to malformed network configuration).</p>
-<p>Start a network_fsm.</p>
-<p>This function will start a network_fsm, which will attempt to
+<p>Start a network interface.</p>
+<p>This function will start a network interface, which will attempt to
 connect to an AP endpoint in the background.  Specify callback
 functions to receive definitive
 information that the connection succeeded.  See the AtomVM Network
@@ -317,9 +317,9 @@ start_link(Config::<a href="#type-network_config">network_config()</a>) -&gt; ok
 stop() -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
-<p>returns: ok, if the network_fsm was stopped, or {error, Reason} if
+<p>returns: ok, if the network interface was stopped, or {error, Reason} if
 a failure occurred.</p>
-<p>Stop a network_fsm.</p>
+<p>Stop a network interface.</p>
 <p><a name="wait_for_ap-0"></a></p>
 </section>
 <section id="wait-for-ap-0">
@@ -334,9 +334,10 @@ wait_for_ap() -&gt; ok | {error, Reason::term()}
 <section id="wait-for-ap-1">
 <h3>wait_for_ap/1<a class="headerlink" href="#wait-for-ap-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-wait_for_ap(TimeoutOrStaConfig::non_neg_integer() | [<a href="#type-ap_config_property">ap_config_property()</a>]) -&gt; ok | {error, Reason::term()}
+wait_for_ap(TimeoutOrApConfig::non_neg_integer() | [<a href="#type-ap_config_property">ap_config_property()</a>]) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
+<p><code class="docutils literal notranslate"><span class="pre">TimeoutOrApConfig</span></code>: The AP network configuration or timeout in ms.<br /></p>
 <p>Equivalent to wait_for_ap([], Timeout) or wait_for_ap(StaConfig, 15000).</p>
 <p><a name="wait_for_ap-2"></a></p>
 </section>
@@ -347,11 +348,11 @@ wait_for_ap(ApConfig::[<a href="#type-ap_config_property">ap_config_property()</
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">ApConfig</span></code>: The AP network configuration<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: amount of time in milliseconds to wait for a connection<br /></p>
-<p>returns: ok, when the nework_fsm has started the AP, or {error, Reason} if
+<p>returns: ok, when the network has started the AP, or {error, Reason} if
 a failure occurred (e.g., due to malformed network configuration).</p>
-<p>Start a network_fsm in access point mode and wait the AP to be
+<p>Start a network interface in access point mode and wait the AP to be
 up and running</p>
-<p>This function will start a network_fsm in AP mode, and will wait
+<p>This function will start a network interface in AP mode, and will wait
 until the network is up and ready to be connected.  This is a convenience function,
 for applications that do not need to be notified of connectivity
 changes in the network.</p>
@@ -372,6 +373,7 @@ wait_for_sta() -&gt; {ok, <a href="#type-ip_info">ip_info()</a>} | {error, Reaso
 wait_for_sta(TimeoutOrStaConfig::non_neg_integer() | [<a href="#type-sta_config_property">sta_config_property()</a>]) -&gt; {ok, <a href="#type-ip_info">ip_info()</a>} | {error, Reason::term()}
 </code></pre>
 <br />
+<p><code class="docutils literal notranslate"><span class="pre">TimeoutOrStaConfig</span></code>: The STA network configuration or timeout in ms.<br /></p>
 <p>Equivalent to wait_for_sta([], Timeout) or wait_for_sta(StaConfig, 15000).</p>
 <p><a name="wait_for_sta-2"></a></p>
 </section>
@@ -382,10 +384,10 @@ wait_for_sta(StaConfig::[<a href="#type-sta_config_property">sta_config_property
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">StaConfig</span></code>: The STA network configuration<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: amount of time in milliseconds to wait for a connection<br /></p>
-<p>returns: {ok, IpInfo}, if the network_fsm was started, or {error, Reason} if
+<p>returns: {ok, IpInfo}, if the network interface was started, or {error, Reason} if
 a failure occurred (e.g., due to malformed network configuration).</p>
-<p>Start a network_fsm in station mode and wait for a connection to be established</p>
-<p>This function will start a network_fsm in station mode, and will wait
+<p>Start a network interface in station mode and wait for a connection to be established</p>
+<p>This function will start a network interface in station mode, and will wait
 for a connection to be established.  This is a convenience function,
 for applications that do not need to be notified of connectivity
 changes in the network.</p>
