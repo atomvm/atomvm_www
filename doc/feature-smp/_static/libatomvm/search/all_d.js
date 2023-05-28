@@ -63,7 +63,7 @@ var searchData=
   ['memory_5finit_5fheap_5froot_5ffragment_599',['memory_init_heap_root_fragment',['../memory_8c.html#aed7cb8e677736e46afa7fe2ef4313658',1,'memory_init_heap_root_fragment(Heap *heap, HeapFragment *root, size_t size):&#160;memory.c'],['../memory_8h.html#aed7cb8e677736e46afa7fe2ef4313658',1,'memory_init_heap_root_fragment(Heap *heap, HeapFragment *root, size_t size):&#160;memory.c']]],
   ['memory_5fno_5fgc_600',['MEMORY_NO_GC',['../memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628af1796476054aa3c08ef77a3d8914dd10',1,'memory.h']]],
   ['memory_5fno_5fshrink_601',['MEMORY_NO_SHRINK',['../memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628a4f22a4c14101be7b3fe4fa54adcadd1c',1,'memory.h']]],
-  ['memory_5fsweep_5fmso_5flist_602',['memory_sweep_mso_list',['../memory_8h.html#a413e8542cd182a4b499e71d5dec3336a',1,'memory_sweep_mso_list(term mso_list):&#160;memory.c'],['../memory_8c.html#a413e8542cd182a4b499e71d5dec3336a',1,'memory_sweep_mso_list(term mso_list):&#160;memory.c']]],
+  ['memory_5fsweep_5fmso_5flist_602',['memory_sweep_mso_list',['../memory_8h.html#a83faa99cba2cd5a16becd07efaf5764f',1,'memory_sweep_mso_list(term mso_list, GlobalContext *global):&#160;memory.c'],['../memory_8c.html#a83faa99cba2cd5a16becd07efaf5764f',1,'memory_sweep_mso_list(term mso_list, GlobalContext *global):&#160;memory.c']]],
   ['memoryallocmode_603',['MemoryAllocMode',['../memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628',1,'memory.h']]],
   ['memorygcresult_604',['MemoryGCResult',['../memory_8h.html#a3d8bef9f86e567a8516760e56fdf085c',1,'memory.h']]],
   ['message_605',['message',['../struct_message.html#a40a61ae087846ebb34002bf9a21cd42b',1,'Message']]],

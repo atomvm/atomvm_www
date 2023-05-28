@@ -11,7 +11,7 @@ var searchData=
   ['end_5finstruction_5fii_314',['end_instruction_ii',['../struct_module.html#ac2d9c9dde1cbf7a23de0ce0fb7b75bf3',1,'Module']]],
   ['end_5fmap_5fkey_315',['END_MAP_KEY',['../term_8c.html#a811e0764314012ebd3ce9911f2bfdacf',1,'term.c']]],
   ['end_5fof_5ffile_316',['END_OF_FILE',['../avmpack_8h.html#a7252abca9c1ab5f4ef517b87e5ab12bb',1,'avmpack.h']]],
-  ['end_5fwith_5fstack_5fheap_317',['END_WITH_STACK_HEAP',['../memory_8h.html#ad65b3692da50696c321c3a28d84c5011',1,'memory.h']]],
+  ['end_5fwith_5fstack_5fheap_317',['END_WITH_STACK_HEAP',['../memory_8h.html#a375cdc3af6416b703783478ffebfd534',1,'memory.h']]],
   ['endian_5fswap_5f32_318',['ENDIAN_SWAP_32',['../utils_8h.html#a9c3ba590f008fff7fadccd6c5e8dc953',1,'utils.h']]],
   ['ensure_5fat_5fleast_5fatom_319',['ENSURE_AT_LEAST_ATOM',['../defaultatoms_8h.html#a59402e90431fefe5a43e22589fcf1ecc',1,'defaultatoms.h']]],
   ['ensure_5fat_5fleast_5fatom_5findex_320',['ENSURE_AT_LEAST_ATOM_INDEX',['../defaultatoms_8h.html#aedb7dc810796971282ff10758486e5fb',1,'defaultatoms.h']]],

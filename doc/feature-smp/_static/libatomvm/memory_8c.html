@@ -150,9 +150,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ac3585e49af06865398260c71ac8dead3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#ac3585e49af06865398260c71ac8dead3">memory_heap_append_fragment</a> (<a class="el" href="struct_heap.html">Heap</a> *heap, <a class="el" href="struct_heap_fragment.html">HeapFragment</a> *fragment, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> mso_list)</td></tr>
 <tr class="memdesc:ac3585e49af06865398260c71ac8dead3"><td class="mdescLeft">&#160;</td><td class="mdescRight">append a fragment to a heap. The MSO list is merged. The fragment will then be owned by the heap.  <a href="memory_8c.html#ac3585e49af06865398260c71ac8dead3">More...</a><br /></td></tr>
 <tr class="separator:ac3585e49af06865398260c71ac8dead3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a413e8542cd182a4b499e71d5dec3336a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a413e8542cd182a4b499e71d5dec3336a">memory_sweep_mso_list</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> mso_list)</td></tr>
-<tr class="memdesc:a413e8542cd182a4b499e71d5dec3336a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sweep any unreferenced binaries in the "Mark Sweep Object" (MSO) list.  <a href="memory_8c.html#a413e8542cd182a4b499e71d5dec3336a">More...</a><br /></td></tr>
-<tr class="separator:a413e8542cd182a4b499e71d5dec3336a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83faa99cba2cd5a16becd07efaf5764f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory_8c.html#a83faa99cba2cd5a16becd07efaf5764f">memory_sweep_mso_list</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> mso_list, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
+<tr class="memdesc:a83faa99cba2cd5a16becd07efaf5764f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sweep any unreferenced binaries in the "Mark Sweep Object" (MSO) list.  <a href="memory_8c.html#a83faa99cba2cd5a16becd07efaf5764f">More...</a><br /></td></tr>
+<tr class="separator:a83faa99cba2cd5a16becd07efaf5764f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="afa99ec4acc4ecb2dc3c2d05da15d0e3f"></a>
@@ -491,8 +491,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a413e8542cd182a4b499e71d5dec3336a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a413e8542cd182a4b499e71d5dec3336a">&#9670;&nbsp;</a></span>memory_sweep_mso_list()</h2>
+<a id="a83faa99cba2cd5a16becd07efaf5764f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83faa99cba2cd5a16becd07efaf5764f">&#9670;&nbsp;</a></span>memory_sweep_mso_list()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -501,8 +501,18 @@ Functions</h2></td></tr>
           <td class="memname">void memory_sweep_mso_list </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
-          <td class="paramname"><em>mso_list</em></td><td>)</td>
+          <td class="paramname"><em>mso_list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -511,6 +521,7 @@ Functions</h2></td></tr>
 <p>The MSO list is a list of term (references) in a heap. Currently, the elements of this list are referenced to reference-counted binaries or match binaries that themselves reference reference counted binaries. This function will iterate over the binaries in this list, and decrement the reference count of any elements that have not been marked for move (e.g., into a new heap). If the reference count reaches 0, then memory associated with the referenced binary will be freed.In a typical GC event, the terms in this list are within in the old heap or potentially in a heap fragment. However, this function may be called in a copy even, such as in a process spawn, or in the copy of a term to or from a process mailbox. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mso_list</td><td>the list of mark-sweep object in a heap "space" </td></tr>
+    <tr><td class="paramname">global</td><td>the global context </td></tr>
   </table>
   </dd>
 </dl>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.6.0-dev+git.e618631 documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-dev+git.4682e15 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -1423,13 +1423,16 @@ Potential matches:
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv421memory_sweep_mso_list4term">
-<span id="_CPPv321memory_sweep_mso_list4term"></span><span id="_CPPv221memory_sweep_mso_list4term"></span><span id="memory_sweep_mso_list__term"></span><span class="target" id="memory_8h_1a413e8542cd182a4b499e71d5dec3336a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mso_list</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv421memory_sweep_mso_list4termP13GlobalContext">
+<span id="_CPPv321memory_sweep_mso_list4termP13GlobalContext"></span><span id="_CPPv221memory_sweep_mso_list4termP13GlobalContext"></span><span id="memory_sweep_mso_list__term.GlobalContextP"></span><span class="target" id="memory_8h_1a83faa99cba2cd5a16becd07efaf5764f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mso_list</span></span>, <a class="reference internal" href="files/globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Sweep any unreferenced binaries in the “Mark Sweep Object” (MSO) list. </p>
 <p>The MSO list is a list of term (references) in a heap. Currently, the elements of this list are referenced to reference-counted binaries or match binaries that themselves reference reference counted binaries. This function will iterate over the binaries in this list, and decrement the reference count of any elements that have not been marked for move (e.g., into a new heap). If the reference count reaches 0, then memory associated with the referenced binary will be freed.In a typical GC event, the terms in this list are within in the old heap or potentially in a heap fragment. However, this function may be called in a copy even, such as in a process spawn, or in the copy of a term to or from a process mailbox. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>mso_list</strong> – the list of mark-sweep object in a heap “space” </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mso_list</strong> – the list of mark-sweep object in a heap “space” </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -1575,7 +1578,7 @@ Potential matches:
 <dt class="sig sig-object cpp" id="_CPPv423refc_binary_create_refc6size_t">
 <span id="_CPPv323refc_binary_create_refc6size_t"></span><span id="_CPPv223refc_binary_create_refc6size_t"></span><span id="refc_binary_create_refc__s"></span><span class="target" id="refc__binary_8h_1a658404899be2339778266056eb36da07"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv410RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">refc_binary_create_refc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Create a reference-counted binary outside of the process heap. </p>
-<p>This function will create a reference-counted binary outside of the context heap. If the binary is non-const, a blob will be allocated in the VM memory (e.g., via malloc). The allocated data will include an internal data structure that includes the data size and reference count. If the supplied data is non-NULL, the supplied data will be copied to the newly allocated region. </p>
+<p>This function will create a reference-counted binary outside of the context heap. A blob will be allocated in the VM memory (e.g., via malloc). The allocated data will include an internal data structure that includes the data size and reference count. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>size</strong> – the size of the data to create </p>
@@ -1587,13 +1590,16 @@ Potential matches:
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv430refc_binary_decrement_refcountP10RefcBinary">
-<span id="_CPPv330refc_binary_decrement_refcountP10RefcBinary"></span><span id="_CPPv230refc_binary_decrement_refcountP10RefcBinary"></span><span id="refc_binary_decrement_refcount__RefcBinaryP"></span><span class="target" id="refc__binary_8h_1af7c28af2e6a708056cd35c852edecd96"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">refc_binary_decrement_refcount</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv410RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv430refc_binary_decrement_refcountP10RefcBinaryP13GlobalContext">
+<span id="_CPPv330refc_binary_decrement_refcountP10RefcBinaryP13GlobalContext"></span><span id="_CPPv230refc_binary_decrement_refcountP10RefcBinaryP13GlobalContext"></span><span id="refc_binary_decrement_refcount__RefcBinaryP.GlobalContextP"></span><span class="target" id="refc__binary_8h_1ae0781e0a7a24309b91a58551f09bdcce"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">refc_binary_decrement_refcount</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv410RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ptr</span></span>, <a class="reference internal" href="files/globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Decrement the reference count on the refc binary. </p>
-<p>This function will free the the refc binary if the reference count reaches 0. </p>
+<p>This function will call <code class="docutils literal notranslate"><span class="pre">refc_binary_destroy</span></code> if the reference count reaches 0. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ptr</strong> – the refc binary </p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ptr</strong> – the refc binary </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>true if the refc binary was free’d; false, otherwise </p>
