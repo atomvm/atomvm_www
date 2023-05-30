@@ -83,22 +83,25 @@ $(function() {
 <code>#include &quot;<a class="el" href="list_8h_source.html">list.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="smp_8h_source.html">smp.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="term__typedef_8h_source.html">term_typedef.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for mailbox.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="mailbox_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2mailbox_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2mailbox_8h" id="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2mailbox_8h">
-<area shape="rect" title="Mailbox management functions such as send and receive functions." alt="" coords="93,5,344,47"/>
-<area shape="rect" title=" " alt="" coords="5,169,88,196"/>
-<area shape="rect" href="list_8h.html" title=" " alt="" coords="243,95,298,121"/>
-<area shape="rect" href="smp_8h.html" title="Multicore support functions." alt="" coords="130,95,193,121"/>
-<area shape="rect" href="term__typedef_8h.html" title="term type definition" alt="" coords="338,95,459,121"/>
-<area shape="rect" href="linkedlist_8h.html" title="Linked list manipulation functions." alt="" coords="235,169,328,196"/>
-<area shape="rect" title=" " alt="" coords="246,244,317,271"/>
-<area shape="rect" title=" " alt="" coords="112,169,211,196"/>
-<area shape="rect" title=" " alt="" coords="353,169,423,196"/>
-<area shape="rect" title=" " alt="" coords="447,169,534,196"/>
+<area shape="rect" title="Mailbox management functions such as send and receive functions." alt="" coords="141,5,392,47"/>
+<area shape="rect" title=" " alt="" coords="123,169,205,196"/>
+<area shape="rect" href="list_8h.html" title=" " alt="" coords="59,95,114,121"/>
+<area shape="rect" href="smp_8h.html" title="Multicore support functions." alt="" coords="235,95,298,121"/>
+<area shape="rect" href="term__typedef_8h.html" title="term type definition" alt="" coords="379,95,501,121"/>
+<area shape="rect" href="utils_8h.html" title="Misc functions and macros." alt="" coords="614,95,677,121"/>
+<area shape="rect" href="linkedlist_8h.html" title="Linked list manipulation functions." alt="" coords="5,169,99,196"/>
+<area shape="rect" title=" " alt="" coords="17,244,87,271"/>
+<area shape="rect" title=" " alt="" coords="229,169,328,196"/>
 <area shape="rect" title=" " alt="" coords="558,169,629,196"/>
+<area shape="rect" title=" " alt="" coords="353,169,439,196"/>
+<area shape="rect" title=" " alt="" coords="463,169,534,196"/>
+<area shape="rect" title=" " alt="" coords="653,169,728,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -232,9 +235,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a40dd8fcd9e4d4c8784c7199803546c0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mailbox_8h.html#a40dd8fcd9e4d4c8784c7199803546c0e">mailbox_peek</a> (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *out)</td></tr>
 <tr class="memdesc:a40dd8fcd9e4d4c8784c7199803546c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets next message from a mailbox (without removing it).  <a href="mailbox_8h.html#a40dd8fcd9e4d4c8784c7199803546c0e">More...</a><br /></td></tr>
 <tr class="separator:a40dd8fcd9e4d4c8784c7199803546c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a547d5e59c130d06e8ef5ce07ab16a81c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mailbox_8h.html#a547d5e59c130d06e8ef5ce07ab16a81c">mailbox_remove_message</a> (<a class="el" href="struct_mailbox.html">Mailbox</a> *mbox, <a class="el" href="struct_heap.html">Heap</a> *ctx)</td></tr>
-<tr class="memdesc:a547d5e59c130d06e8ef5ce07ab16a81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove next message from mailbox.  <a href="mailbox_8h.html#a547d5e59c130d06e8ef5ce07ab16a81c">More...</a><br /></td></tr>
-<tr class="separator:a547d5e59c130d06e8ef5ce07ab16a81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98762ffd3b869971b9c2000ed2f9b088"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_mailbox_message.html">MailboxMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mailbox_8h.html#a98762ffd3b869971b9c2000ed2f9b088">mailbox_take_message</a> (<a class="el" href="struct_mailbox.html">Mailbox</a> *mbox)</td></tr>
+<tr class="memdesc:a98762ffd3b869971b9c2000ed2f9b088"><td class="mdescLeft">&#160;</td><td class="mdescRight">Take next message from mailbox.  <a href="mailbox_8h.html#a98762ffd3b869971b9c2000ed2f9b088">More...</a><br /></td></tr>
+<tr class="separator:a98762ffd3b869971b9c2000ed2f9b088"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a864305c1ed8d8b6a012441378c15560f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_message.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mailbox_8h.html#a864305c1ed8d8b6a012441378c15560f">mailbox_first</a> (<a class="el" href="struct_mailbox.html">Mailbox</a> *mbox)</td></tr>
 <tr class="memdesc:a864305c1ed8d8b6a012441378c15560f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get first message from mailbox.  <a href="mailbox_8h.html#a864305c1ed8d8b6a012441378c15560f">More...</a><br /></td></tr>
 <tr class="separator:a864305c1ed8d8b6a012441378c15560f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,7 +269,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00045">45</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00046">46</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
 
 </div>
 </div>
@@ -282,7 +285,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00052">52</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00053">53</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +377,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ac6606ebe91c8ac66a2c314c79f5ab013ab31de8b81383c4b2242a240f5875838a"></a>FlushInfoMonitorSignal&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00059">59</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mailbox_8h_source.html#l00060">60</a> of file <a class="el" href="mailbox_8h_source.html">mailbox.h</a>.</p>
 
 </div>
 </div>
@@ -403,7 +406,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00412">412</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00413">413</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
 
 </div>
 </div>
@@ -471,7 +474,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>first message or NULL. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00401">401</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00402">402</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
 
 </div>
 </div>
@@ -664,44 +667,6 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the signal messages in received order. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00282">282</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
-
-</div>
-</div>
-<a id="a547d5e59c130d06e8ef5ce07ab16a81c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a547d5e59c130d06e8ef5ce07ab16a81c">&#9670;&nbsp;</a></span>mailbox_remove_message()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mailbox_remove_message </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_mailbox.html">Mailbox</a> *&#160;</td>
-          <td class="paramname"><em>mbox</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="struct_heap.html">Heap</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Remove next message from mailbox. </p>
-<p>Discard a term that has been previously queued on a certain process or driver mailbox. To be called from the process only. Term messages are actually added as fragments to the heap and will be gone at next GC. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mbx</td><td>the mailbox to remove next message from. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00370">370</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
 
 </div>
 </div>
@@ -1027,6 +992,34 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00152">152</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
+
+</div>
+</div>
+<a id="a98762ffd3b869971b9c2000ed2f9b088"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98762ffd3b869971b9c2000ed2f9b088">&#9670;&nbsp;</a></span>mailbox_take_message()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_mailbox_message.html">MailboxMessage</a>* mailbox_take_message </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mailbox.html">Mailbox</a> *&#160;</td>
+          <td class="paramname"><em>mbox</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Take next message from mailbox. </p>
+<p>Remove the first message from the mailbox and return it. To be called from the process only. This function is intended for some corner cases, such as certain port drivers. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbox</td><td>the mailbox to take the next message from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="mailbox_8c_source.html#l00370">370</a> of file <a class="el" href="mailbox_8c_source.html">mailbox.c</a>.</p>
 
 </div>
 </div>
