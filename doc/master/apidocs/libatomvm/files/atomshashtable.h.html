@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>atomshashtable.h &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>atomshashtable.h &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -114,15 +114,17 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.c.html">timer_wheel.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.h.html">timer_wheel.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="valueshashtable.c.html">valueshashtable.c</a></li>
@@ -187,7 +189,7 @@
 </figure>
 <p>This graph shows which files directly or indirectly include atomshashtable.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-9a3ac6b24799fb03b9ec0c28ddc351584a89db80.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-7611033043b6ac8fc1800cfb8bb362a438e75b2b.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -220,7 +222,9 @@
     &quot;4&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;14&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;14&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
@@ -235,8 +239,21 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.TYPEDEF_RWLOCK">
+<span class="target" id="atomshashtable_8h_1a36e5de066aac693d5bcda908448c1187"></span><span class="sig-name descname"><span class="n"><span class="pre">TYPEDEF_RWLOCK</span></span></span><a class="headerlink" href="#c.TYPEDEF_RWLOCK" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.TO_ATOMSHASHTABLE_VALUE">
 <span class="target" id="atomshashtable_8h_1a121a7ea6e889967087df3f53d942e151"></span><span class="sig-name descname"><span class="n"><span class="pre">TO_ATOMSHASHTABLE_VALUE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.TO_ATOMSHASHTABLE_VALUE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv46RWLock">
+<span id="_CPPv36RWLock"></span><span id="_CPPv26RWLock"></span><span id="RWLock"></span><span class="target" id="atomshashtable_8h_1ad83aebd0296d168d4ad23b7d68a7f67b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv46RWLock" title="RWLock"><span class="n"><span class="pre">RWLock</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RWLock</span></span></span><a class="headerlink" href="#_CPPv46RWLock" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -244,28 +261,28 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv418atomshashtable_newv">
-<span id="_CPPv318atomshashtable_newv"></span><span id="_CPPv218atomshashtable_newv"></span><span id="atomshashtable_new"></span><span class="target" id="atomshashtable_8h_1a343ced8d349080c111453916eadb82da"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv318atomshashtable_newv"></span><span id="_CPPv218atomshashtable_newv"></span><span id="atomshashtable_new"></span><span class="target" id="atomshashtable_8h_1a343ced8d349080c111453916eadb82da"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv421atomshashtable_insertP14AtomsHashTable10AtomStringm">
-<span id="_CPPv321atomshashtable_insertP14AtomsHashTable10AtomStringm"></span><span id="_CPPv221atomshashtable_insertP14AtomsHashTable10AtomStringm"></span><span id="atomshashtable_insert__AtomsHashTableP.AtomString.unsigned-l"></span><span class="target" id="atomshashtable_8h_1a24c87e61176f4ff086368361d276b832"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv321atomshashtable_insertP14AtomsHashTable10AtomStringm"></span><span id="_CPPv221atomshashtable_insertP14AtomsHashTable10AtomStringm"></span><span id="atomshashtable_insert__AtomsHashTableP.AtomString.unsigned-l"></span><span class="target" id="atomshashtable_8h_1a24c87e61176f4ff086368361d276b832"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv424atomshashtable_get_valuePK14AtomsHashTable10AtomStringm">
-<span id="_CPPv324atomshashtable_get_valuePK14AtomsHashTable10AtomStringm"></span><span id="_CPPv224atomshashtable_get_valuePK14AtomsHashTable10AtomStringm"></span><span id="atomshashtable_get_value__AtomsHashTableCP.AtomString.unsigned-l"></span><span class="target" id="atomshashtable_8h_1a52fb35397f9659be1971a8643b115ea7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424atomshashtable_get_valuePK14AtomsHashTable10AtomStringm" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv324atomshashtable_get_valuePK14AtomsHashTable10AtomStringm"></span><span id="_CPPv224atomshashtable_get_valuePK14AtomsHashTable10AtomStringm"></span><span id="atomshashtable_get_value__AtomsHashTableCP.AtomString.unsigned-l"></span><span class="target" id="atomshashtable_8h_1a52fb35397f9659be1971a8643b115ea7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424atomshashtable_get_valuePK14AtomsHashTable10AtomStringm" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv422atomshashtable_has_keyPK14AtomsHashTable10AtomString">
-<span id="_CPPv322atomshashtable_has_keyPK14AtomsHashTable10AtomString"></span><span id="_CPPv222atomshashtable_has_keyPK14AtomsHashTable10AtomString"></span><span id="atomshashtable_has_key__AtomsHashTableCP.AtomString"></span><span class="target" id="atomshashtable_8h_1a8965fbd0a5a40f0dbedf8466a2372de1"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422atomshashtable_has_keyPK14AtomsHashTable10AtomString" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv322atomshashtable_has_keyPK14AtomsHashTable10AtomString"></span><span id="_CPPv222atomshashtable_has_keyPK14AtomsHashTable10AtomString"></span><span id="atomshashtable_has_key__AtomsHashTableCP.AtomString"></span><span class="target" id="atomshashtable_8h_1a8965fbd0a5a40f0dbedf8466a2372de1"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422atomshashtable_has_keyPK14AtomsHashTable10AtomString" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv414AtomsHashTable">
-<span id="_CPPv314AtomsHashTable"></span><span id="_CPPv214AtomsHashTable"></span><span id="AtomsHashTable"></span><span class="target" id="struct_atoms_hash_table"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AtomsHashTable</span></span></span><a class="headerlink" href="#_CPPv414AtomsHashTable" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv314AtomsHashTable"></span><span id="_CPPv214AtomsHashTable"></span><span id="AtomsHashTable"></span><span class="target" id="struct_atoms_hash_table"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AtomsHashTable</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for AtomsHashTable:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-bf33e4594af879529bdcd3860498acaf207f27c3.png" alt="digraph {
@@ -283,17 +300,22 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N14AtomsHashTable8capacityE">
-<span id="_CPPv3N14AtomsHashTable8capacityE"></span><span id="_CPPv2N14AtomsHashTable8capacityE"></span><span id="AtomsHashTable::capacity__i"></span><span class="target" id="struct_atoms_hash_table_1a9638d5bee8208ab04364c11d61a170b4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><a class="headerlink" href="#_CPPv4N14AtomsHashTable8capacityE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14AtomsHashTable8capacityE"></span><span id="_CPPv2N14AtomsHashTable8capacityE"></span><span id="AtomsHashTable::capacity__i"></span><span class="target" id="struct_atoms_hash_table_1a9638d5bee8208ab04364c11d61a170b4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N14AtomsHashTable5countE">
-<span id="_CPPv3N14AtomsHashTable5countE"></span><span id="_CPPv2N14AtomsHashTable5countE"></span><span id="AtomsHashTable::count__i"></span><span class="target" id="struct_atoms_hash_table_1a454ed57db1250821c31ec27217adbabd"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><a class="headerlink" href="#_CPPv4N14AtomsHashTable5countE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14AtomsHashTable5countE"></span><span id="_CPPv2N14AtomsHashTable5countE"></span><span id="AtomsHashTable::count__i"></span><span class="target" id="struct_atoms_hash_table_1a454ed57db1250821c31ec27217adbabd"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N14AtomsHashTable4lockE">
+<span id="_CPPv3N14AtomsHashTable4lockE"></span><span id="_CPPv2N14AtomsHashTable4lockE"></span><span id="AtomsHashTable::lock__RWLockP"></span><span class="target" id="struct_atoms_hash_table_1a007d1e9bb37425733c987cc498fbe1b3"></span><a class="reference internal" href="#_CPPv46RWLock" title="RWLock"><span class="n"><span class="pre">RWLock</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">lock</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N14AtomsHashTable7bucketsE">
-<span id="_CPPv3N14AtomsHashTable7bucketsE"></span><span id="_CPPv2N14AtomsHashTable7bucketsE"></span><span id="AtomsHashTable::buckets__HNodePP"></span><span class="target" id="struct_atoms_hash_table_1a7c7090c0b7e303b7033ecec31113b6e3"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="atomshashtable.c.html#_CPPv45HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buckets</span></span></span><a class="headerlink" href="#_CPPv4N14AtomsHashTable7bucketsE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N14AtomsHashTable7bucketsE"></span><span id="_CPPv2N14AtomsHashTable7bucketsE"></span><span id="AtomsHashTable::buckets__HNodePP"></span><span class="target" id="struct_atoms_hash_table_1a7c7090c0b7e303b7033ecec31113b6e3"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv45HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buckets</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -346,10 +368,6 @@
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

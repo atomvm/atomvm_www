@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['tempstackfailedalloc_1614',['TempStackFailedAlloc',['../tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a96cfe448fc20e2dc6624a37d80891330',1,'tempstack.h']]],
-  ['tempstackok_1615',['TempStackOk',['../tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669',1,'tempstack.h']]],
-  ['termcompareexact_1616',['TermCompareExact',['../term_8h.html#acabf9d87ccf85c239412dbf6631cb21da0c51a342f0fd479f41e91cec31ee4280',1,'term.h']]],
-  ['termcomparememoryallocfail_1617',['TermCompareMemoryAllocFail',['../term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aa6bde54f57c6eff8185efadfb9d353ef4',1,'term.h']]],
-  ['termcomparenoopts_1618',['TermCompareNoOpts',['../term_8h.html#acabf9d87ccf85c239412dbf6631cb21da539e8b4ce48535c87117884bcd5562ca',1,'term.h']]],
-  ['termequals_1619',['TermEquals',['../term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aaea6f485013ae7d90be4bc10733c1a6c6',1,'term.h']]],
-  ['termgreaterthan_1620',['TermGreaterThan',['../term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aa7fa873cb4d324414562b5f050dae8874',1,'term.h']]],
-  ['termlessthan_1621',['TermLessThan',['../term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4aa879beb240ca0a6dae8f35a579b6f0bb2',1,'term.h']]]
+  ['nativecontinue_1844',['NativeContinue',['../context_8h.html#a0d9829d8c44d10c67c99cb6fd1df9869a822e8c62ef1bfa8e660b0969650f449c',1,'context.h']]],
+  ['nativeendianinteger_1845',['NativeEndianInteger',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65a20937275c04b1229c890117a6bb1a24d',1,'bitstring.h']]],
+  ['nativeterminate_1846',['NativeTerminate',['../context_8h.html#a0d9829d8c44d10c67c99cb6fd1df9869ae414cf1d935a6e236c85f06fe842a30a',1,'context.h']]],
+  ['niffunctiontype_1847',['NIFFunctionType',['../exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a520690de440ea0d9cf76b05340b418a4',1,'exportedfunction.h']]],
+  ['noflags_1848',['NoFlags',['../context_8h.html#a5c9a39ccda8c700b8722f9027ef63f1da58023b588aa8366442fc981c45b9a1b0',1,'context.h']]],
+  ['normalmessage_1849',['NormalMessage',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a3131b74da0fba67411bd737d4025e9c6',1,'mailbox.h']]]
 ];

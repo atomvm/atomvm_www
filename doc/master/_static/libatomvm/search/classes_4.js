@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['exportedfunction_1101',['ExportedFunction',['../struct_exported_function.html',1,'']]]
+  ['dictentry_1244',['DictEntry',['../struct_dict_entry.html',1,'']]],
+  ['dreg_5ftype_5ft_1245',['dreg_type_t',['../uniondreg__type__t.html',1,'']]]
 ];

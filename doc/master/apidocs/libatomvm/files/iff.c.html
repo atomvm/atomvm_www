@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iff.c &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>iff.c &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -114,15 +114,17 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.c.html">timer_wheel.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.h.html">timer_wheel.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="valueshashtable.c.html">valueshashtable.c</a></li>
@@ -171,23 +173,25 @@
 </div>
 <p>Include dependency graph for iff.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1434b49d2023804a81f7ab43655ee1e010d0e2a0.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1dc7aa8bf37dea4f98480f3c1e9ca39d40121e53.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/iff.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/iff.c&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;2&quot; [label=&quot;iff.h&quot; tooltip=&quot;iff.h&quot;]
     &quot;3&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
-    &quot;6&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
     &quot;4&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;7&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
-    &quot;5&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;5&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -211,17 +215,17 @@
 </div>
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv49IFFRecord">
-<span id="_CPPv39IFFRecord"></span><span id="_CPPv29IFFRecord"></span><span id="IFFRecord"></span><span class="target" id="struct_i_f_f_record"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IFFRecord</span></span></span><a class="headerlink" href="#_CPPv49IFFRecord" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv39IFFRecord"></span><span id="_CPPv29IFFRecord"></span><span id="IFFRecord"></span><span class="target" id="struct_i_f_f_record"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IFFRecord</span></span></span><br /></dt>
 <dd><div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9IFFRecord4nameE">
-<span id="_CPPv3N9IFFRecord4nameE"></span><span id="_CPPv2N9IFFRecord4nameE"></span><span id="IFFRecord::name__cCA"></span><span class="target" id="struct_i_f_f_record_1af52750556e9a6dfebb5e1705b686178b"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv4N9IFFRecord4nameE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N9IFFRecord4nameE"></span><span id="_CPPv2N9IFFRecord4nameE"></span><span id="IFFRecord::name__cCA"></span><span class="target" id="struct_i_f_f_record_1af52750556e9a6dfebb5e1705b686178b"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">4</span></span><span class="p"><span class="pre">]</span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9IFFRecord4sizeE">
-<span id="_CPPv3N9IFFRecord4sizeE"></span><span id="_CPPv2N9IFFRecord4sizeE"></span><span id="IFFRecord::size__uint32_t"></span><span class="target" id="struct_i_f_f_record_1a8ed350c7ec0cd735dd514931fca40b77"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N9IFFRecord4sizeE" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv3N9IFFRecord4sizeE"></span><span id="_CPPv2N9IFFRecord4sizeE"></span><span id="IFFRecord::size__uint32_t"></span><span class="target" id="struct_i_f_f_record_1a8ed350c7ec0cd735dd514931fca40b77"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -274,10 +278,6 @@
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

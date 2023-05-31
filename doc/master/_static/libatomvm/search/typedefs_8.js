@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['term_1567',['term',['../term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8',1,'term_typedef.h']]],
-  ['term_5fref_1568',['term_ref',['../ccontext_8h.html#a225fdcb7560c6c4ab16dd43e7c60163e',1,'ccontext.h']]],
-  ['timer_5fwheel_5fcallback_5ft_1569',['timer_wheel_callback_t',['../timer__wheel_8h.html#a3e29bc2b0297cb10a3a34939b9743b2d',1,'timer_wheel.h']]]
+  ['native_5fhandler_5ff_1788',['native_handler_f',['../context_8h.html#ab8155e89c776ff9773e36caf85f7d860',1,'context.h']]],
+  ['nativehandlerresult_1789',['NativeHandlerResult',['../context_8h.html#af03210f09c25e2a89b1d2b4ae8e670e2',1,'context.h']]],
+  ['nifimpl_1790',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
 ];

@@ -252,21 +252,79 @@ $(function() {
 <div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">  187</a></span>&#160;<span class="preprocessor">#define AVM_ABORT() abort()</span></div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">    #define PRINTF_FORMAT_ARGS(str_pos, arg_pos) \</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">        __attribute__ ((format (printf, str_pos, arg_pos)))</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="utils_8h.html#a44979d8dd91c5c4ef57c3c40f35ba52e">  194</a></span>&#160;<span class="preprocessor">    #define PRINTF_FORMAT_ARGS(...)</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">    #define NO_DISCARD \</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">        __attribute__ ((warn_unused_result))</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">  201</a></span>&#160;<span class="preprocessor">    #define NO_DISCARD(...)</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"> * The following is a workaround for disabling</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment"> * &quot;warning: ISO C forbids conversion of function pointer to object pointer type [-Wpedantic]&quot;.</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment"> * It also makes use of _Static_assert to actually check if it is safe or not.</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">  196</a></span>&#160;<span class="keyword">typedef</span> void (*<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a>)(void);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="struct____attribute____.html">__attribute__</a>((always_inline)) <span class="keywordtype">void</span> *cast_func_to_void_ptr(<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a> func)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#if __STDC_VERSION__ &gt;= 201112L</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="mailbox_8c.html#ae1a34d69d9211205d2b698fa190ed60b">_Static_assert</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *) &gt;= <span class="keyword">sizeof</span>(<a class="code" href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a>), <span class="stringliteral">&quot;function ptr cannot be casted to void *&quot;</span>);</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">    The following workaround is way more standard, but overcomplicated:</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">    union {</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">        func_ptr_t fp;</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">        void *vp;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">    } u;</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">    u.fp = func;</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">    return u.vp;</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">// Let&#39;s rather play with GCC diagnostic</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">#pragma GCC diagnostic push</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wpedantic&quot;</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *) func;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#pragma GCC diagnostic pop</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define CAST_FUNC_TO_VOID_PTR(f) cast_func_to_void_ptr((func_ptr_t) (f))</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">// else ifdef __GNUC__</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="utils_8h.html#a047e18c9e86eb317cc0145ecd8f76386">  234</a></span>&#160;<span class="preprocessor">#define CAST_FUNC_TO_VOID_PTR(f) ((void *) (f))</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment"> * CONTAINER_OF is useful for obtaining the outer struct.</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment"> * It makes use of offsetof() from stddef.h.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="utils_8h.html#a818b9cca761fe7bc18e4e417da772976">  245</a></span>&#160;<span class="preprocessor">#define CONTAINER_OF(ptr, type, member) \</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">    ((type *) (((char *) (ptr)) - offsetof(type, member)))</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">    #define PRINTF_FORMAT_ARGS(str_pos, arg_pos) \</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">        __attribute__ ((format (printf, str_pos, arg_pos)))</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="utils_8h.html#a44979d8dd91c5c4ef57c3c40f35ba52e">  252</a></span>&#160;<span class="preprocessor">    #define PRINTF_FORMAT_ARGS(...)</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#ifdef __GNUC__</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">    #define NO_DISCARD \</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">        __attribute__ ((warn_unused_result))</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">  259</a></span>&#160;<span class="preprocessor">    #define NO_DISCARD(...)</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amailbox_8c_html_ae1a34d69d9211205d2b698fa190ed60b"><div class="ttname"><a href="mailbox_8c.html#ae1a34d69d9211205d2b698fa190ed60b">_Static_assert</a></div><div class="ttdeci">_Static_assert(offsetof(struct Message, base)+offsetof(struct MailboxMessage, next)==offsetof(HeapFragment, next) ? 1 :0, &quot;Message.base.next doesn't match HeapFragment.next&quot;)</div></div>
+<div class="ttc" id="astruct____attribute_____html"><div class="ttname"><a href="struct____attribute____.html">__attribute__</a></div><div class="ttdef"><b>Definition:</b> <a href="module_8h_source.html#l00062">module.h:63</a></div></div>
+<div class="ttc" id="autils_8h_html_a770f699d7bfc60dfdd92e3c296fc55cd"><div class="ttname"><a href="utils_8h.html#a770f699d7bfc60dfdd92e3c296fc55cd">func_ptr_t</a></div><div class="ttdeci">void(* func_ptr_t)(void)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00196">utils.h:196</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['littleendianinteger_1597',['LittleEndianInteger',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65a8a5f004f92f185cc22bb574bf825a738',1,'bitstring.h']]],
-  ['littleendianintegermask_1598',['LittleEndianIntegerMask',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65af91189d7fbaba911ea70c25d24c2bb52',1,'bitstring.h']]]
+  ['gcsignal_1825',['GCSignal',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a3489e81b7f9576c0fb83b4608220978f',1,'mailbox.h']]]
 ];

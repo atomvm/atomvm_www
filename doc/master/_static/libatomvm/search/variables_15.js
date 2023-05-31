@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waiting_5fprocesses_1538',['waiting_processes',['../struct_global_context.html#ad26d06d71d06c1d1bc7eaf47f3ebdfa9',1,'GlobalContext']]]
+  ['x_1757',['x',['../struct_context.html#a7445d1fd6d7a816a8e4b4b118c476fda',1,'Context']]]
 ];

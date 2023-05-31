@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['native_5fhandler_5ff_1563',['native_handler_f',['../context_8h.html#a86bcf5a60889599f7f7aa9493c8f3644',1,'context.h']]],
-  ['nifimpl_1564',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
+  ['heap_1782',['Heap',['../mailbox_8h.html#a705af815969c97892c0aaaa658f6c88c',1,'Heap():&#160;mailbox.h'],['../memory_8h.html#a705af815969c97892c0aaaa658f6c88c',1,'Heap():&#160;memory.h']]],
+  ['heapfragment_1783',['HeapFragment',['../memory_8h.html#a72e25f246c00c73366703f9e45899906',1,'memory.h']]]
 ];

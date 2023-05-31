@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -154,7 +154,7 @@ time_unit() = second | millisecond | microsecond
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td>    Returns the result of applying Function in Module to Args.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
 https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
-Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
+Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -346,6 +346,24 @@ start_timer(Time::non_neg_integer(), Dest::pid() | atom(), Msg::term()) -&gt; re
 <p>returns: a reference that can be used to cancel the timer, if desired.</p>
 <p>Start a timer, and send {timeout, TimerRef, Msg} to Dest after
 Time ms, where TimerRef is the reference returned from this function.</p>
+<p><a name="system_flag-2"></a></p>
+</section>
+<section id="system-flag-2">
+<h3>system_flag/2<a class="headerlink" href="#system-flag-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+system_flag(Key::atom(), Value::term()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to change system flag.<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: value to change<br /></p>
+<p>returns: previous value of the flag.</p>
+<p>Update system flags.</p>
+<p>This function allows to modify system flags at runtime.</p>
+<p>The following key is supported on SMP builds:</p>
+<ul class="simple">
+<li><p><strong>schedulers_online</strong> the number of schedulers online</p></li>
+</ul>
+<p>Specifying an unsupported atom key will result in a bad_arg error.
+Specifying a term that is not an atom will result in a bad_arg error.</p>
 <p><a name="system_info-1"></a></p>
 </section>
 <section id="system-info-1">
@@ -367,6 +385,8 @@ running. The type of information returned is dependent on the specified key.</p>
 <li><p><strong>system_architecture</strong> the processor and OS architecture (binary)</p></li>
 <li><p><strong>version</strong> the version of the AtomVM executable image (binary)</p></li>
 <li><p><strong>wordsize</strong> the number of bytes in a machine word on the current platform (integer)</p></li>
+<li><p><strong>schedulers</strong> the number of schedulers, equal to the number of online processors (integer)</p></li>
+<li><p><strong>schedulers_online</strong> the current number of schedulers (integer)</p></li>
 </ul>
 <p>The following keys are supported on the ESP32 platform:</p>
 <ul class="simple">
@@ -426,10 +446,6 @@ running. The type of information returned is dependent on the specified key.</p>
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

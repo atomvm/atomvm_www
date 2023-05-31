@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>valueshashtable.c &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>valueshashtable.c &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -114,15 +114,17 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.c.html">timer_wheel.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.h.html">timer_wheel.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">valueshashtable.c</a></li>
@@ -171,22 +173,45 @@
 </div>
 <p>Include dependency graph for valueshashtable.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-8eff2ad73754a888ae668a2173f78a4516b79b34.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-07e8213ac9bfa620e279046ea4e425e40e21fc19.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;4&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;7&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
+    &quot;8&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
+    &quot;5&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/valueshashtable.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/valueshashtable.c&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;2&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
     &quot;3&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;4&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;6&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMP_RDLOCK">
+<span class="target" id="valueshashtable_8c_1a4c9feb11f5a113dc27430108372b81c5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_RDLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMP_WRLOCK">
+<span class="target" id="valueshashtable_8c_1a1fc5fa3982024b12377e30f39a659355"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_WRLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.SMP_UNLOCK">
+<span class="target" id="valueshashtable_8c_1ab5310a565239be692372181d7aa27bb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_UNLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.DEFAULT_SIZE">
 <span class="target" id="valueshashtable_8c_1a9771cabfd673a8e350f1f8ce0b8f458f"></span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SIZE</span></span></span><br /></dt>
@@ -197,22 +222,22 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv419valueshashtable_newv">
-<span id="_CPPv319valueshashtable_newv"></span><span id="_CPPv219valueshashtable_newv"></span><span id="valueshashtable_new"></span><span class="target" id="valueshashtable_8c_1aabcdd1ff604fff1dcfc949d4659897d5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="valueshashtable.h.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419valueshashtable_newv" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv319valueshashtable_newv"></span><span id="_CPPv219valueshashtable_newv"></span><span id="valueshashtable_new"></span><span class="target" id="valueshashtable_8c_1aabcdd1ff604fff1dcfc949d4659897d5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419valueshashtable_newv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv422valueshashtable_insertP15ValuesHashTablemm">
-<span id="_CPPv322valueshashtable_insertP15ValuesHashTablemm"></span><span id="_CPPv222valueshashtable_insertP15ValuesHashTablemm"></span><span id="valueshashtable_insert__ValuesHashTableP.unsigned-l.unsigned-l"></span><span class="target" id="valueshashtable_8c_1adc9a9dc3a50414fe9e11aa5933d7306d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="valueshashtable.h.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422valueshashtable_insertP15ValuesHashTablemm" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv322valueshashtable_insertP15ValuesHashTablemm"></span><span id="_CPPv222valueshashtable_insertP15ValuesHashTablemm"></span><span id="valueshashtable_insert__ValuesHashTableP.unsigned-l.unsigned-l"></span><span class="target" id="valueshashtable_8c_1adc9a9dc3a50414fe9e11aa5933d7306d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422valueshashtable_insertP15ValuesHashTablemm" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv425valueshashtable_get_valuePK15ValuesHashTablemm">
-<span id="_CPPv325valueshashtable_get_valuePK15ValuesHashTablemm"></span><span id="_CPPv225valueshashtable_get_valuePK15ValuesHashTablemm"></span><span id="valueshashtable_get_value__ValuesHashTableCP.unsigned-l.unsigned-l"></span><span class="target" id="valueshashtable_8c_1a4653a7d66a98a7fd4a55095d4bf55cfa"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="valueshashtable.h.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425valueshashtable_get_valuePK15ValuesHashTablemm" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv325valueshashtable_get_valuePK15ValuesHashTablemm"></span><span id="_CPPv225valueshashtable_get_valuePK15ValuesHashTablemm"></span><span id="valueshashtable_get_value__ValuesHashTableCP.unsigned-l.unsigned-l"></span><span class="target" id="valueshashtable_8c_1a4653a7d66a98a7fd4a55095d4bf55cfa"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425valueshashtable_get_valuePK15ValuesHashTablemm" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv423valueshashtable_has_keyPK15ValuesHashTablem">
-<span id="_CPPv323valueshashtable_has_keyPK15ValuesHashTablem"></span><span id="_CPPv223valueshashtable_has_keyPK15ValuesHashTablem"></span><span id="valueshashtable_has_key__ValuesHashTableCP.unsigned-l"></span><span class="target" id="valueshashtable_8c_1a5e05eb2e638461c08cd079778c49ea29"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="valueshashtable.h.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423valueshashtable_has_keyPK15ValuesHashTablem" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv323valueshashtable_has_keyPK15ValuesHashTablem"></span><span id="_CPPv223valueshashtable_has_keyPK15ValuesHashTablem"></span><span id="valueshashtable_has_key__ValuesHashTableCP.unsigned-l"></span><span class="target" id="valueshashtable_8c_1a5e05eb2e638461c08cd079778c49ea29"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">valueshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv415ValuesHashTable" title="ValuesHashTable"><span class="n"><span class="pre">ValuesHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423valueshashtable_has_keyPK15ValuesHashTablem" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -268,10 +293,6 @@
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Management &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>Memory Management &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -226,7 +226,7 @@
 <section id="mailbox">
 <h3>Mailbox<a class="headerlink" href="#mailbox" title="Permalink to this heading"></a></h3>
 <p>Each Erlang process contains a process mailbox, which is a linked-list structure of messages.  Each message in this list contains a term structure, which is a copy of a term sent to it, e.g., via the <code class="docutils literal notranslate"><span class="pre">erlang:send/2</span></code> operation, or <code class="docutils literal notranslate"><span class="pre">!</span></code> operator.</p>
-<p>The representation of terms in a message is identical to that in the heap and heap fragments, with the exception that messages in the process mailbox are not garbage collected, in the way that the process heap is.  Instead, messages in the process mailbox are copied to the process heap when the message is read off the mailbox (e.g., via <code class="docutils literal notranslate"><span class="pre">receive</span> <span class="pre">...</span> <span class="pre">end</span></code>).  Messages (and their term contents) are then destroyed once they are no longer needed, and after being copied into the heap.</p>
+<p>The representation of terms in a message is identical to that in the heap and heap fragments.  Messages are allocated like fragments and they actually become heap fragments of the receiving process when the message is read off the mailbox (e.g., via <code class="docutils literal notranslate"><span class="pre">receive</span> <span class="pre">...</span> <span class="pre">end</span></code>).  Messages (and their term contents) are moved to the main heap as part of regular garbage collection of the process, and the fragment is freed.</p>
 </section>
 <section id="memory-graph">
 <h3>Memory Graph<a class="headerlink" href="#memory-graph" title="Permalink to this heading"></a></h3>
@@ -960,10 +960,6 @@ process dictionary
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

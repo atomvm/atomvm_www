@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unary_5fmath_5ff_1570',['unary_math_f',['../nifs_8c.html#ab2717c14871fa37dc649890726091b07',1,'nifs.c']]]
+  ['printer_5ffunction_5ft_1791',['printer_function_t',['../term_8h.html#ace4b16a7115bc3936655d1b0936210f6',1,'term.h']]],
+  ['printerfun_1792',['PrinterFun',['../term_8h.html#a8142fcb1f62b21f337b44488f5c1d717',1,'term.h']]]
 ];

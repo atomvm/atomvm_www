@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['float_5fterm_5ft_1102',['float_term_t',['../unionfloat__term__t.html',1,'']]],
-  ['fprintffun_1103',['FprintfFun',['../struct_fprintf_fun.html',1,'']]]
+  ['exportedfunction_1246',['ExportedFunction',['../struct_exported_function.html',1,'']]]
 ];

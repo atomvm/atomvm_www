@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -142,6 +142,7 @@ version 4.1.x through 4.4.x.</p></li>
 <li><p>Added support for FP opcodes 94-102 thus removing the need for <code class="docutils literal notranslate"><span class="pre">AVM_DISABLE_FP=On</span></code> with OTP-22+</p></li>
 <li><p>Added support for stacktraces</p></li>
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">utf-8</span></code>, <code class="docutils literal notranslate"><span class="pre">utf-16</span></code>, and <code class="docutils literal notranslate"><span class="pre">utf-32</span></code> bit syntax modifiers (put and match)</p></li>
+<li><p>Added support for Erlang <code class="docutils literal notranslate"><span class="pre">gpio:close/1</span></code> and Elixir <code class="docutils literal notranslate"><span class="pre">GPIO.close/1</span></code> for ESP32</p></li>
 <li><p>Added support for the Erlang <code class="docutils literal notranslate"><span class="pre">gen_event</span></code> module</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">start_link</span></code> support for the <code class="docutils literal notranslate"><span class="pre">network</span></code> module</p></li>
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">erlang:monotomic_time/1</span></code></p></li>
@@ -149,6 +150,8 @@ version 4.1.x through 4.4.x.</p></li>
 <li><p>Added support for serializing floats in erlang external term encoding</p></li>
 <li><p>Added support for the <code class="docutils literal notranslate"><span class="pre">SMALL_BIG_EXT</span></code> erlang external term encoding</p></li>
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">erlang:memory(binary)</span></code></p></li>
+<li><p>Added support for callbacks on SNTP updates</p></li>
+<li><p>Multithreading support (SMP)</p></li>
 </ul>
 </section>
 <section id="fixed">
@@ -159,6 +162,7 @@ version 4.1.x through 4.4.x.</p></li>
 <li><p>Fixed a bug in the evaluation of <code class="docutils literal notranslate"><span class="pre">receive</span> <span class="pre">...</span> <span class="pre">after</span> <span class="pre">infinity</span> <span class="pre">-&gt;</span> <span class="pre">...</span></code> expressions</p></li>
 <li><p>Fixed a bug in when putting integers in bit syntax with integer field sizes</p></li>
 <li><p>Fixed numerous bugs in memory allocations that could crash the VM</p></li>
+<li><p>Fixed SNTP support that had been broken in IDF 4.x builds</p></li>
 </ul>
 </section>
 <section id="breaking-changes">
@@ -276,10 +280,6 @@ bit length is not a multiple of 8.</p></li>
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

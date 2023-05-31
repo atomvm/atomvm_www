@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -112,6 +112,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#sta-mode">STA mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ap-mode">AP mode</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sta-ap-mode">STA+AP mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sntp">SNTP</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#udp">UDP</a></li>
@@ -906,6 +907,16 @@ end.
 </pre></div>
 </div>
 <p>Interrupts can be removed by using the <code class="docutils literal notranslate"><span class="pre">gpio:remove_int/2</span></code> function.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">gpio:close/1</span></code> function to close the GPIO driver and free any resources in use by it, supplying a reference to a previously opened GPIO driver instance.  Any references to the closed GPIO instance are no longer valid after a successful call to this function, and all interrupts will be removed.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = gpio:close(GPIO).
+</pre></div>
+</div>
+<p>Since only one instance of the GPIO driver is allowed, you may also simply use <code class="docutils literal notranslate"><span class="pre">gpio:stop/0</span></code> to remove all interrupts, free the resouces, and close the GPIO driver port.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = gpio:stop().
+</pre></div>
+</div>
 </section>
 </section>
 <section id="i2c">
@@ -1438,6 +1449,10 @@ end
 <h4>STA+AP mode<a class="headerlink" href="#sta-ap-mode" title="Permalink to this heading"></a></h4>
 <p>For information about how to run the AtomVM network in STA and AP mode simultaneously, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </section>
+<section id="sntp">
+<h4>SNTP<a class="headerlink" href="#sntp" title="Permalink to this heading"></a></h4>
+<p>For information about how to use SNTP to synchronize the clock on your device, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
+</section>
 </section>
 <section id="udp">
 <h3>UDP<a class="headerlink" href="#udp" title="Permalink to this heading"></a></h3>
@@ -1632,10 +1647,6 @@ end.
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

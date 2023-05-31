@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>libAtomVM &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>libAtomVM &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -120,15 +120,17 @@
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/stacktrace.c.html">stacktrace.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/term_typedef.h.html">term_typedef.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/timer_wheel.c.html">timer_wheel.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/timer_wheel.h.html">timer_wheel.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/timer_list.h.html">timer_list.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/trace.h.html">trace.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/utils.h.html">utils.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/libatomvm/files/valueshashtable.c.html">valueshashtable.c</a></li>
@@ -339,10 +341,16 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/scheduler.h.html">scheduler.h</a><ul class="simple">
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/smp.h.html">smp.h</a><ul class="simple">
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/stacktrace.c.html">stacktrace.c</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/stacktrace.h.html">stacktrace.h</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/synclist.h.html">synclist.h</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/sys.h.html">sys.h</a><ul class="simple">
@@ -360,10 +368,10 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/term_typedef.h.html">term_typedef.h</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/timer_wheel.c.html">timer_wheel.c</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/timer_list.c.html">timer_list.c</a><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/timer_wheel.h.html">timer_wheel.h</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/timer_list.h.html">timer_list.h</a><ul class="simple">
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/libatomvm/files/trace.h.html">trace.h</a><ul class="simple">
@@ -434,10 +442,6 @@
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

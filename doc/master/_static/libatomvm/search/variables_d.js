@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['name_1487',['name',['../struct_i_f_f_record.html#af52750556e9a6dfebb5e1705b686178b',1,'IFFRecord']]],
-  ['native_5fhandler_1488',['native_handler',['../struct_context.html#aa77a5906553bf50e66cc182ec13e80e8',1,'Context']]],
-  ['next_1489',['next',['../struct_h_node.html#abea8de3dcee2d732142001b8eb698050',1,'HNode::next()'],['../struct_list_head.html#a2855fe0dde7716a90cd54fae55ceaa54',1,'ListHead::next()']]],
-  ['nif_5fptr_1490',['nif_ptr',['../struct_nif.html#adfa56a469bc3591bd32eaf6d8061ba58',1,'Nif']]]
+  ['offset_1695',['offset',['../struct_line_ref_offset.html#ae8440c1b1a78c448fb48eab6d4526839',1,'LineRefOffset']]],
+  ['online_5fschedulers_1696',['online_schedulers',['../struct_global_context.html#af6425d477baffd3b179c831b2b2593c4',1,'GlobalContext']]],
+  ['opcode_5fmax_1697',['opcode_max',['../struct____attribute____.html#a1d8c52d11b6b3426e7951f7549d1d4c3',1,'__attribute__']]],
+  ['outer_5ffirst_1698',['outer_first',['../struct_mailbox.html#a4002265aaf67fb09af3b7bab352fe631',1,'Mailbox']]]
 ];

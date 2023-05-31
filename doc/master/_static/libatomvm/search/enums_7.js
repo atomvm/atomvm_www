@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['refcbinaryflags_1581',['RefcBinaryFlags',['../term_8h.html#ada026bf2d0a66c550271f757eef36e1f',1,'term.h']]]
+  ['nativehandlerresult_1810',['NativeHandlerResult',['../context_8h.html#a0d9829d8c44d10c67c99cb6fd1df9869',1,'context.h']]]
 ];

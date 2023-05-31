@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>memory.c &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>memory.c &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -114,15 +114,17 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.c.html">timer_wheel.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="timer_wheel.h.html">timer_wheel.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="valueshashtable.c.html">valueshashtable.c</a></li>
@@ -171,82 +173,104 @@
 </div>
 <p>Include dependency graph for memory.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-9d8640c12cbfd3c933083adab086c660d430f876.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-41764248602459b708395a42df4b78f914d2c9ee.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;10&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
-    &quot;21&quot; [label=&quot;dictionary.h&quot; tooltip=&quot;dictionary.h&quot;]
+    &quot;26&quot; [label=&quot;dictionary.h&quot; tooltip=&quot;dictionary.h&quot;]
+    &quot;11&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
     &quot;7&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
-    &quot;23&quot; [label=&quot;trace.h&quot; tooltip=&quot;trace.h&quot;]
+    &quot;28&quot; [label=&quot;trace.h&quot; tooltip=&quot;trace.h&quot;]
+    &quot;12&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;8&quot; [label=&quot;linkedlist.h&quot; tooltip=&quot;linkedlist.h&quot;]
-    &quot;22&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
+    &quot;27&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
     &quot;6&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;2&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
-    &quot;19&quot; [label=&quot;timer_wheel.h&quot; tooltip=&quot;timer_wheel.h&quot;]
     &quot;4&quot; [label=&quot;context.h&quot; tooltip=&quot;context.h&quot;]
-    &quot;16&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;13&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
-    &quot;14&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
-    &quot;17&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
+    &quot;20&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;17&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
+    &quot;21&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;18&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
+    &quot;22&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
     &quot;3&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
-    &quot;9&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
-    &quot;20&quot; [label=&quot;debug.h&quot; tooltip=&quot;debug.h&quot;]
+    &quot;24&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
+    &quot;15&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
+    &quot;9&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;25&quot; [label=&quot;debug.h&quot; tooltip=&quot;debug.h&quot;]
     &quot;5&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/memory.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/memory.c&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;12&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
-    &quot;11&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
-    &quot;18&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
-    &quot;15&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
-    &quot;21&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;21&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
+    &quot;14&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;23&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
+    &quot;19&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
+    &quot;13&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
+    &quot;26&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;12&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;4&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;13&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;13&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;17&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;17&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;5&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;5&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;5&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;5&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;5&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;5&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;27&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;13&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -261,33 +285,33 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv420memory_scan_and_copyP4termPK4termPP4termP4termi">
-<span id="_CPPv320memory_scan_and_copyP4termPK4termPP4termP4termi"></span><span id="_CPPv220memory_scan_and_copyP4termPK4termPP4termP4termi"></span><span id="memory_scan_and_copy__termP.termCP.termPP.termP.i"></span><span class="target" id="memory_8c_1a87da802ea48cfa7ff3204957da758ca7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_scan_and_copy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mem_start</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mem_end</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap_pos</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mso_list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">move</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420memory_scan_and_copyP4termPK4termPP4termP4termi" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv420memory_scan_and_copyP12HeapFragmentP4termPK4termPP4termP4termb">
+<span id="_CPPv320memory_scan_and_copyP12HeapFragmentP4termPK4termPP4termP4termb"></span><span id="_CPPv220memory_scan_and_copyP12HeapFragmentP4termPK4termPP4termP4termb"></span><span id="memory_scan_and_copy__HeapFragmentP.termP.termCP.termPP.termP.b"></span><span class="target" id="memory_8c_1a03c809885a032f8271d72ad95bab6a32"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_scan_and_copy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">old_fragment</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mem_start</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mem_end</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap_pos</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mso_list</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">move</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420memory_scan_and_copyP12HeapFragmentP4termPK4termPP4termP4termb" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv424memory_shallow_copy_term4termPP4termi">
-<span id="_CPPv324memory_shallow_copy_term4termPP4termi"></span><span id="_CPPv224memory_shallow_copy_term4termPP4termi"></span><span id="memory_shallow_copy_term__term.termPP.i"></span><span class="target" id="memory_8c_1a38e2f5be489d7451f852184904650e7a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_shallow_copy_term</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">move</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424memory_shallow_copy_term4termPP4termi" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv424memory_shallow_copy_termP12HeapFragment4termPP4termb">
+<span id="_CPPv324memory_shallow_copy_termP12HeapFragment4termPP4termb"></span><span id="_CPPv224memory_shallow_copy_termP12HeapFragment4termPP4termb"></span><span id="memory_shallow_copy_term__HeapFragmentP.term.termPP.b"></span><span class="target" id="memory_8c_1a2e5139641836879362beda89f2ea10cc"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_shallow_copy_term</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">old_fragment</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">move</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424memory_shallow_copy_termP12HeapFragment4termPP4termb" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv49memory_gcP7Context6size_t6size_tP4term">
-<span id="_CPPv39memory_gcP7Context6size_t6size_tP4term"></span><span id="_CPPv29memory_gcP7Context6size_t6size_tP4term"></span><span id="memory_gc__ContextP.s.s.termP"></span><span class="target" id="memory_8c_1a59be37b9d1ac6f44b5ba61f22d590ecc"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="memory.h.html#_CPPv414MemoryGCResult" title="MemoryGCResult"><span class="n"><span class="pre">MemoryGCResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_gc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_roots</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">roots</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49memory_gcP7Context6size_t6size_tP4term" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv39memory_gcP7Context6size_t6size_tP4term"></span><span id="_CPPv29memory_gcP7Context6size_t6size_tP4term"></span><span id="memory_gc__ContextP.s.s.termP"></span><span class="target" id="memory_8c_1a59be37b9d1ac6f44b5ba61f22d590ecc"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414MemoryGCResult" title="MemoryGCResult"><span class="n"><span class="pre">MemoryGCResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_gc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">new_size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_roots</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">roots</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49memory_gcP7Context6size_t6size_tP4term" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="memory_8c_1adbbbada4267e99697a685279cbe5272a"></span><span class="sig-name descname"><span class="pre">HOT_FUNC</span> <span class="pre">term</span> <span class="pre">*</span> <span class="pre">memory_heap_alloc</span> <span class="pre">(Context</span> <span class="pre">*c,</span> <span class="pre">size_t</span> <span class="pre">size)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv416memory_init_heapP4Heap6size_t">
+<span id="_CPPv316memory_init_heapP4Heap6size_t"></span><span id="_CPPv216memory_init_heapP4Heap6size_t"></span><span id="memory_init_heap__HeapP.s"></span><span class="target" id="memory_8c_1aa34223a2c1aa426b283afb1e2461414a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414MemoryGCResult" title="MemoryGCResult"><span class="n"><span class="pre">MemoryGCResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_init_heap</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416memory_init_heapP4Heap6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="memory_8c_1a7b323335e0dc73f9b031072e310b2390"></span><span class="sig-name descname"><span class="pre">MALLOC_LIKE</span> <span class="pre">term</span> <span class="pre">*</span> <span class="pre">memory_alloc_heap_fragment</span> <span class="pre">(Context</span> <span class="pre">*ctx,</span> <span class="pre">size_t</span> <span class="pre">fragment_size)</span></span></dt>
+<dt class="sig sig-object cpp" id="_CPPv430memory_init_heap_root_fragmentP4HeapP12HeapFragment6size_t">
+<span id="_CPPv330memory_init_heap_root_fragmentP4HeapP12HeapFragment6size_t"></span><span id="_CPPv230memory_init_heap_root_fragmentP4HeapP12HeapFragment6size_t"></span><span id="memory_init_heap_root_fragment__HeapP.HeapFragmentP.s"></span><span class="target" id="memory_8c_1aed7cb8e677736e46afa7fe2ef4313658"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_init_heap_root_fragment</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">root</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430memory_init_heap_root_fragmentP4HeapP12HeapFragment6size_t" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv429memory_ensure_free_with_rootsP7Context6size_t6size_tP4term16MemoryShrinkMode">
-<span id="_CPPv329memory_ensure_free_with_rootsP7Context6size_t6size_tP4term16MemoryShrinkMode"></span><span id="_CPPv229memory_ensure_free_with_rootsP7Context6size_t6size_tP4term16MemoryShrinkMode"></span><span id="memory_ensure_free_with_roots__ContextP.s.s.termP.MemoryShrinkMode"></span><span class="target" id="memory_8c_1a5a795a305af34adbe84e33f8cb155242"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="memory.h.html#_CPPv414MemoryGCResult" title="MemoryGCResult"><span class="n"><span class="pre">MemoryGCResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_ensure_free_with_roots</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_roots</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">roots</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="memory.h.html#_CPPv416MemoryShrinkMode" title="MemoryShrinkMode"><span class="n"><span class="pre">MemoryShrinkMode</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">shrink_mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429memory_ensure_free_with_rootsP7Context6size_t6size_tP4term16MemoryShrinkMode" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv429memory_ensure_free_with_rootsP7Context6size_t6size_tP4term15MemoryAllocMode">
+<span id="_CPPv329memory_ensure_free_with_rootsP7Context6size_t6size_tP4term15MemoryAllocMode"></span><span id="_CPPv229memory_ensure_free_with_rootsP7Context6size_t6size_tP4term15MemoryAllocMode"></span><span id="memory_ensure_free_with_roots__ContextP.s.s.termP.MemoryAllocMode"></span><span class="target" id="memory_8c_1a2f22f826b7e8681cad1c4952c9c19629"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414MemoryGCResult" title="MemoryGCResult"><span class="n"><span class="pre">MemoryGCResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_ensure_free_with_roots</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">num_roots</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">roots</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv415MemoryAllocMode" title="MemoryAllocMode"><span class="n"><span class="pre">MemoryAllocMode</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">alloc_mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429memory_ensure_free_with_rootsP7Context6size_t6size_tP4term15MemoryAllocMode" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -311,8 +335,18 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv421memory_copy_term_treePP4term4termP4term">
-<span id="_CPPv321memory_copy_term_treePP4term4termP4term"></span><span id="_CPPv221memory_copy_term_treePP4term4termP4term"></span><span id="memory_copy_term_tree__termPP.term.termP"></span><span class="target" id="memory_8c_1a7dfe36edbe2cd4f03509860d3c82f26a"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_copy_term_tree</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mso_list</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421memory_copy_term_treePP4term4termP4term" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv430memory_copy_term_tree_internalPP4termP4term4term">
+<span id="_CPPv330memory_copy_term_tree_internalPP4termP4term4term"></span><span id="_CPPv230memory_copy_term_tree_internalPP4termP4term4term"></span><span id="memory_copy_term_tree_internal__termPP.termP.term"></span><span class="target" id="memory_8c_1a0e694c0569a1348f2a0ed197c6bb0b17"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_copy_term_tree_internal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap_ptr</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mso_list</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430memory_copy_term_tree_internalPP4termP4term4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421memory_copy_term_treeP4Heap4term">
+<span id="_CPPv321memory_copy_term_treeP4Heap4term"></span><span id="_CPPv221memory_copy_term_treeP4Heap4term"></span><span id="memory_copy_term_tree__HeapP.term"></span><span class="target" id="memory_8c_1a4f2333ae6f2bceb4fb7c1effde5f648d"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_copy_term_tree</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">new_heap</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421memory_copy_term_treeP4Heap4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv432memory_copy_term_tree_to_storageP4termPP4term4term">
+<span id="_CPPv332memory_copy_term_tree_to_storageP4termPP4term4term"></span><span id="_CPPv232memory_copy_term_tree_to_storageP4termPP4term4term"></span><span id="memory_copy_term_tree_to_storage__termP.termPP.term"></span><span class="target" id="memory_8c_1a6c3684abaa77ca5d5b07ba3960622b22"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_copy_term_tree_to_storage</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">storage</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap_end</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv432memory_copy_term_tree_to_storageP4termPP4term4term" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -321,8 +355,18 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv421memory_sweep_mso_list4term">
-<span id="_CPPv321memory_sweep_mso_list4term"></span><span id="_CPPv221memory_sweep_mso_list4term"></span><span id="memory_sweep_mso_list__term"></span><span class="target" id="memory_8c_1a413e8542cd182a4b499e71d5dec3336a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mso_list</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421memory_sweep_mso_list4term" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp">
+<span class="target" id="memory_8c_1a923945415d8c2ddedf4149f473a7d07a"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">inline</span> <span class="pre">HOT_FUNC</span> <span class="pre">bool</span> <span class="pre">memory_heap_fragment_contains_pointer</span> <span class="pre">(HeapFragment</span> <span class="pre">*old_fragment,</span> <span class="pre">term</span> <span class="pre">*ptr)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427memory_heap_append_fragmentP4HeapP12HeapFragment4term">
+<span id="_CPPv327memory_heap_append_fragmentP4HeapP12HeapFragment4term"></span><span id="_CPPv227memory_heap_append_fragmentP4HeapP12HeapFragment4term"></span><span id="memory_heap_append_fragment__HeapP.HeapFragmentP.term"></span><span class="target" id="memory_8c_1ac3585e49af06865398260c71ac8dead3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_heap_append_fragment</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">fragment</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mso_list</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv427memory_heap_append_fragmentP4HeapP12HeapFragment4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421memory_sweep_mso_list4termP13GlobalContext">
+<span id="_CPPv321memory_sweep_mso_list4termP13GlobalContext"></span><span id="_CPPv221memory_sweep_mso_list4termP13GlobalContext"></span><span id="memory_sweep_mso_list__term.GlobalContextP"></span><span class="target" id="memory_8c_1a83faa99cba2cd5a16becd07efaf5764f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mso_list</span></span>, <a class="reference internal" href="globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421memory_sweep_mso_list4termP13GlobalContext" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -373,10 +417,6 @@
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>

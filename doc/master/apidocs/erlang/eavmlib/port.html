@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module port &mdash; AtomVM 0.6.0-dev+git.f776c7c documentation</title>
+  <title>Module port &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -159,10 +159,10 @@ will be the Pid that will be required for future <code class="docutils literal n
 <section id="call-2">
 <h3>call/2<a class="headerlink" href="#call-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-call(Pid::pid(), Message::term()) -&gt; term() | {error, Reason::term()}
+call(Port::pid(), Message::term()) -&gt; term()
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: Pid to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /></p>
 <p>returns: term() | {error, Reason}.</p>
 <p>Send a message to a given port driver pid.</p>
 <p>This function is used to send a message to an open port divers pid and will
@@ -172,10 +172,10 @@ return a term or <code class="docutils literal notranslate"><span class="pre">{e
 <section id="call-3">
 <h3>call/3<a class="headerlink" href="#call-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-call(Pid::pid(), Message::term(), TimeoutMs::non_neg_integer()) -&gt; term() | {error, timeout}
+call(Port::pid(), Message::term(), TimeoutMs::non_neg_integer()) -&gt; term() | {error, timeout}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: Pid to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /><code class="docutils literal notranslate"><span class="pre">TimeoutMs</span></code>: the timeout value in milliseconds<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /><code class="docutils literal notranslate"><span class="pre">TimeoutMs</span></code>: the timeout value in milliseconds<br /></p>
 <p>returns: term() | {error, Reason}.</p>
 <p>Send a message to a given port driver pid with a timeout.</p>
 <p>This function is used to send a message to an open port divers pid and will return
@@ -229,10 +229,6 @@ a term or <code class="docutils literal notranslate"><span class="pre">{error,</
       
       <dl>
         <dt>Versions</dt>
-        
-          
-          <dd><a href="/doc/feature-smp/">feature-smp</a></dd>
-          
         
            <strong> 
           <dd><a href="/doc/master/">master</a></dd>
