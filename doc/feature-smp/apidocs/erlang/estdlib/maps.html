@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module maps &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module maps &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -126,7 +126,7 @@
   <section id="module-maps">
 <h1>Module maps<a class="headerlink" href="#module-maps" title="Permalink to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
@@ -140,7 +140,7 @@ with the Erlang map type, which associates (unique) keys with values.</p>
 <p>Note that the ordering of entries in a map is implementation-defined.  While
 many operations in this module present entries in lexical order, users should
 in general make no assumptions about the ordering of entries in a map.</p>
-<p>This module implements a susbset of the Erlang/OTP <code class="docutils literal notranslate"><span class="pre">maps</span></code> interface.
+<p>This module implements a subset of the Erlang/OTP <code class="docutils literal notranslate"><span class="pre">maps</span></code> interface.
 Some OTP functions are not implemented, and the approach favors
 correctness and readability over speed and performance.
 <a name="types"></a></p>
@@ -301,7 +301,7 @@ in a map.</p>
 <p>throws <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
 <p>Return an iterator structure that can be used to iterate over associations
 in a map.</p>
-<p>In general, users shouuld make no assumptions about the order in which entries
+<p>In general, users should make no assumptions about the order in which entries
 appear in an iterator.  The order of entries in a map is implementation-defined.</p>
 <p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> exception if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
 <p><strong>See also:</strong> <a class="reference internal" href="#next-1"><span class="xref myst">next/1</span></a>.</p>
@@ -427,6 +427,7 @@ size(Map::map()) -&gt; non_neg_integer()
 to_list(Map::map()) -&gt; [<a href="#type-key">key()</a>]
 </code></pre>
 <br />
+<p><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map<br /></p>
 <p>returns: a list of <code class="docutils literal notranslate"><span class="pre">[{Key,</span> <span class="pre">Value}]</span></code> tuples</p>
 <p>Return the list of entries, expressed as <code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">Value}</span></code> pairs, in the supplied map.</p>
 <p>No guarantees are provided about the order of entries returned from this function.</p>

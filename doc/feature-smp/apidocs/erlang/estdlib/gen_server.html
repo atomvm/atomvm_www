@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_server &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module gen_server &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -126,7 +126,7 @@
   <section id="module-gen-server">
 <h1>Module gen_server<a class="headerlink" href="#module-gen-server" title="Permalink to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
@@ -135,7 +135,7 @@
 <p><a name="description"></a></p>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
-<p>This module implements a strict susbset of the Erlang/OTP gen_server
+<p>This module implements a strict subset of the Erlang/OTP gen_server
 interface, supporting operations for local creation and management of
 gen_server instances.</p>
 <p>This module is designed to be API-compatible with gen_server, with exceptions noted
@@ -196,7 +196,7 @@ call(ServerRef::<a href="#type-server_ref">server_ref()</a>, Request::term) -&gt
 call(ServerRef::<a href="#type-server_ref">server_ref()</a>, Request::term(), TimeoutMs::timeout()) -&gt; Reply::term() | {error, Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">ServerRef</span></code>: a reference to the gen_server acquired via start<br /><code class="docutils literal notranslate"><span class="pre">Request</span></code>: the request to send to the gen_server<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">ServerRef</span></code>: a reference to the gen_server acquired via start<br /><code class="docutils literal notranslate"><span class="pre">Request</span></code>: the request to send to the gen_server<br /><code class="docutils literal notranslate"><span class="pre">TimeoutMs</span></code>: the amount of time in milliseconds to wait for a reply<br /></p>
 <p>returns: the reply sent back from the gen_server; {error, Reason}, otherwise.</p>
 <p>Send a request to a gen_server instance, and wait for a reply.</p>
 <p>This function will send the specified request to the specified
@@ -230,10 +230,10 @@ gen_server instance, but will not wait for a reply.</p>
 <section id="reply-2">
 <h3>reply/2<a class="headerlink" href="#reply-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-reply(X1::<a href="#type-from">from()</a>, Reply::term) -&gt; term()
+reply(From::<a href="#type-from">from()</a>, Reply::term) -&gt; term()
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Reply</span></code>: the reply to send to the client<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">From</span></code>: the client to whom to send the reply<br /><code class="docutils literal notranslate"><span class="pre">Reply</span></code>: the reply to send to the client<br /></p>
 <p>returns: an arbitrary term, that should be ignored</p>
 <p>Send a reply to a calling client.</p>
 <p>This function will send the specified reply back to the specified
@@ -313,7 +313,7 @@ stop(ServerRef::<a href="#type-server_ref">server_ref()</a>) -&gt; ok | {error, 
 stop(ServerRef::<a href="#type-server_ref">server_ref()</a>, Reason::term(), Timeout::non_neg_integer() | infinity) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">ServerRef</span></code>: a reference to the gen_server acquired via start<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">ServerRef</span></code>: a reference to the gen_server acquired via start<br /><code class="docutils literal notranslate"><span class="pre">Reason</span></code>: reason to be supplied to callback function<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: ms to wait for successful stop<br /></p>
 <p>returns: ok, if the gen_server stopped; {error, Reason}, otherwise.</p>
 <p>Stop a previously started gen_server instance.</p>
 <p>This function will stop a gen_server instance, providing the supplied

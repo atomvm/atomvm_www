@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module spi &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module spi &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -124,7 +124,7 @@
   <section id="module-spi">
 <h1>Module spi<a class="headerlink" href="#module-spi" title="Permalink to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="../estdlib/string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="../estdlib/timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
@@ -200,7 +200,7 @@ transaction() = #{command =&gt; integer(), address =&gt; non_neg_integer(), writ
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close the SPI driver.</td></tr><tr><td valign="top"><a href="#open-1">open/1</a></td><td>Open a connection to the SPI driver.</td></tr><tr><td valign="top"><a href="#read_at-4">read_at/4</a></td><td>    Read a value from and address on the device.</td></tr><tr><td valign="top"><a href="#write-3">write/3</a></td><td>    Write data to the SPI device, using the intructions encoded in the supplied transaction.</td></tr><tr><td valign="top"><a href="#write_at-5">write_at/5</a></td><td>    Write a value to and address on the device.</td></tr><tr><td valign="top"><a href="#write_read-3">write_read/3</a></td><td>    Write data to the SPI device, using the intructions encoded in the supplied transaction.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close the SPI driver.</td></tr><tr><td valign="top"><a href="#open-1">open/1</a></td><td>Open a connection to the SPI driver.</td></tr><tr><td valign="top"><a href="#read_at-4">read_at/4</a></td><td>    Read a value from and address on the device.</td></tr><tr><td valign="top"><a href="#write-3">write/3</a></td><td>    Write data to the SPI device, using the instructions encoded in the supplied transaction.</td></tr><tr><td valign="top"><a href="#write_at-5">write_at/5</a></td><td>    Write a value to and address on the device.</td></tr><tr><td valign="top"><a href="#write_read-3">write_read/3</a></td><td>    Write data to the SPI device, using the instructions encoded in the supplied transaction.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -294,7 +294,7 @@ understand which fields should be used with your device.</p>
 read_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer()) -&gt; {ok, integer()} | error
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address from which to read<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: device name from configuration<br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address from which to read<br /><code class="docutils literal notranslate"><span class="pre">Len</span></code>: in bytes to read<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Value}</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
 <p>Read a value from and address on the device.</p>
 <p><a name="write-3"></a></p>
@@ -307,7 +307,7 @@ write(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: SPI device name (use key in <code class="docutils literal notranslate"><span class="pre">device_config</span></code>)<br /><code class="docutils literal notranslate"><span class="pre">Transaction</span></code>: transaction map.<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, if an error occurred.</p>
-<p>Write data to the SPI device, using the intructions encoded in the supplied transaction.</p>
+<p>Write data to the SPI device, using the instructions encoded in the supplied transaction.</p>
 <p>The supplied <code class="docutils literal notranslate"><span class="pre">Transaction</span></code> encodes information about how data is to be written to the selected SPI device.
 See the description above for the fields that may be specified in this map.</p>
 <p>When a binary is supplied in the <code class="docutils literal notranslate"><span class="pre">write_data</span></code> field, the data is written to the
@@ -327,7 +327,7 @@ The returned reason term is implementation-defined.</p>
 write_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer(), Data::integer()) -&gt; {ok, integer()} | error
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address to which to write<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: device name from configuration<br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address to which to write<br /><code class="docutils literal notranslate"><span class="pre">Len</span></code>: in bytes to read<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: byte(s) to write<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Value}</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
 <p>Write a value to and address on the device.</p>
 <p>The value returned from this function is dependent on the device and address.
@@ -343,7 +343,7 @@ write_read(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: SPI device name (use key in <code class="docutils literal notranslate"><span class="pre">device_config</span></code>)<br /><code class="docutils literal notranslate"><span class="pre">Transaction</span></code>: transaction.<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">binary()}</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, if an error occurred.</p>
-<p>Write data to the SPI device, using the intructions encoded in the supplied transaction.
+<p>Write data to the SPI device, using the instructions encoded in the supplied transaction.
 device, and simultaneously read data back from the device, returning the read data in a binary.</p>
 <p>The supplied <code class="docutils literal notranslate"><span class="pre">Transaction</span></code> encodes information about how data is to be written to the selected SPI device.
 See the description above for the fields that may be specified in this map.</p>

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -126,7 +126,7 @@
   <section id="module-erlang">
 <h1>Module erlang<a class="headerlink" href="#module-erlang" title="Permalink to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
@@ -139,7 +139,7 @@ that are not already defined as NIFs.</p>
 <section id="mem-type">
 <h3><a name="type-mem_type">mem_type()</a><a class="headerlink" href="#mem-type" title="Permalink to this heading"></a></h3>
 <pre><code>
-mem_type() = binary
+mem_type() = binary()
 </code></pre>
 </section>
 <section id="time-unit">
@@ -152,7 +152,7 @@ time_unit() = second | millisecond | microsecond
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td></td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td>    Returns the result of applying Function in Module to Args.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
 https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
 Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
 <p><a name="functions"></a></p>
@@ -162,7 +162,23 @@ Time ms, where TimerRef is the reference returned from this function.</td></tr><
 <p><a name="apply-3"></a></p>
 <section id="apply-3">
 <h3>apply/3<a class="headerlink" href="#apply-3" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">apply(Module,</span> <span class="pre">Function,</span> <span class="pre">Args)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+apply(Module::module(), Function::function(), Args::[term()]) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: Name of module<br /><code class="docutils literal notranslate"><span class="pre">Function</span></code>: Exported function name<br /><code class="docutils literal notranslate"><span class="pre">Args</span></code>: Parameters to pass to function (max 6)<br /></p>
+<p>returns: Returns the result of Module:Function(Args).</p>
+<p>Returns the result of applying Function in Module to Args. The applied
+function must be exported from Module. The arity of the function is the
+length of Args. Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>              &gt; apply(lists, reverse, [[a, b, c]]).
+           [c,b,a]
+           &gt; apply(erlang, atom_to_list, [&#39;AtomVM&#39;]).
+           &quot;AtomVM&quot;
+</pre></div>
+</div>
+<p>If the number of arguments are known at compile time, the call is better
+written as Module:Function(Arg1, Arg2, …, ArgN).</p>
 <p><a name="is_map-1"></a></p>
 </section>
 <section id="is-map-1">
@@ -222,7 +238,12 @@ map_size(Map::map()) -&gt; non_neg_integer()
 </section>
 <section id="max-2">
 <h3>max/2<a class="headerlink" href="#max-2" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">max(A,</span> <span class="pre">B)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+max(A::any(), B::any()) -&gt; any()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">A</span></code>: any term<br /><code class="docutils literal notranslate"><span class="pre">B</span></code>: any term<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">A</span></code> if <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&gt;</span> <span class="pre">B</span></code>; <code class="docutils literal notranslate"><span class="pre">B</span></code>, otherwise.</p>
 <p>Return the minimum value of two terms</p>
 <p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> and follow the ordering principles defined in
 https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>
@@ -253,7 +274,12 @@ memory(Type::<a href="#type-mem_type">mem_type()</a>) -&gt; non_neg_integer()
 </section>
 <section id="min-2">
 <h3>min/2<a class="headerlink" href="#min-2" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">min(A,</span> <span class="pre">B)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+min(A::any(), B::any()) -&gt; any()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">A</span></code>: any term<br /><code class="docutils literal notranslate"><span class="pre">B</span></code>: any term<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">A</span></code> if <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">&lt;</span> <span class="pre">B</span></code>; <code class="docutils literal notranslate"><span class="pre">B</span></code>, otherwise.</p>
 <p>Return the minimum value of two terms</p>
 <p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and follow the ordering principles defined in
 https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>

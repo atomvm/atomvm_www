@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_statem &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module gen_statem &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -126,7 +126,7 @@
   <section id="module-gen-statem">
 <h1>Module gen_statem<a class="headerlink" href="#module-gen-statem" title="Permalink to this heading"></a></h1>
 <ul class="simple">
-<li><p><a class="reference internal" href="string.html#description"><span class="std std-ref">Description</span></a></p></li>
+<li><p><a class="reference internal" href="timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
@@ -145,7 +145,7 @@ below.</p>
 <li><p>No support for start_link</p></li>
 <li><p>Support only for locally named gen_statem instances</p></li>
 <li><p>Support only for state function event handlers</p></li>
-<li><p>No support for keeep_state or repeat_state return values from Module:StateName/3 callbacks</p></li>
+<li><p>No support for keep_state or repeat_state return values from Module:StateName/3 callbacks</p></li>
 <li><p>No support for postpone or hibernate state transition actions</p></li>
 <li><p>No support for state enter calls</p></li>
 <li><p>No support for multi_call</p></li>
@@ -202,7 +202,12 @@ reply from the gen_statem.</p>
 </section>
 <section id="cast-2">
 <h3>cast/2<a class="headerlink" href="#cast-2" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">cast(ServerRef,</span> <span class="pre">Request)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+cast(ServerRef::<a href="#type-server_ref">server_ref()</a>, Request::term()) -&gt; ok | {error, Reason::term()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">ServerRef</span></code>: a reference to the gen_statem acquired via start<br /><code class="docutils literal notranslate"><span class="pre">Request</span></code>: the request to send to the gen_statem<br /></p>
+<p>returns: ok | {error, Reason}</p>
 <p>Send a request to a gen_statem instance.</p>
 <p>This function will send the specified request to the specified
 gen_statem instance, but will not wait for a reply.</p>
@@ -210,7 +215,12 @@ gen_statem instance, but will not wait for a reply.</p>
 </section>
 <section id="reply-2">
 <h3>reply/2<a class="headerlink" href="#reply-2" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">reply(Client,</span> <span class="pre">Reply)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+reply(Client::pid(), Reply::term()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Client</span></code>: the client to whom to send the reply<br /><code class="docutils literal notranslate"><span class="pre">Reply</span></code>: the reply to send to the client<br /></p>
+<p>returns: an arbitrary term, that should be ignored</p>
 <p>Send a reply to a calling client.</p>
 <p>This function will send the specified reply back to the specified
 gen_statem client (e.g, via call/3).  The return value of this

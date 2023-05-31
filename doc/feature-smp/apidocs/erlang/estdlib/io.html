@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module io &mdash; AtomVM 0.6.0-dev+git.c73a877 documentation</title>
+  <title>Module io &mdash; AtomVM 0.6.0-dev+git.687cd57 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -126,13 +126,19 @@
   <section id="module-io">
 <h1>Module io<a class="headerlink" href="#module-io" title="Permalink to this heading"></a></h1>
 <ul class="simple">
+<li><p><a class="reference internal" href="timer.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
 </ul>
-<p><a name="index"></a></p>
+<p>An implementation of the Erlang/OTP io interface.</p>
+<p><a name="description"></a></p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<p>This module implements a strict subset of the Erlang/OTP io interface.<a name="index"></a></p>
+</section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#format-1">format/1</a></td><td>    Equivalent to format(Format, []).</td></tr><tr><td valign="top"><a href="#format-2">format/2</a></td><td>    Format string and data to console.</td></tr><tr><td valign="top"><a href="#get_line-1">get_line/1</a></td><td></td></tr><tr><td valign="top"><a href="#put_chars-1">put_chars/1</a></td><td></td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#format-1">format/1</a></td><td>    Equivalent to format(Format, []).</td></tr><tr><td valign="top"><a href="#format-2">format/2</a></td><td>    Format string and data to console.</td></tr><tr><td valign="top"><a href="#get_line-1">get_line/1</a></td><td>    Read string from console with prompt.</td></tr><tr><td valign="top"><a href="#put_chars-1">put_chars/1</a></td><td>    Writes the given character(s) to the console.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -162,12 +168,24 @@ formatting capabilities.</p>
 </section>
 <section id="get-line-1">
 <h3>get_line/1<a class="headerlink" href="#get-line-1" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">get_line(Prompt)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+get_line(Prompt::string()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Prompt</span></code>: prompt for user input<br /></p>
+<p>returns: string</p>
+<p>Read string from console with prompt.</p>
 <p><a name="put_chars-1"></a></p>
 </section>
 <section id="put-chars-1">
 <h3>put_chars/1<a class="headerlink" href="#put-chars-1" title="Permalink to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">put_chars(Chars)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<pre><code>
+put_chars(Chars::list() | binary()) -&gt; ok
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Chars</span></code>: character(s) to write to console<br /></p>
+<p>returns: ok</p>
+<p>Writes the given character(s) to the console.</p>
 </section>
 </section>
 </section>
