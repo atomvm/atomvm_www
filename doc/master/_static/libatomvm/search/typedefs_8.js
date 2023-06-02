@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['native_5fhandler_5ff_1788',['native_handler_f',['../context_8h.html#ab8155e89c776ff9773e36caf85f7d860',1,'context.h']]],
-  ['nativehandlerresult_1789',['NativeHandlerResult',['../context_8h.html#af03210f09c25e2a89b1d2b4ae8e670e2',1,'context.h']]],
-  ['nifimpl_1790',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
+  ['mailboxmessage_1798',['MailboxMessage',['../mailbox_8h.html#ae9c3e2d3b281f99211e8c269fc51ad89',1,'mailbox.h']]],
+  ['message_1799',['Message',['../mailbox_8h.html#a82fffef6ac8d8a796ab35b7d6a7a0dcb',1,'mailbox.h']]],
+  ['module_1800',['Module',['../exportedfunction_8h.html#af3a26d1aa4a6eb8196181f1b6bab5ff7',1,'Module():&#160;exportedfunction.h'],['../globalcontext_8h.html#af3a26d1aa4a6eb8196181f1b6bab5ff7',1,'Module():&#160;globalcontext.h']]],
+  ['mutex_1801',['Mutex',['../smp_8h.html#a1fdb53d93342fbedcbbec76e6b3ec87f',1,'smp.h']]]
 ];

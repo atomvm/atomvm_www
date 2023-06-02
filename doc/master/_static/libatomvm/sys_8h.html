@@ -67,6 +67,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -133,6 +134,15 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 <p><a href="sys_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ac544ff53d6f7affdcc93e58538a1702a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a></td></tr>
+<tr class="memdesc:ac544ff53d6f7affdcc93e58538a1702a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event listener.  <a href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">More...</a><br /></td></tr>
+<tr class="separator:ac544ff53d6f7affdcc93e58538a1702a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa264b48d0e98aa3fbf7255b3958dd3fc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#aa264b48d0e98aa3fbf7255b3958dd3fc">event_handler_t</a>) (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb, <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *listener)</td></tr>
+<tr class="memdesc:aa264b48d0e98aa3fbf7255b3958dd3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event handlers (for ports)  <a href="sys_8h.html#aa264b48d0e98aa3fbf7255b3958dd3fc">More...</a><br /></td></tr>
+<tr class="separator:aa264b48d0e98aa3fbf7255b3958dd3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:adc29c2ff13d900c2f185ee95427fb06c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="sys_8h.html#adc29c2ff13d900c2f185ee95427fb06ca91b5ea3292a67ea0b5f1f814b32625ad">SYS_POLL_EVENTS_DO_NOT_WAIT</a> = 0
@@ -143,8 +153,17 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a08afcd2c2575b364a30426ea0062b0e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a08afcd2c2575b364a30426ea0062b0e4">sys_poll_events</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb, int timeout_ms)</td></tr>
-<tr class="memdesc:a08afcd2c2575b364a30426ea0062b0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll events (from drivers), with a timeout (in ms), or until <code>sys_signal</code> is called.  <a href="sys_8h.html#a08afcd2c2575b364a30426ea0062b0e4">More...</a><br /></td></tr>
+<tr class="memdesc:a08afcd2c2575b364a30426ea0062b0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Poll events (from drivers and select events), with a timeout (in ms), or until <code>sys_signal</code> is called.  <a href="sys_8h.html#a08afcd2c2575b364a30426ea0062b0e4">More...</a><br /></td></tr>
 <tr class="separator:a08afcd2c2575b364a30426ea0062b0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b7db052990bcae1c3960b29b908cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ac7b7db052990bcae1c3960b29b908cf7">sys_register_listener</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *listener)</td></tr>
+<tr class="memdesc:ac7b7db052990bcae1c3960b29b908cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a listener.  <a href="sys_8h.html#ac7b7db052990bcae1c3960b29b908cf7">More...</a><br /></td></tr>
+<tr class="separator:ac7b7db052990bcae1c3960b29b908cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e226610fbb47c05444cbef9357db5b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a9e226610fbb47c05444cbef9357db5b3">sys_unregister_listener</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *listener)</td></tr>
+<tr class="memdesc:a9e226610fbb47c05444cbef9357db5b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister a listener.  <a href="sys_8h.html#a9e226610fbb47c05444cbef9357db5b3">More...</a><br /></td></tr>
+<tr class="separator:a9e226610fbb47c05444cbef9357db5b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa964190388e51e054170f047ea7ab076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#aa964190388e51e054170f047ea7ab076">sys_listener_destroy</a> (struct <a class="el" href="struct_list_head.html">ListHead</a> *item)</td></tr>
+<tr class="memdesc:aa964190388e51e054170f047ea7ab076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a listener.  <a href="sys_8h.html#aa964190388e51e054170f047ea7ab076">More...</a><br /></td></tr>
+<tr class="separator:aa964190388e51e054170f047ea7ab076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad373b27d5d7364accaf66a1762a1cd72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ad373b27d5d7364accaf66a1762a1cd72">sys_signal</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:ad373b27d5d7364accaf66a1762a1cd72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt the wait in <code>sys_poll_events</code>.  <a href="sys_8h.html#ad373b27d5d7364accaf66a1762a1cd72">More...</a><br /></td></tr>
 <tr class="separator:ad373b27d5d7364accaf66a1762a1cd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,10 +193,64 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Platform specific functions. </p>
-<p>This header defines platform dependent functions, that mostly deals with events. </p>
+<p>This header defines platform dependent functions, that mostly deals with events. Some functions can be implemented by using functions defined and implemented in <code><a class="el" href="listeners_8h.html" title="Common code for port listeners.">listeners.h</a></code> header. </p>
 
 <p class="definition">Definition in file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
-</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+</div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="aa264b48d0e98aa3fbf7255b3958dd3fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa264b48d0e98aa3fbf7255b3958dd3fc">&#9670;&nbsp;</a></span>event_handler_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a>*(* event_handler_t) (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb, <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *listener)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event handlers (for ports) </p>
+<p>The event handler is called from the scheduler thread but outside any process. It can send messages to processes using <code>globalcontext_send_message</code> function.</p>
+<p>Result of this callback alters the list of handlers which is locked for writing when it is called. It can:</p><ul>
+<li>return <code>listener</code>, in which case the list is not modified</li>
+<li>return <code>NULL</code>, in which case the entry is removed. The callback is responsible for freeing the listener.</li>
+<li>return another listener, in which case the current listener is replaced by the other listener. The callback is responsible for freeing the previous listener if it is no longer needed.</li>
+</ul>
+<p>Appending a listener is also possible by altering the list head.</p>
+<p>This callback is defined for platforms using <code><a class="el" href="listeners_8h.html" title="Common code for port listeners.">listeners.h</a></code> header and can be ignored by others.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">glb</td><td>global context </td></tr>
+    <tr><td class="paramname">listener</td><td>the current listener </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL if the current listener should be removed, listener if it should be kept or another listener if it should be replaced. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00084">84</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+
+</div>
+</div>
+<a id="ac544ff53d6f7affdcc93e58538a1702a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac544ff53d6f7affdcc93e58538a1702a">&#9670;&nbsp;</a></span>EventListener</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> <a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Event listener. </p>
+<p>An event listener structure should be defined by the platform. Event listeners belong to the <code><a class="el" href="struct_global_context.html#a9219a7e5d9396ea0141e1612cf5cff48">GlobalContext.listeners</a></code> synchronized list. </p>
+
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00001">1</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="adc29c2ff13d900c2f185ee95427fb06c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adc29c2ff13d900c2f185ee95427fb06c">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
@@ -194,7 +267,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="adc29c2ff13d900c2f185ee95427fb06ca47e43a38d2014c9a9fc78347330c3ded"></a>SYS_POLL_EVENTS_WAIT_FOREVER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00042">42</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00044">44</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
 
 </div>
 </div>
@@ -322,6 +395,35 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa964190388e51e054170f047ea7ab076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa964190388e51e054170f047ea7ab076">&#9670;&nbsp;</a></span>sys_listener_destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_listener_destroy </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_list_head.html">ListHead</a> *&#160;</td>
+          <td class="paramname"><em>item</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Free a listener. </p>
+<p>This function is called when the global context is destroyed on every remaining listener. An implementation is available in <code><a class="el" href="listeners_8h.html" title="Common code for port listeners.">listeners.h</a></code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">item</td><td>list item </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="listeners_8h_source.html#l00147">147</a> of file <a class="el" href="listeners_8h_source.html">listeners.h</a>.</p>
+
+</div>
+</div>
 <a id="a0ce28625e5d39c550f71fdd7e7f0891c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ce28625e5d39c550f71fdd7e7f0891c">&#9670;&nbsp;</a></span>sys_load_module()</h2>
 
@@ -429,12 +531,55 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Poll events (from drivers), with a timeout (in ms), or until <code>sys_signal</code> is called. </p>
+<p>Poll events (from drivers and select events), with a timeout (in ms), or until <code>sys_signal</code> is called. </p>
 <p>Depending on platforms, check all open file descriptors/queues and call drivers that should send messages to contexts (which will unblock them). With SMP builds, this function can be called from any scheduler.</p>
+<p>If selectable events are supported on the platform, this function should also:</p><ul>
+<li>call <code>select_event_destroy</code> on select events that have close set to 1</li>
+<li>include the set of ErlNifEvent that are marked for read or write in the select set, and if they are selected, call <code>select_event_notify</code> to send the notification.</li>
+</ul>
+<p><code>select_event_count_and_destroy_closed</code> defined in resources.h can be used to process closed select events.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">glb</td><td>the global context. </td></tr>
     <tr><td class="paramname">timeout_ms</td><td>the number of ms to wait, <code>SYS_POLL_EVENTS_WAIT_FOREVER</code> to wait forever. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac7b7db052990bcae1c3960b29b908cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b7db052990bcae1c3960b29b908cf7">&#9670;&nbsp;</a></span>sys_register_listener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_register_listener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register a listener. </p>
+<p>This function is called by ports to register a listener which is a native alternative to select events. The actual definition of listeners is platform dependent.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">global</td><td>the global context. </td></tr>
+    <tr><td class="paramname">listener</td><td>the listener to register </td></tr>
   </table>
   </dd>
 </dl>
@@ -489,6 +634,44 @@ Functions</h2></td></tr>
 <p>gets system wall clock time. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>the timespec that will be updated. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9e226610fbb47c05444cbef9357db5b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e226610fbb47c05444cbef9357db5b3">&#9670;&nbsp;</a></span>sys_unregister_listener()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void sys_unregister_listener </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="sys_8h.html#ac544ff53d6f7affdcc93e58538a1702a">EventListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unregister a listener. </p>
+<p>This function is called by ports to unregister a listener which is a native alternative to select events. The actual definition of listeners is platform dependent.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">global</td><td>the global context. </td></tr>
+    <tr><td class="paramname">listener</td><td>the listener to unregister. </td></tr>
   </table>
   </dd>
 </dl>

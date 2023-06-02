@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sys.h &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
+  <title>sys.h &mdash; AtomVM 0.6.0-dev+git.69c5177 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -96,6 +96,7 @@
 <li class="toctree-l4"><a class="reference internal" href="interop.h.html">interop.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="linkedlist.h.html">linkedlist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="list.h.html">list.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="listeners.h.html">listeners.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mailbox.c.html">mailbox.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="mailbox.h.html">mailbox.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="memory.c.html">memory.c</a></li>
@@ -295,6 +296,19 @@
 </div>
 </figure>
 <div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv413EventListener">
+<span id="_CPPv313EventListener"></span><span id="_CPPv213EventListener"></span><span id="EventListener"></span><span class="target" id="sys_8h_1ac544ff53d6f7affdcc93e58538a1702a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EventListener</span></span></span><a class="headerlink" href="#_CPPv413EventListener" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415event_handler_t">
+<span id="_CPPv315event_handler_t"></span><span id="_CPPv215event_handler_t"></span><span id="event_handler_t"></span><span class="target" id="sys_8h_1aa264b48d0e98aa3fbf7255b3958dd3fc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_handler_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv415event_handler_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
 <dt class="sig sig-object cpp" id="_CPPv4Ut1_4">
@@ -318,6 +332,21 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv415sys_poll_eventsP13GlobalContexti">
 <span id="_CPPv315sys_poll_eventsP13GlobalContexti"></span><span id="_CPPv215sys_poll_eventsP13GlobalContexti"></span><span id="sys_poll_events__GlobalContextP.i"></span><span class="target" id="sys_8h_1a08afcd2c2575b364a30426ea0062b0e4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_poll_events</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv415sys_poll_eventsP13GlobalContexti" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421sys_register_listenerP13GlobalContextP13EventListener">
+<span id="_CPPv321sys_register_listenerP13GlobalContextP13EventListener"></span><span id="_CPPv221sys_register_listenerP13GlobalContextP13EventListener"></span><span id="sys_register_listener__GlobalContextP.EventListenerP"></span><span class="target" id="sys_8h_1ac7b7db052990bcae1c3960b29b908cf7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span>, <a class="reference internal" href="#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421sys_register_listenerP13GlobalContextP13EventListener" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv423sys_unregister_listenerP13GlobalContextP13EventListener">
+<span id="_CPPv323sys_unregister_listenerP13GlobalContextP13EventListener"></span><span id="_CPPv223sys_unregister_listenerP13GlobalContextP13EventListener"></span><span id="sys_unregister_listener__GlobalContextP.EventListenerP"></span><span class="target" id="sys_8h_1a9e226610fbb47c05444cbef9357db5b3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span>, <a class="reference internal" href="#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv423sys_unregister_listenerP13GlobalContextP13EventListener" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420sys_listener_destroyP8ListHead">
+<span id="_CPPv320sys_listener_destroyP8ListHead"></span><span id="_CPPv220sys_listener_destroyP8ListHead"></span><span id="sys_listener_destroy__ListHeadP"></span><span class="target" id="sys_8h_1aa964190388e51e054170f047ea7ab076"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_listener_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="linkedlist.h.html#_CPPv48ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">item</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

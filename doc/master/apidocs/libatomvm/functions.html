@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.6.0-dev+git.b28ab07 documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-dev+git.69c5177 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -2079,8 +2079,14 @@ If the function has a return type:
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv415sys_poll_eventsP13GlobalContexti">
 <span id="_CPPv315sys_poll_eventsP13GlobalContexti"></span><span id="_CPPv215sys_poll_eventsP13GlobalContexti"></span><span id="sys_poll_events__GlobalContextP.i"></span><span class="target" id="sys_8h_1a08afcd2c2575b364a30426ea0062b0e4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_poll_events</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/globalcontext.h.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">timeout_ms</span></span><span class="sig-paren">)</span><br /></dt>
-<dd><p>Poll events (from drivers), with a timeout (in ms), or until <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> is called. </p>
+<dd><p>Poll events (from drivers and select events), with a timeout (in ms), or until <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> is called. </p>
 <p>Depending on platforms, check all open file descriptors/queues and call drivers that should send messages to contexts (which will unblock them). With SMP builds, this function can be called from any scheduler.</p>
+<p>If selectable events are supported on the platform, this function should also:<ul class="simple">
+<li><p>call <code class="docutils literal notranslate"><span class="pre">select_event_destroy</span></code> on select events that have close set to 1</p></li>
+<li><p>include the set of ErlNifEvent that are marked for read or write in the select set, and if they are selected, call <code class="docutils literal notranslate"><span class="pre">select_event_notify</span></code> to send the notification.</p></li>
+</ul>
+</p>
+<p><code class="docutils literal notranslate"><span class="pre">select_event_count_and_destroy_closed</span></code> defined in resources.h can be used to process closed select events.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
