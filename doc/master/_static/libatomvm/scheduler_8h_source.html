@@ -99,40 +99,38 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="context_8h.html">context.h</a>&quot;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="globalcontext_8h.html">globalcontext.h</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="linkedlist_8h.html">linkedlist.h</a>&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="scheduler_8h.html#a116fafd3acea20d2b9003ebcc45cb0da">   39</a></span>&#160;<span class="preprocessor">#define DEFAULT_REDUCTIONS_AMOUNT 1024</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#ab457198254e11c5b1ab1755ed8bf8f80">scheduler_run</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#a243902bba75435498ae10d95b86e3bb8">scheduler_wait</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#afe8988a72f459c211456c4bd5525ea52">scheduler_init_ready</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a37de952710013ff981e38441b36fbc81">scheduler_signal_message</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="scheduler_8h.html#afbdef03adac82bab7dbad95d00478fdf">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#afbdef03adac82bab7dbad95d00478fdf">scheduler_kill</a>(<a class="code" href="struct_context.html">Context</a> *ctx);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a919e27f9a5e019f3b4502a484dc7e04e">scheduler_terminate</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a910f89e4e6e54688cb59b18002bd3bef">scheduler_stop_all</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#aa1369fe1ce52c303fffad64ef8a92470">scheduler_next</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global, <a class="code" href="struct_context.html">Context</a> *c);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a313953b6206191ae5f839fd5710012d8">scheduler_set_timeout</a>(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> timeout);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a5c2d875a46b835c991c15c7da6e61b2c">scheduler_cancel_timeout</a>(<a class="code" href="struct_context.html">Context</a> *ctx);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">int</span> <a class="code" href="scheduler_8h.html#a5d7a1d97424793bbe3f2d9cfa413a939">scheduler_entry_point</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="scheduler_8h.html#a116fafd3acea20d2b9003ebcc45cb0da">   38</a></span>&#160;<span class="preprocessor">#define DEFAULT_REDUCTIONS_AMOUNT 1024</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#ab457198254e11c5b1ab1755ed8bf8f80">scheduler_run</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#a243902bba75435498ae10d95b86e3bb8">scheduler_wait</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#afe8988a72f459c211456c4bd5525ea52">scheduler_init_ready</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a37de952710013ff981e38441b36fbc81">scheduler_signal_message</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="scheduler_8h.html#afbdef03adac82bab7dbad95d00478fdf">   74</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#afbdef03adac82bab7dbad95d00478fdf">scheduler_kill</a>(<a class="code" href="struct_context.html">Context</a> *ctx);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a919e27f9a5e019f3b4502a484dc7e04e">scheduler_terminate</a>(<a class="code" href="struct_context.html">Context</a> *c);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a910f89e4e6e54688cb59b18002bd3bef">scheduler_stop_all</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<a class="code" href="struct_context.html">Context</a> *<a class="code" href="scheduler_8h.html#aa1369fe1ce52c303fffad64ef8a92470">scheduler_next</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *global, <a class="code" href="struct_context.html">Context</a> *c);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a313953b6206191ae5f839fd5710012d8">scheduler_set_timeout</a>(<a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> timeout);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keywordtype">void</span> <a class="code" href="scheduler_8h.html#a5c2d875a46b835c991c15c7da6e61b2c">scheduler_cancel_timeout</a>(<a class="code" href="struct_context.html">Context</a> *ctx);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">int</span> <a class="code" href="scheduler_8h.html#a5d7a1d97424793bbe3f2d9cfa413a939">scheduler_entry_point</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="acontext_8h_html"><div class="ttname"><a href="context_8h.html">context.h</a></div><div class="ttdoc">Context struct and related management functions.</div></div>
 <div class="ttc" id="aglobalcontext_8h_html"><div class="ttname"><a href="globalcontext_8h.html">globalcontext.h</a></div><div class="ttdoc">GlobalContext struct and related management functions.</div></div>
-<div class="ttc" id="alinkedlist_8h_html"><div class="ttname"><a href="linkedlist_8h.html">linkedlist.h</a></div><div class="ttdoc">Linked list manipulation functions.</div></div>
 <div class="ttc" id="ascheduler_8h_html_a243902bba75435498ae10d95b86e3bb8"><div class="ttname"><a href="scheduler_8h.html#a243902bba75435498ae10d95b86e3bb8">scheduler_wait</a></div><div class="ttdeci">Context * scheduler_wait(Context *c)</div><div class="ttdoc">move a process to waiting queue and wait a ready one</div><div class="ttdef"><b>Definition:</b> <a href="scheduler_8c_source.html#l00067">scheduler.c:67</a></div></div>
 <div class="ttc" id="ascheduler_8h_html_a313953b6206191ae5f839fd5710012d8"><div class="ttname"><a href="scheduler_8h.html#a313953b6206191ae5f839fd5710012d8">scheduler_set_timeout</a></div><div class="ttdeci">void scheduler_set_timeout(Context *ctx, avm_int64_t timeout)</div><div class="ttdoc">sets context timeout</div><div class="ttdef"><b>Definition:</b> <a href="scheduler_8c_source.html#l00367">scheduler.c:367</a></div></div>
 <div class="ttc" id="ascheduler_8h_html_a37de952710013ff981e38441b36fbc81"><div class="ttname"><a href="scheduler_8h.html#a37de952710013ff981e38441b36fbc81">scheduler_signal_message</a></div><div class="ttdeci">void scheduler_signal_message(Context *c)</div><div class="ttdoc">Signal a process that a message was inserted in the mailbox.</div><div class="ttdef"><b>Definition:</b> <a href="scheduler_8c_source.html#l00336">scheduler.c:336</a></div></div>
