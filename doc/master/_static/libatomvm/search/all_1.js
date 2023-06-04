@@ -18,7 +18,7 @@ var searchData=
   ['atom_5fext_5fbase_5fsize_18',['ATOM_EXT_BASE_SIZE',['../externalterm_8c.html#a89ddc9d6a504a06a2e6518544b2e77e5',1,'externalterm.c']]],
   ['atom_5findex_19',['atom_index',['../struct_registered_process.html#aae56a977d2505e8c5a1e99b6667c21d2',1,'RegisteredProcess']]],
   ['atom_5fstr_20',['ATOM_STR',['../atom_8h.html#ad0dd58b295b49b8c51604aa4ab7d4cdb',1,'atom.h']]],
-  ['atom_5fstring_5fto_5fc_21',['atom_string_to_c',['../atom_8c.html#a6057513f5765055084abd2c6b87d3a08',1,'atom_string_to_c(AtomString atom_string, char *buf, int bufsize):&#160;atom.c'],['../atom_8h.html#a6057513f5765055084abd2c6b87d3a08',1,'atom_string_to_c(AtomString atom_string, char *buf, int bufsize):&#160;atom.c']]],
+  ['atom_5fstring_5fto_5fc_21',['atom_string_to_c',['../atom_8h.html#a6057513f5765055084abd2c6b87d3a08',1,'atom_string_to_c(AtomString atom_string, char *buf, int bufsize):&#160;atom.c'],['../atom_8c.html#a6057513f5765055084abd2c6b87d3a08',1,'atom_string_to_c(AtomString atom_string, char *buf, int bufsize):&#160;atom.c']]],
   ['atom_5ftable_22',['atom_table',['../struct_module.html#a90db7da51648667cc6cf849f50e03bdf',1,'Module']]],
   ['atom_5fwrite_5fmfa_23',['atom_write_mfa',['../atom_8c.html#a64e8933778a82c90b1ddaf3115e0e0b9',1,'atom_write_mfa(char *buf, size_t buf_size, AtomString module, AtomString function, int arity):&#160;atom.c'],['../atom_8h.html#a64e8933778a82c90b1ddaf3115e0e0b9',1,'atom_write_mfa(char *buf, size_t buf_size, AtomString module, AtomString function, int arity):&#160;atom.c']]],
   ['atomic_24',['ATOMIC',['../smp_8h.html#a7ae1ae649327b67ce210e47ea1ed07dc',1,'smp.h']]],
@@ -58,7 +58,7 @@ var searchData=
   ['avmpack_5ffold_5ffun_58',['avmpack_fold_fun',['../avmpack_8h.html#a6c4e59ae55feeb84bf748db015dd72ad',1,'avmpack.h']]],
   ['avmpack_5fhead_59',['avmpack_head',['../struct_a_v_m_pack_data.html#ae3986a0429af5f96400b2a51f1850885',1,'AVMPackData']]],
   ['avmpack_5fis_5fvalid_60',['avmpack_is_valid',['../avmpack_8c.html#a14a40b6731bba3b13d9e7e57a6c855ce',1,'avmpack_is_valid(const void *avmpack_binary, uint32_t size):&#160;avmpack.c'],['../avmpack_8h.html#a14a40b6731bba3b13d9e7e57a6c855ce',1,'avmpack_is_valid(const void *avmpack_binary, uint32_t size):&#160;avmpack.c']]],
-  ['avmpack_5fplatform_5fdata_61',['avmpack_platform_data',['../struct_global_context.html#a192d57ff8b02f7b3a8767b8366645dbb',1,'GlobalContext']]],
-  ['avmpack_5fsize_62',['AVMPACK_SIZE',['../avmpack_8c.html#ab22f25225d95bb43f4b3fae0908ccc6e',1,'avmpack.c']]],
-  ['avmpackdata_63',['AVMPackData',['../struct_a_v_m_pack_data.html',1,'']]]
+  ['avmpack_5fsize_61',['AVMPACK_SIZE',['../avmpack_8c.html#ab22f25225d95bb43f4b3fae0908ccc6e',1,'avmpack.c']]],
+  ['avmpackdata_62',['AVMPackData',['../struct_a_v_m_pack_data.html',1,'']]],
+  ['avmpackinfo_63',['AVMPackInfo',['../struct_a_v_m_pack_info.html',1,'']]]
 ];
