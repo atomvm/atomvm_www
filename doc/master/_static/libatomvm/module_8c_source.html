@@ -608,7 +608,7 @@ $(function() {
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <a class="code" href="module_8c.html#a54c65b9091d03aa05298edafd924119f">CHECK_FREE_SPACE</a>(4, <span class="stringliteral">&quot;Error reading Line chunk: version\n&quot;</span>);</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    uint32_t version = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(pos);</div>
 <div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(version != 0)) {</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Warning: Unsupported line version %u.  Line information in stacktraces may be missing\n&quot;</span>, version);</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Warning: Unsupported line version %&quot;</span> PRIu32 <span class="stringliteral">&quot;. Line information in stacktraces may be missing\n&quot;</span>, version);</div>
 <div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    }</div>
 <div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;    pos += 4;</div>
