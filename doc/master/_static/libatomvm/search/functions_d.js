@@ -39,7 +39,7 @@ var searchData=
   ['sys_5flistener_5fdestroy_1601',['sys_listener_destroy',['../listeners_8h.html#aa964190388e51e054170f047ea7ab076',1,'sys_listener_destroy(struct ListHead *item):&#160;listeners.h'],['../sys_8h.html#aa964190388e51e054170f047ea7ab076',1,'sys_listener_destroy(struct ListHead *item):&#160;listeners.h']]],
   ['sys_5fload_5fmodule_1602',['sys_load_module',['../sys_8h.html#a0ce28625e5d39c550f71fdd7e7f0891c',1,'sys.h']]],
   ['sys_5fload_5fmodule_5ffrom_5ffile_1603',['sys_load_module_from_file',['../sys_8h.html#af8e4b5086ab22d8ccc2105b8837f321a',1,'sys.h']]],
-  ['sys_5fmillis_1604',['sys_millis',['../sys_8h.html#ac99f2d29debed6fb3d5bc98f2ef145a2',1,'sys.h']]],
+  ['sys_5fmonotonic_5fmillis_1604',['sys_monotonic_millis',['../sys_8h.html#a4b985490bed2df3d0d78ec86d4c45133',1,'sys.h']]],
   ['sys_5fmonotonic_5ftime_1605',['sys_monotonic_time',['../sys_8h.html#a55b857f3c7de74a921d9bf4584f36867',1,'sys.h']]],
   ['sys_5fopen_5favm_5ffrom_5ffile_1606',['sys_open_avm_from_file',['../sys_8h.html#a523d9adef606022dd2042b85430fa60c',1,'sys.h']]],
   ['sys_5fpoll_5fevents_1607',['sys_poll_events',['../sys_8h.html#a08afcd2c2575b364a30426ea0062b0e4',1,'sys.h']]],
