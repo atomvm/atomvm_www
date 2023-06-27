@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['data_253',['data',['../struct_a_v_m_pack_data.html#a5ec0abbbebfe62014a9f61c660343b47',1,'AVMPackData::data()'],['../struct_literal_entry.html#aa5b164ff4e1998c6e990338cb0cf82c3',1,'LiteralEntry::data()'],['../struct_module_filename.html#a449760bc431a6c31720dd15842bf4a38',1,'ModuleFilename::data()']]],
+  ['data_253',['data',['../struct_a_v_m_pack_data.html#a5ec0abbbebfe62014a9f61c660343b47',1,'AVMPackData::data()'],['../struct_literal_entry.html#aa5b164ff4e1998c6e990338cb0cf82c3',1,'LiteralEntry::data()'],['../struct_module_filename.html#a449760bc431a6c31720dd15842bf4a38',1,'ModuleFilename::data()'],['../struct_refc_binary.html#a0fe0757d442548c74c2627613ca57be9',1,'RefcBinary::data()']]],
   ['debug_2ec_254',['debug.c',['../debug_8c.html',1,'']]],
   ['debug_2eh_255',['debug.h',['../debug_8h.html',1,'']]],
   ['debug_5fdump_5fcontext_256',['debug_dump_context',['../debug_8h.html#ab46eaaa7e170c807587b7cd0c0a0ab00',1,'debug_dump_context(Context *ctx):&#160;debug.c'],['../debug_8c.html#a95a5860910f9be54617bca2a474f4d6c',1,'debug_dump_context(Context *ctx):&#160;debug.c']]],
   ['debug_5fdump_5fheap_257',['debug_dump_heap',['../debug_8h.html#a785def2c334134cf3e3f3a18a4dbb306',1,'debug_dump_heap(Context *ctx):&#160;debug.c'],['../debug_8c.html#a3ef74cd427bc12c9865bff2196bbbca2',1,'debug_dump_heap(Context *ctx):&#160;debug.c']]],
-  ['debug_5fdump_5fmemory_258',['debug_dump_memory',['../debug_8h.html#a6dd038cc069497e0c33e63c247cefe29',1,'debug_dump_memory(Context *ctx, term *start, term *end, const char *region):&#160;debug.c'],['../debug_8c.html#a961302b353780a0b482883a926c3c9fd',1,'debug_dump_memory(Context *ctx, term *start, term *end, const char *region):&#160;debug.c']]],
+  ['debug_5fdump_5fmemory_258',['debug_dump_memory',['../debug_8c.html#a961302b353780a0b482883a926c3c9fd',1,'debug_dump_memory(Context *ctx, term *start, term *end, const char *region):&#160;debug.c'],['../debug_8h.html#a6dd038cc069497e0c33e63c247cefe29',1,'debug_dump_memory(Context *ctx, term *start, term *end, const char *region):&#160;debug.c']]],
   ['debug_5fdump_5fregisters_259',['debug_dump_registers',['../debug_8h.html#a90d234c6d4542b90dbebbfcff5ad0f14',1,'debug_dump_registers(Context *ctx):&#160;debug.c'],['../debug_8c.html#aae89032900692bc7f7ee7595de7df78b',1,'debug_dump_registers(Context *ctx):&#160;debug.c']]],
-  ['debug_5fdump_5fstack_260',['debug_dump_stack',['../debug_8c.html#a8959fb9be635ea4ed0987f5b295435a2',1,'debug_dump_stack(Context *ctx):&#160;debug.c'],['../debug_8h.html#a9358ec371ae60e04866bb31ef17b278b',1,'debug_dump_stack(Context *ctx):&#160;debug.c']]],
-  ['debug_5fdump_5fstack_261',['DEBUG_DUMP_STACK',['../debug_8h.html#aa656dd6fbab61cf6787d0c5a7c060a0a',1,'debug.h']]],
+  ['debug_5fdump_5fstack_260',['DEBUG_DUMP_STACK',['../debug_8h.html#aa656dd6fbab61cf6787d0c5a7c060a0a',1,'debug.h']]],
+  ['debug_5fdump_5fstack_261',['debug_dump_stack',['../debug_8c.html#a8959fb9be635ea4ed0987f5b295435a2',1,'debug_dump_stack(Context *ctx):&#160;debug.c'],['../debug_8h.html#a9358ec371ae60e04866bb31ef17b278b',1,'debug_dump_stack(Context *ctx):&#160;debug.c']]],
   ['debug_5ffail_5fnull_262',['DEBUG_FAIL_NULL',['../trace_8h.html#ab327135111a38af3de78c23797cb122e',1,'trace.h']]],
   ['debug_5fprint_5fprocesses_5flist_263',['debug_print_processes_list',['../debug_8c.html#a302d1f4bcf8f9890bbeb2f9b39e30856',1,'debug_print_processes_list(struct ListHead *processes):&#160;debug.c'],['../debug_8h.html#af58d27675bd634fd856fcd4cdcf963fd',1,'debug_print_processes_list(struct ListHead *processes):&#160;debug.c']]],
   ['decimals_5fatom_264',['DECIMALS_ATOM',['../defaultatoms_8h.html#ac89aefc090c5fc26ea0df04a9e177a75',1,'defaultatoms.h']]],
@@ -44,7 +44,7 @@ var searchData=
   ['dictionary_2eh_294',['dictionary.h',['../dictionary_8h.html',1,'']]],
   ['dictionary_5fdestroy_295',['dictionary_destroy',['../dictionary_8c.html#a08f1d293f1dea75860656eeeb2549902',1,'dictionary_destroy(struct ListHead *dict):&#160;dictionary.c'],['../dictionary_8h.html#a08f1d293f1dea75860656eeeb2549902',1,'dictionary_destroy(struct ListHead *dict):&#160;dictionary.c']]],
   ['dictionary_5ferase_296',['dictionary_erase',['../dictionary_8c.html#aea99aeec8201286bf11d1317e5b743fd',1,'dictionary_erase(struct ListHead *dict, term key, term *old, GlobalContext *global):&#160;dictionary.c'],['../dictionary_8h.html#a81cab2187364d7ad3d27d998e0525864',1,'dictionary_erase(struct ListHead *dict, term key, term *old, GlobalContext *ctx):&#160;dictionary.c']]],
-  ['dictionary_5fget_297',['dictionary_get',['../dictionary_8h.html#aaf2d0986ab541105d1a68ff760f4d3c0',1,'dictionary_get(struct ListHead *dict, term key, term *old, GlobalContext *ctx):&#160;dictionary.c'],['../dictionary_8c.html#afaafb62445c4b525ae18aa4bed9dae87',1,'dictionary_get(struct ListHead *dict, term key, term *old, GlobalContext *global):&#160;dictionary.c']]],
+  ['dictionary_5fget_297',['dictionary_get',['../dictionary_8c.html#afaafb62445c4b525ae18aa4bed9dae87',1,'dictionary_get(struct ListHead *dict, term key, term *old, GlobalContext *global):&#160;dictionary.c'],['../dictionary_8h.html#aaf2d0986ab541105d1a68ff760f4d3c0',1,'dictionary_get(struct ListHead *dict, term key, term *old, GlobalContext *ctx):&#160;dictionary.c']]],
   ['dictionary_5fput_298',['dictionary_put',['../dictionary_8c.html#a9f53f670b87d0c64cbf3347094a6200a',1,'dictionary_put(struct ListHead *dict, term key, term value, term *old, GlobalContext *global):&#160;dictionary.c'],['../dictionary_8h.html#aaeb3dc648f8ee72f4a2fb511f186b76b',1,'dictionary_put(struct ListHead *dict, term key, term value, term *old, GlobalContext *ctx):&#160;dictionary.c']]],
   ['dictionaryfunctionresult_299',['DictionaryFunctionResult',['../dictionary_8h.html#ad85950c231b4eaf087060ae0b424d3ce',1,'dictionary.h']]],
   ['dictionarymemoryallocfail_300',['DictionaryMemoryAllocFail',['../dictionary_8h.html#ad85950c231b4eaf087060ae0b424d3cea1483e6275be9bce2acd69082f0ed4fcb',1,'dictionary.h']]],
@@ -53,5 +53,6 @@ var searchData=
   ['down_5fatom_303',['DOWN_ATOM',['../defaultatoms_8h.html#a9421c43be7cfd22e794f9511e4ea7297',1,'defaultatoms.h']]],
   ['down_5fatom_5findex_304',['DOWN_ATOM_INDEX',['../defaultatoms_8h.html#aff2710f78ef60e8eb2e040289b8d7e7a',1,'defaultatoms.h']]],
   ['dreg_5ft_305',['dreg_t',['../opcodesswitch_8h.html#acfd26626fbf88476e0e18fd7f5162015',1,'opcodesswitch.h']]],
-  ['dreg_5ftype_5ft_306',['dreg_type_t',['../uniondreg__type__t.html',1,'']]]
+  ['dreg_5ftype_5ft_306',['dreg_type_t',['../uniondreg__type__t.html',1,'']]],
+  ['dtor_307',['dtor',['../struct_resource_type.html#a2d0bb2d4ffa7a3b61f062a83831e4638',1,'ResourceType::dtor()'],['../struct_erl_nif_resource_type_init.html#a776086453e79566a46de0687b2bf0452',1,'ErlNifResourceTypeInit::dtor()']]]
 ];
