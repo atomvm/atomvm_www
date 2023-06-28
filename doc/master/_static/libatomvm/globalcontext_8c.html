@@ -161,6 +161,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae06f860f2ebb0237b6ed54f4b0b81757"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a2a8dff1e95bf259bb264b73f67a0526b">COLD_FUNC</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalcontext_8c.html#ae06f860f2ebb0237b6ed54f4b0b81757">globalcontext_destroy</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:ae06f860f2ebb0237b6ed54f4b0b81757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destoys an existing <a class="el" href="struct_global_context.html">GlobalContext</a>.  <a href="globalcontext_8c.html#ae06f860f2ebb0237b6ed54f4b0b81757">More...</a><br /></td></tr>
 <tr class="separator:ae06f860f2ebb0237b6ed54f4b0b81757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7ea0d787c69ca653257ee8e1a5e9f3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_context.html">Context</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalcontext_8c.html#af7ea0d787c69ca653257ee8e1a5e9f3b">globalcontext_get_process_nolock</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb, int32_t process_id)</td></tr>
+<tr class="memdesc:af7ea0d787c69ca653257ee8e1a5e9f3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a <a class="el" href="struct_context.html">Context</a> from the process table, without acquiring a lock on the process table.  <a href="globalcontext_8c.html#af7ea0d787c69ca653257ee8e1a5e9f3b">More...</a><br /></td></tr>
+<tr class="separator:af7ea0d787c69ca653257ee8e1a5e9f3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5961836bc63812919b49ce8ec229381e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_context.html">Context</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globalcontext_8c.html#a5961836bc63812919b49ce8ec229381e">globalcontext_get_process_lock</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb, int32_t process_id)</td></tr>
 <tr class="memdesc:a5961836bc63812919b49ce8ec229381e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a <a class="el" href="struct_context.html">Context</a> from the process table, acquiring a lock on the process table.  <a href="globalcontext_8c.html#a5961836bc63812919b49ce8ec229381e">More...</a><br /></td></tr>
 <tr class="separator:a5961836bc63812919b49ce8ec229381e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -615,6 +618,46 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="struct_context.html">Context</a> * with the requested local process id or NULL if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="globalcontext_8c_source.html#l00224">224</a> of file <a class="el" href="globalcontext_8c_source.html">globalcontext.c</a>.</p>
+
+</div>
+</div>
+<a id="af7ea0d787c69ca653257ee8e1a5e9f3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7ea0d787c69ca653257ee8e1a5e9f3b">&#9670;&nbsp;</a></span>globalcontext_get_process_nolock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_context.html">Context</a>* globalcontext_get_process_nolock </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>glb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32_t&#160;</td>
+          <td class="paramname"><em>process_id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets a <a class="el" href="struct_context.html">Context</a> from the process table, without acquiring a lock on the process table. </p>
+<p>Retrieves from the process table the context with the given local process id. If the process can be found, without locking the process table. This is unsafe unless a lock on the process table has been obtained previously. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">glb</td><td>the global context (that owns the process table). </td></tr>
+    <tr><td class="paramname">process_id</td><td>the local process id. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a <a class="el" href="struct_context.html">Context</a> * with the requested local process id or NULL if not found. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="globalcontext_8c_source.html#l00207">207</a> of file <a class="el" href="globalcontext_8c_source.html">globalcontext.c</a>.</p>
 
 </div>
 </div>
