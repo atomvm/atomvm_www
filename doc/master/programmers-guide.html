@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.89700dc3 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.6ed12321 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -86,13 +86,18 @@
 <li class="toctree-l3"><a class="reference internal" href="#system-time">System Time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stacktraces">StackTraces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reading-data-from-avm-files">Reading data from AVM files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-loading">Code Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#math">Math</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#esp32-specific-apis">ESP32-specific APIs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-level-apis">System-Level APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#non-volatile-storage">Non-volatile Storage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#restart-and-deep-sleep">Restart and Deep Sleep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restart-and-deep-sleep">Restart and Deep Sleep</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rtc-memory">RTC Memory</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Miscellaneous</a></li>
 </ul>
 </li>
@@ -194,6 +199,8 @@
 <li><p>send (<code class="docutils literal notranslate"><span class="pre">!</span></code>) and <code class="docutils literal notranslate"><span class="pre">receive</span></code> messages</p></li>
 <li><p>bit syntax (with some restrictions)</p></li>
 <li><p>reference counted binaries</p></li>
+<li><p>stacktraces</p></li>
+<li><p>symmetric multi-processing (SMP)</p></li>
 </ul>
 <p>In addition, several features are supported specifically for integration with micro-controllers, including:</p>
 <ul class="simple">
@@ -207,6 +214,7 @@
 <li><p>UART interface</p></li>
 <li><p>LEDC (PWM)</p></li>
 <li><p>non-volatile storage (NVS)</p></li>
+<li><p>RTC storage</p></li>
 <li><p>deep sleep</p></li>
 </ul>
 </li>
@@ -217,7 +225,6 @@
 <ul class="simple">
 <li><p>Bignums.  Integer values are restricted to 64-bit values.</p></li>
 <li><p>Bit Syntax.  While packing and unpacking of arbitrary (but less than 64-) bit values is support, packing and unpacking of integer values at the start or end of a binary, or bordering binary packing or extraction must align on 8-bit boundaries.  Arbitrary bit length binaries are not currently supported.</p></li>
-<li><p>SMP support.  The AtomVM VM is currently a single-threaded process.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">epmd</span></code> and the <code class="docutils literal notranslate"><span class="pre">disterl</span></code> protocols are not supported.</p></li>
 <li><p>There is no support for code hot swapping.</p></li>
 <li><p>There is no support for a Read-Eval-Print-Loop. (REPL)</p></li>
@@ -697,6 +704,80 @@ io:format(&quot;Stacktrace: ~p~n&quot;, [Stacktrace])
 </div></blockquote>
 <p>The PackBEAM tool does not include file and line information in the AVM files it creates, but file and line information can be included via a command line option.  For information about the PackBEAM too, see the <a class="reference internal" href="#Packbeam_tool"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code> tool</span></a>.</p>
 </section>
+<section id="reading-data-from-avm-files">
+<h3>Reading data from AVM files<a class="headerlink" href="#reading-data-from-avm-files" title="Permalink to this heading"></a></h3>
+<p>AVM files are generally packed BEAM files, but they can also contain non-BEAM files, such as plain text files, binary data, or even encoded Erlang terms.</p>
+<p>Typically, these files are included from the <code class="docutils literal notranslate"><span class="pre">priv</span></code> directory in a build tree, for example, when using the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>, though the <a class="reference internal" href="packbeam-format.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code></span></a> tool and the <a class="reference external" href="https://github.com/atomvm/atomvm_packbeam"><code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code></a> tool allow you to specify any location for files to include in AVM files.</p>
+<p>By convention, these files obey the following path in an AVM file:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;application-name&gt;/priv/&lt;file-path&gt;
+</pre></div>
+</div>
+<p>For example, if you wanted to embed <code class="docutils literal notranslate"><span class="pre">my_file.txt</span></code> into your application AVM file (where your application name is, for example, <code class="docutils literal notranslate"><span class="pre">my_application</span></code>), you would use:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>my_application/priv/my_file.txt
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">atomvm:read_priv/2</span></code> function can then be used to extract the contents of this file into a binary, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+MyFileBin = atomvm:read_priv(my_application, &lt;&lt;&quot;my_file.txt&quot;&gt;&gt;)
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note. Embedded files may contain path separators, so for example <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;my_files/my_file.txt&quot;&gt;&gt;</span></code> would be used if the AVM file embeds <code class="docutils literal notranslate"><span class="pre">my_file.txt</span></code> using the path <code class="docutils literal notranslate"><span class="pre">my_application/priv/my_files/my_file.txt</span></code></p>
+</div></blockquote>
+<p>For more information about how to embed files into AVM files, see the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>.</p>
+</section>
+<section id="code-loading">
+<h3>Code Loading<a class="headerlink" href="#code-loading" title="Permalink to this heading"></a></h3>
+<p>AtomVM provides a limited set of APIs for loading code and data embedded dynamically at runtime.</p>
+<p>To load an AVM file from binary data, use the <code class="docutils literal notranslate"><span class="pre">atomvm:add_avm_pack_binary/2</span></code> function.  Supply a reference to the AVM data, together with a (possibly empty) list of options.  Specify a <code class="docutils literal notranslate"><span class="pre">name</span></code> option, whose value is an atom, if you wish to close the AVM data at a later point in the program.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+AVMData = ... %% load AVM data into memory as a binary
+ok = atomvm:add_avm_pack_binary(AVMData, [{name, my_avm}])
+</pre></div>
+</div>
+<p>You can also load AVM data from a file (on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform) or from a flash partition (on ESP32 platforms) using the <code class="docutils literal notranslate"><span class="pre">atomvm:add_avm_pack_file/2</span></code> function.  Specify a string (or binary) as the path to the AVM file, together with a list of options.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = atomvm:add_avm_pack_file(&quot;/path/to/file.avm&quot;, [])
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  Currently, the options parameter is ignored, so use the empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) for foward compatibility.</p>
+</div></blockquote>
+<p>On <code class="docutils literal notranslate"><span class="pre">esp32</span></code> platforms, the partition name should be prefixed with the string <code class="docutils literal notranslate"><span class="pre">/dev/partition/by-name/</span></code>.  Thus, for example, if you specify <code class="docutils literal notranslate"><span class="pre">/dev/partition/by-name/main2.avm</span></code> as the partition, the ESP32 flash should contain a data partition with the name <code class="docutils literal notranslate"><span class="pre">main2.avm</span></code></p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = atomvm:add_avm_pack_file(&quot;/dev/partition/by-name/main2.avm&quot;, [])
+</pre></div>
+</div>
+<p>To close a previous opened AVM by name, use the <code class="docutils literal notranslate"><span class="pre">atomvm:close_avm_pack/2</span></code> function.  Specify the name of the AVM pack used to add</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = atomvm:close_avm_pack(my_avm, [])
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  Currently, the options parameter is ignored, so use the empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) for foward compatibility.</p>
+</div></blockquote>
+<p>You can load an individual BEAM file using the <code class="docutils literal notranslate"><span class="pre">code:load_binary/3</span></code> function.  Specify the Module name (as an atom), as well as the BEAM data you have loaded into memory.</p>
+<p>For Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+BEAMData = ... %% load BEAM data into memory as a binary
+{module, Module} = code:load_binary(Module, Filename, BEAMData)
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  The <code class="docutils literal notranslate"><span class="pre">Filename</span></code> parameter is currently ignored.</p>
+</div></blockquote>
+<p>You can load an individual BEAM file from the file system using the <code class="docutils literal notranslate"><span class="pre">code:load_abs/1</span></code> function.  Specify the path to the BEAM file.  This path should not include the <code class="docutils literal notranslate"><span class="pre">.beam</span></code> extension, as this extension will be added automatically.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{module, Module} = code:load_abs(&quot;/path/to/beam/file/without/beam/extension&quot;)
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  This function is currently only supported on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform.</p>
+</div></blockquote>
+</section>
 <section id="math">
 <h3>Math<a class="headerlink" href="#math" title="Permalink to this heading"></a></h3>
 <p>AtomVM supports the following standard functions from the OTP <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
@@ -857,6 +938,24 @@ shutdown() -&gt;
     esp:deep_sleep(60*60*1000).
 </pre></div>
 </div>
+<section id="rtc-memory">
+<h4>RTC Memory<a class="headerlink" href="#rtc-memory" title="Permalink to this heading"></a></h4>
+<p>On ESP32 systems, you can use (slow) “real-time clock” memory to store data between deep sleeps.  This storage can be useful, for example, to store interim state data in your application.</p>
+<blockquote>
+<div><p>Note.  RTC memory is initialized if the device is reset.</p>
+</div></blockquote>
+<p>To store data in RTC slow memory, use the <code class="docutils literal notranslate"><span class="pre">esp:rtc_slow_set_binary/1</span></code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+esp:rtc_slow_set_binary(&lt;&lt;&quot;some binary data&quot;&gt;&gt;)
+</pre></div>
+</div>
+<p>To retrieve data in RTC slow memory, use the <code class="docutils literal notranslate"><span class="pre">esp:rtc_slow_get_binary/0</span></code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Data = esp:rtc_slow_get_binary()
+</pre></div>
+</div>
+<p>By default, RTC slow memory in AtomVM is limited to 4098 (4k) bytes.  This value can be modified at build time using an IDF SDK <code class="docutils literal notranslate"><span class="pre">KConfig</span></code> setting.  For  instructions about how to build AtomVM, see the AtomVM <a class="reference internal" href="#./build-instructions.html"><span class="xref myst">Build Instructions</span></a>.</p>
+</section>
 </section>
 <section id="id1">
 <h3>Miscellaneous<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
