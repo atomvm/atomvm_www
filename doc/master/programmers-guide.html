@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.6695d11a documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.e0bc1246 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -736,15 +736,12 @@ AVMData = ... %% load AVM data into memory as a binary
 ok = atomvm:add_avm_pack_binary(AVMData, [{name, my_avm}])
 </pre></div>
 </div>
-<p>You can also load AVM data from a file (on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform) or from a flash partition (on ESP32 platforms) using the <code class="docutils literal notranslate"><span class="pre">atomvm:add_avm_pack_file/2</span></code> function.  Specify a string (or binary) as the path to the AVM file, together with a list of options.</p>
+<p>You can also load AVM data from a file (on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform) or from a flash partition (on ESP32 platforms) using the <code class="docutils literal notranslate"><span class="pre">atomvm:add_avm_pack_file/2</span></code> function.  Specify a string (or binary) as the path to the AVM file, together with a list of options, such as <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
-ok = atomvm:add_avm_pack_file(&quot;/path/to/file.avm&quot;, [])
+ok = atomvm:add_avm_pack_file(&quot;/path/to/file.avm&quot;, [{name, my_avm}])
 </pre></div>
 </div>
-<blockquote>
-<div><p>Note.  Currently, the options parameter is ignored, so use the empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) for foward compatibility.</p>
-</div></blockquote>
 <p>On <code class="docutils literal notranslate"><span class="pre">esp32</span></code> platforms, the partition name should be prefixed with the string <code class="docutils literal notranslate"><span class="pre">/dev/partition/by-name/</span></code>.  Thus, for example, if you specify <code class="docutils literal notranslate"><span class="pre">/dev/partition/by-name/main2.avm</span></code> as the partition, the ESP32 flash should contain a data partition with the name <code class="docutils literal notranslate"><span class="pre">main2.avm</span></code></p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
