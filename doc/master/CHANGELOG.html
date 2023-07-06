@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-dev+git.e0bc1246 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-dev+git.31b10350 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -182,6 +182,10 @@ additional information.</p></li>
 <li><p>Changed the return type of the <code class="docutils literal notranslate"><span class="pre">network:start</span></code> function to return the tuple <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Pid}</span></code> on a
 successful call, instead of the bare atom <code class="docutils literal notranslate"><span class="pre">ok</span></code>.  Applications that use <code class="docutils literal notranslate"><span class="pre">network:start</span></code> and
 check the return value will need to be modified.</p></li>
+<li><p>The return type of <code class="docutils literal notranslate"><span class="pre">i2c:read_bytes</span></code> has changed from returning just a binary to
+returning the tuple <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Binary}</span></code> when successful.</p></li>
+<li><p>The return type of many <code class="docutils literal notranslate"><span class="pre">i2c</span></code> operations under error conditions has changed from
+<code class="docutils literal notranslate"><span class="pre">error</span></code> to <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, for improved diagnostics.</p></li>
 </ul>
 </section>
 <section id="removed">

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module i2c &mdash; AtomVM 0.6.0-dev+git.e0bc1246 documentation</title>
+  <title>Module i2c &mdash; AtomVM 0.6.0-dev+git.31b10350 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -201,11 +201,11 @@ register address.</td></tr></table>
 <section id="begin-transmission-2">
 <h3>begin_transmission/2<a class="headerlink" href="#begin-transmission-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-begin_transmission(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>) -&gt; ok | error
+begin_transmission(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: I2C Address of the device (typically fixed for the device type)<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Begin a transmission of I2C commands</p>
 <p>This command is typically followed by one or more calls to
 <code class="docutils literal notranslate"><span class="pre">write_byte/2</span></code> and then a call to <code class="docutils literal notranslate"><span class="pre">end_transmission/1</span></code></p>
@@ -227,11 +227,11 @@ free any resources in use by it.</p>
 <section id="end-transmission-1">
 <h3>end_transmission/1<a class="headerlink" href="#end-transmission-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-end_transmission(I2C::<a href="#type-i2c">i2c()</a>) -&gt; ok | error
+end_transmission(I2C::<a href="#type-i2c">i2c()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>End a transmission of I2C commands</p>
 <p>This command is typically preceded by a call to <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
 and one or more calls to <code class="docutils literal notranslate"><span class="pre">write_byte/2</span></code>.</p>
@@ -252,11 +252,11 @@ open(Param::<a href="#type-params">params()</a>) -&gt; <a href="#type-i2c">i2c()
 <section id="read-bytes-3">
 <h3>read_bytes/3<a class="headerlink" href="#read-bytes-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Count::non_neg_integer()) -&gt; error | binary()
+read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Count::non_neg_integer()) -&gt; {ok, Data::binary()} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: I2C Address of the device (typically fixed for the device type)<br /><code class="docutils literal notranslate"><span class="pre">Count</span></code>: The number of bytes to read<br /></p>
-<p>returns: the read binary data or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Data}</span></code> which includes the read binary data or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Read a block of bytes from the I2C device.</p>
 <p>This command is not wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
 and <code class="docutils literal notranslate"><span class="pre">end_transmission/1</span></code> call.</p>
@@ -265,11 +265,11 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <section id="read-bytes-4">
 <h3>read_bytes/4<a class="headerlink" href="#read-bytes-4" title="Permalink to this heading"></a></h3>
 <pre><code>
-read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, Count::non_neg_integer()) -&gt; error | binary()
+read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, Count::non_neg_integer()) -&gt; {ok, binary()} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: I2C Address of the device (typically fixed for the device type)<br /><code class="docutils literal notranslate"><span class="pre">Register</span></code>: The register address in the device from which to read data<br /><code class="docutils literal notranslate"><span class="pre">Count</span></code>: The number of bytes to read<br /></p>
-<p>returns: the read binary data or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Data}</span></code> which includes the read binary data or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Read a block of bytes from the I2C device starting at a specified
 register address</p>
 <p>This command is not wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
@@ -279,11 +279,11 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <section id="write-byte-2">
 <h3>write_byte/2<a class="headerlink" href="#write-byte-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_byte(I2C::<a href="#type-i2c">i2c()</a>, Byte::byte()) -&gt; ok | error
+write_byte(I2C::<a href="#type-i2c">i2c()</a>, Byte::byte()) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Byte</span></code>: value to write<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Write a byte to the device.</p>
 <p>This command must be wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
 and <code class="docutils literal notranslate"><span class="pre">end_transmission/1</span></code> call.</p>
@@ -292,11 +292,11 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <section id="write-bytes-2">
 <h3>write_bytes/2<a class="headerlink" href="#write-bytes-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Bytes::binary()) -&gt; ok | error
+write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Bytes::binary()) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Bytes</span></code>: value to write<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Write a sequence of bytes to the device.</p>
 <p>This command must be wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
 and <code class="docutils literal notranslate"><span class="pre">end_transmission/1</span></code> call.</p>
@@ -305,11 +305,11 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <section id="write-bytes-3">
 <h3>write_bytes/3<a class="headerlink" href="#write-bytes-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, BinOrInt::binary() | byte()) -&gt; ok | error
+write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, BinOrInt::binary() | byte()) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: I2C Address of the device (typically fixed for the device type)<br /><code class="docutils literal notranslate"><span class="pre">BinOrInt</span></code>: The binary or byte value to write<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Write a block of bytes to the I2C device.</p>
 <p>This command is not wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>
 and <code class="docutils literal notranslate"><span class="pre">end_transmission/1</span></code> call.</p>
@@ -318,11 +318,11 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <section id="write-bytes-4">
 <h3>write_bytes/4<a class="headerlink" href="#write-bytes-4" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, BinOrInt::binary() | integer()) -&gt; ok | error
+write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, BinOrInt::binary() | integer()) -&gt; ok | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">I2C</span></code>: I2C instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: I2C Address of the device (typically fixed for the device type)<br /><code class="docutils literal notranslate"><span class="pre">Register</span></code>: The register address in the device to which to write data<br /><code class="docutils literal notranslate"><span class="pre">BinOrInt</span></code>: The binary or byte value to write<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Write a block of bytes to the I2C device starting at a specified
 register address.</p>
 <p>This command is not wrapped in a <code class="docutils literal notranslate"><span class="pre">begin_transmission/2</span></code>

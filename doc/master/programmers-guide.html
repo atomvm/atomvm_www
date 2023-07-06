@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.e0bc1246 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.31b10350 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -1083,7 +1083,7 @@ ok = i2c:write_bytes(I2C, DeviceAddress, Register1, &lt;&lt;&quot;write it all i
 </div>
 <p>Reading bytes is more straightforward.  Simply use <code class="docutils literal notranslate"><span class="pre">i2c:read_bytes/3,4</span></code>, specifying the port instance, device address, optionally a register, and the number of bytes to read:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
-BinaryData = i2c:read_bytes(I2C, DeviceAddress, Register, Len)
+{ok, BinaryData} = i2c:read_bytes(I2C, DeviceAddress, Register, Len)
 </pre></div>
 </div>
 <p>To close the I2C driver and free any resources in use by it, use the <code class="docutils literal notranslate"><span class="pre">i2c:close/1</span></code> function, supplying a reference to the I2C driver instance created via <code class="docutils literal notranslate"><span class="pre">i2c:open/1</span></code>:</p>
