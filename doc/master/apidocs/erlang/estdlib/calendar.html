@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module calendar &mdash; AtomVM 0.6.0-dev+git.799d9ae0 documentation</title>
+  <title>Module calendar &mdash; AtomVM 0.6.0-dev+git.78f4eb00 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -154,6 +154,12 @@ the gregorian day is the number of days up to and including the date specified.
 date() = {<a href="#type-year">year()</a>, <a href="#type-month">month()</a>, <a href="#type-day">day()</a>}
 </code></pre>
 </section>
+<section id="datetime">
+<h3><a name="type-datetime">datetime()</a><a class="headerlink" href="#datetime" title="Permalink to this heading"></a></h3>
+<pre><code>
+datetime() = {<a href="#type-date">date()</a>, <a href="#type-time">time()</a>}
+</code></pre>
+</section>
 <section id="day">
 <h3><a name="type-day">day()</a><a class="headerlink" href="#day" title="Permalink to this heading"></a></h3>
 <pre><code>
@@ -172,10 +178,40 @@ day_of_week() = 1..7
 gregorian_days() = integer()
 </code></pre>
 </section>
+<section id="hour">
+<h3><a name="type-hour">hour()</a><a class="headerlink" href="#hour" title="Permalink to this heading"></a></h3>
+<pre><code>
+hour() = 0..23
+</code></pre>
+</section>
+<section id="minute">
+<h3><a name="type-minute">minute()</a><a class="headerlink" href="#minute" title="Permalink to this heading"></a></h3>
+<pre><code>
+minute() = 0..59
+</code></pre>
+</section>
 <section id="month">
 <h3><a name="type-month">month()</a><a class="headerlink" href="#month" title="Permalink to this heading"></a></h3>
 <pre><code>
 month() = 1..12
+</code></pre>
+</section>
+<section id="second">
+<h3><a name="type-second">second()</a><a class="headerlink" href="#second" title="Permalink to this heading"></a></h3>
+<pre><code>
+second() = 0..59
+</code></pre>
+</section>
+<section id="time">
+<h3><a name="type-time">time()</a><a class="headerlink" href="#time" title="Permalink to this heading"></a></h3>
+<pre><code>
+time() = {<a href="#type-hour">hour()</a>, <a href="#type-minute">minute()</a>, <a href="#type-second">second()</a>}
+</code></pre>
+</section>
+<section id="time-unit">
+<h3><a name="type-time_unit">time_unit()</a><a class="headerlink" href="#time-unit" title="Permalink to this heading"></a></h3>
+<pre><code>
+time_unit() = second | millisecond | microsecond
 </code></pre>
 </section>
 <section id="year">
@@ -188,7 +224,7 @@ year() = non_neg_integer()
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#date_to_gregorian_days-1">date_to_gregorian_days/1</a></td><td>Year cannot be abbreviated.</td></tr><tr><td valign="top"><a href="#date_to_gregorian_days-3">date_to_gregorian_days/3</a></td><td>    Computes the number of gregorian days starting with year 0 and ending at the specified date.</td></tr><tr><td valign="top"><a href="#day_of_the_week-1">day_of_the_week/1</a></td><td>    Computes the day of the week from the specified date tuple {Year, Month, Day}.</td></tr><tr><td valign="top"><a href="#day_of_the_week-3">day_of_the_week/3</a></td><td>    Computes the day of the week from the specified Year, Month, and Day.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#date_to_gregorian_days-1">date_to_gregorian_days/1</a></td><td>Year cannot be abbreviated.</td></tr><tr><td valign="top"><a href="#date_to_gregorian_days-3">date_to_gregorian_days/3</a></td><td>    Computes the number of gregorian days starting with year 0 and ending at the specified date.</td></tr><tr><td valign="top"><a href="#day_of_the_week-1">day_of_the_week/1</a></td><td>    Computes the day of the week from the specified date tuple {Year, Month, Day}.</td></tr><tr><td valign="top"><a href="#day_of_the_week-3">day_of_the_week/3</a></td><td>    Computes the day of the week from the specified Year, Month, and Day.</td></tr><tr><td valign="top"><a href="#system_time_to_universal_time-2">system_time_to_universal_time/2</a></td><td>    Convert an integer time value to a date and time in UTC.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -242,6 +278,16 @@ day_of_the_week(Y::<a href="#type-year">year()</a>, M::<a href="#type-month">mon
 <p>returns: Weekday day of the week</p>
 <p>Computes the day of the week from the specified Year, Month, and Day.
 Returns the day of the week as 1: Monday, 2: Tuesday, and so on.</p>
+<p><a name="system_time_to_universal_time-2"></a></p>
+</section>
+<section id="system-time-to-universal-time-2">
+<h3>system_time_to_universal_time/2<a class="headerlink" href="#system-time-to-universal-time-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+system_time_to_universal_time(Time::integer(), TimeUnit::<a href="#type-time_unit">time_unit()</a>) -&gt; <a href="#type-datetime">datetime()</a>
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: the time, as an integer, in the specified unit<br /><code class="docutils literal notranslate"><span class="pre">TimeUnit</span></code>: the time unit<br /></p>
+<p>Convert an integer time value to a date and time in UTC.</p>
 </section>
 </section>
 </section>

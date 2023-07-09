@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.799d9ae0 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.78f4eb00 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -637,6 +637,13 @@ MicroSeconds = erlang:monotonic_time(microsecond).
 <blockquote>
 <div><p>Note.  Setting the system time is done in a platform-specific manner.  For information about how to set system time on the ESP32, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">Network Programming Guide</span></a>.</p>
 </div></blockquote>
+<p>To convert a time (in seconds, milliseconds, or microseconds from the UNIX epoch) to a date-time, use the <code class="docutils literal notranslate"><span class="pre">calendar:system_time_to_universal_time/2</span></code> function.  For example,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Milliseconds = ... %% get milliseconds from the UNIX epoch
+{{Year, Month, Day}, {Hour, Minute, Second}} = calendar:system_time_to_universal_time(Milliseconds, millisecond).
+</pre></div>
+</div>
+<p>As above, valid time units are <code class="docutils literal notranslate"><span class="pre">second</span></code>, <code class="docutils literal notranslate"><span class="pre">millisecond</span></code>, and <code class="docutils literal notranslate"><span class="pre">microsecond</span></code>.</p>
 </section>
 <section id="miscellaneous">
 <h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a></h3>
