@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.a9e417d2 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.799d9ae0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -72,6 +72,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#building-for-esp32">Building for ESP32</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Build Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Build Instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Running tests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#flash-layout">Flash Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-lib-avm-and-main-avm-partitions">The <code class="docutils literal notranslate"><span class="pre">lib.avm</span></code> and <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-a-release-image">Building a Release Image</a><ul>
@@ -304,9 +305,6 @@ program by typing <code class="docutils literal notranslate"><span class="pre">Q
 ...
 </pre></div>
 </div>
-<blockquote>
-<div><p>Note.  You may specify <code class="docutils literal notranslate"><span class="pre">-j</span> <span class="pre">&lt;n&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;n&gt;</span></code> is the number of CPUs you would like to assign to run the build in parallel.</p>
-</div></blockquote>
 <p>This command, once completed, will create the Espressif bootloader, partition table, and AtomVM binary.  The last line of the output should read something like the following:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>To flash all build output, run &#39;idf.py flash&#39; or:
 python /path/to/esp-idf-sdk/components/esptool_py/esptool/esptool.py --chip esp32
@@ -319,6 +317,42 @@ python /path/to/esp-idf-sdk/components/esptool_py/esptool/esptool.py --chip esp3
 </div>
 <p>At this point, you can run <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">flash</span></code> to upload the 3 binaries up to your ESP32 device, and in some development scenarios, this is a preferable shortcut.</p>
 <p>However, first, we will build a single binary image file containing all of the above 3 binaries, as well as the AtomVM core libraries.  See <a class="reference internal" href="#building-a-release-image"><span class="xref myst">Building a Release Image</span></a>, below.  But first, it is helpful to understand a bit about how the AtomVM partitioning scheme works, on the ESP32.</p>
+</section>
+<section id="id4">
+<h3>Running tests<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>Tests for ESP32 are run on the desktop (or CI) using qemu.</p>
+<p>Install or compile <a class="reference external" href="https://github.com/espressif/esp-toolchain-docs/blob/main/qemu/README.md">Espressif’s fork of qemu</a>.
+Espressif provides <a class="reference external" href="https://github.com/espressif/qemu/releases">binaries for Linux amd64</a> and it’s also bundled in <a class="reference external" href="https://hub.docker.com/r/espressif/idf">espressif/idf:5.1 docker image</a>.</p>
+<p>Also install Espressif pytest’s extensions for embedded testing with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd &lt;ESP-IDF-ROOT-DIR&gt;
+shell$ . ./export.sh
+shell$ pip install pytest==7.0.1 \
+        pytest-embedded==1.2.5 \
+        pytest-embedded-serial-esp==1.2.5 \
+        pytest-embedded-idf==1.2.5 \
+        pytest-embedded-qemu==1.2.5
+...
+</pre></div>
+</div>
+<p>Change directory to the <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32/test</span></code> directory under the AtomVM source tree root:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd &lt;atomvm-source-tree-root&gt;
+shell$ cd src/platforms/esp32/test
+</pre></div>
+</div>
+<p>Build tests using the build command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ idf.py build
+...
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  This eventually compiles host AtomVM to be able to build and pack erlang test modules.</p>
+</div></blockquote>
+<p>Run tests using the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ pytest --embedded-services=idf,qemu -s
+...
+</pre></div>
+</div>
+<p>ESP32 tests are erlang modules located in <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32/test/main/test_erl_sources/</span></code> and executed from <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32/test/main/test_main.c</span></code>.</p>
 </section>
 <section id="flash-layout">
 <h3>Flash Layout<a class="headerlink" href="#flash-layout" title="Permalink to this heading"></a></h3>
