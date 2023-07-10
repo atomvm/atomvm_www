@@ -226,159 +226,159 @@ $(function() {
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keywordtype">void</span> <a class="code" href="module_8h.html#aaa7a1b996bc81fb5a4697312ee981c24">module_destroy</a>(<a class="code" href="struct_module.html">Module</a> *module);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<a class="code" href="struct_module.html">Module</a> *<a class="code" href="module_8h.html#a9a11935d7865270ae21850227728d5d6">module_new_from_iff_binary</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *<a class="code" href="struct_module.html#a191e701c727027597561ed5b9d7b6334">global</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *iff_binary, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> size);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="module_8h.html#ac8021970832fc9bc6d3e4471153ad663">module_load_literal</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> index, <a class="code" href="struct_context.html">Context</a> *ctx);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> module_get_atom_string_by_id(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> local_atom_id)</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordtype">int</span> global_id = mod-&gt;<a class="code" href="struct_module.html#a5965e24294a8f17710c584b9dcca5ebf">local_atoms_to_global_table</a>[local_atom_id];</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a>) <a class="code" href="valueshashtable_8c.html#a4653a7d66a98a7fd4a55095d4bf55cfa">valueshashtable_get_value</a>(mod-&gt;<a class="code" href="struct_module.html#a191e701c727027597561ed5b9d7b6334">global</a>-&gt;<a class="code" href="struct_global_context.html#ab0f56e53443250f69d104f7a0c9ed4f9">atoms_ids_table</a>, global_id, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>) NULL);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_get_atom_term_by_id(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> local_atom_id)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordtype">int</span> global_id = mod-&gt;<a class="code" href="struct_module.html#a5965e24294a8f17710c584b9dcca5ebf">local_atoms_to_global_table</a>[local_atom_id];</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> term_from_atom_index(global_id);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *<a class="code" href="module_8h.html#af38c1c2bb32b767a4bc81a93802ffdd6">module_resolve_function0</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> import_table_index, <span class="keyword">struct</span> <a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *unresolved);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<a class="code" href="struct_module.html">Module</a> *<a class="code" href="module_8h.html#a9a11935d7865270ae21850227728d5d6">module_new_from_iff_binary</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *<a class="code" href="struct_module.html#a191e701c727027597561ed5b9d7b6334">global</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *iff_binary, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> size);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="module_8h.html#ac8021970832fc9bc6d3e4471153ad663">module_load_literal</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> index, <a class="code" href="struct_context.html">Context</a> *ctx);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> module_get_atom_string_by_id(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> local_atom_id)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;{</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordtype">int</span> global_id = mod-&gt;<a class="code" href="struct_module.html#a5965e24294a8f17710c584b9dcca5ebf">local_atoms_to_global_table</a>[local_atom_id];</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a>) <a class="code" href="valueshashtable_8c.html#a4653a7d66a98a7fd4a55095d4bf55cfa">valueshashtable_get_value</a>(mod-&gt;<a class="code" href="struct_module.html#a191e701c727027597561ed5b9d7b6334">global</a>-&gt;<a class="code" href="struct_global_context.html#ab0f56e53443250f69d104f7a0c9ed4f9">atoms_ids_table</a>, global_id, (<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>) NULL);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_get_atom_term_by_id(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> local_atom_id)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordtype">int</span> global_id = mod-&gt;<a class="code" href="struct_module.html#a5965e24294a8f17710c584b9dcca5ebf">local_atoms_to_global_table</a>[local_atom_id];</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> term_from_atom_index(global_id);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_get_name(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// The module name always is the first atom, stored at index 1 for</span></div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="comment">// historical reasons.</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span> module_get_atom_term_by_id(mod, 1);</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *module_resolve_function(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> import_table_index)</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;{</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="module_8h.html#a1063734ac1cb3a370267341a71160ff4">SMP_MODULE_LOCK</a>(mod);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">// We cannot optimistically read the unresolved function call.</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="comment">// While reads of imported_funcs can happen outside the lock, read of the func</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// pointer itself cannot, as UnresolvedFunctionCall pointers are freed.</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *func = (<span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *) mod-&gt;<a class="code" href="struct_module.html#aef23c77f6ebbc38d4e961177ec50e4df">imported_funcs</a>[import_table_index].<a class="code" href="unionimported__func.html#a9bd8710d4bdab1081461d83f1955746b">func</a>;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    if (func-&gt;<a class="code" href="struct_exported_function.html#a4ab4784df5bcde55f2fd2b5a1e7afc57">type</a> != <a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a>) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <a class="code" href="module_8h.html#aba60d48ee9a01e9aac9007f4cdf9b75b">SMP_MODULE_UNLOCK</a>(mod);</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">return</span> func;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    }</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *unresolved = <a class="code" href="exportedfunction_8h.html#a36c9736c0b64c48a0070fb590698cc76">EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL</a>(func);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *result = <a class="code" href="module_8h.html#af38c1c2bb32b767a4bc81a93802ffdd6">module_resolve_function0</a>(mod, import_table_index, unresolved);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="module_8h.html#aba60d48ee9a01e9aac9007f4cdf9b75b">SMP_MODULE_UNLOCK</a>(mod);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment"> * @brief Casts an instruction index and module index to a return address</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment"> * @details Casts an instruction index and module index to a value that return instruction can restore later.</span></div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment"> * @param module_index the module index</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment"> * @param the instruction index (0 is the first module instruction)</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"> * @return casted return address</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_address(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> module_index, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> instruction_index)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;{</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) ((module_index &lt;&lt; 24) | (instruction_index &lt;&lt; 2));</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint32_t module_get_fun_freeze(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> fun_index)</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;{</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keyword">const</span> uint8_t *table_data = (<span class="keyword">const</span> uint8_t *) this_module-&gt;<a class="code" href="struct_module.html#af60b4aa79bbe1ec7e1a7f3473499baa8">fun_table</a>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordtype">int</span> funs_count = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + 8);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(fun_index &gt;= funs_count)) {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="comment">// fun atom index</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="comment">// arity</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment">// label</span></div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">// index</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    uint32_t n_freeze = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 16 + 12);</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">// ouniq</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> n_freeze;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> module_get_fun(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> fun_index, uint32_t *label, uint32_t *arity, uint32_t *n_freeze)</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;{</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keyword">const</span> uint8_t *table_data = (<span class="keyword">const</span> uint8_t *) this_module-&gt;<a class="code" href="struct_module.html#af60b4aa79bbe1ec7e1a7f3473499baa8">fun_table</a>;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">int</span> funs_count = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + 8);</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(fun_index &gt;= funs_count)) {</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="comment">// fun atom index</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    *arity = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 4 + 12);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    *label = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 8 + 12);</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">// index</span></div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    *n_freeze = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 16 + 12);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">// ouniq</span></div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> uint8_t *module_get_str(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">size_t</span> offset, <span class="keywordtype">size_t</span> *remaining)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;{</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="keywordflow">if</span> (offset &gt;= mod-&gt;<a class="code" href="struct_module.html#aee7380ff1096be8347c0d351768aa6dd">str_table_len</a>) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    *remaining = mod-&gt;<a class="code" href="struct_module.html#aee7380ff1096be8347c0d351768aa6dd">str_table_len</a> - offset;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">return</span> ((<span class="keyword">const</span> uint8_t *) mod-&gt;<a class="code" href="struct_module.html#aa3ed2276e9d27c7483ec424d19bb726c">str_table</a>) + 8 + offset;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment"> * @brief Get the function name and arity of a function from a label.</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment"> * @details This function is used to get the function name and arity from a</span></div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment"> * given label inside the function. It is based the property of labels are</span></div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment"> * being allocated monotonously within functions.</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment"> * @param mod the module</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="comment"> * @param label the current label used to look up the function/arity</span></div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment"> * @param function_name (output) the function name, as an AtomString.</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"> * @param arity (output) the function arity</span></div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="module_8h.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a>(<a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> label, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> *function_name, <span class="keywordtype">int</span> *arity);</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment"> * @brief Insert the instruction offset for a given module at a line reference instruction.</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment"> * @details This function is used when loading a module.  When a line instruction is</span></div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"> * scanned, this function is used to record the instruction offset at which the line</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment"> * instruction occurred.</span></div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment"> * Note that if the module (BEAM file) does not contain a Line chunk, then this function</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment"> * is a no-op.</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment"> * @param mod the module</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment"> * @param line_ref the line reference (index)</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment"> * @param offset the instruction offset at which the line instruction occurred.</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keywordtype">void</span> <a class="code" href="module_8h.html#a1336ea824eb160e827a494b82a644043">module_insert_line_ref_offset</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> line_ref, <span class="keywordtype">int</span> offset);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment"> * @brief Find the latest line reference (index) before or at which the instruction offset</span></div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment"> * occurs.</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment"> * @details This function searches for the most recent line instruction scanned during</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment"> * code loading at or before the specified instruction offset.  This function is used to</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment"> * locate the line number from a continuation pointer in a stack trace.</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment"> * @param mod the module</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment"> * @param offset</span></div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment"> * @return the line reference</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keywordtype">int</span> <a class="code" href="module_8h.html#af303d63ee48fda58bcb074556bbe7577">module_find_line</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> offset);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> module_has_line_chunk(<a class="code" href="struct_module.html">Module</a> *mod)</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keywordflow">return</span> mod-&gt;<a class="code" href="struct_module.html#acb74fe43b11e88e0ba2a5afe29fd50db">line_refs</a> != NULL;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;}</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *<a class="code" href="module_8h.html#af38c1c2bb32b767a4bc81a93802ffdd6">module_resolve_function0</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> import_table_index, <span class="keyword">struct</span> <a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *unresolved);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_get_name(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *mod)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// The module name always is the first atom, stored at index 1 for</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">// historical reasons.</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> module_get_atom_term_by_id(mod, 1);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *module_resolve_function(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> import_table_index)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="module_8h.html#a1063734ac1cb3a370267341a71160ff4">SMP_MODULE_LOCK</a>(mod);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// We cannot optimistically read the unresolved function call.</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">// While reads of imported_funcs can happen outside the lock, read of the func</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="comment">// pointer itself cannot, as UnresolvedFunctionCall pointers are freed.</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *func = (<span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *) mod-&gt;<a class="code" href="struct_module.html#aef23c77f6ebbc38d4e961177ec50e4df">imported_funcs</a>[import_table_index].<a class="code" href="unionimported__func.html#a9bd8710d4bdab1081461d83f1955746b">func</a>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    if (func-&gt;<a class="code" href="struct_exported_function.html#a4ab4784df5bcde55f2fd2b5a1e7afc57">type</a> != <a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a>) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <a class="code" href="module_8h.html#aba60d48ee9a01e9aac9007f4cdf9b75b">SMP_MODULE_UNLOCK</a>(mod);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">return</span> func;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *unresolved = <a class="code" href="exportedfunction_8h.html#a36c9736c0b64c48a0070fb590698cc76">EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL</a>(func);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_exported_function.html">ExportedFunction</a> *result = <a class="code" href="module_8h.html#af38c1c2bb32b767a4bc81a93802ffdd6">module_resolve_function0</a>(mod, import_table_index, unresolved);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <a class="code" href="module_8h.html#aba60d48ee9a01e9aac9007f4cdf9b75b">SMP_MODULE_UNLOCK</a>(mod);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment"> * @brief Casts an instruction index and module index to a return address</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment"> * @details Casts an instruction index and module index to a value that return instruction can restore later.</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment"> * @param module_index the module index</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment"> * @param the instruction index (0 is the first module instruction)</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment"> * @return casted return address</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> module_address(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> module_index, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> instruction_index)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;{</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) ((module_index &lt;&lt; 24) | (instruction_index &lt;&lt; 2));</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint32_t module_get_fun_freeze(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> fun_index)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;{</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keyword">const</span> uint8_t *table_data = (<span class="keyword">const</span> uint8_t *) this_module-&gt;<a class="code" href="struct_module.html#af60b4aa79bbe1ec7e1a7f3473499baa8">fun_table</a>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordtype">int</span> funs_count = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + 8);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(fun_index &gt;= funs_count)) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment">// fun atom index</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">// arity</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">// label</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">// index</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    uint32_t n_freeze = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 16 + 12);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="comment">// ouniq</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">return</span> n_freeze;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span> module_get_fun(<span class="keyword">const</span> <a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> fun_index, uint32_t *label, uint32_t *arity, uint32_t *n_freeze)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;{</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keyword">const</span> uint8_t *table_data = (<span class="keyword">const</span> uint8_t *) this_module-&gt;<a class="code" href="struct_module.html#af60b4aa79bbe1ec7e1a7f3473499baa8">fun_table</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">int</span> funs_count = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + 8);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(fun_index &gt;= funs_count)) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">// fun atom index</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    *arity = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 4 + 12);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    *label = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 8 + 12);</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">// index</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    *n_freeze = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + fun_index * 24 + 16 + 12);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="comment">// ouniq</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">const</span> uint8_t *module_get_str(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">size_t</span> offset, <span class="keywordtype">size_t</span> *remaining)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">if</span> (offset &gt;= mod-&gt;<a class="code" href="struct_module.html#aee7380ff1096be8347c0d351768aa6dd">str_table_len</a>) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    *remaining = mod-&gt;<a class="code" href="struct_module.html#aee7380ff1096be8347c0d351768aa6dd">str_table_len</a> - offset;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">return</span> ((<span class="keyword">const</span> uint8_t *) mod-&gt;<a class="code" href="struct_module.html#aa3ed2276e9d27c7483ec424d19bb726c">str_table</a>) + 8 + offset;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment"> * @brief Get the function name and arity of a function from a label.</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment"> * @details This function is used to get the function name and arity from a</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment"> * given label inside the function. It is based the property of labels are</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="comment"> * being allocated monotonously within functions.</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment"> * @param mod the module</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"> * @param label the current label used to look up the function/arity</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"> * @param function_name (output) the function name, as an AtomString.</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment"> * @param arity (output) the function arity</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="module_8h.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a>(<a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> label, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> *function_name, <span class="keywordtype">int</span> *arity);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment"> * @brief Insert the instruction offset for a given module at a line reference instruction.</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment"> * @details This function is used when loading a module.  When a line instruction is</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment"> * scanned, this function is used to record the instruction offset at which the line</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment"> * instruction occurred.</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment"> * Note that if the module (BEAM file) does not contain a Line chunk, then this function</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment"> * is a no-op.</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment"> * @param mod the module</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment"> * @param line_ref the line reference (index)</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment"> * @param offset the instruction offset at which the line instruction occurred.</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keywordtype">void</span> <a class="code" href="module_8h.html#a1336ea824eb160e827a494b82a644043">module_insert_line_ref_offset</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">int</span> line_ref, <span class="keywordtype">int</span> offset);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment"> * @brief Find the latest line reference (index) before or at which the instruction offset</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment"> * occurs.</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment"> * @details This function searches for the most recent line instruction scanned during</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment"> * code loading at or before the specified instruction offset.  This function is used to</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment"> * locate the line number from a continuation pointer in a stack trace.</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment"> * @param mod the module</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment"> * @param offset</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment"> * @return the line reference</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keywordtype">int</span> <a class="code" href="module_8h.html#af303d63ee48fda58bcb074556bbe7577">module_find_line</a>(<a class="code" href="struct_module.html">Module</a> *mod, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> offset);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">bool</span> module_has_line_chunk(<a class="code" href="struct_module.html">Module</a> *mod)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;{</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">return</span> mod-&gt;<a class="code" href="struct_module.html#acb74fe43b11e88e0ba2a5afe29fd50db">line_refs</a> != NULL;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;}</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;}</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aatom_8h_html"><div class="ttname"><a href="atom_8h.html">atom.h</a></div><div class="ttdoc">Atoms manipulation functions.</div></div>
 <div class="ttc" id="aatom_8h_html_ad65688322910ef2b4658ffac1f9d8b81"><div class="ttname"><a href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a></div><div class="ttdeci">const void * AtomString</div><div class="ttdef"><b>Definition:</b> <a href="atom_8h_source.html#l00044">atom.h:44</a></div></div>
 <div class="ttc" id="aatomshashtable_8h_html"><div class="ttname"><a href="atomshashtable_8h.html">atomshashtable.h</a></div></div>
@@ -389,7 +389,7 @@ $(function() {
 <div class="ttc" id="amodule_8h_html_a1063734ac1cb3a370267341a71160ff4"><div class="ttname"><a href="module_8h.html#a1063734ac1cb3a370267341a71160ff4">SMP_MODULE_LOCK</a></div><div class="ttdeci">#define SMP_MODULE_LOCK(mod)</div><div class="ttdef"><b>Definition:</b> <a href="module_8h_source.html#l00055">module.h:55</a></div></div>
 <div class="ttc" id="amodule_8h_html_a1336ea824eb160e827a494b82a644043"><div class="ttname"><a href="module_8h.html#a1336ea824eb160e827a494b82a644043">module_insert_line_ref_offset</a></div><div class="ttdeci">void module_insert_line_ref_offset(Module *mod, int line_ref, int offset)</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00574">module.c:574</a></div></div>
 <div class="ttc" id="amodule_8h_html_a39d8f0cceb59e34e5df3ea9f1d925578"><div class="ttname"><a href="module_8h.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a></div><div class="ttdeci">bool module_get_function_from_label(Module *this_module, int label, AtomString *function_name, int *arity)</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00160">module.c:160</a></div></div>
-<div class="ttc" id="amodule_8h_html_a73bf4268a354d4dc0f81881987f75058"><div class="ttname"><a href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a></div><div class="ttdeci">uint32_t module_search_exported_function(Module *this_module, AtomString func_name, int func_arity)</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00195">module.c:195</a></div></div>
+<div class="ttc" id="amodule_8h_html_a73bf4268a354d4dc0f81881987f75058"><div class="ttname"><a href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a></div><div class="ttdeci">uint32_t module_search_exported_function(Module *this_module, AtomString func_name, int func_arity)</div><div class="ttdoc">Gets exported function index by searching it by function name and arity.</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00195">module.c:195</a></div></div>
 <div class="ttc" id="amodule_8h_html_a9a11935d7865270ae21850227728d5d6"><div class="ttname"><a href="module_8h.html#a9a11935d7865270ae21850227728d5d6">module_new_from_iff_binary</a></div><div class="ttdeci">Module * module_new_from_iff_binary(GlobalContext *global, const void *iff_binary, unsigned long size)</div><div class="ttdoc">Parse a BEAM file and returns a Module.</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00217">module.c:217</a></div></div>
 <div class="ttc" id="amodule_8h_html_aaa7a1b996bc81fb5a4697312ee981c24"><div class="ttname"><a href="module_8h.html#aaa7a1b996bc81fb5a4697312ee981c24">module_destroy</a></div><div class="ttdeci">void module_destroy(Module *module)</div><div class="ttdef"><b>Definition:</b> <a href="module_8c_source.html#l00304">module.c:304</a></div></div>
 <div class="ttc" id="amodule_8h_html_ab855e696abd689127ee483704e2997f1"><div class="ttname"><a href="module_8h.html#ab855e696abd689127ee483704e2997f1">ModuleLoadResult</a></div><div class="ttdeci">ModuleLoadResult</div><div class="ttdef"><b>Definition:</b> <a href="module_8h_source.html#l00144">module.h:145</a></div></div>

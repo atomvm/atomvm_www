@@ -658,9 +658,9 @@ Functions</h2></td></tr>
 <p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>the context that owns the memory that will be allocated. </td></tr>
-    <tr><td class="paramname">binary</td><td>the binary </td></tr>
-    <tr><td class="paramname">bytes_read</td><td>the number of bytes read from the input binary </td></tr>
-    <tr><td class="paramname">num_extra_terms</td><td>the number of words (terms) to (possibly) allocate space for in the heap, prior to instantiating the destination term (may trigger GC). </td></tr>
+    <tr><td class="paramname">dst</td><td>a pointer to a term that will contain the binary encoded term. </td></tr>
+    <tr><td class="paramname">binary</td><td>the binary. </td></tr>
+    <tr><td class="paramname">bytes_read</td><td>the number of bytes read from the input binary. </td></tr>
   </table>
   </dd>
 </dl>
@@ -700,7 +700,7 @@ Functions</h2></td></tr>
 <p>Serialize a term in Erlang external term format, and store the result in a binary term. The heap from the context will be used to allocate the hydrated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td>the context that owns the memory that will be allocated. </td></tr>
-    <tr><td class="paramname">binary</td><td>the binary </td></tr>
+    <tr><td class="paramname">t</td><td>the term to return as binary. </td></tr>
   </table>
   </dd>
 </dl>
@@ -752,8 +752,9 @@ Functions</h2></td></tr>
 <p>Deserialize an external term from external format and returns a term. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">external_term</td><td>the external term that will be deserialized. </td></tr>
+    <tr><td class="paramname">size</td><td>to allocate for term. </td></tr>
     <tr><td class="paramname">ctx</td><td>the context that owns the memory that will be allocated. </td></tr>
-    <tr><td class="paramname">use_heap_fragment</td><td>if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </td></tr>
+    <tr><td class="paramname">opts</td><td>if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </td></tr>
   </table>
   </dd>
 </dl>

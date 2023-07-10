@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.fb4c8f06 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.528b5e96 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -87,7 +87,20 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#building-for-stm32">Building for STM32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-for-stm32">Building for STM32</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-libopencm3">Setup libopencm3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-atomvm">Build AtomVM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-device">Changing device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#printing">Printing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-for-raspberry-pi-pico">Building for Raspberry Pi Pico</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#atomvm-build-steps">AtomVM build steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libatomvm-build-steps">libAtomVM build steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="atomvm-internals.html">AtomVM Internals</a></li>
@@ -645,9 +658,90 @@ Context *my_port_create_port(GlobalContext *global, term opts);
 </section>
 <section id="building-for-stm32">
 <h2>Building for STM32<a class="headerlink" href="#building-for-stm32" title="Permalink to this heading"></a></h2>
+<section id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">arm-none-eabi</span></code>/<code class="docutils literal notranslate"><span class="pre">arm-elf</span></code> toolchain compatible with your system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">git</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/libopencm3/libopencm3"><code class="docutils literal notranslate"><span class="pre">libopencm3</span></code></a></p></li>
+</ul>
+</section>
+<section id="setup-libopencm3">
+<h3>Setup libopencm3<a class="headerlink" href="#setup-libopencm3" title="Permalink to this heading"></a></h3>
+<p>Before building for the first time you need to have a compiled clone of the libopencm3 libraries, from inside the AtomVM/src/platforms/stm32 directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/libopencm3/libopencm3.git
+$ cd libopencm3 &amp;&amp; make -j4 &amp;&amp; cd ..
+</pre></div>
+</div>
 <blockquote>
-<div><p>TODO</p>
+<div><p>Note: You can put libopencm3 wherever you want on your PC as long as you update LIBOPENCM3_DIR to point to it. This example assumes it has been cloned into /opt/libopencm3 and built. From inside the AtomVM/src/platforms/stm32 directory:```
+cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-toolchain.cmake -DLIBOPENCM3_DIR=/opt/libopencm3 ..</p>
 </div></blockquote>
+</section>
+<section id="build-atomvm">
+<h3>Build AtomVM<a class="headerlink" href="#build-atomvm" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ mkdir build
+$ cd build
+$ cmake -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-toolchain.cmake
+$ make
+</pre></div>
+</div>
+</section>
+<section id="changing-device">
+<h3>Changing device<a class="headerlink" href="#changing-device" title="Permalink to this heading"></a></h3>
+<p>The default build is based on the STM32F4Discovery board chip (<code class="docutils literal notranslate"><span class="pre">stm32f407vgt6</span></code>). If you want to target a different
+chip, pass the <code class="docutils literal notranslate"><span class="pre">-DDEVICE</span></code> flag when invoking cmake. For example, to use the STM32F429Discovery, pass
+<code class="docutils literal notranslate"><span class="pre">-DDEVICE=stm32f429zit6</span></code></p>
+<p>If you are building for a different target board the <code class="docutils literal notranslate"><span class="pre">CLOCK_FREQUENCY</span></code> definition in main.c will need to be changed to match the clock frequency (in hertz) of your cpu.</p>
+<p>The rcc_clock_setup_XXX_XXX will also need to be changed to match your particular chip-set. Consult <a class="reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html">ST’s documentation</a> for appropriate settings.</p>
+</section>
+<section id="printing">
+<h3>Printing<a class="headerlink" href="#printing" title="Permalink to this heading"></a></h3>
+<p>By default, stdout and stderr are printed on USART2. On the STM32F4Discovery board, you can see them
+using a TTL-USB with the TX pin connected to board’s pin PA2 (USART2 RX). Baudrate is 115200 and serial transmission
+is 8N1 with no flow control.</p>
+<blockquote>
+<div><p>If building for a different target USART and gpio pins may need to be adjusted in <code class="docutils literal notranslate"><span class="pre">main.c</span></code>.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="building-for-raspberry-pi-pico">
+<h2>Building for Raspberry Pi Pico<a class="headerlink" href="#building-for-raspberry-pi-pico" title="Permalink to this heading"></a></h2>
+<section id="id5">
+<h3>Prerequisites<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ninja</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Erlang/OTP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Elixir</span></code> (optional)</p></li>
+</ul>
+</section>
+</section>
+<section id="atomvm-build-steps">
+<h2>AtomVM build steps<a class="headerlink" href="#atomvm-build-steps" title="Permalink to this heading"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/rp2040/
+mkdir build
+cd build
+cmake .. -G Ninja
+ninja
+</pre></div>
+</div>
+<blockquote>
+<div><p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so Pico restarts on error.</p>
+</div></blockquote>
+</section>
+<section id="libatomvm-build-steps">
+<h2>libAtomVM build steps<a class="headerlink" href="#libatomvm-build-steps" title="Permalink to this heading"></a></h2>
+<p>Build of standard libraries is part of the generic unix build.</p>
+<p>From the root of the project:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir build
+cd build
+cmake .. -G Ninja
+ninja
+</pre></div>
+</div>
 </section>
 </section>
 

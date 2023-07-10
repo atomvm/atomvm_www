@@ -217,7 +217,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0011cbadfa0c3b2026600199f7c8de53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal a single thread waiting on a condition variable.  <a href="smp_8h.html#a0011cbadfa0c3b2026600199f7c8de53">More...</a><br /></td></tr>
 <tr class="separator:a0011cbadfa0c3b2026600199f7c8de53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c44606db0b3c99f39a1ed73549caf8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="atomshashtable_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b">RWLock</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smp_8h.html#a61c44606db0b3c99f39a1ed73549caf8">smp_rwlock_create</a> ()</td></tr>
-<tr class="memdesc:a61c44606db0b3c99f39a1ed73549caf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new rwlock. @detail A RW Lock can be replaced by a mutex if RW Lock are not available on the platform.  <a href="smp_8h.html#a61c44606db0b3c99f39a1ed73549caf8">More...</a><br /></td></tr>
+<tr class="memdesc:a61c44606db0b3c99f39a1ed73549caf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new rwlock.  <a href="smp_8h.html#a61c44606db0b3c99f39a1ed73549caf8">More...</a><br /></td></tr>
 <tr class="separator:a61c44606db0b3c99f39a1ed73549caf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00694a93dab211dff91d8f8de6238568"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smp_8h.html#a00694a93dab211dff91d8f8de6238568">smp_rwlock_destroy</a> (<a class="el" href="atomshashtable_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b">RWLock</a> *lock)</td></tr>
 <tr class="memdesc:a00694a93dab211dff91d8f8de6238568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy a rwlock.  <a href="smp_8h.html#a00694a93dab211dff91d8f8de6238568">More...</a><br /></td></tr>
@@ -232,7 +232,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:a9bd3aaa698e550b327f6ab9c84cd783f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock a rwlock.  <a href="smp_8h.html#a9bd3aaa698e550b327f6ab9c84cd783f">More...</a><br /></td></tr>
 <tr class="separator:a9bd3aaa698e550b327f6ab9c84cd783f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1b962b59b27a0735fbfc48a0260e941"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smp_8h.html#ac1b962b59b27a0735fbfc48a0260e941">smp_get_online_processors</a> ()</td></tr>
-<tr class="memdesc:ac1b962b59b27a0735fbfc48a0260e941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of online processors to configure schedulers. @detail This value is one plus the maximum number of times smp_scheduler_start will be called by the scheduler.  <a href="smp_8h.html#ac1b962b59b27a0735fbfc48a0260e941">More...</a><br /></td></tr>
+<tr class="memdesc:ac1b962b59b27a0735fbfc48a0260e941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of online processors to configure schedulers.  <a href="smp_8h.html#ac1b962b59b27a0735fbfc48a0260e941">More...</a><br /></td></tr>
 <tr class="separator:ac1b962b59b27a0735fbfc48a0260e941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aded542823dfa49bfa14d2797edeba1cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="smp_8h.html#aded542823dfa49bfa14d2797edeba1cf">smp_scheduler_start</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:aded542823dfa49bfa14d2797edeba1cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start a new scheduler, calling <code>scheduler_entry_point</code> with the given global context.  <a href="smp_8h.html#aded542823dfa49bfa14d2797edeba1cf">More...</a><br /></td></tr>
@@ -581,8 +581,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the number of online processors to configure schedulers. @detail This value is one plus the maximum number of times smp_scheduler_start will be called by the scheduler. </p>
-<dl class="section return"><dt>Returns</dt><dd>the number of online processors. </dd></dl>
+<p>Get the number of online processors to configure schedulers. </p>
+<p>This value is one plus the maximum number of times smp_scheduler_start will be called by the scheduler. </p><dl class="section return"><dt>Returns</dt><dd>the number of online processors. </dd></dl>
 
 </div>
 </div>
@@ -746,8 +746,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Create a new rwlock. @detail A RW Lock can be replaced by a mutex if RW Lock are not available on the platform. </p>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to a lock. </dd></dl>
+<p>Create a new rwlock. </p>
+<p>A RW Lock can be replaced by a mutex if RW Lock are not available on the platform. </p><dl class="section return"><dt>Returns</dt><dd>a pointer to a lock. </dd></dl>
 
 </div>
 </div>

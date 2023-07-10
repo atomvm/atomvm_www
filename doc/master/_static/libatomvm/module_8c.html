@@ -165,6 +165,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a39d8f0cceb59e34e5df3ea9f1d925578"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8c.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a> (<a class="el" href="struct_module.html">Module</a> *this_module, int label, <a class="el" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> *function_name, int *arity)</td></tr>
 <tr class="separator:a39d8f0cceb59e34e5df3ea9f1d925578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73bf4268a354d4dc0f81881987f75058"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8c.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a> (<a class="el" href="struct_module.html">Module</a> *this_module, <a class="el" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> func_name, int func_arity)</td></tr>
+<tr class="memdesc:a73bf4268a354d4dc0f81881987f75058"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets exported function index by searching it by function name and arity.  <a href="module_8c.html#a73bf4268a354d4dc0f81881987f75058">More...</a><br /></td></tr>
 <tr class="separator:a73bf4268a354d4dc0f81881987f75058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a11935d7865270ae21850227728d5d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_module.html">Module</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="module_8c.html#a9a11935d7865270ae21850227728d5d6">module_new_from_iff_binary</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, const void *iff_binary, unsigned long size)</td></tr>
 <tr class="memdesc:a9a11935d7865270ae21850227728d5d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse a BEAM file and returns a <a class="el" href="struct_module.html">Module</a>.  <a href="module_8c.html#a9a11935d7865270ae21850227728d5d6">More...</a><br /></td></tr>
@@ -496,6 +497,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">mod</td><td>The module that owns that is going to be loaded. </td></tr>
     <tr><td class="paramname">index</td><td>a valid literal index. </td></tr>
+    <tr><td class="paramname">ctx</td><td>the target context. </td></tr>
   </table>
   </dd>
 </dl>
@@ -539,6 +541,7 @@ Functions</h2></td></tr>
 <p>Parse a BEAM file and returns a <a class="el" href="struct_module.html">Module</a>. </p>
 <p>Parse a BEAM file a returns a newly allocated and initialized <a class="el" href="struct_module.html">Module</a> struct. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">global</td><td>the global context. </td></tr>
     <tr><td class="paramname">iff_binary</td><td>the IFF file data. </td></tr>
     <tr><td class="paramname">size</td><td>the size of the buffer containing the IFF data. </td></tr>
   </table>
@@ -616,7 +619,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>@briefs Gets exported function index by searching it by function name and arity</p>
+
+<p>Gets exported function index by searching it by function name and arity. </p>
 <p>Gets exported function index by searching it by function name and arity </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">this_module</td><td>the module on which the function will be searched. </td></tr>
