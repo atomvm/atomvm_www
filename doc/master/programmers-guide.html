@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.78f4eb00 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.fb4c8f06 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -84,6 +84,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#process-management">Process Management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-apis">System APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-time">System Time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#date-and-time">Date and Time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stacktraces">StackTraces</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reading-data-from-avm-files">Reading data from AVM files</a></li>
@@ -643,7 +644,42 @@ Milliseconds = ... %% get milliseconds from the UNIX epoch
 {{Year, Month, Day}, {Hour, Minute, Second}} = calendar:system_time_to_universal_time(Milliseconds, millisecond).
 </pre></div>
 </div>
-<p>As above, valid time units are <code class="docutils literal notranslate"><span class="pre">second</span></code>, <code class="docutils literal notranslate"><span class="pre">millisecond</span></code>, and <code class="docutils literal notranslate"><span class="pre">microsecond</span></code>.</p>
+<p>Valid time units are <code class="docutils literal notranslate"><span class="pre">second</span></code>, <code class="docutils literal notranslate"><span class="pre">millisecond</span></code>, and <code class="docutils literal notranslate"><span class="pre">microsecond</span></code>.</p>
+</section>
+<section id="date-and-time">
+<h3>Date and Time<a class="headerlink" href="#date-and-time" title="Permalink to this heading"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">datetime()</span></code> is a tuple containing a date and time, where a date is a tuple containing the year, month, and day (in the <a class="reference external" href="https://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian</a> calendar), expressed as integers, and a time is an hour, minute, and second, also expressed in integers.</p>
+<p>The following Erlang type specification enumerates this type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+-type year() :: integer().
+-type month() :: 1..12.
+-type day() :: 1..31.
+-type date() :: {year(), month(), day()}.
+-type gregorian_days() :: integer().
+-type day_of_week() :: 1..7.
+-type hour() :: 0..23.
+-type minute() :: 0..59.
+-type second() :: 0..59.
+-type time() :: {hour(), minute(), second()}.
+-type datetime() :: {date(), time()}.
+</pre></div>
+</div>
+<p>Erlang/OTP uses the Christian epoch to count time units from year 0 in the Gregorian calendar.  The, for example, the value 0 in Gregorian seconds represents the date Jan 1, year 0, and midnight (UTC), or in Erlang terms, <code class="docutils literal notranslate"><span class="pre">{{0,</span> <span class="pre">1,</span> <span class="pre">1},</span> <span class="pre">{0,</span> <span class="pre">0,</span> <span class="pre">0}}</span></code>.</p>
+<blockquote>
+<div><p>Note.  AtomVM is currently limited to representing integers in at most 64 bits, with one bit representing the sign bit.  However, even with this limitation, AtomVM is able to resolve microsecond values in the Gregorian calendar for over 292,000 years, likely well past the likely lifetime of an AtomVM application (unless perhaps launched on a deep space probe).</p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">calendar</span></code> module provides useful functions for converting dates to Gregorian days, and date-times to Gregorian seconds.</p>
+<p>To convert a <code class="docutils literal notranslate"><span class="pre">date()</span></code> to the number of days since January 1, year 0, use the <code class="docutils literal notranslate"><span class="pre">calendar:date_to_gregorian_days/1</span></code> function, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GregorianDays = calendar:date_to_gregorian_days({2023, 7, 23})
+</pre></div>
+</div>
+<p>To convert a <code class="docutils literal notranslate"><span class="pre">datetime()</span></code> to convert the number of seconds since midnight January 1, year 0, use the <code class="docutils literal notranslate"><span class="pre">calendar:datetime_to_gregorian_seconds/1</span></code> function, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GregorianSeconds = calendar:datetime_to_gregorian_seconds({{2023, 7, 23}, {13, 31, 7}})
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  The <code class="docutils literal notranslate"><span class="pre">calendar</span></code> module does not support year values before year <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+</div></blockquote>
 </section>
 <section id="miscellaneous">
 <h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a></h3>
