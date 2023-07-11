@@ -70,7 +70,8 @@ $(function() {
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">opcodesswitch.h File Reference</div>  </div>
 </div><!--header-->
@@ -246,7 +247,7 @@ Macros</h2></td></tr>
 <tr class="separator:a3e2fcdb2bb304e2a0149bda1efff2759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ec395f7a4684b03b5ec257de3c8b73b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a3ec395f7a4684b03b5ec257de3c8b73b">DECODE_ATOM</a>(atom,  code_chunk,  base_index,  off)</td></tr>
 <tr class="separator:a3ec395f7a4684b03b5ec257de3c8b73b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2a53b2d59f60f08fc2dc3ef73d546ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a2a53b2d59f60f08fc2dc3ef73d546ba5">DECODE_LABEL</a>(label,  code_chunk,  base_index,  off)&#160;&#160;&#160;    <a class="el" href="opcodesswitch_8h.html#a3e2fcdb2bb304e2a0149bda1efff2759">DECODE_VALUE</a>(label, code_chunk, base_index, off)</td></tr>
+<tr class="memitem:a2a53b2d59f60f08fc2dc3ef73d546ba5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a2a53b2d59f60f08fc2dc3ef73d546ba5">DECODE_LABEL</a>(<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>,  code_chunk,  base_index,  off)&#160;&#160;&#160;    <a class="el" href="opcodesswitch_8h.html#a3e2fcdb2bb304e2a0149bda1efff2759">DECODE_VALUE</a>(<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>, code_chunk, base_index, off)</td></tr>
 <tr class="separator:a2a53b2d59f60f08fc2dc3ef73d546ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60e325bb06f3f1787535c5c299554519"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a60e325bb06f3f1787535c5c299554519">DECODE_LITERAL</a>(val,  code_chunk,  base_index,  off)&#160;&#160;&#160;    <a class="el" href="opcodesswitch_8h.html#a3e2fcdb2bb304e2a0149bda1efff2759">DECODE_VALUE</a>(val, code_chunk, base_index, off)</td></tr>
 <tr class="separator:a60e325bb06f3f1787535c5c299554519"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -324,12 +325,36 @@ Typedefs</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a4ecbd54af8f7d64b032b5ae86001b125"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a4ecbd54af8f7d64b032b5ae86001b125">make_fun</a> (<a class="el" href="struct_context.html">Context</a> *ctx, const <a class="el" href="struct_module.html">Module</a> *mod, int fun_index)</td></tr>
 <tr class="separator:a4ecbd54af8f7d64b032b5ae86001b125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8fb304071eaf72c1468790168b29cb6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#af8fb304071eaf72c1468790168b29cb6">context_execute_loop</a> (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="struct_module.html">Module</a> *mod, const char *function_name, int arity)</td></tr>
-<tr class="memdesc:af8fb304071eaf72c1468790168b29cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts executing a function.  <a href="opcodesswitch_8h.html#af8fb304071eaf72c1468790168b29cb6">More...</a><br /></td></tr>
-<tr class="separator:af8fb304071eaf72c1468790168b29cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a8d6ac988671d83f025e7ac40c64031"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a> (<a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>+1, function_name, <a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a>)</td></tr>
+<tr class="separator:a4a8d6ac988671d83f025e7ac40c64031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aee9ad932d48bce12b2509e623b7da0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a> (<a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>)</td></tr>
+<tr class="separator:a5aee9ad932d48bce12b2509e623b7da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa697695a6a63438210409eb90c2c5967"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#aa697695a6a63438210409eb90c2c5967">if</a> (<a class="el" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>))</td></tr>
+<tr class="separator:aa697695a6a63438210409eb90c2c5967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b6c6399244cdd60d8ef133b42a47ae"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a90b6c6399244cdd60d8ef133b42a47ae">scheduler_init_ready</a> (ctx)</td></tr>
+<tr class="separator:a90b6c6399244cdd60d8ef133b42a47ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bcc67b0bbf2826190590f87a27c25b1"><td class="memItemLeft" align="right" valign="top">return&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a5bcc67b0bbf2826190590f87a27c25b1">scheduler_entry_point</a> (ctx-&gt;global)</td></tr>
+<tr class="separator:a5bcc67b0bbf2826190590f87a27c25b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5957abbc2d76233a658e24a0e314f8af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#accf5f0ee0af367d47711e5f7d07df001">HOT_FUNC</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a5957abbc2d76233a658e24a0e314f8af">scheduler_entry_point</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:a5957abbc2d76233a658e24a0e314f8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point for schedulers.  <a href="opcodesswitch_8h.html#a5957abbc2d76233a658e24a0e314f8af">More...</a><br /></td></tr>
 <tr class="separator:a5957abbc2d76233a658e24a0e314f8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:acf644b9a90f33da6a615903d2410778d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a> = strlen(function_name)</td></tr>
+<tr class="separator:acf644b9a90f33da6a615903d2410778d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d7bf425906a24bd8dc3acc6dd373c7"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a> = malloc(<a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a> + 1)</td></tr>
+<tr class="separator:a96d7bf425906a24bd8dc3acc6dd373c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a512bd2c8e2a962b00a6a6926befc170c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> = <a class="el" href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity)</td></tr>
+<tr class="separator:a512bd2c8e2a962b00a6a6926befc170c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bb7f2df392ef27449575bea08960d0"><td class="memItemLeft" align="right" valign="top">ctx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#ac8bb7f2df392ef27449575bea08960d0">saved_module</a> = mod</td></tr>
+<tr class="separator:ac8bb7f2df392ef27449575bea08960d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c859738abcf82b0bebd69d80f1a6d95"><td class="memItemLeft" align="right" valign="top">ctx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a2c859738abcf82b0bebd69d80f1a6d95">cp</a> = module_address(mod-&gt;module_index, mod-&gt;end_instruction_ii)</td></tr>
+<tr class="separator:a2c859738abcf82b0bebd69d80f1a6d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a466a9fabd20bcff75a44893d4e8f7a98"><td class="memItemLeft" align="right" valign="top">ctx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a466a9fabd20bcff75a44893d4e8f7a98">saved_ip</a> = mod-&gt;labels[<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>]</td></tr>
+<tr class="separator:a466a9fabd20bcff75a44893d4e8f7a98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff62691934944d0f73bb636f556428e"><td class="memItemLeft" align="right" valign="top">ctx global&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a4ff62691934944d0f73bb636f556428e">running_schedulers</a> = 1</td></tr>
+<tr class="separator:a4ff62691934944d0f73bb636f556428e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a37bb4a5eb29b0826766580a62994a837"></a>
@@ -1161,7 +1186,7 @@ Functions</h2></td></tr>
           <td class="memname">#define DECODE_LABEL</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">label, </td>
+          <td class="paramname"><a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1184,7 +1209,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    <a class="el" href="opcodesswitch_8h.html#a3e2fcdb2bb304e2a0149bda1efff2759">DECODE_VALUE</a>(label, code_chunk, base_index, off)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="opcodesswitch_8h.html#a3e2fcdb2bb304e2a0149bda1efff2759">DECODE_VALUE</a>(<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>, code_chunk, base_index, off)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2370,57 +2395,41 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af8fb304071eaf72c1468790168b29cb6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8fb304071eaf72c1468790168b29cb6">&#9670;&nbsp;</a></span>context_execute_loop()</h2>
+<a id="a5aee9ad932d48bce12b2509e623b7da0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aee9ad932d48bce12b2509e623b7da0">&#9670;&nbsp;</a></span>free()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int context_execute_loop </td>
+          <td class="memname">free </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_context.html">Context</a> *&#160;</td>
-          <td class="paramname"><em>ctx</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="struct_module.html">Module</a> *&#160;</td>
-          <td class="paramname"><em>mod</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>function_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>arity</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Starts executing a function. </p>
-<p>Start executing bytecode for the specified function, this function will block until it terminates. The outcome is saved to x[0] register. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ctx</td><td>the context that will be used to run the specified functions, x registers must be set to function arguments. </td></tr>
-    <tr><td class="paramname">mod</td><td>the module name C string. </td></tr>
-    <tr><td class="paramname">function_name</td><td>the function name C string. </td></tr>
-    <tr><td class="paramname">arity</td><td>the function arity (number of arguments that are required). </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if an error occurred, otherwise 0 is always returned. </dd></dl>
+</div>
+</div>
+<a id="aa697695a6a63438210409eb90c2c5967"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa697695a6a63438210409eb90c2c5967">&#9670;&nbsp;</a></span>if()</h2>
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01421">1421</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">if </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01444">1444</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2460,8 +2469,60 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4a8d6ac988671d83f025e7ac40c64031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a8d6ac988671d83f025e7ac40c64031">&#9670;&nbsp;</a></span>memcpy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">memcpy </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>+&#160;</td>
+          <td class="paramname"><em>1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">function_name&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5bcc67b0bbf2826190590f87a27c25b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bcc67b0bbf2826190590f87a27c25b1">&#9670;&nbsp;</a></span>scheduler_entry_point() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">return scheduler_entry_point </td>
+          <td>(</td>
+          <td class="paramtype">ctx-&gt;&#160;</td>
+          <td class="paramname"><em>global</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5957abbc2d76233a658e24a0e314f8af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5957abbc2d76233a658e24a0e314f8af">&#9670;&nbsp;</a></span>scheduler_entry_point()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5957abbc2d76233a658e24a0e314f8af">&#9670;&nbsp;</a></span>scheduler_entry_point() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2484,7 +2545,138 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01470">1470</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01472">1472</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="a90b6c6399244cdd60d8ef133b42a47ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b6c6399244cdd60d8ef133b42a47ae">&#9670;&nbsp;</a></span>scheduler_init_ready()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">scheduler_init_ready </td>
+          <td>(</td>
+          <td class="paramtype">ctx&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a2c859738abcf82b0bebd69d80f1a6d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c859738abcf82b0bebd69d80f1a6d95">&#9670;&nbsp;</a></span>cp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctx cp = module_address(mod-&gt;module_index, mod-&gt;end_instruction_ii)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01451">1451</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="acf644b9a90f33da6a615903d2410778d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf644b9a90f33da6a615903d2410778d">&#9670;&nbsp;</a></span>function_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int function_len = strlen(function_name)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01436">1436</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="a512bd2c8e2a962b00a6a6926befc170c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a512bd2c8e2a962b00a6a6926befc170c">&#9670;&nbsp;</a></span>label</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int label = <a class="el" href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01441">1441</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="a4ff62691934944d0f73bb636f556428e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ff62691934944d0f73bb636f556428e">&#9670;&nbsp;</a></span>running_schedulers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctx global running_schedulers = 1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01462">1462</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="a466a9fabd20bcff75a44893d4e8f7a98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a466a9fabd20bcff75a44893d4e8f7a98">&#9670;&nbsp;</a></span>saved_ip</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctx saved_ip = mod-&gt;labels[<a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01452">1452</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="ac8bb7f2df392ef27449575bea08960d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8bb7f2df392ef27449575bea08960d0">&#9670;&nbsp;</a></span>saved_module</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctx saved_module = mod</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01449">1449</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="a96d7bf425906a24bd8dc3acc6dd373c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d7bf425906a24bd8dc3acc6dd373c7">&#9670;&nbsp;</a></span>tmp_atom_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">tmp_atom_name[0] = malloc(<a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a> + 1)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01437">1437</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>

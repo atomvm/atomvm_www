@@ -229,7 +229,7 @@ $(function() {
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="module_8c.html#a39d8f0cceb59e34e5df3ea9f1d925578">  160</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="module_8c.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a>(<a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> label, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> *function_name, <span class="keywordtype">int</span> *<a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a>)</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="module_8c.html#a39d8f0cceb59e34e5df3ea9f1d925578">  160</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="module_8c.html#a39d8f0cceb59e34e5df3ea9f1d925578">module_get_function_from_label</a>(<a class="code" href="struct_module.html">Module</a> *this_module, <span class="keywordtype">int</span> <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> *function_name, <span class="keywordtype">int</span> *<a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a>)</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordtype">int</span> best_label = -1;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">const</span> uint8_t *export_table_data = (<span class="keyword">const</span> uint8_t *) this_module-&gt;<a class="code" href="struct_module.html#a1a5f7a02727804c21f3012ef77238b9c">export_table</a>;</div>
@@ -238,7 +238,7 @@ $(function() {
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordtype">int</span> fun_atom_index = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(export_table_data + (export_index * 12) + 12);</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordtype">int</span> fun_arity = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(export_table_data + (export_index * 12) + 4 + 12);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="keywordtype">int</span> fun_label = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(export_table_data + (export_index * 12) + 8 + 12);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">if</span> (fun_label &lt;= label &amp;&amp; best_label &lt; fun_label) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">if</span> (fun_label &lt;= <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> &amp;&amp; best_label &lt; fun_label) {</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            best_label = fun_label;</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            *<a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a> = fun_arity;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            *function_name = module_get_atom_string_by_id(this_module, fun_atom_index);</div>
@@ -251,7 +251,7 @@ $(function() {
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordtype">int</span> fun_atom_index = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(local_table_data + (local_index * 12) + 12);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordtype">int</span> fun_arity = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(local_table_data + (local_index * 12) + 4 + 12);</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordtype">int</span> fun_label = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(local_table_data + (local_index * 12) + 8 + 12);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span> (fun_label &lt;= label &amp;&amp; best_label &lt; fun_label) {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span> (fun_label &lt;= <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> &amp;&amp; best_label &lt; fun_label) {</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            best_label = fun_label;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            *<a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a> = fun_arity;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            *function_name = module_get_atom_string_by_id(this_module, fun_atom_index);</div>
@@ -273,8 +273,8 @@ $(function() {
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> function_atom = module_get_atom_string_by_id(this_module, <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + i * 12 + 12));</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        int32_t <a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a> = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + i * 12 + 4 + 12);</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> ((func_arity == <a class="code" href="struct_unresolved_function_call.html#a4b3d01ddbf4e203a97c18200ffe06beb">arity</a>) &amp;&amp; <a class="code" href="atom_8c.html#a33a42361e4c6c386a40e29ad01252d20">atom_are_equals</a>(func_name, function_atom)) {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            uint32_t label = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + i * 12 + 8 + 12);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span> label;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            uint32_t <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> = <a class="code" href="utils_8h.html#aeeb64d2b45c59d7b82bff03fce6ca503">READ_32_ALIGNED</a>(table_data + i * 12 + 8 + 12);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>;</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        }</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    }</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
@@ -375,16 +375,16 @@ $(function() {
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
 <div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="module_8c.html#af6be10f97e5b1bc1d57dc4d9c3e4630d">  304</a></span>&#160;<a class="code" href="utils_8h.html#a2a8dff1e95bf259bb264b73f67a0526b">COLD_FUNC</a> <span class="keywordtype">void</span> <a class="code" href="module_8c.html#af6be10f97e5b1bc1d57dc4d9c3e4630d">module_destroy</a>(<a class="code" href="struct_module.html">Module</a> *module)</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;{</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    free(module-&gt;<a class="code" href="struct_module.html#ae27fd4d2f26bafcd9bc336f1d0bb2fb9">labels</a>);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    free(module-&gt;<a class="code" href="struct_module.html#aef23c77f6ebbc38d4e961177ec50e4df">imported_funcs</a>);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    free(module-&gt;<a class="code" href="struct_module.html#a3d227af5edf0f6f820633894f2101dc1">literals_table</a>);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(module-&gt;<a class="code" href="struct_module.html#ae27fd4d2f26bafcd9bc336f1d0bb2fb9">labels</a>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(module-&gt;<a class="code" href="struct_module.html#aef23c77f6ebbc38d4e961177ec50e4df">imported_funcs</a>);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(module-&gt;<a class="code" href="struct_module.html#a3d227af5edf0f6f820633894f2101dc1">literals_table</a>);</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">if</span> (module-&gt;<a class="code" href="struct_module.html#a3e2d024b81328a87af532aebc9112260">free_literals_data</a>) {</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        free(module-&gt;<a class="code" href="struct_module.html#af25acc2dae7e1a2f63630e3f9bfb63a4">literals_data</a>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(module-&gt;<a class="code" href="struct_module.html#af25acc2dae7e1a2f63630e3f9bfb63a4">literals_data</a>);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    }</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="preprocessor">#ifndef AVM_NO_SMP</span></div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="smp_8h.html#aa84af997d438de69613f5bc2746e8cb3">smp_mutex_destroy</a>(module-&gt;<a class="code" href="struct_module.html#a5b8a95fc182ea1ff74150407e3e13136">mutex</a>);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    free(module);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(module);</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor">#ifdef WITH_ZLIB</span></div>
@@ -482,7 +482,7 @@ $(function() {
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        mfunc-&gt;<a class="code" href="struct_module_function.html#ae1c76fd6f13c159e07fcce63f137115d">target</a> = found_module;</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        mfunc-&gt;<a class="code" href="struct_module_function.html#a1459dc983103dfa13e6add6de6aba9a0">label</a> = exported_label;</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        free(unresolved);</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(unresolved);</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        mod-&gt;<a class="code" href="struct_module.html#aef23c77f6ebbc38d4e961177ec50e4df">imported_funcs</a>[import_table_index].<a class="code" href="unionimported__func.html#a9bd8710d4bdab1081461d83f1955746b">func</a> = &amp;mfunc-&gt;<a class="code" href="struct_module_function.html#adfce6e35ace10cedcdd53539279d5087">base</a>;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordflow">return</span> &amp;mfunc-&gt;<a class="code" href="struct_module_function.html#adfce6e35ace10cedcdd53539279d5087">base</a>;</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -505,7 +505,7 @@ $(function() {
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_refs + 1; ++i) {</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) (pos - *data) &gt; len) {</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;Invalid line_ref: expected tag.\n&quot;</span>);</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            free(ref_table);</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(ref_table);</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        }</div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        uint8_t tag = *pos;</div>
@@ -527,7 +527,7 @@ $(function() {
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                ++pos;</div>
 <div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) (pos - *data) &gt; len) {</div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;Invalid line_ref: expected extended int.\n&quot;</span>);</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                    free(ref_table);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;                    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(ref_table);</div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;                }</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;                uint8_t next_byte = *pos;</div>
@@ -541,7 +541,7 @@ $(function() {
 <div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                ++pos;</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) (pos - *data) &gt; len) {</div>
 <div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                    fprintf(stderr, <span class="stringliteral">&quot;Invalid line_ref: expected extended atom.\n&quot;</span>);</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                    free(ref_table);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(ref_table);</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                }</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                uint8_t next_byte = *pos;</div>
@@ -553,7 +553,7 @@ $(function() {
 <div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;            <span class="keywordflow">default</span>:</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                <span class="comment">// TODO handle integer compact encodings &gt; 2048</span></div>
 <div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                fprintf(stderr, <span class="stringliteral">&quot;Unsupported line_ref tag: %u\n&quot;</span>, tag);</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                free(ref_table);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(ref_table);</div>
 <div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        }</div>
 <div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    }</div>
@@ -574,14 +574,14 @@ $(function() {
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; num_filenames; ++i) {</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) ((pos + 2) - *<a class="code" href="struct_module_filename.html#a449760bc431a6c31720dd15842bf4a38">data</a>) &gt; <a class="code" href="struct_module_filename.html#ae952780581225c48b605b3dcb4422e0f">len</a>) {</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;Invalid filename: expected 16-bit size.\n&quot;</span>);</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            free(filenames);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(filenames);</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        }</div>
 <div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        uint16_t size = <a class="code" href="utils_8h.html#a83023a4459f7d3d23556fa19bcd9ef56">READ_16_UNALIGNED</a>(pos);</div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        pos +=2;</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) ((pos + size) - *<a class="code" href="struct_module_filename.html#a449760bc431a6c31720dd15842bf4a38">data</a>) &gt; <a class="code" href="struct_module_filename.html#ae952780581225c48b605b3dcb4422e0f">len</a>) {</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;Invalid filename: expected filename data (%u bytes).\n&quot;</span>, size);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            free(filenames);</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(filenames);</div>
 <div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        }</div>
 <div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        filenames[i].<a class="code" href="struct_module_filename.html#ae952780581225c48b605b3dcb4422e0f">len</a> = size;</div>
@@ -638,7 +638,7 @@ $(function() {
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    *filenames = <a class="code" href="module_8c.html#a575afe8ced2a180a37e25fab3ae66cef">parse_filename_table</a>(&amp;pos, num_filenames, <a class="code" href="struct_module_filename.html#ae952780581225c48b605b3dcb4422e0f">len</a> - (pos - <a class="code" href="struct_module_filename.html#a449760bc431a6c31720dd15842bf4a38">data</a>));</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(*filenames)) {</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        free(*line_refs);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(*line_refs);</div>
 <div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        <span class="keywordflow">return</span>;</div>
 <div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    }</div>
 <div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;}</div>
@@ -746,6 +746,8 @@ $(function() {
 <div class="ttc" id="anifs_8c_html_a740573ba6d70d2f51087511ffc0cdaf1"><div class="ttname"><a href="nifs_8c.html#a740573ba6d70d2f51087511ffc0cdaf1">nifs_get</a></div><div class="ttdeci">const struct Nif * nifs_get(AtomString module, AtomString function, int arity)</div><div class="ttdef"><b>Definition:</b> <a href="nifs_8c_source.html#l00746">nifs.c:746</a></div></div>
 <div class="ttc" id="anifs_8h_html"><div class="ttname"><a href="nifs_8h.html">nifs.h</a></div><div class="ttdoc">Private NIFs.</div></div>
 <div class="ttc" id="aopcodesswitch_8h_html"><div class="ttname"><a href="opcodesswitch_8h.html">opcodesswitch.h</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a512bd2c8e2a962b00a6a6926befc170c"><div class="ttname"><a href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a></div><div class="ttdeci">int label</div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l01441">opcodesswitch.h:1441</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="asmp_8h_html"><div class="ttname"><a href="smp_8h.html">smp.h</a></div><div class="ttdoc">Multicore support functions.</div></div>
 <div class="ttc" id="asmp_8h_html_aa33598a5ae60f3f2363301cd22dd8690"><div class="ttname"><a href="smp_8h.html#aa33598a5ae60f3f2363301cd22dd8690">smp_mutex_create</a></div><div class="ttdeci">Mutex * smp_mutex_create()</div><div class="ttdoc">Create a new mutex.</div></div>
 <div class="ttc" id="asmp_8h_html_aa84af997d438de69613f5bc2746e8cb3"><div class="ttname"><a href="smp_8h.html#aa84af997d438de69613f5bc2746e8cb3">smp_mutex_destroy</a></div><div class="ttdeci">void smp_mutex_destroy(Mutex *mtx)</div><div class="ttdoc">Destroy a mutex.</div></div>

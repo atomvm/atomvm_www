@@ -205,12 +205,12 @@ $(function() {
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Unable to allocate %zu bytes for binary buffer.\n&quot;</span>, len);</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="externalterm_8h.html#a7b610ef1bb7437f006b44fb6c2c5b173a5c70846a1c32d1a0cef84b284fb0f785">EXTERNAL_TERM_MALLOC</a>;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    memcpy(buf, data, len);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(buf, data, len);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">//</span></div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="comment">// convert</span></div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">//</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t = externalterm_to_term_internal(buf, len, ctx, <span class="keyword">false</span>, bytes_read, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    free(buf);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(buf);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">if</span> (term_is_invalid_term(t)) {</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="externalterm_8h.html#a7b610ef1bb7437f006b44fb6c2c5b173ac087ab3016f10c876cffa4ee1db08145">EXTERNAL_TERM_BAD_ARG</a>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    } <span class="keywordflow">else</span> {</div>
@@ -252,7 +252,7 @@ $(function() {
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// create and return the binary</span></div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="comment">//</span></div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> binary = term_from_literal_binary((<span class="keywordtype">void</span> *) buf, len, &amp;ctx-&gt;<a class="code" href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">heap</a>, ctx-&gt;<a class="code" href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">global</a>);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    free(buf);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(buf);</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> binary;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
@@ -409,7 +409,7 @@ $(function() {
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(buf)) {</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keyword">const</span> uint8_t *data = (<span class="keyword">const</span> uint8_t *) term_binary_data(t);</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <a class="code" href="utils_8h.html#a0d67699eb7221a1c28612a71bda13f1a">WRITE_32_UNALIGNED</a>(buf + 1, len);</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            memcpy(buf + 5, data, len);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(buf + 5, data, len);</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        }</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">return</span> 5 + len;</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
@@ -965,6 +965,8 @@ $(function() {
 <div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div></div>
 <div class="ttc" id="amemory_8c_html_aa34223a2c1aa426b283afb1e2461414a"><div class="ttname"><a href="memory_8c.html#aa34223a2c1aa426b283afb1e2461414a">memory_init_heap</a></div><div class="ttdeci">enum MemoryGCResult memory_init_heap(Heap *heap, size_t size)</div><div class="ttdoc">Initialize a root heap.</div><div class="ttdef"><b>Definition:</b> <a href="memory_8c_source.html#l00043">memory.c:46</a></div></div>
 <div class="ttc" id="amemory_8h_html_a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a"><div class="ttname"><a href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a></div><div class="ttdeci">@ MEMORY_GC_OK</div><div class="ttdef"><b>Definition:</b> <a href="memory_8h_source.html#l00055">memory.h:55</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="astruct_context_html"><div class="ttname"><a href="struct_context.html">Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00074">context.h:75</a></div></div>
 <div class="ttc" id="astruct_context_html_a0686e56e3c983101aa2c30ce64874600"><div class="ttname"><a href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">Context::global</a></div><div class="ttdeci">GlobalContext * global</div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00077">context.h:77</a></div></div>
 <div class="ttc" id="astruct_context_html_a8e815b8d319337382fc61f942fb46a59"><div class="ttname"><a href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">Context::heap</a></div><div class="ttdeci">Heap heap</div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00078">context.h:78</a></div></div>

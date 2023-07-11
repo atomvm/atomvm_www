@@ -121,7 +121,7 @@ $(function() {
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(str)) {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    memcpy(str, term_binary_data(binary), len);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(str, term_binary_data(binary), len);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    str[len] = 0;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
@@ -147,13 +147,13 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> byte_value_term = term_get_list_head(t);</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!term_is_integer(byte_value_term))) {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            *ok = 0;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            free(str);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(str);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!term_is_uint8(byte_value_term))) {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            *ok = 0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            free(str);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(str);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        uint8_t byte_value = term_to_uint8(byte_value_term);</div>
@@ -268,7 +268,7 @@ $(function() {
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">int</span> len = term_binary_size(t);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        memcpy(p, term_binary_data(t), len);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(p, term_binary_data(t), len);</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
@@ -300,7 +300,7 @@ $(function() {
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordtype">int</span> len = term_binary_size(t);</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            memcpy(p, term_binary_data(t), len);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(p, term_binary_data(t), len);</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            p += len;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
@@ -380,6 +380,8 @@ $(function() {
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a></div><div class="ttdeci">@ InteropMemoryAllocFail</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00034">interop.h:34</a></div></div>
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a></div><div class="ttdeci">@ InteropBadArg</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00036">interop.h:35</a></div></div>
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a></div><div class="ttdeci">@ InteropOk</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00033">interop.h:33</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="astruct_atom_string_int_pair_html"><div class="ttname"><a href="struct_atom_string_int_pair.html">AtomStringIntPair</a></div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00050">interop.h:51</a></div></div>
 <div class="ttc" id="astruct_atom_string_int_pair_html_a39cf0462705fb32ad2584dced5d3548f"><div class="ttname"><a href="struct_atom_string_int_pair.html#a39cf0462705fb32ad2584dced5d3548f">AtomStringIntPair::i_val</a></div><div class="ttdeci">int i_val</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00053">interop.h:53</a></div></div>
 <div class="ttc" id="astruct_atom_string_int_pair_html_a69c8a4bc410dbf7e74b61cf403c896d1"><div class="ttname"><a href="struct_atom_string_int_pair.html#a69c8a4bc410dbf7e74b61cf403c896d1">AtomStringIntPair::as_val</a></div><div class="ttdeci">AtomString as_val</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00052">interop.h:52</a></div></div>

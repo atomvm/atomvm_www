@@ -105,7 +105,7 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (bufsize &lt; atom_len) {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        atom_len = bufsize - 1;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    memcpy(buf, ((uint8_t *) atom_string) + 1, atom_len);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(buf, ((uint8_t *) atom_string) + 1, atom_len);</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    buf[atom_len] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
@@ -129,7 +129,7 @@ $(function() {
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="atom_8c.html#a64e8933778a82c90b1ddaf3115e0e0b9">   57</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="atom_8c.html#a64e8933778a82c90b1ddaf3115e0e0b9">atom_write_mfa</a>(<span class="keywordtype">char</span> *buf, <span class="keywordtype">size_t</span> buf_size, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> module, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> <span class="keyword">function</span>, <span class="keywordtype">int</span> arity)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> module_name_len = atom_string_len(module);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    memcpy(buf, atom_string_data(module), module_name_len);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(buf, atom_string_data(module), module_name_len);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    buf[module_name_len] = <span class="charliteral">&#39;:&#39;</span>;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -138,7 +138,7 @@ $(function() {
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        fprintf(stderr, <span class="stringliteral">&quot;Insufficient room to write mfa.\n&quot;</span>);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    memcpy(buf + module_name_len + 1, atom_string_data(<span class="keyword">function</span>), function_name_len);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(buf + module_name_len + 1, atom_string_data(<span class="keyword">function</span>), function_name_len);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// TODO: handle functions with more than 9 parameters</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    buf[module_name_len + function_name_len + 1] = <span class="charliteral">&#39;/&#39;</span>;</div>
@@ -150,6 +150,7 @@ $(function() {
 <div class="ttc" id="aatom_8c_html_a64e8933778a82c90b1ddaf3115e0e0b9"><div class="ttname"><a href="atom_8c.html#a64e8933778a82c90b1ddaf3115e0e0b9">atom_write_mfa</a></div><div class="ttdeci">void atom_write_mfa(char *buf, size_t buf_size, AtomString module, AtomString function, int arity)</div><div class="ttdoc">Write module:function/arity to the supplied buffer.</div><div class="ttdef"><b>Definition:</b> <a href="atom_8c_source.html#l00057">atom.c:57</a></div></div>
 <div class="ttc" id="aatom_8h_html"><div class="ttname"><a href="atom_8h.html">atom.h</a></div><div class="ttdoc">Atoms manipulation functions.</div></div>
 <div class="ttc" id="aatom_8h_html_ad65688322910ef2b4658ffac1f9d8b81"><div class="ttname"><a href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a></div><div class="ttdeci">const void * AtomString</div><div class="ttdef"><b>Definition:</b> <a href="atom_8h_source.html#l00044">atom.h:44</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Misc functions and macros.</div></div>
 <div class="ttc" id="autils_8h_html_a48e118cd23f648768f0faf4a32d303e6"><div class="ttname"><a href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a></div><div class="ttdeci">#define AVM_ABORT()</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00187">utils.h:187</a></div></div>
 <div class="ttc" id="autils_8h_html_ab10d0a221f4d7a706701b806c8135fd7"><div class="ttname"><a href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a></div><div class="ttdeci">#define UNLIKELY(x)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00134">utils.h:134</a></div></div>

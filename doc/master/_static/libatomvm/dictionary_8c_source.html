@@ -174,7 +174,7 @@ $(function() {
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    *old = entry-&gt;<a class="code" href="struct_dict_entry.html#af15cf7020ac82972d535ae98ef95c421">value</a>;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    list_remove(&amp;entry-&gt;<a class="code" href="struct_dict_entry.html#a66f3998d484a8b40b4f1d6b4dc4d2578">head</a>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    free(entry);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(entry);</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="dictionary_8h.html#ad85950c231b4eaf087060ae0b424d3cea86631ed7b146fe4fc3b85dd728c4f93d">DictionaryOk</a>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
@@ -185,7 +185,7 @@ $(function() {
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_list_head.html">ListHead</a> *tmp;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="list_8h.html#a5f8766dc258711433316453c8c33a2d1">MUTABLE_LIST_FOR_EACH</a> (item, tmp, dict) {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">struct </span><a class="code" href="struct_dict_entry.html">DictEntry</a> *entry = <a class="code" href="list_8h.html#ab76f4b47b7b08b1f93f609fcdb4b6cf6">GET_LIST_ENTRY</a>(item, <span class="keyword">struct</span> <a class="code" href="struct_dict_entry.html">DictEntry</a>, <a class="code" href="struct_dict_entry.html#a66f3998d484a8b40b4f1d6b4dc4d2578">head</a>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        free(entry);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(entry);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
 <div class="ttc" id="adefaultatoms_8h_html"><div class="ttname"><a href="defaultatoms_8h.html">defaultatoms.h</a></div></div>
@@ -202,6 +202,7 @@ $(function() {
 <div class="ttc" id="alist_8h_html_a5f8766dc258711433316453c8c33a2d1"><div class="ttname"><a href="list_8h.html#a5f8766dc258711433316453c8c33a2d1">MUTABLE_LIST_FOR_EACH</a></div><div class="ttdeci">#define MUTABLE_LIST_FOR_EACH(item, tmp, head)</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00035">list.h:35</a></div></div>
 <div class="ttc" id="alist_8h_html_ab76f4b47b7b08b1f93f609fcdb4b6cf6"><div class="ttname"><a href="list_8h.html#ab76f4b47b7b08b1f93f609fcdb4b6cf6">GET_LIST_ENTRY</a></div><div class="ttdeci">#define GET_LIST_ENTRY(list_item, type, list_head_member)</div><div class="ttdoc">gets a pointer to the struct that contains a certain list head</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00029">list.h:29</a></div></div>
 <div class="ttc" id="alist_8h_html_af3e6071cf254285e0628be64a431d988"><div class="ttname"><a href="list_8h.html#af3e6071cf254285e0628be64a431d988">LIST_FOR_EACH</a></div><div class="ttdeci">#define LIST_FOR_EACH(item, head)</div><div class="ttdef"><b>Definition:</b> <a href="list_8h_source.html#l00032">list.h:32</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="astruct_dict_entry_html"><div class="ttname"><a href="struct_dict_entry.html">DictEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="dictionary_8h_source.html#l00037">dictionary.h:38</a></div></div>
 <div class="ttc" id="astruct_dict_entry_html_a66f3998d484a8b40b4f1d6b4dc4d2578"><div class="ttname"><a href="struct_dict_entry.html#a66f3998d484a8b40b4f1d6b4dc4d2578">DictEntry::head</a></div><div class="ttdeci">struct ListHead head</div><div class="ttdef"><b>Definition:</b> <a href="dictionary_8h_source.html#l00050">dictionary.h:39</a></div></div>
 <div class="ttc" id="astruct_dict_entry_html_a8cbb8987f2ce769769a28a21b3efed06"><div class="ttname"><a href="struct_dict_entry.html#a8cbb8987f2ce769769a28a21b3efed06">DictEntry::key</a></div><div class="ttdeci">term key</div><div class="ttdef"><b>Definition:</b> <a href="dictionary_8h_source.html#l00040">dictionary.h:40</a></div></div>

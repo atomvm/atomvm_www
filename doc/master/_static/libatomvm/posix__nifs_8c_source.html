@@ -297,7 +297,7 @@ $(function() {
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span> (argc == 3) {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> mode_term = argv[2];</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!term_is_integer(mode_term))) {</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            free(path);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(path);</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <a class="code" href="bif_8c.html#a832199d5ff8e170484b8ad190f1e37b2">RAISE_ERROR</a>(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordtype">int</span> mode = term_to_int(mode_term);</div>
@@ -305,7 +305,7 @@ $(function() {
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        fd = open(path, posix_flags);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    free(path);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>(path);</div>
 <div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(fd &lt; 0)) {</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="comment">// Return an error.</span></div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(memory_ensure_free_opt(ctx, <a class="code" href="term_8h.html#a476d7e8af59a33c4b1a710660e8edd61">TUPLE_SIZE</a>(2), <a class="code" href="memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628a60f35c55b5fa2d4850516dcbd5a63427">MEMORY_CAN_SHRINK</a>) != <a class="code" href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a>)) {</div>
@@ -445,7 +445,7 @@ $(function() {
 <div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    }</div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordtype">int</span> res = unlink(path);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    free((<span class="keywordtype">void</span> *) path);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a>((<span class="keywordtype">void</span> *) path);</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">if</span> (res &lt; 0) {</div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="comment">// Return an error.</span></div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(memory_ensure_free_opt(ctx, <a class="code" href="term_8h.html#a476d7e8af59a33c4b1a710660e8edd61">TUPLE_SIZE</a>(2), <a class="code" href="memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628a60f35c55b5fa2d4850516dcbd5a63427">MEMORY_CAN_SHRINK</a>) != <a class="code" href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a>)) {</div>
@@ -501,6 +501,7 @@ $(function() {
 <div class="ttc" id="amemory_8h_html_a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a"><div class="ttname"><a href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a></div><div class="ttdeci">@ MEMORY_GC_OK</div><div class="ttdef"><b>Definition:</b> <a href="memory_8h_source.html#l00055">memory.h:55</a></div></div>
 <div class="ttc" id="amemory_8h_html_aff62723a68c8c946c7d115a1cfaa4628a60f35c55b5fa2d4850516dcbd5a63427"><div class="ttname"><a href="memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628a60f35c55b5fa2d4850516dcbd5a63427">MEMORY_CAN_SHRINK</a></div><div class="ttdeci">@ MEMORY_CAN_SHRINK</div><div class="ttdef"><b>Definition:</b> <a href="memory_8h_source.html#l00063">memory.h:63</a></div></div>
 <div class="ttc" id="anifs_8h_html"><div class="ttname"><a href="nifs_8h.html">nifs.h</a></div><div class="ttdoc">Private NIFs.</div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="aposix__nifs_8c_html_a448c8f84474e9544446b12ca6eaab137"><div class="ttname"><a href="posix__nifs_8c.html#a448c8f84474e9544446b12ca6eaab137">posix_errno_to_term</a></div><div class="ttdeci">term posix_errno_to_term(int err, GlobalContext *glb)</div><div class="ttdoc">Convenient function to return posix errors as atom.</div><div class="ttdef"><b>Definition:</b> <a href="posix__nifs_8c_source.html#l00038">posix_nifs.c:38</a></div></div>
 <div class="ttc" id="aposix__nifs_8h_html"><div class="ttname"><a href="posix__nifs_8h.html">posix_nifs.h</a></div><div class="ttdoc">Declaration of NIFs based on POSIX functions.</div></div>
 <div class="ttc" id="astruct_context_html"><div class="ttname"><a href="struct_context.html">Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00074">context.h:75</a></div></div>

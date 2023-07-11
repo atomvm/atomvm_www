@@ -650,9 +650,9 @@ $(function() {
 <div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;    }</div>
 <div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;}</div>
 <div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160; </div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_from_catch_label(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> module_index, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> label)</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_from_catch_label(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> module_index, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>)</div>
 <div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;{</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) ((module_index &lt;&lt; 24) | (label &lt;&lt; 6) | <a class="code" href="term_8h.html#a9ad4d037b891f1786972da85e2160eb1">TERM_CATCH_TAG</a>);</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>) ((module_index &lt;&lt; 24) | (<a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> &lt;&lt; 6) | <a class="code" href="term_8h.html#a9ad4d037b891f1786972da85e2160eb1">TERM_CATCH_TAG</a>);</div>
 <div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;}</div>
 <div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160; </div>
 <div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_from_local_process_id(uint32_t local_process_id)</div>
@@ -737,7 +737,7 @@ $(function() {
 <div class="line"><a name="l01000"></a><span class="lineno"> 1000</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> term_from_literal_binary(<span class="keyword">const</span> <span class="keywordtype">void</span> *data, uint32_t size, <a class="code" href="struct_heap.html">Heap</a> *heap, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb)</div>
 <div class="line"><a name="l01001"></a><span class="lineno"> 1001</span>&#160;{</div>
 <div class="line"><a name="l01002"></a><span class="lineno"> 1002</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> binary = term_create_uninitialized_binary(size, heap, glb);</div>
-<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;    memcpy((<span class="keywordtype">void</span> *) term_binary_data(binary), data, size);</div>
+<div class="line"><a name="l01003"></a><span class="lineno"> 1003</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>((<span class="keywordtype">void</span> *) term_binary_data(binary), data, size);</div>
 <div class="line"><a name="l01004"></a><span class="lineno"> 1004</span>&#160;    <span class="keywordflow">return</span> binary;</div>
 <div class="line"><a name="l01005"></a><span class="lineno"> 1005</span>&#160;}</div>
 <div class="line"><a name="l01006"></a><span class="lineno"> 1006</span>&#160; </div>
@@ -802,7 +802,7 @@ $(function() {
 <div class="line"><a name="l01112"></a><span class="lineno"> 1112</span>&#160;    }</div>
 <div class="line"><a name="l01113"></a><span class="lineno"> 1113</span>&#160;    uint8_t *dst_pos = (uint8_t *) term_binary_data(t) + offset / 8;</div>
 <div class="line"><a name="l01114"></a><span class="lineno"> 1114</span>&#160;    uint8_t *src_pos = (uint8_t *) term_binary_data(src);</div>
-<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;    memcpy(dst_pos, src_pos, n);</div>
+<div class="line"><a name="l01115"></a><span class="lineno"> 1115</span>&#160;    <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(dst_pos, src_pos, n);</div>
 <div class="line"><a name="l01116"></a><span class="lineno"> 1116</span>&#160;    <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l01117"></a><span class="lineno"> 1117</span>&#160;}</div>
 <div class="line"><a name="l01118"></a><span class="lineno"> 1118</span>&#160; </div>
@@ -1248,6 +1248,8 @@ $(function() {
 <div class="line"><a name="l01709"></a><span class="lineno"> 1709</span>&#160; </div>
 <div class="line"><a name="l01710"></a><span class="lineno"> 1710</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="amemory_8h_html"><div class="ttname"><a href="memory_8h.html">memory.h</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a512bd2c8e2a962b00a6a6926befc170c"><div class="ttname"><a href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a></div><div class="ttdeci">int label</div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l01441">opcodesswitch.h:1441</a></div></div>
 <div class="ttc" id="arefc__binary_8c_html_a61ceb824381d5a877c5c8182dc6c9040"><div class="ttname"><a href="refc__binary_8c.html#a61ceb824381d5a877c5c8182dc6c9040">refc_binary_get_data</a></div><div class="ttdeci">const char * refc_binary_get_data(const struct RefcBinary *refc)</div><div class="ttdoc">get the data of the off-context binary</div><div class="ttdef"><b>Definition:</b> <a href="refc__binary_8c_source.html#l00051">refc_binary.c:51</a></div></div>
 <div class="ttc" id="arefc__binary_8c_html_aa0af58de2e51890dbfeeb9f1e24d8c09"><div class="ttname"><a href="refc__binary_8c.html#aa0af58de2e51890dbfeeb9f1e24d8c09">refc_binary_from_data</a></div><div class="ttdeci">struct RefcBinary * refc_binary_from_data(void *ptr)</div><div class="ttdoc">get the refc binary from its pointer</div><div class="ttdef"><b>Definition:</b> <a href="refc__binary_8c_source.html#l00056">refc_binary.c:56</a></div></div>
 <div class="ttc" id="arefc__binary_8h_html"><div class="ttname"><a href="refc__binary_8h.html">refc_binary.h</a></div></div>
