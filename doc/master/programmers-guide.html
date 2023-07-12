@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.5a2ffffa documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.d9883129 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -81,6 +81,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#standard-libraries">Standard Libraries</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spawning-processes">Spawning Processes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#console-output">Console Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-logger-manager">The <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-your-own-log-handler">Writing your own log handler</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#process-management">Process Management</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-apis">System APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-time">System Time</a></li>
@@ -507,6 +512,198 @@ io:format(&quot;The ~p did a ~p~n&quot;, [friddle, frop]).
 <blockquote>
 <div><p>Note. Formatting parameters are currently limited to <code class="docutils literal notranslate"><span class="pre">~p</span></code>, <code class="docutils literal notranslate"><span class="pre">~s</span></code>, and <code class="docutils literal notranslate"><span class="pre">~n</span></code>.</p>
 </div></blockquote>
+</section>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h3>
+<p>AtomVM supports a subset of the OTP logging facility, allowing users to send log event to log handlers (by default, the console), and to install handlers that handle log events.</p>
+<p>To log events, you are encouraged to use the logging macros from the OTP <code class="docutils literal notranslate"><span class="pre">kernel</span></code> application.  You can use these macros at compile time, and the generated code can be run in AtomVM.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+-include_lib(&quot;kernel/include/logger.hrl&quot;).
+...
+?LOG_NOTICE(&quot;Something happened that might require your attention: ~p&quot;, [TheThing])
+</pre></div>
+</div>
+<p>By default, this will result in a message displayed on the console, with a timestamp, log level, PID of the process that initiated the log message, the module, function, and function arity, together with the supplied log message:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2023-07-04T18:34:56.387 [notice] &lt;0.1.0&gt; test_logger:test_default_logger/0 Something happened that might require your attention: ThatThingThatHappened
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note that log messages need not (and generally should not) include newline separators (<code class="docutils literal notranslate"><span class="pre">~n</span></code>) in log format messages, unless necessary.</p>
+</div></blockquote>
+<p>Users may provide a format string, with an optional list of arguments.  Alternatively, users can provide a map encapsulating a “report” in lieu of a format string.  Reports provide a mechanism for supplying a set of structured data directly to log handlers (see below), without necessarily incurring the cost of formatting log messages.</p>
+<p>As with OTP, the following ordered log levels (from high to low) are supported:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">emergency</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">critical</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alert</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warning</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">notice</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code></p></li>
+</ul>
+<p>By default, the logging facility drops any messages below <code class="docutils literal notranslate"><span class="pre">notice</span></code> level.  To set the default log level for the logging subsystem, see the <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> section, below.</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">logger</span></code> interface directly to log messages at different levels, but in general, the OTP logging macros are encouraged, as log events generated using the OTP macros include additional metadata (such as the location of the log event) you do not otherwise get using the functions in the <code class="docutils literal notranslate"><span class="pre">logger</span></code> module.</p>
+<p>For example, the expression</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>logger:notice(&quot;Something happened that might require your attention: ~p&quot;, [TheThing])
+</pre></div>
+</div>
+<p>may seem similar to using the <code class="docutils literal notranslate"><span class="pre">?LOG_NOTICE</span></code> macro, but less contextual information will be included in the log event.</p>
+<p>For more information about the OTP logging facility, see the Erlang/OTP <a class="reference external" href="https://www.erlang.org/doc/apps/kernel/logger_chapter.html">Logging</a> chapter.</p>
+<blockquote>
+<div><p>Note.  AtomVM does not currently support programmatic configuration of the logging subsystem.  All changes to default behavior should be done via the AtomVM <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> module (see below).</p>
+</div></blockquote>
+<section id="the-logger-manager">
+<h4>The <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code><a class="headerlink" href="#the-logger-manager" title="Permalink to this heading"></a></h4>
+<p>In order to use the <code class="docutils literal notranslate"><span class="pre">logger</span></code> interface, you will need to first start the AtomVM <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> service.</p>
+<blockquote>
+<div><p>Note.  Future versions of AtomVM may automatically start the logging subsystem as part of a kernel application, but currently, this service must be managed manually.</p>
+</div></blockquote>
+<p>To start the <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code>, use the <code class="docutils literal notranslate"><span class="pre">logger_manager:start_link/1</span></code> function, passing in a configuration map for the logging subsystem.</p>
+<p>For example, the default logging framework can be started via:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+{ok, _Pid} = logger_manager:start_link(#{})
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  The logger_manager is a registered process, so the returned Pid may be ignored.</p>
+</div></blockquote>
+<p>The configuration map supplied to the logger_manager may contain the following keys:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log_level</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">log_level()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">notice</span></code></p></td>
+<td><p>Primary log level</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logger</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logger_config()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{handler,</span> <span class="pre">default,</span> <span class="pre">logger_std_h,</span> <span class="pre">undefined}</span></code></p></td>
+<td><p>Log configuration</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">module_level</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">module_level()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">undefined</span></code></p></td>
+<td><p>Log level specific to a set of modules</p></td>
+</tr>
+</tbody>
+</table>
+<p>where <code class="docutils literal notranslate"><span class="pre">log_level()</span></code> is defined to be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-type log_level() :: emergency | critical | alert | error | warning | notice | info | debug.
+</pre></div>
+</div>
+<p>and <code class="docutils literal notranslate"><span class="pre">logger_config()</span></code> is defined as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-type handler_id() :: default | atom().
+-type handler_config() :: #{
+    id =&gt; atom(),
+    module =&gt; module(),
+    level =&gt; logger:level() | all | none,
+    config =&gt; term()
+}.
+-type logger_config() :: [
+    {handler, default, undefined} |
+    {handler, HandlerId :: handler_id(), Handler :: module(), HandlerConfig :: handler_config()} |
+    {module_level, logger:level(), [module()]}
+].
+</pre></div>
+</div>
+<p>You can set the log level for all log handlers by setting the <code class="docutils literal notranslate"><span class="pre">log_level</span></code> in this configuration map.  Any messages that are logged at levels “higher” than or equal to the configured log level will be logged by all log handlers.</p>
+<p>The standard logger (<code class="docutils literal notranslate"><span class="pre">logger_std_h</span></code>) is included by default, if no default logger is specified (and if the default logger is not disabled – see below).  The standard logger will output log events to the console.</p>
+<p>You can specify multiple log handlers in the <code class="docutils literal notranslate"><span class="pre">logger</span></code> configuration.  If a log entry is allowed for a given log level, then each log handler will handle the log message.  For example, you might have a log handler that sends messages over the network to a syslog daemon, or you might have another handler that writes log messages to a file.</p>
+<p>You can pass handler configuration int the <code class="docutils literal notranslate"><span class="pre">config</span></code> element of the <code class="docutils literal notranslate"><span class="pre">handler_config()</span></code> you specify when specifying a logger.  The value of the <code class="docutils literal notranslate"><span class="pre">config</span></code> element can be any term and is made available to log handlers when events are logged (see below).</p>
+<p>If the tuple <code class="docutils literal notranslate"><span class="pre">{handler,</span> <span class="pre">default,</span> <span class="pre">undefined}</span></code> is included in the logger configuration, the default logger will be disabled.</p>
+<p>At most one <code class="docutils literal notranslate"><span class="pre">default</span></code> logger can be specified.  If you want to replace the <code class="docutils literal notranslate"><span class="pre">default</span></code> logger (<code class="docutils literal notranslate"><span class="pre">logger_std_h</span></code>), then specify a logger with the handler id <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
+<p>You can specify different log levels for specific modules.  For example, if you want to set the default log level for all handlers to be <code class="docutils literal notranslate"><span class="pre">notice</span></code> or higher, you can set the log level for a given module to <code class="docutils literal notranslate"><span class="pre">info</span></code>, and all <code class="docutils literal notranslate"><span class="pre">info</span></code> and higher messages will be logged for that module or set of modules.  Conversely, you can “quiet” a module if it is particularly noisy by setting its level to something relatively high.</p>
+<p>For more information about how to configure the logging subsystem, see the <a class="reference external" href="https://www.erlang.org/doc/apps/kernel/logger_chapter.html#kernel-configuration-parameters">Kernel Configuration Parameters</a> section of the OTP Logging chapter.</p>
+<p>You can stop the <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> via the <code class="docutils literal notranslate"><span class="pre">logger_manager:stop/0</span></code> function:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+ok = logger_manager:stop()
+</pre></div>
+</div>
+</section>
+<section id="writing-your-own-log-handler">
+<h4>Writing your own log handler<a class="headerlink" href="#writing-your-own-log-handler" title="Permalink to this heading"></a></h4>
+<p>Additional loggers can be enabled via handler specifications.  A handler module must implement and export the <code class="docutils literal notranslate"><span class="pre">log/2</span></code> function, which takes a log event and a term containing the configuration for the logger handler instance.</p>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+-module(my_module).
+
+-export([..., log/2, ...]).
+
+log(LogEvent, HandlerConfig) -&gt;
+    %% do something with the log event
+    %% return value is ignored
+</pre></div>
+</div>
+<p>You can specify this handler in the <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> configuration (see above) via a stanza such as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>{handler, my_id, my_module, HandlerConfig}
+</pre></div>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">LogEvent</span></code> is a map structure containing the following fields:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">timestamp</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
+<td><p>The time (in microseconds since the UNIX epoch) at which the log event was generated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">level</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">logger:level()</span></code></p></td>
+<td><p>The log level with which the log event was generated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pid</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pid()</span></code></p></td>
+<td><p>The process id of the Erlang process in which the event was generated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">msg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string()</span> <span class="pre">|</span> <span class="pre">{string(),</span> <span class="pre">list()}</span></code></p></td>
+<td><p>The message format and arguments passed when the event was generated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">meta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">map()</span></code></p></td>
+<td><p>Metadata passed when the event was generated.</p></td>
+</tr>
+</tbody>
+</table>
+<p>If the log event was generated using a logging macro, then the <code class="docutils literal notranslate"><span class="pre">meta</span></code> map also contains a <code class="docutils literal notranslate"><span class="pre">location</span></code> field with the following fields:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">file</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string()</span></code></p></td>
+<td><p>The path of the file in which the event was generated</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">line</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>The line number in the file in which the event was generated</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mfa</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">{module(),</span> <span class="pre">function_name(),</span> <span class="pre">arity()}</span></code></p></td>
+<td><p>The MFA of the function in which the event was generated</p></td>
+</tr>
+</tbody>
+</table>
+<p>The handler config is a map structure containing the id and module of the handler.</p>
+<p>an arbitrary term and is passed into the log handler via configuration of the <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> (see above).</p>
+</section>
 </section>
 <section id="process-management">
 <h3>Process Management<a class="headerlink" href="#process-management" title="Permalink to this heading"></a></h3>
