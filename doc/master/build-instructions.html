@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.98c2b129 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.6a1a756e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -79,7 +79,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#flashing-release-images">Flashing Release Images</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#flashing-applications">Flashing Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashing-applications">Flashing Applications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#flashing-the-core-libraries">Flashing the core libraries</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#adding-custom-nifs-ports-and-third-party-components">Adding custom Nifs, Ports, and third-party components</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-custom-atomvm-nif">Adding a custom AtomVM Nif</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#adding-a-custom-atomvm-port">Adding a custom AtomVM Port</a></li>
@@ -565,6 +568,39 @@ Hard resetting via RTS pin...
 <blockquote>
 <div><p>Note.  Since the Erlang core libraries are flashed to the ESP32 device, it is not necessary to include core libraries in your application AVM files.  Users may be interested in using downstream development tools, such as the Elixir <a href="https://github.com/atomvm/ExAtomVM">ExAtomVM Mix task</a>, or the Erlang <a href="https://github.com/atomvm/atomvm_rebar3_plugin">AtomVM Rebar3 Plugin</a> for doing day-to-day development of applications for the AtomVM platform.</p>
 </div></blockquote>
+<section id="flashing-the-core-libraries">
+<h4>Flashing the core libraries<a class="headerlink" href="#flashing-the-core-libraries" title="Permalink to this heading"></a></h4>
+<p>If you are doing development work on the core Erlang/Elixir libraries and wish to test changes that do not involve the <code class="docutils literal notranslate"><span class="pre">C</span></code> code in the core VM you may flash <code class="docutils literal notranslate"><span class="pre">atomvmlib.avm</span></code> to the avm.lib partition (offset 0x1D0000) by using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ build/flash.sh -l ../../../build/libs/atomvmlib.avm
+%%
+%% Flashing ../../../build/libs/atomvmlib.avm (size=116k)
+%%
+esptool.py v4.5.1
+Serial port /dev/ttyUSB0
+Connecting.....
+Detecting chip type... Unsupported detection protocol, switching and trying again...
+Connecting.....
+Detecting chip type... ESP32
+Chip is ESP32-D0WD (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 1a:57:c5:7f:ac:5b
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 921600
+Changed.
+Configuring flash size...
+Auto-detected Flash size: 8MB
+Flash will be erased from 0x001d0000 to 0x001ecfff...
+Wrote 131072 bytes at 0x001d0000 in 1.8 seconds (582.1 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+</pre></div>
+</div>
+</section>
 </section>
 <section id="adding-custom-nifs-ports-and-third-party-components">
 <h3>Adding custom Nifs, Ports, and third-party components<a class="headerlink" href="#adding-custom-nifs-ports-and-third-party-components" title="Permalink to this heading"></a></h3>
