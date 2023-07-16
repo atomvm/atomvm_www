@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started Guide &mdash; AtomVM 0.6.0-dev+git.2afc92ed documentation</title>
+  <title>Getting Started Guide &mdash; AtomVM 0.6.0-dev+git.8a434fac documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -93,6 +93,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-on-the-generic-unix-platform">Getting Started on the Generic UNIX platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started-with-atomvm-webassembly-port">Getting Started with AtomVM WebAssembly port.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Where to go from here</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
@@ -459,6 +461,29 @@ standard libraries (<code class="docutils literal notranslate"><span class="pre"
 </section>
 <section id="where-to-go-from-here">
 <h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading"></a></h2>
+<p>The following resources may be useful for understanding how to develop Erlang or Elixir applications for the AtomVM platform:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="example-programs.html"><span class="std std-doc">Example Programs</span></a></p></li>
+<li><p><a class="reference internal" href="programmers-guide.html"><span class="std std-doc">Programmers Guide</span></a></p></li>
+</ul>
+</section>
+<section id="getting-started-with-atomvm-webassembly-port">
+<h2>Getting Started with AtomVM WebAssembly port.<a class="headerlink" href="#getting-started-with-atomvm-webassembly-port" title="Permalink to this heading"></a></h2>
+<p>AtomVM may be run on platforms with NodeJS from the AtomVM.js file (with its companion AtomVM.wasm file).</p>
+<p>Currently, these files must be built and installed from source.</p>
+<blockquote>
+<div><p>See the AtomVM <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a> for instructions about how to build AtomVM WebAssembly port.</p>
+</div></blockquote>
+<p>AtomVM may also be run in modern browsers (Safari, Chrome and Chrome-based, Firefox) from the AtomVM.js, AtomVM.worker.js and AtomVM.wasm files.</p>
+<p>Currently, these files must be built and installed from source. They also need to be installed on a web server that send <code class="docutils literal notranslate"><span class="pre">Cross-Origin-Opener-Policy</span></code> and <code class="docutils literal notranslate"><span class="pre">Cross-Origin-Embedder-Policy</span></code> headers as explained in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#security_requirements">Mozilla’s documentation</a>.</p>
+<p>AtomVM comes with a toy web server you can use and run with AtomVM built for Generic Unix with:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="p">.</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">AtomVM</span><span class="w"> </span><span class="n">examples</span><span class="o">/</span><span class="n">emscripten</span><span class="o">/</span><span class="n">wasm_webserver</span><span class="p">.</span><span class="n">avm</span>
+</pre></div>
+</div>
+<p>This web server serves HTML files from <code class="docutils literal notranslate"><span class="pre">examples/emscripten/</span></code> which you can copy to a webserver along with binaries and built files.</p>
+</section>
+<section id="id2">
+<h2>Where to go from here<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h2>
 <p>The following resources may be useful for understanding how to develop Erlang or Elixir applications for the AtomVM platform:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="example-programs.html"><span class="std std-doc">Example Programs</span></a></p></li>

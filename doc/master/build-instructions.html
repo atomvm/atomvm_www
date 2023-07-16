@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.2afc92ed documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-dev+git.8a434fac documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -100,10 +100,18 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building-for-raspberry-pi-pico">Building for Raspberry Pi Pico</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps">AtomVM build steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libatomvm-build-steps">libAtomVM build steps</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#atomvm-build-steps">AtomVM build steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#libatomvm-build-steps">libAtomVM build steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-for-nodejs-web">Building for NodeJS/Web</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-for-nodejs">Building for NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests-with-nodejs">Running tests with NodeJS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-for-the-web">Building for the web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests-with-cypress">Running tests with Cypress</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="atomvm-internals.html">AtomVM Internals</a></li>
@@ -754,9 +762,8 @@ is 8N1 with no flow control.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Elixir</span></code> (optional)</p></li>
 </ul>
 </section>
-</section>
 <section id="atomvm-build-steps">
-<h2>AtomVM build steps<a class="headerlink" href="#atomvm-build-steps" title="Permalink to this heading"></a></h2>
+<h3>AtomVM build steps<a class="headerlink" href="#atomvm-build-steps" title="Permalink to this heading"></a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/rp2040/
 mkdir build
 cd build
@@ -769,7 +776,7 @@ ninja
 </div></blockquote>
 </section>
 <section id="libatomvm-build-steps">
-<h2>libAtomVM build steps<a class="headerlink" href="#libatomvm-build-steps" title="Permalink to this heading"></a></h2>
+<h3>libAtomVM build steps<a class="headerlink" href="#libatomvm-build-steps" title="Permalink to this heading"></a></h3>
 <p>Build of standard libraries is part of the generic unix build.</p>
 <p>From the root of the project:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir build
@@ -778,6 +785,98 @@ cmake .. -G Ninja
 ninja
 </pre></div>
 </div>
+</section>
+</section>
+<section id="building-for-nodejs-web">
+<h2>Building for NodeJS/Web<a class="headerlink" href="#building-for-nodejs-web" title="Permalink to this heading"></a></h2>
+<p>Two different builds are possible, depending on link options: for NodeJS and
+for the web browser.</p>
+<section id="id6">
+<h3>Prerequisites<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://emscripten.org">emscripten SDK</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
+<li><p>Erlang/OTP</p></li>
+<li><p>Elixir (optional)</p></li>
+</ul>
+</section>
+<section id="building-for-nodejs">
+<h3>Building for NodeJS<a class="headerlink" href="#building-for-nodejs" title="Permalink to this heading"></a></h3>
+<p>This is the default. Execute the following commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/
+mkdir build
+cd build
+emcmake cmake ..
+emmake make -j
+</pre></div>
+</div>
+<p>AtomVM can then be invoked as on Generic Unix with node:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>node ./src/AtomVM.js
+</pre></div>
+</div>
+</section>
+<section id="running-tests-with-nodejs">
+<h3>Running tests with NodeJS<a class="headerlink" href="#running-tests-with-nodejs" title="Permalink to this heading"></a></h3>
+<p>NodeJS build currently does not have dedicated tests. However, you can run
+AtomVM library tests that do not depend on unimplemented APIs.</p>
+<p>Build them first by building AtomVM for Generic Unix (see above.)
+Then execute the tests with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/build/
+node ./src/AtomVM.js ../../../../build/tests/libs/eavmlib/test_eavmlib.avm
+node ./src/AtomVM.js ../../../../build/tests/libs/alisp/test_alisp.avm
+</pre></div>
+</div>
+</section>
+<section id="building-for-the-web">
+<h3>Building for the web<a class="headerlink" href="#building-for-the-web" title="Permalink to this heading"></a></h3>
+<p>Execute the following commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/
+mkdir build
+cd build
+emcmake cmake .. -DAVM_EMSCRIPTEN_ENV=web
+emmake make -j
+</pre></div>
+</div>
+</section>
+<section id="running-tests-with-cypress">
+<h3>Running tests with Cypress<a class="headerlink" href="#running-tests-with-cypress" title="Permalink to this heading"></a></h3>
+<p>AtomVM WebAssembly port on the web uses SharedArrayBuffer feature which is
+restricted by browsers. Tests require an HTTP server that returns the proper
+HTTP headers.</p>
+<p>Additionally, tests require <a class="reference external" href="https://www.cypress.io">Cypress</a>. Plus, because of
+a current <a class="reference external" href="https://github.com/cypress-io/cypress/issues/19912">bug in Cypress</a>,
+tests only run with Chrome-based browsers except Electron (Chromium, Chrome or Edge).</p>
+<p>Build first AtomVM for Generic Unix (see above). This will include the web
+server.</p>
+<p>Then run the web server with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd build
+./src/AtomVM examples/emscripten/wasm_webserver.avm
+</pre></div>
+</div>
+<p>In another terminal, compile specific test modules that are not part of examples.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/build/
+make emscripten_erlang_test_modules
+</pre></div>
+</div>
+<p>Then run tests with Cypress with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/tests/
+npm install cypress
+npx cypress run --browser chrome
+</pre></div>
+</div>
+<p>You can alternatvely specify: <code class="docutils literal notranslate"><span class="pre">chromium</span></code> or <code class="docutils literal notranslate"><span class="pre">edge</span></code> depending on what is installed.</p>
+<p>Alternatively, on Linux, you can run tests with docker:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/tests/
+docker run --network host -v $PWD:/mnt -w /mnt cypress/included:12.17.1 --browser chrome
+</pre></div>
+</div>
+<p>Or you can open Cypress to interactively run selected test suites.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/emscripten/tests/
+npm install cypress
+npx cypress open
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
