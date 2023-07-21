@@ -69,7 +69,8 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">resources.h File Reference</div>  </div>
 </div><!--header-->
@@ -156,6 +157,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_resource_type.html">ResourceType</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A resource type.  <a href="struct_resource_type.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_select_event.html">SelectEvent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A selectable event.  <a href="struct_select_event.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -166,6 +170,15 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:ae21a02a8cb159bd3d9eeba3a1dc89580"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_global_context.html">GlobalContext</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#ae21a02a8cb159bd3d9eeba3a1dc89580">GlobalContext</a></td></tr>
 <tr class="separator:ae21a02a8cb159bd3d9eeba3a1dc89580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aaa6d0600c80747e71975bdc8e215b795"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#aaa6d0600c80747e71975bdc8e215b795">select_event_notify</a> (<a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a> event, bool is_read, bool is_write, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
+<tr class="memdesc:aaa6d0600c80747e71975bdc8e215b795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a notification that an event was selected.  <a href="resources_8h.html#aaa6d0600c80747e71975bdc8e215b795">More...</a><br /></td></tr>
+<tr class="separator:aaa6d0600c80747e71975bdc8e215b795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0b7c659883014ba01d2432e0d8448b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#a0c0b7c659883014ba01d2432e0d8448b">select_event_count_and_destroy_closed</a> (size_t *read, size_t *write, size_t *either, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
+<tr class="memdesc:a0c0b7c659883014ba01d2432e0d8448b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count events available for reading and/or writing and destroy the events marked for close.  <a href="resources_8h.html#a0c0b7c659883014ba01d2432e0d8448b">More...</a><br /></td></tr>
+<tr class="separator:a0c0b7c659883014ba01d2432e0d8448b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Private data structures for nif object resources. </p>
@@ -202,6 +215,117 @@ Typedefs</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="resources_8h_source.html#l00001">1</a> of file <a class="el" href="resources_8h_source.html">resources.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a0c0b7c659883014ba01d2432e0d8448b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c0b7c659883014ba01d2432e0d8448b">&#9670;&nbsp;</a></span>select_event_count_and_destroy_closed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void select_event_count_and_destroy_closed </td>
+          <td>(</td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>read</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>write</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>either</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count events available for reading and/or writing and destroy the events marked for close. </p>
+<p>Convenience function that can be called by <code>sys_poll_events</code> and iterates on events to be closed and count them. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">read</td><td>on output number of events with read = 1, can be NULL </td></tr>
+    <tr><td class="paramname">write</td><td>on output number of events with write = 1, can be NULL </td></tr>
+    <tr><td class="paramname">either</td><td>on output number of events with either read = 1 or write = 1, can be NULL </td></tr>
+    <tr><td class="paramname">global</td><td>the global context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00264">264</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="aaa6d0600c80747e71975bdc8e215b795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa6d0600c80747e71975bdc8e215b795">&#9670;&nbsp;</a></span>select_event_notify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool select_event_notify </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a>&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_read</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_write</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Send a notification that an event was selected. </p>
+<p>This function is called from sys_poll_events platform function if a select event was selected and the read or write flag was set. It modifies the select_event object so the notification is only sent once.</p>
+<p>It is not an error to call this function with an event that is not in the list.</p>
+<p>This function calls <code>sys_unregister_select_event</code>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">select_event</td><td>the event to notify </td></tr>
+    <tr><td class="paramname">is_write</td><td>if the event was selected for reading </td></tr>
+    <tr><td class="paramname">is_write</td><td>if the event was selected for writing </td></tr>
+    <tr><td class="paramname">global</td><td>the global context </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the event was found </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00226">226</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>

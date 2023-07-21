@@ -107,22 +107,28 @@ $(function() {
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_close_nif;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_read_nif;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_write_nif;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#if HAVE_UNLINK</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_unlink_nif;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_select_read_nif;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_select_write_nif;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_select_stop_nif;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="posix__nifs_8h.html#a448c8f84474e9544446b12ca6eaab137">posix_errno_to_term</a>(<span class="keywordtype">int</span> err, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#if HAVE_MKFIFO</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_mkfifo_nif;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#if HAVE_UNLINK</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keyword">struct </span><a class="code" href="struct_nif.html">Nif</a> atomvm_posix_unlink_nif;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="posix__nifs_8h.html#a448c8f84474e9544446b12ca6eaab137">posix_errno_to_term</a>(<span class="keywordtype">int</span> err, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aexportedfunction_8h_html"><div class="ttname"><a href="exportedfunction_8h.html">exportedfunction.h</a></div><div class="ttdoc">Module exported functions structs and macros.</div></div>
 <div class="ttc" id="aglobalcontext_8h_html"><div class="ttname"><a href="globalcontext_8h.html">globalcontext.h</a></div><div class="ttdoc">GlobalContext struct and related management functions.</div></div>
-<div class="ttc" id="aposix__nifs_8h_html_a448c8f84474e9544446b12ca6eaab137"><div class="ttname"><a href="posix__nifs_8h.html#a448c8f84474e9544446b12ca6eaab137">posix_errno_to_term</a></div><div class="ttdeci">term posix_errno_to_term(int err, GlobalContext *glb)</div><div class="ttdoc">Convenient function to return posix errors as atom.</div><div class="ttdef"><b>Definition:</b> <a href="posix__nifs_8c_source.html#l00038">posix_nifs.c:38</a></div></div>
-<div class="ttc" id="astruct_erl_nif_resource_type_init_html"><div class="ttname"><a href="struct_erl_nif_resource_type_init.html">ErlNifResourceTypeInit</a></div><div class="ttdoc">Resource callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="erl__nif_8h_source.html#l00071">erl_nif.h:72</a></div></div>
+<div class="ttc" id="aposix__nifs_8h_html_a448c8f84474e9544446b12ca6eaab137"><div class="ttname"><a href="posix__nifs_8h.html#a448c8f84474e9544446b12ca6eaab137">posix_errno_to_term</a></div><div class="ttdeci">term posix_errno_to_term(int err, GlobalContext *glb)</div><div class="ttdoc">Convenient function to return posix errors as atom.</div><div class="ttdef"><b>Definition:</b> <a href="posix__nifs_8c_source.html#l00042">posix_nifs.c:42</a></div></div>
+<div class="ttc" id="astruct_erl_nif_resource_type_init_html"><div class="ttname"><a href="struct_erl_nif_resource_type_init.html">ErlNifResourceTypeInit</a></div><div class="ttdoc">Resource callbacks.</div><div class="ttdef"><b>Definition:</b> <a href="erl__nif_8h_source.html#l00076">erl_nif.h:77</a></div></div>
 <div class="ttc" id="astruct_global_context_html"><div class="ttname"><a href="struct_global_context.html">GlobalContext</a></div><div class="ttdef"><b>Definition:</b> <a href="globalcontext_8h_source.html#l00066">globalcontext.h:67</a></div></div>
 <div class="ttc" id="astruct_nif_html"><div class="ttname"><a href="struct_nif.html">Nif</a></div><div class="ttdef"><b>Definition:</b> <a href="exportedfunction_8h_source.html#l00064">exportedfunction.h:65</a></div></div>
 <div class="ttc" id="aterm_8h_html"><div class="ttname"><a href="term_8h.html">term.h</a></div><div class="ttdoc">term manipulation functions</div></div>

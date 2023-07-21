@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.6.0-dev+git.f9aaac6d documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-dev+git.ea8fa338 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -760,6 +760,29 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code>. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411enif_selectP9ErlNifEnv11ErlNifEvent17ErlNifSelectFlagsPvPK9ErlNifPid12ERL_NIF_TERM">
+<span id="_CPPv311enif_selectP9ErlNifEnv11ErlNifEvent17ErlNifSelectFlagsPvPK9ErlNifPid12ERL_NIF_TERM"></span><span id="_CPPv211enif_selectP9ErlNifEnv11ErlNifEvent17ErlNifSelectFlagsPvPK9ErlNifPid12ERL_NIF_TERM"></span><span id="enif_select__ErlNifEnvP.ErlNifEvent.ErlNifSelectFlags.voidP.ErlNifPidCP.ERL_NIF_TERM"></span><span class="target" id="erl__nif_8h_1a915974f4921601ed0981270eb91a3ca0"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_select</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">env</span></span>, <a class="reference internal" href="files/erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv417ErlNifSelectFlags" title="ErlNifSelectFlags"><span class="n"><span class="pre">ErlNifSelectFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">obj</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="files/erl_nif.h.html#_CPPv49ErlNifPid" title="ErlNifPid"><span class="n"><span class="pre">ErlNifPid</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pid</span></span>, <a class="reference internal" href="files/erl_nif.h.html#_CPPv412ERL_NIF_TERM" title="ERL_NIF_TERM"><span class="n"><span class="pre">ERL_NIF_TERM</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">ref</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Run a POSIX-like select on a given object (event) and send a message when the object is readable or writable. </p>
+<p>Actual implementation is platform dependent and platforms may not implement this feature.</p>
+<p>On <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code>, this is currently implemented using what <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> uses, namely <code class="docutils literal notranslate"><span class="pre">kqueue(2)</span></code> (if available) or <code class="docutils literal notranslate"><span class="pre">poll(2)</span></code>. Please note that <code class="docutils literal notranslate"><span class="pre">kqueue(2)</span></code> and <code class="docutils literal notranslate"><span class="pre">poll(2)</span></code> behave differently for some objects, for example for vnodes and EOF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> – current environment </p></li>
+<li><p><strong>event</strong> – event object (typically a file descriptor) </p></li>
+<li><p><strong>mode</strong> – select mode (<code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_READ</span></code> and/or <code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_WRITE</span></code>) optionally with <code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_CANCEL</span></code> to cancel, or <code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP</span></code> to stop. </p></li>
+<li><p><strong>obj</strong> – resource object working as a container of the event object. </p></li>
+<li><p><strong>pid</strong> – process id to send a message to or NULL to use the current process (from <code class="docutils literal notranslate"><span class="pre">env</span></code>) </p></li>
+<li><p><strong>ref</strong> – reference object used in sent messages or <code class="docutils literal notranslate"><span class="pre">undefined</span></code> atom. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a negative value on failure, 0 or flags on success. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2073,6 +2096,45 @@ Potential matches:
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv437select_event_count_and_destroy_closedP6size_tP6size_tP6size_tP13GlobalContext">
+<span id="_CPPv337select_event_count_and_destroy_closedP6size_tP6size_tP6size_tP13GlobalContext"></span><span id="_CPPv237select_event_count_and_destroy_closedP6size_tP6size_tP6size_tP13GlobalContext"></span><span id="select_event_count_and_destroy_closed__sP.sP.sP.GlobalContextP"></span><span class="target" id="resources_8h_1a0c0b7c659883014ba01d2432e0d8448b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_count_and_destroy_closed</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">write</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">either</span></span>, <a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Count events available for reading and/or writing and destroy the events marked for close. </p>
+<p>Convenience function that can be called by <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> and iterates on events to be closed and count them. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>read</strong> – on output number of events with read = 1, can be NULL </p></li>
+<li><p><strong>write</strong> – on output number of events with write = 1, can be NULL </p></li>
+<li><p><strong>either</strong> – on output number of events with either read = 1 or write = 1, can be NULL </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419select_event_notify11ErlNifEventbbP13GlobalContext">
+<span id="_CPPv319select_event_notify11ErlNifEventbbP13GlobalContext"></span><span id="_CPPv219select_event_notify11ErlNifEventbbP13GlobalContext"></span><span id="select_event_notify__ErlNifEvent.b.b.GlobalContextP"></span><span class="target" id="resources_8h_1aaa6d0600c80747e71975bdc8e215b795"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_notify</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_read</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_write</span></span>, <a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Send a notification that an event was selected. </p>
+<p>This function is called from sys_poll_events platform function if a select event was selected and the read or write flag was set. It modifies the select_event object so the notification is only sent once.</p>
+<p>It is not an error to call this function with an event that is not in the list.</p>
+<p>This function calls <code class="docutils literal notranslate"><span class="pre">sys_unregister_select_event</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select_event</strong> – the event to notify </p></li>
+<li><p><strong>is_write</strong> – if the event was selected for reading </p></li>
+<li><p><strong>is_write</strong> – if the event was selected for writing </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the event was found </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv418smp_condvar_createv">
 <span id="_CPPv318smp_condvar_createv"></span><span id="_CPPv218smp_condvar_createv"></span><span id="smp_condvar_create"></span><span class="target" id="smp_8h_1a478291a10168f1da44276b62814e68f9"></span><a class="reference internal" href="files/smp.h.html#_CPPv47CondVar" title="CondVar"><span class="n"><span class="pre">CondVar</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">smp_condvar_create</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Create a new condition variable. </p>
@@ -2420,6 +2482,22 @@ Potential matches:
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425sys_register_select_eventP13GlobalContext11ErlNifEventb">
+<span id="_CPPv325sys_register_select_eventP13GlobalContext11ErlNifEventb"></span><span id="_CPPv225sys_register_select_eventP13GlobalContext11ErlNifEventb"></span><span id="sys_register_select_event__GlobalContextP.ErlNifEvent.b"></span><span class="target" id="sys_8h_1aa4f09ccbbabd8523af97169ccbfbb093"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <a class="reference internal" href="files/erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_write</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Update the select set by adding an event for reading or writing. </p>
+<p>This function probably should update set and call <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> so new set is taken into account.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context. </p></li>
+<li><p><strong>event</strong> – the event (file descriptor) to add to the set </p></li>
+<li><p><strong>is_write</strong> – whether to add the event for writing (as opposed to reading) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv410sys_signalP13GlobalContext">
 <span id="_CPPv310sys_signalP13GlobalContext"></span><span id="_CPPv210sys_signalP13GlobalContext"></span><span id="sys_signal__GlobalContextP"></span><span class="target" id="sys_8h_1ad373b27d5d7364accaf66a1762a1cd72"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Interrupt the wait in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>. </p>
@@ -2454,6 +2532,22 @@ Potential matches:
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>global</strong> – the global context. </p></li>
 <li><p><strong>listener</strong> – the listener to unregister. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv427sys_unregister_select_eventP13GlobalContext11ErlNifEventb">
+<span id="_CPPv327sys_unregister_select_eventP13GlobalContext11ErlNifEventb"></span><span id="_CPPv227sys_unregister_select_eventP13GlobalContext11ErlNifEventb"></span><span id="sys_unregister_select_event__GlobalContextP.ErlNifEvent.b"></span><span class="target" id="sys_8h_1a742c2c5e8b93c885d2e6c286993e8711"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <a class="reference internal" href="files/erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_write</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Update the select set by removing an event for reading or writing. </p>
+<p>This function probably should update set and call <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> so new set is taken into account. After this function is called, <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> must check for closed select events.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context. </p></li>
+<li><p><strong>event</strong> – the event (file descriptor) to remove from the set </p></li>
+<li><p><strong>is_write</strong> – whether to remove the event for writing (as opposed to reading) </p></li>
 </ul>
 </dd>
 </dl>
@@ -2550,6 +2644,25 @@ Potential matches:
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the number of printed characters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418term_from_resourcePvP4Heap">
+<span id="_CPPv318term_from_resourcePvP4Heap"></span><span id="_CPPv218term_from_resourcePvP4Heap"></span><span id="term_from_resource__voidP.HeapP"></span><span class="target" id="term_8h_1afa1d96f63abe69a3a5b0801b23fe4292"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_from_resource</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">resource</span></span>, <a class="reference internal" href="data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Create a resource on the heap. </p>
+<p>This function creates a resource (obtained from <code class="docutils literal notranslate"><span class="pre">enif_alloc_resource</span></code>) on the heap which must have <code class="docutils literal notranslate"><span class="pre">TERM_BOXED_RESOURCE_SIZE</span></code> free terms.</p>
+<p>Unlike <code class="docutils literal notranslate"><span class="pre">enif_make_resource</span></code>, this function doesn’t increment the reference counter but instead makes the heap own the resource. It will be garbage collected when the heap is destroyed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – resource obtained from <code class="docutils literal notranslate"><span class="pre">enif_alloc_resource</span></code></p></li>
+<li><p><strong>heap</strong> – the heap to allocate the resource in </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a term pointing to the resource </p>
 </dd>
 </dl>
 </dd></dl>

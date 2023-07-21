@@ -175,6 +175,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:adca45bb8b19726480af47eb7ec598348"><td class="memItemLeft" align="right" valign="top">typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="erl__nif_8h.html#adca45bb8b19726480af47eb7ec598348">ErlNifResourceDtor</a>(<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *caller_env, void *obj)</td></tr>
 <tr class="memdesc:adca45bb8b19726480af47eb7ec598348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor callback.  <a href="erl__nif_8h.html#adca45bb8b19726480af47eb7ec598348">More...</a><br /></td></tr>
 <tr class="separator:adca45bb8b19726480af47eb7ec598348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8519109623a2843ee34ecd07b9dc3a8"><td class="memItemLeft" align="right" valign="top">typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="erl__nif_8h.html#ab8519109623a2843ee34ecd07b9dc3a8">ErlNifResourceStop</a>(<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *caller_env, void *obj, <a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a> event, int is_direct_call)</td></tr>
+<tr class="memdesc:ab8519109623a2843ee34ecd07b9dc3a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select stop callback.  <a href="erl__nif_8h.html#ab8519109623a2843ee34ecd07b9dc3a8">More...</a><br /></td></tr>
+<tr class="separator:ab8519109623a2843ee34ecd07b9dc3a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -182,6 +185,23 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a240b4277131798ec79b542c655dc0d2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">resource flags  <a href="erl__nif_8h.html#a240b4277131798ec79b542c655dc0d2c">More...</a><br /></td></tr>
 <tr class="separator:a240b4277131798ec79b542c655dc0d2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cb53543d76edb4cc9890b3568f3306e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306e">ErlNifSelectFlags</a> { <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306ea486e99a64f0039e63577741bd22ec0af">ERL_NIF_SELECT_READ</a> = 1
+, <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306eaced427ca17b1cabcd8a60ffcaadfca54">ERL_NIF_SELECT_WRITE</a> = 2
+, <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306ea577734e9257667ceaf22e8dad60c918b">ERL_NIF_SELECT_STOP</a> = 4
+ }</td></tr>
+<tr class="memdesc:a9cb53543d76edb4cc9890b3568f3306e"><td class="mdescLeft">&#160;</td><td class="mdescRight">enif_select mode flags  <a href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306e">More...</a><br /></td></tr>
+<tr class="separator:a9cb53543d76edb4cc9890b3568f3306e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55bab4e55b760d8195163acebe910efa9426">ERL_NIF_SELECT_STOP_CALLED</a> = 1
+, <a class="el" href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba851695998884b144a1713746a8c057ae">ERL_NIF_SELECT_STOP_SCHEDULED</a> = 2
+, <a class="el" href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55bac6ee4d3a59a848ddfd3df2637b8c1eea">ERL_NIF_SELECT_INVALID_EVENT</a> = -1
+, <a class="el" href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55baa1370ede5e1bcdcd91ec957c781ef73d">ERL_NIF_SELECT_FAILED</a> = -2
+, <br />
+&#160;&#160;<a class="el" href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba685b4412448a52a19be9b5a4a396423f">ERL_NIF_SELECT_BADARG</a> = -3
+<br />
+ }</td></tr>
+<tr class="memdesc:a06fc87d81c62e9abb8790b6e5713c55b"><td class="mdescLeft">&#160;</td><td class="mdescRight">enif_select result flags  <a href="erl__nif_8h.html#a06fc87d81c62e9abb8790b6e5713c55b">More...</a><br /></td></tr>
+<tr class="separator:a06fc87d81c62e9abb8790b6e5713c55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -203,6 +223,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae5786c2a3432fd525f56faf876f00051"><td class="memItemLeft" align="right" valign="top"><a class="el" href="erl__nif_8h.html#ad97421d256b5163f2ad3facac2e29746">ERL_NIF_TERM</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="erl__nif_8h.html#ae5786c2a3432fd525f56faf876f00051">enif_make_resource</a> (<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *env, void *obj)</td></tr>
 <tr class="memdesc:ae5786c2a3432fd525f56faf876f00051"><td class="mdescLeft">&#160;</td><td class="mdescRight">create a term from a resource  <a href="erl__nif_8h.html#ae5786c2a3432fd525f56faf876f00051">More...</a><br /></td></tr>
 <tr class="separator:ae5786c2a3432fd525f56faf876f00051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a915974f4921601ed0981270eb91a3ca0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="erl__nif_8h.html#a915974f4921601ed0981270eb91a3ca0">enif_select</a> (<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *env, <a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a> event, enum <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306e">ErlNifSelectFlags</a> mode, void *obj, const <a class="el" href="erl__nif_8h.html#a82320f71731e5bab1d5187e536ed8177">ErlNifPid</a> *pid, <a class="el" href="erl__nif_8h.html#ad97421d256b5163f2ad3facac2e29746">ERL_NIF_TERM</a> ref)</td></tr>
+<tr class="memdesc:a915974f4921601ed0981270eb91a3ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run a POSIX-like select on a given object (event) and send a message when the object is readable or writable.  <a href="erl__nif_8h.html#a915974f4921601ed0981270eb91a3ca0">More...</a><br /></td></tr>
+<tr class="separator:a915974f4921601ed0981270eb91a3ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Public API for nifs, compatible with Erlang/OTP API. </p>
@@ -300,6 +323,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab8519109623a2843ee34ecd07b9dc3a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8519109623a2843ee34ecd07b9dc3a8">&#9670;&nbsp;</a></span>ErlNifResourceStop</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void ErlNifResourceStop(<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *caller_env, void *obj, <a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a> event, int is_direct_call)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Select stop callback. </p>
+
+<p class="definition">Definition at line <a class="el" href="erl__nif_8h_source.html#l00069">69</a> of file <a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>.</p>
+
+</div>
+</div>
 <a id="ad4034fff19f7e190b2ce89f7ed148e4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad4034fff19f7e190b2ce89f7ed148e4e">&#9670;&nbsp;</a></span>ErlNifResourceType</h2>
 
@@ -319,6 +360,32 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a06fc87d81c62e9abb8790b6e5713c55b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06fc87d81c62e9abb8790b6e5713c55b">&#9670;&nbsp;</a></span>anonymous enum</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">anonymous enum</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enif_select result flags </p>
+<p>ERL_NIF_SELECT_CANCEL which was introduced with OTP-22, is unimplemented. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bab4e55b760d8195163acebe910efa9426"></a>ERL_NIF_SELECT_STOP_CALLED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba851695998884b144a1713746a8c057ae"></a>ERL_NIF_SELECT_STOP_SCHEDULED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55bac6ee4d3a59a848ddfd3df2637b8c1eea"></a>ERL_NIF_SELECT_INVALID_EVENT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55baa1370ede5e1bcdcd91ec957c781ef73d"></a>ERL_NIF_SELECT_FAILED&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a06fc87d81c62e9abb8790b6e5713c55ba685b4412448a52a19be9b5a4a396423f"></a>ERL_NIF_SELECT_BADARG&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="erl__nif_8h_source.html#l00108">108</a> of file <a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>.</p>
+
+</div>
+</div>
 <a id="a240b4277131798ec79b542c655dc0d2c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a240b4277131798ec79b542c655dc0d2c">&#9670;&nbsp;</a></span>ErlNifResourceFlags</h2>
 
@@ -336,7 +403,31 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a240b4277131798ec79b542c655dc0d2ca7a3af911c53338d6192c441c1f09ae99"></a>ERL_NIF_RT_CREATE&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="erl__nif_8h_source.html#l00080">80</a> of file <a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="erl__nif_8h_source.html#l00086">86</a> of file <a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>.</p>
+
+</div>
+</div>
+<a id="a9cb53543d76edb4cc9890b3568f3306e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cb53543d76edb4cc9890b3568f3306e">&#9670;&nbsp;</a></span>ErlNifSelectFlags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306e">ErlNifSelectFlags</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>enif_select mode flags </p>
+<p>ERL_NIF_SELECT_CANCEL which was introduced with OTP-22, is unimplemented. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a9cb53543d76edb4cc9890b3568f3306ea486e99a64f0039e63577741bd22ec0af"></a>ERL_NIF_SELECT_READ&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9cb53543d76edb4cc9890b3568f3306eaced427ca17b1cabcd8a60ffcaadfca54"></a>ERL_NIF_SELECT_WRITE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a9cb53543d76edb4cc9890b3568f3306ea577734e9257667ceaf22e8dad60c918b"></a>ERL_NIF_SELECT_STOP&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="erl__nif_8h_source.html#l00096">96</a> of file <a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>.</p>
 
 </div>
 </div>
@@ -377,7 +468,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer or <code>NULL</code> on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00055">55</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00059">59</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -431,7 +522,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, <code>false</code> on failure, if term is not a resource of type <code>type</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00067">67</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00071">71</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -521,7 +612,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00086">86</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00090">90</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -561,7 +652,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a new term representing the resource </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00100">100</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00104">104</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -590,7 +681,77 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00093">93</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00097">97</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="a915974f4921601ed0981270eb91a3ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a915974f4921601ed0981270eb91a3ca0">&#9670;&nbsp;</a></span>enif_select()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enif_select </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *&#160;</td>
+          <td class="paramname"><em>env</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="erl__nif_8h.html#afcb0b7056f9c9f16e885abb98c5ede9e">ErlNifEvent</a>&#160;</td>
+          <td class="paramname"><em>event</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="erl__nif_8h.html#a9cb53543d76edb4cc9890b3568f3306e">ErlNifSelectFlags</a>&#160;</td>
+          <td class="paramname"><em>mode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="erl__nif_8h.html#a82320f71731e5bab1d5187e536ed8177">ErlNifPid</a> *&#160;</td>
+          <td class="paramname"><em>pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="erl__nif_8h.html#ad97421d256b5163f2ad3facac2e29746">ERL_NIF_TERM</a>&#160;</td>
+          <td class="paramname"><em>ref</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Run a POSIX-like select on a given object (event) and send a message when the object is readable or writable. </p>
+<p>Actual implementation is platform dependent and platforms may not implement this feature.</p>
+<p>On <code>generic_unix</code>, this is currently implemented using what <code>sys_poll_events</code> uses, namely <code>kqueue(2)</code> (if available) or <code>poll(2)</code>. Please note that <code>kqueue(2)</code> and <code>poll(2)</code> behave differently for some objects, for example for vnodes and EOF.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>current environment </td></tr>
+    <tr><td class="paramname">event</td><td>event object (typically a file descriptor) </td></tr>
+    <tr><td class="paramname">mode</td><td>select mode (<code>ERL_NIF_SELECT_READ</code> and/or <code>ERL_NIF_SELECT_WRITE</code>) optionally with <code>ERL_NIF_SELECT_CANCEL</code> to cancel, or <code>ERL_NIF_SELECT_STOP</code> to stop. </td></tr>
+    <tr><td class="paramname">obj</td><td>resource object working as a container of the event object. </td></tr>
+    <tr><td class="paramname">pid</td><td>process id to send a message to or NULL to use the current process (from <code>env</code>) </td></tr>
+    <tr><td class="paramname">ref</td><td>reference object used in sent messages or <code>undefined</code> atom. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a negative value on failure, 0 or flags on success. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00114">114</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
