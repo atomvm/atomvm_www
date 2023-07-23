@@ -150,6 +150,17 @@ Enumerations</h2></td></tr>
 , <a class="el" href="sys_8h.html#a61dadd085c1777f559549e05962b2c9ea47e43a38d2014c9a9fc78347330c3ded">SYS_POLL_EVENTS_WAIT_FOREVER</a> = -1
  }</td></tr>
 <tr class="separator:a61dadd085c1777f559549e05962b2c9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a271673c2a3455ae579f3bfe492e98b4a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4a">OpenAVMResult</a> { <br />
+&#160;&#160;<a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aac15d372726476d62ee4c3495a6c138b2">AVM_OPEN_OK</a> = 0
+, <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aa830c5c214094ba785ff215529f6a0a65">AVM_OPEN_FAILED_ALLOC</a> = 1
+, <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aaf6c7f84fc8b3a05f7cf71b99e2bb0827">AVM_OPEN_INVALID</a> = 2
+, <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aaa8f97d475193d37a6f6a9d2669be63d6">AVM_OPEN_CANNOT_OPEN</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aaf3535598e3de136c1c027360f79a7e98">AVM_OPEN_CANNOT_READ</a> = 4
+, <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4aa3f909a1e427fe9b8feb367343e2cdffc">AVM_OPEN_NOT_SUPPORTED</a> = 5
+<br />
+ }</td></tr>
+<tr class="separator:a271673c2a3455ae579f3bfe492e98b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -174,8 +185,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ad373b27d5d7364accaf66a1762a1cd72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ad373b27d5d7364accaf66a1762a1cd72">sys_signal</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:ad373b27d5d7364accaf66a1762a1cd72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interrupt the wait in <code>sys_poll_events</code>.  <a href="sys_8h.html#ad373b27d5d7364accaf66a1762a1cd72">More...</a><br /></td></tr>
 <tr class="separator:ad373b27d5d7364accaf66a1762a1cd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a523d9adef606022dd2042b85430fa60c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="struct_a_v_m_pack_data.html">AVMPackData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a523d9adef606022dd2042b85430fa60c">sys_open_avm_from_file</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, const char *path)</td></tr>
-<tr class="separator:a523d9adef606022dd2042b85430fa60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a233ade1ed94995c576f395d229fb6bad"><td class="memItemLeft" align="right" valign="top">enum <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4a">OpenAVMResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a233ade1ed94995c576f395d229fb6bad">sys_open_avm_from_file</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, const char *path, struct <a class="el" href="struct_a_v_m_pack_data.html">AVMPackData</a> **data)</td></tr>
+<tr class="separator:a233ade1ed94995c576f395d229fb6bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c35c7b6c0ff3c0401f6b8e45ed17d26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a3c35c7b6c0ff3c0401f6b8e45ed17d26">sys_time</a> (struct timespec *t)</td></tr>
 <tr class="memdesc:a3c35c7b6c0ff3c0401f6b8e45ed17d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets wall clock time  <a href="sys_8h.html#a3c35c7b6c0ff3c0401f6b8e45ed17d26">More...</a><br /></td></tr>
 <tr class="separator:a3c35c7b6c0ff3c0401f6b8e45ed17d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,7 +250,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL if the current listener should be removed, listener if it should be kept or another listener if it should be replaced. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00083">83</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00095">95</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +290,31 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a61dadd085c1777f559549e05962b2c9ea47e43a38d2014c9a9fc78347330c3ded"></a>SYS_POLL_EVENTS_WAIT_FOREVER&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00043">43</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00045">45</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
+
+</div>
+</div>
+<a id="a271673c2a3455ae579f3bfe492e98b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a271673c2a3455ae579f3bfe492e98b4a">&#9670;&nbsp;</a></span>OpenAVMResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4a">OpenAVMResult</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aac15d372726476d62ee4c3495a6c138b2"></a>AVM_OPEN_OK&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aa830c5c214094ba785ff215529f6a0a65"></a>AVM_OPEN_FAILED_ALLOC&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aaf6c7f84fc8b3a05f7cf71b99e2bb0827"></a>AVM_OPEN_INVALID&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aaa8f97d475193d37a6f6a9d2669be63d6"></a>AVM_OPEN_CANNOT_OPEN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aaf3535598e3de136c1c027360f79a7e98"></a>AVM_OPEN_CANNOT_READ&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a271673c2a3455ae579f3bfe492e98b4aa3f909a1e427fe9b8feb367343e2cdffc"></a>AVM_OPEN_NOT_SUPPORTED&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="sys_8h_source.html#l00051">51</a> of file <a class="el" href="sys_8h_source.html">sys.h</a>.</p>
 
 </div>
 </div>
@@ -547,14 +582,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a523d9adef606022dd2042b85430fa60c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a523d9adef606022dd2042b85430fa60c">&#9670;&nbsp;</a></span>sys_open_avm_from_file()</h2>
+<a id="a233ade1ed94995c576f395d229fb6bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a233ade1ed94995c576f395d229fb6bad">&#9670;&nbsp;</a></span>sys_open_avm_from_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="struct_a_v_m_pack_data.html">AVMPackData</a>* sys_open_avm_from_file </td>
+          <td class="memname">enum <a class="el" href="sys_8h.html#a271673c2a3455ae579f3bfe492e98b4a">OpenAVMResult</a> sys_open_avm_from_file </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
           <td class="paramname"><em>global</em>, </td>
@@ -563,7 +598,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>path</em>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="struct_a_v_m_pack_data.html">AVMPackData</a> **&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
