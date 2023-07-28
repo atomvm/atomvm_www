@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.6.0-dev+git.6e4352ef documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-dev+git.e17fbdd9 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -381,11 +381,10 @@
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv417context_demonitorP7Context4termb">
-<span id="_CPPv317context_demonitorP7Context4termb"></span><span id="_CPPv217context_demonitorP7Context4termb"></span><span id="context_demonitor__ContextP.term.b"></span><span class="target" id="context_8h_1af533cb83826ca48d6a6dcc1c9517b93c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_demonitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">monitor_pid</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">linked</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “context_demonitor” in doxygen xml output for project “libatomvm” from directory: /home/runner/work/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv415context_destroyP7Context">
 <span id="_CPPv315context_destroyP7Context"></span><span id="_CPPv215context_destroyP7Context"></span><span id="context_destroy__ContextP"></span><span class="target" id="context_8h_1ac7e7f9b3ac2491d0d488143871008332"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_destroy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span><span class="sig-paren">)</span><br /></dt>
@@ -451,9 +450,22 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv415context_monitorP7Context4termb">
-<span id="_CPPv315context_monitorP7Context4termb"></span><span id="_CPPv215context_monitorP7Context4termb"></span><span id="context_monitor__ContextP.term.b"></span><span class="target" id="context_8h_1a8dc7b958263d07438a90dabe21dadd8a"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_monitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">monitor_pid</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">linked</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object cpp" id="_CPPv415context_monitorP7Context4term">
+<span id="_CPPv315context_monitorP7Context4term"></span><span id="_CPPv215context_monitorP7Context4term"></span><span id="context_monitor__ContextP.term"></span><span class="target" id="context_8h_1a850b8c7479cc93745b92dc666600ee56"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_monitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Create a monitor on a process. </p>
+<p>Caller must hold the global process lock.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – context to monitor </p></li>
+<li><p><strong>monitor_pid</strong> – monitoring process </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the ref ticks </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv411context_newP13GlobalContext">
@@ -866,7 +878,20 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv423globalcontext_demonitorP13GlobalContext8uint64_t">
 <span id="_CPPv323globalcontext_demonitorP13GlobalContext8uint64_t"></span><span id="_CPPv223globalcontext_demonitorP13GlobalContext8uint64_t"></span><span id="globalcontext_demonitor__GlobalContextP.uint64_t"></span><span class="target" id="globalcontext_8h_1a487674c09e840bf18fc0a74a738ee857"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_demonitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dd><p>remove a monitor </p>
+<p>iterate on the list of all processes and then on each monitor to find a given monitor, and remove it </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>global</strong> – the global context </p></li>
+<li><p><strong>ref_ticks</strong> – the reference to the monitor </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the monitor was found </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv421globalcontext_destroyP13GlobalContext">
@@ -1177,11 +1202,10 @@
 </dl>
 </dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv420globalcontext_unlinkP13GlobalContext4term">
-<span id="_CPPv320globalcontext_unlinkP13GlobalContext4term"></span><span id="_CPPv220globalcontext_unlinkP13GlobalContext4term"></span><span id="globalcontext_unlink__GlobalContextP.term"></span><span class="target" id="globalcontext_8h_1a1ca4f0a0d4772800cd0f94d2e6031f45"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_unlink</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">pid</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “globalcontext_unlink” in doxygen xml output for project “libatomvm” from directory: /home/runner/work/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv432globalcontext_unregister_processP13GlobalContexti">
 <span id="_CPPv332globalcontext_unregister_processP13GlobalContexti"></span><span id="_CPPv232globalcontext_unregister_processP13GlobalContexti"></span><span id="globalcontext_unregister_process__GlobalContextP.i"></span><span class="target" id="globalcontext_8h_1a72b041866f18279d131d9755cd89e135"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_unregister_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">atom_index</span></span><span class="sig-paren">)</span><br /></dt>

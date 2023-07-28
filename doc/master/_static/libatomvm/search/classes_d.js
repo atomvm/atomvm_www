@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nif_1374',['Nif',['../struct_nif.html',1,'']]]
+  ['nif_1384',['Nif',['../struct_nif.html',1,'']]]
 ];

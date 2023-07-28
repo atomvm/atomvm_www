@@ -155,8 +155,59 @@ Functions</h2></td></tr>
 <tr class="memitem:a0c0b7c659883014ba01d2432e0d8448b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8c.html#a0c0b7c659883014ba01d2432e0d8448b">select_event_count_and_destroy_closed</a> (size_t *read, size_t *write, size_t *either, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
 <tr class="memdesc:a0c0b7c659883014ba01d2432e0d8448b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count events available for reading and/or writing and destroy the events marked for close.  <a href="resources_8c.html#a0c0b7c659883014ba01d2432e0d8448b">More...</a><br /></td></tr>
 <tr class="separator:a0c0b7c659883014ba01d2432e0d8448b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac318a9b7263a2a478eac19170876c334"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8c.html#ac318a9b7263a2a478eac19170876c334">enif_monitor_process</a> (<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *env, void *obj, const <a class="el" href="erl__nif_8h.html#a82320f71731e5bab1d5187e536ed8177">ErlNifPid</a> *target_pid, <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *mon)</td></tr>
+<tr class="memdesc:ac318a9b7263a2a478eac19170876c334"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_monitor.html" title="A regular monitor or a half link.">Monitor</a> a process by using a resource object.  <a href="resources_8c.html#ac318a9b7263a2a478eac19170876c334">More...</a><br /></td></tr>
+<tr class="separator:ac318a9b7263a2a478eac19170876c334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9cb8e68a1c88dbdc60fc95507991dd0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8c.html#ac9cb8e68a1c88dbdc60fc95507991dd0">enif_demonitor_process</a> (<a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *env, void *obj, const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *mon)</td></tr>
+<tr class="memdesc:ac9cb8e68a1c88dbdc60fc95507991dd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmonitor a process.  <a href="resources_8c.html#ac9cb8e68a1c88dbdc60fc95507991dd0">More...</a><br /></td></tr>
+<tr class="separator:ac9cb8e68a1c88dbdc60fc95507991dd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fb067a508327a46fc4f6b5a5b93b421"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8c.html#a1fb067a508327a46fc4f6b5a5b93b421">destroy_resource_monitors</a> (struct <a class="el" href="struct_refc_binary.html">RefcBinary</a> *resource, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
+<tr class="memdesc:a1fb067a508327a46fc4f6b5a5b93b421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy monitors associated with a resource.  <a href="resources_8c.html#a1fb067a508327a46fc4f6b5a5b93b421">More...</a><br /></td></tr>
+<tr class="separator:a1fb067a508327a46fc4f6b5a5b93b421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa18ebb156c77da9533bbc79082071d75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8c.html#aa18ebb156c77da9533bbc79082071d75">enif_compare_monitors</a> (const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *monitor1, const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *monitor2)</td></tr>
+<tr class="memdesc:aa18ebb156c77da9533bbc79082071d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">compare two monitors  <a href="resources_8c.html#aa18ebb156c77da9533bbc79082071d75">More...</a><br /></td></tr>
+<tr class="separator:aa18ebb156c77da9533bbc79082071d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a1fb067a508327a46fc4f6b5a5b93b421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb067a508327a46fc4f6b5a5b93b421">&#9670;&nbsp;</a></span>destroy_resource_monitors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void destroy_resource_monitors </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="struct_refc_binary.html">RefcBinary</a> *&#160;</td>
+          <td class="paramname"><em>resource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destroy monitors associated with a resource. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">resource</td><td>resource to destroy monitors for </td></tr>
+    <tr><td class="paramname">global</td><td>the global context </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00358">358</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
 <a id="aba976aba3ac3a10795dbb7d240b0a5f7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aba976aba3ac3a10795dbb7d240b0a5f7">&#9670;&nbsp;</a></span>enif_alloc_resource()</h2>
 
@@ -193,7 +244,94 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer or <code>NULL</code> on failure. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00059">59</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00064">64</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="aa18ebb156c77da9533bbc79082071d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa18ebb156c77da9533bbc79082071d75">&#9670;&nbsp;</a></span>enif_compare_monitors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enif_compare_monitors </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *&#160;</td>
+          <td class="paramname"><em>monitor1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *&#160;</td>
+          <td class="paramname"><em>monitor2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>compare two monitors </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monitor1</td><td>first monitor </td></tr>
+    <tr><td class="paramname">monitor2</td><td>second monitor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if equals, &lt; 0 if <code>monitor1</code> &lt; <code>monitor2</code>, &gt; 0 if <code>monitor1</code> &gt; <code>monitor2</code>. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00378">378</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="ac9cb8e68a1c88dbdc60fc95507991dd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9cb8e68a1c88dbdc60fc95507991dd0">&#9670;&nbsp;</a></span>enif_demonitor_process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enif_demonitor_process </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *&#160;</td>
+          <td class="paramname"><em>caller_env</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *&#160;</td>
+          <td class="paramname"><em>mon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Unmonitor a process. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>current environment </td></tr>
+    <tr><td class="paramname">obj</td><td>resource used by monitor </td></tr>
+    <tr><td class="paramname">mon</td><td>monitor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00330">330</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -247,7 +385,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> on success, <code>false</code> on failure, if term is not a resource of type <code>type</code> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00071">71</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00076">76</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -337,7 +475,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00090">90</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00095">95</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -377,7 +515,62 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a new term representing the resource </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00104">104</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00109">109</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="ac318a9b7263a2a478eac19170876c334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac318a9b7263a2a478eac19170876c334">&#9670;&nbsp;</a></span>enif_monitor_process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int enif_monitor_process </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_erl_nif_env.html">ErlNifEnv</a> *&#160;</td>
+          <td class="paramname"><em>env</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="erl__nif_8h.html#a82320f71731e5bab1d5187e536ed8177">ErlNifPid</a> *&#160;</td>
+          <td class="paramname"><em>target_pid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="erl__nif_8h.html#a300e123e11ebe6b6d5ef7e40ca9f0ed3">ErlNifMonitor</a> *&#160;</td>
+          <td class="paramname"><em>mon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="struct_monitor.html" title="A regular monitor or a half link.">Monitor</a> a process by using a resource object. </p>
+<p>The monitor is automatically removed after being triggered or if the associated resource is deallocated.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">env</td><td>current environment </td></tr>
+    <tr><td class="paramname">obj</td><td>resource to use for monitor </td></tr>
+    <tr><td class="paramname">target_pid</td><td>process to monitor </td></tr>
+    <tr><td class="paramname">mon</td><td>on output, monitor object (can be NULL) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success, &lt;0 if no down callback is provided with resource (badarg), &gt;0 if the process is no longer alive </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00307">307</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -406,7 +599,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code>. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00097">97</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00102">102</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -476,7 +669,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a negative value on failure, 0 or flags on success. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00114">114</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00119">119</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -529,7 +722,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00264">264</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00269">269</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -586,7 +779,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the event was found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00226">226</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00231">231</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
