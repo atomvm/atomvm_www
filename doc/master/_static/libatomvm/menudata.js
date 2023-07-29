@@ -138,6 +138,7 @@ var menudata={children:[
 {text:"Enumerations",url:"globals_enum.html"},
 {text:"Enumerator",url:"globals_eval.html",children:[
 {text:"a",url:"globals_eval.html#index_a"},
+{text:"b",url:"globals_eval.html#index_b"},
 {text:"d",url:"globals_eval.html#index_d"},
 {text:"e",url:"globals_eval.html#index_e"},
 {text:"f",url:"globals_eval.html#index_f"},

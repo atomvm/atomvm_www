@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>erl_nif_priv.h &mdash; AtomVM 0.6.0-dev+git.f4946291 documentation</title>
+  <title>erl_nif_priv.h &mdash; AtomVM 0.6.0-dev+git.570f81c9 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -333,29 +333,28 @@
 <span id="_CPPv39ErlNifEnv"></span><span id="_CPPv29ErlNifEnv"></span><span id="ErlNifEnv"></span><span class="target" id="struct_erl_nif_env"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifEnv</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for ErlNifEnv:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-0143b61ce138f45d58e55026d1f6826f1572e59c.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-ea624d72af58acd555e729018a016b73798f4876.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;16&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;15&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;9&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;8&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;3&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
     &quot;4&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;12&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;15&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;13&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;11&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;14&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;12&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;2&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
-    &quot;14&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;13&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;1&quot; [label=&quot;ErlNifEnv&quot; tooltip=&quot;ErlNifEnv&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;10&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
     &quot;5&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;11&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;10&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;7&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;6&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -363,16 +362,15 @@
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]

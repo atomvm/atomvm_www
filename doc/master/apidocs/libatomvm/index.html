@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>libAtomVM Index &mdash; AtomVM 0.6.0-dev+git.f4946291 documentation</title>
+  <title>libAtomVM Index &mdash; AtomVM 0.6.0-dev+git.570f81c9 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -345,6 +345,99 @@
 </dd></dl>
 
 <dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv43Bif">
+<span id="_CPPv33Bif"></span><span id="_CPPv23Bif"></span><span id="Bif"></span><span class="target" id="struct_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Bif</span></span></span><br /></dt>
+<dd><p>Collaboration diagram for Bif:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-85daec1c9091efca89c1b4c0ea0e33c1c189f3b2.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;8&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
+    &quot;7&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;19&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;5&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;1&quot; [label=&quot;Bif&quot; tooltip=&quot;Bif&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;18&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;3&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot;]
+    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;12&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;4&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
+    &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;6&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
+    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;13&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Bif4baseE">
+<span id="_CPPv3N3Bif4baseE"></span><span id="_CPPv2N3Bif4baseE"></span><span id="Bif::base__ExportedFunction"></span><span class="target" id="struct_bif_1a4a8b5f258b0ae9a6e82f1ab38b77bc19"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Bif8bif0_ptrE">
+<span id="_CPPv3N3Bif8bif0_ptrE"></span><span id="_CPPv2N3Bif8bif0_ptrE"></span><span id="Bif::bif0_ptr__BifImpl0"></span><span class="target" id="struct_bif_1ac6acf89012302bdd69190d2d51c1603b"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv48BifImpl0" title="BifImpl0"><span class="n"><span class="pre">BifImpl0</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif0_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Bif8bif1_ptrE">
+<span id="_CPPv3N3Bif8bif1_ptrE"></span><span id="_CPPv2N3Bif8bif1_ptrE"></span><span id="Bif::bif1_ptr__BifImpl1"></span><span class="target" id="struct_bif_1aeb53014dec44d01ab52eec34ecdf3080"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv48BifImpl1" title="BifImpl1"><span class="n"><span class="pre">BifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif1_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3Bif8bif2_ptrE">
+<span id="_CPPv3N3Bif8bif2_ptrE"></span><span id="_CPPv2N3Bif8bif2_ptrE"></span><span id="Bif::bif2_ptr__BifImpl2"></span><span class="target" id="struct_bif_1a5674e1745cf539dc44ed551aaf306f8c"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv48BifImpl2" title="BifImpl2"><span class="n"><span class="pre">BifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif2_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N3BifUt1_2E">
+<span id="_CPPv3N3BifUt1_2E"></span><span class="target" id="struct_bif_1a55b987d019d3e20795cd8c4a8f796cf7"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv43Bif" title="Bif"><span class="n"><span class="pre">Bif</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv424BuiltInAtomRequestSignal">
 <span id="_CPPv324BuiltInAtomRequestSignal"></span><span id="_CPPv224BuiltInAtomRequestSignal"></span><span id="BuiltInAtomRequestSignal"></span><span class="target" id="struct_built_in_atom_request_signal"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BuiltInAtomRequestSignal</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for BuiltInAtomRequestSignal:</p>
@@ -446,60 +539,58 @@
 <span id="_CPPv37Context"></span><span id="_CPPv27Context"></span><span id="Context"></span><span class="target" id="struct_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for Context:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-113dfd6f5b1bf5ec2f9d5773f35be23ebe87e60e.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-5ea4a805de1d1b8f8aba2815fadd8e5d29582acb.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;16&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;19&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;18&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;10&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;8&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;15&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;9&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;18&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;17&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;7&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
-    &quot;12&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;14&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;11&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
     &quot;2&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;13&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;13&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;12&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -663,62 +754,60 @@
 <span id="_CPPv318ContextAccumulator"></span><span id="_CPPv218ContextAccumulator"></span><span id="ContextAccumulator"></span><span class="target" id="struct_context_accumulator"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ContextAccumulator</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for ContextAccumulator:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-460020d8e6d5025f020ecd5dd2a39e287530c0b4.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-5f52a227548a6b1fd806da89082ca3f5a1bd00d6.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;18&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;7&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;6&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;20&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;12&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;10&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;17&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;11&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;19&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;4&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;19&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;18&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;2&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot;]
-    &quot;16&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;8&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
-    &quot;13&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;12&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
     &quot;1&quot; [label=&quot;ContextAccumulator&quot; tooltip=&quot;ContextAccumulator&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;3&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;9&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;5&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;15&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;14&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;13&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -796,29 +885,28 @@
 <span id="_CPPv39ErlNifEnv"></span><span id="_CPPv29ErlNifEnv"></span><span id="ErlNifEnv"></span><span class="target" id="struct_erl_nif_env"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifEnv</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for ErlNifEnv:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-0143b61ce138f45d58e55026d1f6826f1572e59c.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-ea624d72af58acd555e729018a016b73798f4876.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;16&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;15&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;9&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;8&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;3&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
     &quot;4&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;12&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;15&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;13&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;11&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;14&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;12&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;2&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
-    &quot;14&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;13&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;1&quot; [label=&quot;ErlNifEnv&quot; tooltip=&quot;ErlNifEnv&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;10&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
     &quot;5&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;11&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;10&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;7&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;6&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -826,16 +914,15 @@
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -958,43 +1045,134 @@
 </dd></dl>
 
 <dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv45GCBif">
+<span id="_CPPv35GCBif"></span><span id="_CPPv25GCBif"></span><span id="GCBif"></span><span class="target" id="struct_g_c_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBif</span></span></span><br /></dt>
+<dd><p>Collaboration diagram for GCBif:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-01c67d3c40b189e3cf565a072cb0df9b9112ae77.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;1&quot; [label=&quot;GCBif&quot; tooltip=&quot;GCBif&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;8&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
+    &quot;7&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;19&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;5&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;18&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;3&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot;]
+    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;12&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;4&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
+    &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;6&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
+    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;13&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5GCBif4baseE">
+<span id="_CPPv3N5GCBif4baseE"></span><span id="_CPPv2N5GCBif4baseE"></span><span id="GCBif::base__ExportedFunction"></span><span class="target" id="struct_g_c_bif_1a42b9b00ab3cc40eaefc699b12836aa3a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5GCBif10gcbif1_ptrE">
+<span id="_CPPv3N5GCBif10gcbif1_ptrE"></span><span id="_CPPv2N5GCBif10gcbif1_ptrE"></span><span id="GCBif::gcbif1_ptr__GCBifImpl1"></span><span class="target" id="struct_g_c_bif_1a575b100c1538ea0c2d5006c131b4c180"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv410GCBifImpl1" title="GCBifImpl1"><span class="n"><span class="pre">GCBifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif1_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5GCBif10gcbif2_ptrE">
+<span id="_CPPv3N5GCBif10gcbif2_ptrE"></span><span id="_CPPv2N5GCBif10gcbif2_ptrE"></span><span id="GCBif::gcbif2_ptr__GCBifImpl2"></span><span class="target" id="struct_g_c_bif_1a7fab8999dbd19bfd694e0dc8a2641cca"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv410GCBifImpl2" title="GCBifImpl2"><span class="n"><span class="pre">GCBifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif2_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5GCBif10gcbif3_ptrE">
+<span id="_CPPv3N5GCBif10gcbif3_ptrE"></span><span id="_CPPv2N5GCBif10gcbif3_ptrE"></span><span id="GCBif::gcbif3_ptr__GCBifImpl3"></span><span class="target" id="struct_g_c_bif_1aaa29043c485efb518d275649728a3943"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv410GCBifImpl3" title="GCBifImpl3"><span class="n"><span class="pre">GCBifImpl3</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif3_ptr</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N5GCBifUt1_4E">
+<span id="_CPPv3N5GCBifUt1_4E"></span><span class="target" id="struct_g_c_bif_1a774b6e240aa0e6e6083ac6509d99d521"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv45GCBif" title="GCBif"><span class="n"><span class="pre">GCBif</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv413GlobalContext">
 <span id="_CPPv313GlobalContext"></span><span id="_CPPv213GlobalContext"></span><span id="GlobalContext"></span><span class="target" id="struct_global_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for GlobalContext:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-6528e6fb1621d28a297a4ab74679b0d80a04243b.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-aa7531d1ef81a5e1d11a8664145e6f3062bcce21.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;12&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;1&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;7&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
+    &quot;8&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;11&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;9&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;10&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;2&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;3&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -1229,8 +1407,8 @@
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N12HeapFragmentUt1_4E">
-<span id="_CPPv3N12HeapFragmentUt1_4E"></span><span class="target" id="struct_heap_fragment_1aeca551aa713ffaed783345c2280ea05c"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N12HeapFragmentUt1_8E">
+<span id="_CPPv3N12HeapFragmentUt1_8E"></span><span class="target" id="struct_heap_fragment_1ad2d65488cbe91d6b3fc442670504415e"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -1293,36 +1471,6 @@
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N9IFFRecord4sizeE">
 <span id="_CPPv3N9IFFRecord4sizeE"></span><span id="_CPPv2N9IFFRecord4sizeE"></span><span id="IFFRecord::size__uint32_t"></span><span class="target" id="struct_i_f_f_record_1a8ed350c7ec0cd735dd514931fca40b77"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="cpp union">
-<dt class="sig sig-object cpp" id="_CPPv413imported_func">
-<span id="_CPPv313imported_func"></span><span id="_CPPv213imported_func"></span><span class="target" id="unionimported__func"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">imported_func</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for imported_func:</p>
-<figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-436e6b36a0cd74f12cdb4759041e9fc39855d812.png" alt="digraph {
-    graph [bgcolor=&quot;#00000000&quot;]
-    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
-    edge [color=&quot;#1414CE&quot;]
-    &quot;1&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
-    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
-}" class="graphviz" /></div>
-</div>
-</figure>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13imported_func4funcE">
-<span id="_CPPv3N13imported_func4funcE"></span><span id="_CPPv2N13imported_func4funcE"></span><span id="imported_func::func__ExportedFunctionCP"></span><span class="target" id="unionimported__func_1a9bd8710d4bdab1081461d83f1955746b"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">func</span></span></span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N13imported_func3bifE">
-<span id="_CPPv3N13imported_func3bifE"></span><span id="_CPPv2N13imported_func3bifE"></span><span id="imported_func::bif__BifImpl"></span><span class="target" id="unionimported__func_1aa1f135bc9984687642e416df206accb9"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv47BifImpl" title="BifImpl"><span class="n"><span class="pre">BifImpl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -1589,8 +1737,8 @@
 <dd></dd></dl>
 
 <dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N14MailboxMessageUt1_2E">
-<span id="_CPPv3N14MailboxMessageUt1_2E"></span><span class="target" id="struct_mailbox_message_1a0e60dab5d5afa280825f5edcfd7b04e4"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414MailboxMessage" title="MailboxMessage"><span class="n"><span class="pre">MailboxMessage</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N14MailboxMessageUt1_6E">
+<span id="_CPPv3N14MailboxMessageUt1_6E"></span><span class="target" id="struct_mailbox_message_1a058af05d9c4217d693a68b551e2d6be3"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414MailboxMessage" title="MailboxMessage"><span class="n"><span class="pre">MailboxMessage</span></span></a><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -1714,42 +1862,40 @@
 <span id="_CPPv36Module"></span><span id="_CPPv26Module"></span><span id="Module"></span><span class="target" id="struct_module"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for Module:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-40e2e49bc9ed5ed9021765c80a86473364916511.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-23db9394f6c69fd5e512af898ace284b18e540ab.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;12&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;1&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;10&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;6&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;4&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;5&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;2&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
-    &quot;7&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;3&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
-    &quot;9&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;8&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;9&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;5&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;3&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;11&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;4&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;10&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;6&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;8&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;7&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -1812,7 +1958,7 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp" id="_CPPv4N6Module14imported_funcsE">
-<span id="_CPPv3N6Module14imported_funcsE"></span><span id="_CPPv2N6Module14imported_funcsE"></span><span id="Module::imported_funcs__imported_funcP"></span><span class="target" id="struct_module_1aef23c77f6ebbc38d4e961177ec50e4df"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv413imported_func" title="imported_func"><span class="n"><span class="pre">imported_func</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">imported_funcs</span></span></span><br /></dt>
+<span id="_CPPv3N6Module14imported_funcsE"></span><span id="_CPPv2N6Module14imported_funcsE"></span><span id="Module::imported_funcs__ExportedFunctionCPP"></span><span class="target" id="struct_module_1a0edef38563da4b6286c01635d1b8d0e5"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">imported_funcs</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -1886,45 +2032,43 @@
 <span id="_CPPv314ModuleFunction"></span><span id="_CPPv214ModuleFunction"></span><span id="ModuleFunction"></span><span class="target" id="struct_module_function"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModuleFunction</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for ModuleFunction:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-59066ec914047bb1ea431ee22c6466454d2ea071.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-804a31c8284b27b6d9d8a721e9128afe79bcf543.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;14&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;3&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;1&quot; [label=&quot;ModuleFunction&quot; tooltip=&quot;ModuleFunction&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;11&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;7&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;5&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;13&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;6&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;12&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;4&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
-    &quot;8&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;10&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;6&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;4&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;5&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;7&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
     &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
-    &quot;10&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;9&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;9&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;8&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;3&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -1989,63 +2133,61 @@
 <span id="_CPPv33Nif"></span><span id="_CPPv23Nif"></span><span id="Nif"></span><span class="target" id="struct_nif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Nif</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for Nif:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-b12003dcf7aa7b37df98ba87fdfd94a25acccaa8.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-3f9138b4efba15bacc5b31657234a9caf4828244.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;18&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;8&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;7&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;20&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;12&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;10&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;17&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;11&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;19&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;5&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;19&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;18&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Nif&quot; tooltip=&quot;Nif&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;3&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot;]
-    &quot;16&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;9&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
-    &quot;13&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
+    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;12&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
     &quot;4&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
     &quot;2&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;6&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;15&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;14&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;13&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -2093,45 +2235,43 @@
 <span id="_CPPv310RefcBinary"></span><span id="_CPPv210RefcBinary"></span><span id="RefcBinary"></span><span class="target" id="struct_refc_binary"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RefcBinary</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for RefcBinary:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-c77bb7ba7475417aaac64a23e732054ca74d2ded.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-9fb4683039ef79364617b80321c577e4315a5c36.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;15&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;14&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;2&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;8&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;7&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;3&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;11&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;14&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;12&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;13&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;10&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;13&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;11&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;12&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;1&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;9&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
     &quot;4&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;10&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;9&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;6&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;5&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -2173,33 +2313,32 @@
 <span id="_CPPv317RefcBinaryAVMPack"></span><span id="_CPPv217RefcBinaryAVMPack"></span><span id="RefcBinaryAVMPack"></span><span class="target" id="struct_refc_binary_a_v_m_pack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RefcBinaryAVMPack</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for RefcBinaryAVMPack:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-94da6345c9cd3c7baa201875194e923bd5977467.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-ac7605b93d9c6f99af169b2e86568b86be12cd55.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;18&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;17&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;6&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;11&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;2&quot; [label=&quot;AVMPackData&quot; tooltip=&quot;AVMPackData&quot;]
     &quot;4&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;7&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
     &quot;3&quot; [label=&quot;AVMPackInfo&quot; tooltip=&quot;AVMPackInfo&quot;]
-    &quot;14&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;17&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;15&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;13&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;16&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;14&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;1&quot; [label=&quot;RefcBinaryAVMPack&quot; tooltip=&quot;RefcBinaryAVMPack&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;16&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;15&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;5&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
-    &quot;12&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
     &quot;8&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;13&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;12&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;10&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;9&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -2208,17 +2347,16 @@
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;10&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -2346,42 +2484,40 @@
 <span id="_CPPv312ResourceType"></span><span id="_CPPv212ResourceType"></span><span id="ResourceType"></span><span class="target" id="struct_resource_type"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ResourceType</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for ResourceType:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-5852a47bd6e09631098600e515e569afe6e6f669.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-7dc97f8467c52b5578a005917e7944d24d69f060.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;14&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;1&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;7&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;6&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;2&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;10&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;13&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;11&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;12&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;8&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
+    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;3&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;9&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;5&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;4&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -2433,24 +2569,23 @@
 <span id="_CPPv311SelectEvent"></span><span id="_CPPv211SelectEvent"></span><span id="SelectEvent"></span><span class="target" id="struct_select_event"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SelectEvent</span></span></span><br /></dt>
 <dd><p>Collaboration diagram for SelectEvent:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-82e29c525ac77be33ed448812915d0f152ee1cbb.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-d56b15e5070889d0c73de934920da5db3ed9bdac.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;16&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;15&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;1&quot; [label=&quot;SelectEvent&quot; tooltip=&quot;SelectEvent&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;3&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;9&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;8&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;4&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;12&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;15&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;13&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;14&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;11&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;14&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;12&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;13&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;2&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
-    &quot;10&quot; [label=&quot;imported_func&quot; tooltip=&quot;imported_func&quot;]
     &quot;5&quot; [label=&quot;ValuesHashTable&quot; tooltip=&quot;ValuesHashTable&quot;]
-    &quot;11&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;10&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;7&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;6&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -2458,23 +2593,22 @@
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -3795,12 +3929,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv424bif_registry_get_handler10AtomString10AtomStringi">
-<span id="_CPPv324bif_registry_get_handler10AtomString10AtomStringi"></span><span id="_CPPv224bif_registry_get_handler10AtomString10AtomStringi"></span><span id="bif_registry_get_handler__AtomString.AtomString.i"></span><span class="target" id="bif_8c_1ac347e63169877adc2c5006bb71541b3b"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv47BifImpl" title="BifImpl"><span class="n"><span class="pre">BifImpl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_get_handler</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv422bif_registry_is_gc_bif10AtomString10AtomStringi">
-<span id="_CPPv322bif_registry_is_gc_bif10AtomString10AtomStringi"></span><span id="_CPPv222bif_registry_is_gc_bif10AtomString10AtomStringi"></span><span id="bif_registry_is_gc_bif__AtomString.AtomString.i"></span><span class="target" id="bif_8c_1a32e25174bca10783902de63096a7cc15"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_is_gc_bif</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv324bif_registry_get_handler10AtomString10AtomStringi"></span><span id="_CPPv224bif_registry_get_handler10AtomString10AtomStringi"></span><span id="bif_registry_get_handler__AtomString.AtomString.i"></span><span class="target" id="bif_8c_1a2cb9e413ea7afe8c2a98e7aa498a331a"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_get_handler</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -4173,6 +4302,16 @@
 <span id="_CPPv316bif_erlang_get_1P7Context4term"></span><span id="_CPPv216bif_erlang_get_1P7Context4term"></span><span id="bif_erlang_get_1__ContextP.term"></span><span class="target" id="bif_8c_1a4dc031b42b58ab9b54159602ef5f37e1"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_get_1</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416bif_erlang_min_2P7Context4term4term">
+<span id="_CPPv316bif_erlang_min_2P7Context4term4term"></span><span id="_CPPv216bif_erlang_min_2P7Context4term4term"></span><span id="bif_erlang_min_2__ContextP.term.term"></span><span class="target" id="bif_8c_1ac04c60167e3bca27eb1d5bf0f7b737ab"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_min_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg2</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv416bif_erlang_max_2P7Context4term4term">
+<span id="_CPPv316bif_erlang_max_2P7Context4term4term"></span><span id="_CPPv216bif_erlang_max_2P7Context4term4term"></span><span id="bif_erlang_max_2__ContextP.term.term"></span><span class="target" id="bif_8c_1a700138e6bfad57f7a2471e74f246aed4"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_max_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg2</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
 </div>
 </dd></dl>
 
@@ -4321,12 +4460,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
-<span class="target" id="bif_8h_1ac347e63169877adc2c5006bb71541b3b"></span><a class="reference internal" href="files/exportedfunction.h.html#_CPPv47BifImpl" title="BifImpl"><span class="n"><span class="pre">BifImpl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_get_handler</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp">
-<span class="target" id="bif_8h_1a32e25174bca10783902de63096a7cc15"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_is_gc_bif</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
+<span class="target" id="bif_8h_1a2cb9e413ea7afe8c2a98e7aa498a331a"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv416ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">bif_registry_get_handler</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">module</span></span>, <a class="reference internal" href="files/atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -4592,6 +4726,16 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="bif_8h_1a4dc031b42b58ab9b54159602ef5f37e1"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_get_1</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="bif_8h_1ac04c60167e3bca27eb1d5bf0f7b737ab"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_min_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg2</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="bif_8h_1a700138e6bfad57f7a2471e74f246aed4"></span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif_erlang_max_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg1</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">arg2</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -8553,6 +8697,16 @@
 <dd></dd></dl>
 
 <dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EXPORTED_FUNCTION_TO_BIF">
+<span class="target" id="exportedfunction_8h_1abae6714c0abc9f65454a4390f4ce8b29"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_BIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.EXPORTED_FUNCTION_TO_GCBIF">
+<span class="target" id="exportedfunction_8h_1ae0bb2ab5b7ee6fcd04d844b4c26db108"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_GCBIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.EXPORTED_FUNCTION_TO_NIF">
 <span class="target" id="exportedfunction_8h_1a0fcc91c11d532456c23de14cc2340bae"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_NIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
@@ -8573,11 +8727,6 @@
 <dl class="cpp type">
 <dt class="sig sig-object cpp">
 <span class="target" id="exportedfunction_8h_1af3a26d1aa4a6eb8196181f1b6bab5ff7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp type">
-<dt class="sig sig-object cpp" id="_CPPv47BifImpl">
-<span id="_CPPv37BifImpl"></span><span id="_CPPv27BifImpl"></span><span id="BifImpl"></span><span class="target" id="exportedfunction_8h_1a8bb193fd880300356a6722cf3e460d96"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp type">
@@ -8640,6 +8789,16 @@
 <dl class="cpp enumerator">
 <dt class="sig sig-object cpp" id="_CPPv4N12FunctionType14ModuleFunctionE">
 <span id="_CPPv3N12FunctionType14ModuleFunctionE"></span><span id="_CPPv2N12FunctionType14ModuleFunctionE"></span><span class="target" id="exportedfunction_8h_1a42a11575cc237e37732d560240e04371a01b3033e1aac665bfff9baf9b8311323"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModuleFunction</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12FunctionType15BIFFunctionTypeE">
+<span id="_CPPv3N12FunctionType15BIFFunctionTypeE"></span><span id="_CPPv2N12FunctionType15BIFFunctionTypeE"></span><span class="target" id="exportedfunction_8h_1a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BIFFunctionType</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12FunctionType17GCBIFFunctionTypeE">
+<span id="_CPPv3N12FunctionType17GCBIFFunctionTypeE"></span><span id="_CPPv2N12FunctionType17GCBIFFunctionTypeE"></span><span class="target" id="exportedfunction_8h_1a42a11575cc237e37732d560240e04371a2dac22d5c2102d0609bcb652a75b359d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBIFFunctionType</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -18645,17 +18804,17 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="cpp enum">
-<dt class="sig sig-object cpp" id="_CPPv4Ut1_5">
-<span id="_CPPv3Ut1_5"></span><span class="target" id="sys_8h_1a61dadd085c1777f559549e05962b2c9e"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4Ut1_9">
+<span id="_CPPv3Ut1_9"></span><span class="target" id="sys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4NUt1_527SYS_POLL_EVENTS_DO_NOT_WAITE">
-<span id="_CPPv3NUt1_527SYS_POLL_EVENTS_DO_NOT_WAITE"></span><span class="target" id="sys_8h_1a61dadd085c1777f559549e05962b2c9ea91b5ea3292a67ea0b5f1f814b32625ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NUt1_927SYS_POLL_EVENTS_DO_NOT_WAITE">
+<span id="_CPPv3NUt1_927SYS_POLL_EVENTS_DO_NOT_WAITE"></span><span class="target" id="sys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57a91b5ea3292a67ea0b5f1f814b32625ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp enumerator">
-<dt class="sig sig-object cpp" id="_CPPv4NUt1_528SYS_POLL_EVENTS_WAIT_FOREVERE">
-<span id="_CPPv3NUt1_528SYS_POLL_EVENTS_WAIT_FOREVERE"></span><span class="target" id="sys_8h_1a61dadd085c1777f559549e05962b2c9ea47e43a38d2014c9a9fc78347330c3ded"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></span></span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4NUt1_928SYS_POLL_EVENTS_WAIT_FOREVERE">
+<span id="_CPPv3NUt1_928SYS_POLL_EVENTS_WAIT_FOREVERE"></span><span class="target" id="sys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57a47e43a38d2014c9a9fc78347330c3ded"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>

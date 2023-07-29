@@ -137,19 +137,25 @@ This graph shows which files directly or indirectly include this file:</div>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_exported_function.html">ExportedFunction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_bif.html">Bif</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_g_c_bif.html">GCBif</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_nif.html">Nif</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_module_function.html">ModuleFunction</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionimported__func.html">imported_func</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a1729c476b09d3d1eabb3c0e64b8c4186"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a1729c476b09d3d1eabb3c0e64b8c4186">TYPEDEF_MODULE</a></td></tr>
 <tr class="separator:a1729c476b09d3d1eabb3c0e64b8c4186"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abae6714c0abc9f65454a4390f4ce8b29"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#abae6714c0abc9f65454a4390f4ce8b29">EXPORTED_FUNCTION_TO_BIF</a>(func)&#160;&#160;&#160;    ((const struct <a class="el" href="struct_bif.html">Bif</a> *) (((char *) (func)) - ((unsigned long) &amp;((const struct <a class="el" href="struct_bif.html">Bif</a> *) 0)-&gt;base)))</td></tr>
+<tr class="separator:abae6714c0abc9f65454a4390f4ce8b29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0bb2ab5b7ee6fcd04d844b4c26db108"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#ae0bb2ab5b7ee6fcd04d844b4c26db108">EXPORTED_FUNCTION_TO_GCBIF</a>(func)&#160;&#160;&#160;    ((const struct <a class="el" href="struct_g_c_bif.html">GCBif</a> *) (((char *) (func)) - ((unsigned long) &amp;((const struct <a class="el" href="struct_g_c_bif.html">GCBif</a> *) 0)-&gt;base)))</td></tr>
+<tr class="separator:ae0bb2ab5b7ee6fcd04d844b4c26db108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fcc91c11d532456c23de14cc2340bae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a0fcc91c11d532456c23de14cc2340bae">EXPORTED_FUNCTION_TO_NIF</a>(func)&#160;&#160;&#160;    ((const struct <a class="el" href="struct_nif.html">Nif</a> *) (((char *) (func)) - ((unsigned long) &amp;((const struct <a class="el" href="struct_nif.html">Nif</a> *) 0)-&gt;base)))</td></tr>
 <tr class="separator:a0fcc91c11d532456c23de14cc2340bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36c9736c0b64c48a0070fb590698cc76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a36c9736c0b64c48a0070fb590698cc76">EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL</a>(func)&#160;&#160;&#160;    ((struct <a class="el" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *) (((char *) (func)) - ((unsigned long) &amp;((struct <a class="el" href="struct_unresolved_function_call.html">UnresolvedFunctionCall</a> *) 0)-&gt;base)))</td></tr>
@@ -161,8 +167,6 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:af3a26d1aa4a6eb8196181f1b6bab5ff7"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_module.html">Module</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#af3a26d1aa4a6eb8196181f1b6bab5ff7">Module</a></td></tr>
 <tr class="separator:af3a26d1aa4a6eb8196181f1b6bab5ff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8bb193fd880300356a6722cf3e460d96"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a8bb193fd880300356a6722cf3e460d96">BifImpl</a>) ()</td></tr>
-<tr class="separator:a8bb193fd880300356a6722cf3e460d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93fc02d34dcfc50a9b5dbd10bd44cd08"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a93fc02d34dcfc50a9b5dbd10bd44cd08">BifImpl0</a>) (<a class="el" href="struct_context.html">Context</a> *ctx)</td></tr>
 <tr class="separator:a93fc02d34dcfc50a9b5dbd10bd44cd08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2892fe5519f6d1ab6dd04d9eb7ad58ea"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a2892fe5519f6d1ab6dd04d9eb7ad58ea">BifImpl1</a>) (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> arg1)</td></tr>
@@ -180,10 +184,15 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a42a11575cc237e37732d560240e04371"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371">FunctionType</a> { <a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981">InvalidFunctionType</a> = 0
+<tr class="memitem:a42a11575cc237e37732d560240e04371"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371">FunctionType</a> { <br />
+&#160;&#160;<a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981">InvalidFunctionType</a> = 0
 , <a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a520690de440ea0d9cf76b05340b418a4">NIFFunctionType</a> = 2
 , <a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a248d26514e2dc649afea1d8d30e2f3fd">UnresolvedFunctionCall</a> = 3
 , <a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a01b3033e1aac665bfff9baf9b8311323">ModuleFunction</a> = 4
+, <br />
+&#160;&#160;<a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e">BIFFunctionType</a> = 5
+, <a class="el" href="exportedfunction_8h.html#a42a11575cc237e37732d560240e04371a2dac22d5c2102d0609bcb652a75b359d">GCBIFFunctionType</a> = 6
+<br />
  }</td></tr>
 <tr class="separator:a42a11575cc237e37732d560240e04371"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -193,6 +202,46 @@ Enumerations</h2></td></tr>
 
 <p class="definition">Definition in file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abae6714c0abc9f65454a4390f4ce8b29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abae6714c0abc9f65454a4390f4ce8b29">&#9670;&nbsp;</a></span>EXPORTED_FUNCTION_TO_BIF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXPORTED_FUNCTION_TO_BIF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">func</td><td>)</td>
+          <td>&#160;&#160;&#160;    ((const struct <a class="el" href="struct_bif.html">Bif</a> *) (((char *) (func)) - ((unsigned long) &amp;((const struct <a class="el" href="struct_bif.html">Bif</a> *) 0)-&gt;base)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00108">108</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+
+</div>
+</div>
+<a id="ae0bb2ab5b7ee6fcd04d844b4c26db108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0bb2ab5b7ee6fcd04d844b4c26db108">&#9670;&nbsp;</a></span>EXPORTED_FUNCTION_TO_GCBIF</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXPORTED_FUNCTION_TO_GCBIF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">func</td><td>)</td>
+          <td>&#160;&#160;&#160;    ((const struct <a class="el" href="struct_g_c_bif.html">GCBif</a> *) (((char *) (func)) - ((unsigned long) &amp;((const struct <a class="el" href="struct_g_c_bif.html">GCBif</a> *) 0)-&gt;base)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00111">111</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+
+</div>
+</div>
 <a id="a21367be5d52528b821ebe600ceb8c45a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a21367be5d52528b821ebe600ceb8c45a">&#9670;&nbsp;</a></span>EXPORTED_FUNCTION_TO_MODULE_FUNCTION</h2>
 
@@ -209,7 +258,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00091">91</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00120">120</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -229,7 +278,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00085">85</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00114">114</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +298,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00088">88</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00117">117</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -270,22 +319,6 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a8bb193fd880300356a6722cf3e460d96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8bb193fd880300356a6722cf3e460d96">&#9670;&nbsp;</a></span>BifImpl</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>(* BifImpl) ()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00040">40</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
-
-</div>
-</div>
 <a id="a93fc02d34dcfc50a9b5dbd10bd44cd08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a93fc02d34dcfc50a9b5dbd10bd44cd08">&#9670;&nbsp;</a></span>BifImpl0</h2>
 
@@ -298,7 +331,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00041">41</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00040">40</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -314,7 +347,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00042">42</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00041">41</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -330,7 +363,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00043">43</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00042">42</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +379,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00045">45</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00044">44</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +395,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00046">46</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00045">45</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -378,7 +411,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00047">47</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00046">46</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -410,7 +443,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00049">49</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00048">48</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>
@@ -431,9 +464,11 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a42a11575cc237e37732d560240e04371a520690de440ea0d9cf76b05340b418a4"></a>NIFFunctionType&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a42a11575cc237e37732d560240e04371a248d26514e2dc649afea1d8d30e2f3fd"></a>UnresolvedFunctionCall&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a42a11575cc237e37732d560240e04371a01b3033e1aac665bfff9baf9b8311323"></a>ModuleFunction&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e"></a>BIFFunctionType&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a42a11575cc237e37732d560240e04371a2dac22d5c2102d0609bcb652a75b359d"></a>GCBIFFunctionType&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00051">51</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="exportedfunction_8h_source.html#l00050">50</a> of file <a class="el" href="exportedfunction_8h_source.html">exportedfunction.h</a>.</p>
 
 </div>
 </div>

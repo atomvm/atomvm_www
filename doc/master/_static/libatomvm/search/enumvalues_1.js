@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['dictionarymemoryallocfail_2006',['DictionaryMemoryAllocFail',['../dictionary_8h.html#ad85950c231b4eaf087060ae0b424d3cea1483e6275be9bce2acd69082f0ed4fcb',1,'dictionary.h']]],
-  ['dictionaryok_2007',['DictionaryOk',['../dictionary_8h.html#ad85950c231b4eaf087060ae0b424d3cea86631ed7b146fe4fc3b85dd728c4f93d',1,'dictionary.h']]]
+  ['biffunctiontype_2020',['BIFFunctionType',['../exportedfunction_8h.html#a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e',1,'exportedfunction.h']]]
 ];
