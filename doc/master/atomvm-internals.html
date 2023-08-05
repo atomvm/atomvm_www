@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.6.0-dev+git.27e4ee34 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.6.0-dev+git.bee9ef3e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -270,7 +270,7 @@
 </section>
 <section id="atomvm-webassembly-port">
 <h2>AtomVM WebAssembly port<a class="headerlink" href="#atomvm-webassembly-port" title="Permalink to this heading"></a></h2>
-<p>WebAssembly or Wasm port of AtomVM relies on Emscripten SDK and library. It currently is single threaded (SMP is disabled), yet it uses pthread library for synchronization and most importantly to sleep when Erlang processes are not running (to not waste CPU cycles).</p>
+<p>WebAssembly or Wasm port of AtomVM relies on Emscripten SDK and library. Even when SMP is disabled (with <code class="docutils literal notranslate"><span class="pre">-DAVM_DISABLE_SMP=On</span></code>), it uses pthread library to sleep when Erlang processes are not running (to not waste CPU cycles).</p>
 <section id="nodejs-environment-build">
 <h3>NodeJS environment build<a class="headerlink" href="#nodejs-environment-build" title="Permalink to this heading"></a></h3>
 <p>The NodeJS environment build of this port is relatively straightforward, featuring NODERAWFS which means it can access files directly like node does.</p>
