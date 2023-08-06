@@ -931,6 +931,7 @@ Functions</h2></td></tr>
 <p>Run a POSIX-like select on a given object (event) and send a message when the object is readable or writable. </p>
 <p>Actual implementation is platform dependent and platforms may not implement this feature.</p>
 <p>On <code>generic_unix</code>, this is currently implemented using what <code>sys_poll_events</code> uses, namely <code>kqueue(2)</code> (if available) or <code>poll(2)</code>. Please note that <code>kqueue(2)</code> and <code>poll(2)</code> behave differently for some objects, for example for vnodes and EOF.</p>
+<p>On <code>esp32</code>, this is currently implemented using <code>poll(2)</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">env</td><td>current environment </td></tr>
