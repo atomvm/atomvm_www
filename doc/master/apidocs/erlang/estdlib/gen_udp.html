@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_udp &mdash; AtomVM 0.6.0-dev+git.6d588de9 documentation</title>
+  <title>Module gen_udp &mdash; AtomVM 0.6.0-dev+git.08d577aa documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -152,16 +152,16 @@ binaries or strings.  Active and passive modes are supported for receiving data.
 </section>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="option">
+<h3><a name="type-option">option()</a><a class="headerlink" href="#option" title="Permalink to this heading"></a></h3>
+<pre><code>
+option() = {active, boolean()} | {buffer, pos_integer()} | {timeout, timeout()} | list | binary | {binary, boolean()}
+</code></pre>
+</section>
 <section id="packet">
 <h3><a name="type-packet">packet()</a><a class="headerlink" href="#packet" title="Permalink to this heading"></a></h3>
 <pre><code>
 packet() = string() | binary()
-</code></pre>
-</section>
-<section id="proplist">
-<h3><a name="type-proplist">proplist()</a><a class="headerlink" href="#proplist" title="Permalink to this heading"></a></h3>
-<pre><code>
-proplist() = [{atom(), any()}]
 </code></pre>
 </section>
 <section id="reason">
@@ -222,7 +222,7 @@ send or receive UDP messages.</p>
 <section id="open-2">
 <h3>open/2<a class="headerlink" href="#open-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-open(PortNum::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::<a href="#type-proplist">proplist()</a>) -&gt; {ok, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+open(PortNum::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::[<a href="#type-option">option()</a>]) -&gt; {ok, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Options</span></code>: A list of configuration parameters.<br /></p>
@@ -249,7 +249,7 @@ recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/
 <section id="recv-3">
 <h3>recv/3<a class="headerlink" href="#recv-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::non_neg_integer()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
+recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket over which to receive a packet<br /><code class="docutils literal notranslate"><span class="pre">Length</span></code>: the maximum length to read of the received packet<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: the amount of time to wait for a packet to arrive<br /></p>

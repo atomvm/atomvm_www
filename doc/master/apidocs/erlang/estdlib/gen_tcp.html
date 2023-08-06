@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_tcp &mdash; AtomVM 0.6.0-dev+git.6d588de9 documentation</title>
+  <title>Module gen_tcp &mdash; AtomVM 0.6.0-dev+git.08d577aa documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -166,7 +166,7 @@ listen_option() = <a href="#type-option">option()</a>
 <section id="option">
 <h3><a name="type-option">option()</a><a class="headerlink" href="#option" title="Permalink to this heading"></a></h3>
 <pre><code>
-option() = {active, boolean()} | {buffer, pos_integer()} | {timeout, pos_integer() | infinity} | list | binary
+option() = {active, boolean()} | {buffer, pos_integer()} | {timeout, timeout()} | list | binary | {binary, boolean()}
 </code></pre>
 </section>
 <section id="packet">
@@ -205,7 +205,7 @@ accept(ListenSocket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/ker
 <section id="accept-2">
 <h3>accept/2<a class="headerlink" href="#accept-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-accept(ListenSocket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Timeout::non_neg_integer()) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+accept(ListenSocket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Timeout::timeout()) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">ListenSocket</span></code>: the listening socket.<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: amount of time in milliseconds to wait for a connection<br /></p>
@@ -227,7 +227,7 @@ close(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc
 <section id="connect-3">
 <h3>connect/3<a class="headerlink" href="#connect-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-connect(Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::[<a href="#type-connect_option">connect_option()</a>]) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+connect(Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a> | <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-hostname">inet:hostname()</a>, Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::[<a href="#type-connect_option">connect_option()</a>]) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Address</span></code>: the address to which to connect<br /><code class="docutils literal notranslate"><span class="pre">Port</span></code>: the port to which to connect<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: options for controlling the behavior of the socket (see below)<br /></p>

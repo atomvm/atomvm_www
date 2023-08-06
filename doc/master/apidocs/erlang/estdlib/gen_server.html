@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_server &mdash; AtomVM 0.6.0-dev+git.6d588de9 documentation</title>
+  <title>Module gen_server &mdash; AtomVM 0.6.0-dev+git.08d577aa documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -133,6 +133,7 @@
 <li><p><a class="reference internal" href="../../../memory-management.html#functions"><span class="std std-ref">Function Details</span></a></p></li>
 </ul>
 <p>An implementation of the Erlang/OTP gen_server interface.</p>
+<p><strong>This module defines the <code class="docutils literal notranslate"><span class="pre">gen_server</span></code> behaviour.</strong><br /> Required callback functions: <code class="docutils literal notranslate"><span class="pre">init/1</span></code>, <code class="docutils literal notranslate"><span class="pre">handle_call/3</span></code>, <code class="docutils literal notranslate"><span class="pre">handle_cast/2</span></code>.</p>
 <p><a name="description"></a></p>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
@@ -184,7 +185,7 @@ server_ref() = atom() | pid()
 <section id="call-2">
 <h3>call/2<a class="headerlink" href="#call-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-call(ServerRef::<a href="#type-server_ref">server_ref()</a>, Request::term) -&gt; Reply::term() | {error, Reason::term()}
+call(ServerRef::<a href="#type-server_ref">server_ref()</a>, Request::term()) -&gt; Reply::term() | {error, Reason::term()}
 </code></pre>
 <br />
 <p>Equivalent to <a class="reference internal" href="#call-3"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">call(ServerRef,</span> <span class="pre">Request,</span> <span class="pre">5000)</span></code></span></a>.</p>
@@ -231,7 +232,7 @@ gen_server instance, but will not wait for a reply.</p>
 <section id="reply-2">
 <h3>reply/2<a class="headerlink" href="#reply-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-reply(From::<a href="#type-from">from()</a>, Reply::term) -&gt; term()
+reply(From::<a href="#type-from">from()</a>, Reply::term()) -&gt; term()
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">From</span></code>: the client to whom to send the reply<br /><code class="docutils literal notranslate"><span class="pre">Reply</span></code>: the reply to send to the client<br /></p>
