@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_tcp &mdash; AtomVM 0.6.0-dev+git.a1f9bea7 documentation</title>
+  <title>Module gen_tcp &mdash; AtomVM 0.6.0-dev+git.2c981582 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -151,6 +151,30 @@ binaries or strings.  Active and passive modes are supported for receiving data.
 </section>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="connect-option">
+<h3><a name="type-connect_option">connect_option()</a><a class="headerlink" href="#connect-option" title="Permalink to this heading"></a></h3>
+<pre><code>
+connect_option() = <a href="#type-option">option()</a>
+</code></pre>
+</section>
+<section id="listen-option">
+<h3><a name="type-listen_option">listen_option()</a><a class="headerlink" href="#listen-option" title="Permalink to this heading"></a></h3>
+<pre><code>
+listen_option() = <a href="#type-option">option()</a>
+</code></pre>
+</section>
+<section id="option">
+<h3><a name="type-option">option()</a><a class="headerlink" href="#option" title="Permalink to this heading"></a></h3>
+<pre><code>
+option() = {active, boolean()} | {buffer, pos_integer()} | {timeout, pos_integer() | infinity} | list | binary
+</code></pre>
+</section>
+<section id="packet">
+<h3><a name="type-packet">packet()</a><a class="headerlink" href="#packet" title="Permalink to this heading"></a></h3>
+<pre><code>
+packet() = string() | binary()
+</code></pre>
+</section>
 <section id="reason">
 <h3><a name="type-reason">reason()</a><a class="headerlink" href="#reason" title="Permalink to this heading"></a></h3>
 <pre><code>
@@ -203,7 +227,7 @@ close(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc
 <section id="connect-3">
 <h3>connect/3<a class="headerlink" href="#connect-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-connect(Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port">inet:port()</a>, Options::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-opts">inet:opts()</a>) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+connect(Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::[<a href="#type-connect_option">connect_option()</a>]) -&gt; {ok, Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Address</span></code>: the address to which to connect<br /><code class="docutils literal notranslate"><span class="pre">Port</span></code>: the port to which to connect<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: options for controlling the behavior of the socket (see below)<br /></p>
@@ -244,7 +268,7 @@ the creation of the Socket.</p>
 <section id="listen-2">
 <h3>listen/2<a class="headerlink" href="#listen-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-listen(Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port">inet:port()</a>, Options::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-opts">inet:opts()</a>) -&gt; {ok, ListeningSocket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+listen(Port::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Options::[<a href="#type-listen_option">listen_option()</a>]) -&gt; {ok, ListeningSocket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: the port number on which to listen.  Specify 0 to use an OS-assigned
@@ -258,7 +282,7 @@ function.<br /><code class="docutils literal notranslate"><span class="pre">Opti
 <section id="recv-2">
 <h3>recv/2<a class="headerlink" href="#recv-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer()) -&gt; {ok, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-packet">inet:packet()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer()) -&gt; {ok, <a href="#type-packet">packet()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p>Equivalent to <a class="reference internal" href="#recv-3"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">recv(Socket,</span> <span class="pre">Length,</span> <span class="pre">infinity)</span></code></span></a>.</p>
@@ -268,7 +292,7 @@ recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/
 <section id="recv-3">
 <h3>recv/3<a class="headerlink" href="#recv-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::non_neg_integer()) -&gt; {ok, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-packet">inet:packet()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
+recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::non_neg_integer()) -&gt; {ok, <a href="#type-packet">packet()</a>} | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket over which to receive a packet<br /><code class="docutils literal notranslate"><span class="pre">Length</span></code>: the maximum length to read of the received packet<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: the amount of time to wait for a packet to arrive<br /></p>
@@ -286,7 +310,7 @@ of the connection.</p>
 <section id="send-2">
 <h3>send/2<a class="headerlink" href="#send-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-send(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Packet::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-packet">inet:packet()</a>) -&gt; ok | {error, Reason::<a href="#type-reason">reason()</a>}
+send(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Packet::<a href="#type-packet">packet()</a>) -&gt; ok | {error, Reason::<a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: The Socket obtained via connect/3<br /><code class="docutils literal notranslate"><span class="pre">Packet</span></code>: the data to send<br /></p>
