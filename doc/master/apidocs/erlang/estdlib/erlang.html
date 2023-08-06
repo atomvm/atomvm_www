@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.bee9ef3e documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-dev+git.a1f9bea7 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -137,10 +137,22 @@ that are not already defined as NIFs.</p>
 <p><a name="types"></a></p>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="demonitor-option">
+<h3><a name="type-demonitor_option">demonitor_option()</a><a class="headerlink" href="#demonitor-option" title="Permalink to this heading"></a></h3>
+<pre><code>
+demonitor_option() = flush | {flush, boolean()} | info | {info, boolean()}
+</code></pre>
+</section>
 <section id="mem-type">
 <h3><a name="type-mem_type">mem_type()</a><a class="headerlink" href="#mem-type" title="Permalink to this heading"></a></h3>
 <pre><code>
 mem_type() = binary()
+</code></pre>
+</section>
+<section id="spawn-option">
+<h3><a name="type-spawn_option">spawn_option()</a><a class="headerlink" href="#spawn-option" title="Permalink to this heading"></a></h3>
+<pre><code>
+spawn_option() = {min_heap_size, pos_integer()} | {max_heap_size, pos_integer()} | {link, boolean()} | {monitor, boolean()}
 </code></pre>
 </section>
 <section id="time-unit">
@@ -153,9 +165,9 @@ time_unit() = second | millisecond | microsecond
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td>    Returns the result of applying Function in Module to Args.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the maximum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
-https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
-Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td>    Returns the result of applying Function in Module to Args.</td></tr><tr><td valign="top"><a href="#atom_to_binary-2">atom_to_binary/2</a></td><td>    Convert an atom to a binary.</td></tr><tr><td valign="top"><a href="#atom_to_list-1">atom_to_list/1</a></td><td>    Convert an atom to a string.</td></tr><tr><td valign="top"><a href="#binary_to_list-1">binary_to_list/1</a></td><td>    Convert a binary to a list of bytes.</td></tr><tr><td valign="top"><a href="#demonitor-1">demonitor/1</a></td><td>    Remove a monitor.</td></tr><tr><td valign="top"><a href="#demonitor-2">demonitor/2</a></td><td>    Remove a monitor, with options.</td></tr><tr><td valign="top"><a href="#display-1">display/1</a></td><td>    Print a term to stdout.</td></tr><tr><td valign="top"><a href="#erase-1">erase/1</a></td><td>    Erase a key from the process dictionary.</td></tr><tr><td valign="top"><a href="#float_to_binary-1">float_to_binary/1</a></td><td>    Convert a float to a binary.</td></tr><tr><td valign="top"><a href="#float_to_list-1">float_to_list/1</a></td><td>    Convert a float to a string.</td></tr><tr><td valign="top"><a href="#fun_to_list-1">fun_to_list/1</a></td><td>    Create a string representing a function.</td></tr><tr><td valign="top"><a href="#function_exported-3">function_exported/3</a></td><td>    Determine if a function is exported.</td></tr><tr><td valign="top"><a href="#get-1">get/1</a></td><td>    Return a value associated with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#group_leader-0">group_leader/0</a></td><td>    Return the pid of the group leader of caller.</td></tr><tr><td valign="top"><a href="#integer_to_binary-1">integer_to_binary/1</a></td><td>    Convert an integer to a binary.</td></tr><tr><td valign="top"><a href="#integer_to_list-1">integer_to_list/1</a></td><td>    Convert an integer to a string.</td></tr><tr><td valign="top"><a href="#iolist_to_binary-1">iolist_to_binary/1</a></td><td>    Convert an IO list to binary.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#list_to_atom-1">list_to_atom/1</a></td><td>    Convert a string into an atom.</td></tr><tr><td valign="top"><a href="#list_to_binary-1">list_to_binary/1</a></td><td>    Convert a list of bytes into a binary.</td></tr><tr><td valign="top"><a href="#list_to_integer-1">list_to_integer/1</a></td><td>    Convert a string (list of characters) to integer.</td></tr><tr><td valign="top"><a href="#list_to_tuple-1">list_to_tuple/1</a></td><td>    Convert a list to a tuple with the same size.</td></tr><tr><td valign="top"><a href="#make_ref-0">make_ref/0</a></td><td>    Create a new reference.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_is_key-2">map_is_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the maximum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
+https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monitor-2">monitor/2</a></td><td>    Create a monitor on a process.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#open_port-2">open_port/2</a></td><td>    Open a port.</td></tr><tr><td valign="top"><a href="#pid_to_list-1">pid_to_list/1</a></td><td>    Create a string representing a pid.</td></tr><tr><td valign="top"><a href="#process_flag-2">process_flag/2</a></td><td>    Set a flag for the current process.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#put-2">put/2</a></td><td>    Store a value with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#ref_to_list-1">ref_to_list/1</a></td><td>    Create a string representing a reference.</td></tr><tr><td valign="top"><a href="#register-2">register/2</a></td><td>    Register a name for a given process.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#spawn-1">spawn/1</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn-3">spawn/3</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#spawn_opt-2">spawn_opt/2</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn_opt-4">spawn_opt/4</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
+Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr><tr><td valign="top"><a href="#system_time-1">system_time/1</a></td><td>    Get the current system time in provided unit.</td></tr><tr><td valign="top"><a href="#unregister-1">unregister/1</a></td><td>    Lookup a process by name.</td></tr><tr><td valign="top"><a href="#whereis-1">whereis/1</a></td><td>    Lookup a process by name.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -180,6 +192,185 @@ length of Args. Example:</p>
 </div>
 <p>If the number of arguments are known at compile time, the call is better
 written as Module:Function(Arg1, Arg2, …, ArgN).</p>
+<p><a name="atom_to_binary-2"></a></p>
+</section>
+<section id="atom-to-binary-2">
+<h3>atom_to_binary/2<a class="headerlink" href="#atom-to-binary-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+atom_to_binary(Atom::atom(), Encoding::latin1) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Atom</span></code>: Atom to convert<br /><code class="docutils literal notranslate"><span class="pre">Encoding</span></code>: Encoding for conversion<br /></p>
+<p>returns: a binary with the atom’s name</p>
+<p>Convert an atom to a binary.
+Only latin1 encoding is supported.</p>
+<p><a name="atom_to_list-1"></a></p>
+</section>
+<section id="atom-to-list-1">
+<h3>atom_to_list/1<a class="headerlink" href="#atom-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+atom_to_list(Atom::atom()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Atom</span></code>: Atom to convert<br /></p>
+<p>returns: a string with the atom’s name</p>
+<p>Convert an atom to a string.</p>
+<p><a name="binary_to_list-1"></a></p>
+</section>
+<section id="binary-to-list-1">
+<h3>binary_to_list/1<a class="headerlink" href="#binary-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+binary_to_list(Binary::binary()) -&gt; [byte()]
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: Binary to convert to list<br /></p>
+<p>returns: a list of bytes from the binary</p>
+<p>Convert a binary to a list of bytes.</p>
+<p><a name="demonitor-1"></a></p>
+</section>
+<section id="demonitor-1">
+<h3>demonitor/1<a class="headerlink" href="#demonitor-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+demonitor(Monitor::reference()) -&gt; true
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Monitor</span></code>: reference of monitor to remove<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p>Remove a monitor</p>
+<p><a name="demonitor-2"></a></p>
+</section>
+<section id="demonitor-2">
+<h3>demonitor/2<a class="headerlink" href="#demonitor-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+demonitor(Monitor::reference(), Options::[<a href="#type-demonitor_option">demonitor_option()</a>]) -&gt; boolean()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Monitor</span></code>: reference of monitor to remove<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p>Remove a monitor, with options.
+If <code class="docutils literal notranslate"><span class="pre">flush</span></code>, monitor messages are flushed and guaranteed to not be received.
+If <code class="docutils literal notranslate"><span class="pre">info</span></code>, return <code class="docutils literal notranslate"><span class="pre">true</span></code> if monitor was removed, <code class="docutils literal notranslate"><span class="pre">false</span></code> if it was not found.
+If both options are provivded, return <code class="docutils literal notranslate"><span class="pre">false</span></code> if flush was needed.</p>
+<p><a name="display-1"></a></p>
+</section>
+<section id="display-1">
+<h3>display/1<a class="headerlink" href="#display-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+display(Term::any()) -&gt; true
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Term</span></code>: term to print<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p>Print a term to stdout.</p>
+<p><a name="erase-1"></a></p>
+</section>
+<section id="erase-1">
+<h3>erase/1<a class="headerlink" href="#erase-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+erase(Key::any()) -&gt; any()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key to erase from the process dictionary<br /></p>
+<p>returns: the previous value associated with this key or undefined</p>
+<p>Erase a key from the process dictionary.</p>
+<p><a name="float_to_binary-1"></a></p>
+</section>
+<section id="float-to-binary-1">
+<h3>float_to_binary/1<a class="headerlink" href="#float-to-binary-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+float_to_binary(Float::float()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Float</span></code>: Float to convert<br /></p>
+<p>returns: a binary with a text representation of the float</p>
+<p>Convert a float to a binary.</p>
+<p><a name="float_to_list-1"></a></p>
+</section>
+<section id="float-to-list-1">
+<h3>float_to_list/1<a class="headerlink" href="#float-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+float_to_list(Float::float()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Float</span></code>: Float to convert<br /></p>
+<p>returns: a string with a text representation of the float</p>
+<p>Convert a float to a string.</p>
+<p><a name="fun_to_list-1"></a></p>
+</section>
+<section id="fun-to-list-1">
+<h3>fun_to_list/1<a class="headerlink" href="#fun-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+fun_to_list(Fun::function()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Fun</span></code>: function to convert to a string<br /></p>
+<p>returns: a string representation of the function</p>
+<p>Create a string representing a function.</p>
+<p><a name="function_exported-3"></a></p>
+</section>
+<section id="function-exported-3">
+<h3>function_exported/3<a class="headerlink" href="#function-exported-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+function_exported(Module::module(), Function::atom(), Arity::arity()) -&gt; boolean()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: module to test<br /><code class="docutils literal notranslate"><span class="pre">Function</span></code>: function to test<br /><code class="docutils literal notranslate"><span class="pre">Arity</span></code>: arity to test<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if Module exports a Function with this Arity</p>
+<p>Determine if a function is exported</p>
+<p><a name="get-1"></a></p>
+</section>
+<section id="get-1">
+<h3>get/1<a class="headerlink" href="#get-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+get(Key::any()) -&gt; any()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key in the process dictionary<br /></p>
+<p>returns: value associated with this key or undefined</p>
+<p>Return a value associated with a given key in the process dictionary</p>
+<p><a name="group_leader-0"></a></p>
+</section>
+<section id="group-leader-0">
+<h3>group_leader/0<a class="headerlink" href="#group-leader-0" title="Permalink to this heading"></a></h3>
+<pre><code>
+group_leader() -&gt; pid()
+</code></pre>
+<br />
+<p>returns: Pid of group leader or self() if no group leader is set.</p>
+<p>Return the pid of the group leader of caller.</p>
+<p><a name="integer_to_binary-1"></a></p>
+</section>
+<section id="integer-to-binary-1">
+<h3>integer_to_binary/1<a class="headerlink" href="#integer-to-binary-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+integer_to_binary(Integer::integer()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Integer</span></code>: integer to convert to a binary<br /></p>
+<p>returns: a binary with a text representation of the integer</p>
+<p>Convert an integer to a binary.</p>
+<p><a name="integer_to_list-1"></a></p>
+</section>
+<section id="integer-to-list-1">
+<h3>integer_to_list/1<a class="headerlink" href="#integer-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+integer_to_list(Integer::integer()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Integer</span></code>: integer to convert to a string<br /></p>
+<p>returns: a string representation of the integer</p>
+<p>Convert an integer to a string.</p>
+<p><a name="iolist_to_binary-1"></a></p>
+</section>
+<section id="iolist-to-binary-1">
+<h3>iolist_to_binary/1<a class="headerlink" href="#iolist-to-binary-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+iolist_to_binary(IOList::iolist()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">IOList</span></code>: IO list to convert to binary<br /></p>
+<p>returns: a binary with the bytes of the IO list</p>
+<p>Convert an IO list to binary.</p>
 <p><a name="is_map-1"></a></p>
 </section>
 <section id="is-map-1">
@@ -192,6 +383,66 @@ is_map(Map::map()) -&gt; boolean()
 <p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is a map; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
 <p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is a map; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
 <p>This function may be used in a guard expression.</p>
+<p><a name="list_to_atom-1"></a></p>
+</section>
+<section id="list-to-atom-1">
+<h3>list_to_atom/1<a class="headerlink" href="#list-to-atom-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+list_to_atom(String::string()) -&gt; atom()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: string to convert to an atom<br /></p>
+<p>returns: an atom from the string</p>
+<p>Convert a string into an atom.
+Unlike Erlang/OTP 20+, atoms are limited to ISO-8859-1 characters. The VM
+currently aborts if passed unicode characters.
+Atoms are also limited to 255 characters. Errors with system_limit_atom if
+the passed string is longer.</p>
+<p><a name="list_to_binary-1"></a></p>
+</section>
+<section id="list-to-binary-1">
+<h3>list_to_binary/1<a class="headerlink" href="#list-to-binary-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+list_to_binary(List::[byte()]) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">List</span></code>: list to convert to binary<br /></p>
+<p>returns: a binary composed of bytes from the list</p>
+<p>Convert a list of bytes into a binary.
+Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the list is not a list of bytes.</p>
+<p><a name="list_to_integer-1"></a></p>
+</section>
+<section id="list-to-integer-1">
+<h3>list_to_integer/1<a class="headerlink" href="#list-to-integer-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+list_to_integer(String::string()) -&gt; tuple()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: string to convert to integer<br /></p>
+<p>returns: an integer value from its string representation</p>
+<p>Convert a string (list of characters) to integer.
+Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the string is not a representation of an integer.</p>
+<p><a name="list_to_tuple-1"></a></p>
+</section>
+<section id="list-to-tuple-1">
+<h3>list_to_tuple/1<a class="headerlink" href="#list-to-tuple-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+list_to_tuple(List::[any()]) -&gt; tuple()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">List</span></code>: list to convert to tuple<br /></p>
+<p>returns: a tuple with elements of the list</p>
+<p>Convert a list to a tuple with the same size.</p>
+<p><a name="make_ref-0"></a></p>
+</section>
+<section id="make-ref-0">
+<h3>make_ref/0<a class="headerlink" href="#make-ref-0" title="Permalink to this heading"></a></h3>
+<pre><code>
+make_ref() -&gt; reference()
+</code></pre>
+<br />
+<p>returns: a new reference</p>
+<p>Create a new reference</p>
 <p><a name="map_get-2"></a></p>
 </section>
 <section id="map-get-2">
@@ -284,6 +535,23 @@ min(A::any(), B::any()) -&gt; any()
 <p>Return the minimum value of two terms</p>
 <p>Terms are compared using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and follow the ordering principles defined in
 https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p>
+<p><a name="monitor-2"></a></p>
+</section>
+<section id="monitor-2">
+<h3>monitor/2<a class="headerlink" href="#monitor-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+monitor(Type::process, Pid::pid()) -&gt; reference()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: type of monitor to create<br /><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid of the object to monitor<br /></p>
+<p>returns: a monitor reference</p>
+<p>Create a monitor on a process.
+When the process dies, the following message is sent to the caller of this
+function:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  {&#39;DOWN&#39;, MonitorRef, process, Pid, Reason}
+</pre></div>
+</div>
+<p>Unlike Erlang/OTP, monitors are only supported for processes.</p>
 <p><a name="monotonic_time-1"></a></p>
 </section>
 <section id="monotonic-time-1">
@@ -303,6 +571,45 @@ monotonically increasing value.</p>
 <p>For example, on ESP32 system, monotonic time is reported as the difference from
 the current time and the time the ESP32 device was started, whereas on UNIX
 systems the value may vary among UNIX systems (e.g., Linux, macOS, FreeBSD).</p>
+<p><a name="open_port-2"></a></p>
+</section>
+<section id="open-port-2">
+<h3>open_port/2<a class="headerlink" href="#open-port-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+open_port(PortName::{spawn, iodata()}, Options::[any()] | map()) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">PortName</span></code>: Tuple {spawn, Name} identifying the port<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: Options, meaningful for the port<br /></p>
+<p>returns: A pid identifying the open port</p>
+<p>Open a port.
+Unlike Erlang/OTP, ports are identified by pids.</p>
+<p><a name="pid_to_list-1"></a></p>
+</section>
+<section id="pid-to-list-1">
+<h3>pid_to_list/1<a class="headerlink" href="#pid-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+pid_to_list(Pid::pid()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid to convert to a string<br /></p>
+<p>returns: a string representation of the pid</p>
+<p>Create a string representing a pid.</p>
+<p><a name="process_flag-2"></a></p>
+</section>
+<section id="process-flag-2">
+<h3>process_flag/2<a class="headerlink" href="#process-flag-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+process_flag(Flag::trap_exit, Value::boolean()) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Flag</span></code>: flag to change<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: new value of the flag<br /></p>
+<p>returns: Previous value of the flag</p>
+<p>Set a flag for the current process.
+When <code class="docutils literal notranslate"><span class="pre">trap_exit</span></code> is true, exit signals are converted to messages</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>  {&#39;EXIT&#39;, From, Reason}
+</pre></div>
+</div>
+<p>and the process does not exit if <code class="docutils literal notranslate"><span class="pre">Reason</span></code> is not <code class="docutils literal notranslate"><span class="pre">normal</span></code>.</p>
 <p><a name="process_info-2"></a></p>
 </section>
 <section id="process-info-2">
@@ -324,6 +631,42 @@ The type of information returned is dependent on the specified key.</p>
 <li><p><strong>memory</strong> the estimated total number of bytes in use by the process (integer)</p></li>
 </ul>
 <p>Specifying an unsupported term or atom raises a bad_arg error.</p>
+<p><a name="put-2"></a></p>
+</section>
+<section id="put-2">
+<h3>put/2<a class="headerlink" href="#put-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+put(Key::any(), Value::any()) -&gt; any()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key to add to the process dictionary<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: value to store in the process dictionary<br /></p>
+<p>returns: the previous value associated with this key or undefined</p>
+<p>Store a value with a given key in the process dictionary.</p>
+<p><a name="ref_to_list-1"></a></p>
+</section>
+<section id="ref-to-list-1">
+<h3>ref_to_list/1<a class="headerlink" href="#ref-to-list-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+ref_to_list(Ref::reference()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Ref</span></code>: reference to convert to a string<br /></p>
+<p>returns: a string representation of the reference</p>
+<p>Create a string representing a reference.</p>
+<p><a name="register-2"></a></p>
+</section>
+<section id="register-2">
+<h3>register/2<a class="headerlink" href="#register-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+register(Name::atom(), Pid::pid()) -&gt; true
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name of the process to register<br /><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid of the process to register<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p>Register a name for a given process.
+Processes can be registered with several names.
+Unlike Erlang/OTP, ports are not distinguished from processes.
+Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the name is already registered.</p>
 <p><a name="send_after-3"></a></p>
 </section>
 <section id="send-after-3">
@@ -335,6 +678,50 @@ send_after(Time::non_neg_integer(), Dest::pid() | atom(), Msg::term()) -&gt; ref
 <p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: time in milliseconds after which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Dest</span></code>: Pid or server name to which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Msg</span></code>: Message to send to Dest after Time ms.<br /></p>
 <p>returns: a reference that can be used to cancel the timer, if desired.</p>
 <p>Send Msg to Dest after Time ms.</p>
+<p><a name="spawn-1"></a></p>
+</section>
+<section id="spawn-1">
+<h3>spawn/1<a class="headerlink" href="#spawn-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+spawn(Function::function()) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Function</span></code>: function to create a process from<br /></p>
+<p>returns: pid of the new process</p>
+<p>Create a new process</p>
+<p><a name="spawn-3"></a></p>
+</section>
+<section id="spawn-3">
+<h3>spawn/3<a class="headerlink" href="#spawn-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+spawn(Module::module(), Function::atom(), Args::[any()]) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: module of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Function</span></code>: name of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Args</span></code>: arguments to pass to the function to create a process from<br /></p>
+<p>returns: pid of the new process</p>
+<p>Create a new process by calling exported Function from Module with Args.</p>
+<p><a name="spawn_opt-2"></a></p>
+</section>
+<section id="spawn-opt-2">
+<h3>spawn_opt/2<a class="headerlink" href="#spawn-opt-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+spawn_opt(Function::function(), Options::[{max_heap_size, integer()}]) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Function</span></code>: function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: additional options.<br /></p>
+<p>returns: pid of the new process</p>
+<p>Create a new process.</p>
+<p><a name="spawn_opt-4"></a></p>
+</section>
+<section id="spawn-opt-4">
+<h3>spawn_opt/4<a class="headerlink" href="#spawn-opt-4" title="Permalink to this heading"></a></h3>
+<pre><code>
+spawn_opt(Module::module(), Function::atom(), Args::[any()], Options::[<a href="#type-spawn_option">spawn_option()</a>]) -&gt; pid()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: module of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Function</span></code>: name of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Args</span></code>: arguments to pass to the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: additional options.<br /></p>
+<p>returns: pid of the new process</p>
+<p>Create a new process by calling exported Function from Module with Args.</p>
 <p><a name="start_timer-3"></a></p>
 </section>
 <section id="start-timer-3">
@@ -398,6 +785,41 @@ running. The type of information returned is dependent on the specified key.</p>
 <p>Additional keys may be supported on some platforms that are not documented here.</p>
 <p>Specifying an unsupported atom key will results in returning the atom ‘undefined’.</p>
 <p>Specifying a term that is not an atom will result in a bad_arg error.</p>
+<p><a name="system_time-1"></a></p>
+</section>
+<section id="system-time-1">
+<h3>system_time/1<a class="headerlink" href="#system-time-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+system_time(Unit::<a href="#type-time_unit">time_unit()</a>) -&gt; non_neg_integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Unit</span></code>: Unit to return system time in<br /></p>
+<p>returns: An integer representing system time</p>
+<p>Get the current system time in provided unit.</p>
+<p><a name="unregister-1"></a></p>
+</section>
+<section id="unregister-1">
+<h3>unregister/1<a class="headerlink" href="#unregister-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+unregister(Name::atom()) -&gt; true
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name to unregister<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p>Lookup a process by name.
+Unlike Erlang/OTP, ports are not distinguished from processes.
+Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the name is not registered.</p>
+<p><a name="whereis-1"></a></p>
+</section>
+<section id="whereis-1">
+<h3>whereis/1<a class="headerlink" href="#whereis-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+whereis(Name::atom()) -&gt; pid() | undefined
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name of the process to locate<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">undefined</span></code> or the pid of the registered process</p>
+<p>Lookup a process by name.</p>
 </section>
 </section>
 </section>
