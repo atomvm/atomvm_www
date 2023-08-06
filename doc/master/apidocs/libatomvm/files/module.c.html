@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>module.c &mdash; AtomVM 0.6.0-dev+git.2c981582 documentation</title>
+  <title>module.c &mdash; AtomVM 0.6.0-dev+git.e54a2e1d documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -178,7 +178,7 @@
 </div>
 <p>Include dependency graph for module.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-10ec8a45d574438670e41dbd851a070a631c3196.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-675fdc514eb11a0adc49898fca2bea615235d37f.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -272,9 +272,11 @@
     &quot;1&quot; -&gt; &quot;30&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;31&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;32&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;33&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;34&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -288,6 +290,7 @@
     &quot;2&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -424,8 +427,18 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv435module_get_exported_functions_countP6Module">
+<span id="_CPPv335module_get_exported_functions_countP6Module"></span><span id="_CPPv235module_get_exported_functions_countP6Module"></span><span id="module_get_exported_functions_count__ModuleP"></span><span class="target" id="module_8c_1a7db6bdf217b327974a3cad83284794cc"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions_count</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">this_module</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv435module_get_exported_functions_countP6Module" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv431module_search_exported_functionP6Module10AtomStringi">
 <span id="_CPPv331module_search_exported_functionP6Module10AtomStringi"></span><span id="_CPPv231module_search_exported_functionP6Module10AtomStringi"></span><span id="module_search_exported_function__ModuleP.AtomString.i"></span><span class="target" id="module_8c_1a73bf4268a354d4dc0f81881987f75058"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_search_exported_function</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">this_module</span></span>, <a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">func_name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">func_arity</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431module_search_exported_functionP6Module10AtomStringi" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429module_get_exported_functionsP6ModuleP4HeapP13GlobalContext">
+<span id="_CPPv329module_get_exported_functionsP6ModuleP4HeapP13GlobalContext"></span><span id="_CPPv229module_get_exported_functionsP6ModuleP4HeapP13GlobalContext"></span><span id="module_get_exported_functions__ModuleP.HeapP.GlobalContextP"></span><span class="target" id="module_8c_1a656f9353523f6f584e5d2bba4fa89400"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">this_module</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv429module_get_exported_functionsP6ModuleP4HeapP13GlobalContext" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
