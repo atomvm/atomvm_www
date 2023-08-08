@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['printer_5ffunction_5ft_2000',['printer_function_t',['../term_8h.html#ace4b16a7115bc3936655d1b0936210f6',1,'term.h']]],
-  ['printerfun_2001',['PrinterFun',['../term_8h.html#a8142fcb1f62b21f337b44488f5c1d717',1,'term.h']]]
+  ['native_5fhandler_5ff_2001',['native_handler_f',['../context_8h.html#ab8155e89c776ff9773e36caf85f7d860',1,'context.h']]],
+  ['nativehandlerresult_2002',['NativeHandlerResult',['../context_8h.html#af03210f09c25e2a89b1d2b4ae8e670e2',1,'context.h']]],
+  ['nifimpl_2003',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
 ];

@@ -248,154 +248,137 @@ $(function() {
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> default_value;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">  179</a></span>&#160;<a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> <a class="code" href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">interop_iolist_size</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">size_t</span> *size)</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="interop_8c.html#ac0127c10c969dee6eee5be3d3f63a9ee">  179</a></span>&#160;<span class="keyword">inline</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> <a class="code" href="interop_8c.html#ac0127c10c969dee6eee5be3d3f63a9ee">interop_iolist_fold</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <a class="code" href="interop_8h.html#a8e4aad70e86c014ca4715d54ac064fe8">interop_iolist_fold_fun</a> fold_fun, <span class="keywordtype">void</span> *accum)</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        *size = term_binary_size(t);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!term_is_list(t))) {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> acc = 0;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_temp_stack.html">TempStack</a> temp_stack;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_init(&amp;temp_stack) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, t) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">while</span> (!temp_stack_is_empty(&amp;temp_stack)) {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordflow">if</span> (term_is_integer(t)) {</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            acc++;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nil(t)) {</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nonempty_list(t)) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, term_get_list_tail(t)) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            t = term_get_list_head(t);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            acc += term_binary_size(t);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">return</span> fold_fun(t, accum);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(!term_is_list(t))) {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_temp_stack.html">TempStack</a> temp_stack;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_init(&amp;temp_stack) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, t) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        temp_stack_destroy(&amp;temp_stack);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">while</span> (!temp_stack_is_empty(&amp;temp_stack)) {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">if</span> (term_is_integer(t) || term_is_binary(t)) {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> result = fold_fun(t, accum);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(result != <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>)) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                temp_stack_destroy(&amp;temp_stack);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                t = temp_stack_pop(&amp;temp_stack);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nil(t)) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nonempty_list(t)) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, term_get_list_tail(t)) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                temp_stack_destroy(&amp;temp_stack);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            t = term_get_list_head(t);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            temp_stack_destroy(&amp;temp_stack);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    temp_stack_destroy(&amp;temp_stack);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a> = acc;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">  233</a></span>&#160;<a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> <a class="code" href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">interop_write_iolist</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">char</span> *p)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordtype">int</span> len = term_binary_size(t);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(p, term_binary_data(t), len);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> size_fold_fun(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">void</span> *accum)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">size_t</span> *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a> = (<span class="keywordtype">size_t</span> *) accum;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (term_is_integer(t)) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a> += 1;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a> += term_binary_size(t);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_temp_stack.html">TempStack</a> temp_stack;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_init(&amp;temp_stack) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, t) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">while</span> (!temp_stack_is_empty(&amp;temp_stack)) {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span> (term_is_integer(t)) {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            *p = term_to_int(t);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            p++;</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nil(t)) {</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_nonempty_list(t)) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(temp_stack_push(&amp;temp_stack, term_get_list_tail(t)) != <a class="code" href="tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552a6813a3644c35154fc5c4870b83091669">TempStackOk</a>)) {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a>;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            t = term_get_list_head(t);</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordtype">int</span> len = term_binary_size(t);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(p, term_binary_data(t), len);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            p += len;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            t = temp_stack_pop(&amp;temp_stack);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    temp_stack_destroy(&amp;temp_stack);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">  283</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">interop_map_get_value</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;{</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(glb, map, key, term_nil());</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">  288</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordtype">int</span> pos = term_find_map_pos(map, key, glb);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">if</span> (pos == <a class="code" href="term_8h.html#ac5b9e2d39d00df1a1017a470d40b5a21">TERM_MAP_NOT_FOUND</a>) {</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(pos == <a class="code" href="term_8h.html#ac666c95980d794db07c3818bc593a037">TERM_MAP_MEMORY_ALLOC_FAIL</a>)) {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="comment">// TODO: do not crash, handle out of memory</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordflow">return</span> term_get_map_value(map, pos);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">  301</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">interop_atom_term_select_int</a>(<span class="keyword">const</span> <a class="code" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> *table, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> atom, <a class="code" href="struct_global_context.html">GlobalContext</a> *global)</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">for</span> (i = 0; table[i].<a class="code" href="struct_atom_string_int_pair.html#a69c8a4bc410dbf7e74b61cf403c896d1">as_val</a> != NULL; i++) {</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">if</span> (globalcontext_is_term_equal_to_atom_string(global, atom, table[i].as_val)) {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">return</span> table[i].<a class="code" href="struct_atom_string_int_pair.html#a39cf0462705fb32ad2584dced5d3548f">i_val</a>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">  241</a></span>&#160;<a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> <a class="code" href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">interop_iolist_size</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">size_t</span> *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a>)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    *<a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a> = 0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#ac0127c10c969dee6eee5be3d3f63a9ee">interop_iolist_fold</a>(t, size_fold_fun, <a class="code" href="struct_temp_stack.html#ae7b8c505580e1a2b2234f8ae340ce73a">size</a>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> write_string_fold_fun(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">void</span> *accum)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">char</span> **p = (<span class="keywordtype">char</span> **) accum;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span> (term_is_integer(t)) {</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        **p = term_to_int(t);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        (*p)++;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_binary(t)) {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordtype">int</span> len = term_binary_size(t);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <a class="code" href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a>(*p, term_binary_data(t), len);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        *p += len;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">  261</a></span>&#160;<a class="code" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> <a class="code" href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">interop_write_iolist</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <span class="keywordtype">char</span> *p)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#ac0127c10c969dee6eee5be3d3f63a9ee">interop_iolist_fold</a>(t, write_string_fold_fun, (<span class="keywordtype">void</span> *) &amp;p);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="line" href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">  266</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">interop_map_get_value</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(glb, map, key, term_nil());</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">  271</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(<a class="code" href="struct_global_context.html">GlobalContext</a> *glb, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value)</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;{</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">int</span> pos = term_find_map_pos(map, key, glb);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">if</span> (pos == <a class="code" href="term_8h.html#ac5b9e2d39d00df1a1017a470d40b5a21">TERM_MAP_NOT_FOUND</a>) {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(pos == <a class="code" href="term_8h.html#ac666c95980d794db07c3818bc593a037">TERM_MAP_MEMORY_ALLOC_FAIL</a>)) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="comment">// TODO: do not crash, handle out of memory</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <a class="code" href="utils_8h.html#a48e118cd23f648768f0faf4a32d303e6">AVM_ABORT</a>();</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">return</span> term_get_map_value(map, pos);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">  284</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">interop_atom_term_select_int</a>(<span class="keyword">const</span> <a class="code" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> *table, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> atom, <a class="code" href="struct_global_context.html">GlobalContext</a> *global)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">for</span> (i = 0; table[i].<a class="code" href="struct_atom_string_int_pair.html#a69c8a4bc410dbf7e74b61cf403c896d1">as_val</a> != NULL; i++) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <span class="keywordflow">if</span> (globalcontext_is_term_equal_to_atom_string(global, atom, table[i].as_val)) {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">return</span> table[i].<a class="code" href="struct_atom_string_int_pair.html#a39cf0462705fb32ad2584dced5d3548f">i_val</a>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">return</span> table[i].<a class="code" href="struct_atom_string_int_pair.html#a39cf0462705fb32ad2584dced5d3548f">i_val</a>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">  295</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">interop_kv_get_value_default</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> kv, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb)</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;{</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key_term = <a class="code" href="globalcontext_8c.html#a6460b395d8b02a1fcbe3f45b908df3a3">globalcontext_existing_term_from_atom_string</a>(glb, key);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">if</span> (term_is_invalid_term(key_term)) {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span> (term_is_nonempty_list(kv)) {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a215657558022d947817821ae61a62a8a">interop_proplist_get_value_default</a>(kv, key_term, default_value);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_map(kv)) {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(glb, kv, key_term, default_value);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">return</span> table[i].<a class="code" href="struct_atom_string_int_pair.html#a39cf0462705fb32ad2584dced5d3548f">i_val</a>;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
-<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">  312</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">interop_kv_get_value_default</a>(<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> kv, <a class="code" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> key, <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb)</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;{</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key_term = <a class="code" href="globalcontext_8c.html#a6460b395d8b02a1fcbe3f45b908df3a3">globalcontext_existing_term_from_atom_string</a>(glb, key);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (term_is_invalid_term(key_term)) {</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">if</span> (term_is_nonempty_list(kv)) {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a215657558022d947817821ae61a62a8a">interop_proplist_get_value_default</a>(kv, key_term, default_value);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_map(kv)) {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a>(glb, kv, key_term, default_value);</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">return</span> default_value;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;}</div>
 <div class="ttc" id="aatom_8c_html_a0456e98b453228ac8fc77381d4b629e3"><div class="ttname"><a href="atom_8c.html#a0456e98b453228ac8fc77381d4b629e3">atom_string_to_c</a></div><div class="ttdeci">void atom_string_to_c(AtomString atom_string, char *buf, size_t bufsize)</div><div class="ttdoc">Gets a C string from an AtomString.</div><div class="ttdef"><b>Definition:</b> <a href="atom_8c_source.html#l00029">atom.c:29</a></div></div>
 <div class="ttc" id="aatom_8h_html_ad65688322910ef2b4658ffac1f9d8b81"><div class="ttname"><a href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a></div><div class="ttdeci">const void * AtomString</div><div class="ttdef"><b>Definition:</b> <a href="atom_8h_source.html#l00044">atom.h:44</a></div></div>
 <div class="ttc" id="adefaultatoms_8h_html"><div class="ttname"><a href="defaultatoms_8h.html">defaultatoms.h</a></div></div>
@@ -403,15 +386,16 @@ $(function() {
 <div class="ttc" id="aglobalcontext_8c_html_a6460b395d8b02a1fcbe3f45b908df3a3"><div class="ttname"><a href="globalcontext_8c.html#a6460b395d8b02a1fcbe3f45b908df3a3">globalcontext_existing_term_from_atom_string</a></div><div class="ttdeci">term globalcontext_existing_term_from_atom_string(GlobalContext *glb, AtomString atom_string)</div><div class="ttdoc">Returns the term for an existing atom.</div><div class="ttdef"><b>Definition:</b> <a href="globalcontext_8c_source.html#l00451">globalcontext.c:451</a></div></div>
 <div class="ttc" id="ainterop_8c_html_a06d4419c1087e197d49e7632e242906d"><div class="ttname"><a href="interop_8c.html#a06d4419c1087e197d49e7632e242906d">interop_iolist_to_string</a></div><div class="ttdeci">char * interop_iolist_to_string(term list, int *ok)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00059">interop.c:59</a></div></div>
 <div class="ttc" id="ainterop_8c_html_a215657558022d947817821ae61a62a8a"><div class="ttname"><a href="interop_8c.html#a215657558022d947817821ae61a62a8a">interop_proplist_get_value_default</a></div><div class="ttdeci">term interop_proplist_get_value_default(term list, term key, term default_value)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00156">interop.c:156</a></div></div>
-<div class="ttc" id="ainterop_8c_html_a3677efada06f0f94f205a91945ee41d4"><div class="ttname"><a href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a></div><div class="ttdeci">term interop_map_get_value_default(GlobalContext *glb, term map, term key, term default_value)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00288">interop.c:288</a></div></div>
-<div class="ttc" id="ainterop_8c_html_a6ca8bc2ca8ab65e863d9b569091f6551"><div class="ttname"><a href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">interop_iolist_size</a></div><div class="ttdeci">InteropFunctionResult interop_iolist_size(term t, size_t *size)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00179">interop.c:179</a></div></div>
+<div class="ttc" id="ainterop_8c_html_a3677efada06f0f94f205a91945ee41d4"><div class="ttname"><a href="interop_8c.html#a3677efada06f0f94f205a91945ee41d4">interop_map_get_value_default</a></div><div class="ttdeci">term interop_map_get_value_default(GlobalContext *glb, term map, term key, term default_value)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00271">interop.c:271</a></div></div>
+<div class="ttc" id="ainterop_8c_html_a6ca8bc2ca8ab65e863d9b569091f6551"><div class="ttname"><a href="interop_8c.html#a6ca8bc2ca8ab65e863d9b569091f6551">interop_iolist_size</a></div><div class="ttdeci">InteropFunctionResult interop_iolist_size(term t, size_t *size)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00241">interop.c:241</a></div></div>
 <div class="ttc" id="ainterop_8c_html_a746e7c4cffa27df574a8aa5bc88307d5"><div class="ttname"><a href="interop_8c.html#a746e7c4cffa27df574a8aa5bc88307d5">interop_list_to_string</a></div><div class="ttdeci">char * interop_list_to_string(term list, int *ok)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00097">interop.c:97</a></div></div>
-<div class="ttc" id="ainterop_8c_html_a77a52c8719e2510d9bca4cf5cae32d6c"><div class="ttname"><a href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">interop_atom_term_select_int</a></div><div class="ttdeci">int interop_atom_term_select_int(const AtomStringIntPair *table, term atom, GlobalContext *global)</div><div class="ttdoc">Finds on a table the first matching atom string.</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00301">interop.c:301</a></div></div>
-<div class="ttc" id="ainterop_8c_html_aa411d077b7f7cbf7158b916f580c9a81"><div class="ttname"><a href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">interop_write_iolist</a></div><div class="ttdeci">InteropFunctionResult interop_write_iolist(term t, char *p)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00233">interop.c:233</a></div></div>
+<div class="ttc" id="ainterop_8c_html_a77a52c8719e2510d9bca4cf5cae32d6c"><div class="ttname"><a href="interop_8c.html#a77a52c8719e2510d9bca4cf5cae32d6c">interop_atom_term_select_int</a></div><div class="ttdeci">int interop_atom_term_select_int(const AtomStringIntPair *table, term atom, GlobalContext *global)</div><div class="ttdoc">Finds on a table the first matching atom string.</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00284">interop.c:284</a></div></div>
+<div class="ttc" id="ainterop_8c_html_aa411d077b7f7cbf7158b916f580c9a81"><div class="ttname"><a href="interop_8c.html#aa411d077b7f7cbf7158b916f580c9a81">interop_write_iolist</a></div><div class="ttdeci">InteropFunctionResult interop_write_iolist(term t, char *p)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00261">interop.c:261</a></div></div>
 <div class="ttc" id="ainterop_8c_html_aae47ae0a0d934384e1a76e0ac2d1c904"><div class="ttname"><a href="interop_8c.html#aae47ae0a0d934384e1a76e0ac2d1c904">interop_proplist_get_value</a></div><div class="ttdeci">term interop_proplist_get_value(term list, term key)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00151">interop.c:151</a></div></div>
 <div class="ttc" id="ainterop_8c_html_aae56b92071ee07b8c29cb1b386f35f42"><div class="ttname"><a href="interop_8c.html#aae56b92071ee07b8c29cb1b386f35f42">interop_term_to_string</a></div><div class="ttdeci">char * interop_term_to_string(term t, int *ok)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00027">interop.c:27</a></div></div>
-<div class="ttc" id="ainterop_8c_html_ae786122cebdf5916d033d75afcd3709c"><div class="ttname"><a href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">interop_map_get_value</a></div><div class="ttdeci">term interop_map_get_value(GlobalContext *glb, term map, term key)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00283">interop.c:283</a></div></div>
-<div class="ttc" id="ainterop_8c_html_aeca0a310d3e09064bfafcdbcecdbadbb"><div class="ttname"><a href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">interop_kv_get_value_default</a></div><div class="ttdeci">term interop_kv_get_value_default(term kv, AtomString key, term default_value, GlobalContext *glb)</div><div class="ttdoc">Get a value given a key (as AtomString) from any proplist or map.</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00312">interop.c:312</a></div></div>
+<div class="ttc" id="ainterop_8c_html_ac0127c10c969dee6eee5be3d3f63a9ee"><div class="ttname"><a href="interop_8c.html#ac0127c10c969dee6eee5be3d3f63a9ee">interop_iolist_fold</a></div><div class="ttdeci">InteropFunctionResult interop_iolist_fold(term t, interop_iolist_fold_fun fold_fun, void *accum)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00179">interop.c:179</a></div></div>
+<div class="ttc" id="ainterop_8c_html_ae786122cebdf5916d033d75afcd3709c"><div class="ttname"><a href="interop_8c.html#ae786122cebdf5916d033d75afcd3709c">interop_map_get_value</a></div><div class="ttdeci">term interop_map_get_value(GlobalContext *glb, term map, term key)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00266">interop.c:266</a></div></div>
+<div class="ttc" id="ainterop_8c_html_aeca0a310d3e09064bfafcdbcecdbadbb"><div class="ttname"><a href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">interop_kv_get_value_default</a></div><div class="ttdeci">term interop_kv_get_value_default(term kv, AtomString key, term default_value, GlobalContext *glb)</div><div class="ttdoc">Get a value given a key (as AtomString) from any proplist or map.</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00295">interop.c:295</a></div></div>
 <div class="ttc" id="ainterop_8c_html_af9c541ed7a7b4a313f9a5157d9a6c730"><div class="ttname"><a href="interop_8c.html#af9c541ed7a7b4a313f9a5157d9a6c730">interop_atom_to_string</a></div><div class="ttdeci">char * interop_atom_to_string(Context *ctx, term atom)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00136">interop.c:136</a></div></div>
 <div class="ttc" id="ainterop_8c_html_afc1180439076744df2ab198e569f4c9b"><div class="ttname"><a href="interop_8c.html#afc1180439076744df2ab198e569f4c9b">interop_binary_to_string</a></div><div class="ttdeci">char * interop_binary_to_string(term binary)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8c_source.html#l00044">interop.c:44</a></div></div>
 <div class="ttc" id="ainterop_8h_html"><div class="ttname"><a href="interop_8h.html">interop.h</a></div></div>
@@ -419,6 +403,7 @@ $(function() {
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6">InteropMemoryAllocFail</a></div><div class="ttdeci">@ InteropMemoryAllocFail</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00034">interop.h:34</a></div></div>
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a></div><div class="ttdeci">@ InteropBadArg</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00036">interop.h:35</a></div></div>
 <div class="ttc" id="ainterop_8h_html_a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13"><div class="ttname"><a href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13">InteropOk</a></div><div class="ttdeci">@ InteropOk</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00033">interop.h:33</a></div></div>
+<div class="ttc" id="ainterop_8h_html_a8e4aad70e86c014ca4715d54ac064fe8"><div class="ttname"><a href="interop_8h.html#a8e4aad70e86c014ca4715d54ac064fe8">interop_iolist_fold_fun</a></div><div class="ttdeci">InteropFunctionResult(* interop_iolist_fold_fun)(term t, void *accum)</div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00056">interop.h:56</a></div></div>
 <div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
 <div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
 <div class="ttc" id="astruct_atom_string_int_pair_html"><div class="ttname"><a href="struct_atom_string_int_pair.html">AtomStringIntPair</a></div><div class="ttdef"><b>Definition:</b> <a href="interop_8h_source.html#l00050">interop.h:51</a></div></div>

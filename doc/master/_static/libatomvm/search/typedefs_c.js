@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spinlock_2003',['SpinLock',['../smp_8h.html#a9322c4b270e68b672cc60efef7dc5c27',1,'smp.h']]]
+  ['rwlock_2006',['RWLock',['../atomshashtable_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b',1,'RWLock():&#160;atomshashtable.h'],['../smp_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b',1,'RWLock():&#160;smp.h'],['../synclist_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b',1,'RWLock():&#160;synclist.h'],['../valueshashtable_8h.html#ad83aebd0296d168d4ad23b7d68a7f67b',1,'RWLock():&#160;valueshashtable.h']]]
 ];
