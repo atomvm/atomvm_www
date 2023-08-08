@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module esp &mdash; AtomVM 0.6.0-dev+git.6dd47da5 documentation</title>
+  <title>Module esp &mdash; AtomVM 0.6.0-dev+git.4bdd25b2 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -186,12 +186,24 @@ esp_reset_reason() = esp_rst_unknown | esp_rst_poweron | esp_rst_ext | esp_rst_s
 <pre><code>
 esp_wakeup_cause() = sleep_wakeup_ext0 | sleep_wakeup_ext1 | sleep_wakeup_timer | sleep_wakeup_touchpad | sleep_wakeup_ulp | sleep_wakeup_gpio | sleep_wakeup_uart | sleep_wakeup_wifi | sleep_wakeup_cocpu | sleep_wakeup_cocpu_trap_trig | sleep_wakeup_bt
 </code></pre>
+</section>
+<section id="interface">
+<h3><a name="type-interface">interface()</a><a class="headerlink" href="#interface" title="Permalink to this heading"></a></h3>
+<pre><code>
+interface() = wifi_sta | wifi_softap
+</code></pre>
+</section>
+<section id="mac">
+<h3><a name="type-mac">mac()</a><a class="headerlink" href="#mac" title="Permalink to this heading"></a></h3>
+<pre><code>
+mac() = binary()
+</code></pre>
 <p><a name="index"></a></p>
 </section>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#freq_hz-0">freq_hz/0</a></td><td>    Return the clock frequency on the chip.</td></tr><tr><td valign="top"><a href="#nvs_erase_all-0">nvs_erase_all/0</a></td><td>Equivalent to nvs_erase_all(?ATOMVM_NVS_NS).</td></tr><tr><td valign="top"><a href="#nvs_erase_all-1">nvs_erase_all/1</a></td><td>    Erase all values in the specified namespace.</td></tr><tr><td valign="top"><a href="#nvs_erase_key-1">nvs_erase_key/1</a></td><td>Equivalent to nvs_erase_key(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_erase_key-2">nvs_erase_key/2</a></td><td>    Erase the value associated with a key.</td></tr><tr><td valign="top"><a href="#nvs_get_binary-1">nvs_get_binary/1</a></td><td>Equivalent to nvs_get_binary(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_get_binary-2">nvs_get_binary/2</a></td><td>    Get the binary value associated with a key, or undefined, if
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#freq_hz-0">freq_hz/0</a></td><td>    Return the clock frequency on the chip.</td></tr><tr><td valign="top"><a href="#get_mac-1">get_mac/1</a></td><td>    Return the network MAC address of the specified interface.</td></tr><tr><td valign="top"><a href="#nvs_erase_all-0">nvs_erase_all/0</a></td><td>Equivalent to nvs_erase_all(?ATOMVM_NVS_NS).</td></tr><tr><td valign="top"><a href="#nvs_erase_all-1">nvs_erase_all/1</a></td><td>    Erase all values in the specified namespace.</td></tr><tr><td valign="top"><a href="#nvs_erase_key-1">nvs_erase_key/1</a></td><td>Equivalent to nvs_erase_key(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_erase_key-2">nvs_erase_key/2</a></td><td>    Erase the value associated with a key.</td></tr><tr><td valign="top"><a href="#nvs_get_binary-1">nvs_get_binary/1</a></td><td>Equivalent to nvs_get_binary(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_get_binary-2">nvs_get_binary/2</a></td><td>    Get the binary value associated with a key, or undefined, if
 there is no value associated with this key.</td></tr><tr><td valign="top"><a href="#nvs_get_binary-3">nvs_get_binary/3</a></td><td>    Get the binary value associated with a key, or Default, if
 there is no value associated with this key.</td></tr><tr><td valign="top"><a href="#nvs_reformat-0">nvs_reformat/0</a></td><td>    Reformat the entire NVS partition.</td></tr><tr><td valign="top"><a href="#nvs_set_binary-2">nvs_set_binary/2</a></td><td>Equivalent to nvs_set_binary(?ATOMVM_NVS_NS, Key, Value).</td></tr><tr><td valign="top"><a href="#nvs_set_binary-3">nvs_set_binary/3</a></td><td>    Set an binary value associated with a key.</td></tr><tr><td valign="top"><a href="#partition_list-0">partition_list/0</a></td><td>    Gets the list of partitions as tuples, such as {name, type, subtype,
 offset, size, props}.</td></tr><tr><td valign="top"><a href="#reset_reason-0">reset_reason/0</a></td><td>    Returns the reason for the restart.</td></tr><tr><td valign="top"><a href="#restart-0">restart/0</a></td><td>    Restarts the ESP device.</td></tr><tr><td valign="top"><a href="#rtc_slow_get_binary-0">rtc_slow_get_binary/0</a></td><td>    Get the binary currently stored in RTC slow memory.</td></tr><tr><td valign="top"><a href="#rtc_slow_set_binary-1">rtc_slow_set_binary/1</a></td><td>    Store a binary to RTC slow memory.</td></tr><tr><td valign="top"><a href="#sleep_enable_ext0_wakeup-2">sleep_enable_ext0_wakeup/2</a></td><td></td></tr><tr><td valign="top"><a href="#sleep_enable_ext1_wakeup-2">sleep_enable_ext1_wakeup/2</a></td><td></td></tr><tr><td valign="top"><a href="#wakeup_cause-0">wakeup_cause/0</a></td><td>    Returns the cause for the wakeup.</td></tr></table>
@@ -208,6 +220,19 @@ freq_hz() -&gt; non_neg_integer()
 <br />
 <p>returns: Clock frequency (in hz)</p>
 <p>Return the clock frequency on the chip</p>
+<p><a name="get_mac-1"></a></p>
+</section>
+<section id="get-mac-1">
+<h3>get_mac/1<a class="headerlink" href="#get-mac-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+get_mac(Interface::<a href="#type-interface">interface()</a>) -&gt; <a href="#type-mac">mac()</a>
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Interface</span></code>: the ESP32 network interface<br /></p>
+<p>returns: The network MAC address of the specified interface</p>
+<p>Return the network MAC address of the specified interface.</p>
+<p>The mac address is returned as a 6-byte binary, per the
+IEEE 802 family of specifications.</p>
 <p><a name="nvs_erase_all-0"></a></p>
 </section>
 <section id="nvs-erase-all-0">

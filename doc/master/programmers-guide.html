@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.6dd47da5 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-dev+git.4bdd25b2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -1216,6 +1216,14 @@ lists:foreach(
 <div><p>Note.  The partition properties are currently empty (<code class="docutils literal notranslate"><span class="pre">[]</span></code>).</p>
 </div></blockquote>
 <p>For information about the encoding of partition types and sub-types, see the IDF SDK partition <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/v4.4.5/esp32/api-reference/storage/spi_flash.html?highlight=esp_partition_get#id13">type definitions</a>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</span></code> function can be used to retrieve the network Media Access Control (<a class="reference external" href="https://en.wikipedia.org/wiki/MAC_address">MAC</a>) address for a given interface, <code class="docutils literal notranslate"><span class="pre">wifi_sta</span></code> or <code class="docutils literal notranslate"><span class="pre">wifi_softap</span></code>.  The return value is a 6-byte binary, in accordance with the <a class="reference external" href="https://en.wikipedia.org/wiki/IEEE_802">IEEE 802</a> family of specifications.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+MacAddress = esp:get_mac(wifi_sta)
+</pre></div>
+</div>
 </section>
 </section>
 <section id="peripherals">
