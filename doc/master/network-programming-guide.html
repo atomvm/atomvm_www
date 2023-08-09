@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Programming Guide &mdash; AtomVM 0.6.0-dev+git.96fbf6c2 documentation</title>
+  <title>Network Programming Guide &mdash; AtomVM 0.6.0-dev+git.ce0be6ce documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -346,13 +346,13 @@ sntp_synchronized({TVSec, TVUsec}) -&gt;
 </table>
 <p>If set in NVS storage, you may remove the corresponding <code class="docutils literal notranslate"><span class="pre">ssid</span></code> and <code class="docutils literal notranslate"><span class="pre">psk</span></code> parameters from the configuration used to initialize the network, and the SSID and PSK configured in NVS will be used, instead.  An SSID or PSK defined explicitly in configuration will override any values in NVS.</p>
 <p>You can set these credentials once, as follows:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_set_binary(atomvm, sta_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
-esp:nvs_set_binary(atomvm, sta_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_put_binary(atomvm, sta_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
+esp:nvs_put_binary(atomvm, sta_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_set_binary(atomvm, ap_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
-esp:nvs_set_binary(atomvm, ap_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_put_binary(atomvm, ap_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
+esp:nvs_put_binary(atomvm, ap_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
 </pre></div>
 </div>
 <p>With these settings, you can run ESP programs that initialize the network without configuring your SSID and PSK explicitly in source code.</p>
