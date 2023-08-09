@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module spi &mdash; AtomVM 0.6.0-dev+git.052dbda3 documentation</title>
+  <title>Module spi &mdash; AtomVM 0.6.0-dev+git.96fbf6c2 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -292,7 +292,7 @@ understand which fields should be used with your device.</p>
 <section id="read-at-4">
 <h3>read_at/4<a class="headerlink" href="#read-at-4" title="Permalink to this heading"></a></h3>
 <pre><code>
-read_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer()) -&gt; {ok, integer()} | error
+read_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer()) -&gt; {ok, integer()} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: device name from configuration<br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address from which to read<br /><code class="docutils literal notranslate"><span class="pre">Len</span></code>: in bytes to read<br /></p>
@@ -325,7 +325,7 @@ The returned reason term is implementation-defined.</p>
 <section id="write-at-5">
 <h3>write_at/5<a class="headerlink" href="#write-at-5" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer(), Data::integer()) -&gt; {ok, integer()} | error
+write_at(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Address::<a href="#type-address">address()</a>, Len::non_neg_integer(), Data::integer()) -&gt; {ok, integer()} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: device name from configuration<br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: SPI Address to which to write<br /><code class="docutils literal notranslate"><span class="pre">Len</span></code>: in bytes to read<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: byte(s) to write<br /></p>
@@ -339,7 +339,7 @@ values from this function.</p>
 <section id="write-read-3">
 <h3>write_read/3<a class="headerlink" href="#write-read-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-write_read(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Transaction::<a href="#type-transaction">transaction()</a>) -&gt; {ok, ReadData::binary()} | error
+write_read(SPI::<a href="#type-spi">spi()</a>, DeviceName::<a href="#type-device_name">device_name()</a>, Transaction::<a href="#type-transaction">transaction()</a>) -&gt; {ok, ReadData::binary()} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">SPI</span></code>: SPI instance created via <code class="docutils literal notranslate"><span class="pre">open/1</span></code><br /><code class="docutils literal notranslate"><span class="pre">DeviceName</span></code>: SPI device name (use key in <code class="docutils literal notranslate"><span class="pre">device_config</span></code>)<br /><code class="docutils literal notranslate"><span class="pre">Transaction</span></code>: transaction.<br /></p>
