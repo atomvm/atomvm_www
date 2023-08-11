@@ -137,8 +137,10 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a8e4aad70e86c014ca4715d54ac064fe8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a8e4aad70e86c014ca4715d54ac064fe8">interop_iolist_fold_fun</a>) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td></tr>
-<tr class="separator:a8e4aad70e86c014ca4715d54ac064fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7c6a37c604717cd0a15a099224a50db"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#aa7c6a37c604717cd0a15a099224a50db">interop_chardata_fold_fun</a>) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td></tr>
+<tr class="separator:aa7c6a37c604717cd0a15a099224a50db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ca083db17faad88c5e003d010e55dd5"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a6ca083db17faad88c5e003d010e55dd5">interop_chardata_rest_fun</a>) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td></tr>
+<tr class="separator:a6ca083db17faad88c5e003d010e55dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -147,6 +149,21 @@ Enumerations</h2></td></tr>
 , <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38">InteropBadArg</a>
  }</td></tr>
 <tr class="separator:a3f8762f470fb4c0f30adf31db71049f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9f8c39aef7a08b893b31109640a33c1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a> { <br />
+&#160;&#160;<a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1afa9179a2f3b5a5f40ee6991edada2515">UnicodeOk</a> = InteropOk
+, <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1a345923a6d65d72d29036bd9632c6754f">UnicodeMemoryAllocFail</a> = InteropMemoryAllocFail
+, <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1ac65497b735bba309a3134fba2ea80bb2">UnicodeBadArg</a> = InteropBadArg
+, <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1a29e08f0dccedd8dc01d6c180722707f3">UnicodeError</a>
+, <br />
+&#160;&#160;<a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1a2b2353df9e969c5e46eddd41dec7dceb">UnicodeIncompleteTransform</a>
+<br />
+ }</td></tr>
+<tr class="separator:ad9f8c39aef7a08b893b31109640a33c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ff3dd94615c11fcdbb6022d762e57c1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a> { <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1afe3bc6c6595f64a933c55ebb96a8dd50">Latin1Encoding</a>
+, <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1a598d150f27d92a171465aa14496200c8">UTF8Encoding</a>
+, <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1a1fb6addbc678763d1418ccb2964576e2">UCS4NativeEncoding</a>
+ }</td></tr>
+<tr class="separator:a4ff3dd94615c11fcdbb6022d762e57c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -172,8 +189,12 @@ Functions</h2></td></tr>
 <tr class="separator:aee1d0c4222308feff0725e3c0b555a48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d84d5349af074cc72803d094df56e72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a6d84d5349af074cc72803d094df56e72">interop_write_iolist</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, char *p)</td></tr>
 <tr class="separator:a6d84d5349af074cc72803d094df56e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc59b900dae0c3d4e05798fb04ff363b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#afc59b900dae0c3d4e05798fb04ff363b">interop_iolist_fold</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <a class="el" href="interop_8h.html#a8e4aad70e86c014ca4715d54ac064fe8">interop_iolist_fold_fun</a> fold_fun, void *accum)</td></tr>
-<tr class="separator:afc59b900dae0c3d4e05798fb04ff363b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebd4c3bc7d5633e30e86cb25b299a007"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#aebd4c3bc7d5633e30e86cb25b299a007">interop_chardata_fold</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, <a class="el" href="interop_8h.html#aa7c6a37c604717cd0a15a099224a50db">interop_chardata_fold_fun</a> fold_fun, <a class="el" href="interop_8h.html#a6ca083db17faad88c5e003d010e55dd5">interop_chardata_rest_fun</a> rest_fun, void *accum)</td></tr>
+<tr class="separator:aebd4c3bc7d5633e30e86cb25b299a007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae44600bd523a29e92403f0222e4d98c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> enum <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#ae44600bd523a29e92403f0222e4d98c8">interop_chardata_to_bytes_size</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, size_t *size, size_t *rest_size, enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a> in_encoding, enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a> out_encoding)</td></tr>
+<tr class="separator:ae44600bd523a29e92403f0222e4d98c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5734fce0b24eacc4f153f4185cb1e66e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> enum <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a5734fce0b24eacc4f153f4185cb1e66e">interop_chardata_to_bytes</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, uint8_t *output, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *rest, enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a> in_encoding, enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a> out_encoding, <a class="el" href="struct_heap.html">Heap</a> *heap)</td></tr>
+<tr class="separator:a5734fce0b24eacc4f153f4185cb1e66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77a52c8719e2510d9bca4cf5cae32d6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8h.html#a77a52c8719e2510d9bca4cf5cae32d6c">interop_atom_term_select_int</a> (const <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> *table, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> atom, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
 <tr class="memdesc:a77a52c8719e2510d9bca4cf5cae32d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds on a table the first matching atom string.  <a href="interop_8h.html#a77a52c8719e2510d9bca4cf5cae32d6c">More...</a><br /></td></tr>
 <tr class="separator:a77a52c8719e2510d9bca4cf5cae32d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,28 +223,65 @@ Functions</h2></td></tr>
 <div class="line">    }</div>
 </div><!-- fragment --><p>An idiomatic macro for marking an <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> table entry as a interop_atom_term_select_int default. </p>
 
-<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00042">42</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00051">51</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a8e4aad70e86c014ca4715d54ac064fe8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e4aad70e86c014ca4715d54ac064fe8">&#9670;&nbsp;</a></span>interop_iolist_fold_fun</h2>
+<a id="aa7c6a37c604717cd0a15a099224a50db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7c6a37c604717cd0a15a099224a50db">&#9670;&nbsp;</a></span>interop_chardata_fold_fun</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>(* interop_iolist_fold_fun) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td>
+          <td class="memname">typedef <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a>(* interop_chardata_fold_fun) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00056">56</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00065">65</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
+
+</div>
+</div>
+<a id="a6ca083db17faad88c5e003d010e55dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ca083db17faad88c5e003d010e55dd5">&#9670;&nbsp;</a></span>interop_chardata_rest_fun</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* interop_chardata_rest_fun) (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> t, void *accum)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00066">66</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a4ff3dd94615c11fcdbb6022d762e57c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ff3dd94615c11fcdbb6022d762e57c1">&#9670;&nbsp;</a></span>CharDataEncoding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4ff3dd94615c11fcdbb6022d762e57c1afe3bc6c6595f64a933c55ebb96a8dd50"></a>Latin1Encoding&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4ff3dd94615c11fcdbb6022d762e57c1a598d150f27d92a171465aa14496200c8"></a>UTF8Encoding&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4ff3dd94615c11fcdbb6022d762e57c1a1fb6addbc678763d1418ccb2964576e2"></a>UCS4NativeEncoding&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00082">82</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
+
+</div>
+</div>
 <a id="a3f8762f470fb4c0f30adf31db71049f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f8762f470fb4c0f30adf31db71049f8">&#9670;&nbsp;</a></span>InteropFunctionResult</h2>
 
@@ -242,6 +300,29 @@ Functions</h2></td></tr>
 </table>
 
 <p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00031">31</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
+
+</div>
+</div>
+<a id="ad9f8c39aef7a08b893b31109640a33c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9f8c39aef7a08b893b31109640a33c1">&#9670;&nbsp;</a></span>UnicodeConversionResult</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ad9f8c39aef7a08b893b31109640a33c1afa9179a2f3b5a5f40ee6991edada2515"></a>UnicodeOk&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9f8c39aef7a08b893b31109640a33c1a345923a6d65d72d29036bd9632c6754f"></a>UnicodeMemoryAllocFail&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9f8c39aef7a08b893b31109640a33c1ac65497b735bba309a3134fba2ea80bb2"></a>UnicodeBadArg&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9f8c39aef7a08b893b31109640a33c1a29e08f0dccedd8dc01d6c180722707f3"></a>UnicodeError&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad9f8c39aef7a08b893b31109640a33c1a2b2353df9e969c5e46eddd41dec7dceb"></a>UnicodeIncompleteTransform&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="interop_8h_source.html#l00038">38</a> of file <a class="el" href="interop_8h_source.html">interop.h</a>.</p>
 
 </div>
 </div>
@@ -289,7 +370,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the found int value which corresponds to the given atom. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00284">284</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00581">581</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -319,7 +400,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00136">136</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00140">140</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -339,12 +420,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00044">44</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00048">48</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
-<a id="afc59b900dae0c3d4e05798fb04ff363b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc59b900dae0c3d4e05798fb04ff363b">&#9670;&nbsp;</a></span>interop_iolist_fold()</h2>
+<a id="aebd4c3bc7d5633e30e86cb25b299a007"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebd4c3bc7d5633e30e86cb25b299a007">&#9670;&nbsp;</a></span>interop_chardata_fold()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +434,7 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> interop_iolist_fold </td>
+          <td class="memname"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> <a class="el" href="interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8">InteropFunctionResult</a> interop_chardata_fold </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
           <td class="paramname"><em>t</em>, </td>
@@ -361,8 +442,14 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="interop_8h.html#a8e4aad70e86c014ca4715d54ac064fe8">interop_iolist_fold_fun</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="interop_8h.html#aa7c6a37c604717cd0a15a099224a50db">interop_chardata_fold_fun</a>&#160;</td>
           <td class="paramname"><em>fold_fun</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interop_8h.html#a6ca083db17faad88c5e003d010e55dd5">interop_chardata_rest_fun</a>&#160;</td>
+          <td class="paramname"><em>rest_fun</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -383,7 +470,109 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00179">179</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00183">183</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+
+</div>
+</div>
+<a id="a5734fce0b24eacc4f153f4185cb1e66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5734fce0b24eacc4f153f4185cb1e66e">&#9670;&nbsp;</a></span>interop_chardata_to_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> enum <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a> interop_chardata_to_bytes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *&#160;</td>
+          <td class="paramname"><em>rest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a>&#160;</td>
+          <td class="paramname"><em>in_encoding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a>&#160;</td>
+          <td class="paramname"><em>out_encoding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_heap.html">Heap</a> *&#160;</td>
+          <td class="paramname"><em>heap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00523">523</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+
+</div>
+</div>
+<a id="ae44600bd523a29e92403f0222e4d98c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae44600bd523a29e92403f0222e4d98c8">&#9670;&nbsp;</a></span>interop_chardata_to_bytes_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="utils_8h.html#a455037dd104e81dc7ca55f032431eebc">NO_DISCARD</a> enum <a class="el" href="interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1">UnicodeConversionResult</a> interop_chardata_to_bytes_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>rest_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a>&#160;</td>
+          <td class="paramname"><em>in_encoding</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="interop_8h.html#a4ff3dd94615c11fcdbb6022d762e57c1">CharDataEncoding</a>&#160;</td>
+          <td class="paramname"><em>out_encoding</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00417">417</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -413,7 +602,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00241">241</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00261">261</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -443,7 +632,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00059">59</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00063">63</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -497,7 +686,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the value term in case given key exists, otherwise the default_value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00295">295</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00592">592</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -527,7 +716,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00097">97</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00101">101</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -563,7 +752,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00266">266</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00563">563</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -605,7 +794,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00271">271</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00568">568</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -635,7 +824,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00151">151</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00155">155</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -671,7 +860,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00156">156</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00160">160</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -701,7 +890,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00027">27</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00031">31</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
@@ -731,7 +920,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00261">261</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00281">281</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>

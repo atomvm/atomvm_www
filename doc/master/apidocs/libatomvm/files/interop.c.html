@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>interop.c &mdash; AtomVM 0.6.0-dev+git.ce0be6ce documentation</title>
+  <title>interop.c &mdash; AtomVM 0.6.0-dev+git.eb2a5a12 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -178,19 +178,20 @@
 </div>
 <p>Include dependency graph for interop.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-ae1ce110e31de549329a1b4640a73662a7a455de.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-ab28cf93a311a47afbaec37223fd28703a70cb65.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;14&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
     &quot;15&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
+    &quot;27&quot; [label=&quot;bitstring.h&quot; tooltip=&quot;bitstring.h&quot;]
     &quot;6&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
     &quot;16&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
-    &quot;27&quot; [label=&quot;defaultatoms.h&quot; tooltip=&quot;defaultatoms.h&quot;]
-    &quot;28&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
+    &quot;28&quot; [label=&quot;defaultatoms.h&quot; tooltip=&quot;defaultatoms.h&quot;]
+    &quot;29&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
     &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
-    &quot;29&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
+    &quot;30&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
     &quot;3&quot; [label=&quot;context.h&quot; tooltip=&quot;context.h&quot;]
     &quot;21&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
     &quot;9&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
@@ -211,14 +212,17 @@
     &quot;25&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
     &quot;12&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;11&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
+    &quot;27&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;16&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;16&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;27&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;28&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;28&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;28&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;29&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;29&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -253,6 +257,10 @@
     &quot;1&quot; -&gt; &quot;27&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;30&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -317,8 +325,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv419interop_iolist_fold4term23interop_iolist_fold_funPv">
-<span id="_CPPv319interop_iolist_fold4term23interop_iolist_fold_funPv"></span><span id="_CPPv219interop_iolist_fold4term23interop_iolist_fold_funPv"></span><span id="interop_iolist_fold__term.interop_iolist_fold_fun.voidP"></span><span class="target" id="interop_8c_1ac0127c10c969dee6eee5be3d3f63a9ee"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv421InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_iolist_fold</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="interop.h.html#_CPPv423interop_iolist_fold_fun" title="interop_iolist_fold_fun"><span class="n"><span class="pre">interop_iolist_fold_fun</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fold_fun</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419interop_iolist_fold4term23interop_iolist_fold_funPv" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv421interop_chardata_fold4term25interop_chardata_fold_fun25interop_chardata_rest_funPv">
+<span id="_CPPv321interop_chardata_fold4term25interop_chardata_fold_fun25interop_chardata_rest_funPv"></span><span id="_CPPv221interop_chardata_fold4term25interop_chardata_fold_fun25interop_chardata_rest_funPv"></span><span id="interop_chardata_fold__term.interop_chardata_fold_fun.interop_chardata_rest_fun.voidP"></span><span class="target" id="interop_8c_1a8ef9c0ca454dbdcfe3d1aaa168190af0"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv421InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_fold</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <a class="reference internal" href="interop.h.html#_CPPv425interop_chardata_fold_fun" title="interop_chardata_fold_fun"><span class="n"><span class="pre">interop_chardata_fold_fun</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">fold_fun</span></span>, <a class="reference internal" href="interop.h.html#_CPPv425interop_chardata_rest_fun" title="interop_chardata_rest_fun"><span class="n"><span class="pre">interop_chardata_rest_fun</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">rest_fun</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421interop_chardata_fold4term25interop_chardata_fold_fun25interop_chardata_rest_funPv" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -342,6 +350,41 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425interop_binary_conversion4termP7uint8_tP6size_tP6size_t16CharDataEncoding16CharDataEncoding">
+<span id="_CPPv325interop_binary_conversion4termP7uint8_tP6size_tP6size_t16CharDataEncoding16CharDataEncoding"></span><span id="_CPPv225interop_binary_conversion4termP7uint8_tP6size_tP6size_t16CharDataEncoding16CharDataEncoding"></span><span id="interop_binary_conversion__term.uint8_tP.sP.sP.CharDataEncoding.CharDataEncoding"></span><span class="target" id="interop_8c_1a8909d6a2a9942335660daf83b29d7022"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv423UnicodeConversionResult" title="UnicodeConversionResult"><span class="n"><span class="pre">UnicodeConversionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_binary_conversion</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">output</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">output_len</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rest_crsr</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">in_encoding</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">out_encoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425interop_binary_conversion4termP7uint8_tP6size_tP6size_t16CharDataEncoding16CharDataEncoding" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431chardata_to_bytes_size_fold_fun4termPv">
+<span id="_CPPv331chardata_to_bytes_size_fold_fun4termPv"></span><span id="_CPPv231chardata_to_bytes_size_fold_fun4termPv"></span><span id="chardata_to_bytes_size_fold_fun__term.voidP"></span><span class="target" id="interop_8c_1a218d4b99bc0cf37aea78ceafee4d265e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv421InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chardata_to_bytes_size_fold_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431chardata_to_bytes_size_fold_fun4termPv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv431chardata_to_bytes_size_rest_fun4termPv">
+<span id="_CPPv331chardata_to_bytes_size_rest_fun4termPv"></span><span id="_CPPv231chardata_to_bytes_size_rest_fun4termPv"></span><span id="chardata_to_bytes_size_rest_fun__term.voidP"></span><span class="target" id="interop_8c_1a481112bec56748652880006e829a65ce"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chardata_to_bytes_size_rest_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv431chardata_to_bytes_size_rest_fun4termPv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv430interop_chardata_to_bytes_size4termP6size_tP6size_t16CharDataEncoding16CharDataEncoding">
+<span id="_CPPv330interop_chardata_to_bytes_size4termP6size_tP6size_t16CharDataEncoding16CharDataEncoding"></span><span id="_CPPv230interop_chardata_to_bytes_size4termP6size_tP6size_t16CharDataEncoding16CharDataEncoding"></span><span id="interop_chardata_to_bytes_size__term.sP.sP.CharDataEncoding.CharDataEncoding"></span><span class="target" id="interop_8c_1af21648c13b37d9d94c9d9d5420f4ee16"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv423UnicodeConversionResult" title="UnicodeConversionResult"><span class="n"><span class="pre">UnicodeConversionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_to_bytes_size</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">size</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rest_size</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">in_encoding</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">out_encoding</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv430interop_chardata_to_bytes_size4termP6size_tP6size_t16CharDataEncoding16CharDataEncoding" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426chardata_to_bytes_fold_fun4termPv">
+<span id="_CPPv326chardata_to_bytes_fold_fun4termPv"></span><span id="_CPPv226chardata_to_bytes_fold_fun4termPv"></span><span id="chardata_to_bytes_fold_fun__term.voidP"></span><span class="target" id="interop_8c_1a79f873bfee08d389195ce956f1f39ce6"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv421InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chardata_to_bytes_fold_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426chardata_to_bytes_fold_fun4termPv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv426chardata_to_bytes_rest_fun4termPv">
+<span id="_CPPv326chardata_to_bytes_rest_fun4termPv"></span><span id="_CPPv226chardata_to_bytes_rest_fun4termPv"></span><span id="chardata_to_bytes_rest_fun__term.voidP"></span><span class="target" id="interop_8c_1a352a7e0122b2a2d4321804900a3eeb57"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">chardata_to_bytes_rest_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">accum</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv426chardata_to_bytes_rest_fun4termPv" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425interop_chardata_to_bytes4termP7uint8_tP4term16CharDataEncoding16CharDataEncodingP4Heap">
+<span id="_CPPv325interop_chardata_to_bytes4termP7uint8_tP4term16CharDataEncoding16CharDataEncodingP4Heap"></span><span id="_CPPv225interop_chardata_to_bytes4termP7uint8_tP4term16CharDataEncoding16CharDataEncodingP4Heap"></span><span id="interop_chardata_to_bytes__term.uint8_tP.termP.CharDataEncoding.CharDataEncoding.HeapP"></span><span class="target" id="interop_8c_1a33303d3605ae37bfdd1986185194da4c"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv423UnicodeConversionResult" title="UnicodeConversionResult"><span class="n"><span class="pre">UnicodeConversionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_to_bytes</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">t</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">output</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rest</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">in_encoding</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">out_encoding</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425interop_chardata_to_bytes4termP7uint8_tP4term16CharDataEncoding16CharDataEncodingP4Heap" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv421interop_map_get_valueP13GlobalContext4term4term">
 <span id="_CPPv321interop_map_get_valueP13GlobalContext4term4term"></span><span id="_CPPv221interop_map_get_valueP13GlobalContext4term4term"></span><span id="interop_map_get_value__GlobalContextP.term.term"></span><span class="target" id="interop_8c_1ae786122cebdf5916d033d75afcd3709c"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_map_get_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">glb</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421interop_map_get_valueP13GlobalContext4term4term" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -362,6 +405,102 @@
 <dd></dd></dl>
 
 </div>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv422CharDataToBytesSizeAcc">
+<span id="_CPPv322CharDataToBytesSizeAcc"></span><span id="_CPPv222CharDataToBytesSizeAcc"></span><span id="CharDataToBytesSizeAcc"></span><span class="target" id="struct_char_data_to_bytes_size_acc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CharDataToBytesSizeAcc</span></span></span><a class="headerlink" href="#_CPPv422CharDataToBytesSizeAcc" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc11in_encodingE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc11in_encodingE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc11in_encodingE"></span><span id="CharDataToBytesSizeAcc::in_encoding__CharDataEncoding"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1aae7f0485d4a598825fd0841910ec3e99"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_encoding</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc11in_encodingE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc12out_encodingE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc12out_encodingE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc12out_encodingE"></span><span id="CharDataToBytesSizeAcc::out_encoding__CharDataEncoding"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1adf5c99932c34a7e7dc03745256497bdf"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_encoding</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc12out_encodingE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc4sizeE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc4sizeE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc4sizeE"></span><span id="CharDataToBytesSizeAcc::size__s"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1ab5b7fd506f0501ecc0edc52788792f6c"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc4sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc9rest_sizeE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc9rest_sizeE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc9rest_sizeE"></span><span id="CharDataToBytesSizeAcc::rest_size__s"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1a02ad0110c0d915f2344eee588b6659aa"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">rest_size</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc9rest_sizeE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc6badargE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc6badargE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc6badargE"></span><span id="CharDataToBytesSizeAcc::badarg__b"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1add78dd88685590ebfb63dcf2d5d67d39"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">badarg</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc6badargE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N22CharDataToBytesSizeAcc20incomplete_transformE">
+<span id="_CPPv3N22CharDataToBytesSizeAcc20incomplete_transformE"></span><span id="_CPPv2N22CharDataToBytesSizeAcc20incomplete_transformE"></span><span id="CharDataToBytesSizeAcc::incomplete_transform__b"></span><span class="target" id="struct_char_data_to_bytes_size_acc_1a5b82a93ec657151fd3e7eb73b6a8ea58"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incomplete_transform</span></span></span><a class="headerlink" href="#_CPPv4N22CharDataToBytesSizeAcc20incomplete_transformE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv418CharDataToBytesAcc">
+<span id="_CPPv318CharDataToBytesAcc"></span><span id="_CPPv218CharDataToBytesAcc"></span><span id="CharDataToBytesAcc"></span><span class="target" id="struct_char_data_to_bytes_acc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CharDataToBytesAcc</span></span></span><a class="headerlink" href="#_CPPv418CharDataToBytesAcc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Collaboration diagram for CharDataToBytesAcc:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1893e098c351689dcb84cd5880630850052a387c.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;3&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;2&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;1&quot; [label=&quot;CharDataToBytesAcc&quot; tooltip=&quot;CharDataToBytesAcc&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc11in_encodingE">
+<span id="_CPPv3N18CharDataToBytesAcc11in_encodingE"></span><span id="_CPPv2N18CharDataToBytesAcc11in_encodingE"></span><span id="CharDataToBytesAcc::in_encoding__CharDataEncoding"></span><span class="target" id="struct_char_data_to_bytes_acc_1ac11cbe04b996a4e3624f99c2f48338ac"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_encoding</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc11in_encodingE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc12out_encodingE">
+<span id="_CPPv3N18CharDataToBytesAcc12out_encodingE"></span><span id="_CPPv2N18CharDataToBytesAcc12out_encodingE"></span><span id="CharDataToBytesAcc::out_encoding__CharDataEncoding"></span><span class="target" id="struct_char_data_to_bytes_acc_1a2b3f81c2d978896af5e076464f360b0d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="interop.h.html#_CPPv416CharDataEncoding" title="CharDataEncoding"><span class="n"><span class="pre">CharDataEncoding</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">out_encoding</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc12out_encodingE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc6outputE">
+<span id="_CPPv3N18CharDataToBytesAcc6outputE"></span><span id="_CPPv2N18CharDataToBytesAcc6outputE"></span><span id="CharDataToBytesAcc::output__uint8_tP"></span><span class="target" id="struct_char_data_to_bytes_acc_1a04760a97ec64425eaf110dd3d3e3ab38"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">output</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc6outputE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc4restE">
+<span id="_CPPv3N18CharDataToBytesAcc4restE"></span><span id="_CPPv2N18CharDataToBytesAcc4restE"></span><span id="CharDataToBytesAcc::rest__termP"></span><span class="target" id="struct_char_data_to_bytes_acc_1a8ba0f8462d970981e95c6eee7583e506"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rest</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc4restE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc4heapE">
+<span id="_CPPv3N18CharDataToBytesAcc4heapE"></span><span id="_CPPv2N18CharDataToBytesAcc4heapE"></span><span id="CharDataToBytesAcc::heap__HeapP"></span><span class="target" id="struct_char_data_to_bytes_acc_1afa22cc9bab3604dd33ba729a72923268"></span><a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">heap</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc4heapE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc6badargE">
+<span id="_CPPv3N18CharDataToBytesAcc6badargE"></span><span id="_CPPv2N18CharDataToBytesAcc6badargE"></span><span id="CharDataToBytesAcc::badarg__b"></span><span class="target" id="struct_char_data_to_bytes_acc_1a4409c9937f35c14578f647898a054702"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">badarg</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc6badargE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N18CharDataToBytesAcc20incomplete_transformE">
+<span id="_CPPv3N18CharDataToBytesAcc20incomplete_transformE"></span><span id="_CPPv2N18CharDataToBytesAcc20incomplete_transformE"></span><span id="CharDataToBytesAcc::incomplete_transform__b"></span><span class="target" id="struct_char_data_to_bytes_acc_1a195187762b2763bf8a05d8fdefce6383"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">incomplete_transform</span></span></span><a class="headerlink" href="#_CPPv4N18CharDataToBytesAcc20incomplete_transformE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </section>
 
 
