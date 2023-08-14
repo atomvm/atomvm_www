@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.0 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.1+git.d995f51c documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -65,20 +65,23 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#alpha-1-unreleased">[0.6.0-alpha.1] - Unreleased</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#alpha-1-unreleased">[0.6.0-alpha.1] - Unreleased</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#alpha-0-2023-08-13">[0.6.0-alpha.0] - 2023-08-13</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Fixed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#unreleased">[0.5.1] - Unreleased</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Fixed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">[0.5.0] - 2022-03-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">[0.5.0] - 2022-03-22</a></li>
 </ul>
 </li>
 </ul>
@@ -113,6 +116,12 @@
 and this project adheres to <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <section id="alpha-1-unreleased">
 <h2>[0.6.0-alpha.1] - Unreleased<a class="headerlink" href="#alpha-1-unreleased" title="Permalink to this heading"></a></h2>
+<section id="fixed">
+<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">esp:nvs_set_binary</span></code> functions.</p></li>
+</ul>
+</section>
 </section>
 <section id="alpha-0-2023-08-13">
 <h2>[0.6.0-alpha.0] - 2023-08-13<a class="headerlink" href="#alpha-0-2023-08-13" title="Permalink to this heading"></a></h2>
@@ -172,8 +181,8 @@ functions that default to <code class="docutils literal notranslate"><span class
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">crypto:hash/2</span></code> (ESP32 and generic_unix with openssl)</p></li>
 </ul>
 </section>
-<section id="fixed">
-<h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading"></a></h3>
+<section id="id1">
+<h3>Fixed<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fixed issue with formatting integers with io:format() on STM32 platform</p></li>
 <li><p>Fixed a bug in the order of child initialization in the <code class="docutils literal notranslate"><span class="pre">supervisor</span></code> module</p></li>
@@ -213,8 +222,8 @@ returning the tuple <code class="docutils literal notranslate"><span class="pre"
 </section>
 <section id="unreleased">
 <h2>[0.5.1] - Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this heading"></a></h2>
-<section id="id1">
-<h3>Added<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<section id="id2">
+<h3>Added<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function for atom comparison, useful when writing 3rd party components.</p></li>
 <li><p>New function for translating an atom term to an int value, according to a given translation table.
@@ -228,8 +237,8 @@ source file. This allows adding new NIFs by just copying them to the components 
 table.</p></li>
 </ul>
 </section>
-<section id="id2">
-<h3>Fixed<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<section id="id3">
+<h3>Fixed<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">gen_statem</span></code>: Cancel outstanding timers during state transitions in
 order to prevent spurious timeout messages from being sent to <code class="docutils literal notranslate"><span class="pre">gen_statem</span></code>
@@ -255,8 +264,8 @@ bit length is not a multiple of 8.</p></li>
 </ul>
 </section>
 </section>
-<section id="id3">
-<h2>[0.5.0] - 2022-03-22<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h2>
+<section id="id4">
+<h2>[0.5.0] - 2022-03-22<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
