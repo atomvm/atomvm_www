@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module binary &mdash; AtomVM 0.6.0-alpha.1+git.246358e0 documentation</title>
+  <title>Module binary &mdash; AtomVM 0.6.0-alpha.1+git.fdf0eb13 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -138,7 +138,7 @@
 <p><a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -153,6 +153,18 @@ at(Binary::binary(), Index::non_neg_integer()) -&gt; byte()
 <p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to get a byte from<br /><code class="docutils literal notranslate"><span class="pre">Index</span></code>: 0-based index of the byte to return<br /></p>
 <p>returns: value of the byte from the binary</p>
 <p>Get a byte from a binary by index.</p>
+<p><a name="part-3"></a></p>
+</section>
+<section id="part-3">
+<h3>part/3<a class="headerlink" href="#part-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+part(Binary::binary(), Pos::non_neg_integer(), Len::integer()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to extract a subbinary from<br /><code class="docutils literal notranslate"><span class="pre">Pos</span></code>: 0-based index of the subbinary to extract<br /><code class="docutils literal notranslate"><span class="pre">Len</span></code>: length, in bytes, of the subbinary to extract.<br /></p>
+<p>returns: a subbinary from Binary</p>
+<p>Get the part of a given binary.
+A negative length can be passed to count bytes backwards.</p>
 </section>
 </section>
 </section>

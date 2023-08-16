@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module atomvm &mdash; AtomVM 0.6.0-alpha.1+git.246358e0 documentation</title>
+  <title>Module atomvm &mdash; AtomVM 0.6.0-alpha.1+git.fdf0eb13 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -142,7 +142,7 @@
 <section id="avm-path">
 <h3><a name="type-avm_path">avm_path()</a><a class="headerlink" href="#avm-path" title="Permalink to this heading"></a></h3>
 <pre><code>
-avm_path() = string() | binary()
+avm_path() = iodata()
 </code></pre>
 </section>
 <section id="platform-name">
@@ -150,12 +150,28 @@ avm_path() = string() | binary()
 <pre><code>
 platform_name() = generic_unix | emscripten | esp32 | pico | stm32
 </code></pre>
+</section>
+<section id="posix-error">
+<h3><a name="type-posix_error">posix_error()</a><a class="headerlink" href="#posix-error" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_error() = atom() | integer()
+</code></pre>
+</section>
+<section id="posix-fd">
+<h3><a name="type-posix_fd">posix_fd()</a><a class="headerlink" href="#posix-fd" title="Permalink to this heading"></a></h3>
+<p><strong>abstract datatype</strong>: <code class="docutils literal notranslate"><span class="pre">posix_fd()</span></code></p>
+</section>
+<section id="posix-open-flag">
+<h3><a name="type-posix_open_flag">posix_open_flag()</a><a class="headerlink" href="#posix-open-flag" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_open_flag() = o_exec | o_rdonly | o_rdwr | o_search | o_wronly | o_append | o_cloexec | o_creat | o_directory | o_dsync | o_excl | o_noctty | o_nofollow | o_rsync | o_sync | o_trunc | o_tty_atom
+</code></pre>
 <p><a name="index"></a></p>
 </section>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_avm_pack_binary-2">add_avm_pack_binary/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#add_avm_pack_file-2">add_avm_pack_file/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#close_avm_pack-2">close_avm_pack/2</a></td><td>    Close previously opened AVM binary from your application.</td></tr><tr><td valign="top"><a href="#platform-0">platform/0</a></td><td>    Return the platform moniker.</td></tr><tr><td valign="top"><a href="#rand_bytes-1">rand_bytes/1</a></td><td>    Returns a binary containing random sequence of bytes of length Len.</td></tr><tr><td valign="top"><a href="#random-0">random/0</a></td><td>    Returns a random 32-bit integer value.</td></tr><tr><td valign="top"><a href="#read_priv-2">read_priv/2</a></td><td>    This function allows to fetch priv/ resources content.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_avm_pack_binary-2">add_avm_pack_binary/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#add_avm_pack_file-2">add_avm_pack_file/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#close_avm_pack-2">close_avm_pack/2</a></td><td>    Close previously opened AVM binary from your application.</td></tr><tr><td valign="top"><a href="#get_start_beam-1">get_start_beam/1</a></td><td>    Get the start beam for a given avm.</td></tr><tr><td valign="top"><a href="#platform-0">platform/0</a></td><td>    Return the platform moniker.</td></tr><tr><td valign="top"><a href="#posix_close-1">posix_close/1</a></td><td>    Close a file that was opened with <code>posix_open/2,3</code></td></tr><tr><td valign="top"><a href="#posix_open-2">posix_open/2</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_open-3">posix_open/3</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_read-2">posix_read/2</a></td><td>    Read at most <code>Count</code> bytes from a file.</td></tr><tr><td valign="top"><a href="#posix_write-2">posix_write/2</a></td><td>    Write data to a file.</td></tr><tr><td valign="top"><a href="#rand_bytes-1">rand_bytes/1</a></td><td>    Returns a binary containing random sequence of bytes of length Len.</td></tr><tr><td valign="top"><a href="#random-0">random/0</a></td><td>    Returns a random 32-bit integer value.</td></tr><tr><td valign="top"><a href="#read_priv-2">read_priv/2</a></td><td>    This function allows to fetch priv/ resources content.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -164,7 +180,7 @@ platform_name() = generic_unix | emscripten | esp32 | pico | stm32
 <section id="add-avm-pack-binary-2">
 <h3>add_avm_pack_binary/2<a class="headerlink" href="#add-avm-pack-binary-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-add_avm_pack_binary(AVMData::binary(), Options::[{name, Name::atom()}]) -&gt; ok
+add_avm_pack_binary(AVMData::binary(), Options::[{name, Name::atom()}]) -&gt; ok | {error, any()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">AVMData</span></code>: AVM data.<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: Options, as a property list.<br /></p>
@@ -179,7 +195,7 @@ generated by packbeam tooling).</p>
 <section id="add-avm-pack-file-2">
 <h3>add_avm_pack_file/2<a class="headerlink" href="#add-avm-pack-file-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-add_avm_pack_file(AVMPath::<a href="#type-avm_path">avm_path()</a>, Options::[]) -&gt; ok
+add_avm_pack_file(AVMPath::<a href="#type-avm_path">avm_path()</a>, Options::[{name, Name::atom()}]) -&gt; ok | {error, any()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">AVMPath</span></code>: Path to AVM data.<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: Options, as a property list.<br /></p>
@@ -212,6 +228,17 @@ close_avm_pack(Name::atom(), Options::[]) -&gt; ok | error
 your application.  The <code class="docutils literal notranslate"><span class="pre">Name</span></code> parameter must reference previously
 opened AVM data.</p>
 <p>Failure to close AVM data is result in a runtime <code class="docutils literal notranslate"><span class="pre">error</span></code></p>
+<p><a name="get_start_beam-1"></a></p>
+</section>
+<section id="get-start-beam-1">
+<h3>get_start_beam/1<a class="headerlink" href="#get-start-beam-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+get_start_beam(AVM::atom()) -&gt; {ok, binary()} | {error, not_found}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">AVM</span></code>: Name of avm (atom)<br /></p>
+<p>returns: the name of the start module (with suffix)</p>
+<p>Get the start beam for a given avm</p>
 <p><a name="platform-0"></a></p>
 </section>
 <section id="platform-0">
@@ -224,6 +251,71 @@ platform() -&gt; <a href="#type-platform_name">platform_name()</a>
 <p>Return the platform moniker.
 You may use this function to uniquely identify the platform
 type on which your application is running.</p>
+<p><a name="posix_close-1"></a></p>
+</section>
+<section id="posix-close-1">
+<h3>posix_close/1<a class="headerlink" href="#posix-close-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_close(File::<a href="#type-posix_fd">posix_fd()</a>) -&gt; ok | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">File</span></code>: Descriptor to a file to close<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or an error tuple</p>
+<p>Close a file that was opened with <code class="docutils literal notranslate"><span class="pre">posix_open/2,3</span></code></p>
+<p><a name="posix_open-2"></a></p>
+</section>
+<section id="posix-open-2">
+<h3>posix_open/2<a class="headerlink" href="#posix-open-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_open(Path::iodata(), Flags::[<a href="#type-posix_open_flag">posix_open_flag()</a>]) -&gt; {ok, <a href="#type-posix_fd">posix_fd()</a>} | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code>: Path to the file to open<br /><code class="docutils literal notranslate"><span class="pre">Flags</span></code>: List of flags passed to <code class="docutils literal notranslate"><span class="pre">open(3)</span></code>.<br /></p>
+<p>returns: A tuple with a file descriptor or an error tuple.</p>
+<p>Open a file (on platforms that have <code class="docutils literal notranslate"><span class="pre">open(3)</span></code>).
+The file is automatically closed when the file descriptor is garbage
+collected.</p>
+<p>Files are automatically opened with <code class="docutils literal notranslate"><span class="pre">O_NONBLOCK</span></code>. Other flags can be passed.</p>
+<p><a name="posix_open-3"></a></p>
+</section>
+<section id="posix-open-3">
+<h3>posix_open/3<a class="headerlink" href="#posix-open-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_open(Path::iodata(), Flags::[<a href="#type-posix_open_flag">posix_open_flag()</a>], Mode::non_neg_integer()) -&gt; {ok, <a href="#type-posix_fd">posix_fd()</a>} | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code>: Path to the file to open<br /><code class="docutils literal notranslate"><span class="pre">Flags</span></code>: List of flags passed to <code class="docutils literal notranslate"><span class="pre">open(3)</span></code>.<br /><code class="docutils literal notranslate"><span class="pre">Mode</span></code>: Mode passed to <code class="docutils literal notranslate"><span class="pre">open(3)</span></code> for created file.<br /></p>
+<p>returns: A tuple with a file descriptor or an error tuple.</p>
+<p>Open a file (on platforms that have <code class="docutils literal notranslate"><span class="pre">open(3)</span></code>).
+This variant can be used to specify the mode for new file.</p>
+<p><a name="posix_read-2"></a></p>
+</section>
+<section id="posix-read-2">
+<h3>posix_read/2<a class="headerlink" href="#posix-read-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_read(File::<a href="#type-posix_fd">posix_fd()</a>, Count::non_neg_integer()) -&gt; {ok, binary()} | eof | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">File</span></code>: Descriptor to an open file<br /><code class="docutils literal notranslate"><span class="pre">Count</span></code>: Maximum number of bytes to read<br /></p>
+<p>returns: a tuple with read bytes, <code class="docutils literal notranslate"><span class="pre">eof</span></code> or an error tuple</p>
+<p>Read at most <code class="docutils literal notranslate"><span class="pre">Count</span></code> bytes from a file.
+Files are open non-blocking. ˋatomvm:posix_select_read/3’ can be used to
+determine if the file can be read.
+<code class="docutils literal notranslate"><span class="pre">eof</span></code> is returned if no more data can be read because the file cursor
+reached the end.</p>
+<p><a name="posix_write-2"></a></p>
+</section>
+<section id="posix-write-2">
+<h3>posix_write/2<a class="headerlink" href="#posix-write-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+posix_write(File::<a href="#type-posix_fd">posix_fd()</a>, Data::binary()) -&gt; {ok, non_neg_integer()} | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">File</span></code>: Descriptor to an open file<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: Data to write<br /></p>
+<p>returns: a tuple with the number of written bytes or an error tuple</p>
+<p>Write data to a file.
+Files are open non-blocking. ˋatomvm:posix_select_write/3’ can be used to
+determine if the file can be written.</p>
 <p><a name="rand_bytes-1"></a></p>
 </section>
 <section id="rand-bytes-1">
