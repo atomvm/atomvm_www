@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module binary &mdash; AtomVM 0.6.0-alpha.1+git.fdf0eb13 documentation</title>
+  <title>Module binary &mdash; AtomVM 0.6.0-alpha.1+git.a417dbf6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -68,8 +68,10 @@
 <li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erlang.html">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_server.html">Module gen_server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_statem.html">Module gen_statem</a></li>
@@ -138,7 +140,7 @@
 <p><a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a binary according to pattern.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -165,6 +167,19 @@ part(Binary::binary(), Pos::non_neg_integer(), Len::integer()) -&gt; binary()
 <p>returns: a subbinary from Binary</p>
 <p>Get the part of a given binary.
 A negative length can be passed to count bytes backwards.</p>
+<p><a name="split-2"></a></p>
+</section>
+<section id="split-2">
+<h3>split/2<a class="headerlink" href="#split-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+split(Binary::binary(), Pattern::binary()) -&gt; [binary()]
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to split<br /><code class="docutils literal notranslate"><span class="pre">Pattern</span></code>: pattern to perform the split<br /></p>
+<p>returns: a list composed of one or two binaries</p>
+<p>Split a binary according to pattern.
+If pattern is not found, returns a singleton list with the passed binary.
+Unlike Erlang/OTP, pattern must be a binary.</p>
 </section>
 </section>
 </section>

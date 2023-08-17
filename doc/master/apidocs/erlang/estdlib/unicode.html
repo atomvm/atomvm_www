@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module unicode &mdash; AtomVM 0.6.0-alpha.1+git.fdf0eb13 documentation</title>
+  <title>Module unicode &mdash; AtomVM 0.6.0-alpha.1+git.a417dbf6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -68,8 +68,10 @@
 <li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="binary.html">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erlang.html">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_server.html">Module gen_server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_statem.html">Module gen_statem</a></li>
@@ -188,7 +190,7 @@ unicode_binary() = binary()
 <section id="characters-to-binary-1">
 <h3>characters_to_binary/1<a class="headerlink" href="#characters-to-binary-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
+characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a> | list()} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert to UTF8<br /></p>
@@ -200,7 +202,7 @@ characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#t
 <section id="characters-to-binary-2">
 <h3>characters_to_binary/2<a class="headerlink" href="#characters-to-binary-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, InEncoding::<a href="#type-encoding">encoding()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
+characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, InEncoding::<a href="#type-encoding">encoding()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a> | list()} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert to UTF8<br /><code class="docutils literal notranslate"><span class="pre">InEncoding</span></code>: encoding of data<br /></p>
@@ -212,7 +214,7 @@ characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#t
 <section id="characters-to-binary-3">
 <h3>characters_to_binary/3<a class="headerlink" href="#characters-to-binary-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, InEncoding::<a href="#type-encoding">encoding()</a>, OutEncoding::<a href="#type-encoding">encoding()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
+characters_to_binary(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, InEncoding::<a href="#type-encoding">encoding()</a>, OutEncoding::<a href="#type-encoding">encoding()</a>) -&gt; <a href="#type-unicode_binary">unicode_binary()</a> | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a> | list()} | {incomplete, <a href="#type-unicode_binary">unicode_binary()</a>, <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert to UTF8<br /><code class="docutils literal notranslate"><span class="pre">InEncoding</span></code>: output encoding<br /></p>
@@ -231,7 +233,7 @@ for which this function merely returns an error tuple.</p>
 <section id="characters-to-list-1">
 <h3>characters_to_list/1<a class="headerlink" href="#characters-to-list-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>) -&gt; list() | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>} | {incomplete, list(), binary()}
+characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>) -&gt; list() | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a> | list()} | {incomplete, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert to Unicode<br /></p>
@@ -248,7 +250,7 @@ characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#typ
 <section id="characters-to-list-2">
 <h3>characters_to_list/2<a class="headerlink" href="#characters-to-list-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, Encoding::<a href="#type-encoding">encoding()</a>) -&gt; list() | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>} | {incomplete, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
+characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>, Encoding::<a href="#type-encoding">encoding()</a>) -&gt; list() | {error, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a> | list()} | {incomplete, list(), <a href="#type-chardata">chardata()</a> | <a href="#type-latin1_chardata">latin1_chardata()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert<br /><code class="docutils literal notranslate"><span class="pre">Encoding</span></code>: encoding of data to convert<br /></p>
