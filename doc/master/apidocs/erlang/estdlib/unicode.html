@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module unicode &mdash; AtomVM 0.6.0-alpha.1+git.cea16015 documentation</title>
+  <title>Module unicode &mdash; AtomVM 0.6.0-alpha.1+git.5ffade79 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -255,7 +255,10 @@ characters_to_list(Data::<a href="#type-chardata">chardata()</a> | <a href="#typ
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: data to convert<br /><code class="docutils literal notranslate"><span class="pre">Encoding</span></code>: encoding of data to convert<br /></p>
 <p>returns: a list of characters or a tuple if conversion failed.</p>
-<p>Convert UTF-8 or Latin1 data to a list of Unicode characters.</p>
+<p>Convert UTF-8 or Latin1 data to a list of Unicode characters.
+Following Erlang/OTP, if input encoding is latin1, this function returns
+an error tuple if a character &gt; 255 is passed (in a list). Otherwise, it
+will accept any character within Unicode range (0-0x10FFFF).</p>
 <p><strong>See also:</strong> <a class="reference internal" href="#characters_to_list-1"><span class="xref myst">characters_to_list/1</span></a>.</p>
 </section>
 </section>
