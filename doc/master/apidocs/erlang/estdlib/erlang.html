@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.1+git.574d2732 documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.1+git.294ba456 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -821,7 +821,27 @@ When <code class="docutils literal notranslate"><span class="pre">trap_exit</spa
 <section id="process-info-2">
 <h3>process_info/2<a class="headerlink" href="#process-info-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-process_info(Pid::pid(), Key::atom()) -&gt; term()
+process_info(Pid::pid(), Key::heap_size) -&gt; {heap_size, non_neg_integer()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<pre><code>
+process_info(Pid::pid(), Key::stack_size) -&gt; {stack_size, non_neg_integer()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<pre><code>
+process_info(Pid::pid(), Key::message_queue_len) -&gt; {message_queue_len, non_neg_integer()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<pre><code>
+process_info(Pid::pid(), Key::memory) -&gt; {memory, non_neg_integer()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<pre><code>
+process_info(Pid::pid(), Key::links) -&gt; {links, [pid()]}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
@@ -835,6 +855,7 @@ The type of information returned is dependent on the specified key.</p>
 <li><p><strong>stack_size</strong> the number of words used in the stack (integer)</p></li>
 <li><p><strong>message_queue_len</strong> the number of messages enqueued for the process (integer)</p></li>
 <li><p><strong>memory</strong> the estimated total number of bytes in use by the process (integer)</p></li>
+<li><p><strong>links</strong> the list of linked processes</p></li>
 </ul>
 <p>Specifying an unsupported term or atom raises a bad_arg error.</p>
 <p><a name="processes-0"></a></p>
