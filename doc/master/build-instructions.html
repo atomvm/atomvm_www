@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.f6496cf1 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.574d2732 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#setup-libopencm3">Setup libopencm3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#build-atomvm">Build AtomVM</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changing-device">Changing device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-logging-with-cmake">Configure logging with <code class="docutils literal notranslate"><span class="pre">cmake</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#printing">Printing</a></li>
 </ul>
 </li>
@@ -741,8 +742,36 @@ chip, pass the <code class="docutils literal notranslate"><span class="pre">-DDE
 <p>If you are building for a different target board the <code class="docutils literal notranslate"><span class="pre">CLOCK_FREQUENCY</span></code> definition in main.c will need to be changed to match the clock frequency (in hertz) of your cpu.</p>
 <p>The rcc_clock_setup_XXX_XXX will also need to be changed to match your particular chip-set. Consult <a class="reference external" href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html">ST’s documentation</a> for appropriate settings.</p>
 </section>
+<section id="configure-logging-with-cmake">
+<h3>Configure logging with <code class="docutils literal notranslate"><span class="pre">cmake</span></code><a class="headerlink" href="#configure-logging-with-cmake" title="Permalink to this heading"></a></h3>
+<p>The default maximum log level is <code class="docutils literal notranslate"><span class="pre">LOG_INFO</span></code>. To change the maximum level displayed pass <code class="docutils literal notranslate"><span class="pre">-DAVM_LOG_LEVEL_MAX=&quot;{level}&quot;</span></code> to <code class="docutils literal notranslate"><span class="pre">cmake</span></code>, with one of <code class="docutils literal notranslate"><span class="pre">LOG_ERROR</span></code>, <code class="docutils literal notranslate"><span class="pre">LOG_WARN</span></code>, <code class="docutils literal notranslate"><span class="pre">LOG_INFO</span></code>, or <code class="docutils literal notranslate"><span class="pre">LOG_DEBUG</span></code> (listed from least to most verbose). Log messages can be completely disabled by using <code class="docutils literal notranslate"><span class="pre">-DAVM_LOG_DISABLE=on</span></code>.</p>
+<p>For log entries colorized by log level pass <code class="docutils literal notranslate"><span class="pre">-DAVM_ENABLE_LOG_COLOR=on</span></code> to cmake. With color enable there is a very small performance penalty (~1ms per message printed), the log entries are colored as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Message Level</p></th>
+<th class="head"><p>Color</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ERROR</p></td>
+<td><p>Red</p></td>
+</tr>
+<tr class="row-odd"><td><p>WARN</p></td>
+<td><p>Orange</p></td>
+</tr>
+<tr class="row-even"><td><p>INFO</p></td>
+<td><p>Green</p></td>
+</tr>
+<tr class="row-odd"><td><p>DEBUG</p></td>
+<td><p>Blue</p></td>
+</tr>
+</tbody>
+</table>
+<p>By default only <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> messages contain file and line number information. This can be included with all log entries by passing <code class="docutils literal notranslate"><span class="pre">-DAVM_ENABLE_LOG_LINES=on</span></code> to cmake, but it does incur a significant performance penalty and is only suggested for debugging during development.</p>
+</section>
 <section id="printing">
 <h3>Printing<a class="headerlink" href="#printing" title="Permalink to this heading"></a></h3>
+<p>AtomVM is built with standard <code class="docutils literal notranslate"><span class="pre">newlib</span></code> to support <code class="docutils literal notranslate"><span class="pre">long</span> <span class="pre">long</span></code> integers (<code class="docutils literal notranslate"><span class="pre">signed</span></code> and <code class="docutils literal notranslate"><span class="pre">unsigned</span></code>). If you are building for a device with extremely limited flash space the <code class="docutils literal notranslate"><span class="pre">nano</span></code> version of <code class="docutils literal notranslate"><span class="pre">newlib</span></code> can be used instead. This may be done by passing <code class="docutils literal notranslate"><span class="pre">-DAVM_NEWLIB_NANO=on</span></code>. If the <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">newlib</span></code> is used logs will be automatically disabled, this is because many of the VM low level log messages will include <code class="docutils literal notranslate"><span class="pre">%ull</span></code> formatting and will cause buffer overflows and crash the VM if logging is not disabled for <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">newlib</span></code> builds. The total flash savings of using <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">newlib</span></code> and disabling logs is just under 40kB.</p>
 <p>By default, stdout and stderr are printed on USART2. On the STM32F4Discovery board, you can see them
 using a TTL-USB with the TX pin connected to board’s pin PA2 (USART2 RX). Baudrate is 115200 and serial transmission
 is 8N1 with no flow control.</p>
