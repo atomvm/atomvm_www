@@ -265,6 +265,8 @@ Macros</h2></td></tr>
 <tr class="separator:a23811ddad17264c0aebdc3447503f6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad95e77544d6ddcc2e9b8e3080c976792"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#ad95e77544d6ddcc2e9b8e3080c976792">NEXT_INSTRUCTION</a>(operands_size)&#160;&#160;&#160;    i += operands_size</td></tr>
 <tr class="separator:ad95e77544d6ddcc2e9b8e3080c976792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4d5464081b371949a7390ed52be2a5c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#ae4d5464081b371949a7390ed52be2a5c">JUMP_TO_LABEL</a>(module,  <a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>)</td></tr>
+<tr class="separator:ae4d5464081b371949a7390ed52be2a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab28e9a2cb489ae40a08a89d3f40f53ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#ab28e9a2cb489ae40a08a89d3f40f53ca">JUMP_TO_ADDRESS</a>(address)&#160;&#160;&#160;        i = ((uint8_t *) (address)) - code</td></tr>
 <tr class="separator:ab28e9a2cb489ae40a08a89d3f40f53ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addfb2537e9c5b0ed06aeb3a50138ba58"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#addfb2537e9c5b0ed06aeb3a50138ba58">SCHEDULE_NEXT</a>(restore_mod,  restore_to)</td></tr>
@@ -345,7 +347,7 @@ Variables</h2></td></tr>
 <tr class="separator:acf644b9a90f33da6a615903d2410778d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96d7bf425906a24bd8dc3acc6dd373c7"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a> = malloc(<a class="el" href="opcodesswitch_8h.html#acf644b9a90f33da6a615903d2410778d">function_len</a> + 1)</td></tr>
 <tr class="separator:a96d7bf425906a24bd8dc3acc6dd373c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a512bd2c8e2a962b00a6a6926befc170c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> = <a class="el" href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity)</td></tr>
+<tr class="memitem:a512bd2c8e2a962b00a6a6926befc170c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a> = <a class="el" href="module_8h.html#a87757f4eea5a5f1c1ac768ea8fe49aef">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity, ctx-&gt;global)</td></tr>
 <tr class="separator:a512bd2c8e2a962b00a6a6926befc170c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8bb7f2df392ef27449575bea08960d0"><td class="memItemLeft" align="right" valign="top">ctx&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="opcodesswitch_8h.html#ac8bb7f2df392ef27449575bea08960d0">saved_module</a> = mod</td></tr>
 <tr class="separator:ac8bb7f2df392ef27449575bea08960d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -389,7 +391,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00849">849</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00868">868</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1084,7 +1086,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="adefaultatoms_8h_html_af18728853e2246cba0937458e40c1a35"><div class="ttname"><a href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a></div><div class="ttdeci">#define BADARG_ATOM</div><div class="ttdef"><b>Definition:</b> <a href="defaultatoms_8h_source.html#l00169">defaultatoms.h:169</a></div></div>
 <div class="ttc" id="autils_8h_html_ab10d0a221f4d7a706701b806c8135fd7"><div class="ttname"><a href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a></div><div class="ttdeci">#define UNLIKELY(x)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00134">utils.h:134</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00903">903</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00920">920</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1428,12 +1430,23 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    mod = <a class="code" href="globalcontext_8c.html#aa764dc9078f5cb9f409c5148a43e8d66">globalcontext_get_module_by_index</a>(mod-&gt;global, ctx-&gt;cp &gt;&gt; 24); \</div>
-<div class="line">    code = mod-&gt;code-&gt;code;                             \</div>
-<div class="line">    i = (ctx-&gt;cp &amp; 0xFFFFFF) &gt;&gt; 2;</div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                   \</div>
+<div class="line">        int module_index = ctx-&gt;cp &gt;&gt; 24;                               \</div>
+<div class="line">        if (module_index == prev_mod-&gt;module_index) {                   \</div>
+<div class="line">            Module *t = mod;                                            \</div>
+<div class="line">            mod = prev_mod;                                             \</div>
+<div class="line">            prev_mod = t;                                               \</div>
+<div class="line">            code = mod-&gt;code-&gt;code;                                     \</div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (module_index != mod-&gt;module_index) {                 \</div>
+<div class="line">            prev_mod = mod;                                             \</div>
+<div class="line">            mod = <a class="code" href="globalcontext_8c.html#aa764dc9078f5cb9f409c5148a43e8d66">globalcontext_get_module_by_index</a>(glb, module_index); \</div>
+<div class="line">            code = mod-&gt;code-&gt;code;                                     \</div>
+<div class="line">        }                                                               \</div>
+<div class="line">        i = (ctx-&gt;cp &amp; 0xFFFFFF) &gt;&gt; 2;                                  \</div>
+<div class="line">    }</div>
 <div class="ttc" id="aglobalcontext_8c_html_aa764dc9078f5cb9f409c5148a43e8d66"><div class="ttname"><a href="globalcontext_8c.html#aa764dc9078f5cb9f409c5148a43e8d66">globalcontext_get_module_by_index</a></div><div class="ttdeci">Module * globalcontext_get_module_by_index(GlobalContext *global, int index)</div><div class="ttdoc">Get a module by index.</div><div class="ttdef"><b>Definition:</b> <a href="globalcontext_8c_source.html#l00519">globalcontext.c:519</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00807">807</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00815">815</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1549,9 +1562,9 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    ctx-&gt;x[2] = <a class="code" href="stacktrace_8c.html#a9be0b4e98707242bb0f0e24a01aa0d89">stacktrace_create_raw</a>(ctx, mod, i, ctx-&gt;x[0]); \</div>
 <div class="line">    goto handle_error;</div>
-<div class="ttc" id="astacktrace_8c_html_a9be0b4e98707242bb0f0e24a01aa0d89"><div class="ttname"><a href="stacktrace_8c.html#a9be0b4e98707242bb0f0e24a01aa0d89">stacktrace_create_raw</a></div><div class="ttdeci">term stacktrace_create_raw(Context *ctx, Module *mod, int current_offset, term exception_class)</div><div class="ttdef"><b>Definition:</b> <a href="stacktrace_8c_source.html#l00026">stacktrace.c:26</a></div></div>
+<div class="ttc" id="astacktrace_8c_html_a9be0b4e98707242bb0f0e24a01aa0d89"><div class="ttname"><a href="stacktrace_8c.html#a9be0b4e98707242bb0f0e24a01aa0d89">stacktrace_create_raw</a></div><div class="ttdeci">term stacktrace_create_raw(Context *ctx, Module *mod, int current_offset, term exception_class)</div><div class="ttdef"><b>Definition:</b> <a href="stacktrace_8c_source.html#l00027">stacktrace.c:27</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00815">815</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00834">834</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1570,7 +1583,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00804">804</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00812">812</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1662,7 +1675,44 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00689">689</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00697">697</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+
+</div>
+</div>
+<a id="ae4d5464081b371949a7390ed52be2a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d5464081b371949a7390ed52be2a5c">&#9670;&nbsp;</a></span>JUMP_TO_LABEL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define JUMP_TO_LABEL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">module, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (module != mod) {                \</div>
+<div class="line">        prev_mod = mod;                 \</div>
+<div class="line">        mod = module;                   \</div>
+<div class="line">        code = mod-&gt;code-&gt;code;         \</div>
+<div class="line">    }                                   \</div>
+<div class="line">    JUMP_TO_ADDRESS(mod-&gt;labels[<a class="code" href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a>])</div>
+<div class="ttc" id="aopcodesswitch_8h_html_a512bd2c8e2a962b00a6a6926befc170c"><div class="ttname"><a href="opcodesswitch_8h.html#a512bd2c8e2a962b00a6a6926befc170c">label</a></div><div class="ttdeci">int label</div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l01461">opcodesswitch.h:1461</a></div></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00688">688</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1692,7 +1742,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00929">929</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00946">946</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1732,7 +1782,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00812">812</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00831">831</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1759,9 +1809,9 @@ Variables</h2></td></tr>
 <div class="line">        }                                                       \</div>
 <div class="line">    }</div>
 <div class="ttc" id="acontext_8h_html_a5c9a39ccda8c700b8722f9027ef63f1da178e499decd0c21272bc34e4b3056eab"><div class="ttname"><a href="context_8h.html#a5c9a39ccda8c700b8722f9027ef63f1da178e499decd0c21272bc34e4b3056eab">Trap</a></div><div class="ttdeci">@ Trap</div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00067">context.h:67</a></div></div>
-<div class="ttc" id="aopcodesswitch_8h_html_a690d268bdedf6c8360ac354144301034"><div class="ttname"><a href="opcodesswitch_8h.html#a690d268bdedf6c8360ac354144301034">INSTRUCTION_POINTER</a></div><div class="ttdeci">#define INSTRUCTION_POINTER()</div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l00804">opcodesswitch.h:804</a></div></div>
+<div class="ttc" id="aopcodesswitch_8h_html_a690d268bdedf6c8360ac354144301034"><div class="ttname"><a href="opcodesswitch_8h.html#a690d268bdedf6c8360ac354144301034">INSTRUCTION_POINTER</a></div><div class="ttdeci">#define INSTRUCTION_POINTER()</div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l00812">opcodesswitch.h:812</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00775">775</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00783">783</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1789,7 +1839,7 @@ Variables</h2></td></tr>
 <div class="line">        }                                                       \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00794">794</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00802">802</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1827,7 +1877,7 @@ Variables</h2></td></tr>
 <div class="line">        }                                                               \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00784">784</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00792">792</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1846,7 +1896,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00707">707</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00715">715</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1936,7 +1986,7 @@ Variables</h2></td></tr>
 <div class="line">    }</div>
 <div class="ttc" id="ascheduler_8c_html_aa1369fe1ce52c303fffad64ef8a92470"><div class="ttname"><a href="scheduler_8c.html#aa1369fe1ce52c303fffad64ef8a92470">scheduler_next</a></div><div class="ttdeci">Context * scheduler_next(GlobalContext *global, Context *c)</div><div class="ttdoc">gets next runnable process from the ready queue.</div><div class="ttdef"><b>Definition:</b> <a href="scheduler_8c_source.html#l00278">scheduler.c:278</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00697">697</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00705">705</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -1994,9 +2044,9 @@ Variables</h2></td></tr>
 <div class="line">        kv[(I)] = kv[(J)];            \</div>
 <div class="line">        kv[(J)] = tmp;                \</div>
 <div class="line">    }</div>
-<div class="ttc" id="astructkv__pair_html"><div class="ttname"><a href="structkv__pair.html">kv_pair</a></div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l00960">opcodesswitch.h:961</a></div></div>
+<div class="ttc" id="astructkv__pair_html"><div class="ttname"><a href="structkv__pair.html">kv_pair</a></div><div class="ttdef"><b>Definition:</b> <a href="opcodesswitch_8h_source.html#l00977">opcodesswitch.h:978</a></div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00953">953</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00970">970</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2046,7 +2096,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01396">1396</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01413">1413</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2066,7 +2116,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01397">1397</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01414">1414</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2086,7 +2136,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01398">1398</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01415">1415</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2106,7 +2156,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01401">1401</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01418">1418</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2126,7 +2176,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01399">1399</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01416">1416</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2146,7 +2196,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01400">1400</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01417">1417</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2180,7 +2230,7 @@ Variables</h2></td></tr>
 <div class="line">        RAISE_ERROR(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);                           \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00825">825</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00844">844</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2214,7 +2264,7 @@ Variables</h2></td></tr>
 <div class="line">        RAISE_ERROR(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);                        \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00831">831</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00850">850</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2248,7 +2298,7 @@ Variables</h2></td></tr>
 <div class="line">        RAISE_ERROR(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);                          \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00819">819</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00838">838</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2282,7 +2332,7 @@ Variables</h2></td></tr>
 <div class="line">        RAISE_ERROR(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);                                          \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00843">843</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00862">862</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2316,7 +2366,7 @@ Variables</h2></td></tr>
 <div class="line">        RAISE_ERROR(<a class="code" href="defaultatoms_8h.html#af18728853e2246cba0937458e40c1a35">BADARG_ATOM</a>);                                \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00837">837</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l00856">856</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2430,7 +2480,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01447">1447</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01464">1464</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2466,7 +2516,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01241">1241</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01258">1258</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2546,7 +2596,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01475">1475</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01492">1492</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2581,7 +2631,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01454">1454</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01471">1471</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2597,7 +2647,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01439">1439</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01456">1456</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2608,12 +2658,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int label = <a class="el" href="module_8h.html#a73bf4268a354d4dc0f81881987f75058">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity)</td>
+          <td class="memname">int label = <a class="el" href="module_8h.html#a87757f4eea5a5f1c1ac768ea8fe49aef">module_search_exported_function</a>(mod, <a class="el" href="opcodesswitch_8h.html#a96d7bf425906a24bd8dc3acc6dd373c7">tmp_atom_name</a>, arity, ctx-&gt;global)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01444">1444</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01461">1461</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2629,7 +2679,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01465">1465</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01482">1482</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2645,7 +2695,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01455">1455</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01472">1472</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2661,7 +2711,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01452">1452</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01469">1469</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>
@@ -2677,7 +2727,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01440">1440</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="opcodesswitch_8h_source.html#l01457">1457</a> of file <a class="el" href="opcodesswitch_8h_source.html">opcodesswitch.h</a>.</p>
 
 </div>
 </div>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['native_5fhandler_5ff_2050',['native_handler_f',['../context_8h.html#ab8155e89c776ff9773e36caf85f7d860',1,'context.h']]],
-  ['nativehandlerresult_2051',['NativeHandlerResult',['../context_8h.html#af03210f09c25e2a89b1d2b4ae8e670e2',1,'context.h']]],
-  ['nifimpl_2052',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
+  ['native_5fhandler_5ff_2051',['native_handler_f',['../context_8h.html#ab8155e89c776ff9773e36caf85f7d860',1,'context.h']]],
+  ['nativehandlerresult_2052',['NativeHandlerResult',['../context_8h.html#af03210f09c25e2a89b1d2b4ae8e670e2',1,'context.h']]],
+  ['nifimpl_2053',['NifImpl',['../exportedfunction_8h.html#ae954446dc6fccb026fcee45aaf13a34f',1,'exportedfunction.h']]]
 ];
