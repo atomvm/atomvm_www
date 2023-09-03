@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.70edffe3 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.99ab6157 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -103,10 +103,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#id5">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps">AtomVM build steps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libatomvm-build-steps">libAtomVM build steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Running tests</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building-for-nodejs-web">Building for NodeJS/Web</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-for-nodejs">Building for NodeJS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-tests-with-nodejs">Running tests with NodeJS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-for-the-web">Building for the web</a></li>
@@ -815,13 +816,31 @@ ninja
 </pre></div>
 </div>
 </section>
+<section id="id6">
+<h3>Running tests<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>Tests for Pico/RP2040 are run on the desktop (or CI) using <a class="reference external" href="https://github.com/wokwi/rp2040js">rp2040js</a>.
+Running tests currently require nodejs 20.</p>
+<p>Change directory to the <code class="docutils literal notranslate"><span class="pre">src/platforms/rp2040/tests</span></code> directory under the AtomVM source tree root:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cd &lt;atomvm-source-tree-root&gt;
+shell$ cd src/platforms/rp2040/tests
+</pre></div>
+</div>
+<p>Install the emulator and required Javascript dependencies:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ npm install
+</pre></div>
+</div>
+<p>We are assuming tests were built as part of regular build of AtomVM. Run them with the commands:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ npx tsx run-tests.ts ../build/tests/rp2040_tests.uf2
+</pre></div>
+</div>
+</section>
 </section>
 <section id="building-for-nodejs-web">
 <h2>Building for NodeJS/Web<a class="headerlink" href="#building-for-nodejs-web" title="Permalink to this heading"></a></h2>
 <p>Two different builds are possible, depending on link options: for NodeJS and
 for the web browser.</p>
-<section id="id6">
-<h3>Prerequisites<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h3>Prerequisites<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://emscripten.org">emscripten SDK</a></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
