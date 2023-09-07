@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['wordsize_5fatom_2799',['WORDSIZE_ATOM',['../defaultatoms_8h.html#aedce40f6ec8715ec493574efe59940c7',1,'defaultatoms.h']]],
-  ['wordsize_5fatom_5findex_2800',['WORDSIZE_ATOM_INDEX',['../defaultatoms_8h.html#ae1721c24d26a531a9d9ea4c52d85b9ad',1,'defaultatoms.h']]],
-  ['write_5f16_5funaligned_2801',['WRITE_16_UNALIGNED',['../utils_8h.html#a4cb5bce756b40df17bdc82615f2d7e59',1,'utils.h']]],
-  ['write_5f16le_5funaligned_2802',['WRITE_16LE_UNALIGNED',['../bitstring_8h.html#a0da713b472a666135e248e7b8b855119',1,'bitstring.h']]],
-  ['write_5f32_5funaligned_2803',['WRITE_32_UNALIGNED',['../utils_8h.html#a0d67699eb7221a1c28612a71bda13f1a',1,'utils.h']]],
-  ['write_5f32le_5funaligned_2804',['WRITE_32LE_UNALIGNED',['../bitstring_8h.html#a45e88df5416cda41b51fa8553a8b9440',1,'bitstring.h']]],
-  ['write_5f64le_5funaligned_2805',['WRITE_64LE_UNALIGNED',['../bitstring_8h.html#a8cc8502916ae0c60d504c1d55f8f272e',1,'bitstring.h']]],
-  ['write_5fregister_2806',['WRITE_REGISTER',['../opcodesswitch_8h.html#ae78b087715b613316e8b90204771a85b',1,'opcodesswitch.h']]]
+  ['validate_5fvalue_2798',['VALIDATE_VALUE',['../bif_8c.html#a69bd4b915966835c42a2b14b8c91483f',1,'VALIDATE_VALUE():&#160;bif.c'],['../nifs_8h.html#a69bd4b915966835c42a2b14b8c91483f',1,'VALIDATE_VALUE():&#160;nifs.h']]],
+  ['verify_5fis_5fany_5finteger_2799',['VERIFY_IS_ANY_INTEGER',['../opcodesswitch_8h.html#a15d4689932ac981b54c066f8d12fb92b',1,'opcodesswitch.h']]],
+  ['verify_5fis_5fbinary_2800',['VERIFY_IS_BINARY',['../opcodesswitch_8h.html#a79e5a198fc7d016112bf1347f036b109',1,'opcodesswitch.h']]],
+  ['verify_5fis_5finteger_2801',['VERIFY_IS_INTEGER',['../opcodesswitch_8h.html#a26420698cf0e0cec5910d16f0a6b83aa',1,'opcodesswitch.h']]],
+  ['verify_5fis_5fmatch_5for_5fbinary_2802',['VERIFY_IS_MATCH_OR_BINARY',['../opcodesswitch_8h.html#ac61f7ae1fff57be93aab88b69a0bf5ce',1,'opcodesswitch.h']]],
+  ['verify_5fis_5fmatch_5fstate_2803',['VERIFY_IS_MATCH_STATE',['../opcodesswitch_8h.html#a0641e99905103ad1fe98ef56f6fd8969',1,'opcodesswitch.h']]],
+  ['vm_5fabort_2804',['VM_ABORT',['../opcodesswitch_8h.html#aa1a8ad891666895bca6f2abe25d138b1',1,'opcodesswitch.h']]],
+  ['vm_5fabort_5fatom_2805',['VM_ABORT_ATOM',['../defaultatoms_8h.html#a95ecde9478a3f4bad2093c6386743658',1,'defaultatoms.h']]],
+  ['vm_5fabort_5fatom_5findex_2806',['VM_ABORT_ATOM_INDEX',['../defaultatoms_8h.html#ad3f965afb3ba7e0a8d6aed7a96c6e165',1,'defaultatoms.h']]]
 ];
