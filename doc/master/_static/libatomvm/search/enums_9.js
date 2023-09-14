@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['refcbinaryflags_2083',['RefcBinaryFlags',['../term_8h.html#ada026bf2d0a66c550271f757eef36e1f',1,'term.h']]]
+  ['openavmresult_2101',['OpenAVMResult',['../sys_8h.html#a271673c2a3455ae579f3bfe492e98b4a',1,'sys.h']]]
 ];

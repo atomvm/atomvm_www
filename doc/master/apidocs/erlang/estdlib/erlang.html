@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.1+git.08243d3e documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.1+git.df24dfec documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -154,6 +154,12 @@ demonitor_option() = flush | {flush, boolean()} | info | {info, boolean()}
 float_format_option() = {decimals, Decimals::0..57} | {scientific, Decimals::0..57} | compact
 </code></pre>
 </section>
+<section id="heap-growth-strategy">
+<h3><a name="type-heap_growth_strategy">heap_growth_strategy()</a><a class="headerlink" href="#heap-growth-strategy" title="Permalink to this heading"></a></h3>
+<pre><code>
+heap_growth_strategy() = bounded_free | minimum | fibonacci
+</code></pre>
+</section>
 <section id="mem-type">
 <h3><a name="type-mem_type">mem_type()</a><a class="headerlink" href="#mem-type" title="Permalink to this heading"></a></h3>
 <pre><code>
@@ -163,7 +169,7 @@ mem_type() = binary
 <section id="spawn-option">
 <h3><a name="type-spawn_option">spawn_option()</a><a class="headerlink" href="#spawn-option" title="Permalink to this heading"></a></h3>
 <pre><code>
-spawn_option() = {min_heap_size, pos_integer()} | {max_heap_size, pos_integer()} | link | monitor
+spawn_option() = {min_heap_size, pos_integer()} | {max_heap_size, pos_integer()} | {atomvm_heap_growth, <a href="#type-heap_growth_strategy">heap_growth_strategy()</a>} | link | monitor
 </code></pre>
 </section>
 <section id="time-unit">
@@ -875,6 +881,11 @@ process_info(Pid::pid(), Key::heap_size) -&gt; {heap_size, non_neg_integer()}
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
 <pre><code>
+process_info(Pid::pid(), Key::total_heap_size) -&gt; {total_heap_size, non_neg_integer()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: the process pid.<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key used to find process information.<br /></p>
+<pre><code>
 process_info(Pid::pid(), Key::stack_size) -&gt; {stack_size, non_neg_integer()}
 </code></pre>
 <br />
@@ -900,7 +911,8 @@ process_info(Pid::pid(), Key::links) -&gt; {links, [pid()]}
 The type of information returned is dependent on the specified key.</p>
 <p>The following keys are supported:</p>
 <ul class="simple">
-<li><p><strong>heap_size</strong> the number of words used in the heap (integer)</p></li>
+<li><p><strong>heap_size</strong> the number of words used in the heap (integer), including the stack but excluding fragments</p></li>
+<li><p><strong>total_heap_size</strong> the number of words used in the heap (integer) including fragments</p></li>
 <li><p><strong>stack_size</strong> the number of words used in the stack (integer)</p></li>
 <li><p><strong>message_queue_len</strong> the number of messages enqueued for the process (integer)</p></li>
 <li><p><strong>memory</strong> the estimated total number of bytes in use by the process (integer)</p></li>

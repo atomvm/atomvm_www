@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Management &mdash; AtomVM 0.6.0-alpha.1+git.08243d3e documentation</title>
+  <title>Memory Management &mdash; AtomVM 0.6.0-alpha.1+git.df24dfec documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -62,6 +62,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Memory Management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#the-context-structure">The Context structure</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-heap-and-stack">The Heap and Stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heap-growth-strategies">Heap growth strategies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#registers">Registers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#process-dictionary">Process Dictionary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#heap-fragments">Heap Fragments</a></li>
@@ -165,7 +166,7 @@
 <h3>The Heap and Stack<a class="headerlink" href="#the-heap-and-stack" title="Permalink to this heading"></a></h3>
 <p>The heap and stack for each AtomVM process are stored in a single allocated block of memory (e.g., via the <code class="docutils literal notranslate"><span class="pre">malloc</span></code> C function) in the heap space of the AtomVM program, and the AtomVM runtime manages the allocation of portions of this memory during the execution of a program.  The heap starts at the bottom of the block of memory, and grows incrementally towards the top of the allocated block, as memory is allocated in the program.  Each word in the heap and stack (or in some cases, a sequence of words) represent a term that has been allocated.</p>
 <p>The heap contains all of the allocated terms in an execution context.  In some cases, the terms occupy more than one word of memory (e.g., a tuple), but in general, the heap contains a record of memory in use by the program.</p>
-<p>The heap grows incrementally, as memory is allocated, and terms are allocated sequentially, in increasing memory addresses.  There is, therefore, no memory fragmentation, properly speaking, at least insofar as a portion of memory might be in use and then freed.  However, it is possible that previously allocated blocks of memory in the context heap are no longer referenced by the program.  In this case, the allocated blocks are “garbage”, and are reclaimed at the next garbage collection.</p>
+<p>The heap grows incrementally, as memory is allocated, and terms are allocated sequentially, in increasing memory addresses.  There is, therefore, no memory fragmentation, properly speaking, at least insofar as a portion of memory might be in use and then freed.  However, it is possible that previously allocated blocks of memory in the context heap are no longer referenced by the program.  In this case, the allocated blocks are “garbage”, and are reclaimed at the next garbage collection. The actual growth of the heap is controlled by a heap growth strategy (<code class="docutils literal notranslate"><span class="pre">heap_growth</span></code> spawn option) as described below.</p>
 <blockquote>
 <div><p>Note. It is possible for the AtomVM heap, as provided by the underlying operating system, to become fragmented, as the execution context stack and heap are allocated via <code class="docutils literal notranslate"><span class="pre">malloc</span></code> or equiv.  But that is a different kind of fragmentation that does not refer to the allocated block used by an individual AtomVM process.</p>
 </div></blockquote>
@@ -201,7 +202,15 @@
 +================================+ &lt;- stack_base --
 </pre></div>
 </div>
-<p>The initial size of the allocated block for the stack and heap in AtomVM is 8 words.  As heap and stack allocations grow, eventually, the amount of free space will decrease to the point where a garbage collection is required.  In this case, a new but larger (typically by 2x) block of memory is allocated by the AtomVM OS process, and terms are copied from the old stack and heap to the new stack and heap.  Garbage collection is described in more detail below.</p>
+<p>The initial size of the allocated block for the stack and heap in AtomVM is 8 words.  As heap and stack allocations grow, eventually, the amount of free space will decrease to the point where a garbage collection is required.  In this case, a new but larger block of memory is allocated by the AtomVM OS process, and terms are copied from the old stack and heap to the new stack and heap.  Garbage collection is described in more detail below.</p>
+</section>
+<section id="heap-growth-strategies">
+<h3>Heap growth strategies<a class="headerlink" href="#heap-growth-strategies" title="Permalink to this heading"></a></h3>
+<p>AtomVM aims at minimizing memory footprint and several heap growth strategies are available. The heap is grown or shrunk when an allocation is required and the current execution context allows for a garbage collection (that will move data structures), allows for shrinking or forces shrinking (typically in the case of a call to <code class="docutils literal notranslate"><span class="pre">erlang:garbage_collect/0,1</span></code>).</p>
+<p>Each strategy is set at the process level.</p>
+<p>Default strategy is bounded free (<code class="docutils literal notranslate"><span class="pre">{heap_growth,</span> <span class="pre">bounded_free}</span></code>). In this strategy, when more memory is required, the allocator keeps the free amount between fixed boundaries (currently 16 and 32 terms). If no allocation is required but free space is larger than boundary, a garbage collection is triggered. After copying data to a new heap, if the free space is larger than the maximum, the heap is shrunk within the boundaries.</p>
+<p>With minimum strategy (<code class="docutils literal notranslate"><span class="pre">{heap_growth,</span> <span class="pre">minimum}</span></code>), when an allocation can happen, it is always adjusted to have the free space at 0.</p>
+<p>With fibonacci strategy (<code class="docutils literal notranslate"><span class="pre">{heap_growth,</span> <span class="pre">fibonacci}</span></code>), heap size grows following a variation of fibonacci until a large value and then grows by 20%. If free space is larger than 75% of heap size, the heap is shrunk. This strategy is inspired from Erlang/OTP’s implementation.</p>
 </section>
 <section id="registers">
 <h3>Registers<a class="headerlink" href="#registers" title="Permalink to this heading"></a></h3>
