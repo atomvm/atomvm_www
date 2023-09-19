@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.1+git.11d6509c documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.1+git.7f814f6e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -1092,6 +1092,36 @@ crypto:hash(sha, [&lt;&lt;&quot;Some binary&quot;&gt;&gt;, $\s, &quot;data&quot;
 Hash = erlang:md5(&lt;&lt;foo&gt;&gt;).
 </pre></div>
 </div>
+<p>On ESP32, you can perform symetric encryption and decryption of any iodata data using
+<code class="docutils literal notranslate"><span class="pre">crypto_one_time/4,5</span></code> function.</p>
+<p>Following ciphers are supported:</p>
+<p>Without IV (using <code class="docutils literal notranslate"><span class="pre">crypto_one_time/4</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_128_ecb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_192_ecb</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_256_ecb</span></code></p></li>
+</ul>
+<p>With IV (using <code class="docutils literal notranslate"><span class="pre">crypto_one_time/5</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_128_cbc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_192_cbc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_256_cbc</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_128_cfb128</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_192_cfb128</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_256_cfb128</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_128_ctr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_192_ctr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aes_256_ctr</span></code></p></li>
+</ul>
+<p>The function is implemented using <a class="reference external" href="https://github.com/Mbed-TLS/mbedtls">mbedTLS</a>, so please to its
+documentation for further details.</p>
+<p>Please refer to
+<a class="reference external" href="https://www.erlang.org/doc/man/crypto#crypto_one_time-4">Erlang crypto documentation</a> for
+additional details about these two functions.</p>
+<blockquote>
+<div><p>Note: mbedTLS doesn’t support padding for ciphers other than CCB, so block size must be accounted
+otherwise output will be truncated.</p>
+</div></blockquote>
 </section>
 </section>
 <section id="esp32-specific-apis">
