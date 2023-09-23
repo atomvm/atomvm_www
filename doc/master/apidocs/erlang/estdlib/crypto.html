@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module crypto &mdash; AtomVM 0.6.0-alpha.1+git.7f814f6e documentation</title>
+  <title>Module crypto &mdash; AtomVM 0.6.0-alpha.1+git.89bb82a9 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -139,6 +139,30 @@
 <p><a name="types"></a></p>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<section id="cipher-iv">
+<h3><a name="type-cipher_iv">cipher_iv()</a><a class="headerlink" href="#cipher-iv" title="Permalink to this heading"></a></h3>
+<pre><code>
+cipher_iv() = aes_128_cbc | aes_192_cbc | aes_256_cbc | aes_128_cfb128 | aes_192_cfb128 | aes_256_cfb128 | aes_128_ctr | aes_192_ctr | aes_256_ctr
+</code></pre>
+</section>
+<section id="cipher-no-iv">
+<h3><a name="type-cipher_no_iv">cipher_no_iv()</a><a class="headerlink" href="#cipher-no-iv" title="Permalink to this heading"></a></h3>
+<pre><code>
+cipher_no_iv() = aes_128_ecb | aes_192_ecb | aes_256_ecb
+</code></pre>
+</section>
+<section id="crypto-opt">
+<h3><a name="type-crypto_opt">crypto_opt()</a><a class="headerlink" href="#crypto-opt" title="Permalink to this heading"></a></h3>
+<pre><code>
+crypto_opt() = {encrypt, boolean()} | {padding, <a href="#type-padding">padding()</a>}
+</code></pre>
+</section>
+<section id="crypto-opts">
+<h3><a name="type-crypto_opts">crypto_opts()</a><a class="headerlink" href="#crypto-opts" title="Permalink to this heading"></a></h3>
+<pre><code>
+crypto_opts() = [<a href="#type-crypto_opt">crypto_opt()</a>]
+</code></pre>
+</section>
 <section id="digest">
 <h3><a name="type-digest">digest()</a><a class="headerlink" href="#digest" title="Permalink to this heading"></a></h3>
 <pre><code>
@@ -150,17 +174,47 @@ digest() = binary()
 <pre><code>
 hash_algorithm() = md5 | sha | sha224 | sha256 | sha384 | sha512
 </code></pre>
+</section>
+<section id="padding">
+<h3><a name="type-padding">padding()</a><a class="headerlink" href="#padding" title="Permalink to this heading"></a></h3>
+<pre><code>
+padding() = none | pkcs_padding
+</code></pre>
 <p><a name="index"></a></p>
 </section>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#hash-2">hash/2</a></td><td>    Hash data using a specified hash algorithm.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#crypto_one_time-4">crypto_one_time/4</a></td><td>    Encrypted/decrypt data using given cipher and key.</td></tr><tr><td valign="top"><a href="#crypto_one_time-5">crypto_one_time/5</a></td><td>    Encrypted/decrypt data using given cipher, key, IV.</td></tr><tr><td valign="top"><a href="#hash-2">hash/2</a></td><td>    Hash data using a specified hash algorithm.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
 <h2>Function Details<a class="headerlink" href="#function-details" title="Permalink to this heading"></a></h2>
+<p><a name="crypto_one_time-4"></a></p>
+<section id="crypto-one-time-4">
+<h3>crypto_one_time/4<a class="headerlink" href="#crypto-one-time-4" title="Permalink to this heading"></a></h3>
+<pre><code>
+crypto_one_time(Cipher::<a href="#type-cipher_no_iv">cipher_no_iv()</a>, Key::iodata(), Data::iodata(), FlagOrOptions::<a href="#type-crypto_opts">crypto_opts()</a>) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Cipher</span></code>: a supported cipher<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the encryption / decryption key<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: to be crypted or encrypted<br /><code class="docutils literal notranslate"><span class="pre">FlagOrOptions</span></code>: either just true for encryption (or false for decryption), or a proplist
+for any additional option<br /></p>
+<p>returns: Returns crypted or encrypted data.</p>
+<p>Encrypted/decrypt data using given cipher and key</p>
+<p><a name="crypto_one_time-5"></a></p>
+</section>
+<section id="crypto-one-time-5">
+<h3>crypto_one_time/5<a class="headerlink" href="#crypto-one-time-5" title="Permalink to this heading"></a></h3>
+<pre><code>
+crypto_one_time(Cipher::<a href="#type-cipher_iv">cipher_iv()</a>, Key::iodata(), IV::iodata(), Data::iodata(), FlagOrOptions::<a href="#type-crypto_opts">crypto_opts()</a>) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Cipher</span></code>: a supported cipher that makes use of IV<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the encryption / decryption key<br /><code class="docutils literal notranslate"><span class="pre">IV</span></code>: an initialization vector<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: to be crypted or encrypted<br /><code class="docutils literal notranslate"><span class="pre">FlagOrOptions</span></code>: either just true for encryption (or false for decryption), or a proplist
+for any additional option such as padding.<br /></p>
+<p>returns: Returns crypted or encrypted data.</p>
+<p>Encrypted/decrypt data using given cipher, key, IV.</p>
 <p><a name="hash-2"></a></p>
+</section>
 <section id="hash-2">
 <h3>hash/2<a class="headerlink" href="#hash-2" title="Permalink to this heading"></a></h3>
 <pre><code>
