@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Types &mdash; AtomVM 0.6.0-alpha.1+git.13b48bdd documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/types.html" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MACROS" href="macros.html" />
+    <link rel="prev" title="Data Strucures" href="data_structures.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                fix-module-loading-lock
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example-programs.html">Example Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../atomvm-internals.html">AtomVM Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api-reference-documentation.html">API Reference Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../api-reference-documentation.html#atomvm-c-internal-libraries">AtomVM ‘C’ Internal Libraries</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../c_api_docs.html">libAtomVM</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="data_structures.html">Data Strucures</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="macros.html">MACROS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../c_api_docs.html#libatomvm-source-files">libAtomVM Source Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../api-reference-documentation.html">API Reference Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../c_api_docs.html">libAtomVM</a></li>
+      <li class="breadcrumb-item active">Types</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="types">
+<h1>Types<a class="headerlink" href="#types" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410AtomString">
+<span id="_CPPv310AtomString"></span><span id="_CPPv210AtomString"></span><span id="AtomString"></span><span class="target" id="atom_8h_1ad65688322910ef2b4658ffac1f9d8b81"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">AtomString</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv411avm_float_t">
+<span id="_CPPv311avm_float_t"></span><span id="_CPPv211avm_float_t"></span><span id="avm_float_t"></span><span class="target" id="term__typedef_8h_1a5437f0376d8656682c0f780435836d2b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">double</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avm_float_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv411avm_int64_t">
+<span id="_CPPv311avm_int64_t"></span><span id="_CPPv211avm_int64_t"></span><span id="avm_int64_t"></span><span class="target" id="term__typedef_8h_1a31523cec641956b7718202cff7615cdf"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avm_int64_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv49avm_int_t">
+<span id="_CPPv39avm_int_t"></span><span id="_CPPv29avm_int_t"></span><span id="avm_int_t"></span><span class="target" id="term__typedef_8h_1a48b57dd60b663632fb7fd748aa0574f5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">intptr_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avm_int_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412avm_uint64_t">
+<span id="_CPPv312avm_uint64_t"></span><span id="_CPPv212avm_uint64_t"></span><span id="avm_uint64_t"></span><span class="target" id="term__typedef_8h_1a706412ebf2d91cc584ba37354de7fa03"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avm_uint64_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410avm_uint_t">
+<span id="_CPPv310avm_uint_t"></span><span id="_CPPv210avm_uint_t"></span><span id="avm_uint_t"></span><span class="target" id="term__typedef_8h_1a29e710c3900a880d8017c4da2a2de810"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uintptr_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avm_uint_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv416avmpack_fold_fun">
+<span id="_CPPv316avmpack_fold_fun"></span><span id="_CPPv216avmpack_fold_fun"></span><span id="avmpack_fold_fun"></span><span class="target" id="avmpack_8h_1a6c4e59ae55feeb84bf748db015dd72ad"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_fold_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">section_size</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">beam_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_name</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd><p>callback function for AVMPack section fold. </p>
+<p>Instances of this function are supplied to the avmpack_fold function, in order to provide a callback mechanism for folding over the contents of the AVM binary. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param accum<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The accumulator supplied by the application. </p>
+</dd>
+<dt class="field-even">Param section_ptr<span class="colon">:</span></dt>
+<dd class="field-even"><p>a pointer to the start of the AVM section (including the module header). </p>
+</dd>
+<dt class="field-odd">Param section_size<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the size of the entire section (including the module header). </p>
+</dd>
+<dt class="field-even">Param beam_ptr<span class="colon">:</span></dt>
+<dd class="field-even"><p>the start of the beam module portion of the section. This pointers starts immediately after the (aligned) header. </p>
+</dd>
+<dt class="field-odd">Param flags<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the section flags, as defined in the module header. </p>
+</dd>
+<dt class="field-even">Param section_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>the section name, as defined in the module header. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an accumulator, which will be supplied to the next call to this function, and eventually returned from the avmpack_fold function. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv47CondVar">
+<span id="_CPPv37CondVar"></span><span id="_CPPv27CondVar"></span><span id="CondVar"></span><span class="target" id="smp_8h_1a0e72a06675546a6f68cb0375fe524dd9"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="files/smp.h.html#_CPPv47CondVar" title="CondVar"><span class="n"><span class="pre">CondVar</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CondVar</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv46dreg_t">
+<span id="_CPPv36dreg_t"></span><span id="_CPPv26dreg_t"></span><span id="dreg_t"></span><span class="target" id="opcodesswitch_8h_1a9b520993d1f9ee8cf28f76acd5131b42"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dreg_t</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412ERL_NIF_TERM">
+<span id="_CPPv312ERL_NIF_TERM"></span><span id="_CPPv212ERL_NIF_TERM"></span><span id="ERL_NIF_TERM"></span><span class="target" id="erl__nif_8h_1ad97421d256b5163f2ad3facac2e29746"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ERL_NIF_TERM</span></span></span><br /></dt>
+<dd><p>A term. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv49ErlNifEnv">
+<span id="_CPPv39ErlNifEnv"></span><span id="_CPPv29ErlNifEnv"></span><span id="ErlNifEnv"></span><span class="target" id="erl__nif_8h_1a5ae5f77a9a9ac00d5094bba1b002655a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifEnv</span></span></span><br /></dt>
+<dd><p>Opaque environment, passed to nifs. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv411ErlNifEvent">
+<span id="_CPPv311ErlNifEvent"></span><span id="_CPPv211ErlNifEvent"></span><span id="ErlNifEvent"></span><span class="target" id="erl__nif_8h_1afcb0b7056f9c9f16e885abb98c5ede9e"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifEvent</span></span></span><br /></dt>
+<dd><p>Selectable event. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv49ErlNifPid">
+<span id="_CPPv39ErlNifPid"></span><span id="_CPPv29ErlNifPid"></span><span id="ErlNifPid"></span><span class="target" id="erl__nif_8h_1a82320f71731e5bab1d5187e536ed8177"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifPid</span></span></span><br /></dt>
+<dd><p>a pid </p>
+<p>We currently only handle local pids. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418ErlNifResourceDtor">
+<span id="_CPPv318ErlNifResourceDtor"></span><span id="_CPPv218ErlNifResourceDtor"></span><span id="ErlNifResourceDtor"></span><span class="target" id="erl__nif_8h_1adca45bb8b19726480af47eb7ec598348"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifResourceDtor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">caller_env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">obj</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Destructor callback. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418ErlNifResourceStop">
+<span id="_CPPv318ErlNifResourceStop"></span><span id="_CPPv218ErlNifResourceStop"></span><span id="ErlNifResourceStop"></span><span class="target" id="erl__nif_8h_1ab8519109623a2843ee34ecd07b9dc3a8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifResourceStop</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">caller_env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">obj</span></span>, <a class="reference internal" href="files/erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_direct_call</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Select stop callback. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv418ErlNifResourceType">
+<span id="_CPPv318ErlNifResourceType"></span><span id="_CPPv218ErlNifResourceType"></span><span id="ErlNifResourceType"></span><span class="target" id="erl__nif_8h_1ad4034fff19f7e190b2ce89f7ed148e4e"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv412ResourceType" title="ResourceType"><span class="n"><span class="pre">ResourceType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ErlNifResourceType</span></span></span><br /></dt>
+<dd><p>Opaque resource type. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv415event_handler_t">
+<span id="_CPPv315event_handler_t"></span><span id="_CPPv215event_handler_t"></span><span id="event_handler_t"></span><span class="target" id="sys_8h_1aa264b48d0e98aa3fbf7255b3958dd3fc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="files/sys.h.html#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_handler_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="files/sys.h.html#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd><p>Event handlers (for ports) </p>
+<p>The event handler is called from the scheduler thread but outside any process. It can send messages to processes using <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message</span></code> function.</p>
+<p>Result of this callback alters the list of handlers which is locked for writing when it is called. It can:<ul class="simple">
+<li><p>return <code class="docutils literal notranslate"><span class="pre">listener</span></code>, in which case the list is not modified</p></li>
+<li><p>return <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, in which case the entry is removed. The callback is responsible for freeing the listener.</p></li>
+<li><p>return another listener, in which case the current listener is replaced by the other listener. The callback is responsible for freeing the previous listener if it is no longer needed.</p></li>
+</ul>
+</p>
+<p>Appending a listener is also possible by altering the list head.</p>
+<p>This callback is defined for platforms using <code class="docutils literal notranslate"><a class="reference internal" href="index.html#listeners_8h"><span class="std std-ref"><span class="pre">listeners.h</span></span></a></code> header and can be ignored by others.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param glb<span class="colon">:</span></dt>
+<dd class="field-odd"><p>global context </p>
+</dd>
+<dt class="field-even">Param listener<span class="colon">:</span></dt>
+<dd class="field-even"><p>the current listener </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>NULL if the current listener should be removed, listener if it should be kept or another listener if it should be replaced. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv413EventListener">
+<span id="_CPPv313EventListener"></span><span id="_CPPv213EventListener"></span><span id="EventListener"></span><span class="target" id="sys_8h_1ac544ff53d6f7affdcc93e58538a1702a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="files/sys.h.html#_CPPv413EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EventListener</span></span></span><br /></dt>
+<dd><p>Event listener. </p>
+<p>An event listener structure should be defined by the platform. Event listeners belong to the <code class="docutils literal notranslate"><a class="reference internal" href="index.html#struct_global_context_1a9219a7e5d9396ea0141e1612cf5cff48"><span class="std std-ref"><span class="pre">GlobalContext.listeners</span></span></a></code> synchronized list. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410func_ptr_t">
+<span id="_CPPv310func_ptr_t"></span><span id="_CPPv210func_ptr_t"></span><span id="func_ptr_t"></span><span class="target" id="utils_8h_1a770f699d7bfc60dfdd92e3c296fc55cd"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">func_ptr_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv413GlobalContext">
+<span id="_CPPv313GlobalContext"></span><span id="_CPPv213GlobalContext"></span><span id="GlobalContext"></span><span class="target" id="memory_8h_1ae21a02a8cb159bd3d9eeba3a1dc89580"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv44Heap">
+<span id="_CPPv34Heap"></span><span id="_CPPv24Heap"></span><span id="Heap"></span><span class="target" id="mailbox_8h_1a705af815969c97892c0aaaa658f6c88c"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Heap</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv412HeapFragment">
+<span id="_CPPv312HeapFragment"></span><span id="_CPPv212HeapFragment"></span><span id="HeapFragment"></span><span class="target" id="memory_8h_1a72e25f246c00c73366703f9e45899906"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv412HeapFragment" title="HeapFragment"><span class="n"><span class="pre">HeapFragment</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HeapFragment</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv414MailboxMessage">
+<span id="_CPPv314MailboxMessage"></span><span id="_CPPv214MailboxMessage"></span><span id="MailboxMessage"></span><span class="target" id="mailbox_8h_1ae9c3e2d3b281f99211e8c269fc51ad89"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414MailboxMessage" title="MailboxMessage"><span class="n"><span class="pre">MailboxMessage</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MailboxMessage</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv47Message">
+<span id="_CPPv37Message"></span><span id="_CPPv27Message"></span><span id="Message"></span><span class="target" id="mailbox_8h_1a82fffef6ac8d8a796ab35b7d6a7a0dcb"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv47Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Message</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv46Module">
+<span id="_CPPv36Module"></span><span id="_CPPv26Module"></span><span id="Module"></span><span class="target" id="exportedfunction_8h_1af3a26d1aa4a6eb8196181f1b6bab5ff7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv45Mutex">
+<span id="_CPPv35Mutex"></span><span id="_CPPv25Mutex"></span><span id="Mutex"></span><span class="target" id="smp_8h_1a1fdb53d93342fbedcbbec76e6b3ec87f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="files/smp.h.html#_CPPv45Mutex" title="Mutex"><span class="n"><span class="pre">Mutex</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Mutex</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv416native_handler_f">
+<span id="_CPPv316native_handler_f"></span><span id="_CPPv216native_handler_f"></span><span id="native_handler_f"></span><span class="target" id="context_8h_1ab8155e89c776ff9773e36caf85f7d860"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv419NativeHandlerResult" title="NativeHandlerResult"><span class="n"><span class="pre">NativeHandlerResult</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">native_handler_f</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv419NativeHandlerResult">
+<span id="_CPPv319NativeHandlerResult"></span><span id="_CPPv219NativeHandlerResult"></span><span id="NativeHandlerResult"></span><span class="target" id="context_8h_1af03210f09c25e2a89b1d2b4ae8e670e2"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv419NativeHandlerResult" title="NativeHandlerResult"><span class="n"><span class="pre">NativeHandlerResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NativeHandlerResult</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv47NifImpl">
+<span id="_CPPv37NifImpl"></span><span id="_CPPv27NifImpl"></span><span id="NifImpl"></span><span class="target" id="exportedfunction_8h_1ae954446dc6fccb026fcee45aaf13a34f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">NifImpl</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="term_8h_1ace4b16a7115bc3936655d1b0936210f6"></span><span class="sig-name descname"><span class="pre">int(*</span> <span class="pre">printer_function_t</span> <span class="pre">)(PrinterFun</span> <span class="pre">*fun,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*fmt,...)</span> <span class="pre">PRINTF_FORMAT_ARGS(2</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv410PrinterFun">
+<span id="_CPPv310PrinterFun"></span><span id="_CPPv210PrinterFun"></span><span id="PrinterFun"></span><span class="target" id="term_8h_1a8142fcb1f62b21f337b44488f5c1d717"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv410PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PrinterFun</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv46RWLock">
+<span id="_CPPv36RWLock"></span><span id="_CPPv26RWLock"></span><span id="RWLock"></span><span class="target" id="atomshashtable_8h_1ad83aebd0296d168d4ad23b7d68a7f67b"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="files/atomshashtable.h.html#_CPPv46RWLock" title="RWLock"><span class="n"><span class="pre">RWLock</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">RWLock</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv48SpinLock">
+<span id="_CPPv38SpinLock"></span><span id="_CPPv28SpinLock"></span><span id="SpinLock"></span><span class="target" id="smp_8h_1a9322c4b270e68b672cc60efef7dc5c27"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv48SpinLock" title="SpinLock"><span class="n"><span class="pre">SpinLock</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SpinLock</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp" id="_CPPv44term">
+<span id="_CPPv34term"></span><span id="_CPPv24term"></span><span id="term"></span><span class="target" id="term__typedef_8h_1a603769ce1e8eeb1faa458d7e6cf904d8"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="n"><span class="pre">uintptr_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term</span></span></span><br /></dt>
+<dd><p>A value of any data type, types bigger than a machine word will require some additional space on heap. </p>
+</dd></dl>
+
+<dl class="cpp type">
+<dt class="sig sig-object cpp">
+<span class="target" id="timer__list_8h_1aa3bd5838f0b4745fe8d6cb5a133a51e9"></span><span class="sig-name descname"><span class="pre">void()</span> <span class="pre">timer_list_callback_t</span> <span class="pre">(struct</span> <span class="pre">TimerListItem</span> <span class="pre">*)</span></span></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_structures.html" class="btn btn-neutral float-left" title="Data Strucures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macros.html" class="btn btn-neutral float-right" title="MACROS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2023, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: fix-module-loading-lock
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+          <dd><a href="/doc/fix-module-loading-lock/">fix-module-loading-lock</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="/doc/master/">master</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.5/">release-0.5</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/fix-module-loading-lock/pdf/AtomVM-fix-module-loading-lock.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/fix-module-loading-lock/epub/AtomVM-fix-module-loading-lock.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
