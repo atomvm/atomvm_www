@@ -12,6 +12,25 @@ We have extracted our example programs into a self-contained and growing github 
 
 Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.
 
+## 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release)
+
+After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!
+
+This pre-view contains many improvements and bug fixes that the AtomVM team has been working on, including SMP support on all multi-core platforms, support for the ESP32-S3, ESP32-C3, and ESP32-S2 chips, and the addition of a very basic rp2040 (a.k.a. Raspberry Pi Pico) port, as well as an emscripten port using nodejs with Wasm to run AtomVM in the browser. See the [Changelog](https://www.atomvm.net/doc/v0.6.0-alpha.0/CHANGELOG.html) for all the improvements, bug fixes, and breaking changes since the 0.5.0 release.
+
+Download images for the ESP32 family are available on the [AtomVM Releases GitHub page](https://github.com/atomvm/AtomVM/releases). Other platforms should consult the [Build Instructions](https://www.atomvm.net/doc/v0.6.0-alpha.0/build-instructions.html) for the
+v0.6.0-alpha.0 release.
+
+The git repository and tarballs of the AtomVM source release for all platforms can be found on our [GitHub AtomVM page](https://github.com/atomvm/AtomVM).
+
+Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the [AtomVM Documentation page](https://www.atomvm.net/doc/v0.6.0-alpha.0/).
+
+We have a growing collection of tools, drivers, and modules available on the [GitHub AtomVM Project page](https://github.com/atomvm).
+
+Many thanks go to (Davide Bettio)[https://github.com/bettio], for creating such a fine work of software, as well as the (contributors)[https://github.com/atomvm/AtomVM/graphs/contributors] and (testers who have helped make this release possible)[https://github.com/atomvm/AtomVM/issues?q=is%3Aissue+is%3Aclosed].
+
+The AtomVM team
+
 ## 2022/03/22 Announcing AtomVM 0.5.0
 
 After many months of work, we are happy to announce version 0.5.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!
@@ -27,4 +46,3 @@ Documentation of the AtomVM virtual machine, including a Getting Started Guide, 
 Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible.
 
 The AtomVM team
-
