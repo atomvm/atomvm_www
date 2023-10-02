@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AtomVM Internals &mdash; AtomVM 0.6.0-alpha.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/atomvm-internals.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Memory Management" href="memory-management.html" />
+    <link rel="prev" title="Build Instructions" href="build-instructions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html">
+            
+              <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                master
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example-programs.html">Example Programs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AtomVM Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-an-abstract-machine">What is an Abstract Machine?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#atomvm-data-structures">AtomVM Data Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-globalcontext">The GlobalContext</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#process-management">Process Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-management">Module Management</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#an-aside-what-s-in-a-hashtable">An Aside: What’s in a HashTable?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#modules">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contexts">Contexts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#runtime-execution-loop">Runtime Execution Loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-loading">Module Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-calls-and-return-values">Function Calls and Return Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exception-handling">Exception Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-scheduler">The Scheduler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mailboxes-and-signals">Mailboxes and signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stacktraces">Stacktraces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#line-numbers">Line Numbers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#the-line-refs-table">The line-refs table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-filenames-table">The filenames table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-line-ref-offsets-list">The line-ref-offsets list</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-stacktraces">Raw Stacktraces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#atomvm-webassembly-port">AtomVM WebAssembly port</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nodejs-environment-build">NodeJS environment build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#web-environment-build">Web environment build</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference-documentation.html">API Reference Documentation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGELOG.html">Changelog</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AtomVM Internals</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <!--
+ Copyright 2021-2022 Fred Dushin <fred@dushin.net>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+-->
+<section id="atomvm-internals">
+<h1>AtomVM Internals<a class="headerlink" href="#atomvm-internals" title="Permalink to this heading"></a></h1>
+<section id="what-is-an-abstract-machine">
+<h2>What is an Abstract Machine?<a class="headerlink" href="#what-is-an-abstract-machine" title="Permalink to this heading"></a></h2>
+<p>AtomVM is an “abstract” or “virtual” machine, in the sense that it simulates, in software, what a physical machine would do when executing machine instructions.  In a normal computing machine (e.g., a desktop computer), machine code instructions are generated by a tool called a compiler, allowing an application developer to write software in a high-level language (such as C).  (In rare cases, application developers will write instructions in assembly code, which is closer to the actual machine instructions, but which still requires a translation step, called “assembly”, to translate the assembly code into actual machine code.)  Machine code instructions are executed in hardware using the machine’s Central Processing Unit (CPU), which is specifically designed to efficiently execute machine instructions targeted for the specific machine architecture (e.g., Intel x86, ARM, Apple M-series, etc.)  As a result, machine code instructions are typically tightly packed, encoded instructions that require minimum effort (on the part of the machine) to unpack an interpret.  These a low level instructions unsuited for human interpretation, or at least for most humans.</p>
+<p>AtomVM and virtual machines generally (including, for example, the Java Virtual Machine) perform a similar task, except that i) the instructions are not machine code instructions, but rather what are typically called “bytecode” or sometimes “opcode” instructions; and ii) the generated instructions are themselves executed by a runtime execution engine written in software, a so-called “virtual” or sometimes “abstract” machine.  These bytecode instructions are generated by a compiler tailored specifically for the virtual machine.  For example, the <code class="docutils literal notranslate"><span class="pre">javac</span></code> compiler is used to translate Java source code into Java VM bytecode, and the <code class="docutils literal notranslate"><span class="pre">erlc</span></code> compiler is used to translate Erlang source code into BEAM opcodes.</p>
+<p>AtomVM is an abstract machine designed to implement the BEAM instruction set, the 170+ (and growing) set of virtual machine instructions implemented in the Erlang/OTP BEAM.</p>
+<blockquote>
+<div><p>Note that there is no abstract specification of the BEAM abstract machine and instruction set.  Instead, the BEAM implementation by the Erlang/OTP team is the definitive specification of its behavior.</p>
+</div></blockquote>
+<p>At a high level, the AtomVM abstract machine is responsible for:</p>
+<ul class="simple">
+<li><p>Loading and execution of the BEAM opcodes encoded in one or more BEAM files;</p></li>
+<li><p>Managing calls to internal and external functions, handling return values, exceptions, and crashes;</p></li>
+<li><p>Creation and destruction of Erlang “processes” within the AtomVM memory space, and communication between processes via message passing;</p></li>
+<li><p>Memory management (allocation and reclamation) of memory associated with Erlang “processes”</p></li>
+<li><p>Pre-emptive scheduling and interruption of Erlang “processes”</p></li>
+<li><p>Execution of user-defined native code (Nifs and Ports)</p></li>
+<li><p>Interfacing with the host operating system (or facsimile)</p></li>
+</ul>
+<p>This document provides a description of the AtomVM abstract machine, including its architecture and the major components and data structures that form the system.  It is intended for developers who want to get involved in bug fixing or implementing features for the VM, as well as for anyone interested in virtual machine internals targeted for BEAM-based languages, such as Erlang or Elixir.</p>
+</section>
+<section id="atomvm-data-structures">
+<h2>AtomVM Data Structures<a class="headerlink" href="#atomvm-data-structures" title="Permalink to this heading"></a></h2>
+<p>This section describes AtomVM internal data structures that are used to manage the load and runtime state of the virtual machine.  Since AtomVM is written in C, this discussion will largely be in the context of native C data structures (i.e., <code class="docutils literal notranslate"><span class="pre">structs</span></code>).  The descriptions will start at a fairly high level but drill down to some detail about the data structures, themselves.  This narrative is important, because memory is limited on the target architectures for AtomVM (i.e., micro-controllers), and it is important to always be aware of how memory is organized and used in a way that is as space-efficient as possible.</p>
+<section id="the-globalcontext">
+<h3>The GlobalContext<a class="headerlink" href="#the-globalcontext" title="Permalink to this heading"></a></h3>
+<p>We start with the top level data structure, the <code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code> struct.  This object is a singleton object (currently, and for the foreseeable future), and represents the root of all data structures in the virtual machine.  It is in essence in 1..1 correspondence with instances of the virtual machine.</p>
+<blockquote>
+<div><p>Note. Given the design of the system, it is theoretically possible to run multiple instances of the AtomVM in one process space.  However, no current deployments make use of this capability.</p>
+</div></blockquote>
+<p>In order to simplify the exposition of this structure, we break the fields of the structure into manageable subsets:</p>
+<ul class="simple">
+<li><p>Process management – fields associated with the management of Erlang (lightweight) “processes”</p></li>
+<li><p>Atoms management – fields associated with the storage of atoms</p></li>
+<li><p>Module Management – fields associated with the loading of BEAM modules</p></li>
+<li><p>Reference Counted Binaries – fields associated with the storage of binary data shared between processes</p></li>
+<li><p>Other data structures</p></li>
+</ul>
+<p>These subsets are described in more detail below.</p>
+<blockquote>
+<div><p>Note.  Not all fields of the <code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code> structure are described in this document.</p>
+</div></blockquote>
+<section id="process-management">
+<h4>Process Management<a class="headerlink" href="#process-management" title="Permalink to this heading"></a></h4>
+<p>As a BEAM implementation, AtomVM must be capable of spawning and managing the lifecycle of Erlang lightweight processes.  Each of these processes is encapsulated in the <code class="docutils literal notranslate"><span class="pre">Context</span></code> structure, described in more detail in subsequent sections.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code> structure maintains a list of running processes and contains the following fields for managing the running Erlang processes in the VM:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">processes_table</span></code> the list of all processes running in the system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">waiting_processes</span></code> the subset of processes that are waiting to run (e.g., waiting for a message or timeout condition).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">running_processes</span></code> the subset of processes that are currently running.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ready_processes</span></code> the subset of processes that are ready to run.</p></li>
+</ul>
+<p>Processes are in either <code class="docutils literal notranslate"><span class="pre">waiting_processes</span></code>, <code class="docutils literal notranslate"><span class="pre">running_processes</span></code> or <code class="docutils literal notranslate"><span class="pre">ready_processes</span></code>.  A running process can technically be moved to the ready list while running to signify that if it yields, it will be eligible for being run again, typically if it receives a message.  Also, native handlers (ports) are never moved to the <code class="docutils literal notranslate"><span class="pre">running_processes</span></code> list but are in the <code class="docutils literal notranslate"><span class="pre">waiting_processes</span></code> list when they run (and can be moved to <code class="docutils literal notranslate"><span class="pre">ready_processes</span></code> list if they are made ready while running).</p>
+<p>Each of these fields are doubly-linked list (ring) structures, i.e, structs containing a <code class="docutils literal notranslate"><span class="pre">prev</span></code> and <code class="docutils literal notranslate"><span class="pre">next</span></code> pointer field.  The <code class="docutils literal notranslate"><span class="pre">Context</span></code> data structure begins with two such structures, the first of which links the <code class="docutils literal notranslate"><span class="pre">Context</span></code> struct in the <code class="docutils literal notranslate"><span class="pre">processes_table</span></code> field, and the second of which is used for either the <code class="docutils literal notranslate"><span class="pre">waiting_processes</span></code>, the <code class="docutils literal notranslate"><span class="pre">ready_processes</span></code> or the <code class="docutils literal notranslate"><span class="pre">running_processes</span></code> field.</p>
+<blockquote>
+<div><p>Note.  The C programming language treats structures in memory as contiguous sequences of fields of given types.  Structures have no hidden pramble data, such as you might find in C++ or who knows what in even higher level languages.  The size of a struct, therefore, is determined simply by the size of the component fields.</p>
+</div></blockquote>
+<p>The relationship between the <code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code> fields that manage BEAM processes and the <code class="docutils literal notranslate"><span class="pre">Context</span></code> data structures that represent the processes, themselves, is illustrated in the following diagram:</p>
+<p><img alt="GlobalContext Processes" src="_images/globalcontext-processes.svg" /></p>
+<blockquote>
+<div><p>Note.  The <code class="docutils literal notranslate"><span class="pre">Context</span></code> data structure is described in more detail below.</p>
+</div></blockquote>
+</section>
+<section id="module-management">
+<h4>Module Management<a class="headerlink" href="#module-management" title="Permalink to this heading"></a></h4>
+</section>
+<section id="an-aside-what-s-in-a-hashtable">
+<h4>An Aside: What’s in a HashTable?<a class="headerlink" href="#an-aside-what-s-in-a-hashtable" title="Permalink to this heading"></a></h4>
+</section>
+</section>
+<section id="modules">
+<h3>Modules<a class="headerlink" href="#modules" title="Permalink to this heading"></a></h3>
+</section>
+<section id="contexts">
+<h3>Contexts<a class="headerlink" href="#contexts" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="runtime-execution-loop">
+<h2>Runtime Execution Loop<a class="headerlink" href="#runtime-execution-loop" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-loading">
+<h2>Module Loading<a class="headerlink" href="#module-loading" title="Permalink to this heading"></a></h2>
+</section>
+<section id="function-calls-and-return-values">
+<h2>Function Calls and Return Values<a class="headerlink" href="#function-calls-and-return-values" title="Permalink to this heading"></a></h2>
+</section>
+<section id="exception-handling">
+<h2>Exception Handling<a class="headerlink" href="#exception-handling" title="Permalink to this heading"></a></h2>
+</section>
+<section id="the-scheduler">
+<h2>The Scheduler<a class="headerlink" href="#the-scheduler" title="Permalink to this heading"></a></h2>
+<p>In SMP builds, AtomVM runs one scheduler thread per core.  Scheduler threads are actually started on demand.  The number of scheduler threads can be queried with <code class="docutils literal notranslate"><span class="pre">erlang:system_info/1</span></code> and be modified with <code class="docutils literal notranslate"><span class="pre">erlang:system_flag/2</span></code>.  All scheduler threads are considered equal and there is no notion of main thread except when shutting down (main thread is shut down last).</p>
+<p>Each scheduler thread picks a ready process and execute it until it yields.  Erlang processes yield when they are waiting (for a message) and after a number of reductions elapsed.  Native processes yield when they are done consuming messages (when the handler returns).</p>
+<p>Once a scheduler thread is done executing a process, if no other thread is waiting into <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>, it calls <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> with a timeout that correspond to the time to wait for next execution.  If there are ready processes, the timeout is 0.  If there is no ready process, this scheduler thread will wait into <code class="docutils literal notranslate"><span class="pre">sys_poll_event</span></code> and depending on the platform implementation, the CPU usage can drop.</p>
+<p>If there already is one thread in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>, other scheduler threads pick the next ready process and if there is none, wait.  Other scheduler threads can also interrupt the wait in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> if a process is made ready to run.  They do so using platform function <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code>.</p>
+</section>
+<section id="mailboxes-and-signals">
+<h2>Mailboxes and signals<a class="headerlink" href="#mailboxes-and-signals" title="Permalink to this heading"></a></h2>
+<p>Erlang processes receive messages in a mailbox.  The mailbox is the interface with other processes.</p>
+<p>When a sender process sends a message to a recipient process, the message is first enqueued into an outer mailbox.  The recipient process eventually moves all messages from the outer mailbox to the inner mailbox.  The reason for the inner and outer mailbox is to use lock-free data structures using atomic CAS operations.</p>
+<p>Sometimes, Erlang processes need to query information from other processes but without sending a regular message, for example when using <code class="docutils literal notranslate"><span class="pre">process_info/1,2</span></code> nif.  This is handled by signals.  Signals are special messages that are enqueued in the outer mailbox of a process.  Signals are processed by the recipient process when regular messages from the outer mailbox are moved to the inner mailbox.  Signal processing code is part of the main loop and transparent to recipient processes.  Both native handlers and erlang processes can receive signals.  Signals are also used to run specific operation on other processes that cannot be done from another thread.  For example, signals are used to perform garbage collection on another process.</p>
+<p>When an Erlang process calls a nif that requires such an information from another process such as <code class="docutils literal notranslate"><span class="pre">process_info/1,2</span></code>, the nif returns a special value and set the Trap flag on the calling process.  The calling process is effectively blocked until the other process is scheduled and the information is sent back using another signal message.  This mechanism can also be used by nifs that want to block until a condition is true.</p>
+</section>
+<section id="stacktraces">
+<h2>Stacktraces<a class="headerlink" href="#stacktraces" title="Permalink to this heading"></a></h2>
+<p>Stacktraces are computed from information gathered at load time from BEAM modules loaded into the application, together with information in the runtime stack that is maintained during the execution of a program.  In addition, if a BEAM file contains a <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk, additional information is added to stack traces, including the file name (as defined at compile time), as well as the line number of a function call.</p>
+<blockquote>
+<div><p>Note.  Adding line information to a BEAM file adds non-trivial memory overhead to applications and should only be used when necessary (e.g., during the development process).  For applications to make the best use of memory in tightly constrained environments, packagers should consider removing line information all together from BEAM files and rely instead on logging or other mechanisms for diagnosing problems in the field.</p>
+</div></blockquote>
+<p>Newcomers to Erlang may find stacktraces slightly confusing, because some optimizations taken by the Erlang compiler and runtime can result in stack frames “missing” from stack traces.  For example, tail-recursive function calls, as well as function calls that occur as the last expression in a function clause, don’t involve the creation of frames in the runtime stack, and consequently will not appear in a stacktrace.</p>
+<section id="line-numbers">
+<h3>Line Numbers<a class="headerlink" href="#line-numbers" title="Permalink to this heading"></a></h3>
+<p>Including file and line number information in stacktraces adds considerable overhead to both the BEAM file data, as well as the memory consumed at module load time.  The data structures used to track line numbers and file names are described below and are only created if the associated BEAM file contains a <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk.</p>
+<section id="the-line-refs-table">
+<h4>The line-refs table<a class="headerlink" href="#the-line-refs-table" title="Permalink to this heading"></a></h4>
+<p>The line-refs table is an array of 16-bit integers, mapping line references (as they occur in BEAM instructions) to the actual line numbers in a file.  (Internally, BEAM instructions do not reference line numbers directly, but instead are indirected through a line index).  This table is stored on the <code class="docutils literal notranslate"><span class="pre">Module</span></code> structure.</p>
+<p>This table is populated when the BEAM file is loaded.  The table is created from information in the <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in the BEAM file, if it exists.  Note that if there is no <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in a BEAM file, this table is not created.</p>
+<p>The memory cost of this table is <code class="docutils literal notranslate"><span class="pre">num_line_refs</span> <span class="pre">*</span> <span class="pre">2</span></code> bytes, for each loaded module, or 0, if there is no <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in the associated BEAM file.</p>
+</section>
+<section id="the-filenames-table">
+<h4>The filenames table<a class="headerlink" href="#the-filenames-table" title="Permalink to this heading"></a></h4>
+<p>The filenames table is a table of (usually only 1?) file name.  This table maps filename indices to <code class="docutils literal notranslate"><span class="pre">ModuleFilename</span></code> structures, which is essentially a pointer and a length (of type <code class="docutils literal notranslate"><span class="pre">size_t</span></code>).  This table generally only contains 1 entry, the file name of the Erlang source code module from which the BEAM file was generated.  This table is stored on the <code class="docutils literal notranslate"><span class="pre">Module</span></code> structure.</p>
+<p>Note that a <code class="docutils literal notranslate"><span class="pre">ModuleFilename</span></code> structure points to data directly in the <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk of the BEAM file.  Therefore, for ports of AtomVM that memory-map BEAM file data (e.g., ESP32), the actual file name data does not consume any memory.</p>
+<p>The memory cost of this table is <code class="docutils literal notranslate"><span class="pre">num_filenames</span> <span class="pre">*</span> <span class="pre">sizeof(struct</span> <span class="pre">ModuleFilename)</span></code>, where <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">ModuleFilename</span></code> is a pointer and length, for each loaded module, or 0, if there is no <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in the associated BEAM file.</p>
+</section>
+<section id="the-line-ref-offsets-list">
+<h4>The line-ref-offsets list<a class="headerlink" href="#the-line-ref-offsets-list" title="Permalink to this heading"></a></h4>
+<p>The line-ref-offsets list is a sequence of <code class="docutils literal notranslate"><span class="pre">LineRefOffset</span></code> structures, where each structure contains a ListHead (for list book-keeping), a 16-bit line-ref, and an unsigned integer value designating the code offset at which the line reference occurs in the code chunk of the BEAM file.  This list is stored on the <code class="docutils literal notranslate"><span class="pre">Module</span></code> structure.</p>
+<p>This list is populated at code load time.  When a line reference is encountered during code loading, a <code class="docutils literal notranslate"><span class="pre">LineRefOffset</span></code> structure is allocated and added to the line-ref-offsets list.  This list is used at a later time to find the line number at which a stack frame is called, in a manner described below.</p>
+<p>The memory cost of this list is <code class="docutils literal notranslate"><span class="pre">num_line_refs</span> <span class="pre">*</span> <span class="pre">sizeof(struct</span> <span class="pre">LineRefOffset)</span></code>, for each loaded module, or 0, if there is no <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in the associated BEAM file.</p>
+</section>
+</section>
+<section id="raw-stacktraces">
+<h3>Raw Stacktraces<a class="headerlink" href="#raw-stacktraces" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="atomvm-webassembly-port">
+<h2>AtomVM WebAssembly port<a class="headerlink" href="#atomvm-webassembly-port" title="Permalink to this heading"></a></h2>
+<p>WebAssembly or Wasm port of AtomVM relies on Emscripten SDK and library. Even when SMP is disabled (with <code class="docutils literal notranslate"><span class="pre">-DAVM_DISABLE_SMP=On</span></code>), it uses pthread library to sleep when Erlang processes are not running (to not waste CPU cycles).</p>
+<section id="nodejs-environment-build">
+<h3>NodeJS environment build<a class="headerlink" href="#nodejs-environment-build" title="Permalink to this heading"></a></h3>
+<p>The NodeJS environment build of this port is relatively straightforward, featuring NODERAWFS which means it can access files directly like node does.</p>
+</section>
+<section id="web-environment-build">
+<h3>Web environment build<a class="headerlink" href="#web-environment-build" title="Permalink to this heading"></a></h3>
+<p>The Web environment build of this port is slightly more complex.</p>
+<p>Regarding files, <code class="docutils literal notranslate"><span class="pre">main</span></code> function can load modules (beam or AVM packages) using FetchAPI, which means they can be served by the same HTTP server. This is a fallback and users can preload files using Emscripten <code class="docutils literal notranslate"><span class="pre">file_packager</span></code> tool.</p>
+<p>The port also uses Emscripten’s proxy-to-pthread feature which means AtomVM’s <code class="docutils literal notranslate"><span class="pre">main</span></code> function is run in a web worker. The rationale is the browser thread (or main thread) with WebAssembly cannot run a loop such as AtomVM’s schedulers. Web workers typically cannot manipulate the DOM and do other things that only the browser’s main thread can do. For this purpose, Erlang processes can call <code class="docutils literal notranslate"><span class="pre">emscripten:run_script/2</span></code> function which dispatches the Javascript to execute to the main thread, waiting for completion (with <code class="docutils literal notranslate"><span class="pre">[main_thread]</span></code>) or not waiting for completion  (with <code class="docutils literal notranslate"><span class="pre">[main_thread,</span> <span class="pre">async]</span></code>). Waiting for completion of a script on the main thread does not block the Erlang scheduler, other Erlang processes can be scheduled. Execution of Javascript on the worker thread, however, does block the scheduler.</p>
+<p>Javascript code can also send messages to Erlang processes using <code class="docutils literal notranslate"><span class="pre">call</span></code> and <code class="docutils literal notranslate"><span class="pre">cast</span></code> functions from <code class="docutils literal notranslate"><span class="pre">main.c</span></code>. These functions are actually wrapped in <code class="docutils literal notranslate"><span class="pre">atomvm.pre.js</span></code>. Usage is demonstrated by <code class="docutils literal notranslate"><span class="pre">call_cast.html</span></code> example.</p>
+<p>Cast is straightforward: the message is enqueued and picked up by the scheduler. It is freed when it is processed.</p>
+<p>Call allows Javascript code to wait for the result and is based on Javascript promises (related to <code class="docutils literal notranslate"><span class="pre">async</span></code>/<code class="docutils literal notranslate"><span class="pre">await</span></code> syntax).</p>
+<ul class="simple">
+<li><p>A promise is created (in the browser’s main thread) in a map to prevent Javascript garbage collection (this is done by Emscripten’s promise glue code).</p></li>
+<li><p>An Erlang resource is created to encapsulate the promise so it is properly destroyed when garbage collected</p></li>
+<li><p>A message is enqueued with the resource as well as the registered name of the target process and the content of the message</p></li>
+<li><p>C code returns the handle of the promise (actually the index in the map) to Javascript Module.call wrapper.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Module.call</span></code> wrapper converts the handle into a Promise object and returns it, so Javascript code can await on the promise.</p></li>
+<li><p>A scheduler dequeues the message with the resource, looks up the target process and sends it the resource as a term</p></li>
+<li><p>The target process eventually calls <code class="docutils literal notranslate"><span class="pre">emscripten:promise_resolve/1,2</span></code> or <code class="docutils literal notranslate"><span class="pre">emscripten:promise_reject/1,2</span></code> to resolve or reject the promise.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">emscripten:promise_resolve/1,2</span></code> and <code class="docutils literal notranslate"><span class="pre">emscripten:promise_reject/1,2</span></code> nifs dispatch a message in the browser’s main thread.</p></li>
+<li><p>The dispatched function retrieves the promise from its index, resolves or rejects it, with the value passed to <code class="docutils literal notranslate"><span class="pre">emscripten:promise_resolve/2</span></code> or <code class="docutils literal notranslate"><span class="pre">emscripten:promise_reject/2</span></code> and destroys it.</p></li>
+</ul>
+<p>Values currently can only be integers or strings.</p>
+<p>If the scheduler cannot find the target process, the promise is rejected with “noproc” as a value. As the promise is encapsulated into an Erlang resource, if the resource object’s reference count reaches 0, the promise is rejected with “noproc” as the value.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="build-instructions.html" class="btn btn-neutral float-left" title="Build Instructions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="memory-management.html" class="btn btn-neutral float-right" title="Memory Management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2023, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: master
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+          
+          <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.0/">v0.6.0-alpha.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/test.0.1/">test.0.1</a></dd>
+          
+        
+           <strong> 
+          <dd><a href="/doc/master/">master</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/master/pdf/AtomVM-master.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/master/epub/AtomVM-master.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
