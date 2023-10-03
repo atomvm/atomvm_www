@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.1+git.6a848356 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.1+git.ffa259d1 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -838,9 +838,16 @@ MicroSeconds = erlang:monotonic_time(microsecond).
 {{Year, Month, Day}, {Hour, Minute, Second}} = erlang:universaltime().
 </pre></div>
 </div>
+<p>On some platforms, you can use the <code class="docutils literal notranslate"><span class="pre">atomvm:posix_clock_settime/2</span></code> to set the system time.  Supply a clock id (currently, the only supported clock id is the atom <code class="docutils literal notranslate"><span class="pre">realtime</span></code>) and a time value as a tuple, containing seconds and nanoseconds since the UNIX epoch (midnight, January 1, 1970).  For example,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+SecondsSinceUnixEpoch = ... %% acquire the time
+atomvm:posix_clock_settime(realtime, {SecondsSinceUnixEpoch, 0})
+</pre></div>
+</div>
 <blockquote>
-<div><p>Note.  Setting the system time is done in a platform-specific manner.  For information about how to set system time on the ESP32, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">Network Programming Guide</span></a>.</p>
+<div><p>Note.  This operation is not supported yet on the <code class="docutils literal notranslate"><span class="pre">stm32</span></code> platform.  On most UNIX platforms, you typically need <code class="docutils literal notranslate"><span class="pre">root</span></code> permission to set the system time.</p>
 </div></blockquote>
+<p>On the ESP32 platform, you can use the Wifi network to set the system time automatically.  For information about how to set system time on the ESP32 using SNTP, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">Network Programming Guide</span></a>.</p>
 <p>To convert a time (in seconds, milliseconds, or microseconds from the UNIX epoch) to a date-time, use the <code class="docutils literal notranslate"><span class="pre">calendar:system_time_to_universal_time/2</span></code> function.  For example,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 Milliseconds = ... %% get milliseconds from the UNIX epoch
