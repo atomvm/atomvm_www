@@ -4,14 +4,6 @@ title: News
 permalink: /news/
 ---
 
-## 2022/04/05 AtomVM Example Programs
-
-We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless.
-
-[AtomVM Example Programs](https://github.com/atomvm/atomvm_examples)
-
-Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.
-
 ## 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release)
 
 After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!
@@ -27,9 +19,17 @@ Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, 
 
 We have a growing collection of tools, drivers, and modules available on the [GitHub AtomVM Project page](https://github.com/atomvm).
 
-Many thanks go to (Davide Bettio)[https://github.com/bettio], for creating such a fine work of software, as well as the (contributors)[https://github.com/atomvm/AtomVM/graphs/contributors] and (testers who have helped make this release possible)[https://github.com/atomvm/AtomVM/issues?q=is%3Aissue+is%3Aclosed].
+Many thanks go to [Davide Bettio](https://github.com/bettio), for creating such a fine work of software, as well as the [contributors](https://github.com/atomvm/AtomVM/graphs/contributors) and [testers who have helped make this release possible](https://github.com/atomvm/AtomVM/issues?q=is%3Aissue+is%3Aclosed).
 
 The AtomVM team
+
+## 2022/04/05 AtomVM Example Programs
+
+We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless.
+
+[AtomVM Example Programs](https://github.com/atomvm/atomvm_examples)
+
+Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.
 
 ## 2022/03/22 Announcing AtomVM 0.5.0
 
