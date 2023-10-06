@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.e72d0857 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.1+git.61f4b725 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -101,7 +101,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building-for-raspberry-pi-pico">Building for Raspberry Pi Pico</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps">AtomVM build steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico">AtomVM build steps (Pico)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico-w">AtomVM build steps (Pico-W)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#libatomvm-build-steps">libAtomVM build steps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id6">Running tests</a></li>
 </ul>
@@ -792,12 +793,25 @@ is 8N1 with no flow control.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Elixir</span></code> (optional)</p></li>
 </ul>
 </section>
-<section id="atomvm-build-steps">
-<h3>AtomVM build steps<a class="headerlink" href="#atomvm-build-steps" title="Permalink to this heading"></a></h3>
+<section id="atomvm-build-steps-pico">
+<h3>AtomVM build steps (Pico)<a class="headerlink" href="#atomvm-build-steps-pico" title="Permalink to this heading"></a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/rp2040/
 mkdir build
 cd build
 cmake .. -G Ninja
+ninja
+</pre></div>
+</div>
+<blockquote>
+<div><p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so Pico restarts on error.</p>
+</div></blockquote>
+</section>
+<section id="atomvm-build-steps-pico-w">
+<h3>AtomVM build steps (Pico-W)<a class="headerlink" href="#atomvm-build-steps-pico-w" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd src/platforms/rp2040/
+mkdir build
+cd build
+cmake .. -G Ninja -DPICO_BOARD=pico_w
 ninja
 </pre></div>
 </div>

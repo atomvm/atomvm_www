@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module pico &mdash; AtomVM 0.6.0-alpha.1+git.e72d0857 documentation</title>
+  <title>Module pico &mdash; AtomVM 0.6.0-alpha.1+git.61f4b725 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -137,12 +137,36 @@
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#rtc_set_datetime-1">rtc_set_datetime/1</a></td><td>    Set the datetime on the RTC.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cyw43_arch_gpio_get-1">cyw43_arch_gpio_get/1</a></td><td>    Read a GPIO of the CYW43.</td></tr><tr><td valign="top"><a href="#cyw43_arch_gpio_put-2">cyw43_arch_gpio_put/2</a></td><td>    Write a GPIO of the CYW43.</td></tr><tr><td valign="top"><a href="#rtc_set_datetime-1">rtc_set_datetime/1</a></td><td>    Set the datetime on the RTC.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
 <h2>Function Details<a class="headerlink" href="#function-details" title="Permalink to this heading"></a></h2>
+<p><a name="cyw43_arch_gpio_get-1"></a></p>
+<section id="cyw43-arch-gpio-get-1">
+<h3>cyw43_arch_gpio_get/1<a class="headerlink" href="#cyw43-arch-gpio-get-1" title="Permalink to this heading"></a></h3>
+<pre><code>
+cyw43_arch_gpio_get(GPIO::0..2) -&gt; 0..1
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">GPIO</span></code>: pin to read<br /></p>
+<p>returns: the level of the GPIO pin</p>
+<p>Read a GPIO of the CYW43.
+This function is only available on Pico-W.</p>
+<p><a name="cyw43_arch_gpio_put-2"></a></p>
+</section>
+<section id="cyw43-arch-gpio-put-2">
+<h3>cyw43_arch_gpio_put/2<a class="headerlink" href="#cyw43-arch-gpio-put-2" title="Permalink to this heading"></a></h3>
+<pre><code>
+cyw43_arch_gpio_put(GPIO::0..2, Level::0..1) -&gt; ok
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">GPIO</span></code>: pin to write<br /><code class="docutils literal notranslate"><span class="pre">Level</span></code>: value to write<br /></p>
+<p>Write a GPIO of the CYW43.
+This function is only available on Pico-W. It is typically used to
+drive the on-board LED.</p>
 <p><a name="rtc_set_datetime-1"></a></p>
+</section>
 <section id="rtc-set-datetime-1">
 <h3>rtc_set_datetime/1<a class="headerlink" href="#rtc-set-datetime-1" title="Permalink to this heading"></a></h3>
 <pre><code>
