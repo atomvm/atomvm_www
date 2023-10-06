@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started Guide &mdash; AtomVM 0.6.0-alpha.1+git.a2bdaa7c documentation</title>
+  <title>Getting Started Guide &mdash; AtomVM 0.6.0-alpha.1+git.e72d0857 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -450,8 +450,32 @@ standard libraries (<code class="docutils literal notranslate"><span class="pre"
 <section id="getting-started-on-the-generic-unix-platform">
 <h2>Getting Started on the Generic UNIX platform<a class="headerlink" href="#getting-started-on-the-generic-unix-platform" title="Permalink to this heading"></a></h2>
 <p>AtomVM may be run on UNIX-like platforms using the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command.</p>
-<p>You may specify one or more AVM files on the command line when running the <code class="docutils literal notranslate"><span class="pre">atom</span></code> command.  BEAM modules defined in earlier AVM modules on the command line take higher precedence that BEAM modules included in AVM files later in the argument list.</p>
+<p>You may specify one or more AVM files on the command line when running the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command.  BEAM modules defined in earlier AVM modules on the command line take higher precedence that BEAM modules included in AVM files later in the argument list.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm /path/to/myapp.avm
+</pre></div>
+</div>
+<p>To get the current version of AtomVM, use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> option, e.g.:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm -v
+0.6.1
+</pre></div>
+</div>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-h</span></code> option to get command line help:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm -h
+
+Syntax:
+
+    /usr/local/lib/atomvm/AtomVM [-h] [-v] &lt;path-to-avm-file&gt;+
+
+Options:
+
+    -h         Print this help and exit.
+    -v         Print the AtomVM version and exit.
+
+Supply one or more AtomVM packbeam (.avm) files to start your application.
+
+Example:
+
+    $ /usr/local/lib/atomvm/AtomVM /path/to/my/application.avm /path/to/atomvmlib.avm
 </pre></div>
 </div>
 <p>Currently, the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command and libraries must be built and installed from source.</p>
