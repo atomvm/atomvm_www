@@ -127,8 +127,65 @@ Functions</h2></td></tr>
 <tr class="memitem:a0129499cd8f2b23cac2eefdb4483e75c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitstring_8c.html#a0129499cd8f2b23cac2eefdb4483e75c">bitstring_utf32_decode</a> (const uint8_t *buf, size_t len, int32_t *c, enum <a class="el" href="bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65">BitstringFlags</a> bs_flags)</td></tr>
 <tr class="memdesc:a0129499cd8f2b23cac2eefdb4483e75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decode a character from UTF-32.  <a href="bitstring_8c.html#a0129499cd8f2b23cac2eefdb4483e75c">More...</a><br /></td></tr>
 <tr class="separator:a0129499cd8f2b23cac2eefdb4483e75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7029166df19925d2e4ed82029a89331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitstring_8c.html#af7029166df19925d2e4ed82029a89331">bitstring_copy_bits_incomplete_bytes</a> (uint8_t *dst, size_t bits_offset, const uint8_t *src, size_t bits_count)</td></tr>
+<tr class="memdesc:af7029166df19925d2e4ed82029a89331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy bits_count bits from src to dst[bits_offset..].  <a href="bitstring_8c.html#af7029166df19925d2e4ed82029a89331">More...</a><br /></td></tr>
+<tr class="separator:af7029166df19925d2e4ed82029a89331"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="af7029166df19925d2e4ed82029a89331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7029166df19925d2e4ed82029a89331">&#9670;&nbsp;</a></span>bitstring_copy_bits_incomplete_bytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bitstring_copy_bits_incomplete_bytes </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bits_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>bits_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy bits_count bits from src to dst[bits_offset..]. </p>
+<p>Called by bitstring_copy_bits when bytes are not complete.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dst</td><td>destination buffer </td></tr>
+    <tr><td class="paramname">bits_offset</td><td>offset in bits in destination buffer </td></tr>
+    <tr><td class="paramname">src</td><td>source buffer </td></tr>
+    <tr><td class="paramname">bits_count</td><td>number of bits </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00354">354</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+
+</div>
+</div>
 <a id="a1099baa3fd75d02abf94643e440b0f69"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1099baa3fd75d02abf94643e440b0f69">&#9670;&nbsp;</a></span>bitstring_extract_any_integer()</h2>
 
