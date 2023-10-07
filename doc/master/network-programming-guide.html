@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Programming Guide &mdash; AtomVM 0.6.0-alpha.1+git.7eda78ef documentation</title>
+  <title>Network Programming Guide &mdash; AtomVM 0.6.0-alpha.1+git.12ec1cef documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -112,23 +112,20 @@
 -->
 <section id="network-programming-guide">
 <h1>Network Programming Guide<a class="headerlink" href="#network-programming-guide" title="Permalink to this heading"></a></h1>
-<p>One of the exciting features of the ESP32 is its support for WiFi networking, allowing ESP32 micro-controllers to communicate with the outside world over common IP networking protocols, such as TCP or IDP.  The ESP32 and ISF SDK supports configuring an ESP32 in station mode (STA), whereby the device connects to an existing access point, as well as “softAP” mode (AP), whereby it functions as an access point, to which other stations can connect.   The ESP32 also supports a combined STA+softAP mode, which allows the device to function in both STA and softAP mode simultaneously.</p>
-<p>AtomVM provides an Erlang API interface for interacting with the WiFi networking layer on ESP32 devices, providing support for configuring your ESP32 device in STA mode, AP mode, or a combined STA+AP mode, allowing Erlang/Elixir applications to send and receive data from other devices on a network.  This interface is encapsulated in the <code class="docutils literal notranslate"><span class="pre">network</span></code> module, which implements a simple interface for connecting to existing WiFi networks or for functioning as a WiFi access point.</p>
-<p>Once the network has been set up (in STA or AP mode), AtomVM can use various socket interfaces to interact with the socket layer to create a client or server application.  For example, AtomVM supports the <code class="docutils literal notranslate"><span class="pre">gen_udp</span></code> and <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> APIs, while AtomVM extensions may support HTTP, MQTT, and other protocols built over low-level networking interfaces.</p>
+<p>One of the exciting features of the ESP32 and the Pico-W is their support for WiFi networking, allowing ESP32 and Pico-W micro-controllers to communicate with the outside world over common IP networking protocols, such as TCP or IDP.  The ESP32 and the Pico-W can be configured in station mode (STA), whereby the devices connect to an existing access point, as well as “softAP” mode (AP), whereby they function as an access point, to which other stations can connect. The ESP32 also supports a combined STA+softAP mode, which allows the device to function in both STA and softAP mode simultaneously.</p>
+<p>AtomVM provides an Erlang API interface for interacting with the WiFi networking layer on ESP32 and Pico-W devices, providing support for configuring your ESP32 or Pico-W device in STA mode, AP mode, or a combined STA+AP mode, allowing Erlang/Elixir applications to send and receive data from other devices on a network.  This interface is encapsulated in the <code class="docutils literal notranslate"><span class="pre">network</span></code> module, which implements a simple interface for connecting to existing WiFi networks or for functioning as a WiFi access point. The same <code class="docutils literal notranslate"><span class="pre">network</span></code> module is used for both the ESP32 and the Pico-W.</p>
+<p>Once the network has been set up (in STA or AP mode), AtomVM can use various socket interfaces to interact with the socket layer to create a client or server application.  For example, on ESP32, AtomVM supports the <code class="docutils literal notranslate"><span class="pre">gen_udp</span></code> and <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> APIs, while AtomVM extensions may support HTTP, MQTT, and other protocols built over low-level networking interfaces.</p>
 <p>The AtomVM networking API leverages callback functions, allowing applications to be responsive to changes in the underlying network, which can frequently occur in embedded applications, where devices can easily lose and then regain network connectivity.  In such cases, it is important for applications to be resilient to changes in network availability, by closing or re-opening socket connections in response to disconnections and re-connections in the underlying network.</p>
 <p>This document describes the basic design of the AtomVM network interfaces, and how to interact programmatically with it.</p>
 <section id="station-sta-mode">
 <h2>Station (STA) mode<a class="headerlink" href="#station-sta-mode" title="Permalink to this heading"></a></h2>
-<p>In STA mode, the ESP32 connects to an existing WiFi network.</p>
+<p>In STA mode, the ESP32 or the Pico-W connect to an existing WiFi network.</p>
 <p>In this case, the input configuration should be a properties list containing a tuple of the form <code class="docutils literal notranslate"><span class="pre">{sta,</span> <span class="pre">&lt;sta-properties&gt;}</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;sta-properties&gt;</span></code> is a property list containing configuration properties for the device in station mode.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;sta-properties&gt;</span></code> property list should contain the following entries:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{ssid,</span> <span class="pre">string()</span> <span class="pre">|</span> <span class="pre">binary()}</span></code>  The SSID to which the device should connect.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{psk,</span> <span class="pre">string()</span> <span class="pre">|</span> <span class="pre">binary()}</span></code> The password required to authenticate to the network, if required.</p></li>
 </ul>
-<blockquote>
-<div><p>Note that the station mode SSID and password <em>may</em> be stored in non-volatile storage, in which case these parameters may be skipped.  See the “NVS Credentials” section below, for more information about using non-volatile storage to store credentials that persist across device reboots.</p>
-</div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> will immediately return <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Pid}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Pid</span></code> is the process ID of the network server instance, if the network was properly initialized, or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, if there was an error in configuration.  However, the application may want to wait for the device to connect to the target network and obtain an IP address, for example, before starting clients or services that require network access.</p>
 <p>Applications can specify callback functions, which get triggered as events emerge from the network layer, including connection to and disconnection from the target network, as well as IP address acquisition.</p>
 <p>Callback functions can be specified by the following configuration parameters:</p>
@@ -141,7 +138,7 @@
 <div><p>Note.  IPv6 addresses are not yet supported in AtomVM.</p>
 </div></blockquote>
 <p>Callback functions are optional, but are highly recommended for building robust WiFi applications.  The return value from callback functions is ignored, and AtomVM provides no guarantees about the execution context (i.e., BEAM process) in which these functions are invoked.</p>
-<p>In addition, the following optional parameters can be specified to configure the AP network:</p>
+<p>In addition, the following optional parameters can be specified to configure the AP network (ESP32 only):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{dhcp_hostname,</span> <span class="pre">string()|binary()}</span></code> The DHCP hostname as which the device should register (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;atomvm-&lt;hexmac&gt;&quot;&gt;&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;hexmac&gt;</span></code> is the hexadecimal representation of the factory-assigned MAC address of the device).</p></li>
 </ul>
@@ -205,9 +202,6 @@ end
 </ul>
 <p>If the SSID is omitted in configuration, the SSID name <code class="docutils literal notranslate"><span class="pre">atomvm-&lt;hexmac&gt;</span></code> will be created, where <code class="docutils literal notranslate"><span class="pre">&lt;hexmac&gt;</span></code> is the hexadecimal representation of the factory-assigned MAC address of the device.  This name should be sufficiently unique to disambiguate it from other reachable ESP32 devices, but it may also be difficult to read or remember.</p>
 <p>If the password is omitted, then an <em>open network</em> will be created, and a warning will be printed to the console.  Otherwise, the AP network will be started using WPA+WPA2 authentication.</p>
-<blockquote>
-<div><p>Note that the station mode SSID and password <em>may</em> be stored in non-volatile storage, in which case these parameters may be skipped.  See the “NVS Credentials” section below, for more information about using non-volatile storage to store credentials that persist across device reboots.</p>
-</div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> will immediately return <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Pid}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Pid</span></code> is the process id of the network server, if the network was properly initialized, or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, if there was an error in configuration.  However, the application may want to wait for the device to to be ready to accept connections from other devices, or to be notified when other devices connect to this AP.</p>
 <p>Applications can specify callback functions, which get triggered as events emerge from the network layer, including when a station connects or disconnects from the AP, as well as when a station is assigned an IP address.</p>
 <p>Callback functions can be specified by the following configuration parameters:</p>
@@ -307,55 +301,7 @@ sntp_synchronized({TVSec, TVUsec}) -&gt;
 <section id="nvs-credentials">
 <h2>NVS Credentials<a class="headerlink" href="#nvs-credentials" title="Permalink to this heading"></a></h2>
 <p>It can become tiresome to enter an SSID and password for every application, and in general it is bad security practice to hard-wire WiFi credentials in your application source code.</p>
-<p>You may instead store an STA or AP SSID and PSK in non-volatile storage (NVS) on and ESP32 device under the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.  The following entries may be specified in non-volatile storage:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>namespace</p></th>
-<th class="head"><p>mode</p></th>
-<th class="head"><p>key</p></th>
-<th class="head"><p>type</p></th>
-<th class="head"><p>value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">atomvm</span></code></p></td>
-<td><p>STA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sta_ssid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">binary()</span></code></p></td>
-<td><p>Station ID</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">atomvm</span></code></p></td>
-<td><p>STA</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">sta_psk</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">binary()</span></code></p></td>
-<td><p>Station password (if applicable)</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">atomvm</span></code></p></td>
-<td><p>AP</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ap_ssid</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">binary()</span></code></p></td>
-<td><p>Access Point ID</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">atomvm</span></code></p></td>
-<td><p>AP</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">ap_psk</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">binary()</span></code></p></td>
-<td><p>Access Point password (if applicable)</p></td>
-</tr>
-</tbody>
-</table>
-<p>If set in NVS storage, you may remove the corresponding <code class="docutils literal notranslate"><span class="pre">ssid</span></code> and <code class="docutils literal notranslate"><span class="pre">psk</span></code> parameters from the configuration used to initialize the network, and the SSID and PSK configured in NVS will be used, instead.  An SSID or PSK defined explicitly in configuration will override any values in NVS.</p>
-<p>You can set these credentials once, as follows:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_put_binary(atomvm, sta_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
-esp:nvs_put_binary(atomvm, sta_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>esp:nvs_put_binary(atomvm, ap_ssid, &lt;&lt;&quot;myssid&quot;&gt;&gt;).
-esp:nvs_put_binary(atomvm, ap_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
-</pre></div>
-</div>
-<p>With these settings, you can run ESP programs that initialize the network without configuring your SSID and PSK explicitly in source code.</p>
+<p>You may instead store an STA or AP SSID and PSK in non-volatile storage (NVS) on and ESP32 device under the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
 <blockquote>
 <div><p>Note.  Credentials are stored un-encrypted and in plaintext and should not be considered secure.  Future versions may use encrypted NVS storage.</p>
 </div></blockquote>
@@ -367,7 +313,7 @@ esp:nvs_put_binary(atomvm, ap_psk, &lt;&lt;&quot;mypsk&quot;&gt;&gt;).
 </pre></div>
 </div>
 <blockquote>
-<div><p>Note.  This function is currently not well tested.</p>
+<div><p>Note.  Stop is currently unimplemented.</p>
 </div></blockquote>
 </section>
 </section>
