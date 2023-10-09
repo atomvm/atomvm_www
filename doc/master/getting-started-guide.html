@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started Guide &mdash; AtomVM 0.6.0-alpha.2+git.3ce9b252 documentation</title>
+  <title>Getting Started Guide &mdash; AtomVM 0.6.0-alpha.2+git.8300bb5e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -82,6 +82,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-atomvm-for-raspberry-pico">Building AtomVM for Raspberry Pico</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-atomvm-and-programs-on-raspberry-pico">Installing AtomVM and programs on Raspberry Pico</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#issues-with-macos">Issues with macOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-atomvm-on-raspberry-pico">Installing AtomVM on Raspberry Pico</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installing-atomvm-library-to-raspberry-pico">Installing atomvm library to Raspberry Pico</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installing-it">Installing it</a></li>
@@ -416,6 +417,22 @@ address they should be loaded to.</p>
 <p>We provide an escript-based (what else?) tool to build uf2 files called
 <code class="docutils literal notranslate"><span class="pre">uf2tool</span></code> that you can use to bundle your <code class="docutils literal notranslate"><span class="pre">avm</span></code> into uf2.</p>
 <p>If you need to upgrade AtomVM or the standard libraries, simply copy them again.</p>
+</section>
+<section id="issues-with-macos">
+<h3>Issues with macOS<a class="headerlink" href="#issues-with-macos" title="Permalink to this heading"></a></h3>
+<p>There are known issues copying files to the Pico using macOS, and a lot of literature online. Usually it’s best to use the Terminal rather than the Finder because the errors are more explicit.
+Copying may also fail with UF2 files downloaded from the Internet, typically AtomVM release binaries.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cp<span class="w"> </span>~/Downloads/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2<span class="w"> </span>/Volumes/RPI-RP2/
+cp:<span class="w"> </span>/Volumes/RPI-RP2/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2:<span class="w"> </span>fcopyfile<span class="w"> </span>failed:<span class="w"> </span>Operation<span class="w"> </span>not<span class="w"> </span>permitted
+cp:<span class="w"> </span>/Users/paul/Downloads/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2:<span class="w"> </span>could<span class="w"> </span>not<span class="w"> </span>copy<span class="w"> </span>extended<span class="w"> </span>attributes<span class="w"> </span>to<span class="w"> </span>/Volumes/RPI-RP2/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2:<span class="w"> </span>Operation<span class="w"> </span>not<span class="w"> </span>permitted
+</pre></div>
+</div>
+<p>Two issues appear here: one is macOS tries to copy extended attributes and this fails (but this error is not a blocker), and the other is the “Operation not permitted” because the file is quarantined, having been downloaded from the web.
+First issue can be solved with <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-x</span></code> if you don’t tolerate the error message and second with <code class="docutils literal notranslate"><span class="pre">xattr</span> <span class="pre">-d</span></code>.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>xattr<span class="w"> </span>-d<span class="w"> </span>com.apple.quarantine<span class="w"> </span>~/Downloads/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2
+$<span class="w"> </span>cp<span class="w"> </span>-x<span class="w"> </span>~/Downloads/AtomVM-pico_w-v0.6.0-alpha1-test2.uf2<span class="w"> </span>/Volumes/RPI-RP2/
+</pre></div>
+</div>
 </section>
 <section id="installing-atomvm-on-raspberry-pico">
 <h3>Installing AtomVM on Raspberry Pico<a class="headerlink" href="#installing-atomvm-on-raspberry-pico" title="Permalink to this heading"></a></h3>
