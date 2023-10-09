@@ -4,6 +4,24 @@ title: News
 permalink: /news/
 ---
 
+## 2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release)
+
+This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features.
+
+The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to `spawn_opt/2,4`. Several platforms now have the ability to set the sytem clock with `atomvm:posix_clock_settime/2`. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes cunsult the [Changelog](https://www.atomvm.net/doc/v0.6.0-alpha.1/CHANGELOG.html).
+
+Donwload images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from [AtomVM Releases on GitHub](https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.1).
+
+The git repository and tarballs of the AtomVM source release for all platforms can be found on our [GitHub AtomVM page](https://github.com/atomvm/AtomVM).
+
+Documentation for the v0.6.0-alpha.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the [AtomVM Documentation page](https://www.atomvm.net/doc/v0.6.0-alpha.1/).
+
+We have a growing collection of tools, drivers, and modules available on the [GitHub AtomVM Project page](https://github.com/atomvm).
+
+Many thanks go to [Davide Bettio](https://github.com/bettio), for creating such a fine work of software, as well as the [contributors](https://github.com/atomvm/AtomVM/graphs/contributors) and [testers who have helped make this release possible](https://github.com/atomvm/AtomVM/issues).
+
+The AtomVM team
+
 ## 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release)
 
 After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!
