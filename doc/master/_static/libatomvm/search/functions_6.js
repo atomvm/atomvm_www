@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fprintf_5fprinter_1670',['fprintf_printer',['../term_8c.html#a6e2c6f7ca56bb95e7eebe1e9ab5e99b7',1,'term.c']]],
-  ['free_1671',['free',['../opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0',1,'opcodesswitch.h']]]
+  ['fprintf_5fprinter_1666',['fprintf_printer',['../term_8c.html#a6e2c6f7ca56bb95e7eebe1e9ab5e99b7',1,'term.c']]],
+  ['free_1667',['free',['../opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0',1,'opcodesswitch.h']]]
 ];
