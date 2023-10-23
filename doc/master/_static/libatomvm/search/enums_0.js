@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bitstringflags_2122',['BitstringFlags',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65',1,'bitstring.h']]]
+  ['bitstringflags_2124',['BitstringFlags',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65',1,'bitstring.h']]]
 ];
