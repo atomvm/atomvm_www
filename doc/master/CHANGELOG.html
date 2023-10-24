@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.4fc48edb documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.33da1496 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -130,12 +130,16 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>Fixed a bug where guards would raise exceptions instead of just being false</p></li>
 <li><p>Fixed support for big endian CPUs (such as some MIPS CPUs).</p></li>
+<li><p>Fixed STM32 not aborting when <code class="docutils literal notranslate"><span class="pre">AVM_ABORT()</span></code> is used</p></li>
+<li><p>Fixed a bug that would leave the STM32 trapped in a loop on hard faults, rather than aborting</p></li>
 </ul>
 </section>
 <section id="added">
 <h3>Added<a class="headerlink" href="#added" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Added support for the OTP <code class="docutils literal notranslate"><span class="pre">socket</span></code> interface.</p></li>
+<li><p>Enhancd performance of STM32 by enabling flash cache and i-cache with branch prediction.</p></li>
+<li><p>Added cmake configuration option <code class="docutils literal notranslate"><span class="pre">AVM_CONFIG_REBOOT_ON_NOT_OK</span></code> for STM32</p></li>
 </ul>
 </section>
 </section>
