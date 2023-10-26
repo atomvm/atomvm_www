@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.210a4254 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.25c09a05 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -112,6 +112,8 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#peripherals">Peripherals</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#gpio">GPIO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#digital-read">Digital Read</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#digital-write">Digital Write</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interrupt-handling">Interrupt Handling</a></li>
 </ul>
 </li>
@@ -1326,11 +1328,15 @@ MacAddress = esp:get_mac(wifi_sta)
 </section>
 <section id="peripherals">
 <h2>Peripherals<a class="headerlink" href="#peripherals" title="Permalink to this heading"></a></h2>
-<p>The AtomVM virtual machine and libraries support APIs for interfacing with peripheral devices connected to the ESP32.  This section provides information about these APIs.</p>
+<p>The AtomVM virtual machine and libraries support APIs for interfacing with peripheral devices connected to the ESP32 and other supported microcontrollers.  This section provides information about these APIs.  Unless otherwise stated the documentation for these peripherals is specific to the ESP32, most peripherals are not yet supported on rp2040 or stm32 devices - but work is on-going to expand support on these platforms.</p>
 <section id="gpio">
 <h3>GPIO<a class="headerlink" href="#gpio" title="Permalink to this heading"></a></h3>
+<p>The GPIO peripheral has nif support on all platforms. One notable difference on the STM32 platform is that <code class="docutils literal notranslate"><span class="pre">Pin</span></code>s are defined as a tuple consisting of the bank (a.k.a. port) and pin number.  For example a pin labeled PB7 on your board would be <code class="docutils literal notranslate"><span class="pre">{b,7}</span></code>.</p>
 <p>You can read and write digital values on GPIO pins using the <code class="docutils literal notranslate"><span class="pre">gpio</span></code> module, using the <code class="docutils literal notranslate"><span class="pre">digital_read/1</span></code> and <code class="docutils literal notranslate"><span class="pre">digital_write/2</span></code> functions.  You must first set the direction of the pin using the <code class="docutils literal notranslate"><span class="pre">gpio:set_direction/2</span></code> function, using <code class="docutils literal notranslate"><span class="pre">input</span></code> or <code class="docutils literal notranslate"><span class="pre">output</span></code> as the direction parameter.</p>
-<p>To read the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_read/1</span></code>:</p>
+<section id="digital-read">
+<h4>Digital Read<a class="headerlink" href="#digital-read" title="Permalink to this heading"></a></h4>
+<p>To read the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_read/1</span></code>.</p>
+<p>For ESP32 family:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 Pin = 2,
 gpio:set_direction(Pin, input),
@@ -1342,15 +1348,61 @@ case gpio:digital_read(Pin) of
 end.
 </pre></div>
 </div>
-<p>To set the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_write/2</span></code>:</p>
+<p>For STM32 only the line with the Pin definition needs to be a tuple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pin = {c, 13},
+gpio:set_direction(Pin, input),
+case gpio:digital_read(Pin) of
+    high -&gt;
+        io:format(&quot;Pin ~p is high ~n&quot;, [Pin]);
+    low -&gt;
+        io:format(&quot;Pin ~p is low ~n&quot;, [Pin])
+end.
+</pre></div>
+</div>
+<p>The Pico has an additional initialization step <code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code> before using a pin for gpio:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pin = 2,
+gpio:init(Pin),
+gpio:set_direction(Pin, input),
+case gpio:digital_read(Pin) of
+    high -&gt;
+        io:format(&quot;Pin ~p is high ~n&quot;, [Pin]);
+    low -&gt;
+        io:format(&quot;Pin ~p is low ~n&quot;, [Pin])
+end.
+</pre></div>
+</div>
+</section>
+<section id="digital-write">
+<h4>Digital Write<a class="headerlink" href="#digital-write" title="Permalink to this heading"></a></h4>
+<p>To set the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_write/2</span></code>.</p>
+<p>For ESP32 family:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 Pin = 2,
 gpio:set_direction(Pin, output),
 gpio:digital_write(Pin, low).
 </pre></div>
 </div>
+<p>For the STM32 use a pin tuple:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pin = {b, 7},
+gpio:set_direction(Pin, output),
+gpio:digital_write(Pin, low).
+</pre></div>
+</div>
+<p>Pico needs the extra <code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code> before <code class="docutils literal notranslate"><span class="pre">gpio:read/1</span></code> too:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Pin = 2,
+gpio:init(Pin),
+gpio:set_direction(Pin, output),
+gpio:digital_write(Pin, low).
+</pre></div>
+</div>
+</section>
 <section id="interrupt-handling">
 <h4>Interrupt Handling<a class="headerlink" href="#interrupt-handling" title="Permalink to this heading"></a></h4>
+<p>Interrupts are supported on both the ESP32 and STM32 platforms.</p>
 <p>You can get notified of changes in the state of a GPIO pin by using the <code class="docutils literal notranslate"><span class="pre">gpio:set_int/2</span></code> function.  This function takes a reference to a GPIO Pin and a trigger.  Allowable triggers are <code class="docutils literal notranslate"><span class="pre">rising</span></code>, <code class="docutils literal notranslate"><span class="pre">falling</span></code>, <code class="docutils literal notranslate"><span class="pre">both</span></code>, <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code>, and <code class="docutils literal notranslate"><span class="pre">none</span></code> (to disable an interrupt).</p>
 <p>When a trigger event occurs, such as a pin rising in voltage, a tuple will be delivered to the process containing the atom <code class="docutils literal notranslate"><span class="pre">gpio_interrupt</span></code> and the pin.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
