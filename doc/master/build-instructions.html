@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.2+git.8c3e7d15 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-alpha.2+git.92eed62f documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -55,7 +55,6 @@
 <li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started-guide.html">Getting Started Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomvm-tooling.html">AtomVM Tooling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="example-programs.html">Example Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Build Instructions</a><ul>
@@ -495,7 +494,7 @@ shell$ cd src/platforms/esp32/test
 <div><p>Note.  Before running the <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script, you must have a complete build of both the esp32 project, as well as a full build of the core Erlang libraries in the <code class="docutils literal notranslate"><span class="pre">libs</span></code> directory.  The script configuration defaults to assuming that the core Erlang libraries will be written to the <code class="docutils literal notranslate"><span class="pre">build/libs</span></code> directory in the AtomVM source tree.  You should pass the <code class="docutils literal notranslate"><span class="pre">--build_dir</span> <span class="pre">&lt;path&gt;</span></code> option to the <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script, with <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> pointing to your AtomVM build directory, if you  target a different build directory when running CMake.</p>
 </div></blockquote>
 <p>Running this script will generate a single <code class="docutils literal notranslate"><span class="pre">atomvm-&lt;sha&gt;.img</span></code> file in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory of the esp32 source tree, where <code class="docutils literal notranslate"><span class="pre">&lt;sha&gt;</span></code> is the git hash of the current checkout.  This image contains the ESP32 bootloader, AtomVM executable, and the <code class="docutils literal notranslate"><span class="pre">eavmlib</span></code> and <code class="docutils literal notranslate"><span class="pre">estdlib</span></code> Erlang libraries in one file, which can then be flashed to address <code class="docutils literal notranslate"><span class="pre">0x1000</span></code>.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script is run from the src/platform/esp32 directory as follows:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script is run from the <code class="docutils literal notranslate"><span class="pre">src/platform/esp32</span></code> directory as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ ./build/mkimage.sh
 Writing output to /home/frege/AtomVM/src/platforms/esp32/build/atomvm-esp32-0.6.0-dev+git.602e6bc.img
 =============================================
@@ -710,13 +709,27 @@ Context *my_port_create_port(GlobalContext *global, term opts);
 <h2>Building for STM32<a class="headerlink" href="#building-for-stm32" title="Permalink to this heading"></a></h2>
 <section id="prerequisites">
 <h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h3>
+<p>The following software is required to build AtomVM for the STM32 platform:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz">11.3 ARM toolchain</a> (or compatible with your system)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/libopencm3/libopencm3.git">libopencm3</a> version 0.8.0</p></td>
+</tr>
+</tbody>
+</table>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">arm-none-eabi</span></code>/<code class="docutils literal notranslate"><span class="pre">arm-elf</span></code> toolchain compatible with your system</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">make</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">git</span></code></p></li>
-<li><p><a class="reference external" href="https://github.com/libopencm3/libopencm3"><code class="docutils literal notranslate"><span class="pre">libopencm3</span></code></a></p></li>
 </ul>
+<blockquote>
+<div><p>Note.  AtomVM tests this build on the latest Ubuntu github runner.</p>
+</div></blockquote>
 </section>
 <section id="setup-libopencm3">
 <h3>Setup libopencm3<a class="headerlink" href="#setup-libopencm3" title="Permalink to this heading"></a></h3>

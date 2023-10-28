@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-alpha.2+git.8c3e7d15 documentation</title>
+  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-alpha.2+git.92eed62f documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -22,7 +22,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example Programs" href="example-programs.html" />
+    <link rel="next" title="Programmers Guide" href="programmers-guide.html" />
     <link rel="prev" title="Getting Started Guide" href="getting-started-guide.html" /> 
 </head>
 
@@ -94,7 +94,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#where-to-go-from-here">Where to go from here</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="example-programs.html">Example Programs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build-instructions.html">Build Instructions</a></li>
@@ -255,8 +254,12 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </pre></div>
 </div>
 <p>This stanza will guarantee that the generated packbeam file will be pruned when created.</p>
+<p>You will need to first build a packbeam file that includes the AtomVM core libraries.  Use the <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> task in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace, and specify the path to the <code class="docutils literal notranslate"><span class="pre">atomvmlib.avm</span></code> file you created as part of the build.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 atomvm packbeam -e /path/to/atomvmlib.avm
+</pre></div>
+</div>
 <p>You may now flash your application to your STM32 device:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 atomvm stm32_flash -e /path/to/atomvmlib.avm
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 atomvm stm32_flash
 ...
 ===&gt; st-flash --reset write /path/to/atomvm_examples/erlang/hello_world/_build/default/lib/hello_world.avm 0x8080000
 </pre></div>
@@ -598,7 +601,7 @@ The following sub-commands are supported:
 </section>
 <section id="where-to-go-from-here">
 <h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading"></a></h2>
-<p>With knowledge of AtomVM tooling, you can more easily follow the AtomVM <a class="reference internal" href="example-programs.html"><span class="std std-doc">Example Programs</span></a></p>
+<p>With knowledge of AtomVM tooling, you can more easily follow the AtomVM <a class="reference external" href="https://github.com/atomvm/atomvm_examples">Example Programs</a></p>
 </section>
 </section>
 
@@ -607,7 +610,7 @@ The following sub-commands are supported:
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="getting-started-guide.html" class="btn btn-neutral float-left" title="Getting Started Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="example-programs.html" class="btn btn-neutral float-right" title="Example Programs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="programmers-guide.html" class="btn btn-neutral float-right" title="Programmers Guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
