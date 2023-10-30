@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gpio &mdash; AtomVM 0.6.0-alpha.2+git.bf8ae4fe documentation</title>
+  <title>Module gpio &mdash; AtomVM 0.6.0-alpha.2+git.7ee1adfa documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -161,9 +161,9 @@ gpio() = pid()
 <section id="gpio-bank">
 <h3><a name="type-gpio_bank">gpio_bank()</a><a class="headerlink" href="#gpio-bank" title="Permalink to this heading"></a></h3>
 <pre><code>
-gpio_bank() = a | b | c | d | e | f | g | h | i | j | k
+gpio_bank() = a | b | c | d | e | f | g | h | i | j | k | wl
 </code></pre>
-<p>STM32 gpio banks vary by board, some only break out <code class="docutils literal notranslate"><span class="pre">a</span></code> thru <code class="docutils literal notranslate"><span class="pre">h</span></code>.</p>
+<p>STM32 gpio banks vary by board, some only break out <code class="docutils literal notranslate"><span class="pre">a</span></code> thru <code class="docutils literal notranslate"><span class="pre">h</span></code>. The extra “WL” pins on Pico-W use bank <code class="docutils literal notranslate"><span class="pre">wl</span></code>.</p>
 </section>
 <section id="high-level">
 <h3><a name="type-high_level">high_level()</a><a class="headerlink" href="#high-level" title="Permalink to this heading"></a></h3>
@@ -203,14 +203,14 @@ output_speed() = mhz_2 | mhz_25 | mhz_50 | mhz_100
 <pre><code>
 pin() = non_neg_integer() | <a href="#type-pin_tuple">pin_tuple()</a>
 </code></pre>
-<p>The pin definition for ESP32 and PR2040 is a non-negative integer, on the STM32 platform it is a tuple.</p>
+<p>The pin definition for ESP32 and PR2040 is a non-negative integer. A tuple is used on the STM32 platform and for the extra “WL” pins on the Pico-W.</p>
 </section>
 <section id="pin-tuple">
 <h3><a name="type-pin_tuple">pin_tuple()</a><a class="headerlink" href="#pin-tuple" title="Permalink to this heading"></a></h3>
 <pre><code>
 pin_tuple() = {<a href="#type-gpio_bank">gpio_bank()</a>, 0..15}
 </code></pre>
-<p>A pin parameter on STM32 is a tuple consisting of a GPIO bank and pin number.</p>
+<p>A pin parameter on STM32 is a tuple consisting of a GPIO bank and pin number, also used on the Pico-W for the extra “WL” pins <code class="docutils literal notranslate"><span class="pre">0..2</span></code>.</p>
 </section>
 <section id="pull">
 <h3><a name="type-pull">pull()</a><a class="headerlink" href="#pull" title="Permalink to this heading"></a></h3>
@@ -342,6 +342,8 @@ digital_read(Pin::<a href="#type-pin">pin()</a>) -&gt; high | low | {error, Reas
 <p>Read if an input pin state is high or low.
 Warning: if the pin was not previously configured as an input using
 <code class="docutils literal notranslate"><span class="pre">gpio:set_pin_mode/2</span></code> it will always read as low.</p>
+<p>The VBUS detect pin on the Pico-W can be read on the extended pin <code class="docutils literal notranslate"><span class="pre">{wl,</span> <span class="pre">2}</span></code>,
+and does not require or accept <code class="docutils literal notranslate"><span class="pre">set_pin_mode</span></code> or <code class="docutils literal notranslate"><span class="pre">set_pin_pull</span></code> before use.</p>
 <p><a name="digital_write-2"></a></p>
 </section>
 <section id="digital-write-2">
@@ -367,6 +369,8 @@ and all of the odd numbered pins to a <code class="docutils literal notranslate"
 on a specific bank the atom <code class="docutils literal notranslate"><span class="pre">all</span></code> may be used, this will have no effect on any pins on the
 same bank that have been configured as inputs, so it is safe to use with mixed direction
 modes on a bank.</p>
+<p>The LED pin on the Pico-W can be controlled on the extended pin <code class="docutils literal notranslate"><span class="pre">{wl,</span> <span class="pre">0}</span></code>, and does not
+require or accept <code class="docutils literal notranslate"><span class="pre">set_pin_mode</span></code> or <code class="docutils literal notranslate"><span class="pre">set_pin_pull</span></code> before use.</p>
 <p><a name="hold_dis-1"></a></p>
 </section>
 <section id="hold-dis-1">
