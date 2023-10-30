@@ -52,7 +52,7 @@ var searchData=
   ['const_5favm_5fpack_5finfo_258',['const_avm_pack_info',['../avmpack_8h.html#acadcec9d4c37a1f1f53e1b6a7e3f2f13',1,'const_avm_pack_info():&#160;avmpack.c'],['../avmpack_8c.html#acadcec9d4c37a1f1f53e1b6a7e3f2f13',1,'const_avm_pack_info():&#160;avmpack.c']]],
   ['constavmpack_259',['ConstAVMPack',['../struct_const_a_v_m_pack.html',1,'']]],
   ['container_5fof_260',['CONTAINER_OF',['../utils_8h.html#a818b9cca761fe7bc18e4e417da772976',1,'utils.h']]],
-  ['context_261',['Context',['../mailbox_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85',1,'Context():&#160;mailbox.h'],['../struct_context.html',1,'Context'],['../memory_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85',1,'Context():&#160;memory.h'],['../refc__binary_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85',1,'Context():&#160;refc_binary.h']]],
+  ['context_261',['Context',['../struct_context.html',1,'Context'],['../mailbox_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85',1,'Context():&#160;mailbox.h'],['../memory_8h.html#a7925e3baf84a3c60ae7f4ac180c2fd85',1,'Context():&#160;memory.h']]],
   ['context_2ec_262',['context.c',['../context_8c.html',1,'']]],
   ['context_2eh_263',['context.h',['../context_8h.html',1,'']]],
   ['context_5fdestroy_264',['context_destroy',['../context_8c.html#a3865304b56e965f2bd1fe97cb19359fc',1,'context_destroy(Context *ctx):&#160;context.c'],['../context_8h.html#ac7e7f9b3ac2491d0d488143871008332',1,'context_destroy(Context *c):&#160;context.c']]],

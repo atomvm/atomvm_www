@@ -81,19 +81,23 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="erl__nif_8h_source.html">erl_nif.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="list_8h_source.html">list.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="memory_8h_source.html">memory.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for resources.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="resources_8h__incl.png" border="0" usemap="#a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2resources_8h" alt=""/></div>
 <map name="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2resources_8h" id="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2resources_8h">
-<area shape="rect" title="Private data structures for nif object resources." alt="" coords="13,5,273,47"/>
-<area shape="rect" title=" " alt="" coords="11,95,81,121"/>
-<area shape="rect" href="erl__nif_8h.html" title="Public API for nifs, compatible with Erlang/OTP API." alt="" coords="106,95,181,121"/>
-<area shape="rect" href="list_8h.html" title=" " alt="" coords="205,95,260,121"/>
-<area shape="rect" href="term__typedef_8h.html" title="term type definition" alt="" coords="83,169,204,196"/>
-<area shape="rect" title=" " alt="" coords="5,244,76,271"/>
-<area shape="rect" title=" " alt="" coords="100,244,187,271"/>
-<area shape="rect" title=" " alt="" coords="211,244,281,271"/>
+<area shape="rect" title="Private data structures for nif object resources." alt="" coords="41,5,301,47"/>
+<area shape="rect" title=" " alt="" coords="5,169,76,196"/>
+<area shape="rect" href="erl__nif_8h.html" title="Public API for nifs, compatible with Erlang/OTP API." alt="" coords="101,169,175,196"/>
+<area shape="rect" href="list_8h.html" title=" " alt="" coords="280,95,335,121"/>
+<area shape="rect" href="memory_8h.html" title=" " alt="" coords="169,95,256,121"/>
+<area shape="rect" href="term__typedef_8h.html" title="term type definition" alt="" coords="96,244,217,271"/>
+<area shape="rect" title=" " alt="" coords="148,319,219,345"/>
+<area shape="rect" title=" " alt="" coords="37,319,124,345"/>
+<area shape="rect" title=" " alt="" coords="293,319,364,345"/>
+<area shape="rect" href="utils_8h.html" title="Misc functions and macros." alt="" coords="251,169,313,196"/>
+<area shape="rect" title=" " alt="" coords="242,244,317,271"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -167,6 +171,8 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:ae255fde495724a05463b14aaafe1cb94"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#ae255fde495724a05463b14aaafe1cb94">TYPEDEF_GLOBALCONTEXT</a></td></tr>
 <tr class="separator:ae255fde495724a05463b14aaafe1cb94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36b509bb9024519744d128db03eaf681"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#a36b509bb9024519744d128db03eaf681">SELECT_EVENT_NOTIFICATION_SIZE</a>&#160;&#160;&#160;(<a class="el" href="term_8h.html#a476d7e8af59a33c4b1a710660e8edd61">TUPLE_SIZE</a>(4) + <a class="el" href="term_8h.html#afd9d34c95799384d99b83b115f172f96">REF_SIZE</a> + <a class="el" href="term_8h.html#a0e4f0056d3a7627395877f2f992b5bf1">TERM_BOXED_RESOURCE_SIZE</a>)</td></tr>
+<tr class="separator:a36b509bb9024519744d128db03eaf681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -184,12 +190,31 @@ Functions</h2></td></tr>
 <tr class="memitem:a1fb067a508327a46fc4f6b5a5b93b421"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#a1fb067a508327a46fc4f6b5a5b93b421">destroy_resource_monitors</a> (struct <a class="el" href="struct_refc_binary.html">RefcBinary</a> *resource, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
 <tr class="memdesc:a1fb067a508327a46fc4f6b5a5b93b421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy monitors associated with a resource.  <a href="resources_8h.html#a1fb067a508327a46fc4f6b5a5b93b421">More...</a><br /></td></tr>
 <tr class="separator:a1fb067a508327a46fc4f6b5a5b93b421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5919ca9372c92b67aba98ad50db2e43c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="resources_8h.html#a5919ca9372c92b67aba98ad50db2e43c">select_event_make_notification</a> (void *rsrc_obj, uint64_t ref_ticks, bool is_write, <a class="el" href="struct_heap.html">Heap</a> *heap)</td></tr>
+<tr class="memdesc:a5919ca9372c92b67aba98ad50db2e43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a select event notification.  <a href="resources_8h.html#a5919ca9372c92b67aba98ad50db2e43c">More...</a><br /></td></tr>
+<tr class="separator:a5919ca9372c92b67aba98ad50db2e43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Private data structures for nif object resources. </p>
 
 <p class="definition">Definition in file <a class="el" href="resources_8h_source.html">resources.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a36b509bb9024519744d128db03eaf681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36b509bb9024519744d128db03eaf681">&#9670;&nbsp;</a></span>SELECT_EVENT_NOTIFICATION_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SELECT_EVENT_NOTIFICATION_SIZE&#160;&#160;&#160;(<a class="el" href="term_8h.html#a476d7e8af59a33c4b1a710660e8edd61">TUPLE_SIZE</a>(4) + <a class="el" href="term_8h.html#afd9d34c95799384d99b83b115f172f96">REF_SIZE</a> + <a class="el" href="term_8h.html#a0e4f0056d3a7627395877f2f992b5bf1">TERM_BOXED_RESOURCE_SIZE</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="resources_8h_source.html#l00121">121</a> of file <a class="el" href="resources_8h_source.html">resources.h</a>.</p>
+
+</div>
+</div>
 <a id="ae255fde495724a05463b14aaafe1cb94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae255fde495724a05463b14aaafe1cb94">&#9670;&nbsp;</a></span>TYPEDEF_GLOBALCONTEXT</h2>
 
@@ -202,7 +227,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="resources_8h_source.html#l00034">34</a> of file <a class="el" href="resources_8h_source.html">resources.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8h_source.html#l00035">35</a> of file <a class="el" href="resources_8h_source.html">resources.h</a>.</p>
 
 </div>
 </div>
@@ -259,7 +284,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00356">356</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00361">361</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -319,7 +344,60 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00269">269</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00274">274</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+
+</div>
+</div>
+<a id="a5919ca9372c92b67aba98ad50db2e43c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5919ca9372c92b67aba98ad50db2e43c">&#9670;&nbsp;</a></span>select_event_make_notification()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> select_event_make_notification </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>rsrc_obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ref_ticks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_write</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_heap.html">Heap</a> *&#160;</td>
+          <td class="paramname"><em>heap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build a select event notification. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rsrc_obj</td><td>the resource to build the notification for </td></tr>
+    <tr><td class="paramname">ref_ticks</td><td>the reference or 0 if it's undefined </td></tr>
+    <tr><td class="paramname">is_write</td><td>if the notification is for a write or a read </td></tr>
+    <tr><td class="paramname">heap</td><td>the heap to create the notification in, should have enough memory available (see SELECT_EVENT_NOTIFICATION_SIZE) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00204">204</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>
@@ -376,7 +454,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the event was found </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00231">231</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="resources_8c_source.html#l00236">236</a> of file <a class="el" href="resources_8c_source.html">resources.c</a>.</p>
 
 </div>
 </div>

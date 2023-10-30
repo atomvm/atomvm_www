@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>otp_socket.c &mdash; AtomVM 0.6.0-alpha.2+git.7ee1adfa documentation</title>
+  <title>otp_socket.c &mdash; AtomVM 0.6.0-alpha.2+git.b44cc3b8 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -181,17 +181,16 @@
 </div>
 <p>Include dependency graph for otp_socket.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-949ab53d559d9d1d5c3c61883628748a0b3ea0a8.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-0c5b21537a129d9b17ca57bfdc3b053a9f4f7fe2.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;13&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
     &quot;27&quot; [label=&quot;dictionary.h&quot; tooltip=&quot;dictionary.h&quot;]
     &quot;14&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
-    &quot;44&quot; [label=&quot;netinet/in.h&quot; tooltip=&quot;netinet/in.h&quot;]
     &quot;5&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
     &quot;35&quot; [label=&quot;posix_nifs.h&quot; tooltip=&quot;posix_nifs.h&quot;]
-    &quot;47&quot; [label=&quot;trace.h&quot; tooltip=&quot;trace.h&quot;]
+    &quot;43&quot; [label=&quot;trace.h&quot; tooltip=&quot;trace.h&quot;]
     &quot;15&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;26&quot; [label=&quot;defaultatoms.h&quot; tooltip=&quot;defaultatoms.h&quot;]
     &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
@@ -202,7 +201,6 @@
     &quot;2&quot; [label=&quot;context.h&quot; tooltip=&quot;context.h&quot;]
     &quot;42&quot; [label=&quot;errno.h&quot; tooltip=&quot;errno.h&quot;]
     &quot;34&quot; [label=&quot;port.h&quot; tooltip=&quot;port.h&quot;]
-    &quot;43&quot; [label=&quot;fcntl.h&quot; tooltip=&quot;fcntl.h&quot;]
     &quot;20&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
     &quot;8&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
     &quot;21&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
@@ -212,7 +210,6 @@
     &quot;18&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;25&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
     &quot;38&quot; [label=&quot;module.h&quot; tooltip=&quot;module.h&quot;]
-    &quot;46&quot; [label=&quot;unistd.h&quot; tooltip=&quot;unistd.h&quot;]
     &quot;17&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
     &quot;7&quot; [label=&quot;erl_nif.h&quot; tooltip=&quot;erl_nif.h&quot;]
     &quot;29&quot; [label=&quot;interop.h&quot; tooltip=&quot;interop.h&quot;]
@@ -222,7 +219,6 @@
     &quot;28&quot; [label=&quot;erl_nif_priv.h&quot; tooltip=&quot;erl_nif_priv.h&quot;]
     &quot;37&quot; [label=&quot;sys.h&quot; tooltip=&quot;sys.h&quot;]
     &quot;39&quot; [label=&quot;atomshashtable.h&quot; tooltip=&quot;atomshashtable.h&quot;]
-    &quot;45&quot; [label=&quot;sys/socket.h&quot; tooltip=&quot;sys/socket.h&quot;]
     &quot;30&quot; [label=&quot;nifs.h&quot; tooltip=&quot;nifs.h&quot;]
     &quot;3&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; fillcolor=&quot;#BFBFBF&quot;]
@@ -295,6 +291,7 @@
     &quot;23&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;23&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;23&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -323,9 +320,9 @@
     &quot;1&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;30&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;32&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;33&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;34&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;35&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;36&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -334,10 +331,6 @@
     &quot;1&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;42&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;43&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;44&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;45&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;46&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;47&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -345,6 +338,7 @@
     &quot;19&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;32&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;32&quot; -&gt; &quot;30&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;32&quot; -&gt; &quot;33&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -489,11 +483,6 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv411socket_stopP9ErlNifEnvPv11ErlNifEventi">
-<span id="_CPPv311socket_stopP9ErlNifEnvPv11ErlNifEventi"></span><span id="_CPPv211socket_stopP9ErlNifEnvPv11ErlNifEventi"></span><span id="socket_stop__ErlNifEnvP.voidP.ErlNifEvent.i"></span><span class="target" id="otp__socket_8c_1a0621dc0f3e6e26ff7f71f966c0c61f5b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_stop</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">caller_env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">obj</span></span>, <a class="reference internal" href="erl_nif.h.html#_CPPv411ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">event</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_direct_call</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411socket_stopP9ErlNifEnvPv11ErlNifEventi" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv411socket_downP9ErlNifEnvPvP9ErlNifPidP13ErlNifMonitor">
 <span id="_CPPv311socket_downP9ErlNifEnvPvP9ErlNifPidP13ErlNifMonitor"></span><span id="_CPPv211socket_downP9ErlNifEnvPvP9ErlNifPidP13ErlNifMonitor"></span><span id="socket_down__ErlNifEnvP.voidP.ErlNifPidP.ErlNifMonitorP"></span><span class="target" id="otp__socket_8c_1a42d9ad8ea92228678180af7a20993f2b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_down</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv49ErlNifEnv" title="ErlNifEnv"><span class="n"><span class="pre">ErlNifEnv</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">caller_env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">obj</span></span>, <a class="reference internal" href="erl_nif.h.html#_CPPv49ErlNifPid" title="ErlNifPid"><span class="n"><span class="pre">ErlNifPid</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">pid</span></span>, <a class="reference internal" href="erl_nif.h.html#_CPPv413ErlNifMonitor" title="ErlNifMonitor"><span class="n"><span class="pre">ErlNifMonitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">mon</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv411socket_downP9ErlNifEnvPvP9ErlNifPidP13ErlNifMonitor" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -549,13 +538,13 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv416nif_socket_closeP7ContextiA_4term">
-<span id="_CPPv316nif_socket_closeP7ContextiA_4term"></span><span id="_CPPv216nif_socket_closeP7ContextiA_4term"></span><span id="nif_socket_close__ContextP.i.termA"></span><span class="target" id="otp__socket_8c_1afa9a3008b81df240b4ff038b785d7b70"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_close</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416nif_socket_closeP7ContextiA_4term" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv424send_closed_notificationP7ContextP14SocketResource">
+<span id="_CPPv324send_closed_notificationP7ContextP14SocketResource"></span><span id="_CPPv224send_closed_notificationP7ContextP14SocketResource"></span><span id="send_closed_notification__ContextP.SocketResourceP"></span><span class="target" id="otp__socket_8c_1af9291ee22fdfd060a6442974169b9944"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">send_closed_notification</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">rsrc_obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424send_closed_notificationP7ContextP14SocketResource" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv417nif_socket_selectP7ContextA_4term17ErlNifSelectFlags">
-<span id="_CPPv317nif_socket_selectP7ContextA_4term17ErlNifSelectFlags"></span><span id="_CPPv217nif_socket_selectP7ContextA_4term17ErlNifSelectFlags"></span><span id="nif_socket_select__ContextP.termA.ErlNifSelectFlags"></span><span class="target" id="otp__socket_8c_1ac25e39f871b6a6c2413dec5c316c0431"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_select</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv417ErlNifSelectFlags" title="ErlNifSelectFlags"><span class="n"><span class="pre">ErlNifSelectFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">mode</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv417nif_socket_selectP7ContextA_4term17ErlNifSelectFlags" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv416nif_socket_closeP7ContextiA_4term">
+<span id="_CPPv316nif_socket_closeP7ContextiA_4term"></span><span id="_CPPv216nif_socket_closeP7ContextiA_4term"></span><span id="nif_socket_close__ContextP.i.termA"></span><span class="target" id="otp__socket_8c_1afa9a3008b81df240b4ff038b785d7b70"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_close</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv416nif_socket_closeP7ContextiA_4term" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -574,8 +563,33 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a869002cd208ee56b80cd26e08eb48a36"></span><span class="sig-name descname"><span class="pre">if</span> <span class="pre">(globalcontext_is_term_equal_to_atom_string(global,</span> <span class="pre">opt,</span> <span class="pre">reuseaddr_atom))</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a17a73c32ddded4e05420d1e1d203b04a"></span><span class="sig-name descname"><span class="pre">else</span> <span class="pre">if</span> <span class="pre">(globalcontext_is_term_equal_to_atom_string(global,</span> <span class="pre">opt,</span> <span class="pre">linger_atom))</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv419nif_socket_socknameP7ContextiA_4term">
 <span id="_CPPv319nif_socket_socknameP7ContextiA_4term"></span><span id="_CPPv219nif_socket_socknameP7ContextiA_4term"></span><span id="nif_socket_sockname__ContextP.i.termA"></span><span class="target" id="otp__socket_8c_1ac279caed84573fc8e35c1db177f678fa"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_sockname</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419nif_socket_socknameP7ContextiA_4term" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"></span><span class="sig-name descname"><span class="pre">if</span> <span class="pre">(UNLIKELY(memory_ensure_free(ctx,</span> <span class="pre">TUPLE_SIZE(2)+term_map_size_in_terms(2)+TUPLE_SIZE(4))</span> <span class="pre">!=MEMORY_GC_OK))</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a50ed954e4ac5cf6c06355b3c4280354d"></span><span class="sig-name descname"><span class="pre">term_set_map_assoc</span> <span class="pre">(map,</span> <span class="pre">0,</span> <span class="pre">ADDR_ATOM,</span> <span class="pre">address)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a6861a65791c8e1a7dab8484c22afbfdf"></span><span class="sig-name descname"><span class="pre">term_set_map_assoc</span> <span class="pre">(map,</span> <span class="pre">1,</span> <span class="pre">PORT_ATOM,</span> <span class="pre">port_number)</span></span></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -599,18 +613,8 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv425nif_socket_recv_with_peekP7ContextiA_4termb">
-<span id="_CPPv325nif_socket_recv_with_peekP7ContextiA_4termb"></span><span id="_CPPv225nif_socket_recv_with_peekP7ContextiA_4termb"></span><span id="nif_socket_recv_with_peek__ContextP.i.termA.b"></span><span class="target" id="otp__socket_8c_1a93b5fc933c4606185f38870f18e4f067"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_with_peek</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425nif_socket_recv_with_peekP7ContextiA_4termb" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv428nif_socket_recv_without_peekP7ContextiA_4termb">
-<span id="_CPPv328nif_socket_recv_without_peekP7ContextiA_4termb"></span><span id="_CPPv228nif_socket_recv_without_peekP7ContextiA_4termb"></span><span id="nif_socket_recv_without_peek__ContextP.i.termA.b"></span><span class="target" id="otp__socket_8c_1ae4c44ae018a80b8e4363469a80780d43"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_without_peek</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv428nif_socket_recv_without_peekP7ContextiA_4termb" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv424nif_socket_recv_internalP7ContextiA_4termb">
-<span id="_CPPv324nif_socket_recv_internalP7ContextiA_4termb"></span><span id="_CPPv224nif_socket_recv_internalP7ContextiA_4termb"></span><span id="nif_socket_recv_internal__ContextP.i.termA.b"></span><span class="target" id="otp__socket_8c_1ad2eb397223ac8a3ea79046e5f01e239e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_internal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424nif_socket_recv_internalP7ContextiA_4termb" title="Permalink to this definition"></a><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv424nif_socket_recv_internalP7ContextA_4termb">
+<span id="_CPPv324nif_socket_recv_internalP7ContextA_4termb"></span><span id="_CPPv224nif_socket_recv_internalP7ContextA_4termb"></span><span id="nif_socket_recv_internal__ContextP.termA.b"></span><span class="target" id="otp__socket_8c_1a12ac2212fccd229d08a40ec0ac569f75"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_internal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424nif_socket_recv_internalP7ContextA_4termb" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -718,7 +722,47 @@
 
 <dl class="cpp var">
 <dt class="sig sig-object cpp">
-<span class="target" id="otp__socket_8c_1ab4df080e7ca9d41aac2a5ba6d6051d26"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">const</span> <span class="pre">ErlNifResourceTypeInit</span> <span class="pre">SocketResourceTypeInit</span>&#160; <span class="pre">=</span> <span class="pre">{.members</span> <span class="pre">=</span> <span class="pre">3,.dtor</span> <span class="pre">=</span> <span class="pre">socket_dtor,.stop</span> <span class="pre">=</span> <span class="pre">socket_stop,.down</span> <span class="pre">=</span> <span class="pre">socket_down,}</span></span></dt>
+<span class="target" id="otp__socket_8c_1ab4df080e7ca9d41aac2a5ba6d6051d26"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">const</span> <span class="pre">ErlNifResourceTypeInit</span> <span class="pre">SocketResourceTypeInit</span>&#160; <span class="pre">=</span> <span class="pre">{.members</span> <span class="pre">=</span> <span class="pre">3,.dtor</span> <span class="pre">=</span> <span class="pre">socket_dtor,.stop</span> <span class="pre">=</span> <span class="pre">NULL,.down</span> <span class="pre">=</span> <span class="pre">socket_down,}</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411level_tuple">
+<span id="_CPPv311level_tuple"></span><span id="_CPPv211level_tuple"></span><span id="level_tuple__term"></span><span class="target" id="otp__socket_8c_1ae3d9b66c1402c9c91853f6a5d167db34"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">level_tuple</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv411level_tuple" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv45value">
+<span id="_CPPv35value"></span><span id="_CPPv25value"></span><span id="value__term"></span><span class="target" id="otp__socket_8c_1a1a4da12440461137d66e86ba30030aab"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#_CPPv45value" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv43opt">
+<span id="_CPPv33opt"></span><span id="_CPPv23opt"></span><span id="opt__term"></span><span class="target" id="otp__socket_8c_1a40a80410836a50fc4e7981f0a5677f55"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">opt</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="term.h.html#_CPPv422term_get_tuple_element4termi" title="term_get_tuple_element"><span class="n"><span class="pre">term_get_tuple_element</span></span></a><span class="p"><span class="pre">(</span></span><a class="reference internal" href="#_CPPv411level_tuple" title="level_tuple"><span class="n"><span class="pre">level_tuple</span></span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv43opt" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp">
+<span class="target" id="otp__socket_8c_1a0544c3fe466e421738dae463968b70ba"></span><span class="sig-name descname"><span class="pre">else</span>&#160;&#160; <span class="pre">=</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">RAISE_ERROR(BADARG_ATOM)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv411port_number">
+<span id="_CPPv311port_number"></span><span id="_CPPv211port_number"></span><span id="port_number__term"></span><span class="target" id="otp__socket_8c_1a71fe08a0e1bb7d2005534bb71b7d5441"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port_number</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="term.h.html#_CPPv413term_from_int9avm_int_t" title="term_from_int"><span class="n"><span class="pre">term_from_int</span></span></a><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">port_u16</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv411port_number" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv43map">
+<span id="_CPPv33map"></span><span id="_CPPv23map"></span><span id="map__term"></span><span class="target" id="otp__socket_8c_1af2b3527b29e071e56731239c903d9ea7"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">map</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="term.h.html#_CPPv414term_alloc_map10avm_uint_tP4Heap" title="term_alloc_map"><span class="n"><span class="pre">term_alloc_map</span></span></a><span class="p"><span class="pre">(</span></span><span class="m"><span class="pre">2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="o"><span class="pre">&amp;</span></span><span class="n"><span class="pre">ctx</span></span><span class="o"><span class="pre">-&gt;</span></span><span class="n"><span class="pre">heap</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv43map" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv412return_value">
+<span id="_CPPv312return_value"></span><span id="_CPPv212return_value"></span><span id="return_value__term"></span><span class="target" id="otp__socket_8c_1ab96fd5295542cf66fd643431e4c174bb"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">return_value</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="port.h.html#_CPPv418port_create_tuple2P7Context4term4term" title="port_create_tuple2"><span class="n"><span class="pre">port_create_tuple2</span></span></a><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">OK_ATOM</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv43map" title="map"><span class="n"><span class="pre">map</span></span></a><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#_CPPv412return_value" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv46result">
+<span id="_CPPv36result"></span><span id="_CPPv26result"></span><span id="result__term"></span><span class="target" id="otp__socket_8c_1ade6d6d18a46c8aa95eed5e179d003e45"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">result</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">OK_ATOM</span></span><a class="headerlink" href="#_CPPv46result" title="Permalink to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp var">
@@ -802,34 +846,6 @@
 <dd></dd></dl>
 
 </div>
-<dl class="cpp struct">
-<dt class="sig sig-object cpp" id="_CPPv48SocketFd">
-<span id="_CPPv38SocketFd"></span><span id="_CPPv28SocketFd"></span><span id="SocketFd"></span><span class="target" id="struct_socket_fd"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketFd</span></span></span><a class="headerlink" href="#_CPPv48SocketFd" title="Permalink to this definition"></a><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8SocketFd2fdE">
-<span id="_CPPv3N8SocketFd2fdE"></span><span id="_CPPv2N8SocketFd2fdE"></span><span id="SocketFd::fd__i"></span><span class="target" id="struct_socket_fd_1a9e41c8a22e15ed3c5e80b0df9abf2a5a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fd</span></span></span><a class="headerlink" href="#_CPPv4N8SocketFd2fdE" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8SocketFd9ref_ticksE">
-<span id="_CPPv3N8SocketFd9ref_ticksE"></span><span id="_CPPv2N8SocketFd9ref_ticksE"></span><span id="SocketFd::ref_ticks__uint64_t"></span><span class="target" id="struct_socket_fd_1ab86561dcfca81ace6d0081f38f63103c"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ref_ticks</span></span></span><a class="headerlink" href="#_CPPv4N8SocketFd9ref_ticksE" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8SocketFd20selecting_process_idE">
-<span id="_CPPv3N8SocketFd20selecting_process_idE"></span><span id="_CPPv2N8SocketFd20selecting_process_idE"></span><span id="SocketFd::selecting_process_id__int32_t"></span><span class="target" id="struct_socket_fd_1a7e39a99e3e62017b050530d532a1e210"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">selecting_process_id</span></span></span><a class="headerlink" href="#_CPPv4N8SocketFd20selecting_process_idE" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N8SocketFd25selecting_process_monitorE">
-<span id="_CPPv3N8SocketFd25selecting_process_monitorE"></span><span id="_CPPv2N8SocketFd25selecting_process_monitorE"></span><span id="SocketFd::selecting_process_monitor__ErlNifMonitor"></span><span class="target" id="struct_socket_fd_1a666faddb521ebae8829230a8bfa834bb"></span><a class="reference internal" href="erl_nif.h.html#_CPPv413ErlNifMonitor" title="ErlNifMonitor"><span class="n"><span class="pre">ErlNifMonitor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">selecting_process_monitor</span></span></span><a class="headerlink" href="#_CPPv4N8SocketFd25selecting_process_monitorE" title="Permalink to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
 </section>
 
 

@@ -163,7 +163,7 @@ $(function() {
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> term_invalid_term();</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> result;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="otp__socket_8c.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">if</span> (opts &amp; <a class="code" href="externalterm_8h.html#af6168d43e9676554af376320c5f8caa2ac87298fcf7134b4892d4e069b5218ba4">ExternalTermToHeapFragment</a>) {</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// We need to allocate fragments as reading external terms from modules</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">// is not accounted for by the compiler when it emits test_heap opcodes</span></div>
@@ -171,17 +171,17 @@ $(function() {
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(<a class="code" href="memory_8c.html#aa34223a2c1aa426b283afb1e2461414a">memory_init_heap</a>(&amp;heap, heap_usage) != <a class="code" href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a>)) {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> term_invalid_term();</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        result = parse_external_terms(external_term_buf + 1, &amp;eterm_size, copy, &amp;heap, ctx-&gt;<a class="code" href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">global</a>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="otp__socket_8c.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a> = parse_external_terms(external_term_buf + 1, &amp;eterm_size, copy, &amp;heap, ctx-&gt;<a class="code" href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">global</a>);</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        memory_heap_append_heap(&amp;ctx-&gt;<a class="code" href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">heap</a>, &amp;heap);</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    } <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(memory_ensure_free(ctx, heap_usage) != <a class="code" href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a>)) {</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            fprintf(stderr, <span class="stringliteral">&quot;Unable to ensure %zu free words in heap\n&quot;</span>, eterm_size);</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">return</span> term_invalid_term();</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        result = parse_external_terms(external_term_buf + 1, &amp;eterm_size, copy, &amp;ctx-&gt;<a class="code" href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">heap</a>, ctx-&gt;<a class="code" href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">global</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="otp__socket_8c.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a> = parse_external_terms(external_term_buf + 1, &amp;eterm_size, copy, &amp;ctx-&gt;<a class="code" href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">heap</a>, ctx-&gt;<a class="code" href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">global</a>);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    *bytes_read = eterm_size + 1;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="otp__socket_8c.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a>;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;}</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="externalterm_8c.html#a5af48d46cb956f28521530a58010e876">  125</a></span>&#160;<a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="externalterm_8c.html#aad438929de43302a6dd3698b0e4d9bc2">externalterm_to_term</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *external_term, <span class="keywordtype">size_t</span> size, <a class="code" href="struct_context.html">Context</a> *ctx, <a class="code" href="externalterm_8h.html#af6168d43e9676554af376320c5f8caa2">ExternalTermOpts</a> opts)</div>
@@ -423,8 +423,8 @@ $(function() {
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; size; ++i) {</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> key = term_get_map_key(t, i);</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            k += serialize_term(<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(buf) ? NULL : buf + k, key, glb);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> value = term_get_map_value(t, i);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            k += serialize_term(<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(buf) ? NULL : buf + k, value, glb);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = term_get_map_value(t, i);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            k += serialize_term(<a class="code" href="utils_8h.html#a738ec595994440a8d082ecd8bd67c53b">IS_NULL_PTR</a>(buf) ? NULL : buf + k, <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>, glb);</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        }</div>
 <div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">return</span> k;</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (term_is_function(t)) {</div>
@@ -446,11 +446,11 @@ $(function() {
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">static</span> <a class="code" href="term__typedef_8h.html#a706412ebf2d91cc584ba37354de7fa03">avm_uint64_t</a> read_bytes(<span class="keyword">const</span> uint8_t *buf, uint8_t num_bytes)</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;{</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="term__typedef_8h.html#a706412ebf2d91cc584ba37354de7fa03">avm_uint64_t</a> value = 0;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <a class="code" href="term__typedef_8h.html#a706412ebf2d91cc584ba37354de7fa03">avm_uint64_t</a> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = 0;</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; num_bytes; ++i) {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        value |= (((<a class="code" href="term__typedef_8h.html#a706412ebf2d91cc584ba37354de7fa03">avm_uint64_t</a>) buf[i]) &lt;&lt; (i * 8));</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> |= (((<a class="code" href="term__typedef_8h.html#a706412ebf2d91cc584ba37354de7fa03">avm_uint64_t</a>) buf[i]) &lt;&lt; (i * 8));</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>;</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">static</span> <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> parse_external_terms(<span class="keyword">const</span> uint8_t *external_term_buf, <span class="keywordtype">size_t</span> *eterm_size, <span class="keywordtype">bool</span> copy, <a class="code" href="struct_heap.html">Heap</a> *heap, <a class="code" href="struct_global_context.html">GlobalContext</a> *glb)</div>
@@ -473,11 +473,11 @@ $(function() {
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        }</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#aff6ddf42b3c1b50eb5455f70ec802d0f">INTEGER_EXT</a>: {</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            int32_t value = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(external_term_buf + 1);</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            int32_t <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(external_term_buf + 1);</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            *eterm_size = 5;</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keywordflow">return</span> term_make_maybe_boxed_int64(value, heap);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <span class="keywordflow">return</span> term_make_maybe_boxed_int64(<a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>, heap);</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        }</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#a1b43d898c184392fabfa7a0c95c5ba51">SMALL_BIG_EXT</a>: {</div>
@@ -487,14 +487,14 @@ $(function() {
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            <span class="comment">// NB due to call to calculate_heap_usage, there is no loss of precision:</span></div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <span class="comment">// 1. 0 &lt;= unsigned_value &lt;= INT64_MAX if sign is 0</span></div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="comment">// 2. 0 &lt;= unsigned_value &lt;= INT64_MAX + 1 if sign is not 0</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> value = 0;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = 0;</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (sign != 0x00) {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                value = -((<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = -((<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value);</div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                value = (<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = (<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value;</div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            }</div>
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            *eterm_size = <a class="code" href="externalterm_8c.html#a092e021b336e2d1f5167dfd0744fa724">SMALL_BIG_EXT_BASE_SIZE</a> + num_bytes;</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">return</span> term_make_maybe_boxed_int64(value, heap);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            <span class="keywordflow">return</span> term_make_maybe_boxed_int64(<a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>, heap);</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        }</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#afc7bb84fd99bcc43d53bc3e575054be5">ATOM_EXT</a>: {</div>
@@ -618,7 +618,7 @@ $(function() {
 <div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
 <div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#a56fd86bb8fde37e05821d9eb753c9a46">MAP_EXT</a>: {</div>
 <div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            uint32_t size = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(external_term_buf + 1);</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> map = term_alloc_map(size, heap);</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="otp__socket_8c.html#af2b3527b29e071e56731239c903d9ea7">map</a> = term_alloc_map(size, heap);</div>
 <div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            <span class="keywordtype">size_t</span> buf_pos = 5;</div>
 <div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; size; ++i) {</div>
 <div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                <span class="keywordtype">size_t</span> key_size;</div>
@@ -629,16 +629,16 @@ $(function() {
 <div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                buf_pos += key_size;</div>
 <div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160; </div>
 <div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                <span class="keywordtype">size_t</span> value_size;</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> value = parse_external_terms(external_term_buf + buf_pos, &amp;value_size, copy, heap, glb);</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(term_is_invalid_term(value))) {</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                    <span class="keywordflow">return</span> value;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                <a class="code" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = parse_external_terms(external_term_buf + buf_pos, &amp;value_size, copy, heap, glb);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(term_is_invalid_term(<a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>))) {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>;</div>
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                }</div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                buf_pos += value_size;</div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160; </div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                term_set_map_assoc(map, i, key, value);</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                <a class="code" href="otp__socket_8c.html#a50ed954e4ac5cf6c06355b3c4280354d">term_set_map_assoc</a>(<a class="code" href="otp__socket_8c.html#af2b3527b29e071e56731239c903d9ea7">map</a>, i, key, <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>);</div>
 <div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            }</div>
 <div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            *eterm_size = buf_pos;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            <span class="keywordflow">return</span> map;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="otp__socket_8c.html#af2b3527b29e071e56731239c903d9ea7">map</a>;</div>
 <div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        }</div>
 <div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
 <div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#a29023d9400ef23d6df84f5d23d2040e5">SMALL_ATOM_UTF8_EXT</a>: {</div>
@@ -682,9 +682,9 @@ $(function() {
 <div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#ab10d0a221f4d7a706701b806c8135fd7">UNLIKELY</a>(remaining &lt; <a class="code" href="externalterm_8c.html#abf8d021dbb4e838c842aa51f68b2e93b">INTEGER_EXT_SIZE</a>)) {</div>
 <div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="externalterm_8c.html#a95edc96ce31de69eec04e8ce0ab4de16">INVALID_TERM_SIZE</a>;</div>
 <div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            }</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            int32_t value = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(external_term_buf + 1);</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            int32_t <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = <a class="code" href="utils_8h.html#a17137f273ce3b454d97b91f17df1afdd">READ_32_UNALIGNED</a>(external_term_buf + 1);</div>
 <div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            *eterm_size = <a class="code" href="externalterm_8c.html#abf8d021dbb4e838c842aa51f68b2e93b">INTEGER_EXT_SIZE</a>;</div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            <span class="keywordflow">return</span> term_boxed_integer_size(value);</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            <span class="keywordflow">return</span> term_boxed_integer_size(<a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>);</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        }</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160; </div>
 <div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#a1b43d898c184392fabfa7a0c95c5ba51">SMALL_BIG_EXT</a>: {</div>
@@ -701,13 +701,13 @@ $(function() {
 <div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;            }</div>
 <div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            <span class="comment">// Compute the size with the sign as -2^27 or -2^59 can be encoded</span></div>
 <div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;            <span class="comment">// on 1 term while 2^27 and 2^59 respectively (32/64 bits) cannot.</span></div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;            <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> value = 0;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;            <a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a> <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = 0;</div>
 <div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            <span class="keywordflow">if</span> (sign != 0x00) {</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                value = -((<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value);</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;                <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = -((<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value);</div>
 <div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                value = (<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                <a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a> = (<a class="code" href="term__typedef_8h.html#a31523cec641956b7718202cff7615cdf">avm_int64_t</a>) unsigned_value;</div>
 <div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            }</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keywordflow">return</span> term_boxed_integer_size(value);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;            <span class="keywordflow">return</span> term_boxed_integer_size(<a class="code" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>);</div>
 <div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;        }</div>
 <div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160; </div>
 <div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="externalterm_8c.html#afc7bb84fd99bcc43d53bc3e575054be5">ATOM_EXT</a>: {</div>
@@ -976,6 +976,10 @@ $(function() {
 <div class="ttc" id="amemory_8h_html_a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a"><div class="ttname"><a href="memory_8h.html#a3d8bef9f86e567a8516760e56fdf085ca7d6e25e0c92a6286a02975ec516ebc6a">MEMORY_GC_OK</a></div><div class="ttdeci">@ MEMORY_GC_OK</div><div class="ttdef"><b>Definition:</b> <a href="memory_8h_source.html#l00055">memory.h:55</a></div></div>
 <div class="ttc" id="aopcodesswitch_8h_html_a4a8d6ac988671d83f025e7ac40c64031"><div class="ttname"><a href="opcodesswitch_8h.html#a4a8d6ac988671d83f025e7ac40c64031">memcpy</a></div><div class="ttdeci">memcpy(tmp_atom_name+1, function_name, function_len)</div></div>
 <div class="ttc" id="aopcodesswitch_8h_html_a5aee9ad932d48bce12b2509e623b7da0"><div class="ttname"><a href="opcodesswitch_8h.html#a5aee9ad932d48bce12b2509e623b7da0">free</a></div><div class="ttdeci">free(tmp_atom_name)</div></div>
+<div class="ttc" id="aotp__socket_8c_html_a1a4da12440461137d66e86ba30030aab"><div class="ttname"><a href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a></div><div class="ttdeci">term value</div><div class="ttdef"><b>Definition:</b> <a href="otp__socket_8c_source.html#l01051">otp_socket.c:1051</a></div></div>
+<div class="ttc" id="aotp__socket_8c_html_a50ed954e4ac5cf6c06355b3c4280354d"><div class="ttname"><a href="otp__socket_8c.html#a50ed954e4ac5cf6c06355b3c4280354d">term_set_map_assoc</a></div><div class="ttdeci">term_set_map_assoc(map, 0, ADDR_ATOM, address)</div></div>
+<div class="ttc" id="aotp__socket_8c_html_ade6d6d18a46c8aa95eed5e179d003e45"><div class="ttname"><a href="otp__socket_8c.html#ade6d6d18a46c8aa95eed5e179d003e45">result</a></div><div class="ttdeci">term result</div><div class="ttdef"><b>Definition:</b> <a href="otp__socket_8c_source.html#l02253">otp_socket.c:2253</a></div></div>
+<div class="ttc" id="aotp__socket_8c_html_af2b3527b29e071e56731239c903d9ea7"><div class="ttname"><a href="otp__socket_8c.html#af2b3527b29e071e56731239c903d9ea7">map</a></div><div class="ttdeci">term map</div><div class="ttdef"><b>Definition:</b> <a href="otp__socket_8c_source.html#l01171">otp_socket.c:1171</a></div></div>
 <div class="ttc" id="astruct_context_html"><div class="ttname"><a href="struct_context.html">Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00081">context.h:82</a></div></div>
 <div class="ttc" id="astruct_context_html_a0686e56e3c983101aa2c30ce64874600"><div class="ttname"><a href="struct_context.html#a0686e56e3c983101aa2c30ce64874600">Context::global</a></div><div class="ttdeci">GlobalContext * global</div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00084">context.h:84</a></div></div>
 <div class="ttc" id="astruct_context_html_a8e815b8d319337382fc61f942fb46a59"><div class="ttname"><a href="struct_context.html#a8e815b8d319337382fc61f942fb46a59">Context::heap</a></div><div class="ttdeci">Heap heap</div><div class="ttdef"><b>Definition:</b> <a href="context_8h_source.html#l00085">context.h:85</a></div></div>

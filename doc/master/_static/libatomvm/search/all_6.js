@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['f_428',['f',['../unionfloat__term__t.html#a43049dcbea751b2ee7c43066d38ce7d4',1,'float_term_t']]],
-  ['false_5fatom_429',['FALSE_ATOM',['../defaultatoms_8h.html#ae4dd436f6a4239e1ce24965e59688d1f',1,'defaultatoms.h']]],
-  ['false_5fatom_5findex_430',['FALSE_ATOM_INDEX',['../defaultatoms_8h.html#a24d4812246437e4e8e7e288bc5406d62',1,'defaultatoms.h']]],
-  ['fd_431',['fd',['../struct_socket_fd.html#a9e41c8a22e15ed3c5e80b0df9abf2a5a',1,'SocketFd']]],
+  ['f_429',['f',['../unionfloat__term__t.html#a43049dcbea751b2ee7c43066d38ce7d4',1,'float_term_t']]],
+  ['false_5fatom_430',['FALSE_ATOM',['../defaultatoms_8h.html#ae4dd436f6a4239e1ce24965e59688d1f',1,'defaultatoms.h']]],
+  ['false_5fatom_5findex_431',['FALSE_ATOM_INDEX',['../defaultatoms_8h.html#a24d4812246437e4e8e7e288bc5406d62',1,'defaultatoms.h']]],
   ['fibonacci_5fatom_432',['FIBONACCI_ATOM',['../defaultatoms_8h.html#ac2611c14dd12678c5de6217d8933fa11',1,'defaultatoms.h']]],
   ['fibonacci_5fatom_5findex_433',['FIBONACCI_ATOM_INDEX',['../defaultatoms_8h.html#ae069a5fa3c84acac810f245980844551',1,'defaultatoms.h']]],
   ['fibonacci_5fheap_5fgrowth_5freduction_5fthreshold_434',['FIBONACCI_HEAP_GROWTH_REDUCTION_THRESHOLD',['../memory_8c.html#aacd814b3131a144344125d7094b9dc6d',1,'memory.c']]],
