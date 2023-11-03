@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>interop.h &mdash; AtomVM 0.6.0-alpha.2+git.493d719b documentation</title>
+  <title>interop.h &mdash; AtomVM 0.6.0-alpha.2+git.6643ea77 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -107,6 +107,8 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_net.h.html">otp_net.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_socket.c.html">otp_socket.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_socket.h.html">otp_socket.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="overflow_helpers.h.html">overflow_helpers.h</a></li>
@@ -274,21 +276,23 @@
 </figure>
 <p>This graph shows which files directly or indirectly include interop.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-6aa8e4258989cf6e834f595b81a0dc9333280a0e.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-800a427f48b4c1b7b2446ac9198e81ebb6fa35ae.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;5&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
-    &quot;6&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
+    &quot;6&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
+    &quot;7&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
     &quot;2&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;4&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
     &quot;3&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
-    &quot;4&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
+    &quot;5&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -437,6 +441,11 @@
 <dd></dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421interop_chars_to_listPKc6size_tP4Heap">
+<span id="_CPPv321interop_chars_to_listPKc6size_tP4Heap"></span><span id="_CPPv221interop_chars_to_listPKc6size_tP4Heap"></span><span id="interop_chars_to_list__cCP.s.HeapP"></span><span class="target" id="interop_8h_1ac2d2b25e82c31c29440f52c8995adc96"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chars_to_list</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">chars</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp">
 <span class="target" id="interop_8h_1aee1d0c4222308feff0725e3c0b555a48"></span><span class="sig-name descname"><span class="pre">NO_DISCARD</span> <span class="pre">InteropFunctionResult</span> <span class="pre">interop_iolist_size</span> <span class="pre">(term</span> <span class="pre">t,</span> <span class="pre">size_t</span> <span class="pre">*size)</span></span></dt>
 <dd></dd></dl>
@@ -464,6 +473,11 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv428interop_atom_term_select_intPK17AtomStringIntPair4termP13GlobalContext">
 <span id="_CPPv328interop_atom_term_select_intPK17AtomStringIntPair4termP13GlobalContext"></span><span id="_CPPv228interop_atom_term_select_intPK17AtomStringIntPair4termP13GlobalContext"></span><span id="interop_atom_term_select_int__AtomStringIntPairCP.term.GlobalContextP"></span><span class="target" id="interop_8h_1a77a52c8719e2510d9bca4cf5cae32d6c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_int</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv417AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">table</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">atom</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429interop_atom_term_select_atomPK17AtomStringIntPairiP13GlobalContext">
+<span id="_CPPv329interop_atom_term_select_atomPK17AtomStringIntPairiP13GlobalContext"></span><span id="_CPPv229interop_atom_term_select_atomPK17AtomStringIntPairiP13GlobalContext"></span><span id="interop_atom_term_select_atom__AtomStringIntPairCP.i.GlobalContextP"></span><span class="target" id="interop_8h_1a0d64ae3d8a0297b93f298bad8184362f"></span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_atom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv417AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.493d719b documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.6643ea77 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -146,6 +146,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#closing-and-shutting-down-sockets">Closing and Shutting down Sockets</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#setting-socket-options">Setting Socket Options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#udp-socket-programming">UDP Socket Programming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-networking-apis">Miscellaneous Networking APIs</a></li>
 </ul>
 </li>
 </ul>
@@ -2348,6 +2349,52 @@ end
 </pre></div>
 </div>
 <p>Close a UDP socket just as you would a TCP socket, as described above.</p>
+</section>
+<section id="miscellaneous-networking-apis">
+<h3>Miscellaneous Networking APIs<a class="headerlink" href="#miscellaneous-networking-apis" title="Permalink to this heading"></a></h3>
+<p>You can retrieve information about hostnames and services using the <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/1</span></code> and  <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/2</span></code> functions.  The return value is a list of maps each of which contains address information about the host, including its family (<code class="docutils literal notranslate"><span class="pre">inet</span></code>), protocol (<code class="docutils literal notranslate"><span class="pre">tcp</span></code> or <code class="docutils literal notranslate"><span class="pre">udp</span></code>), type (<code class="docutils literal notranslate"><span class="pre">stream</span></code> or <code class="docutils literal notranslate"><span class="pre">dgram</span></code>), and the address, currently an IPv4 tuple.</p>
+<blockquote>
+<div><p>Note.  Currently, the <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/1,2</span></code> functions only supports reporting of IPv4 addresses.</p>
+</div></blockquote>
+<p>For example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+{ok, AddrInfos} = net:getaddrinfo(&quot;www.atomvm.net&quot;),
+
+lists:foreach(
+    fun(AddrInfo) -&gt;
+        #{
+            family := Family,
+            protocol := Protocol,
+            type := Type,
+            address := Address
+        } = AddrInfo,
+
+        io:format(&quot;family: ~p prototcol: ~p type: ~p address: ~p&quot;, [Family, Protocol, Type, Address])
+
+    end,
+    AddrInfos
+),
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">host</span></code> parameter can be a domain name (typically) or a dotted pair IPv4 address.</p>
+<p>The returned map contains the network family (currently, only <code class="docutils literal notranslate"><span class="pre">inet</span></code> is supported), the protocol, type, and address of the host.</p>
+<p>The address is itself a map, containing the family, port and IPv4 address of the requested host, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#{family =&gt; inet, port =&gt; 0, addr =&gt; {192, 168, 212, 153}}
+</pre></div>
+</div>
+<blockquote>
+<div><p>Note.  The <a class="reference external" href="https://www.erlang.org/doc/man/net#type-address_info">OTP documentation</a> states that the address is returned under the <code class="docutils literal notranslate"><span class="pre">address</span></code> key in the address info map.  However, OTP appears to use <code class="docutils literal notranslate"><span class="pre">addr</span></code> as the key.  For compatibility with OTP 22 ff., AtomVM supports both the <code class="docutils literal notranslate"><span class="pre">address</span></code> and <code class="docutils literal notranslate"><span class="pre">addr</span></code> keys in this map (they reference the same inner map).</p>
+</div></blockquote>
+<p>If you want to narrow the information you get back to a specific service type, you can specify a service name or port number (as a string value) as the second parameter:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+{ok, AddrInfos} = net:getaddrinfo(&quot;www.atomvm.net&quot;, &quot;https&quot;),
+...
+</pre></div>
+</div>
+<p>Service names are well-known identifiers on the internet, but they may vary from operating system to operating system.  See the <code class="docutils literal notranslate"><span class="pre">services(3)</span></code> man pages for more information.</p>
+<blockquote>
+<div><p>Note.  Narrowing results via the service parameter is not supported on all platforms.  In the case where it is not supported, AtomVM will resort to retrying the request without the service parameter.</p>
+</div></blockquote>
 </section>
 </section>
 </section>

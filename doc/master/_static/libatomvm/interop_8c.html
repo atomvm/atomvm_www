@@ -164,8 +164,60 @@ Functions</h2></td></tr>
 <tr class="memitem:aeca0a310d3e09064bfafcdbcecdbadbb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">interop_kv_get_value_default</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> kv, <a class="el" href="atom_8h.html#ad65688322910ef2b4658ffac1f9d8b81">AtomString</a> key, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> default_value, <a class="el" href="struct_global_context.html">GlobalContext</a> *glb)</td></tr>
 <tr class="memdesc:aeca0a310d3e09064bfafcdbcecdbadbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a value given a key (as AtomString) from any proplist or map.  <a href="interop_8c.html#aeca0a310d3e09064bfafcdbcecdbadbb">More...</a><br /></td></tr>
 <tr class="separator:aeca0a310d3e09064bfafcdbcecdbadbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d64ae3d8a0297b93f298bad8184362f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8c.html#a0d64ae3d8a0297b93f298bad8184362f">interop_atom_term_select_atom</a> (const <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> *table, int <a class="el" href="otp__socket_8c.html#a1a4da12440461137d66e86ba30030aab">value</a>, <a class="el" href="struct_global_context.html">GlobalContext</a> *global)</td></tr>
+<tr class="memdesc:a0d64ae3d8a0297b93f298bad8184362f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the first matching atom in an atoms table .  <a href="interop_8c.html#a0d64ae3d8a0297b93f298bad8184362f">More...</a><br /></td></tr>
+<tr class="separator:a0d64ae3d8a0297b93f298bad8184362f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2d2b25e82c31c29440f52c8995adc96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interop_8c.html#ac2d2b25e82c31c29440f52c8995adc96">interop_chars_to_list</a> (const char *chars, size_t len, <a class="el" href="struct_heap.html">Heap</a> *heap)</td></tr>
+<tr class="separator:ac2d2b25e82c31c29440f52c8995adc96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0d64ae3d8a0297b93f298bad8184362f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d64ae3d8a0297b93f298bad8184362f">&#9670;&nbsp;</a></span>interop_atom_term_select_atom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> interop_atom_term_select_atom </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> *&#160;</td>
+          <td class="paramname"><em>table</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_global_context.html">GlobalContext</a> *&#160;</td>
+          <td class="paramname"><em>global</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds the first matching atom in an atoms table . </p>
+<p>Allows to quickly translate integer constants to an atom in an atoms table. This function is the inverse of interop_atom_term_select_int. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">table</td><td>an array <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> structs, terminated with a default entry marked with SELECT_INT_DEFAULT macro. </td></tr>
+    <tr><td class="paramname">value</td><td>the in value used for comparison. </td></tr>
+    <tr><td class="paramname">global</td><td>the global context. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the found atom which corresponds to the given int value, or the invalid term, if there is no such value in the table. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00615">615</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+
+</div>
+</div>
 <a id="a77a52c8719e2510d9bca4cf5cae32d6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77a52c8719e2510d9bca4cf5cae32d6c">&#9670;&nbsp;</a></span>interop_atom_term_select_int()</h2>
 
@@ -201,7 +253,7 @@ Functions</h2></td></tr>
 <p>Finds on a table the first matching atom string. </p>
 <p>Allows to quickly translate atoms to any integer constant. This function is useful for creating switch statements for atom values. A linear search is performed, so table entries should be sorted by frequency. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">table</td><td>an array <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> structs, teminated with a default entry marked with SELECT_INT_DEFAULT macro. </td></tr>
+    <tr><td class="paramname">table</td><td>an array <a class="el" href="struct_atom_string_int_pair.html">AtomStringIntPair</a> structs, terminated with a default entry marked with SELECT_INT_DEFAULT macro. </td></tr>
     <tr><td class="paramname">atom</td><td>the atom used for comparison. </td></tr>
     <tr><td class="paramname">global</td><td>the global context. </td></tr>
   </table>
@@ -412,6 +464,42 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00417">417</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
+
+</div>
+</div>
+<a id="ac2d2b25e82c31c29440f52c8995adc96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2d2b25e82c31c29440f52c8995adc96">&#9670;&nbsp;</a></span>interop_chars_to_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> interop_chars_to_list </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>chars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_heap.html">Heap</a> *&#160;</td>
+          <td class="paramname"><em>heap</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="interop_8c_source.html#l00626">626</a> of file <a class="el" href="interop_8c_source.html">interop.c</a>.</p>
 
 </div>
 </div>
