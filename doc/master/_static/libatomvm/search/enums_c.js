@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['unicodeconversionresult_2187',['UnicodeConversionResult',['../interop_8h.html#ad9f8c39aef7a08b893b31109640a33c1',1,'interop.h']]],
-  ['unicodetransformdecoderesult_2188',['UnicodeTransformDecodeResult',['../bitstring_8h.html#a674ecad44fed86469d6f5cb9e582e673',1,'bitstring.h']]]
+  ['tempstackresult_2224',['TempStackResult',['../tempstack_8h.html#ab2d1f2ce4cf8e502eea92e66b52a6552',1,'tempstack.h']]],
+  ['termcompareopts_2225',['TermCompareOpts',['../term_8h.html#acabf9d87ccf85c239412dbf6631cb21d',1,'term.h']]],
+  ['termcompareresult_2226',['TermCompareResult',['../term_8h.html#af889a9d5a2c9162aaf7dd1c0e1f45c4a',1,'term.h']]]
 ];

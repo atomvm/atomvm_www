@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module gen_udp &mdash; AtomVM 0.6.0-alpha.2+git.11db5c4d documentation</title>
+  <title>Module gen_udp &mdash; AtomVM 0.6.0-alpha.2+git.8b3dee06 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -87,6 +87,7 @@
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="socket.html">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timer.html">Module timer</a></li>
@@ -247,7 +248,7 @@ there is no socket driver supported for the target platform.</p>
 <section id="recv-2">
 <h3>recv/2<a class="headerlink" href="#recv-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
+recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip_address">inet:ip_address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p>Equivalent to <a class="reference internal" href="#recv-3"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">recv(Socket,</span> <span class="pre">Length,</span> <span class="pre">infinity)</span></code></span></a>.</p>
@@ -257,7 +258,7 @@ recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/
 <section id="recv-3">
 <h3>recv/3<a class="headerlink" href="#recv-3" title="Permalink to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
+recv(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, {<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip_address">inet:ip_address()</a>, <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, <a href="#type-packet">packet()</a>}} | {error, <a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket over which to receive a packet<br /><code class="docutils literal notranslate"><span class="pre">Length</span></code>: the maximum length to read of the received packet<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: the amount of time to wait for a packet to arrive<br /></p>
@@ -273,7 +274,7 @@ call will block until data is received or a timeout occurs.</p>
 <section id="send-4">
 <h3>send/4<a class="headerlink" href="#send-4" title="Permalink to this heading"></a></h3>
 <pre><code>
-send(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-address">inet:address()</a>, PortNum::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Packet::<a href="#type-packet">packet()</a>) -&gt; ok | {error, <a href="#type-reason">reason()</a>}
+send(Socket::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-socket">inet:socket()</a>, Address::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip_address">inet:ip_address()</a>, PortNum::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-port_number">inet:port_number()</a>, Packet::<a href="#type-packet">packet()</a>) -&gt; ok | {error, <a href="#type-reason">reason()</a>}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket over which to send a packet<br /><code class="docutils literal notranslate"><span class="pre">Address</span></code>: the target address to which to send the packet<br /><code class="docutils literal notranslate"><span class="pre">Packet</span></code>: the packet of data to send<br /></p>

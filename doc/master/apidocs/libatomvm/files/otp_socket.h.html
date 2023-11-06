@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>otp_socket.h &mdash; AtomVM 0.6.0-alpha.2+git.11db5c4d documentation</title>
+  <title>otp_socket.h &mdash; AtomVM 0.6.0-alpha.2+git.8b3dee06 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -22,7 +22,7 @@
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="overflow_helpers.h" href="overflow_helpers.h.html" />
+    <link rel="next" title="otp_ssl.c" href="otp_ssl.c.html" />
     <link rel="prev" title="otp_socket.c" href="otp_socket.c.html" /> 
 </head>
 
@@ -113,6 +113,8 @@
 <li class="toctree-l4"><a class="reference internal" href="otp_net.h.html">otp_net.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_socket.c.html">otp_socket.c</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">otp_socket.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_ssl.c.html">otp_ssl.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_ssl.h.html">otp_ssl.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="overflow_helpers.h.html">overflow_helpers.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="platform_nifs.h.html">platform_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="port.c.html">port.c</a></li>
@@ -286,16 +288,42 @@
 </figure>
 <p>This graph shows which files directly or indirectly include otp_socket.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-0647f362410320a47a3802f9365a3ee4fecdd802.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-43dd6d2508fd4f7687f5d38413cb6725d90c6eeb.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
+    &quot;3&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
     &quot;2&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv412SocketErrors">
+<span id="_CPPv312SocketErrors"></span><span id="_CPPv212SocketErrors"></span><span class="target" id="otp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketErrors</span></span></span><a class="headerlink" href="#_CPPv412SocketErrors" title="Permalink to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12SocketErrors12SocketClosedE">
+<span id="_CPPv3N12SocketErrors12SocketClosedE"></span><span id="_CPPv2N12SocketErrors12SocketClosedE"></span><span class="target" id="otp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a9d05b4feb8467cdb436d83243edbc907"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketClosed</span></span></span><a class="headerlink" href="#_CPPv4N12SocketErrors12SocketClosedE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12SocketErrors16SocketWouldBlockE">
+<span id="_CPPv3N12SocketErrors16SocketWouldBlockE"></span><span id="_CPPv2N12SocketErrors16SocketWouldBlockE"></span><span class="target" id="otp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a367f7d6bc71ac3fcbbd712152e823c95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketWouldBlock</span></span></span><a class="headerlink" href="#_CPPv4N12SocketErrors16SocketWouldBlockE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N12SocketErrors16SocketOtherErrorE">
+<span id="_CPPv3N12SocketErrors16SocketOtherErrorE"></span><span id="_CPPv2N12SocketErrors16SocketOtherErrorE"></span><span class="target" id="otp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a53d582ba65080b896c7c5b047f3b9e6c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketOtherError</span></span></span><a class="headerlink" href="#_CPPv4N12SocketErrors16SocketOtherErrorE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
@@ -308,6 +336,26 @@
 <span id="_CPPv315otp_socket_initP13GlobalContext"></span><span id="_CPPv215otp_socket_initP13GlobalContext"></span><span id="otp_socket_init__GlobalContextP"></span><span class="target" id="otp__socket_8h_1afba2882565ffd01d24744550c0a8e08d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418term_to_otp_socket4termPP14SocketResourceP7Context">
+<span id="_CPPv318term_to_otp_socket4termPP14SocketResourceP7Context"></span><span id="_CPPv218term_to_otp_socket4termPP14SocketResourceP7Context"></span><span id="term_to_otp_socket__term.SocketResourcePP.ContextP"></span><span class="target" id="otp__socket_8h_1ab02a6c1223069172dc71d254e9707b7e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_otp_socket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">socket_term</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">otp_socket</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv47Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv418term_is_otp_socket4term">
+<span id="_CPPv318term_is_otp_socket4term"></span><span id="_CPPv218term_is_otp_socket4term"></span><span id="term_is_otp_socket__term"></span><span class="target" id="otp__socket_8h_1afe2256b3bbeae7b41bb7da5992216d42"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_otp_socket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">socket_term</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411socket_sendP14SocketResourcePK7uint8_t6size_t4term">
+<span id="_CPPv311socket_sendP14SocketResourcePK7uint8_t6size_t4term"></span><span id="_CPPv211socket_sendP14SocketResourcePK7uint8_t6size_t4term"></span><span id="socket_send__SocketResourceP.uint8_tCP.s.term"></span><span class="target" id="otp__socket_8h_1a57240b1ef53dc763965393a57e85f701"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">socket</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dest</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv411socket_recvP14SocketResourceP7uint8_t6size_tiP4termP4Heap">
+<span id="_CPPv311socket_recvP14SocketResourceP7uint8_t6size_tiP4termP4Heap"></span><span id="_CPPv211socket_recvP14SocketResourceP7uint8_t6size_tiP4termP4Heap"></span><span id="socket_recv__SocketResourceP.uint8_tP.s.i.termP.HeapP"></span><span class="target" id="otp__socket_8h_1ad3aaa3d1743b316c9cac57b50fbf375b"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_recv</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">socket</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">flags</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">from</span></span>, <a class="reference internal" href="../data_structures.html#_CPPv44Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
 </div>
 </section>
 
@@ -316,7 +364,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="otp_socket.c.html" class="btn btn-neutral float-left" title="otp_socket.c" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="overflow_helpers.h.html" class="btn btn-neutral float-right" title="overflow_helpers.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="otp_ssl.c.html" class="btn btn-neutral float-right" title="otp_ssl.c" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

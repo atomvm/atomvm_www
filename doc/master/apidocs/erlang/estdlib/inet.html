@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module inet &mdash; AtomVM 0.6.0-alpha.2+git.11db5c4d documentation</title>
+  <title>Module inet &mdash; AtomVM 0.6.0-alpha.2+git.8b3dee06 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -87,6 +87,7 @@
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="socket.html">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timer.html">Module timer</a></li>
@@ -142,28 +143,22 @@
 <p><a name="types"></a></p>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
-<section id="address">
-<h3><a name="type-address">address()</a><a class="headerlink" href="#address" title="Permalink to this heading"></a></h3>
-<pre><code>
-address() = <a href="#type-ipv4_address">ipv4_address()</a>
-</code></pre>
-</section>
 <section id="hostname">
 <h3><a name="type-hostname">hostname()</a><a class="headerlink" href="#hostname" title="Permalink to this heading"></a></h3>
 <pre><code>
 hostname() = iodata()
 </code></pre>
 </section>
-<section id="ipv4-address">
-<h3><a name="type-ipv4_address">ipv4_address()</a><a class="headerlink" href="#ipv4-address" title="Permalink to this heading"></a></h3>
+<section id="ip4-address">
+<h3><a name="type-ip4_address">ip4_address()</a><a class="headerlink" href="#ip4-address" title="Permalink to this heading"></a></h3>
 <pre><code>
-ipv4_address() = {<a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>}
+ip4_address() = {0..255, 0..255, 0..255, 0..255}
 </code></pre>
 </section>
-<section id="octet">
-<h3><a name="type-octet">octet()</a><a class="headerlink" href="#octet" title="Permalink to this heading"></a></h3>
+<section id="ip-address">
+<h3><a name="type-ip_address">ip_address()</a><a class="headerlink" href="#ip-address" title="Permalink to this heading"></a></h3>
 <pre><code>
-octet() = 0..255
+ip_address() = <a href="#type-ip4_address">ip4_address()</a>
 </code></pre>
 </section>
 <section id="port-number">
@@ -202,7 +197,7 @@ close(Socket::<a href="#type-socket">socket()</a>) -&gt; ok
 <section id="peername-1">
 <h3>peername/1<a class="headerlink" href="#peername-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-peername(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {<a href="#type-address">address()</a>, <a href="#type-port_number">port_number()</a>}} | {error, Reason::term()}
+peername(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {<a href="#type-ip_address">ip_address()</a>, <a href="#type-port_number">port_number()</a>}} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /></p>
@@ -227,7 +222,7 @@ operating system.</p>
 <section id="sockname-1">
 <h3>sockname/1<a class="headerlink" href="#sockname-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-sockname(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {<a href="#type-address">address()</a>, <a href="#type-port_number">port_number()</a>}} | {error, Reason::term()}
+sockname(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {<a href="#type-ip_address">ip_address()</a>, <a href="#type-port_number">port_number()</a>}} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /></p>
