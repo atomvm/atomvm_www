@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['processinforequestsignal_2299',['ProcessInfoRequestSignal',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013a5734dd00b101786324a4faab2cc501c9',1,'mailbox.h']]]
+  ['otpsocketinvalidshutdowndirection_2326',['OtpSocketInvalidShutdownDirection',['../otp__socket_8c.html#a46c384ad5966a96e8b19ab3960e04d2aa366cdb38eed9ee3c090083c52cb36d8b',1,'otp_socket.c']]],
+  ['otpsocketreadshutdowndirection_2327',['OtpSocketReadShutdownDirection',['../otp__socket_8c.html#a46c384ad5966a96e8b19ab3960e04d2aa676aec8d55e9a16fdd9587c171168613',1,'otp_socket.c']]],
+  ['otpsocketreadwriteshutdowndirection_2328',['OtpSocketReadWriteShutdownDirection',['../otp__socket_8c.html#a46c384ad5966a96e8b19ab3960e04d2aabda0b1e6d5ce9ed1f50b847dd01fd09e',1,'otp_socket.c']]],
+  ['otpsocketwriteshutdowndirection_2329',['OtpSocketWriteShutdownDirection',['../otp__socket_8c.html#a46c384ad5966a96e8b19ab3960e04d2aae03ec46976eff6ed8845bdb193b29999',1,'otp_socket.c']]]
 ];
