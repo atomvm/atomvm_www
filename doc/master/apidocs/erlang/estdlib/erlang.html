@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.2+git.8b39bd87 documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.6.0-alpha.2+git.f11bcf45 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -718,10 +718,9 @@ map_get(Key::term(), Map::map()) -&gt; Value::term()
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key to get<br /><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map from which to get the value<br /></p>
 <p>returns: the value in <code class="docutils literal notranslate"><span class="pre">Map</span></code> associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code>, if it exists.</p>
-<p>throws <code class="docutils literal notranslate"><span class="pre">{badkey,</span> <span class="pre">Key}</span> <span class="pre">|</span> <span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
 <p>Get the value in <code class="docutils literal notranslate"><span class="pre">Map</span></code> associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code>, if it exists.</p>
-<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badkey,</span> <span class="pre">Key}</span></code> exception if ‘Key’ does not occur in <code class="docutils literal notranslate"><span class="pre">Map</span></code> or
-a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function raises a <code class="docutils literal notranslate"><span class="pre">{badkey,</span> <span class="pre">Key}</span></code> error if ‘Key’ does not occur in
+<code class="docutils literal notranslate"><span class="pre">Map</span></code> or a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
 <p>This function may be used in a guard expression.</p>
 <p><a name="map_is_key-2"></a></p>
 </section>
@@ -733,9 +732,8 @@ map_is_key(Key::term(), Map::map()) -&gt; boolean()
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key<br /><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Key</span></code> is associated with a value in <code class="docutils literal notranslate"><span class="pre">Map</span></code>; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
-<p>throws <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
 <p>Return <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Key</span></code> is associated with a value in <code class="docutils literal notranslate"><span class="pre">Map</span></code>; <code class="docutils literal notranslate"><span class="pre">false</span></code>, otherwise.</p>
-<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> exception if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function raises a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> error if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
 <p>This function may be used in a guard expression.</p>
 <p><a name="map_size-1"></a></p>
 </section>
@@ -747,9 +745,8 @@ map_size(Map::map()) -&gt; non_neg_integer()
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map<br /></p>
 <p>returns: the size of the map</p>
-<p>throws <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code></p>
 <p>Returns the size of (i.e., the number of entries in) the map</p>
-<p>This function throws a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> exception if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
+<p>This function raises a <code class="docutils literal notranslate"><span class="pre">{badmap,</span> <span class="pre">Map}</span></code> error if <code class="docutils literal notranslate"><span class="pre">Map</span></code> is not a map.</p>
 <p>This function may be used in a guard expression.</p>
 <p><a name="max-2"></a></p>
 </section>

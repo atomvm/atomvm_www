@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module etest &mdash; AtomVM 0.6.0-alpha.2+git.8b39bd87 documentation</title>
+  <title>Module etest &mdash; AtomVM 0.6.0-alpha.2+git.f11bcf45 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -119,7 +119,7 @@ libraries.</p>
 <p><a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#assert_equals-2">assert_equals/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_failure-1">assert_failure/1</a></td><td></td></tr><tr><td valign="top"><a href="#assert_failure-2">assert_failure/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_match-2">assert_match/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_true-1">assert_true/1</a></td><td></td></tr><tr><td valign="top"><a href="#flush_msg_queue-0">flush_msg_queue/0</a></td><td>Use optionally to flush messages in test cases that run in a single test module.</td></tr><tr><td valign="top"><a href="#test-1">test/1</a></td><td>    Test a sequence of test modules.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#assert_equals-2">assert_equals/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_exception-1">assert_exception/1</a></td><td></td></tr><tr><td valign="top"><a href="#assert_exception-2">assert_exception/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_exception-3">assert_exception/3</a></td><td></td></tr><tr><td valign="top"><a href="#assert_match-2">assert_match/2</a></td><td></td></tr><tr><td valign="top"><a href="#assert_true-1">assert_true/1</a></td><td></td></tr><tr><td valign="top"><a href="#flush_msg_queue-0">flush_msg_queue/0</a></td><td>Use optionally to flush messages in test cases that run in a single test module.</td></tr><tr><td valign="top"><a href="#test-1">test/1</a></td><td>    Test a sequence of test modules.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -133,26 +133,38 @@ assert_equals(X::term(), Y::term()) -&gt; ok | fail
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">X</span></code>: a term<br /><code class="docutils literal notranslate"><span class="pre">Y</span></code>: a term<br /></p>
 <p>returns: ok if X and Y are equal; fail otherwise.</p>
-<p><a name="assert_failure-1"></a></p>
+<p><a name="assert_exception-1"></a></p>
 </section>
-<section id="assert-failure-1">
-<h3>assert_failure/1<a class="headerlink" href="#assert-failure-1" title="Permalink to this heading"></a></h3>
+<section id="assert-exception-1">
+<h3>assert_exception/1<a class="headerlink" href="#assert-exception-1" title="Permalink to this heading"></a></h3>
 <pre><code>
-assert_failure(F::function()) -&gt; ok | fail
+assert_exception(F::function()) -&gt; ok | fail
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">F</span></code>: a function to evaluate<br /></p>
-<p>returns: ok if evaluating F results in Error being thrown; fail, otherwise</p>
-<p><a name="assert_failure-2"></a></p>
+<p>returns: ok if evaluating F results in Error being raised; fail, otherwise</p>
+<p><a name="assert_exception-2"></a></p>
 </section>
-<section id="assert-failure-2">
-<h3>assert_failure/2<a class="headerlink" href="#assert-failure-2" title="Permalink to this heading"></a></h3>
+<section id="assert-exception-2">
+<h3>assert_exception/2<a class="headerlink" href="#assert-exception-2" title="Permalink to this heading"></a></h3>
 <pre><code>
-assert_failure(F::function(), Error::atom()) -&gt; ok | fail
+assert_exception(F::function(), Class::throw | error | exit) -&gt; ok | fail
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">F</span></code>: a function to evaluate<br /></p>
-<p>returns: ok if evaluating F results in Error being thrown; fail, otherwise</p>
+<p><code class="docutils literal notranslate"><span class="pre">F</span></code>: a function to evaluate<br /><code class="docutils literal notranslate"><span class="pre">Class</span></code>: expected exception class<br /></p>
+<p>returns: ok if evaluating F results in an exception of class Class being
+raised; fail, otherwise</p>
+<p><a name="assert_exception-3"></a></p>
+</section>
+<section id="assert-exception-3">
+<h3>assert_exception/3<a class="headerlink" href="#assert-exception-3" title="Permalink to this heading"></a></h3>
+<pre><code>
+assert_exception(F::function(), Class::throw | error | exit, E::any()) -&gt; ok | fail
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">F</span></code>: a function to evaluate<br /><code class="docutils literal notranslate"><span class="pre">Class</span></code>: expected exception class<br /><code class="docutils literal notranslate"><span class="pre">E</span></code>: expected exception value<br /></p>
+<p>returns: ok if evaluating F results in an exception of class Class and of
+value E being raised; fail, otherwise</p>
 <p><a name="assert_match-2"></a></p>
 </section>
 <section id="assert-match-2">
