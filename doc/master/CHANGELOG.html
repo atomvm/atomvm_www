@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.6a5e2df2 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.11f0da30 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -135,6 +135,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Fixed a bug that would leave the STM32 trapped in a loop on hard faults, rather than aborting</p></li>
 <li><p>Fixed a bug that would make the VM to loop and failing to process selected fds on Linux</p></li>
 <li><p>Fixed classes of exceptions in estdlib.</p></li>
+<li><p>Fixed STM32 code that was hard coded to the default target device, now configured based on the <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-DDEVICE=</span></code> parameter</p></li>
 </ul>
 </section>
 <section id="changed">
@@ -155,6 +156,8 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/1,2</span></code></p></li>
 <li><p>Added minimal support for the OTP <code class="docutils literal notranslate"><span class="pre">ssl</span></code> interface.</p></li>
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">crypto:one_time/4,5</span></code> on Unix and Pico as well as for <code class="docutils literal notranslate"><span class="pre">crypto:hash/2</span></code> on Pico</p></li>
+<li><p>Added ability to configure STM32 Nucleo boards onboard UART-&gt;USB-COM using the <code class="docutils literal notranslate"><span class="pre">-DBOARD=nucleo</span></code> cmake option</p></li>
+<li><p>Added STM32 cmake option <code class="docutils literal notranslate"><span class="pre">-DAVM_CFG_CONSOLE=</span></code> to select a different uart peripheral for the system console</p></li>
 </ul>
 </section>
 </section>
