@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.06159292 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.e114d318 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -140,12 +140,14 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Fixed invalid src_clk error on ESP-IDF &gt;= 5.0</p></li>
 <li><p>Fixed changed default to <code class="docutils literal notranslate"><span class="pre">AVM_USE_32BIT_FLOAT=on</span></code> for STM32 platform to enable use of single precision hardware FPU on F4/F7 devices.</p></li>
 <li><p>Fixed a bug where emscripten <code class="docutils literal notranslate"><span class="pre">register_*_callback/1</span></code> functions would use x[1] as second argument</p></li>
+<li><p>Fixed precision of integers used with timers which could yield to halts and wait times smaller than expected</p></li>
 </ul>
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Crypto functions on generic_unix platform now rely on MbedTLS instead of OpenSSL</p></li>
+<li><p>Platform function providing time used by timers was changed from <code class="docutils literal notranslate"><span class="pre">sys_monotonic_millis</span></code> to <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64</span></code>, <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64_to_ms</span></code> and <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_ms_to_u64</span></code>.</p></li>
 </ul>
 </section>
 <section id="added">

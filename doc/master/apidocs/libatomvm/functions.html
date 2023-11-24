@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.6.0-alpha.2+git.06159292 documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-alpha.2+git.e114d318 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -2442,23 +2442,15 @@ Potential matches:
 <span id="_CPPv325sys_load_module_from_fileP13GlobalContextPKc"></span><span id="_CPPv225sys_load_module_from_fileP13GlobalContextPKc"></span><span id="sys_load_module_from_file__GlobalContextP.cCP"></span><span class="target" id="sys_8h_1af8e4b5086ab22d8ccc2105b8837f321a"></span><a class="reference internal" href="data_structures.html#_CPPv46Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="data_structures.html#_CPPv413GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">path</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
-<dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv420sys_monotonic_millisv">
-<span id="_CPPv320sys_monotonic_millisv"></span><span id="_CPPv220sys_monotonic_millisv"></span><span id="sys_monotonic_millis"></span><span class="target" id="sys_8h_1a4b985490bed2df3d0d78ec86d4c45133"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_millis</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
-<dd><p>gets monotonic time in milliseconds. </p>
-<p>This function must have the same origin as <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time</span></code>. The native format depends on platform and this function should be fast as it is used in timers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>a monotonic time in milliseconds </p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “sys_monotonic_millis” in doxygen xml output for project “libatomvm” from directory: /home/runner/work/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv418sys_monotonic_timeP8timespec">
 <span id="_CPPv318sys_monotonic_timeP8timespec"></span><span id="_CPPv218sys_monotonic_timeP8timespec"></span><span id="sys_monotonic_time__timespecP"></span><span class="target" id="sys_8h_1a55b857f3c7de74a921d9bf4584f36867"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>gets monotonic time </p>
-<p>gets monotonic time. Must have the same origin as <code class="docutils literal notranslate"><span class="pre">sys_monotonic_millis</span></code>. </p>
+<p>gets the time that is used by <code class="docutils literal notranslate"><span class="pre">erlang:monotonic_time/1</span></code> </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>t</strong> – the timespec that will be updated. </p>
@@ -2540,7 +2532,7 @@ Potential matches:
 <dt class="sig sig-object cpp" id="_CPPv48sys_timeP8timespec">
 <span id="_CPPv38sys_timeP8timespec"></span><span id="_CPPv28sys_timeP8timespec"></span><span id="sys_time__timespecP"></span><span class="target" id="sys_8h_1a3c35c7b6c0ff3c0401f6b8e45ed17d26"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">t</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>gets wall clock time </p>
-<p>gets system wall clock time. </p>
+<p>gets system wall clock time, used by <code class="docutils literal notranslate"><span class="pre">erlang:system_time/1</span></code> </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>t</strong> – the timespec that will be updated. </p>

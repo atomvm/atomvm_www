@@ -194,9 +194,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a55b857f3c7de74a921d9bf4584f36867"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a55b857f3c7de74a921d9bf4584f36867">sys_monotonic_time</a> (struct timespec *t)</td></tr>
 <tr class="memdesc:a55b857f3c7de74a921d9bf4584f36867"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets monotonic time  <a href="sys_8h.html#a55b857f3c7de74a921d9bf4584f36867">More...</a><br /></td></tr>
 <tr class="separator:a55b857f3c7de74a921d9bf4584f36867"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b985490bed2df3d0d78ec86d4c45133"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a4b985490bed2df3d0d78ec86d4c45133">sys_monotonic_millis</a> ()</td></tr>
-<tr class="memdesc:a4b985490bed2df3d0d78ec86d4c45133"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets monotonic time in milliseconds.  <a href="sys_8h.html#a4b985490bed2df3d0d78ec86d4c45133">More...</a><br /></td></tr>
-<tr class="separator:a4b985490bed2df3d0d78ec86d4c45133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa3b8cc61790e4d7c99a5582a6861d92"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#afa3b8cc61790e4d7c99a5582a6861d92">sys_monotonic_time_u64</a> ()</td></tr>
+<tr class="memdesc:afa3b8cc61790e4d7c99a5582a6861d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets monotonic time for timers  <a href="sys_8h.html#afa3b8cc61790e4d7c99a5582a6861d92">More...</a><br /></td></tr>
+<tr class="separator:afa3b8cc61790e4d7c99a5582a6861d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab14bbc97773835c2d8b613ba025f8db8"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#ab14bbc97773835c2d8b613ba025f8db8">sys_monotonic_time_ms_to_u64</a> (uint64_t ms)</td></tr>
+<tr class="memdesc:ab14bbc97773835c2d8b613ba025f8db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert a number of milliseconds to system-chosen unit  <a href="sys_8h.html#ab14bbc97773835c2d8b613ba025f8db8">More...</a><br /></td></tr>
+<tr class="separator:ab14bbc97773835c2d8b613ba025f8db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61aceb5e055c2e25e3cfaaba93416198"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a61aceb5e055c2e25e3cfaaba93416198">sys_monotonic_time_u64_to_ms</a> (uint64_t t)</td></tr>
+<tr class="memdesc:a61aceb5e055c2e25e3cfaaba93416198"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert a number in system-chosen unit to milliseconds  <a href="sys_8h.html#a61aceb5e055c2e25e3cfaaba93416198">More...</a><br /></td></tr>
+<tr class="separator:a61aceb5e055c2e25e3cfaaba93416198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ce28625e5d39c550f71fdd7e7f0891c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_module.html">Module</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sys_8h.html#a0ce28625e5d39c550f71fdd7e7f0891c">sys_load_module</a> (<a class="el" href="struct_global_context.html">GlobalContext</a> *global, const char *module_name)</td></tr>
 <tr class="memdesc:a0ce28625e5d39c550f71fdd7e7f0891c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads a BEAM module using platform dependent methods.  <a href="sys_8h.html#a0ce28625e5d39c550f71fdd7e7f0891c">More...</a><br /></td></tr>
 <tr class="separator:a0ce28625e5d39c550f71fdd7e7f0891c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -536,27 +542,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4b985490bed2df3d0d78ec86d4c45133"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b985490bed2df3d0d78ec86d4c45133">&#9670;&nbsp;</a></span>sys_monotonic_millis()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t sys_monotonic_millis </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>gets monotonic time in milliseconds. </p>
-<p>This function must have the same origin as <code>sys_monotonic_time</code>. The native format depends on platform and this function should be fast as it is used in timers.</p>
-<dl class="section return"><dt>Returns</dt><dd>a monotonic time in milliseconds </dd></dl>
-
-</div>
-</div>
 <a id="a55b857f3c7de74a921d9bf4584f36867"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55b857f3c7de74a921d9bf4584f36867">&#9670;&nbsp;</a></span>sys_monotonic_time()</h2>
 
@@ -574,12 +559,87 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>gets monotonic time </p>
-<p>gets monotonic time. Must have the same origin as <code>sys_monotonic_millis</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>gets the time that is used by <code>erlang:monotonic_time/1</code> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>the timespec that will be updated. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ab14bbc97773835c2d8b613ba025f8db8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab14bbc97773835c2d8b613ba025f8db8">&#9670;&nbsp;</a></span>sys_monotonic_time_ms_to_u64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sys_monotonic_time_ms_to_u64 </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>ms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>convert a number of milliseconds to system-chosen unit </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ms</td><td>the number of milliseconds to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of the conversion </dd></dl>
+
+</div>
+</div>
+<a id="afa3b8cc61790e4d7c99a5582a6861d92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa3b8cc61790e4d7c99a5582a6861d92">&#9670;&nbsp;</a></span>sys_monotonic_time_u64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sys_monotonic_time_u64 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>gets monotonic time for timers </p>
+<p>This function must return a non-overflowing counter in the highest precision the platform permits to make sure that we don't have truncation errors when compared with sys_time or sys_monotonic_time. Returning the number of microseconds or nanoseconds since boot would work.</p>
+<dl class="section return"><dt>Returns</dt><dd>a monotonic time in a system-chosen unit </dd></dl>
+
+</div>
+</div>
+<a id="a61aceb5e055c2e25e3cfaaba93416198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aceb5e055c2e25e3cfaaba93416198">&#9670;&nbsp;</a></span>sys_monotonic_time_u64_to_ms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t sys_monotonic_time_u64_to_ms </td>
+          <td>(</td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>convert a number in system-chosen unit to milliseconds </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>the number to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the result of the conversion </dd></dl>
 
 </div>
 </div>
@@ -788,7 +848,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>gets wall clock time </p>
-<p>gets system wall clock time. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>gets system wall clock time, used by <code>erlang:system_time/1</code> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">t</td><td>the timespec that will be updated. </td></tr>
   </table>
