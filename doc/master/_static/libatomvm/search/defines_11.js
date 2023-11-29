@@ -21,6 +21,7 @@ var searchData=
   ['refc_5fbinary_5finfo_5fatom_2878',['REFC_BINARY_INFO_ATOM',['../defaultatoms_8h.html#aa54038cf05383289175eb76b4dbb3c35',1,'defaultatoms.h']]],
   ['refc_5fbinary_5finfo_5fatom_5findex_2879',['REFC_BINARY_INFO_ATOM_INDEX',['../defaultatoms_8h.html#ac145ce4ab3c6edc3d8d4620a7e166e65',1,'defaultatoms.h']]],
   ['refc_5fbinary_5fmin_2880',['REFC_BINARY_MIN',['../term_8h.html#a38d155742e12f78d62466edef1e14b36',1,'term.h']]],
-  ['reuse_5fatom_2881',['REUSE_ATOM',['../defaultatoms_8h.html#a8d142d823f28e6757842a0a4ef9c5b39',1,'defaultatoms.h']]],
-  ['reuse_5fatom_5findex_2882',['REUSE_ATOM_INDEX',['../defaultatoms_8h.html#aebb15e70d2f81e821d6fa876e81027df',1,'defaultatoms.h']]]
+  ['remove_5fsign_2881',['REMOVE_SIGN',['../externalterm_8c.html#adf77b8faac0c1aa69750c5b1b4e4e49e',1,'externalterm.c']]],
+  ['reuse_5fatom_2882',['REUSE_ATOM',['../defaultatoms_8h.html#a8d142d823f28e6757842a0a4ef9c5b39',1,'defaultatoms.h']]],
+  ['reuse_5fatom_5findex_2883',['REUSE_ATOM_INDEX',['../defaultatoms_8h.html#aebb15e70d2f81e821d6fa876e81027df',1,'defaultatoms.h']]]
 ];
