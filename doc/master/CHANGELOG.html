@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.8a979642 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.dfcfc966 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -70,6 +70,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#alpha-1-2023-10-09">[0.6.0-alpha.1] - 2023-10-09</a><ul>
@@ -82,15 +83,15 @@
 <li class="toctree-l3"><a class="reference internal" href="#id4">Added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Fixed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#breaking-changes">Breaking Changes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removed">Removed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Removed</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#unreleased">[0.5.1] - Unreleased</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id6">Added</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">Fixed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Added</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Fixed</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id8">[0.5.0] - 2022-03-22</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">[0.5.0] - 2022-03-22</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="UPDATING.html">AtomVM Update Instructions</a></li>
@@ -148,6 +149,8 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>Crypto functions on generic_unix platform now rely on MbedTLS instead of OpenSSL</p></li>
 <li><p>Platform function providing time used by timers was changed from <code class="docutils literal notranslate"><span class="pre">sys_monotonic_millis</span></code> to <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64</span></code>, <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64_to_ms</span></code> and <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_ms_to_u64</span></code>.</p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">atomvm:random/0</span></code> and <code class="docutils literal notranslate"><span class="pre">atomvm:rand_bytes/1</span></code> on top of <code class="docutils literal notranslate"><span class="pre">crypto:strong_rand_bytes/1</span></code> on
+generic_unix, ESP32 and RP2040 platforms.</p></li>
 </ul>
 </section>
 <section id="added">
@@ -164,6 +167,14 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Added support for <code class="docutils literal notranslate"><span class="pre">crypto:one_time/4,5</span></code> on Unix and Pico as well as for <code class="docutils literal notranslate"><span class="pre">crypto:hash/2</span></code> on Pico</p></li>
 <li><p>Added ability to configure STM32 Nucleo boards onboard UART-&gt;USB-COM using the <code class="docutils literal notranslate"><span class="pre">-DBOARD=nucleo</span></code> cmake option</p></li>
 <li><p>Added STM32 cmake option <code class="docutils literal notranslate"><span class="pre">-DAVM_CFG_CONSOLE=</span></code> to select a different uart peripheral for the system console</p></li>
+<li><p>Added <code class="docutils literal notranslate"><span class="pre">crypto:strong_rand_bytes/1</span></code> using Mbed-TLS (only on generic_unix, ESP32 and RP2040
+platforms)</p></li>
+</ul>
+</section>
+<section id="removed">
+<h3>Removed<a class="headerlink" href="#removed" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>OpenSSL support, Mbed-TLS is required instead.</p></li>
 </ul>
 </section>
 </section>
@@ -299,8 +310,8 @@ returning the tuple <code class="docutils literal notranslate"><span class="pre"
 <li><p>The eavmlib logger interface has been removed</p></li>
 </ul>
 </section>
-<section id="removed">
-<h3>Removed<a class="headerlink" href="#removed" title="Permalink to this heading"></a></h3>
+<section id="id6">
+<h3>Removed<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>ESP-IDF v3.x support.</p></li>
 </ul>
@@ -308,8 +319,8 @@ returning the tuple <code class="docutils literal notranslate"><span class="pre"
 </section>
 <section id="unreleased">
 <h2>[0.5.1] - Unreleased<a class="headerlink" href="#unreleased" title="Permalink to this heading"></a></h2>
-<section id="id6">
-<h3>Added<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<section id="id7">
+<h3>Added<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>New function for atom comparison, useful when writing 3rd party components.</p></li>
 <li><p>New function for translating an atom term to an int value, according to a given translation table.
@@ -323,8 +334,8 @@ source file. This allows adding new NIFs by just copying them to the components 
 table.</p></li>
 </ul>
 </section>
-<section id="id7">
-<h3>Fixed<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h3>
+<section id="id8">
+<h3>Fixed<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
 <ul class="simple">
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">gen_statem</span></code>: Cancel outstanding timers during state transitions in
 order to prevent spurious timeout messages from being sent to <code class="docutils literal notranslate"><span class="pre">gen_statem</span></code>
@@ -350,8 +361,8 @@ bit length is not a multiple of 8.</p></li>
 </ul>
 </section>
 </section>
-<section id="id8">
-<h2>[0.5.0] - 2022-03-22<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h2>
+<section id="id9">
+<h2>[0.5.0] - 2022-03-22<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
