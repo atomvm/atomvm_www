@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.dfcfc966 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-alpha.2+git.6abb424e documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -2295,12 +2295,17 @@ ok = socket:shutdown(Socket, read_write)
 <td><p><code class="docutils literal notranslate"><span class="pre">#{onoff</span> <span class="pre">=&gt;</span> <span class="pre">boolean(),</span> <span class="pre">linger</span> <span class="pre">=&gt;</span> <span class="pre">non_neg_integer()}</span></code></p></td>
 <td><p>Sets <code class="docutils literal notranslate"><span class="pre">SO_LINGER</span></code> on the socekt.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{otp,</span> <span class="pre">rcvbuf}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">non_neg_integer()</span></code></p></td>
+<td><p>Sets the default buffer size (in bytes) on receive calls.  This value is only used if the <code class="docutils literal notranslate"><span class="pre">Length</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">socket:recv</span></code> family of functions has the value <code class="docutils literal notranslate"><span class="pre">0</span></code>; otherwise, the specified non-zero length in the <code class="docutils literal notranslate"><span class="pre">socket:recv</span></code> takes precendence.  Note that the OTP option value <code class="docutils literal notranslate"><span class="pre">default</span></code> is not currently supported.</p></td>
+</tr>
 </tbody>
 </table>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 ok = socket:setopt(Socket, {socket, reuseaddr}, true),
 ok = socket:setopt(Socket, {socket, linger}, #{onoff =&gt; true, linger =&gt; 0}),
+ok = socket:setopt(Socket, {otp, rcvbuf}, 1024),
 </pre></div>
 </div>
 </section>
