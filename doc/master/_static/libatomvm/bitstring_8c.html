@@ -73,13 +73,17 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="bitstring_8h_source.html">bitstring.h</a>&quot;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for bitstring.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitstring_8c__incl.png" border="0" usemap="#a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2bitstring_8c" alt=""/></div>
 <map name="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2bitstring_8c" id="a_2home_2runner_2work_2_atom_v_m_2_atom_v_m_2src_2lib_atom_v_m_2bitstring_8c">
-<area shape="rect" title=" " alt="" coords="787,5,1037,47"/>
+<area shape="rect" title=" " alt="" coords="892,5,1143,47"/>
 <area shape="rect" href="bitstring_8h.html" title=" " alt="" coords="868,95,956,121"/>
+<area shape="rect" title=" " alt="" coords="980,95,1055,121"/>
+<area shape="rect" title=" " alt="" coords="1079,95,1147,121"/>
 <area shape="rect" href="term_8h.html" title="term manipulation functions" alt="" coords="305,169,370,196"/>
 <area shape="rect" title=" " alt="" coords="756,393,839,420"/>
 <area shape="rect" title=" " alt="" coords="609,617,679,644"/>
@@ -130,6 +134,10 @@ Functions</h2></td></tr>
 <tr class="memitem:af7029166df19925d2e4ed82029a89331"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitstring_8c.html#af7029166df19925d2e4ed82029a89331">bitstring_copy_bits_incomplete_bytes</a> (uint8_t *dst, size_t bits_offset, const uint8_t *src, size_t bits_count)</td></tr>
 <tr class="memdesc:af7029166df19925d2e4ed82029a89331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy bits_count bits from src to dst[bits_offset..].  <a href="bitstring_8c.html#af7029166df19925d2e4ed82029a89331">More...</a><br /></td></tr>
 <tr class="separator:af7029166df19925d2e4ed82029a89331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47b42d3bcea40931a8990d4a0d6f379"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitstring_8c.html#ad47b42d3bcea40931a8990d4a0d6f379">bitstring_extract_f32</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> src_bin, size_t offset, <a class="el" href="term__typedef_8h.html#a48b57dd60b663632fb7fd748aa0574f5">avm_int_t</a> n, enum <a class="el" href="bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65">BitstringFlags</a> bs_flags, <a class="el" href="term__typedef_8h.html#a5437f0376d8656682c0f780435836d2b">avm_float_t</a> *dst)</td></tr>
+<tr class="separator:ad47b42d3bcea40931a8990d4a0d6f379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5b53f9209e7388433b586a0f2bec26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitstring_8c.html#a3f5b53f9209e7388433b586a0f2bec26">bitstring_extract_f64</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> src_bin, size_t offset, <a class="el" href="term__typedef_8h.html#a48b57dd60b663632fb7fd748aa0574f5">avm_int_t</a> n, enum <a class="el" href="bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65">BitstringFlags</a> bs_flags, <a class="el" href="term__typedef_8h.html#a5437f0376d8656682c0f780435836d2b">avm_float_t</a> *dst)</td></tr>
+<tr class="separator:a3f5b53f9209e7388433b586a0f2bec26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="af7029166df19925d2e4ed82029a89331"></a>
@@ -182,7 +190,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00354">354</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00357">357</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -230,7 +238,103 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00029">29</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00032">32</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+
+</div>
+</div>
+<a id="ad47b42d3bcea40931a8990d4a0d6f379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad47b42d3bcea40931a8990d4a0d6f379">&#9670;&nbsp;</a></span>bitstring_extract_f32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bitstring_extract_f32 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
+          <td class="paramname"><em>src_bin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a48b57dd60b663632fb7fd748aa0574f5">avm_int_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65">BitstringFlags</a>&#160;</td>
+          <td class="paramname"><em>bs_flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a5437f0376d8656682c0f780435836d2b">avm_float_t</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00396">396</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+
+</div>
+</div>
+<a id="a3f5b53f9209e7388433b586a0f2bec26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f5b53f9209e7388433b586a0f2bec26">&#9670;&nbsp;</a></span>bitstring_extract_f64()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool bitstring_extract_f64 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td>
+          <td class="paramname"><em>src_bin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a48b57dd60b663632fb7fd748aa0574f5">avm_int_t</a>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">enum <a class="el" href="bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65">BitstringFlags</a>&#160;</td>
+          <td class="paramname"><em>bs_flags</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="term__typedef_8h.html#a5437f0376d8656682c0f780435836d2b">avm_float_t</a> *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00432">432</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -278,7 +382,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00058">58</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00061">61</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -339,7 +443,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if decoding was successful, <code>false</code> if character starting at buf is not a valid unicode character </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00249">249</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00252">252</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -393,7 +497,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if encoding was successful, <code>false</code> if c is not a valid unicode character </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00210">210</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00213">213</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -447,7 +551,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if decoding was successful, <code>false</code> if character starting at buf is not a valid unicode character </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00325">325</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00328">328</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -494,7 +598,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if encoding was successful, <code>false</code> if c is not a valid unicode character </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00305">305</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00308">308</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -548,7 +652,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>UnicodeTransformDecodeSuccess</code> if decoding was successful, <code>UnicodeTransformDecodeFail</code> if character starting at buf is not a valid unicode character or <code>UnicodeTransformDecodeIncomplete</code> if character starting at buf is a valid but incomplete transformation </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00104">104</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00107">107</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>
@@ -595,7 +699,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if encoding was successful, <code>false</code> if c is not a valid unicode character </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00104">104</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bitstring_8c_source.html#l00107">107</a> of file <a class="el" href="bitstring_8c_source.html">bitstring.c</a>.</p>
 
 </div>
 </div>

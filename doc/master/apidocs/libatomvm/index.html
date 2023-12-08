@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>libAtomVM Index &mdash; AtomVM 0.6.0-alpha.2+git.6abb424e documentation</title>
+  <title>libAtomVM Index &mdash; AtomVM 0.6.0-alpha.2+git.008fe126 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
@@ -4928,7 +4928,7 @@
 <span class="target" id="bitstring_8c"></span><em><span class="pre">file</span></em> <span class="sig-name descname"><span class="pre">bitstring.c</span></span></dt>
 <dd><p>Include dependency graph for bitstring.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-cbaf40224a87988e26b24ad324446dce8ae0b991.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../_images/graphviz-f30b9794fd734e901c812d73deb23a28ca75a570.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -4936,6 +4936,7 @@
     &quot;20&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;2&quot; [label=&quot;bitstring.h&quot; tooltip=&quot;bitstring.h&quot;]
+    &quot;21&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
     &quot;14&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
@@ -4946,6 +4947,7 @@
     &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;3&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
     &quot;10&quot; [label=&quot;erl_nif.h&quot; tooltip=&quot;erl_nif.h&quot;]
+    &quot;22&quot; [label=&quot;math.h&quot; tooltip=&quot;math.h&quot;]
     &quot;18&quot; [label=&quot;resources.h&quot; tooltip=&quot;resources.h&quot;]
     &quot;19&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
     &quot;9&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
@@ -4953,6 +4955,8 @@
     &quot;17&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;13&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -5044,6 +5048,16 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv436bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t">
 <span id="_CPPv336bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="_CPPv236bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="bitstring_copy_bits_incomplete_bytes__uint8_tP.s.uint8_tCP.s"></span><span class="target" id="bitstring_8c_1af7029166df19925d2e4ed82029a89331"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_copy_bits_incomplete_bytes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_offset</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_count</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t">
+<span id="_CPPv321bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="_CPPv221bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="bitstring_extract_f32__term.s.avm_int_t.BitstringFlags.avm_float_tP"></span><span class="target" id="bitstring_8c_1ad47b42d3bcea40931a8990d4a0d6f379"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t">
+<span id="_CPPv321bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="_CPPv221bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="bitstring_extract_f64__term.s.avm_int_t.BitstringFlags.avm_float_tP"></span><span class="target" id="bitstring_8c_1a3f5b53f9209e7388433b586a0f2bec26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f64</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -5316,6 +5330,16 @@
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv419bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t">
 <span id="_CPPv319bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="_CPPv219bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="bitstring_copy_bits__uint8_tP.s.uint8_tCP.s"></span><span class="target" id="bitstring_8h_1ac0b247e5f1c9136a4c895bb1906337f7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_copy_bits</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_offset</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_count</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="bitstring_8h_1ad47b42d3bcea40931a8990d4a0d6f379"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="bitstring_8h_1a3f5b53f9209e7388433b586a0f2bec26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f64</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="files/term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="files/term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -16084,6 +16108,11 @@
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.OP_BS_GET_INTEGER2">
 <span class="target" id="opcodes_8h_1af80074f3bcf35e4b29403e8280d01cf7"></span><span class="sig-name descname"><span class="n"><span class="pre">OP_BS_GET_INTEGER2</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.OP_BS_GET_FLOAT2">
+<span class="target" id="opcodes_8h_1a5945d06a1809ba5c6b0ed658598ce489"></span><span class="sig-name descname"><span class="n"><span class="pre">OP_BS_GET_FLOAT2</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
