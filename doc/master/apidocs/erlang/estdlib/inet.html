@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module inet &mdash; AtomVM 0.6.0-alpha.2+git.e7151198 documentation</title>
+  <title>Module inet &mdash; AtomVM 0.6.0-alpha.2+git.8d2990df documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -161,6 +161,12 @@ ip4_address() = {0..255, 0..255, 0..255, 0..255}
 ip_address() = <a href="#type-ip4_address">ip4_address()</a>
 </code></pre>
 </section>
+<section id="moniker">
+<h3><a name="type-moniker">moniker()</a><a class="headerlink" href="#moniker" title="Permalink to this heading"></a></h3>
+<pre><code>
+moniker() = ?GEN_TCP_MONIKER | ?GEN_UDP_MONIKER
+</code></pre>
+</section>
 <section id="port-number">
 <h3><a name="type-port_number">port_number()</a><a class="headerlink" href="#port-number" title="Permalink to this heading"></a></h3>
 <pre><code>
@@ -170,7 +176,13 @@ port_number() = 0..65535
 <section id="socket">
 <h3><a name="type-socket">socket()</a><a class="headerlink" href="#socket" title="Permalink to this heading"></a></h3>
 <pre><code>
-socket() = pid()
+socket() = {<a href="#type-moniker">moniker()</a>, <a href="#type-socket_impl">socket_impl()</a>, module()}
+</code></pre>
+</section>
+<section id="socket-impl">
+<h3><a name="type-socket_impl">socket_impl()</a><a class="headerlink" href="#socket-impl" title="Permalink to this heading"></a></h3>
+<pre><code>
+socket_impl() = any()
 </code></pre>
 <p><a name="index"></a></p>
 </section>
