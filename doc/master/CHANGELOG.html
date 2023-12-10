@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2+git.8d2990df documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-alpha.2 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -66,7 +66,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING.html">Contributing</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#alpha-2-unreleased">[0.6.0-alpha.2] - Unreleased</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#alpha-2-2023-12-10">[0.6.0-alpha.2] - 2023-12-10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
@@ -125,8 +125,8 @@
 <p>All notable changes to this project will be documented in this file.</p>
 <p>The format is based on <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a class="reference external" href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<section id="alpha-2-unreleased">
-<h2>[0.6.0-alpha.2] - Unreleased<a class="headerlink" href="#alpha-2-unreleased" title="Permalink to this heading"></a></h2>
+<section id="alpha-2-2023-12-10">
+<h2>[0.6.0-alpha.2] - 2023-12-10<a class="headerlink" href="#alpha-2-2023-12-10" title="Permalink to this heading"></a></h2>
 <section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Permalink to this heading"></a></h3>
 <ul class="simple">
@@ -142,6 +142,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Fixed changed default to <code class="docutils literal notranslate"><span class="pre">AVM_USE_32BIT_FLOAT=on</span></code> for STM32 platform to enable use of single precision hardware FPU on F4/F7 devices.</p></li>
 <li><p>Fixed a bug where emscripten <code class="docutils literal notranslate"><span class="pre">register_*_callback/1</span></code> functions would use x[1] as second argument</p></li>
 <li><p>Fixed precision of integers used with timers which could yield to halts and wait times smaller than expected</p></li>
+<li><p>Add support for ESP32-C6</p></li>
 </ul>
 </section>
 <section id="changed">
@@ -151,6 +152,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Platform function providing time used by timers was changed from <code class="docutils literal notranslate"><span class="pre">sys_monotonic_millis</span></code> to <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64</span></code>, <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_u64_to_ms</span></code> and <code class="docutils literal notranslate"><span class="pre">sys_monotonic_time_ms_to_u64</span></code>.</p></li>
 <li><p>Implement <code class="docutils literal notranslate"><span class="pre">atomvm:random/0</span></code> and <code class="docutils literal notranslate"><span class="pre">atomvm:rand_bytes/1</span></code> on top of <code class="docutils literal notranslate"><span class="pre">crypto:strong_rand_bytes/1</span></code> on
 generic_unix, ESP32 and RP2040 platforms.</p></li>
+<li><p>Performance improvements</p></li>
 </ul>
 </section>
 <section id="added">
@@ -172,6 +174,8 @@ platforms)</p></li>
 <li><p>Added support for setting the default receive buffer size for sockets via <code class="docutils literal notranslate"><span class="pre">socket:setopt/3</span></code></p></li>
 <li><p>Added support for pattern matching binaries containing 32 and 64 bit floating point values, but
 only when aligned to byte boundaries (e.g. <code class="docutils literal notranslate"><span class="pre">&lt;&lt;0:4,</span> <span class="pre">F:32/float&gt;&gt;</span> <span class="pre">=</span> <span class="pre">Bin</span></code> is not supported).</p></li>
+<li><p>Added experimental backend to <code class="docutils literal notranslate"><span class="pre">get_tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">get_udp</span></code> based on the new <code class="docutils literal notranslate"><span class="pre">socket</span></code> interface</p></li>
+<li><p>Added API for managing ESP32 watchdog (only on <code class="docutils literal notranslate"><span class="pre">esp-idf</span></code> &gt;= v5.x)</p></li>
 </ul>
 </section>
 <section id="removed">
