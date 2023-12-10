@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bitstring.h &mdash; AtomVM 0.6.0-alpha.2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/files/bitstring.h.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="context.c" href="context.c.html" />
+    <link rel="prev" title="bitstring.c" href="bitstring.c.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v0.6.0-alpha.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-internal-libraries">AtomVM ‘C’ Internal Libraries</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../../c_api_docs.html">libAtomVM</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../c_api_docs.html#libatomvm-source-files">libAtomVM Source Files</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomshashtable.c.html">atomshashtable.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atomshashtable.h.html">atomshashtable.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avmpack.c.html">avmpack.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="avmpack.h.html">avmpack.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bif.c.html">bif.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bif.h.html">bif.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bitstring.c.html">bitstring.c</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">bitstring.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="context.c.html">context.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="exportedfunction.h.html">exportedfunction.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="externalterm.c.html">externalterm.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="externalterm.h.html">externalterm.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globalcontext.c.html">globalcontext.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="globalcontext.h.html">globalcontext.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iff.c.html">iff.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="iff.h.html">iff.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inet.c.html">inet.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="inet.h.html">inet.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interop.c.html">interop.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interop.h.html">interop.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="list.h.html">list.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="listeners.h.html">listeners.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mailbox.c.html">mailbox.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mailbox.h.html">mailbox.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="memory.c.html">memory.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="memory.h.html">memory.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module.c.html">module.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="module.h.html">module.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_net.h.html">otp_net.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_socket.c.html">otp_socket.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_socket.h.html">otp_socket.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_ssl.c.html">otp_ssl.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="otp_ssl.h.html">otp_ssl.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overflow_helpers.h.html">overflow_helpers.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="platform_nifs.h.html">platform_nifs.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port.c.html">port.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="port.h.html">port.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="posix_nifs.c.html">posix_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="posix_nifs.h.html">posix_nifs.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refc_binary.c.html">refc_binary.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="stacktrace.h.html">stacktrace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.c.html">timer_list.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="timer_list.h.html">timer_list.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="trace.h.html">trace.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="utils.h.html">utils.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="valueshashtable.c.html">valueshashtable.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="valueshashtable.h.html">valueshashtable.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html">libAtomVM Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../UPDATING.html">AtomVM Update Instructions</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+          <li class="breadcrumb-item"><a href="../../../c_api_docs.html">libAtomVM</a></li>
+      <li class="breadcrumb-item active">bitstring.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bitstring-h">
+<h1>bitstring.h<a class="headerlink" href="#bitstring-h" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Include dependency graph for bitstring.h:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-b8382f108892ad1327a7f274328e3b6f21ddd95d.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;3&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
+    &quot;19&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
+    &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
+    &quot;6&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;13&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;10&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
+    &quot;14&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;11&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
+    &quot;15&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
+    &quot;7&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;2&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
+    &quot;9&quot; [label=&quot;erl_nif.h&quot; tooltip=&quot;erl_nif.h&quot;]
+    &quot;17&quot; [label=&quot;resources.h&quot; tooltip=&quot;resources.h&quot;]
+    &quot;18&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;8&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
+    &quot;5&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;16&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
+    &quot;12&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<p>This graph shows which files directly or indirectly include bitstring.h:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-aeed7925c7f01188769b3184c0440da445be4466.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;2&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot;]
+    &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;5&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/context.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/context.c&quot;]
+    &quot;6&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
+    &quot;3&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
+    &quot;4&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/opcodesswitch.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/opcodesswitch.h&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.READ_16LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1a0335f8c2b8588e69c9463a483c687b5c"></span><span class="sig-name descname"><span class="n"><span class="pre">READ_16LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.READ_16LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WRITE_16LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1a0da713b472a666135e248e7b8b855119"></span><span class="sig-name descname"><span class="n"><span class="pre">WRITE_16LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WRITE_16LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.READ_32LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1a9d48b11b275e1f01c91694ca438f8160"></span><span class="sig-name descname"><span class="n"><span class="pre">READ_32LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.READ_32LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WRITE_32LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1a45e88df5416cda41b51fa8553a8b9440"></span><span class="sig-name descname"><span class="n"><span class="pre">WRITE_32LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WRITE_32LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.READ_64LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1ade5a2a861931b7cfa6ef3985ba5763c2"></span><span class="sig-name descname"><span class="n"><span class="pre">READ_64LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.READ_64LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.WRITE_64LE_UNALIGNED">
+<span class="target" id="bitstring_8h_1a8cc8502916ae0c60d504c1d55f8f272e"></span><span class="sig-name descname"><span class="n"><span class="pre">WRITE_64LE_UNALIGNED</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">val</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.WRITE_64LE_UNALIGNED" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv414BitstringFlags">
+<span id="_CPPv314BitstringFlags"></span><span id="_CPPv214BitstringFlags"></span><span class="target" id="bitstring_8h_1a5ed0ea1dd997c35aab7df0e23b577c65"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BitstringFlags</span></span></span><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14BitstringFlags19LittleEndianIntegerE">
+<span id="_CPPv3N14BitstringFlags19LittleEndianIntegerE"></span><span id="_CPPv2N14BitstringFlags19LittleEndianIntegerE"></span><span class="target" id="bitstring_8h_1a5ed0ea1dd997c35aab7df0e23b577c65a8a5f004f92f185cc22bb574bf825a738"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LittleEndianInteger</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14BitstringFlags13SignedIntegerE">
+<span id="_CPPv3N14BitstringFlags13SignedIntegerE"></span><span id="_CPPv2N14BitstringFlags13SignedIntegerE"></span><span class="target" id="bitstring_8h_1a5ed0ea1dd997c35aab7df0e23b577c65a68d0e481abfbd1cfd012e19a69dd3d65"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SignedInteger</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14BitstringFlags19NativeEndianIntegerE">
+<span id="_CPPv3N14BitstringFlags19NativeEndianIntegerE"></span><span id="_CPPv2N14BitstringFlags19NativeEndianIntegerE"></span><span class="target" id="bitstring_8h_1a5ed0ea1dd997c35aab7df0e23b577c65a20937275c04b1229c890117a6bb1a24d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NativeEndianInteger</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N14BitstringFlags23LittleEndianIntegerMaskE">
+<span id="_CPPv3N14BitstringFlags23LittleEndianIntegerMaskE"></span><span id="_CPPv2N14BitstringFlags23LittleEndianIntegerMaskE"></span><span class="target" id="bitstring_8h_1a5ed0ea1dd997c35aab7df0e23b577c65af91189d7fbaba911ea70c25d24c2bb52"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LittleEndianIntegerMask</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="cpp enum">
+<dt class="sig sig-object cpp" id="_CPPv428UnicodeTransformDecodeResult">
+<span id="_CPPv328UnicodeTransformDecodeResult"></span><span id="_CPPv228UnicodeTransformDecodeResult"></span><span class="target" id="bitstring_8h_1a674ecad44fed86469d6f5cb9e582e673"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeTransformDecodeResult</span></span></span><a class="headerlink" href="#_CPPv428UnicodeTransformDecodeResult" title="Permalink to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28UnicodeTransformDecodeResult29UnicodeTransformDecodeSuccessE">
+<span id="_CPPv3N28UnicodeTransformDecodeResult29UnicodeTransformDecodeSuccessE"></span><span id="_CPPv2N28UnicodeTransformDecodeResult29UnicodeTransformDecodeSuccessE"></span><span class="target" id="bitstring_8h_1a674ecad44fed86469d6f5cb9e582e673ae02061fadcc955583a2ec6435a10e3f4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeTransformDecodeSuccess</span></span></span><a class="headerlink" href="#_CPPv4N28UnicodeTransformDecodeResult29UnicodeTransformDecodeSuccessE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28UnicodeTransformDecodeResult26UnicodeTransformDecodeFailE">
+<span id="_CPPv3N28UnicodeTransformDecodeResult26UnicodeTransformDecodeFailE"></span><span id="_CPPv2N28UnicodeTransformDecodeResult26UnicodeTransformDecodeFailE"></span><span class="target" id="bitstring_8h_1a674ecad44fed86469d6f5cb9e582e673a216541593c94468e0aa169f7d4f27c39"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeTransformDecodeFail</span></span></span><a class="headerlink" href="#_CPPv4N28UnicodeTransformDecodeResult26UnicodeTransformDecodeFailE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp enumerator">
+<dt class="sig sig-object cpp" id="_CPPv4N28UnicodeTransformDecodeResult32UnicodeTransformDecodeIncompleteE">
+<span id="_CPPv3N28UnicodeTransformDecodeResult32UnicodeTransformDecodeIncompleteE"></span><span id="_CPPv2N28UnicodeTransformDecodeResult32UnicodeTransformDecodeIncompleteE"></span><span class="target" id="bitstring_8h_1a674ecad44fed86469d6f5cb9e582e673a86b271ef2b7e1968d8c82456e9069ba8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeTransformDecodeIncomplete</span></span></span><a class="headerlink" href="#_CPPv4N28UnicodeTransformDecodeResult32UnicodeTransformDecodeIncompleteE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv429bitstring_extract_any_integerPK7uint8_t6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64">
+<span id="_CPPv329bitstring_extract_any_integerPK7uint8_t6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64"></span><span id="_CPPv229bitstring_extract_any_integerPK7uint8_t6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64"></span><span id="bitstring_extract_any_integer__uint8_tCP.s.avm_int_t.BitstringFlags.maybe_unsigned_int64P"></span><span class="target" id="bitstring_8h_1a1099baa3fd75d02abf94643e440b0f69"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_any_integer</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv420maybe_unsigned_int64" title="maybe_unsigned_int64"><span class="n"><span class="pre">maybe_unsigned_int64</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv428bitstring_insert_any_integerP7uint8_t9avm_int_t11avm_int64_t6size_t14BitstringFlags">
+<span id="_CPPv328bitstring_insert_any_integerP7uint8_t9avm_int_t11avm_int64_t6size_t14BitstringFlags"></span><span id="_CPPv228bitstring_insert_any_integerP7uint8_t9avm_int_t11avm_int64_t6size_t14BitstringFlags"></span><span id="bitstring_insert_any_integer__uint8_tP.avm_int_t.avm_int64_t.s.BitstringFlags"></span><span class="target" id="bitstring_8h_1a2e4d2c53029812507c8d666103a0dca3"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_insert_any_integer</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv411avm_int64_t" title="avm_int64_t"><span class="n"><span class="pre">avm_int64_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv425bitstring_extract_integer4term6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64">
+<span id="_CPPv325bitstring_extract_integer4term6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64"></span><span id="_CPPv225bitstring_extract_integer4term6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64"></span><span id="bitstring_extract_integer__term.s.avm_int_t.BitstringFlags.maybe_unsigned_int64P"></span><span class="target" id="bitstring_8h_1a4c8204a7df14b98c1c539db0a6ef1de8"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_integer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv420maybe_unsigned_int64" title="maybe_unsigned_int64"><span class="n"><span class="pre">maybe_unsigned_int64</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv425bitstring_extract_integer4term6size_t9avm_int_t14BitstringFlagsP20maybe_unsigned_int64" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv424bitstring_insert_integer4term6size_t11avm_int64_t6size_t14BitstringFlags">
+<span id="_CPPv324bitstring_insert_integer4term6size_t11avm_int64_t6size_t14BitstringFlags"></span><span id="_CPPv224bitstring_insert_integer4term6size_t11avm_int64_t6size_t14BitstringFlags"></span><span id="bitstring_insert_integer__term.s.avm_int64_t.s.BitstringFlags"></span><span class="target" id="bitstring_8h_1a70d1ef322681ae1da3c002f7c910bdfd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_insert_integer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dst_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv411avm_int64_t" title="avm_int64_t"><span class="n"><span class="pre">avm_int64_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">value</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv424bitstring_insert_integer4term6size_t11avm_int64_t6size_t14BitstringFlags" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_utf8_encode8uint32_tP7uint8_tP6size_t">
+<span id="_CPPv321bitstring_utf8_encode8uint32_tP7uint8_tP6size_t"></span><span id="_CPPv221bitstring_utf8_encode8uint32_tP7uint8_tP6size_t"></span><span id="bitstring_utf8_encode__uint32_t.uint8_tP.sP"></span><span class="target" id="bitstring_8h_1a4cdb168d961b620ddc471df02a3740fd"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf8_encode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_utf8_decodePK7uint8_t6size_tP8uint32_tP6size_t">
+<span id="_CPPv321bitstring_utf8_decodePK7uint8_t6size_tP8uint32_tP6size_t"></span><span id="_CPPv221bitstring_utf8_decodePK7uint8_t6size_tP8uint32_tP6size_t"></span><span id="bitstring_utf8_decode__uint8_tCP.s.uint32_tP.sP"></span><span class="target" id="bitstring_8h_1a4a12675fdac2a3a8d204f78a4881f4c4"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#_CPPv428UnicodeTransformDecodeResult" title="UnicodeTransformDecodeResult"><span class="n"><span class="pre">UnicodeTransformDecodeResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf8_decode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_utf16_encode8uint32_tP7uint8_t14BitstringFlagsP6size_t">
+<span id="_CPPv322bitstring_utf16_encode8uint32_tP7uint8_t14BitstringFlagsP6size_t"></span><span id="_CPPv222bitstring_utf16_encode8uint32_tP7uint8_t14BitstringFlagsP6size_t"></span><span id="bitstring_utf16_encode__uint32_t.uint8_tP.BitstringFlags.sP"></span><span class="target" id="bitstring_8h_1a671c0cca27648c36130924f61e5c5c13"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf16_encode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_utf16_decodePK7uint8_t6size_tP7int32_tP6size_t14BitstringFlags">
+<span id="_CPPv322bitstring_utf16_decodePK7uint8_t6size_tP7int32_tP6size_t14BitstringFlags"></span><span id="_CPPv222bitstring_utf16_decodePK7uint8_t6size_tP7int32_tP6size_t14BitstringFlags"></span><span id="bitstring_utf16_decode__uint8_tCP.s.int32_tP.sP.BitstringFlags"></span><span class="target" id="bitstring_8h_1ad6dc7f74e487679852d33815dbe9141b"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf16_decode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_utf32_encode8uint32_tP7uint8_t14BitstringFlags">
+<span id="_CPPv322bitstring_utf32_encode8uint32_tP7uint8_t14BitstringFlags"></span><span id="_CPPv222bitstring_utf32_encode8uint32_tP7uint8_t14BitstringFlags"></span><span id="bitstring_utf32_encode__uint32_t.uint8_tP.BitstringFlags"></span><span class="target" id="bitstring_8h_1a6faa1321fc80cabc0417679b550a4c03"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf32_encode</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_utf32_decodePK7uint8_t6size_tP7int32_t14BitstringFlags">
+<span id="_CPPv322bitstring_utf32_decodePK7uint8_t6size_tP7int32_t14BitstringFlags"></span><span id="_CPPv222bitstring_utf32_decodePK7uint8_t6size_tP7int32_t14BitstringFlags"></span><span id="bitstring_utf32_decode__uint8_tCP.s.int32_tP.BitstringFlags"></span><span class="target" id="bitstring_8h_1a0129499cd8f2b23cac2eefdb4483e75c"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf32_decode</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419bitstring_utf8_size8uint32_tP6size_t">
+<span id="_CPPv319bitstring_utf8_size8uint32_tP6size_t"></span><span id="_CPPv219bitstring_utf8_size8uint32_tP6size_t"></span><span id="bitstring_utf8_size__uint32_t.sP"></span><span class="target" id="bitstring_8h_1a6ca669492a030bd74a6407e0aba8a24f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf8_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419bitstring_utf8_size8uint32_tP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420bitstring_utf16_size8uint32_tP6size_t">
+<span id="_CPPv320bitstring_utf16_size8uint32_tP6size_t"></span><span id="_CPPv220bitstring_utf16_size8uint32_tP6size_t"></span><span id="bitstring_utf16_size__uint32_t.sP"></span><span class="target" id="bitstring_8h_1af9d82e9287496ac3f330697e1022f16b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_utf16_size</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420bitstring_utf16_size8uint32_tP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_insert_utf84term6size_t8uint32_tP6size_t">
+<span id="_CPPv321bitstring_insert_utf84term6size_t8uint32_tP6size_t"></span><span id="_CPPv221bitstring_insert_utf84term6size_t8uint32_tP6size_t"></span><span id="bitstring_insert_utf8__term.s.uint32_t.sP"></span><span class="target" id="bitstring_8h_1a729e79d5ed9e46e42cd20ca923258881"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_insert_utf8</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dst_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421bitstring_insert_utf84term6size_t8uint32_tP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv420bitstring_match_utf84term6size_tP8uint32_tP6size_t">
+<span id="_CPPv320bitstring_match_utf84term6size_tP8uint32_tP6size_t"></span><span id="_CPPv220bitstring_match_utf84term6size_tP8uint32_tP6size_t"></span><span id="bitstring_match_utf8__term.s.uint32_tP.sP"></span><span class="target" id="bitstring_8h_1ab1f2822bb37cb6a22b6d97b101a4f66e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_match_utf8</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv420bitstring_match_utf84term6size_tP8uint32_tP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_insert_utf164term6size_t8uint32_t14BitstringFlagsP6size_t">
+<span id="_CPPv322bitstring_insert_utf164term6size_t8uint32_t14BitstringFlagsP6size_t"></span><span id="_CPPv222bitstring_insert_utf164term6size_t8uint32_t14BitstringFlagsP6size_t"></span><span id="bitstring_insert_utf16__term.s.uint32_t.BitstringFlags.sP"></span><span class="target" id="bitstring_8h_1a2d0281250f750e60aff79f199868ebc5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_insert_utf16</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dst_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422bitstring_insert_utf164term6size_t8uint32_t14BitstringFlagsP6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_match_utf164term6size_tP7int32_tP6size_t14BitstringFlags">
+<span id="_CPPv321bitstring_match_utf164term6size_tP7int32_tP6size_t14BitstringFlags"></span><span id="_CPPv221bitstring_match_utf164term6size_tP7int32_tP6size_t14BitstringFlags"></span><span id="bitstring_match_utf16__term.s.int32_tP.sP.BitstringFlags"></span><span class="target" id="bitstring_8h_1a21081894ac1ee0752747612577d4d5bf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_match_utf16</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">out_size</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421bitstring_match_utf164term6size_tP7int32_tP6size_t14BitstringFlags" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv422bitstring_insert_utf324term6size_t8uint32_t14BitstringFlags">
+<span id="_CPPv322bitstring_insert_utf324term6size_t8uint32_t14BitstringFlags"></span><span id="_CPPv222bitstring_insert_utf324term6size_t8uint32_t14BitstringFlags"></span><span id="bitstring_insert_utf32__term.s.uint32_t.BitstringFlags"></span><span class="target" id="bitstring_8h_1a96b065ae409a51aaeb9226991d9a1fc2"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_insert_utf32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">dst_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv422bitstring_insert_utf324term6size_t8uint32_t14BitstringFlags" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_match_utf324term6size_tP7int32_t14BitstringFlags">
+<span id="_CPPv321bitstring_match_utf324term6size_tP7int32_t14BitstringFlags"></span><span id="_CPPv221bitstring_match_utf324term6size_tP7int32_t14BitstringFlags"></span><span id="bitstring_match_utf32__term.s.int32_tP.BitstringFlags"></span><span class="target" id="bitstring_8h_1a599285890c7343a6686dc0b48ff3d953"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_match_utf32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv421bitstring_match_utf324term6size_tP7int32_t14BitstringFlags" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv436bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t">
+<span id="_CPPv336bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="_CPPv236bitstring_copy_bits_incomplete_bytesP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="bitstring_copy_bits_incomplete_bytes__uint8_tP.s.uint8_tCP.s"></span><span class="target" id="bitstring_8h_1af7029166df19925d2e4ed82029a89331"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_copy_bits_incomplete_bytes</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_offset</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_count</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv419bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t">
+<span id="_CPPv319bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="_CPPv219bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t"></span><span id="bitstring_copy_bits__uint8_tP.s.uint8_tCP.s"></span><span class="target" id="bitstring_8h_1ac0b247e5f1c9136a4c895bb1906337f7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_copy_bits</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_offset</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">src</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">bits_count</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv419bitstring_copy_bitsP7uint8_t6size_tPK7uint8_t6size_t" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t">
+<span id="_CPPv321bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="_CPPv221bitstring_extract_f324term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="bitstring_extract_f32__term.s.avm_int_t.BitstringFlags.avm_float_tP"></span><span class="target" id="bitstring_8h_1ad47b42d3bcea40931a8990d4a0d6f379"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv421bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t">
+<span id="_CPPv321bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="_CPPv221bitstring_extract_f644term6size_t9avm_int_t14BitstringFlagsP11avm_float_t"></span><span id="bitstring_extract_f64__term.s.avm_int_t.BitstringFlags.avm_float_tP"></span><span class="target" id="bitstring_8h_1a3f5b53f9209e7388433b586a0f2bec26"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bitstring_extract_f64</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#_CPPv44term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">src_bin</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">offset</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv49avm_int_t" title="avm_int_t"><span class="n"><span class="pre">avm_int_t</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">n</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv414BitstringFlags" title="BitstringFlags"><span class="n"><span class="pre">BitstringFlags</span></span></a><span class="w"> </span><span class="n sig-param"><span class="pre">bs_flags</span></span>, <a class="reference internal" href="term_typedef.h.html#_CPPv411avm_float_t" title="avm_float_t"><span class="n"><span class="pre">avm_float_t</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">dst</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv419maybe_unsigned_int8">
+<span id="_CPPv319maybe_unsigned_int8"></span><span id="_CPPv219maybe_unsigned_int8"></span><span class="target" id="unionmaybe__unsigned__int8"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maybe_unsigned_int8</span></span></span><a class="headerlink" href="#_CPPv419maybe_unsigned_int8" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19maybe_unsigned_int81uE">
+<span id="_CPPv3N19maybe_unsigned_int81uE"></span><span id="_CPPv2N19maybe_unsigned_int81uE"></span><span id="maybe_unsigned_int8::u__uint8_t"></span><span class="target" id="unionmaybe__unsigned__int8_1aaa7add19ac55c898697848638dc72e4f"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u</span></span></span><a class="headerlink" href="#_CPPv4N19maybe_unsigned_int81uE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19maybe_unsigned_int81sE">
+<span id="_CPPv3N19maybe_unsigned_int81sE"></span><span id="_CPPv2N19maybe_unsigned_int81sE"></span><span id="maybe_unsigned_int8::s__int8_t"></span><span class="target" id="unionmaybe__unsigned__int8_1acb878c2dcb8d089cb78a2d47286a2f16"></span><span class="n"><span class="pre">int8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">s</span></span></span><a class="headerlink" href="#_CPPv4N19maybe_unsigned_int81sE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv420maybe_unsigned_int16">
+<span id="_CPPv320maybe_unsigned_int16"></span><span id="_CPPv220maybe_unsigned_int16"></span><span class="target" id="unionmaybe__unsigned__int16"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maybe_unsigned_int16</span></span></span><a class="headerlink" href="#_CPPv420maybe_unsigned_int16" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int161uE">
+<span id="_CPPv3N20maybe_unsigned_int161uE"></span><span id="_CPPv2N20maybe_unsigned_int161uE"></span><span id="maybe_unsigned_int16::u__uint16_t"></span><span class="target" id="unionmaybe__unsigned__int16_1a9380919a8806b8c5ba3c83910ac23418"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int161uE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int161sE">
+<span id="_CPPv3N20maybe_unsigned_int161sE"></span><span id="_CPPv2N20maybe_unsigned_int161sE"></span><span id="maybe_unsigned_int16::s__int16_t"></span><span class="target" id="unionmaybe__unsigned__int16_1aafd43e6cd20af593cf4fb91299d93b67"></span><span class="n"><span class="pre">int16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">s</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int161sE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv420maybe_unsigned_int32">
+<span id="_CPPv320maybe_unsigned_int32"></span><span id="_CPPv220maybe_unsigned_int32"></span><span class="target" id="unionmaybe__unsigned__int32"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maybe_unsigned_int32</span></span></span><a class="headerlink" href="#_CPPv420maybe_unsigned_int32" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int321uE">
+<span id="_CPPv3N20maybe_unsigned_int321uE"></span><span id="_CPPv2N20maybe_unsigned_int321uE"></span><span id="maybe_unsigned_int32::u__uint32_t"></span><span class="target" id="unionmaybe__unsigned__int32_1a344dda47ac5198a0a6cf72ff455c9af4"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int321uE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int321sE">
+<span id="_CPPv3N20maybe_unsigned_int321sE"></span><span id="_CPPv2N20maybe_unsigned_int321sE"></span><span id="maybe_unsigned_int32::s__int32_t"></span><span class="target" id="unionmaybe__unsigned__int32_1aa74759fa4bd7612386c73078a8071838"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">s</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int321sE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv420maybe_unsigned_int64">
+<span id="_CPPv320maybe_unsigned_int64"></span><span id="_CPPv220maybe_unsigned_int64"></span><span class="target" id="unionmaybe__unsigned__int64"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maybe_unsigned_int64</span></span></span><a class="headerlink" href="#_CPPv420maybe_unsigned_int64" title="Permalink to this definition"></a><br /></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int641uE">
+<span id="_CPPv3N20maybe_unsigned_int641uE"></span><span id="_CPPv2N20maybe_unsigned_int641uE"></span><span id="maybe_unsigned_int64::u__uint64_t"></span><span class="target" id="unionmaybe__unsigned__int64_1a8f846d6c01a2afc5beba17699c9135af"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">u</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int641uE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N20maybe_unsigned_int641sE">
+<span id="_CPPv3N20maybe_unsigned_int641sE"></span><span id="_CPPv2N20maybe_unsigned_int641sE"></span><span id="maybe_unsigned_int64::s__int64_t"></span><span class="target" id="unionmaybe__unsigned__int64_1a6cb463d2b3bcc64afa5f14c56acc24db"></span><span class="n"><span class="pre">int64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">s</span></span></span><a class="headerlink" href="#_CPPv4N20maybe_unsigned_int641sE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bitstring.c.html" class="btn btn-neutral float-left" title="bitstring.c" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="context.c.html" class="btn btn-neutral float-right" title="context.c" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2023, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: v0.6.0-alpha.2
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+          
+          <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.0/">v0.6.0-alpha.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.1/">v0.6.0-alpha.1</a></dd>
+          
+        
+           <strong> 
+          <dd><a href="/doc/v0.6.0-alpha.2/">v0.6.0-alpha.2</a></dd>
+           </strong> 
+        
+          
+          <dd><a href="/doc/master/">master</a></dd>
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/v0.6.0-alpha.2/pdf/AtomVM-v0.6.0-alpha.2.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/v0.6.0-alpha.2/epub/AtomVM-v0.6.0-alpha.2.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
