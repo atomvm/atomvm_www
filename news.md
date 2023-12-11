@@ -3,14 +3,35 @@ layout: post
 title: News
 permalink: /news/
 ---
+## 2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release)
+
+This pre-release has a build dependency change from OpenSSL to one on [Mbed-TLS](https://www.trustedfirmware.org/projects/mbed-tls/) to provide cryptographic functions for the generic_unix platform.
+
+Numerous bugs have been fixed since the last release including where guards would raise exceptions instead of just being false, precision of integers used with timers which could yield to halts and wait times smaller than expected, and big endian CPUs are working again.
+
+New features include the introduction of OTP socket interface support, support for `net:getaddrinfo/1,2`, minimal OTP `ssl` interface support, `crypto:strong_rand_bytes/1` using Mbed-TLS on generic_unix, ESP32 and RP2040 platforms, support for `crypto:one_time/4,5` on Unix and Pico as well as for `crypto:hash/2` on Pico. Improvements for the STM32 platform include complete device configuration without the need to edit hardcoded values in the source files, complete GPIO driver support, and improved performance by enabling flash cache and i-cache.
+
+For the full set of bug fixes, changes and additions consult the [Changelog](https://www.atomvm.net/doc/v0.6.0-alpha.2/CHANGELOG.html).
+
+Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from [AtomVM Releases on GitHub](https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.2). STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the [Build Instructions](https://www.atomvm.net/doc/v0.6.0-alpha.2/build-instructions.html).
+
+The git repository and tarballs of the AtomVM source release for all platforms can be found on our [GitHub AtomVM page](https://github.com/atomvm/AtomVM).
+
+Documentation for the v0.6.0-alpha.2 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the [AtomVM Documentation page](https://www.atomvm.net/doc/v0.6.0-alpha.2/).
+
+As always, tools, drivers, and modules are available on the [GitHub AtomVM Project page](https://github.com/atomvm).
+
+Many thanks go to [Davide Bettio](https://github.com/bettio), for creating such a fine work of software, as well as the [contributors](https://github.com/atomvm/AtomVM/graphs/contributors) and [testers who have helped make this release possible](https://github.com/atomvm/AtomVM/issues).
+
+The AtomVM team
 
 ## 2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release)
 
 This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features.
 
-The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to `spawn_opt/2,4`. Several platforms now have the ability to set the sytem clock with `atomvm:posix_clock_settime/2`. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes cunsult the [Changelog](https://www.atomvm.net/doc/v0.6.0-alpha.1/CHANGELOG.html).
+The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to `spawn_opt/2,4`. Several platforms now have the ability to set the system clock with `atomvm:posix_clock_settime/2`. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes consult the [Changelog](https://www.atomvm.net/doc/v0.6.0-alpha.1/CHANGELOG.html).
 
-Donwload images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from [AtomVM Releases on GitHub](https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.1).
+Download images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from [AtomVM Releases on GitHub](https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.1).
 
 The git repository and tarballs of the AtomVM source release for all platforms can be found on our [GitHub AtomVM page](https://github.com/atomvm/AtomVM).
 
