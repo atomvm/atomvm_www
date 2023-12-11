@@ -74,6 +74,7 @@ jobs:
           git add .
           git commit -m "Update Documentation"
       - name: Push changes
+        if: github.repository == 'atomvm/atomvm_www'
         working-directory: ./www
         run: |
           eval `ssh-agent -t 60 -s`
