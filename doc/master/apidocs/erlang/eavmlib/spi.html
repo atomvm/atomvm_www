@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module spi &mdash; AtomVM 0.6.0-beta.0+git.c9f32796 documentation</title>
+  <title>Module spi &mdash; AtomVM 0.6.0-beta.0+git.2cc65f70 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -159,13 +159,13 @@ address() = non_neg_integer()
 <section id="bus-config">
 <h3><a name="type-bus_config">bus_config()</a><a class="headerlink" href="#bus-config" title="Permalink to this heading"></a></h3>
 <pre><code>
-bus_config() = [{miso_io_num, non_neg_integer()} | {mosi_io_num, non_neg_integer()} | {sclk_io_num, non_neg_integer()} | {spi_peripheral, <a href="#type-spi_peripheral">spi_peripheral()</a>}]
+bus_config() = [{poci, non_neg_integer()} | {pico, non_neg_integer()} | {miso, non_neg_integer()} | {mosi, non_neg_integer()} | {sclk, non_neg_integer()} | {peripheral, <a href="#type-peripheral">peripheral()</a>}]
 </code></pre>
 </section>
 <section id="device-config">
 <h3><a name="type-device_config">device_config()</a><a class="headerlink" href="#device-config" title="Permalink to this heading"></a></h3>
 <pre><code>
-device_config() = [{clock_speed_hz, non_neg_integer()} | {mode, 0..3} | {spi_cs_io_num, non_neg_integer()} | {address_len_bits, 0..64} | {command_len_bits, 0..16}]
+device_config() = [{clock_speed_hz, non_neg_integer()} | {mode, 0..3} | {cs, non_neg_integer()} | {address_len_bits, 0..64} | {command_len_bits, 0..16}]
 </code></pre>
 </section>
 <section id="device-name">
@@ -180,16 +180,16 @@ device_name() = atom()
 params() = [{bus_config, <a href="#type-bus_config">bus_config()</a>} | {device_config, [{<a href="#type-device_name">device_name()</a>, <a href="#type-device_config">device_config()</a>}]}]
 </code></pre>
 </section>
+<section id="peripheral">
+<h3><a name="type-peripheral">peripheral()</a><a class="headerlink" href="#peripheral" title="Permalink to this heading"></a></h3>
+<pre><code>
+peripheral() = hspi | vspi
+</code></pre>
+</section>
 <section id="spi">
 <h3><a name="type-spi">spi()</a><a class="headerlink" href="#spi" title="Permalink to this heading"></a></h3>
 <pre><code>
 spi() = pid()
-</code></pre>
-</section>
-<section id="spi-peripheral">
-<h3><a name="type-spi_peripheral">spi_peripheral()</a><a class="headerlink" href="#spi-peripheral" title="Permalink to this heading"></a></h3>
-<pre><code>
-spi_peripheral() = hspi | vspi
 </code></pre>
 </section>
 <section id="transaction">
@@ -239,33 +239,33 @@ write operations.  You may use any atom value of your choosing.</p>
 <p>The SPI Bus configuration is a properties list containing the following entries:</p>
 <table>
 <tr> <th>Key</th> <th>Type</th> <th>Default</th> <th>Description</th> </tr>
-<tr> <td><code>miso_io_num</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>MISO pin number</td></tr>
-<tr> <td><code>mosi_io_num</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>MOSI pin number</td></tr>
-<tr> <td><code>sclk_io_num</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>SCLK pin number</td></tr>
-<tr> <td><code>spi_peripheral</code></td> <td><code>hspi | vspi</code></td> <td><code>hspi</code></td> <td>SPI Peripheral (ESP32 only)</td></tr>
+<tr> <td><code>miso</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>MISO pin number</td></tr>
+<tr> <td><code>mosi</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>MOSI pin number</td></tr>
+<tr> <td><code>sclk</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>SCLK pin number</td></tr>
+<tr> <td><code>peripheral</code></td> <td><code>hspi | vspi</code></td> <td><code>hspi</code></td> <td>SPI Peripheral (ESP32 only)</td></tr>
 </table>
 <p>Each device configuration is a properties list containing the following entries:</p>
 <table>
 <tr> <th>Key</th> <th>Type</th> <th>Default</th> <th>Description</th> </tr>
 <tr> <td><code>clock_speed_hz</code></td> <td><code>non_neg_integer()</code></td> <td><code>1000000</code></td> <td>Clock speed for the SPI device (in hz)</td></tr>
 <tr> <td><code>mode</code></td> <td><code>0..3</code></td> <td><code>0</code></td> <td>SPI device mode</td></tr>
-<tr> <td><code>spi_cs_io_num</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>SPI Chip Select pin number</td></tr>
+<tr> <td><code>cs</code></td> <td><code>non_neg_integer()</code></td> <td>-</td> <td>SPI Chip Select pin number</td></tr>
 <tr> <td><code>address_len_bits</code></td> <td><code>non_neg_integer()</code></td> <td>8</td> <td>Number of bits in the device address</td></tr>
 </table>
 <p>Example:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
 <span class="w">  </span><span class="n">Params</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
 <span class="w">     </span><span class="p">{</span><span class="n">bus_config</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">         </span><span class="p">{</span><span class="n">miso_io_num</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span><span class="n">mosi_io_num</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">},</span>
-<span class="w">         </span><span class="p">{</span><span class="n">sclk_io_num</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="w">         </span><span class="p">{</span><span class="n">miso</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="n">mosi</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span><span class="n">sclk</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
 <span class="w">     </span><span class="p">},</span>
 <span class="w">     </span><span class="p">{</span><span class="n">device_config</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
 <span class="w">         </span><span class="p">{</span><span class="n">device1</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">             </span><span class="p">{</span><span class="n">spi_cs_io_num</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">}</span>
+<span class="w">             </span><span class="p">{</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">}</span>
 <span class="w">         </span><span class="p">]},</span>
 <span class="w">         </span><span class="p">{</span><span class="n">device2</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
-<span class="w">             </span><span class="p">{</span><span class="n">spi_cs_io_num</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">}</span>
+<span class="w">             </span><span class="p">{</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">}</span>
 <span class="w">         </span><span class="p">]}</span>
 <span class="w">     </span><span class="p">]}</span>
 <span class="w">  </span><span class="p">]</span>

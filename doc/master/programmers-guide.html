@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.c9f32796 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.2cc65f70 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -1528,17 +1528,17 @@ ok = i2c:close(I2C)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">miso_io_num</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">poci</span></code> (<code class="docutils literal notranslate"><span class="pre">miso</span></code>)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
-<td><p>SPI leader-in, follower-out pin (MOSI)</p></td>
+<td><p>SPI peripheral-out, controller-in pin (MOSI)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mosi_io_num</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pico</span></code> (<code class="docutils literal notranslate"><span class="pre">mosi</span></code>)</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
-<td><p>SPI leader-out, follower-in pin (MISO)</p></td>
+<td><p>SPI peripheral-in, controller-out pin (MISO)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sclk_io_num</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sclk</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>SPI clock pin (SCLK)</p></td>
@@ -1556,7 +1556,7 @@ ok = i2c:close(I2C)
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spi_clock_hz</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clock_speed_hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>SPI clock frequency (in hertz)</p></td>
@@ -1566,7 +1566,7 @@ ok = i2c:close(I2C)
 <td><p>yes</p></td>
 <td><p>SPI mode, indicating clock polarity (<code class="docutils literal notranslate"><span class="pre">CPOL</span></code>) and clock phase (<code class="docutils literal notranslate"><span class="pre">CPHA</span></code>).  Consult the SPI specification and data sheet for your device, for more information about how to control the behavior of the SPI clock.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">spi_cs_io_num</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">cs</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>SPI chip select pin (CS)</p></td>
@@ -1587,21 +1587,21 @@ ok = i2c:close(I2C)
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 SPIConfig = [
     {bus_config, [
-        {miso_io_num, 19},
-        {mosi_io_num, 27},
-        {sclk_io_num, 5}
+        {miso, 19},
+        {mosi, 27},
+        {sclk, 5}
     ]},
     {device_config, [
         {my_device_1, [
-            {spi_clock_hz, 1000000},
+            {clock_speed_hz, 1000000},
             {mode, 0},
-            {spi_cs_io_num, 18},
+            {cs, 18},
             {address_len_bits, 8}
         ]}
         {my_device_2, [
-            {spi_clock_hz, 1000000},
+            {clock_speed_hz, 1000000},
             {mode, 0},
-            {spi_cs_io_num, 15},
+            {cs, 15},
             {address_len_bits, 8}
         ]}
     ]}
