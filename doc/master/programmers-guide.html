@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.2cc65f70 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.9a89144a documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
@@ -1445,22 +1445,22 @@ ok = gpio:stop().
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scl_io_num</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">scl</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>I2C clock pin (SCL)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sda_io_num</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sda</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>I2C data pin (SDA)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">i2c_clock_hz</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">clock_speed_hz</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">integer()</span></code></p></td>
 <td><p>yes</p></td>
 <td><p>I2C clock frequency (in hertz)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">i2c_num</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">peripheral</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">..</span> <span class="pre">I2C_NUM_MAX</span> <span class="pre">-</span> <span class="pre">1</span></code></p></td>
 <td><p>no (default: <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></td>
 <td><p>I2C port number.  <code class="docutils literal notranslate"><span class="pre">I2C_NUM_MAX</span></code> is defined by the device SDK.  On ESP32, this value is 1.</p></td>
@@ -1470,7 +1470,7 @@ ok = gpio:stop().
 <p>For example,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 I2C = i2c:open([
-    {scl_io_num, 21}, {sda_io_num, 22}, {i2c_clock_hz, 40000}
+    {scl, 21}, {sda, 22}, {clock_speed_hz, 40000}
 ])
 </pre></div>
 </div>
