@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['heapgrowthstrategy_2267',['HeapGrowthStrategy',['../context_8h.html#a053c657189d44e4f53476798cc850191',1,'context.h']]]
+  ['functiontype_2307',['FunctionType',['../exportedfunction_8h.html#a42a11575cc237e37732d560240e04371',1,'exportedfunction.h']]]
 ];

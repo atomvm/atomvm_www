@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bitstringflags_2257',['BitstringFlags',['../bitstring_8h.html#a5ed0ea1dd997c35aab7df0e23b577c65',1,'bitstring.h']]]
+  ['atomtablecopyopt_2297',['AtomTableCopyOpt',['../atom__table_8h.html#aaea2b914d30e8677db2e2a22c83c940d',1,'atom_table.h']]]
 ];

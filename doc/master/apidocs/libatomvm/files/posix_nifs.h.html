@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>posix_nifs.h &mdash; AtomVM 0.6.0-beta.0+git.9839e231 documentation</title>
+  <title>posix_nifs.h &mdash; AtomVM 0.6.0-beta.0+git.273513f6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -68,6 +68,8 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../../../c_api_docs.html#libatomvm-source-files">libAtomVM Source Files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom_table.h.html">atom_table.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atomshashtable.c.html">atomshashtable.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atomshashtable.h.html">atomshashtable.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="avmpack.c.html">avmpack.c</a></li>
@@ -190,7 +192,7 @@
 </div>
 <p>Include dependency graph for posix_nifs.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-948b23f2654940abf2d43b9adee2d91a9ef6d119.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-f313267120fd2286c807ba842237f823906e9b6f.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -199,11 +201,12 @@
     &quot;23&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;12&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
-    &quot;24&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;25&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
     &quot;2&quot; [label=&quot;exportedfunction.h&quot; tooltip=&quot;exportedfunction.h&quot;]
     &quot;15&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;24&quot; [label=&quot;atom_table.h&quot; tooltip=&quot;atom_table.h&quot;]
     &quot;11&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
     &quot;16&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
     &quot;13&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
@@ -216,7 +219,7 @@
     &quot;22&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
     &quot;9&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
     &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
-    &quot;25&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
+    &quot;26&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
     &quot;18&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;14&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;23&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -224,11 +227,12 @@
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -256,20 +260,21 @@
     &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;22&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>

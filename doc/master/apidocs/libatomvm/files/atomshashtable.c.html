@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>atomshashtable.c &mdash; AtomVM 0.6.0-beta.0+git.9839e231 documentation</title>
+  <title>atomshashtable.c &mdash; AtomVM 0.6.0-beta.0+git.273513f6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
@@ -23,7 +23,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="atomshashtable.h" href="atomshashtable.h.html" />
-    <link rel="prev" title="atom.h" href="atom.h.html" /> 
+    <link rel="prev" title="atom_table.h" href="atom_table.h.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -68,6 +68,8 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../../../c_api_docs.html#libatomvm-source-files">libAtomVM Source Files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="atom_table.h.html">atom_table.h</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">atomshashtable.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atomshashtable.h.html">atomshashtable.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="avmpack.c.html">avmpack.c</a></li>
@@ -223,22 +225,22 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.SMP_RDLOCK">
-<span class="target" id="atomshashtable_8c_1a4c9feb11f5a113dc27430108372b81c5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_RDLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.SMP_RDLOCK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="atomshashtable_8c_1a4c9feb11f5a113dc27430108372b81c5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_RDLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.SMP_WRLOCK">
-<span class="target" id="atomshashtable_8c_1a1fc5fa3982024b12377e30f39a659355"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_WRLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.SMP_WRLOCK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="atomshashtable_8c_1a1fc5fa3982024b12377e30f39a659355"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_WRLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.SMP_UNLOCK">
-<span class="target" id="atomshashtable_8c_1ab5310a565239be692372181d7aa27bb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_UNLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.SMP_UNLOCK" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="atomshashtable_8c_1ab5310a565239be692372181d7aa27bb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_UNLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp macro">
 <dt class="sig sig-object cpp" id="c.DEFAULT_SIZE">
-<span class="target" id="atomshashtable_8c_1a9771cabfd673a8e350f1f8ce0b8f458f"></span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SIZE</span></span></span><a class="headerlink" href="#c.DEFAULT_SIZE" title="Permalink to this definition"></a><br /></dt>
+<span class="target" id="atomshashtable_8c_1a9771cabfd673a8e350f1f8ce0b8f458f"></span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SIZE</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -246,7 +248,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv49sdbm_hashPKhi">
-<span id="_CPPv39sdbm_hashPKhi"></span><span id="_CPPv29sdbm_hashPKhi"></span><span id="sdbm_hash__unsigned-cCP.i"></span><span class="target" id="atomshashtable_8c_1a35e8f9c3c964d97c688e12913e804fbd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdbm_hash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv49sdbm_hashPKhi" title="Permalink to this definition"></a><br /></dt>
+<span id="_CPPv39sdbm_hashPKhi"></span><span id="_CPPv29sdbm_hashPKhi"></span><span id="sdbm_hash__unsigned-cCP.i"></span><span class="target" id="atomshashtable_8c_1a35e8f9c3c964d97c688e12913e804fbd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdbm_hash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">str</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp function">
@@ -273,36 +275,7 @@
 <dl class="cpp struct">
 <dt class="sig sig-object cpp" id="_CPPv45HNode">
 <span id="_CPPv35HNode"></span><span id="_CPPv25HNode"></span><span id="HNode"></span><span class="target" id="struct_h_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNode</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for HNode:</p>
-<figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-a4d1327cae0413885be6db8feb42646331a1b313.png" alt="digraph {
-    graph [bgcolor=&quot;#00000000&quot;]
-    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
-    edge [color=&quot;#1414CE&quot;]
-    &quot;1&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
-}" class="graphviz" /></div>
-</div>
-</figure>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5HNode4nextE">
-<span id="_CPPv3N5HNode4nextE"></span><span id="_CPPv2N5HNode4nextE"></span><span id="HNode::next__HNodeP"></span><span class="target" id="struct_h_node_1abea8de3dcee2d732142001b8eb698050"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#_CPPv45HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">next</span></span></span><br /></dt>
 <dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5HNode3keyE">
-<span id="_CPPv3N5HNode3keyE"></span><span id="_CPPv2N5HNode3keyE"></span><span id="HNode::key__AtomString"></span><span class="target" id="struct_h_node_1a47595d031a8e4cf76063a67062655a91"></span><a class="reference internal" href="atom.h.html#_CPPv410AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><br /></dt>
-<dd></dd></dl>
-
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N5HNode5valueE">
-<span id="_CPPv3N5HNode5valueE"></span><span id="_CPPv2N5HNode5valueE"></span><span id="HNode::value__unsigned-l"></span><span class="target" id="struct_h_node_1a55f16a51c3d2de60883697be3f51ad71"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
 
 </section>
 
@@ -310,7 +283,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="atom.h.html" class="btn btn-neutral float-left" title="atom.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="atom_table.h.html" class="btn btn-neutral float-left" title="atom_table.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="atomshashtable.h.html" class="btn btn-neutral float-right" title="atomshashtable.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
