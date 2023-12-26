@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['socketerrors_2322',['SocketErrors',['../otp__socket_8h.html#affee9abf0ddb47e6f1ae4c76b1aff0b2',1,'otp_socket.h']]]
+  ['refcbinaryflags_2333',['RefcBinaryFlags',['../term_8h.html#ada026bf2d0a66c550271f757eef36e1f',1,'term.h']]]
 ];

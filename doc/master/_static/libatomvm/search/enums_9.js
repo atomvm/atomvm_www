@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['nativehandlerresult_2317',['NativeHandlerResult',['../context_8h.html#a0d9829d8c44d10c67c99cb6fd1df9869',1,'context.h']]]
+  ['memoryallocmode_2325',['MemoryAllocMode',['../memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628',1,'memory.h']]],
+  ['memorygcresult_2326',['MemoryGCResult',['../memory_8h.html#a3d8bef9f86e567a8516760e56fdf085c',1,'memory.h']]],
+  ['messagetype_2327',['MessageType',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013',1,'mailbox.h']]],
+  ['moduleloadresult_2328',['ModuleLoadResult',['../module_8h.html#ab855e696abd689127ee483704e2997f1',1,'module.h']]]
 ];

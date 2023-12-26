@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['memoryallocmode_2313',['MemoryAllocMode',['../memory_8h.html#aff62723a68c8c946c7d115a1cfaa4628',1,'memory.h']]],
-  ['memorygcresult_2314',['MemoryGCResult',['../memory_8h.html#a3d8bef9f86e567a8516760e56fdf085c',1,'memory.h']]],
-  ['messagetype_2315',['MessageType',['../mailbox_8h.html#ac6606ebe91c8ac66a2c314c79f5ab013',1,'mailbox.h']]],
-  ['moduleloadresult_2316',['ModuleLoadResult',['../module_8h.html#ab855e696abd689127ee483704e2997f1',1,'module.h']]]
+  ['inet_5fdomain_2321',['inet_domain',['../inet_8h.html#a9d7802aa1f0de19c270447309179596d',1,'inet.h']]],
+  ['inet_5fprotocol_2322',['inet_protocol',['../inet_8h.html#a4b9bebf2bd24c5c9711611edb443f754',1,'inet.h']]],
+  ['inet_5ftype_2323',['inet_type',['../inet_8h.html#ac386e0e4d2ec0c72939c9259db3347e0',1,'inet.h']]],
+  ['interopfunctionresult_2324',['InteropFunctionResult',['../interop_8h.html#a3f8762f470fb4c0f30adf31db71049f8',1,'interop.h']]]
 ];
