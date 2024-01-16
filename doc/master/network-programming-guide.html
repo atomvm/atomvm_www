@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Programming Guide &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <title>Network Programming Guide &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/network-programming-guide.html" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -112,14 +114,14 @@
  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 -->
 <section id="network-programming-guide">
-<h1>Network Programming Guide<a class="headerlink" href="#network-programming-guide" title="Permalink to this heading"></a></h1>
+<h1>Network Programming Guide<a class="headerlink" href="#network-programming-guide" title="Link to this heading"></a></h1>
 <p>One of the exciting features of the ESP32 and the Pico-W is their support for WiFi networking, allowing ESP32 and Pico-W micro-controllers to communicate with the outside world over common IP networking protocols, such as TCP or IDP.  The ESP32 and the Pico-W can be configured in station mode (STA), whereby the devices connect to an existing access point, as well as “softAP” mode (AP), whereby they function as an access point, to which other stations can connect. The ESP32 also supports a combined STA+softAP mode, which allows the device to function in both STA and softAP mode simultaneously.</p>
 <p>AtomVM provides an Erlang API interface for interacting with the WiFi networking layer on ESP32 and Pico-W devices, providing support for configuring your ESP32 or Pico-W device in STA mode, AP mode, or a combined STA+AP mode, allowing Erlang/Elixir applications to send and receive data from other devices on a network.  This interface is encapsulated in the <code class="docutils literal notranslate"><span class="pre">network</span></code> module, which implements a simple interface for connecting to existing WiFi networks or for functioning as a WiFi access point. The same <code class="docutils literal notranslate"><span class="pre">network</span></code> module is used for both the ESP32 and the Pico-W.</p>
 <p>Once the network has been set up (in STA or AP mode), AtomVM can use various socket interfaces to interact with the socket layer to create a client or server application.  For example, on ESP32, AtomVM supports the <code class="docutils literal notranslate"><span class="pre">gen_udp</span></code> and <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> APIs, while AtomVM extensions may support HTTP, MQTT, and other protocols built over low-level networking interfaces.</p>
 <p>The AtomVM networking API leverages callback functions, allowing applications to be responsive to changes in the underlying network, which can frequently occur in embedded applications, where devices can easily lose and then regain network connectivity.  In such cases, it is important for applications to be resilient to changes in network availability, by closing or re-opening socket connections in response to disconnections and re-connections in the underlying network.</p>
 <p>This document describes the basic design of the AtomVM network interfaces, and how to interact programmatically with it.</p>
 <section id="station-sta-mode">
-<h2>Station (STA) mode<a class="headerlink" href="#station-sta-mode" title="Permalink to this heading"></a></h2>
+<h2>Station (STA) mode<a class="headerlink" href="#station-sta-mode" title="Link to this heading"></a></h2>
 <p>In STA mode, the ESP32 or the Pico-W connect to an existing WiFi network.</p>
 <p>In this case, the input configuration should be a properties list containing a tuple of the form <code class="docutils literal notranslate"><span class="pre">{sta,</span> <span class="pre">&lt;sta-properties&gt;}</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;sta-properties&gt;</span></code> is a property list containing configuration properties for the device in station mode.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;sta-properties&gt;</span></code> property list should contain the following entries:</p>
@@ -173,7 +175,7 @@ disconnected() -&gt;
 </div>
 <p>In a typical application, the network should be configured and an IP address should be acquired first, before starting clients or services that have a dependency on the network.</p>
 <section id="convenience-functions">
-<h3>Convenience Functions<a class="headerlink" href="#convenience-functions" title="Permalink to this heading"></a></h3>
+<h3>Convenience Functions<a class="headerlink" href="#convenience-functions" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">network</span></code> module supports the <code class="docutils literal notranslate"><span class="pre">network:wait_for_sta/1,2</span></code> convenience functions for applications that do not need robust connection management.  These functions are synchronous and will wait until the device is connected to the specified AP.  Supply the properties list specified in the <code class="docutils literal notranslate"><span class="pre">{sta,</span> <span class="pre">[...]}</span></code> component of the above configuration, in addition to an optional timeout (in milliseconds).</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -193,7 +195,7 @@ end
 </section>
 </section>
 <section id="ap-mode">
-<h2>AP mode<a class="headerlink" href="#ap-mode" title="Permalink to this heading"></a></h2>
+<h2>AP mode<a class="headerlink" href="#ap-mode" title="Link to this heading"></a></h2>
 <p>In AP mode, the ESP32 starts a WiFi network to which other devices (laptops, mobile devices, other ESP32 devices, etc) can connect.  The ESP32 will create an IPv4 network, and will assign itself the address <code class="docutils literal notranslate"><span class="pre">192.168.4.1</span></code>.  Devices that attach to the ESP32 in AP mode will be assigned sequential addresses in the <code class="docutils literal notranslate"><span class="pre">192.168.4.0/24</span></code> range, e.g., <code class="docutils literal notranslate"><span class="pre">192.168.4.2</span></code>, <code class="docutils literal notranslate"><span class="pre">192.168.4.3</span></code>, etc.</p>
 <p>To initialize the ESP32 device in AP mode, the input configuration should be a properties list containing a tuple of the form <code class="docutils literal notranslate"><span class="pre">{ap,</span> <span class="pre">&lt;ap-properties&gt;}</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;ap-properties&gt;</span></code> is a property list containing configuration properties for the device in AP mode.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;ap-properties&gt;</span></code> property list may contain the following entries:</p>
@@ -254,7 +256,7 @@ sta_ip_assigned(Address) -&gt;
 </div>
 <p>In a typical application, the network should be configured and the application should wait for the AP to report that it has started, before starting clients or services that have a dependency on the network.</p>
 <section id="id1">
-<h3>Convenience Functions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Convenience Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">network</span></code> module supports the <code class="docutils literal notranslate"><span class="pre">network:wait_for_ap/1,2</span></code> convenience functions for applications that do not need robust connection management.  These functions are synchronous and will wait until the device is successfully starts an AP.  Supply the properties list specified in the <code class="docutils literal notranslate"><span class="pre">{ap,</span> <span class="pre">[...]}</span></code> component of the above configuration, in addition to an optional timeout (in milliseconds).</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -272,12 +274,12 @@ end
 </section>
 </section>
 <section id="sta-ap-mode">
-<h2>STA+AP mode<a class="headerlink" href="#sta-ap-mode" title="Permalink to this heading"></a></h2>
+<h2>STA+AP mode<a class="headerlink" href="#sta-ap-mode" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">network</span></code> module can be started in both STA and AP mode.  In this case, the ESP32 device will both connect to an access point in its STA mode, and will simultaneously serve as an access point in its role in AP mode.</p>
 <p>In order to enable both STA and AP mode, simply provide valid configuration for both modes in the configuration structure supplied to the <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> function.</p>
 </section>
 <section id="sntp-support">
-<h2>SNTP Support<a class="headerlink" href="#sntp-support" title="Permalink to this heading"></a></h2>
+<h2>SNTP Support<a class="headerlink" href="#sntp-support" title="Link to this heading"></a></h2>
 <p>You may configure the networking layer to automatically synchronize time on the ESP32 with an NTP server accessible on the network.</p>
 <p>To synchronize time with an NTP server, add a property list with the tag <code class="docutils literal notranslate"><span class="pre">sntp</span></code> at the top level configuration passed into the <code class="docutils literal notranslate"><span class="pre">network:start/1</span></code> function.  Specify the NTP hostname or IP address with which your device should sync using the <code class="docutils literal notranslate"><span class="pre">host</span></code> property tag.  The <code class="docutils literal notranslate"><span class="pre">host</span></code> value can be a string or binary.</p>
 <p>You can also specify a callback function that will get called when the clock is synchronized with the SNTP server via the <code class="docutils literal notranslate"><span class="pre">synchronized</span></code> property tag.  This function takes a tuple with the updated time in seconds and microseconds.</p>
@@ -300,7 +302,7 @@ sntp_synchronized({TVSec, TVUsec}) -&gt;
 </div></blockquote>
 </section>
 <section id="nvs-credentials">
-<h2>NVS Credentials<a class="headerlink" href="#nvs-credentials" title="Permalink to this heading"></a></h2>
+<h2>NVS Credentials<a class="headerlink" href="#nvs-credentials" title="Link to this heading"></a></h2>
 <p>It can become tiresome to enter an SSID and password for every application, and in general it is bad security practice to hard-wire WiFi credentials in your application source code.</p>
 <p>You may instead store an STA or AP SSID and PSK in non-volatile storage (NVS) on and ESP32 device under the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
 <blockquote>
@@ -308,7 +310,7 @@ sntp_synchronized({TVSec, TVUsec}) -&gt;
 </div></blockquote>
 </section>
 <section id="stopping-the-network">
-<h2>Stopping the Network<a class="headerlink" href="#stopping-the-network" title="Permalink to this heading"></a></h2>
+<h2>Stopping the Network<a class="headerlink" href="#stopping-the-network" title="Link to this heading"></a></h2>
 <p>To stop the network and free any resources in use, issue the <code class="docutils literal notranslate"><span class="pre">stop/0</span></code> function:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>network:stop().
 </pre></div>

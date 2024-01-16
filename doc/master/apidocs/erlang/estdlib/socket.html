@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module socket &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <title>Module socket &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/socket.html" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -134,7 +136,7 @@
            <div itemprop="articleBody">
              
   <section id="module-socket">
-<h1>Module socket<a class="headerlink" href="#module-socket" title="Permalink to this heading"></a></h1>
+<h1>Module socket<a class="headerlink" href="#module-socket" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
 <li><p><a class="reference internal" href="#index"><span class="xref myst">Function Index</span></a></p></li>
@@ -142,55 +144,55 @@
 </ul>
 <p><a name="types"></a></p>
 <section id="data-types">
-<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
 <section id="domain">
-<h3><a name="type-domain">domain()</a><a class="headerlink" href="#domain" title="Permalink to this heading"></a></h3>
+<h3><a name="type-domain">domain()</a><a class="headerlink" href="#domain" title="Link to this heading"></a></h3>
 <pre><code>
 domain() = inet
 </code></pre>
 </section>
 <section id="in-addr">
-<h3><a name="type-in_addr">in_addr()</a><a class="headerlink" href="#in-addr" title="Permalink to this heading"></a></h3>
+<h3><a name="type-in_addr">in_addr()</a><a class="headerlink" href="#in-addr" title="Link to this heading"></a></h3>
 <pre><code>
 in_addr() = {0..255, 0..255, 0..255, 0..255}
 </code></pre>
 </section>
 <section id="port-number">
-<h3><a name="type-port_number">port_number()</a><a class="headerlink" href="#port-number" title="Permalink to this heading"></a></h3>
+<h3><a name="type-port_number">port_number()</a><a class="headerlink" href="#port-number" title="Link to this heading"></a></h3>
 <pre><code>
 port_number() = 0..65535
 </code></pre>
 </section>
 <section id="protocol">
-<h3><a name="type-protocol">protocol()</a><a class="headerlink" href="#protocol" title="Permalink to this heading"></a></h3>
+<h3><a name="type-protocol">protocol()</a><a class="headerlink" href="#protocol" title="Link to this heading"></a></h3>
 <pre><code>
 protocol() = tcp | udp
 </code></pre>
 </section>
 <section id="sockaddr">
-<h3><a name="type-sockaddr">sockaddr()</a><a class="headerlink" href="#sockaddr" title="Permalink to this heading"></a></h3>
+<h3><a name="type-sockaddr">sockaddr()</a><a class="headerlink" href="#sockaddr" title="Link to this heading"></a></h3>
 <pre><code>
 sockaddr() = <a href="#type-sockaddr_in">sockaddr_in()</a>
 </code></pre>
 </section>
 <section id="sockaddr-in">
-<h3><a name="type-sockaddr_in">sockaddr_in()</a><a class="headerlink" href="#sockaddr-in" title="Permalink to this heading"></a></h3>
+<h3><a name="type-sockaddr_in">sockaddr_in()</a><a class="headerlink" href="#sockaddr-in" title="Link to this heading"></a></h3>
 <pre><code>
 sockaddr_in() = #{family =&gt; inet, port =&gt; <a href="#type-port_number">port_number()</a>, addr =&gt; any | loopback | <a href="#type-in_addr">in_addr()</a>}
 </code></pre>
 </section>
 <section id="socket">
-<h3><a name="type-socket">socket()</a><a class="headerlink" href="#socket" title="Permalink to this heading"></a></h3>
+<h3><a name="type-socket">socket()</a><a class="headerlink" href="#socket" title="Link to this heading"></a></h3>
 <p><strong>abstract datatype</strong>: <code class="docutils literal notranslate"><span class="pre">socket()</span></code></p>
 </section>
 <section id="socket-option">
-<h3><a name="type-socket_option">socket_option()</a><a class="headerlink" href="#socket-option" title="Permalink to this heading"></a></h3>
+<h3><a name="type-socket_option">socket_option()</a><a class="headerlink" href="#socket-option" title="Link to this heading"></a></h3>
 <pre><code>
 socket_option() = {socket, reuseaddr} | {socket, linger}
 </code></pre>
 </section>
 <section id="type">
-<h3><a name="type-type">type()</a><a class="headerlink" href="#type" title="Permalink to this heading"></a></h3>
+<h3><a name="type-type">type()</a><a class="headerlink" href="#type" title="Link to this heading"></a></h3>
 <pre><code>
 type() = stream | dgram
 </code></pre>
@@ -198,15 +200,15 @@ type() = stream | dgram
 </section>
 </section>
 <section id="function-index">
-<h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
+<h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept-1">accept/1</a></td><td>Equivalent to <a href="socket.md#accept-2"><tt>socket:accept(ListeningSocket, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#accept-2">accept/2</a></td><td>    Wait for the socket to accept a connection.</td></tr><tr><td valign="top"><a href="#bind-2">bind/2</a></td><td>    Bind a socket to an interface.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close a socket.</td></tr><tr><td valign="top"><a href="#connect-2">connect/2</a></td><td>    Wait for the socket to connect to an address.</td></tr><tr><td valign="top"><a href="#listen-1">listen/1</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#listen-2">listen/2</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#open-3">open/3</a></td><td>    Create a socket.</td></tr><tr><td valign="top"><a href="#peername-1">peername/1</a></td><td>    Return the address of the peer connected to the specified socket.</td></tr><tr><td valign="top"><a href="#recv-1">recv/1</a></td><td>Equivalent to <a href="socket.md#recv-2"><tt>socket:recv(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-2">recv/2</a></td><td>Equivalent to <a href="socket.md#recv-3"><tt>socket:recv(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-3">recv/3</a></td><td>    Receive data on the specified socket.</td></tr><tr><td valign="top"><a href="#recvfrom-1">recvfrom/1</a></td><td>Equivalent to <a href="socket.md#recvfrom-2"><tt>socket:recvfrom(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-2">recvfrom/2</a></td><td>Equivalent to <a href="socket.md#recvfrom-3"><tt>socket:recvfrom(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-3">recvfrom/3</a></td><td>    Receive data on the specified socket, returning the from address.</td></tr><tr><td valign="top"><a href="#send-2">send/2</a></td><td>    Send data on the specified socket.</td></tr><tr><td valign="top"><a href="#sendto-3">sendto/3</a></td><td>    Send data on the specified socket to the specified destination.</td></tr><tr><td valign="top"><a href="#setopt-3">setopt/3</a></td><td>    Set a socket option.</td></tr><tr><td valign="top"><a href="#shutdown-2">shutdown/2</a></td><td>    Shut down one or both ends of a full-duplex socket connection.</td></tr><tr><td valign="top"><a href="#sockname-1">sockname/1</a></td><td>    Return the current address for the specified socket.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
-<h2>Function Details<a class="headerlink" href="#function-details" title="Permalink to this heading"></a></h2>
+<h2>Function Details<a class="headerlink" href="#function-details" title="Link to this heading"></a></h2>
 <p><a name="accept-1"></a></p>
 <section id="accept-1">
-<h3>accept/1<a class="headerlink" href="#accept-1" title="Permalink to this heading"></a></h3>
+<h3>accept/1<a class="headerlink" href="#accept-1" title="Link to this heading"></a></h3>
 <pre><code>
 accept(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Connection::<a href="#type-socket">socket()</a>} | {error, Reason::term()}
 </code></pre>
@@ -215,7 +217,7 @@ accept(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Connection::<a hr
 <p><a name="accept-2"></a></p>
 </section>
 <section id="accept-2">
-<h3>accept/2<a class="headerlink" href="#accept-2" title="Permalink to this heading"></a></h3>
+<h3>accept/2<a class="headerlink" href="#accept-2" title="Link to this heading"></a></h3>
 <pre><code>
 accept(Socket::<a href="#type-socket">socket()</a>, Timeout::timeout()) -&gt; {ok, Connection::<a href="#type-socket">socket()</a>} | {error, Reason::term()}
 </code></pre>
@@ -233,7 +235,7 @@ in a separate process.</p>
 <p><a name="bind-2"></a></p>
 </section>
 <section id="bind-2">
-<h3>bind/2<a class="headerlink" href="#bind-2" title="Permalink to this heading"></a></h3>
+<h3>bind/2<a class="headerlink" href="#bind-2" title="Link to this heading"></a></h3>
 <pre><code>
 bind(Socket::<a href="#type-socket">socket()</a>, Address::<a href="#type-sockaddr">sockaddr()</a> | any | loopback) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -250,7 +252,7 @@ address, and port.</p>
 <p><a name="close-1"></a></p>
 </section>
 <section id="close-1">
-<h3>close/1<a class="headerlink" href="#close-1" title="Permalink to this heading"></a></h3>
+<h3>close/1<a class="headerlink" href="#close-1" title="Link to this heading"></a></h3>
 <pre><code>
 close(Socket::<a href="#type-socket">socket()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -264,7 +266,7 @@ close(Socket::<a href="#type-socket">socket()</a>) -&gt; ok | {error, Reason::te
 <p><a name="connect-2"></a></p>
 </section>
 <section id="connect-2">
-<h3>connect/2<a class="headerlink" href="#connect-2" title="Permalink to this heading"></a></h3>
+<h3>connect/2<a class="headerlink" href="#connect-2" title="Link to this heading"></a></h3>
 <pre><code>
 connect(Socket::<a href="#type-socket">socket()</a>, Address::<a href="#type-sockaddr">sockaddr()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -281,7 +283,7 @@ to a server.</p>
 <p><a name="listen-1"></a></p>
 </section>
 <section id="listen-1">
-<h3>listen/1<a class="headerlink" href="#listen-1" title="Permalink to this heading"></a></h3>
+<h3>listen/1<a class="headerlink" href="#listen-1" title="Link to this heading"></a></h3>
 <pre><code>
 listen(Socket::<a href="#type-socket">socket()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -296,7 +298,7 @@ socket and should be bound to an address and port.</p>
 <p><a name="listen-2"></a></p>
 </section>
 <section id="listen-2">
-<h3>listen/2<a class="headerlink" href="#listen-2" title="Permalink to this heading"></a></h3>
+<h3>listen/2<a class="headerlink" href="#listen-2" title="Link to this heading"></a></h3>
 <pre><code>
 listen(Socket::<a href="#type-socket">socket()</a>, Backlog::integer()) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -313,7 +315,7 @@ pending connections</p>
 <p><a name="open-3"></a></p>
 </section>
 <section id="open-3">
-<h3>open/3<a class="headerlink" href="#open-3" title="Permalink to this heading"></a></h3>
+<h3>open/3<a class="headerlink" href="#open-3" title="Link to this heading"></a></h3>
 <pre><code>
 open(Domain::<a href="#type-domain">domain()</a>, Type::<a href="#type-type">type()</a>, Protocol::<a href="#type-protocol">protocol()</a>) -&gt; {ok, <a href="#type-socket">socket()</a>} | {error, Reason::term()}
 </code></pre>
@@ -328,7 +330,7 @@ Use the returned socket for communications.</p>
 <p><a name="peername-1"></a></p>
 </section>
 <section id="peername-1">
-<h3>peername/1<a class="headerlink" href="#peername-1" title="Permalink to this heading"></a></h3>
+<h3>peername/1<a class="headerlink" href="#peername-1" title="Link to this heading"></a></h3>
 <pre><code>
 peername(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Address::<a href="#type-sockaddr">sockaddr()</a>} | {error, Reason::term()}
 </code></pre>
@@ -341,7 +343,7 @@ peername(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Address::<a hre
 <p><a name="recv-1"></a></p>
 </section>
 <section id="recv-1">
-<h3>recv/1<a class="headerlink" href="#recv-1" title="Permalink to this heading"></a></h3>
+<h3>recv/1<a class="headerlink" href="#recv-1" title="Link to this heading"></a></h3>
 <pre><code>
 recv(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Data::binary()} | {error, Reason::term()}
 </code></pre>
@@ -350,7 +352,7 @@ recv(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Data::binary()} | {
 <p><a name="recv-2"></a></p>
 </section>
 <section id="recv-2">
-<h3>recv/2<a class="headerlink" href="#recv-2" title="Permalink to this heading"></a></h3>
+<h3>recv/2<a class="headerlink" href="#recv-2" title="Link to this heading"></a></h3>
 <pre><code>
 recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer()) -&gt; {ok, Data::binary()} | {error, Reason::term()}
 </code></pre>
@@ -359,7 +361,7 @@ recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer()) -&g
 <p><a name="recv-3"></a></p>
 </section>
 <section id="recv-3">
-<h3>recv/3<a class="headerlink" href="#recv-3" title="Permalink to this heading"></a></h3>
+<h3>recv/3<a class="headerlink" href="#recv-3" title="Link to this heading"></a></h3>
 <pre><code>
 recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, Data::binary()} | {error, Reason::term()}
 </code></pre>
@@ -373,7 +375,7 @@ recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Tim
 <p><a name="recvfrom-1"></a></p>
 </section>
 <section id="recvfrom-1">
-<h3>recvfrom/1<a class="headerlink" href="#recvfrom-1" title="Permalink to this heading"></a></h3>
+<h3>recvfrom/1<a class="headerlink" href="#recvfrom-1" title="Link to this heading"></a></h3>
 <pre><code>
 recvfrom(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {Address::<a href="#type-sockaddr">sockaddr()</a>, Data::binary()}} | {error, Reason::term()}
 </code></pre>
@@ -382,7 +384,7 @@ recvfrom(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, {Address::<a hr
 <p><a name="recvfrom-2"></a></p>
 </section>
 <section id="recvfrom-2">
-<h3>recvfrom/2<a class="headerlink" href="#recvfrom-2" title="Permalink to this heading"></a></h3>
+<h3>recvfrom/2<a class="headerlink" href="#recvfrom-2" title="Link to this heading"></a></h3>
 <pre><code>
 recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer()) -&gt; {ok, {Address::<a href="#type-sockaddr">sockaddr()</a>, Data::binary()}} | {error, Reason::term()}
 </code></pre>
@@ -391,7 +393,7 @@ recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer())
 <p><a name="recvfrom-3"></a></p>
 </section>
 <section id="recvfrom-3">
-<h3>recvfrom/3<a class="headerlink" href="#recvfrom-3" title="Permalink to this heading"></a></h3>
+<h3>recvfrom/3<a class="headerlink" href="#recvfrom-3" title="Link to this heading"></a></h3>
 <pre><code>
 recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, {Address::<a href="#type-sockaddr">sockaddr()</a>, Data::binary()}} | {error, Reason::term()}
 </code></pre>
@@ -413,7 +415,7 @@ bytes are available and return these bytes.</p>
 <p><a name="send-2"></a></p>
 </section>
 <section id="send-2">
-<h3>send/2<a class="headerlink" href="#send-2" title="Permalink to this heading"></a></h3>
+<h3>send/2<a class="headerlink" href="#send-2" title="Link to this heading"></a></h3>
 <pre><code>
 send(Socket::<a href="#type-socket">socket()</a>, Data::iodata()) -&gt; ok | {ok, Rest::binary()} | {error, Reason::term()}
 </code></pre>
@@ -430,7 +432,7 @@ over the network.</p>
 <p><a name="sendto-3"></a></p>
 </section>
 <section id="sendto-3">
-<h3>sendto/3<a class="headerlink" href="#sendto-3" title="Permalink to this heading"></a></h3>
+<h3>sendto/3<a class="headerlink" href="#sendto-3" title="Link to this heading"></a></h3>
 <pre><code>
 sendto(Socket::<a href="#type-socket">socket()</a>, Data::iodata(), Dest::<a href="#type-sockaddr">sockaddr()</a>) -&gt; ok | {ok, Rest::binary()} | {error, Reason::term()}
 </code></pre>
@@ -447,7 +449,7 @@ over the network.</p>
 <p><a name="setopt-3"></a></p>
 </section>
 <section id="setopt-3">
-<h3>setopt/3<a class="headerlink" href="#setopt-3" title="Permalink to this heading"></a></h3>
+<h3>setopt/3<a class="headerlink" href="#setopt-3" title="Link to this heading"></a></h3>
 <pre><code>
 setopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type-socket_option">socket_option()</a>, Value::term()) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -467,7 +469,7 @@ setopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type
 <p><a name="shutdown-2"></a></p>
 </section>
 <section id="shutdown-2">
-<h3>shutdown/2<a class="headerlink" href="#shutdown-2" title="Permalink to this heading"></a></h3>
+<h3>shutdown/2<a class="headerlink" href="#shutdown-2" title="Link to this heading"></a></h3>
 <pre><code>
 shutdown(Socket::<a href="#type-socket">socket()</a>, How::read | write | read_write) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -480,7 +482,7 @@ shutdown(Socket::<a href="#type-socket">socket()</a>, How::read | write | read_w
 <p><a name="sockname-1"></a></p>
 </section>
 <section id="sockname-1">
-<h3>sockname/1<a class="headerlink" href="#sockname-1" title="Permalink to this heading"></a></h3>
+<h3>sockname/1<a class="headerlink" href="#sockname-1" title="Link to this heading"></a></h3>
 <pre><code>
 sockname(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Address::<a href="#type-sockaddr">sockaddr()</a>} | {error, Reason::term()}
 </code></pre>

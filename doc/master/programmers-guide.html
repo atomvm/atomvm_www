@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/programmers-guide.html" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -193,12 +195,12 @@
  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 -->
 <section id="programmers-guide">
-<h1>Programmers Guide<a class="headerlink" href="#programmers-guide" title="Permalink to this heading"></a></h1>
+<h1>Programmers Guide<a class="headerlink" href="#programmers-guide" title="Link to this heading"></a></h1>
 <p>This guide is intended for programmers who develop applications targeted for AtomVM.</p>
 <p>As an implementation of the Erlang virtual machine, AtomVM is designed to execute unmodified byte-code instructions compiled into BEAM files, either by the Erlang or Elixir compilers.  This allow developers to write programs in their BEAM programming language of choice, and to use the common Erlang community tool-chains specific to their language platform, and to then deploy those applications onto the various devices that AtomVM supports.</p>
 <p>This document describes the development workflow when writing AtomVM applications, as well as a high-level overview of the various APIs that are supported by AtomVM.  With an understanding of this guide, you should be able to design, implement, and deploy applications onto a device running the AtomVM virtual machine.</p>
 <section id="atomvm-features">
-<h2>AtomVM Features<a class="headerlink" href="#atomvm-features" title="Permalink to this heading"></a></h2>
+<h2>AtomVM Features<a class="headerlink" href="#atomvm-features" title="Link to this heading"></a></h2>
 <p>Currently, AtomVM implements a strict subset of the BEAM instruction set.</p>
 <p>A high level overview of the supported language features include:</p>
 <ul class="simple">
@@ -241,7 +243,7 @@
 </li>
 </ul>
 <section id="limitations">
-<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading"></a></h3>
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading"></a></h3>
 <p>While the list of supported features is long and growing, the currently unsupported Erlang/OTP and BEAM features include (but are not limited to):</p>
 <ul class="simple">
 <li><p>Bignums.  Integer values are restricted to 64-bit values.</p></li>
@@ -257,10 +259,10 @@
 </section>
 </section>
 <section id="atomvm-development">
-<h2>AtomVM Development<a class="headerlink" href="#atomvm-development" title="Permalink to this heading"></a></h2>
+<h2>AtomVM Development<a class="headerlink" href="#atomvm-development" title="Link to this heading"></a></h2>
 <p>This section describes the typical development environment and workflow most AtomVM developers are most likely to use.</p>
 <section id="development-environment">
-<h3>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this heading"></a></h3>
+<h3>Development Environment<a class="headerlink" href="#development-environment" title="Link to this heading"></a></h3>
 <p>In general, for most development purposes, you should be able to get away with an Erlang/OTP development environment, and for Elixir developers, and Elixir development environment.  For specific version requirements, see the <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 <p>We assume most development will take place on some UNIX-like environment (e.g., Linux, FreeBSD, or MacOS).  Consult your local package manager for installation of these development environments.</p>
 <p>Developers will want to make use of common Erlang or Elixir development tools, such as <code class="docutils literal notranslate"><span class="pre">rebar3</span></code> for Erlang developers or <code class="docutils literal notranslate"><span class="pre">mix</span></code> for Elixir developers.</p>
@@ -273,7 +275,7 @@
 <p>Some testing can be performed on UNIX-like systems, using the <code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> executable that is suitable for your development environment.  AtomVM applications that do not make use of platform-specific APIs are suitable for such tests.</p>
 <p>Deployment and testing on micro-controllers is slightly more involved, as these platforms require additional hardware and software, described below.</p>
 <section id="esp32-deployment-requirements">
-<h4>ESP32 Deployment Requirements<a class="headerlink" href="#esp32-deployment-requirements" title="Permalink to this heading"></a></h4>
+<h4>ESP32 Deployment Requirements<a class="headerlink" href="#esp32-deployment-requirements" title="Link to this heading"></a></h4>
 <p>In order to deploy AtomVM applications to and test on the ESP32 platform, developers will need:</p>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is TBD);</p></li>
@@ -284,12 +286,12 @@
 </ul>
 </section>
 <section id="stm32-deployment-requirements">
-<h4>STM32 Deployment Requirements<a class="headerlink" href="#stm32-deployment-requirements" title="Permalink to this heading"></a></h4>
+<h4>STM32 Deployment Requirements<a class="headerlink" href="#stm32-deployment-requirements" title="Link to this heading"></a></h4>
 <p>TODO</p>
 </section>
 </section>
 <section id="development-workflow">
-<h3>Development Workflow<a class="headerlink" href="#development-workflow" title="Permalink to this heading"></a></h3>
+<h3>Development Workflow<a class="headerlink" href="#development-workflow" title="Link to this heading"></a></h3>
 <p>For the majority of users, AtomVM applications are written in the Erlang or Elixir programming language.  These applications are compiled to BEAM (<code class="docutils literal notranslate"><span class="pre">.beam</span></code>) files using standard Erlang or Elixir compiler tool chains (<code class="docutils literal notranslate"><span class="pre">erlc</span></code>, <code class="docutils literal notranslate"><span class="pre">rebar3</span></code>, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, etc).  The generated BEAM files contain byte-code that can be executed by the Erlang/OTP runtime, or by the AtomVM virtual machine.</p>
 <blockquote>
 <div><p>Note.  In a small number of cases, it may be useful to write parts of an application in the C programming language, as AtomVM nifs or ports.  However, writing AtomVM nifs and ports is outside of the scope of this document.</p>
@@ -342,7 +344,7 @@
 </section>
 </section>
 <section id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading"></a></h2>
+<h2>Applications<a class="headerlink" href="#applications" title="Link to this heading"></a></h2>
 <p>An AtomVM application is a collection of BEAM files, aggregated into an AtomVM “Packbeam” (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file, and typically deployed (flashed) to some device.  These BEAM files be be compiled from Erlang, Elixir, or any other language that targets the Erlang VM.</p>
 <blockquote>
 <div><p>Note.  The return value from the <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function is ignored.</p>
@@ -368,7 +370,7 @@ wait_forever() -&gt;
 </pre></div>
 </div>
 <section id="packbeam-files">
-<h3>Packbeam files<a class="headerlink" href="#packbeam-files" title="Permalink to this heading"></a></h3>
+<h3>Packbeam files<a class="headerlink" href="#packbeam-files" title="Link to this heading"></a></h3>
 <p>AtomVM applications are packaged into Packbeam (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) files, which contain collections of files, typically BEAM (<code class="docutils literal notranslate"><span class="pre">.beam</span></code>) files that have been generated by the Erlang or Elixir compiler.</p>
 <p>At least one BEAM module in this file must contain an exported <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function.  The first module in a Packbeam file that contain this function is the entry-point of your application and will be executed when the AtomVM virtual machine starts.</p>
 <p>Not all files in a Packbeam need to be BEAM modules – you can embed any type of file in a Packbeam file, for consumption by your AtomVM application.</p>
@@ -378,7 +380,7 @@ wait_forever() -&gt;
 <p>The AtomVM community has provided several tools for simplifying your experience, as a developer.  These tools allow you to use standard Erlang and Elixir tooling (such as <code class="docutils literal notranslate"><span class="pre">rebar3</span></code> and <code class="docutils literal notranslate"><span class="pre">mix</span></code>) to build Packbeam files and deploy then to your device of choice.</p>
 </section>
 <section id="packbeam-tool">
-<h3><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code> tool<a class="headerlink" href="#packbeam-tool" title="Permalink to this heading"></a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code> tool<a class="headerlink" href="#packbeam-tool" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code> tool is a command-line application that can be used to create Packbeam files from a collection of input files:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ PackBEAM -h
 Usage: PackBEAM [-h] [-l] &lt;avm-file&gt; [&lt;options&gt;]
@@ -406,11 +408,11 @@ gnu.beam
 <p>Any BEAM files that export a <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function will contain an asterisk (<code class="docutils literal notranslate"><span class="pre">*</span></code>) in the AVM file contents.</p>
 </section>
 <section id="running-atomvm">
-<h3>Running AtomVM<a class="headerlink" href="#running-atomvm" title="Permalink to this heading"></a></h3>
+<h3>Running AtomVM<a class="headerlink" href="#running-atomvm" title="Link to this heading"></a></h3>
 <p>AtomVM is executed in different ways, depending on the platform.  On most microcontrollers (e.g., the ESP32), the VM starts when the device is powered on.  On UNIX platforms, the VM is started from the command-line using the <code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> executable.</p>
 <p>AtomVM will use the first module in the supplied AVM file that exports a <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function as the entrypoint for the application.</p>
 <section id="atomvm-program-syntax">
-<h4><code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> program syntax<a class="headerlink" href="#atomvm-program-syntax" title="Permalink to this heading"></a></h4>
+<h4><code class="docutils literal notranslate"><span class="pre">AtomVM</span></code> program syntax<a class="headerlink" href="#atomvm-program-syntax" title="Link to this heading"></a></h4>
 <p>On UNIX platforms, you can specify a BEAM file or AVM file as the first argument to the executable, e.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ AtomVM foo.avm
 </pre></div>
@@ -422,11 +424,11 @@ gnu.beam
 </section>
 </section>
 <section id="core-apis">
-<h2>Core APIs<a class="headerlink" href="#core-apis" title="Permalink to this heading"></a></h2>
+<h2>Core APIs<a class="headerlink" href="#core-apis" title="Link to this heading"></a></h2>
 <p>The AtomVM virtual machine provides a set of Erlang built-in functions (BIFs) and native functions (NIFs), as well as a collection of Erlang and Elixir libraries that can be used from your applications.</p>
 <p>This section provides an overview of these APIs.  For more detailed information about specific APIs, please consult the <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.</p>
 <section id="standard-libraries">
-<h3>Standard Libraries<a class="headerlink" href="#standard-libraries" title="Permalink to this heading"></a></h3>
+<h3>Standard Libraries<a class="headerlink" href="#standard-libraries" title="Link to this heading"></a></h3>
 <p>AtomVM provides a limited implementations of standard library modules, including:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">base64</span></code></p></li>
@@ -452,7 +454,7 @@ gnu.beam
 <p>For detailed information about these functions, please consult the <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API reference documentation</span></a>.  These modules provide a strict subset of functionality from their Erlang/OTP counterparts.  However, they aim to be API-compatible with the Erlang/OTP interfaces, at least for the subset of provided functionality.</p>
 </section>
 <section id="spawning-processes">
-<h3>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Permalink to this heading"></a></h3>
+<h3>Spawning Processes<a class="headerlink" href="#spawning-processes" title="Link to this heading"></a></h3>
 <p>AtomVM supports the actor concurrency model that is pioneered in the Erlang/OTP runtime.  As such, users can spawn processes, send messages to and receive message from processes, and can link or monitor processes to be notified if they have crashed.</p>
 <p>To spawn a process using a defined or anonymous function, pass the function to the <code class="docutils literal notranslate"><span class="pre">spawn/1</span></code> function:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -515,7 +517,7 @@ Pid = spawn_opt(fun run_some_code/0, [{min_heap_size, 1342}]),
 </table>
 </section>
 <section id="console-output">
-<h3>Console Output<a class="headerlink" href="#console-output" title="Permalink to this heading"></a></h3>
+<h3>Console Output<a class="headerlink" href="#console-output" title="Link to this heading"></a></h3>
 <p>There are several mechanisms for writing data to the console.</p>
 <p>For common debugging, many users will find <code class="docutils literal notranslate"><span class="pre">erlang:display/1</span></code> sufficient for debugging:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -534,7 +536,7 @@ io:format(&quot;The ~p did a ~p~n&quot;, [friddle, frop]).
 </div></blockquote>
 </section>
 <section id="logging">
-<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this heading"></a></h3>
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
 <p>AtomVM supports a subset of the OTP logging facility, allowing users to send log event to log handlers (by default, the console), and to install handlers that handle log events.</p>
 <p>To log events, you are encouraged to use the logging macros from the OTP <code class="docutils literal notranslate"><span class="pre">kernel</span></code> application.  You can use these macros at compile time, and the generated code can be run in AtomVM.</p>
 <p>For example:</p>
@@ -575,7 +577,7 @@ io:format(&quot;The ~p did a ~p~n&quot;, [friddle, frop]).
 <div><p>Note.  AtomVM does not currently support programmatic configuration of the logging subsystem.  All changes to default behavior should be done via the AtomVM <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> module (see below).</p>
 </div></blockquote>
 <section id="the-logger-manager">
-<h4>The <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code><a class="headerlink" href="#the-logger-manager" title="Permalink to this heading"></a></h4>
+<h4>The <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code><a class="headerlink" href="#the-logger-manager" title="Link to this heading"></a></h4>
 <p>In order to use the <code class="docutils literal notranslate"><span class="pre">logger</span></code> interface, you will need to first start the AtomVM <code class="docutils literal notranslate"><span class="pre">logger_manager</span></code> service.</p>
 <blockquote>
 <div><p>Note.  Future versions of AtomVM may automatically start the logging subsystem as part of a kernel application, but currently, this service must be managed manually.</p>
@@ -650,7 +652,7 @@ ok = logger_manager:stop()
 </div>
 </section>
 <section id="writing-your-own-log-handler">
-<h4>Writing your own log handler<a class="headerlink" href="#writing-your-own-log-handler" title="Permalink to this heading"></a></h4>
+<h4>Writing your own log handler<a class="headerlink" href="#writing-your-own-log-handler" title="Link to this heading"></a></h4>
 <p>Additional loggers can be enabled via handler specifications.  A handler module must implement and export the <code class="docutils literal notranslate"><span class="pre">log/2</span></code> function, which takes a log event and a term containing the configuration for the logger handler instance.</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -726,7 +728,7 @@ log(LogEvent, HandlerConfig) -&gt;
 </section>
 </section>
 <section id="process-management">
-<h3>Process Management<a class="headerlink" href="#process-management" title="Permalink to this heading"></a></h3>
+<h3>Process Management<a class="headerlink" href="#process-management" title="Link to this heading"></a></h3>
 <p>You can obtain a list of all processes in the system via <code class="docutils literal notranslate"><span class="pre">erlang:processes/0</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 Pids = erlang:processes().
@@ -768,7 +770,7 @@ Pids = erlang:processes().
 <p>See the <code class="docutils literal notranslate"><span class="pre">word_size</span></code> key in the <a class="reference internal" href="#System_APIs"><span class="xref myst">System APIs</span></a> section for information about how to find the number of bytes used in a machine word on the current platform.</p>
 </section>
 <section id="system-apis">
-<h3>System APIs<a class="headerlink" href="#system-apis" title="Permalink to this heading"></a></h3>
+<h3>System APIs<a class="headerlink" href="#system-apis" title="Link to this heading"></a></h3>
 <p>You can obtain system information about the AtomVM virtual machine via the <code class="docutils literal notranslate"><span class="pre">erlang:system_info/1</span></code> function, which takes an atom parameter designating the desired datum.  Allowable parameters include</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">process_count</span></code> The number of processes running in the system.</p></li>
@@ -823,7 +825,7 @@ ok = erlang:garbage_collect(Pid).
 </div></blockquote>
 </section>
 <section id="system-time">
-<h3>System Time<a class="headerlink" href="#system-time" title="Permalink to this heading"></a></h3>
+<h3>System Time<a class="headerlink" href="#system-time" title="Link to this heading"></a></h3>
 <p>AtomVM supports numerous function for accessing the current time on the device.</p>
 <p>Use <code class="docutils literal notranslate"><span class="pre">erlang:timestamp/0</span></code> to get the current time since the UNIX epoch (Midnight, Jan 1, 1970, UTC), at microsecond granularity, expressed as a triple (mega-seconds, seconds, and micro-seconds):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -871,7 +873,7 @@ Milliseconds = ... %% get milliseconds from the UNIX epoch
 <p>Valid time units are <code class="docutils literal notranslate"><span class="pre">second</span></code>, <code class="docutils literal notranslate"><span class="pre">millisecond</span></code>, and <code class="docutils literal notranslate"><span class="pre">microsecond</span></code>.</p>
 </section>
 <section id="date-and-time">
-<h3>Date and Time<a class="headerlink" href="#date-and-time" title="Permalink to this heading"></a></h3>
+<h3>Date and Time<a class="headerlink" href="#date-and-time" title="Link to this heading"></a></h3>
 <p>A <code class="docutils literal notranslate"><span class="pre">datetime()</span></code> is a tuple containing a date and time, where a date is a tuple containing the year, month, and day (in the <a class="reference external" href="https://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian</a> calendar), expressed as integers, and a time is an hour, minute, and second, also expressed in integers.</p>
 <p>The following Erlang type specification enumerates this type:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -906,7 +908,7 @@ Milliseconds = ... %% get milliseconds from the UNIX epoch
 </div></blockquote>
 </section>
 <section id="miscellaneous">
-<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a></h3>
+<h3>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Link to this heading"></a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">atomvm:random/0</span></code> to generate a random unsigned 32-bit integer in the range <code class="docutils literal notranslate"><span class="pre">0..4294967295</span></code>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 RandomInteger = atomvm:random().
@@ -926,7 +928,7 @@ Encoded = base64:encode(&lt;&lt;&quot;foo&quot;&gt;&gt;).
 <p>You can Use <code class="docutils literal notranslate"><span class="pre">base64:encode_to_string/1</span></code> and <code class="docutils literal notranslate"><span class="pre">base64:decode_to_string/1</span></code> to perform the same encoding, but to return values as Erlang list structures, instead of as binaries.</p>
 </section>
 <section id="stacktraces">
-<h3>StackTraces<a class="headerlink" href="#stacktraces" title="Permalink to this heading"></a></h3>
+<h3>StackTraces<a class="headerlink" href="#stacktraces" title="Link to this heading"></a></h3>
 <p>You can obtain information about the current state of a process via stacktraces, which provide information about the location of function calls (possibly including file names and line numbers) in your program.</p>
 <p>Currently in AtomVM, stack traces can be obtained in one of following ways:</p>
 <ul class="simple">
@@ -967,7 +969,7 @@ io:format(&quot;Stacktrace: ~p~n&quot;, [Stacktrace])
 <p>The PackBEAM tool does not include file and line information in the AVM files it creates, but file and line information can be included via a command line option.  For information about the PackBEAM too, see the <a class="reference internal" href="#Packbeam_tool"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code> tool</span></a>.</p>
 </section>
 <section id="reading-data-from-avm-files">
-<h3>Reading data from AVM files<a class="headerlink" href="#reading-data-from-avm-files" title="Permalink to this heading"></a></h3>
+<h3>Reading data from AVM files<a class="headerlink" href="#reading-data-from-avm-files" title="Link to this heading"></a></h3>
 <p>AVM files are generally packed BEAM files, but they can also contain non-BEAM files, such as plain text files, binary data, or even encoded Erlang terms.</p>
 <p>Typically, these files are included from the <code class="docutils literal notranslate"><span class="pre">priv</span></code> directory in a build tree, for example, when using the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>, though the <a class="reference internal" href="packbeam-format.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">PackBEAM</span></code></span></a> tool and the <a class="reference external" href="https://github.com/atomvm/atomvm_packbeam"><code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code></a> tool allow you to specify any location for files to include in AVM files.</p>
 <p>By convention, these files obey the following path in an AVM file:</p>
@@ -989,7 +991,7 @@ MyFileBin = atomvm:read_priv(my_application, &lt;&lt;&quot;my_file.txt&quot;&gt;
 <p>For more information about how to embed files into AVM files, see the <a class="reference external" href="https://github.com/atomvm/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>.</p>
 </section>
 <section id="code-loading">
-<h3>Code Loading<a class="headerlink" href="#code-loading" title="Permalink to this heading"></a></h3>
+<h3>Code Loading<a class="headerlink" href="#code-loading" title="Link to this heading"></a></h3>
 <p>AtomVM provides a limited set of APIs for loading code and data embedded dynamically at runtime.</p>
 <p>To load an AVM file from binary data, use the <code class="docutils literal notranslate"><span class="pre">atomvm:add_avm_pack_binary/2</span></code> function.  Supply a reference to the AVM data, together with a (possibly empty) list of options.  Specify a <code class="docutils literal notranslate"><span class="pre">name</span></code> option, whose value is an atom, if you wish to close the AVM data at a later point in the program.</p>
 <p>For example:</p>
@@ -1038,7 +1040,7 @@ BEAMData = ... %% load BEAM data into memory as a binary
 </div></blockquote>
 </section>
 <section id="math">
-<h3>Math<a class="headerlink" href="#math" title="Permalink to this heading"></a></h3>
+<h3>Math<a class="headerlink" href="#math" title="Link to this heading"></a></h3>
 <p>AtomVM supports the following standard functions from the OTP <code class="docutils literal notranslate"><span class="pre">math</span></code> module:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cos/1</span></code></p></li>
@@ -1072,7 +1074,7 @@ BEAMData = ... %% load BEAM data into memory as a binary
 </div></blockquote>
 </section>
 <section id="cryptographic-operations">
-<h3>Cryptographic Operations<a class="headerlink" href="#cryptographic-operations" title="Permalink to this heading"></a></h3>
+<h3>Cryptographic Operations<a class="headerlink" href="#cryptographic-operations" title="Link to this heading"></a></h3>
 <p>You can hash binary date using the <code class="docutils literal notranslate"><span class="pre">crypto:hash/2</span></code> function.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 crypto:hash(sha, [&lt;&lt;&quot;Some binary&quot;&gt;&gt;, $\s, &quot;data&quot;])
@@ -1151,10 +1153,10 @@ otherwise output will be truncated.</p>
 </section>
 </section>
 <section id="esp32-specific-apis">
-<h2>ESP32-specific APIs<a class="headerlink" href="#esp32-specific-apis" title="Permalink to this heading"></a></h2>
+<h2>ESP32-specific APIs<a class="headerlink" href="#esp32-specific-apis" title="Link to this heading"></a></h2>
 <p>Certain APIs are specific to and only supported on the ESP32 platform.  This section describes these APIs.</p>
 <section id="system-level-apis">
-<h3>System-Level APIs<a class="headerlink" href="#system-level-apis" title="Permalink to this heading"></a></h3>
+<h3>System-Level APIs<a class="headerlink" href="#system-level-apis" title="Link to this heading"></a></h3>
 <p>As noted above, the <code class="docutils literal notranslate"><span class="pre">erlang:system_info/1</span></code> function can be used to obtain system-specific information about the platform on which your application is deployed.</p>
 <p>You can request ESP32-specific information using using the following input atoms:</p>
 <ul class="simple">
@@ -1171,7 +1173,7 @@ FreeHeapSize = erlang:system_info(esp_free_heap_size).
 </div>
 </section>
 <section id="non-volatile-storage">
-<h3>Non-volatile Storage<a class="headerlink" href="#non-volatile-storage" title="Permalink to this heading"></a></h3>
+<h3>Non-volatile Storage<a class="headerlink" href="#non-volatile-storage" title="Link to this heading"></a></h3>
 <p>AtomVM provides functions for setting, retrieving, and deleting key-value data in binary form in non-volatile storage (NVS) on an ESP device.  Entries in NVS survive reboots of the ESP device, and can be used a limited “persistent store” for key-value data.</p>
 <blockquote>
 <div><p>Note.  NVS storage is limited in size, and NVS keys are restricted to 15 characters.  Try to avoid writing frequently to NVS storage, as the flash storage may degrade more rapidly with repeated writes to the medium.</p>
@@ -1210,7 +1212,7 @@ ok = esp:reformat().
 </div></blockquote>
 </section>
 <section id="restart-and-deep-sleep">
-<h3>Restart and Deep Sleep<a class="headerlink" href="#restart-and-deep-sleep" title="Permalink to this heading"></a></h3>
+<h3>Restart and Deep Sleep<a class="headerlink" href="#restart-and-deep-sleep" title="Link to this heading"></a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">esp:restart/0</span></code> function to immediately restart the ESP32 device.  This function does not return a value.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 esp:restart().
@@ -1276,7 +1278,7 @@ shutdown() -&gt;
 </pre></div>
 </div>
 <section id="rtc-memory">
-<h4>RTC Memory<a class="headerlink" href="#rtc-memory" title="Permalink to this heading"></a></h4>
+<h4>RTC Memory<a class="headerlink" href="#rtc-memory" title="Link to this heading"></a></h4>
 <p>On ESP32 systems, you can use (slow) “real-time clock” memory to store data between deep sleeps.  This storage can be useful, for example, to store interim state data in your application.</p>
 <blockquote>
 <div><p>Note.  RTC memory is initialized if the device is reset.</p>
@@ -1295,7 +1297,7 @@ Data = esp:rtc_slow_get_binary()
 </section>
 </section>
 <section id="id1">
-<h3>Miscellaneous<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Miscellaneous<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">freq_hz</span></code> function can be used to retrieve the clock frequency of the chip.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">esp:freq_hz/0</span></code></p></li>
@@ -1327,14 +1329,14 @@ MacAddress = esp:get_mac(wifi_sta)
 </section>
 </section>
 <section id="peripherals">
-<h2>Peripherals<a class="headerlink" href="#peripherals" title="Permalink to this heading"></a></h2>
+<h2>Peripherals<a class="headerlink" href="#peripherals" title="Link to this heading"></a></h2>
 <p>The AtomVM virtual machine and libraries support APIs for interfacing with peripheral devices connected to the ESP32 and other supported microcontrollers.  This section provides information about these APIs.  Unless otherwise stated the documentation for these peripherals is specific to the ESP32, most peripherals are not yet supported on rp2040 or stm32 devices - but work is on-going to expand support on these platforms.</p>
 <section id="gpio">
-<h3>GPIO<a class="headerlink" href="#gpio" title="Permalink to this heading"></a></h3>
+<h3>GPIO<a class="headerlink" href="#gpio" title="Link to this heading"></a></h3>
 <p>The GPIO peripheral has nif support on all platforms. One notable difference on the STM32 platform is that <code class="docutils literal notranslate"><span class="pre">Pin</span></code>s are defined as a tuple consisting of the bank (a.k.a. port) and pin number.  For example a pin labeled PB7 on your board would be <code class="docutils literal notranslate"><span class="pre">{b,7}</span></code>.</p>
 <p>You can read and write digital values on GPIO pins using the <code class="docutils literal notranslate"><span class="pre">gpio</span></code> module, using the <code class="docutils literal notranslate"><span class="pre">digital_read/1</span></code> and <code class="docutils literal notranslate"><span class="pre">digital_write/2</span></code> functions.  You must first set the direction of the pin using the <code class="docutils literal notranslate"><span class="pre">gpio:set_direction/2</span></code> function, using <code class="docutils literal notranslate"><span class="pre">input</span></code> or <code class="docutils literal notranslate"><span class="pre">output</span></code> as the direction parameter.</p>
 <section id="digital-read">
-<h4>Digital Read<a class="headerlink" href="#digital-read" title="Permalink to this heading"></a></h4>
+<h4>Digital Read<a class="headerlink" href="#digital-read" title="Link to this heading"></a></h4>
 <p>To read the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_read/1</span></code>.</p>
 <p>For ESP32 family:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -1375,7 +1377,7 @@ end.
 </div>
 </section>
 <section id="digital-write">
-<h4>Digital Write<a class="headerlink" href="#digital-write" title="Permalink to this heading"></a></h4>
+<h4>Digital Write<a class="headerlink" href="#digital-write" title="Link to this heading"></a></h4>
 <p>To set the value of a GPIO pin (<code class="docutils literal notranslate"><span class="pre">high</span></code> or <code class="docutils literal notranslate"><span class="pre">low</span></code>), use <code class="docutils literal notranslate"><span class="pre">gpio:digital_write/2</span></code>.</p>
 <p>For ESP32 family:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -1401,7 +1403,7 @@ gpio:digital_write(Pin, low).
 </div>
 </section>
 <section id="interrupt-handling">
-<h4>Interrupt Handling<a class="headerlink" href="#interrupt-handling" title="Permalink to this heading"></a></h4>
+<h4>Interrupt Handling<a class="headerlink" href="#interrupt-handling" title="Link to this heading"></a></h4>
 <p>Interrupts are supported on both the ESP32 and STM32 platforms.</p>
 <p>You can get notified of changes in the state of a GPIO pin by using the <code class="docutils literal notranslate"><span class="pre">gpio:set_int/2</span></code> function.  This function takes a reference to a GPIO Pin and a trigger.  Allowable triggers are <code class="docutils literal notranslate"><span class="pre">rising</span></code>, <code class="docutils literal notranslate"><span class="pre">falling</span></code>, <code class="docutils literal notranslate"><span class="pre">both</span></code>, <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code>, and <code class="docutils literal notranslate"><span class="pre">none</span></code> (to disable an interrupt).</p>
 <p>When a trigger event occurs, such as a pin rising in voltage, a tuple will be delivered to the process containing the atom <code class="docutils literal notranslate"><span class="pre">gpio_interrupt</span></code> and the pin.</p>
@@ -1430,7 +1432,7 @@ ok = gpio:stop().
 </section>
 </section>
 <section id="i2c">
-<h3>I2C<a class="headerlink" href="#i2c" title="Permalink to this heading"></a></h3>
+<h3>I2C<a class="headerlink" href="#i2c" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">i2c</span></code> module encapsulates functionality associated with the 2-wire Inter-Integrated Circuit (I2C) interface.</p>
 <blockquote>
 <div><p>Note.  Information about the ESP32 I2C interface can be found in the IDF SDK <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/i2c.html">I2C Documentation</a>.</p>
@@ -1508,7 +1510,7 @@ ok = i2c:close(I2C)
 <p>Once the I2C driver is closed, any calls to <code class="docutils literal notranslate"><span class="pre">i2c</span></code> functions using a reference to the I2C driver instance should return with the value <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">noproc}</span></code>.</p>
 </section>
 <section id="spi">
-<h3>SPI<a class="headerlink" href="#spi" title="Permalink to this heading"></a></h3>
+<h3>SPI<a class="headerlink" href="#spi" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">spi</span></code> module encapsulates functionality associated with the 4-wire Serial Peripheral Interface (SPI) in leader mode.</p>
 <blockquote>
 <div><p>Note.  Information about the ESP32 SPI leader mode interface can be found in the IDF SDK <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/spi_master.html">SPI Documentation</a>.</p>
@@ -1684,7 +1686,7 @@ ok = spi:close(SPI).
 </div>
 </section>
 <section id="uart">
-<h3>UART<a class="headerlink" href="#uart" title="Permalink to this heading"></a></h3>
+<h3>UART<a class="headerlink" href="#uart" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">uart</span></code> module encapsulates functionality associated with the Universal Asynchronous Receiver/Transmitter (UART) interface supported on ESP32 devices.  Some devices, such as NMEA GPS receivers, make use of this interface for communicating with an ESP32.</p>
 <blockquote>
 <div><p>Note.  Information about the ESP32 UART interface can be found in the IDF SDK <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/uart.html">UART Documentation</a>.</p>
@@ -1785,7 +1787,7 @@ ok = uart:close(UART)
 <p>Once the UART driver is closed, any calls to <code class="docutils literal notranslate"><span class="pre">uart</span></code> functions using a reference to the UART driver instance should return with the value <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">noproc}</span></code>.</p>
 </section>
 <section id="led-control">
-<h3>LED Control<a class="headerlink" href="#led-control" title="Permalink to this heading"></a></h3>
+<h3>LED Control<a class="headerlink" href="#led-control" title="Link to this heading"></a></h3>
 <p>The LED Control API can be used to drive LEDs, as well as generate PWM signals on GPIO pins.</p>
 <p>The LEDC API is encapsulated in the <code class="docutils literal notranslate"><span class="pre">ledc</span></code> module and is a direct translation of the IDF SDK <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/ledc.html">LEDC API</a>, with a natural mapping into Erlang.  This API is intended for users with complex use-cases, and who require low-level access to the LEDC APIs.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">ledc.hrl</span></code> module should be used for common modes, channels, duty cycle resolutions, and so forth.</p>
@@ -1825,11 +1827,11 @@ ok = ledc:set_fade_with_time(SpeedMode, Channel, TargetDuty, FadeMs).
 </section>
 </section>
 <section id="protocols">
-<h2>Protocols<a class="headerlink" href="#protocols" title="Permalink to this heading"></a></h2>
+<h2>Protocols<a class="headerlink" href="#protocols" title="Link to this heading"></a></h2>
 <p>AtomVM supports network programming on devices that support it, specifically the ESP32 platform, with its built-in support for WIFI networking, and of course on the UNIX platform.</p>
 <p>This section describes the network programming APIs available on AtomVM.</p>
 <section id="network-esp32-only">
-<h3>Network (ESP32 only)<a class="headerlink" href="#network-esp32-only" title="Permalink to this heading"></a></h3>
+<h3>Network (ESP32 only)<a class="headerlink" href="#network-esp32-only" title="Link to this heading"></a></h3>
 <p>The ESP32 supports WiFi connectivity as part of the built-in WiFi and Bluetooth radio (and in most modules, an integrated antenna).  The WIFI radio on an ESP32 can operate in several modes:</p>
 <ul class="simple">
 <li><p>STA (Station) mode, whereby it acts as a member of an existing WiFi network;</p></li>
@@ -1841,7 +1843,7 @@ ok = ledc:set_fade_with_time(SpeedMode, Channel, TargetDuty, FadeMs).
 <div><p>Note. Establishment and maintenance of network connections on roaming devices is a complex and subtle art, and the AtomVM <code class="docutils literal notranslate"><span class="pre">network</span></code> module is designed to accommodate as many IoT scenarios as possible.  This section of the programmer’s guide is deliberately brief and only addresses the most basic scenarios.  For a more detailed explanation of the AtomVM <code class="docutils literal notranslate"><span class="pre">network</span></code> module and its many use-cases, please refer to the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </div></blockquote>
 <section id="sta-mode">
-<h4>STA mode<a class="headerlink" href="#sta-mode" title="Permalink to this heading"></a></h4>
+<h4>STA mode<a class="headerlink" href="#sta-mode" title="Link to this heading"></a></h4>
 <p>To connect your ESP32 to an existing WiFi network, use the <code class="docutils literal notranslate"><span class="pre">network:wait_for_sta/1,2</span></code> convenience function, which abstracts away some of the more complex details of ESP32 STA mode.</p>
 <p>This function takes a station mode configuration, as a properties list, and optionally a timeout (in milliseconds) before connecting to the network should fail.  The default timeout, if unspecified, is 15 seconds.</p>
 <p>The station mode configuration supports the following options:</p>
@@ -1898,7 +1900,7 @@ end
 <p>For information about how to handle disconnections and reconnections to a WiFi network, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </section>
 <section id="ap-mode">
-<h4>AP mode<a class="headerlink" href="#ap-mode" title="Permalink to this heading"></a></h4>
+<h4>AP mode<a class="headerlink" href="#ap-mode" title="Link to this heading"></a></h4>
 <p>To turn your ESP32 into an access point for other devices, you can use the <code class="docutils literal notranslate"><span class="pre">network:wait_for_ap/1,2</span></code> convenience function, which abstracts away some of the more complex details of ESP32 AP mode.  When the network is started, the ESP32 device will assign itself the <code class="docutils literal notranslate"><span class="pre">192.168.4.1</span></code> address.  Any devices that connect to the ESP32 will take addresses in the <code class="docutils literal notranslate"><span class="pre">192.168.4/24</span></code> network.</p>
 <p>This function takes an access point mode configuration, as a properties list, and optionally a timeout (in milliseconds) before starting the network should fail.  The default timeout, if unspecified, is 15 seconds.</p>
 <p>The access point mode configuration supports the following options:</p>
@@ -1956,16 +1958,16 @@ end
 <p>For information about how to handle connections and disconnections from attached devices, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </section>
 <section id="sta-ap-mode">
-<h4>STA+AP mode<a class="headerlink" href="#sta-ap-mode" title="Permalink to this heading"></a></h4>
+<h4>STA+AP mode<a class="headerlink" href="#sta-ap-mode" title="Link to this heading"></a></h4>
 <p>For information about how to run the AtomVM network in STA and AP mode simultaneously, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </section>
 <section id="sntp">
-<h4>SNTP<a class="headerlink" href="#sntp" title="Permalink to this heading"></a></h4>
+<h4>SNTP<a class="headerlink" href="#sntp" title="Link to this heading"></a></h4>
 <p>For information about how to use SNTP to synchronize the clock on your device, see the <a class="reference internal" href="network-programming-guide.html"><span class="std std-doc">AtomVM Network Programming Guide</span></a>.</p>
 </section>
 </section>
 <section id="udp">
-<h3>UDP<a class="headerlink" href="#udp" title="Permalink to this heading"></a></h3>
+<h3>UDP<a class="headerlink" href="#udp" title="Link to this heading"></a></h3>
 <p>AtomVM supports network programming using the User Datagram Protocol (UDP) via the <code class="docutils literal notranslate"><span class="pre">gen_udp</span></code> module.  This modules obeys the syntax and semantics of the Erlang/OTP <a class="reference external" href="https://erlang.org/doc/man/gen_udp.html"><code class="docutils literal notranslate"><span class="pre">gen_udp</span></code></a> interface.</p>
 <blockquote>
 <div><p>Note.  Not all of the Erlang/OTP <code class="docutils literal notranslate"><span class="pre">gen_udp</span></code> functionality is implemented in AtomVM.  For details, consults the AtomVM API documentation.</p>
@@ -2008,13 +2010,13 @@ end
 </div></blockquote>
 </section>
 <section id="tcp">
-<h3>TCP<a class="headerlink" href="#tcp" title="Permalink to this heading"></a></h3>
+<h3>TCP<a class="headerlink" href="#tcp" title="Link to this heading"></a></h3>
 <p>AtomVM supports network programming using the Transport Connection Protocol (TCP) via the <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> module.  This modules obeys the syntax and semantics of the Erlang/OTP <a class="reference external" href="https://erlang.org/doc/man/gen_tcp.html"><code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code></a> interface.</p>
 <blockquote>
 <div><p>Note.  Not all of the Erlang/OTP <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> functionality is implemented in AtomVM.  For details, consults the AtomVM API documentation.</p>
 </div></blockquote>
 <section id="server-side-tcp">
-<h4>Server-side TCP<a class="headerlink" href="#server-side-tcp" title="Permalink to this heading"></a></h4>
+<h4>Server-side TCP<a class="headerlink" href="#server-side-tcp" title="Link to this heading"></a></h4>
 <p>Server side TCP requires opening a listening socket, and then waiting to accept connections from remote clients.  Once a connection is established, the application may then use a combination of sending and receiving packets over the established connection to or from the remote client.</p>
 <blockquote>
 <div><p>Note.  Programming TCP on the server-side using the <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> interface is a subtle art, and this portion of the documentation will not go into all of the design choices available when designing a TCP application.</p>
@@ -2071,7 +2073,7 @@ echo() -&gt;
 <p>For more information about the <code class="docutils literal notranslate"><span class="pre">gen_tcp</span></code> server interface, consult the AtomVM <a class="reference internal" href="#./api-reference-documentation.md"><span class="xref myst">API Reference Documentation</span></a>.</p>
 </section>
 <section id="client-side-tcp">
-<h4>Client-side TCP<a class="headerlink" href="#client-side-tcp" title="Permalink to this heading"></a></h4>
+<h4>Client-side TCP<a class="headerlink" href="#client-side-tcp" title="Link to this heading"></a></h4>
 <p>Client side TCP requires establishing a connection with an endpoint, and then using a combination of sending and receiving packets over the established connection.</p>
 <p>Start by opening a connection to another TCP endpoint using the <code class="docutils literal notranslate"><span class="pre">gen_tcp:connect/3</span></code> function.  Supply the address and port of the TCP endpoint.</p>
 <p>For example:</p>
@@ -2111,7 +2113,7 @@ end.
 </section>
 </section>
 <section id="socket-programming">
-<h2>Socket Programming<a class="headerlink" href="#socket-programming" title="Permalink to this heading"></a></h2>
+<h2>Socket Programming<a class="headerlink" href="#socket-programming" title="Link to this heading"></a></h2>
 <p>AtomVM supports a subset of the OTP <a class="reference external" href="https://www.erlang.org/doc/man/socket.html"><code class="docutils literal notranslate"><span class="pre">socket</span></code></a> interface, giving users more fine-grained control in socket programming.</p>
 <p>The OTP socket APIs are relatively new (they were introduced in OTP 22 and have seen revisions in OTP 24).  These APIs broadly mirror the <a class="reference external" href="https://en.wikipedia.org/wiki/Berkeley_sockets">BSD Sockets</a> API, and should be familiar to most programmers who have had to work with low-level operating system networking interfaces.  AtomVM supports a strict subset of the OTP APIs.  Future versions of AtomVM may add additional coverage of these APIs.</p>
 <p>The following types are relevant to this interface and are referenced in the remainder of this section:</p>
@@ -2137,7 +2139,7 @@ end.
 </pre></div>
 </div>
 <section id="server-side-tcp-socket-programming">
-<h3>Server-side TCP Socket Programming<a class="headerlink" href="#server-side-tcp-socket-programming" title="Permalink to this heading"></a></h3>
+<h3>Server-side TCP Socket Programming<a class="headerlink" href="#server-side-tcp-socket-programming" title="Link to this heading"></a></h3>
 <p>To program using sockets on the server side, you can bind an opened socket to an address and port number using the <code class="docutils literal notranslate"><span class="pre">socket:bind/2</span></code> function, supplying a map that specifies the address and port number.</p>
 <p>This map may contain the following entries:</p>
 <table class="docutils align-default">
@@ -2188,7 +2190,7 @@ ok = socket:listen(Socket),
 </div></blockquote>
 </section>
 <section id="client-side-tcp-socket-programming">
-<h3>Client-side TCP Socket Programming<a class="headerlink" href="#client-side-tcp-socket-programming" title="Permalink to this heading"></a></h3>
+<h3>Client-side TCP Socket Programming<a class="headerlink" href="#client-side-tcp-socket-programming" title="Link to this heading"></a></h3>
 <p>To program using sockets on the client side, you can connect an opened socket to an address and port number using the <code class="docutils literal notranslate"><span class="pre">socket:connect/2</span></code> function, supplying a map that specifies the address and port number.</p>
 <p>This map may contain the following entries:</p>
 <table class="docutils align-default">
@@ -2223,7 +2225,7 @@ ok = socket:connect(Socket, #{family =&gt; inet, addr =&gt; loopback, port =&gt;
 </div>
 </section>
 <section id="sending-and-receiving-data">
-<h3>Sending and Receiving Data<a class="headerlink" href="#sending-and-receiving-data" title="Permalink to this heading"></a></h3>
+<h3>Sending and Receiving Data<a class="headerlink" href="#sending-and-receiving-data" title="Link to this heading"></a></h3>
 <p>Once you have a connected socket (either via <code class="docutils literal notranslate"><span class="pre">socket:connect/2</span></code> or <code class="docutils literal notranslate"><span class="pre">socket:accept/1</span></code>), you can send and receive data on that socket using the <code class="docutils literal notranslate"><span class="pre">socket:send/2</span></code> and <code class="docutils literal notranslate"><span class="pre">socket:recv/1</span></code> functions.  Like the  <code class="docutils literal notranslate"><span class="pre">socket:accept/1</span></code> function, these functions will block until data is sent to a connected peer (or until the data is written to operating system buffers) or received from a connected peer.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">socket:send/2</span></code> function can take a binary blob of data or an io-list, containing binary data.</p>
 <p>For example, a process that receives data and echos it back to the connected peer might be implemented as follows:</p>
@@ -2249,7 +2251,7 @@ end.
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">socket:send/2</span></code> function may return <code class="docutils literal notranslate"><span class="pre">ok</span></code> if all of the data has been sent, or <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Rest}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Rest</span></code> is the remaining part of the data that was not sent to the operating system.  If the supplied input to <code class="docutils literal notranslate"><span class="pre">socket:send/2</span></code> is an io-list, then the <code class="docutils literal notranslate"><span class="pre">Rest</span></code> will be a binary containing the rest of the data in the io-list.</p>
 </section>
 <section id="getting-information-about-connected-sockets">
-<h3>Getting Information about Connected Sockets<a class="headerlink" href="#getting-information-about-connected-sockets" title="Permalink to this heading"></a></h3>
+<h3>Getting Information about Connected Sockets<a class="headerlink" href="#getting-information-about-connected-sockets" title="Link to this heading"></a></h3>
 <p>You can obtain information about connected sockets using the <code class="docutils literal notranslate"><span class="pre">socket:sockname/1</span></code> and <code class="docutils literal notranslate"><span class="pre">socket:peername/1</span></code> functions.  Supply the connected socket as a parameter.  The address and port are returned in a map structure</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
@@ -2259,7 +2261,7 @@ end.
 </div>
 </section>
 <section id="closing-and-shutting-down-sockets">
-<h3>Closing and Shutting down Sockets<a class="headerlink" href="#closing-and-shutting-down-sockets" title="Permalink to this heading"></a></h3>
+<h3>Closing and Shutting down Sockets<a class="headerlink" href="#closing-and-shutting-down-sockets" title="Link to this heading"></a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">socket:close/1</span></code> function to close a connected socket:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
 ok = socket:close(ConnectedSocket)
@@ -2276,7 +2278,7 @@ ok = socket:shutdown(Socket, read_write)
 </div>
 </section>
 <section id="setting-socket-options">
-<h3>Setting Socket Options<a class="headerlink" href="#setting-socket-options" title="Permalink to this heading"></a></h3>
+<h3>Setting Socket Options<a class="headerlink" href="#setting-socket-options" title="Link to this heading"></a></h3>
 <p>You can set options on a socket using the <code class="docutils literal notranslate"><span class="pre">socket:setopt/3</span></code> function.  This function takes an opened socket, a key, and a value, and returns <code class="docutils literal notranslate"><span class="pre">ok</span></code> if setting the option succeeded.</p>
 <p>Currently, the following options are supported:</p>
 <table class="docutils align-default">
@@ -2310,7 +2312,7 @@ ok = socket:setopt(Socket, {otp, rcvbuf}, 1024),
 </div>
 </section>
 <section id="udp-socket-programming">
-<h3>UDP Socket Programming<a class="headerlink" href="#udp-socket-programming" title="Permalink to this heading"></a></h3>
+<h3>UDP Socket Programming<a class="headerlink" href="#udp-socket-programming" title="Link to this heading"></a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">socket</span></code> interface to send and receive messages over the User Datagram Protocol (UDP), in addition to TCP.</p>
 <p>To use UDP sockets, open a socket using the <code class="docutils literal notranslate"><span class="pre">dgram</span></code> type and <code class="docutils literal notranslate"><span class="pre">udp</span></code> protocol.</p>
 <p>For example:</p>
@@ -2356,7 +2358,7 @@ end
 <p>Close a UDP socket just as you would a TCP socket, as described above.</p>
 </section>
 <section id="miscellaneous-networking-apis">
-<h3>Miscellaneous Networking APIs<a class="headerlink" href="#miscellaneous-networking-apis" title="Permalink to this heading"></a></h3>
+<h3>Miscellaneous Networking APIs<a class="headerlink" href="#miscellaneous-networking-apis" title="Link to this heading"></a></h3>
 <p>You can retrieve information about hostnames and services using the <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/1</span></code> and  <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/2</span></code> functions.  The return value is a list of maps each of which contains address information about the host, including its family (<code class="docutils literal notranslate"><span class="pre">inet</span></code>), protocol (<code class="docutils literal notranslate"><span class="pre">tcp</span></code> or <code class="docutils literal notranslate"><span class="pre">udp</span></code>), type (<code class="docutils literal notranslate"><span class="pre">stream</span></code> or <code class="docutils literal notranslate"><span class="pre">dgram</span></code>), and the address, currently an IPv4 tuple.</p>
 <blockquote>
 <div><p>Note.  Currently, the <code class="docutils literal notranslate"><span class="pre">net:getaddrinfo/1,2</span></code> functions only supports reporting of IPv4 addresses.</p>

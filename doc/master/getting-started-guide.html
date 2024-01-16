@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started Guide &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <title>Getting Started Guide &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/getting-started-guide.html" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -155,7 +157,7 @@
  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 -->
 <section id="getting-started-guide">
-<h1>Getting Started Guide<a class="headerlink" href="#getting-started-guide" title="Permalink to this heading"></a></h1>
+<h1>Getting Started Guide<a class="headerlink" href="#getting-started-guide" title="Link to this heading"></a></h1>
 <p>Welcome to the AtomVM Getting Started Guide.  This document is intended to get you started so that you can run Erlang or Elixir programs on the AtomVM platform as quickly as possible.</p>
 <p>In order to do so, you will need to provision your device (depending on the device type) with the AtomVM virtual machine.  Typically, you only need to do this once (or at least once per release of the VM you would like to use).  Once the VM is provisioned on the device, you can then deploy your application onto the device, and we expect this process to your typical “deploy, test, debug” development lifecycle.  The subsequent chapter on <a class="reference internal" href="atomvm-tooling.html"><span class="std std-doc">AtomVM Tooling</span></a> will help you understand that process.</p>
 <p>The getting started is broken up into the following sections:</p>
@@ -168,12 +170,12 @@
 </ul>
 <p>Please use the appropriate section for the device type you intend to use.</p>
 <section id="getting-started-on-the-esp32-platform">
-<h2>Getting Started on the ESP32 platform<a class="headerlink" href="#getting-started-on-the-esp32-platform" title="Permalink to this heading"></a></h2>
+<h2>Getting Started on the ESP32 platform<a class="headerlink" href="#getting-started-on-the-esp32-platform" title="Link to this heading"></a></h2>
 <p>The AtomVM virtual machine is supported on the <a class="reference external" href="https://www.espressif.com">Espressif</a> <a class="reference external" href="https://www.espressif.com/en/products/socs/esp32">ESP32</a> platform, allowing users to write Erlang and Elixir programs and deploy them to the ESP32 micro-controller.  For specific information about which ESP32 boards and chip-sets are supported, please refer to the AtomVM <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 <p>These instructions cover how to provision the AtomVM virtual machine flashed to your ESP32 device.</p>
 <p>For most applications, you should only need to install the VM once (or at least once per desired AtomVM release).  Once the VM is uploaded, you can then begin development of Erlang or Elixir applications, which can then be flashed as part of your routine development cycle.</p>
 <section id="requirements">
-<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h3>
+<h3>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h3>
 <p>Deployment of AtomVM on the ESP32 platform requires the following components:</p>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is not currently supported);</p></li>
@@ -188,7 +190,7 @@
 <p>For information about specific versions of required software, see the AtomVM <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 </section>
 <section id="esp32-deployment-overview">
-<h3>ESP32 Deployment Overview<a class="headerlink" href="#esp32-deployment-overview" title="Permalink to this heading"></a></h3>
+<h3>ESP32 Deployment Overview<a class="headerlink" href="#esp32-deployment-overview" title="Link to this heading"></a></h3>
 <p>The ES32 AtomVM virtual machine is an IDF application that runs on the ESP32 platform.  As an IDF application, it provides the object code to boot the ESP device and execute the AtomVM virtual machine code, which in turn is responsible for execution of an Erlang/Elixir application.</p>
 <p>The AtomVM virtual machine is implemented in C, and the AtomVM binary image contains the binary object code compiled from C source files, as well as the ESP boot loader and partition map, which tells the ESP32 how the flash module is laid out.</p>
 <p>AtomVM developers will typically write their applications in Erlang or Elixir.  These source files are compiled into BEAM bytecode, which is then assembled into AtomVM “packbeam” (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) files.  This packbeam file is flashed onto the ESP32 device, starting at the data partition address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>.  When AtomVM starts, it will look in this partition for the first occurrence of a BEAM module that exports a <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function.  Once that module is located, execution of the BEAM bytecode will commence at that point.</p>
@@ -223,7 +225,7 @@
 <p>These steps are described in more detail below.</p>
 </section>
 <section id="connecting-the-esp32-device">
-<h3>Connecting the ESP32 device<a class="headerlink" href="#connecting-the-esp32-device" title="Permalink to this heading"></a></h3>
+<h3>Connecting the ESP32 device<a class="headerlink" href="#connecting-the-esp32-device" title="Link to this heading"></a></h3>
 <p>Connect the ESP32 to your development machine (e.g., laptop or PC) via a USB cable.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+---------------+
 | laptop or PC  |
@@ -241,14 +243,14 @@
 <p>Consult your local development board documentation for instructions about how to connect your device to your development machine.</p>
 </section>
 <section id="deploying-the-atomvm-virtual-machine">
-<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#deploying-the-atomvm-virtual-machine" title="Permalink to this heading"></a></h3>
+<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#deploying-the-atomvm-virtual-machine" title="Link to this heading"></a></h3>
 <p>The following methods can be used to deploy the AtomVM virtual machine to an ESP32 device:</p>
 <ol class="arabic simple">
 <li><p>Flashing a binary image;</p></li>
 <li><p>Building from source.</p></li>
 </ol>
 <section id="flashing-a-binary-image">
-<h4>Flashing a binary image<a class="headerlink" href="#flashing-a-binary-image" title="Permalink to this heading"></a></h4>
+<h4>Flashing a binary image<a class="headerlink" href="#flashing-a-binary-image" title="Link to this heading"></a></h4>
 <p>Flashing the ESP32 using a pre-built binary image is by far the easiest path to getting started with development on the ESP32.  Binary images contain the virtual machine image and all of the necessary components to run your application.</p>
 <p>We recommend first erasing any existing applications on the ESP32 device.  E.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ esptool.py --chip auto --port /dev/ttyUSB0 --baud 115200 erase_flash
@@ -285,13 +287,13 @@
 <p>Once completed, your ESP32 device is ready to run Erlang or Elixir programs targeted for AtomVM.</p>
 </section>
 <section id="building-from-source">
-<h4>Building from source<a class="headerlink" href="#building-from-source" title="Permalink to this heading"></a></h4>
+<h4>Building from source<a class="headerlink" href="#building-from-source" title="Link to this heading"></a></h4>
 <p>You may optionally build AtomVM from source and deploy the AtomVM virtual machine to your ESP32 device manually.  Building AtomVM from source is slightly more involved, as it requires the installation of the Espressif IDF SDK and tool chain and is typically recommended only for users who are doing development on the AtomVM virtual machine, or for developers implementing custom Nifs or ports.</p>
 <p>Instructions for building AtomVM from source are covered in the AtomVM <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a></p>
 </section>
 </section>
 <section id="deploying-an-atomvm-application">
-<h3>Deploying an AtomVM application<a class="headerlink" href="#deploying-an-atomvm-application" title="Permalink to this heading"></a></h3>
+<h3>Deploying an AtomVM application<a class="headerlink" href="#deploying-an-atomvm-application" title="Link to this heading"></a></h3>
 <p>An AtomVM application is a collection of BEAM files, which have been compiled using the Erlang or Elixir compiler.  These BEAM files are assembled into an AtomVM “packbeam” (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file, which in turn is flashed to the <code class="docutils literal notranslate"><span class="pre">main</span></code> data partition on the ESP32 flash module, starting at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>.</p>
 <p>When the AtomVM virtual machine starts, it will search for the first module that contains an exported <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function in this partition, and it will begin execution of the BEAM bytecode at that function.</p>
 <p>AtomVM applications can be written in Erlang or Elixir, or a combination of both.  The AtomVM community has provided tooling for both platforms, making deployment of AtomVM applications as seamless as possible.</p>
@@ -299,10 +301,10 @@
 </section>
 </section>
 <section id="getting-started-on-the-stm32-platform">
-<h2>Getting Started on the STM32 platform<a class="headerlink" href="#getting-started-on-the-stm32-platform" title="Permalink to this heading"></a></h2>
+<h2>Getting Started on the STM32 platform<a class="headerlink" href="#getting-started-on-the-stm32-platform" title="Link to this heading"></a></h2>
 <p>AtomVM can run on a wide variety of STM32 chip-sets available from <a class="reference external" href="https://www.st.com">STMicroelectronics</a>. The support is not nearly as mature as for the ESP32 platform, but work is ongoing, and pull requests are always welcome. At this time AtomVM will work on any board with a minimum of around 128KB ram and 512KB (1M recommended) flash. Simple applications and tests have been successfully run on a stm32f411ceu6 (A.K.A. Black Pill V2). These minimum requirements may need to be raised as platform support matures.</p>
 <section id="id1">
-<h3>Requirements<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Requirements<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>Deployment of AtomVM on the STM32 platform requires the following components:</p>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is not currently supported);</p></li>
@@ -316,7 +318,7 @@
 </ul>
 </section>
 <section id="id2">
-<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>The following methods can be used to deploy the AtomVM virtual machine to an STM32 device:</p>
 <ol class="arabic simple">
 <li><p>Building from source.</p></li>
@@ -324,7 +326,7 @@
 <p>Note.  Due to the very large number of supported chip-sets and the wide variety of board configurations, and the code changes required to support them, pre-built binaries for the stm32 platform are not currently available.</p>
 <p>Consult the <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a> to create a binary compatible with your board.</p>
 <section id="id3">
-<h4>Flashing a binary image<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h4>
+<h4>Flashing a binary image<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
 <p>Once you have created an STM32 binary image, you can flash the image to your STM32 device using the <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> application.</p>
 <p>To flash your image, use the following command:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ st-flash --reset write AtomVM-stm32f407vgt6.bin 0x8000000
@@ -336,13 +338,13 @@
 </div></blockquote>
 </section>
 <section id="printing">
-<h4>Printing<a class="headerlink" href="#printing" title="Permalink to this heading"></a></h4>
+<h4>Printing<a class="headerlink" href="#printing" title="Link to this heading"></a></h4>
 <p>By default, stdout and stderr are printed on USART2. On the STM32F4Discovery board, you can see them using a TTL-USB with the TX pin connected to board’s pin PA2 (USART2 RX). Baudrate is 115200 and serial transmission is 8N1 with no flow control.</p>
 <p>For Nucleo boards the on board USB-COM to USART may be used by configuring your build with a BOARD parameter, see the <a class="reference internal" href="build-instructions.html#building-for-stm32"><span class="std std-ref">STM32 Build Instructions</span></a> for <a class="reference internal" href="build-instructions.html#configuring-the-console"><span class="std std-ref">Configuring the Console</span></a>.</p>
 </section>
 </section>
 <section id="id4">
-<h3>Deploying an AtomVM application<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>Deploying an AtomVM application<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>An AtomVM application is a collection of BEAM files, which have been compiled using the Erlang or Elixir compiler.  These BEAM files are assembled into an AtomVM “packbeam” (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file, which in turn is flashed to the <code class="docutils literal notranslate"><span class="pre">main</span></code> data partition on the STM32 flash module, starting at address <code class="docutils literal notranslate"><span class="pre">0x8080000</span></code>, for boards with 512KB of flash the address is <code class="docutils literal notranslate"><span class="pre">0x8060000</span></code>.</p>
 <p>When the AtomVM virtual machine starts, it will search for the first module that contains an exported <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function in this partition, and it will begin execution of the BEAM bytecode at that function.</p>
 <p>AtomVM applications can be written in Erlang or Elixir, or a combination of both.  The AtomVM community has provided tooling for both platforms, making deployment of AtomVM applications as seamless as possible.</p>
@@ -350,11 +352,11 @@
 </section>
 </section>
 <section id="getting-started-on-the-raspberry-pi-pico-platform">
-<h2>Getting Started on the Raspberry Pi Pico platform<a class="headerlink" href="#getting-started-on-the-raspberry-pi-pico-platform" title="Permalink to this heading"></a></h2>
+<h2>Getting Started on the Raspberry Pi Pico platform<a class="headerlink" href="#getting-started-on-the-raspberry-pi-pico-platform" title="Link to this heading"></a></h2>
 <p>AtomVM supports deployment of the VM and applications onto the <a class="reference external" href="https://www.raspberrypi.com/products/raspberry-pi-pico/">Raspberry Pi Pico</a> platform.  For information about supported boards, please refer to the AtomVM <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 <p>The following instructions show you how to install the AtomVM onto one of the <a class="reference external" href="https://www.raspberrypi.com/products/raspberry-pi-pico/">Raspberry Pi Pico</a> boards.</p>
 <section id="id5">
-<h3>Requirements<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<h3>Requirements<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
 <p>Deployment of AtomVM on the Raspberry Pico platform requires the following components:</p>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is not currently supported);</p></li>
@@ -366,14 +368,14 @@
 </ul>
 </section>
 <section id="id6">
-<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<h3>Deploying the AtomVM virtual machine<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
 <p>The following methods can be used to deploy the AtomVM virtual machine to a Raspberry Pico device:</p>
 <ol class="arabic simple">
 <li><p>Flashing a binary image;</p></li>
 <li><p>Building from source.</p></li>
 </ol>
 <section id="id7">
-<h4>Flashing a binary image<a class="headerlink" href="#id7" title="Permalink to this heading"></a></h4>
+<h4>Flashing a binary image<a class="headerlink" href="#id7" title="Link to this heading"></a></h4>
 <p>Flashing the Raspberry Pico using a pre-built binary image is by far the easiest path to getting started with development on the Raspberry Pico.  Binary images contain the virtual machine image and all of the necessary components to run your application.</p>
 <p>Download the latest <a class="reference external" href="https://github.com/atomvm/AtomVM/releases">release image</a> for Raspberry Pico.</p>
 <p>This image will generally take the form:</p>
@@ -429,7 +431,7 @@ shell$ cp ~/Downloads/atomvmlib-v0.6.0.avm /Volumes/RPI-RP2/.
 </section>
 </section>
 <section id="potential-issues-with-macos">
-<h3>Potential Issues with macOS<a class="headerlink" href="#potential-issues-with-macos" title="Permalink to this heading"></a></h3>
+<h3>Potential Issues with macOS<a class="headerlink" href="#potential-issues-with-macos" title="Link to this heading"></a></h3>
 <p>There are known issues copying files to the Pico using macOS, and a lot of literature online. Usually it’s best to use the Terminal rather than the Finder because the errors are more explicit.
 Copying may also fail with UF2 files downloaded from the Internet, typically AtomVM release binaries.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ cp ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
@@ -445,7 +447,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 </div>
 </section>
 <section id="id8">
-<h3>Deploying an AtomVM application<a class="headerlink" href="#id8" title="Permalink to this heading"></a></h3>
+<h3>Deploying an AtomVM application<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
 <p>An AtomVM application is a collection of BEAM files, which have been compiled using the Erlang or Elixir compiler.  These BEAM files are assembled into an AtomVM “packbeam” (<code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file, which in turn can be provided to the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> executable on the command line.</p>
 <p>When the AtomVM virtual machine starts, it will search for the first module that contains an exported <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function in this partition, and it will begin execution of the BEAM bytecode at that function.</p>
 <p>AtomVM applications can be written in Erlang or Elixir, or a combination of both.  The AtomVM community has provided tooling for both platforms, making deployment of AtomVM applications as seamless as possible.</p>
@@ -453,7 +455,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 </section>
 </section>
 <section id="getting-started-on-the-generic-unix-platform">
-<h2>Getting Started on the Generic UNIX platform<a class="headerlink" href="#getting-started-on-the-generic-unix-platform" title="Permalink to this heading"></a></h2>
+<h2>Getting Started on the Generic UNIX platform<a class="headerlink" href="#getting-started-on-the-generic-unix-platform" title="Link to this heading"></a></h2>
 <p>The AtomVM virtual machine is supported a wide variety of Generic UNIX platforms, including many Linux kernels and target architectures, FreeBSD, and MacOS, allowing users to write Erlang and Elixir programs and run them on a local development machine.  For specific information about which Generic UNIX versions and architectures are supported, please refer to the AtomVM <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 <p>These instructions cover how to provision the AtomVM virtual machine onto your development machine.  Running applications locally can sometimes be a useful exercise in debugging.</p>
 <blockquote>
@@ -461,7 +463,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 </div></blockquote>
 <p>For most applications, you should only need to install the VM once (or at least once per desired AtomVM release).  Once the VM is installed, you can then begin development of Erlang or Elixir applications, which can then be flashed as part of your routine development cycle.</p>
 <section id="id9">
-<h3>Requirements<a class="headerlink" href="#id9" title="Permalink to this heading"></a></h3>
+<h3>Requirements<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
 <p>Deployment of AtomVM on the Generic UNIX platform requires the following components:</p>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is not currently supported);</p></li>
@@ -472,7 +474,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 <p>For information about specific versions of required software, see the AtomVM <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a>.</p>
 </section>
 <section id="installing-the-atomvm-virtual-machine">
-<h3>Installing the AtomVM virtual machine<a class="headerlink" href="#installing-the-atomvm-virtual-machine" title="Permalink to this heading"></a></h3>
+<h3>Installing the AtomVM virtual machine<a class="headerlink" href="#installing-the-atomvm-virtual-machine" title="Link to this heading"></a></h3>
 <p>The following methods can be used to install the AtomVM virtual machine on the Generic UNIX platform:</p>
 <ol class="arabic simple">
 <li><p>Download Linux Binaries</p></li>
@@ -480,7 +482,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 <li><p>Building from source.</p></li>
 </ol>
 <section id="installation-on-linux-platforms">
-<h4>Installation on Linux Platforms<a class="headerlink" href="#installation-on-linux-platforms" title="Permalink to this heading"></a></h4>
+<h4>Installation on Linux Platforms<a class="headerlink" href="#installation-on-linux-platforms" title="Link to this heading"></a></h4>
 <p>Downloading a pre-built binary image for Linux is by far the easiest path to getting started with development on a Linux development machine.  Binary images contain the virtual machine.</p>
 <p>Download the latest <a class="reference external" href="https://github.com/atomvm/AtomVM/releases">release image</a> for Linux.</p>
 <p>This image will generally take the form:</p>
@@ -508,7 +510,7 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 </div></blockquote>
 </section>
 <section id="installation-on-macos">
-<h4>Installation on MacOS<a class="headerlink" href="#installation-on-macos" title="Permalink to this heading"></a></h4>
+<h4>Installation on MacOS<a class="headerlink" href="#installation-on-macos" title="Link to this heading"></a></h4>
 <p>You can install AtomVM for Generic UNIX using <a class="reference external" href="https://www.macports.org">macports</a> or <a class="reference external" href="https://brew.sh">Homebrew</a>.  This instructions assume you are familiar with these package managers.</p>
 <p>To install via <a class="reference external" href="https://www.macports.org">macports</a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ sudo port install atomvm
@@ -534,13 +536,13 @@ shell$ cp -x ~/Downloads/AtomVM-pico_w-v0.6.0.uf2 /Volumes/RPI-RP2/.
 </div>
 </section>
 <section id="id10">
-<h4>Building from source<a class="headerlink" href="#id10" title="Permalink to this heading"></a></h4>
+<h4>Building from source<a class="headerlink" href="#id10" title="Link to this heading"></a></h4>
 <p>You may optionally build AtomVM from source and install the AtomVM virtual machine to your development machine.  Building AtomVM from source is slightly more involved, as it requires the installation of third party libraries and is typically recommended only for users who are doing development on the AtomVM virtual machine, or for developers implementing custom Nifs or ports.</p>
 <p>Instructions for building AtomVM from source are covered in the AtomVM <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a>.</p>
 </section>
 </section>
 <section id="running-applications-on-the-generic-unix-platform">
-<h3>Running applications on the Generic UNIX platform<a class="headerlink" href="#running-applications-on-the-generic-unix-platform" title="Permalink to this heading"></a></h3>
+<h3>Running applications on the Generic UNIX platform<a class="headerlink" href="#running-applications-on-the-generic-unix-platform" title="Link to this heading"></a></h3>
 <p>AtomVM may be run on UNIX-like platforms using the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command.</p>
 <p>You may specify one or more AVM files on the command line when running the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command.  BEAM modules defined in earlier AVM modules on the command line take higher precedence that BEAM modules included in AVM files later in the argument list.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm /path/to/myapp.avm
@@ -573,10 +575,10 @@ Example:
 </section>
 </section>
 <section id="getting-started-with-atomvm-webassembly">
-<h2>Getting Started with AtomVM WebAssembly<a class="headerlink" href="#getting-started-with-atomvm-webassembly" title="Permalink to this heading"></a></h2>
+<h2>Getting Started with AtomVM WebAssembly<a class="headerlink" href="#getting-started-with-atomvm-webassembly" title="Link to this heading"></a></h2>
 <p>You can run AtomVM for WebAssembly with NodeJS or within common browsers (Safari, Chrome and Chrome-based, Firefox).</p>
 <section id="getting-started-with-atomvm-webassembly-port-for-nodejs">
-<h3>Getting Started with AtomVM WebAssembly port for NodeJS<a class="headerlink" href="#getting-started-with-atomvm-webassembly-port-for-nodejs" title="Permalink to this heading"></a></h3>
+<h3>Getting Started with AtomVM WebAssembly port for NodeJS<a class="headerlink" href="#getting-started-with-atomvm-webassembly-port-for-nodejs" title="Link to this heading"></a></h3>
 <p>Download the latest <a class="reference external" href="https://github.com/atomvm/AtomVM/releases">release image</a> for Node.</p>
 <p>This image will generally take the form:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Atomvm-node-&lt;atomvm-version&gt;.js
@@ -593,7 +595,7 @@ Example:
 </div>
 </section>
 <section id="getting-started-with-atomvm-webassembly-port-for-browsers">
-<h3>Getting Started with AtomVM WebAssembly port for browsers<a class="headerlink" href="#getting-started-with-atomvm-webassembly-port-for-browsers" title="Permalink to this heading"></a></h3>
+<h3>Getting Started with AtomVM WebAssembly port for browsers<a class="headerlink" href="#getting-started-with-atomvm-webassembly-port-for-browsers" title="Link to this heading"></a></h3>
 <p>AtomVM may also be run in modern browsers (Safari, Chrome and Chrome-based, Firefox) using AtomVM.js, AtomVM.worker.js and AtomVM.wasm files.</p>
 <p>Please note that these files are different from the NodeJS ones.</p>
 <p>Because AtomVM uses SharedArrayBuffer, to be executed by a browser, these files need to be served:</p>
@@ -603,7 +605,7 @@ Example:
 </ul>
 <p>These security requirements are documented in <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SharedArrayBuffer#security_requirements">Mozilla’s documentation</a>.</p>
 <section id="trying-locally-from-atomvm-source-tree">
-<h4>Trying locally from AtomVM source tree<a class="headerlink" href="#trying-locally-from-atomvm-source-tree" title="Permalink to this heading"></a></h4>
+<h4>Trying locally from AtomVM source tree<a class="headerlink" href="#trying-locally-from-atomvm-source-tree" title="Link to this heading"></a></h4>
 <p>If you compile AtomVM for Unix as well as for Node as explained in the <a class="reference internal" href="build-instructions.html"><span class="std std-doc">build instructions</span></a>, you can use an AtomVM-based toy webserver to serve the WebAssembly examples with:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./src/AtomVM examples/emscripten/wasm_webserver.avm
 </pre></div>
@@ -611,7 +613,7 @@ Example:
 <p>This web server serves HTML files from <code class="docutils literal notranslate"><span class="pre">examples/emscripten/</span></code>. It works without HTTPS because files are served on localhost.</p>
 </section>
 <section id="using-a-hosting-service-with-a-headers-file">
-<h4>Using a hosting service with a <code class="docutils literal notranslate"><span class="pre">_headers</span></code> file<a class="headerlink" href="#using-a-hosting-service-with-a-headers-file" title="Permalink to this heading"></a></h4>
+<h4>Using a hosting service with a <code class="docutils literal notranslate"><span class="pre">_headers</span></code> file<a class="headerlink" href="#using-a-hosting-service-with-a-headers-file" title="Link to this heading"></a></h4>
 <p>You can also host the three files on a hosting service such as Netlify that uses <code class="docutils literal notranslate"><span class="pre">_headers</span></code> files.</p>
 <p>The file could have the following content:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>/*
@@ -621,7 +623,7 @@ Cross-Origin-Embedder-Policy: require-corp
 </div>
 </section>
 <section id="using-web-server-such-as-nginx">
-<h4>Using web server such as Nginx<a class="headerlink" href="#using-web-server-such-as-nginx" title="Permalink to this heading"></a></h4>
+<h4>Using web server such as Nginx<a class="headerlink" href="#using-web-server-such-as-nginx" title="Link to this heading"></a></h4>
 <p>You can also host the three files on web server such as Nginx or Apache.</p>
 <p>The configuration for Nginx would be:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>server {
@@ -635,14 +637,14 @@ Cross-Origin-Embedder-Policy: require-corp
 </div>
 </section>
 <section id="using-javascript-service-worker-trick">
-<h4>Using Javascript service worker trick<a class="headerlink" href="#using-javascript-service-worker-trick" title="Permalink to this heading"></a></h4>
+<h4>Using Javascript service worker trick<a class="headerlink" href="#using-javascript-service-worker-trick" title="Link to this heading"></a></h4>
 <p>If you have no possibility to modify the headers, for example with GitHub pages, you can still get AtomVM to run in the browser using a Javascript service worker trick.</p>
 <p>We did successfully use <a class="reference external" href="https://github.com/gzuidhof/coi-serviceworker">coi-serviceworker</a>.</p>
 </section>
 </section>
 </section>
 <section id="where-to-go-from-here">
-<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading"></a></h2>
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Link to this heading"></a></h2>
 <p>The following resources may be useful for understanding how to develop Erlang or Elixir applications for the AtomVM platform:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="atomvm-tooling.html"><span class="std std-doc">AtomVM Tooling</span></a></p></li>

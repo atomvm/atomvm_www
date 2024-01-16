@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module i2c &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <title>Module i2c &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/i2c.html" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -124,7 +126,7 @@
            <div itemprop="articleBody">
              
   <section id="module-i2c">
-<h1>Module i2c<a class="headerlink" href="#module-i2c" title="Permalink to this heading"></a></h1>
+<h1>Module i2c<a class="headerlink" href="#module-i2c" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="../estdlib/unicode.html#description"><span class="std std-ref">Description</span></a></p></li>
 <li><p><a class="reference internal" href="../../libatomvm/types.html#types"><span class="std std-ref">Data Types</span></a></p></li>
@@ -134,7 +136,7 @@
 <p>AtomVM I2c interface.</p>
 <p><a name="description"></a></p>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>This module provides and interface into the AtomVM I2C driver.</p>
 <p>Use this module to communicate with devices connected to your ESP32
 device via the 2-wire I2C interface.</p>
@@ -144,51 +146,51 @@ specific registers on the I2C device.
 <a name="types"></a></p>
 </section>
 <section id="data-types">
-<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h2>
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
 <section id="address">
-<h3><a name="type-address">address()</a><a class="headerlink" href="#address" title="Permalink to this heading"></a></h3>
+<h3><a name="type-address">address()</a><a class="headerlink" href="#address" title="Link to this heading"></a></h3>
 <pre><code>
 address() = non_neg_integer()
 </code></pre>
 </section>
 <section id="freq-hz">
-<h3><a name="type-freq_hz">freq_hz()</a><a class="headerlink" href="#freq-hz" title="Permalink to this heading"></a></h3>
+<h3><a name="type-freq_hz">freq_hz()</a><a class="headerlink" href="#freq-hz" title="Link to this heading"></a></h3>
 <pre><code>
 freq_hz() = non_neg_integer()
 </code></pre>
 </section>
 <section id="i2c">
-<h3><a name="type-i2c">i2c()</a><a class="headerlink" href="#i2c" title="Permalink to this heading"></a></h3>
+<h3><a name="type-i2c">i2c()</a><a class="headerlink" href="#i2c" title="Link to this heading"></a></h3>
 <pre><code>
 i2c() = pid()
 </code></pre>
 </section>
 <section id="param">
-<h3><a name="type-param">param()</a><a class="headerlink" href="#param" title="Permalink to this heading"></a></h3>
+<h3><a name="type-param">param()</a><a class="headerlink" href="#param" title="Link to this heading"></a></h3>
 <pre><code>
 param() = {scl, <a href="#type-pin">pin()</a>} | {sda, <a href="#type-pin">pin()</a>} | {clock_speed_hz, <a href="#type-freq_hz">freq_hz()</a>} | {peripheral, <a href="#type-peripheral">peripheral()</a>}
 </code></pre>
 </section>
 <section id="params">
-<h3><a name="type-params">params()</a><a class="headerlink" href="#params" title="Permalink to this heading"></a></h3>
+<h3><a name="type-params">params()</a><a class="headerlink" href="#params" title="Link to this heading"></a></h3>
 <pre><code>
 params() = [<a href="#type-param">param()</a>]
 </code></pre>
 </section>
 <section id="peripheral">
-<h3><a name="type-peripheral">peripheral()</a><a class="headerlink" href="#peripheral" title="Permalink to this heading"></a></h3>
+<h3><a name="type-peripheral">peripheral()</a><a class="headerlink" href="#peripheral" title="Link to this heading"></a></h3>
 <pre><code>
 peripheral() = string() | binary()
 </code></pre>
 </section>
 <section id="pin">
-<h3><a name="type-pin">pin()</a><a class="headerlink" href="#pin" title="Permalink to this heading"></a></h3>
+<h3><a name="type-pin">pin()</a><a class="headerlink" href="#pin" title="Link to this heading"></a></h3>
 <pre><code>
 pin() = non_neg_integer()
 </code></pre>
 </section>
 <section id="register">
-<h3><a name="type-register">register()</a><a class="headerlink" href="#register" title="Permalink to this heading"></a></h3>
+<h3><a name="type-register">register()</a><a class="headerlink" href="#register" title="Link to this heading"></a></h3>
 <pre><code>
 register() = non_neg_integer()
 </code></pre>
@@ -196,17 +198,17 @@ register() = non_neg_integer()
 </section>
 </section>
 <section id="function-index">
-<h2>Function Index<a class="headerlink" href="#function-index" title="Permalink to this heading"></a></h2>
+<h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#begin_transmission-2">begin_transmission/2</a></td><td>    Begin a transmission of I2C commands.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Closes the connection to the I2C driver.</td></tr><tr><td valign="top"><a href="#end_transmission-1">end_transmission/1</a></td><td>    End a transmission of I2C commands.</td></tr><tr><td valign="top"><a href="#open-1">open/1</a></td><td>    Open a connection to the I2C driver.</td></tr><tr><td valign="top"><a href="#read_bytes-3">read_bytes/3</a></td><td>    Read a block of bytes from the I2C device.</td></tr><tr><td valign="top"><a href="#read_bytes-4">read_bytes/4</a></td><td>    Read a block of bytes from the I2C device starting at a specified
 register address.</td></tr><tr><td valign="top"><a href="#write_byte-2">write_byte/2</a></td><td>    Write a byte to the device.</td></tr><tr><td valign="top"><a href="#write_bytes-2">write_bytes/2</a></td><td>    Write a sequence of bytes to the device.</td></tr><tr><td valign="top"><a href="#write_bytes-3">write_bytes/3</a></td><td>    Write a block of bytes to the I2C device.</td></tr><tr><td valign="top"><a href="#write_bytes-4">write_bytes/4</a></td><td>    Write a block of bytes to the I2C device starting at a specified
 register address.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
-<h2>Function Details<a class="headerlink" href="#function-details" title="Permalink to this heading"></a></h2>
+<h2>Function Details<a class="headerlink" href="#function-details" title="Link to this heading"></a></h2>
 <p><a name="begin_transmission-2"></a></p>
 <section id="begin-transmission-2">
-<h3>begin_transmission/2<a class="headerlink" href="#begin-transmission-2" title="Permalink to this heading"></a></h3>
+<h3>begin_transmission/2<a class="headerlink" href="#begin-transmission-2" title="Link to this heading"></a></h3>
 <pre><code>
 begin_transmission(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -219,7 +221,7 @@ begin_transmission(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-a
 <p><a name="close-1"></a></p>
 </section>
 <section id="close-1">
-<h3>close/1<a class="headerlink" href="#close-1" title="Permalink to this heading"></a></h3>
+<h3>close/1<a class="headerlink" href="#close-1" title="Link to this heading"></a></h3>
 <pre><code>
 close(I2C::<a href="#type-i2c">i2c()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -232,7 +234,7 @@ free any resources in use by it.</p>
 <p><a name="end_transmission-1"></a></p>
 </section>
 <section id="end-transmission-1">
-<h3>end_transmission/1<a class="headerlink" href="#end-transmission-1" title="Permalink to this heading"></a></h3>
+<h3>end_transmission/1<a class="headerlink" href="#end-transmission-1" title="Link to this heading"></a></h3>
 <pre><code>
 end_transmission(I2C::<a href="#type-i2c">i2c()</a>) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -245,7 +247,7 @@ and one or more calls to <code class="docutils literal notranslate"><span class=
 <p><a name="open-1"></a></p>
 </section>
 <section id="open-1">
-<h3>open/1<a class="headerlink" href="#open-1" title="Permalink to this heading"></a></h3>
+<h3>open/1<a class="headerlink" href="#open-1" title="Link to this heading"></a></h3>
 <pre><code>
 open(Param::<a href="#type-params">params()</a>) -&gt; <a href="#type-i2c">i2c()</a>
 </code></pre>
@@ -257,7 +259,7 @@ open(Param::<a href="#type-params">params()</a>) -&gt; <a href="#type-i2c">i2c()
 <p><a name="read_bytes-3"></a></p>
 </section>
 <section id="read-bytes-3">
-<h3>read_bytes/3<a class="headerlink" href="#read-bytes-3" title="Permalink to this heading"></a></h3>
+<h3>read_bytes/3<a class="headerlink" href="#read-bytes-3" title="Link to this heading"></a></h3>
 <pre><code>
 read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Count::non_neg_integer()) -&gt; {ok, Data::binary()} | {error, Reason::term()}
 </code></pre>
@@ -270,7 +272,7 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <p><a name="read_bytes-4"></a></p>
 </section>
 <section id="read-bytes-4">
-<h3>read_bytes/4<a class="headerlink" href="#read-bytes-4" title="Permalink to this heading"></a></h3>
+<h3>read_bytes/4<a class="headerlink" href="#read-bytes-4" title="Link to this heading"></a></h3>
 <pre><code>
 read_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, Count::non_neg_integer()) -&gt; {ok, binary()} | {error, Reason::term()}
 </code></pre>
@@ -284,7 +286,7 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <p><a name="write_byte-2"></a></p>
 </section>
 <section id="write-byte-2">
-<h3>write_byte/2<a class="headerlink" href="#write-byte-2" title="Permalink to this heading"></a></h3>
+<h3>write_byte/2<a class="headerlink" href="#write-byte-2" title="Link to this heading"></a></h3>
 <pre><code>
 write_byte(I2C::<a href="#type-i2c">i2c()</a>, Byte::byte()) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -297,7 +299,7 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <p><a name="write_bytes-2"></a></p>
 </section>
 <section id="write-bytes-2">
-<h3>write_bytes/2<a class="headerlink" href="#write-bytes-2" title="Permalink to this heading"></a></h3>
+<h3>write_bytes/2<a class="headerlink" href="#write-bytes-2" title="Link to this heading"></a></h3>
 <pre><code>
 write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Bytes::binary()) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -310,7 +312,7 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <p><a name="write_bytes-3"></a></p>
 </section>
 <section id="write-bytes-3">
-<h3>write_bytes/3<a class="headerlink" href="#write-bytes-3" title="Permalink to this heading"></a></h3>
+<h3>write_bytes/3<a class="headerlink" href="#write-bytes-3" title="Link to this heading"></a></h3>
 <pre><code>
 write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, BinOrInt::binary() | byte()) -&gt; ok | {error, Reason::term()}
 </code></pre>
@@ -323,7 +325,7 @@ and <code class="docutils literal notranslate"><span class="pre">end_transmissio
 <p><a name="write_bytes-4"></a></p>
 </section>
 <section id="write-bytes-4">
-<h3>write_bytes/4<a class="headerlink" href="#write-bytes-4" title="Permalink to this heading"></a></h3>
+<h3>write_bytes/4<a class="headerlink" href="#write-bytes-4" title="Link to this heading"></a></h3>
 <pre><code>
 write_bytes(I2C::<a href="#type-i2c">i2c()</a>, Address::<a href="#type-address">address()</a>, Register::<a href="#type-register">register()</a>, BinOrInt::binary() | integer()) -&gt; ok | {error, Reason::term()}
 </code></pre>

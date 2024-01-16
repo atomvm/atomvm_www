@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-beta.0+git.43b28139 documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-beta.0+git.ad545452 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-tooling.html" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c0fdd5b6"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -136,7 +138,7 @@
  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
 -->
 <section id="atomvm-tooling">
-<h1>AtomVM Tooling<a class="headerlink" href="#atomvm-tooling" title="Permalink to this heading"></a></h1>
+<h1>AtomVM Tooling<a class="headerlink" href="#atomvm-tooling" title="Link to this heading"></a></h1>
 <p>AtomVM provides an implementation of the Erlang virtual machine, and as such it provides runtime support for applications targeted for the platform.</p>
 <p>However, developers will typically make use of downstream tooling that simplifies the development and provisioning of applications onto devices that are running the on the virtual machine.</p>
 <p>This chapter presents an overview of these tools and how they can be used to make you more productive as an AtomVM developer.</p>
@@ -146,10 +148,10 @@
 <li><p>For Elixir developers: <a class="reference internal" href="#exatomvm"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></span></a></p></li>
 </ul>
 <section id="atomvm-rebar3-plugin">
-<h2><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code><a class="headerlink" href="#atomvm-rebar3-plugin" title="Permalink to this heading"></a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code><a class="headerlink" href="#atomvm-rebar3-plugin" title="Link to this heading"></a></h2>
 <p>The <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> is a <a class="reference external" href="https://rebar3.org">rebar3</a> plugin that can be used to create and flash Erlang applications that run over AtomVM.  Using this plugin greatly simplies the process of building Erlang applications that run over AtomVM, and is strongly encouraged for all users.</p>
 <section id="prerequisites">
-<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h3>
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h3>
 <p>To use the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>, you will need the following software on your development machine:</p>
 <ul class="simple">
 <li><p>A suitable version of the <a class="reference external" href="https://www.erlang.org">Erlang/OTP</a> distribution.  See the <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for information about supported Erlang/OTP versions.</p></li>
@@ -161,7 +163,7 @@
 </ul>
 </section>
 <section id="erlang-example-program">
-<h3>Erlang Example Program<a class="headerlink" href="#erlang-example-program" title="Permalink to this heading"></a></h3>
+<h3>Erlang Example Program<a class="headerlink" href="#erlang-example-program" title="Link to this heading"></a></h3>
 <p>To see this plugin in action, we will clone the <a class="reference external" href="https://github.com/atomvm/atomvm_examples"><code class="docutils literal notranslate"><span class="pre">atomvm_examples</span></code></a> Github repository, and build and run the most simple</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ git clone https://github.com/atomvm/atomvm_examples
 ...
@@ -171,7 +173,7 @@ shell$ cd atomvm_examples/erlang/hello_world
 <p>From this directory we will run various <a class="reference external" href="https://rebar3.org">rebar3</a> targets in the steps below.</p>
 </section>
 <section id="creating-an-atomvm-avm-file">
-<h3>Creating an AtomVM AVM file<a class="headerlink" href="#creating-an-atomvm-avm-file" title="Permalink to this heading"></a></h3>
+<h3>Creating an AtomVM AVM file<a class="headerlink" href="#creating-an-atomvm-avm-file" title="Link to this heading"></a></h3>
 <p>To create an AtomVM packbeam file (ending in <code class="docutils literal notranslate"><span class="pre">.avm</span></code>), use the <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 atomvm packbeam
 ...
@@ -181,7 +183,7 @@ shell$ cd atomvm_examples/erlang/hello_world
 <p>See the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> target.</p>
 </section>
 <section id="running-on-the-generic-unix-platform">
-<h3>Running on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform<a class="headerlink" href="#running-on-the-generic-unix-platform" title="Permalink to this heading"></a></h3>
+<h3>Running on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform<a class="headerlink" href="#running-on-the-generic-unix-platform" title="Link to this heading"></a></h3>
 <p>If you have installed AtomVM on a generic UNIX platform, you and run the example program directly using the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm _build/default/lib/hello_world.avm
 Hello World
@@ -191,10 +193,10 @@ Return value: ok
 <p>For instructions about how to install AtomVM on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform, see the <a class="reference internal" href="getting-started-guide.html"><span class="std std-doc">Getting Started Guide</span></a></p>
 </section>
 <section id="flashing-your-application">
-<h3>Flashing your application<a class="headerlink" href="#flashing-your-application" title="Permalink to this heading"></a></h3>
+<h3>Flashing your application<a class="headerlink" href="#flashing-your-application" title="Link to this heading"></a></h3>
 <p>The <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> supports flash targets for various device types.  These targets are described in more detail below.</p>
 <section id="esp32">
-<h4>ESP32<a class="headerlink" href="#esp32" title="Permalink to this heading"></a></h4>
+<h4>ESP32<a class="headerlink" href="#esp32" title="Link to this heading"></a></h4>
 <p>To flash AtomVM AVM file to an ESP32 device, use the <code class="docutils literal notranslate"><span class="pre">esp32_flash</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.  Users will typically specify the device port and baud rate as command-line options to this target.</p>
 <blockquote>
 <div><p>Note. In order to use the <code class="docutils literal notranslate"><span class="pre">esp32_flash</span></code> target, you will need to install the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p>
@@ -237,7 +239,7 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </div>
 </section>
 <section id="stm32">
-<h4>STM32<a class="headerlink" href="#stm32" title="Permalink to this heading"></a></h4>
+<h4>STM32<a class="headerlink" href="#stm32" title="Link to this heading"></a></h4>
 <p>To flash AtomVM AVM file to an STM32 device, use the <code class="docutils literal notranslate"><span class="pre">stm32_flash</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
 <blockquote>
 <div><p>Note. In order to use the <code class="docutils literal notranslate"><span class="pre">stm32_flash</span></code> target, you will need to install the  <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> tool from the open source (bsd-3 licensed) <a class="reference external" href="https://github.com/stlink-org/stlink">stlink</a> suite of stm32 utilities.</p>
@@ -297,7 +299,7 @@ INFO [78] AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </div>
 </section>
 <section id="raspberry-pico">
-<h4>Raspberry Pico<a class="headerlink" href="#raspberry-pico" title="Permalink to this heading"></a></h4>
+<h4>Raspberry Pico<a class="headerlink" href="#raspberry-pico" title="Link to this heading"></a></h4>
 <p>To generate a Raspberry Pico uf2 file from an AtomVM AVM file and flash it to an rp2040 device, use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
 <p>For example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ rebar3 atomvm pico_flash
@@ -336,10 +338,10 @@ AtomVM application terminated.  Going to sleep forever ...
 </section>
 </section>
 <section id="exatomvm">
-<h2><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code><a class="headerlink" href="#exatomvm" title="Permalink to this heading"></a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code><a class="headerlink" href="#exatomvm" title="Link to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> tool is a <a class="reference external" href="https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html">mix</a> plugin that can be used to create and flash <a class="reference external" href="https://elixir-lang.org">Elixir</a> applications that run over AtomVM.  Using this plugin greatly simplies the process of building Elixir applications that run over AtomVM, and is strongly encouraged for new users.</p>
 <section id="id1">
-<h3>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<h3>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
 <p>To use the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> tool, you will need the following software on your development machine:</p>
 <ul class="simple">
 <li><p>A suitable version of the <a class="reference external" href="https://www.erlang.org">Erlang/OTP</a> distribution.  See the <a class="reference internal" href="release-notes.html"><span class="std std-doc">Release Notes</span></a> for information about supported Erlang/OTP versions.</p></li>
@@ -350,7 +352,7 @@ AtomVM application terminated.  Going to sleep forever ...
 </ul>
 </section>
 <section id="elixir-example-program">
-<h3>Elixir Example Program<a class="headerlink" href="#elixir-example-program" title="Permalink to this heading"></a></h3>
+<h3>Elixir Example Program<a class="headerlink" href="#elixir-example-program" title="Link to this heading"></a></h3>
 <p>To see this plugin in action, we will clone the <a class="reference external" href="https://github.com/atomvm/atomvm_examples"><code class="docutils literal notranslate"><span class="pre">atomvm_examples</span></code></a> Github repository, and build and run the most simple</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ git clone https://github.com/atomvm/atomvm_examples
 ...
@@ -360,7 +362,7 @@ shell$ cd atomvm_examples/elixir/HelloWorld
 <p>From this directory we will run various <a class="reference external" href="https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html">mix</a> targets in the steps below.</p>
 </section>
 <section id="id2">
-<h3>Creating an AtomVM AVM file<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<h3>Creating an AtomVM AVM file<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <p>To create an AtomVM packbeam file (ending in <code class="docutils literal notranslate"><span class="pre">.avm</span></code>), first use the <code class="docutils literal notranslate"><span class="pre">mix.deps</span></code> target to <a class="reference external" href="https://elixir-lang.org/getting-started/mix-otp/introduction-to-mix.html">mix</a> in order to download any dependencies:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ mix deps.get
 * Updating exatomvm (https://github.com/atomvm/ExAtomVM/)
@@ -391,7 +393,7 @@ This message can be safely ignored when standard libraries are already flashed t
 <p>See the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">atomvm.packbeam</span></code> target.</p>
 </section>
 <section id="id3">
-<h3>Running on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform<a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<h3>Running on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
 <p>If you have installed AtomVM on a generic UNIX platform, you and run the example program directly using the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> command:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ atomvm HelloWorld.avm
 Hello World
@@ -401,13 +403,13 @@ Return value: ok
 <p>For instructions about how to install AtomVM on the <code class="docutils literal notranslate"><span class="pre">generic_unix</span></code> platform, see the <a class="reference internal" href="getting-started-guide.html"><span class="std std-doc">Getting Started Guide</span></a></p>
 </section>
 <section id="id4">
-<h3>Flashing your application<a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<h3>Flashing your application<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <p>The <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> plugin supports flash targets for various device types.  These targets are described in more detail below.</p>
 <blockquote>
 <div><p>Note.  Currently, the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> tool only supports flash targets for the ESP32 platform.</p>
 </div></blockquote>
 <section id="id5">
-<h4>ESP32<a class="headerlink" href="#id5" title="Permalink to this heading"></a></h4>
+<h4>ESP32<a class="headerlink" href="#id5" title="Link to this heading"></a></h4>
 <p>To flash AtomVM packbeam file to an ESP32 device, use the <code class="docutils literal notranslate"><span class="pre">mix.esp32.flash</span></code> target.  Users will typically specify the device port and baud rate as command-line options to this target.</p>
 <blockquote>
 <div><p>Note. In order to use the <code class="docutils literal notranslate"><span class="pre">mix.esp32.flash</span></code> target, you will need to install the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p>
@@ -453,17 +455,17 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </section>
 </section>
 <section id="atomvm-packbeam">
-<h2><code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code><a class="headerlink" href="#atomvm-packbeam" title="Permalink to this heading"></a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code><a class="headerlink" href="#atomvm-packbeam" title="Link to this heading"></a></h2>
 <p>The <a class="reference external" href="https://atomvm.github.io/atomvm_packbeam">atomvm_packbeam</a> tool is a simple command-line utility that allows you to create, inspect, and manipulate AtomVM <a class="reference internal" href="packbeam-format.html"><span class="std std-doc">PackBEAM</span></a> files.  By convention, PackBEAM files end in the <code class="docutils literal notranslate"><span class="pre">.avm</span></code> suffix and are referred to as “AVM” files, in the remainder of this section.</p>
 <blockquote>
 <div><p>Note.  Users generally do not have a need to use the <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> tool directly.  Instead, the functionality of this tool is embedded in the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a>.</p>
 </div></blockquote>
 <section id="installation">
-<h3>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h3>
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
 <p>Consult the <a class="reference external" href="https://atomvm.github.io/atomvm_packbeam">atomvm_packbeam</a> Github page for instructions about how to install the <code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code> utility.  Once installed, you should have the <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> command line tool available in your <code class="docutils literal notranslate"><span class="pre">PATH</span></code>.</p>
 </section>
 <section id="usage">
-<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> command supports the following sub-commands:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">create</span></code>  Create an AVM file from a collection of files.</p></li>
@@ -476,7 +478,7 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 <div><p>These notes provide only a high-level view of this <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> utility.  For more detailed information, see the <a class="reference external" href="https://atomvm.github.io/atomvm_packbeam">atomvm_packbeam</a> Github repository.</p>
 </div></blockquote>
 <section id="creating-avm-files">
-<h4>Creating AVM files<a class="headerlink" href="#creating-avm-files" title="Permalink to this heading"></a></h4>
+<h4>Creating AVM files<a class="headerlink" href="#creating-avm-files" title="Link to this heading"></a></h4>
 <p>To create an AVM from a list of existing files (typically <code class="docutils literal notranslate"><span class="pre">.beam</span></code> files), use the <code class="docutils literal notranslate"><span class="pre">create</span></code> subcommand.  Specify the output <code class="docutils literal notranslate"><span class="pre">.avm</span></code> first, followed by a list of files you would like to include in the output file.  E.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ packbeam create output.avm foo.beam bar.beam
 </pre></div>
@@ -497,7 +499,7 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 <div><p>Note.  There are conventions for embedding non-BEAM files in AVM files that need to be followed in order to be able to load these files programmatically within AtomVM.  Generally, these files must obey the path <code class="docutils literal notranslate"><span class="pre">&lt;module-name&gt;/priv/&lt;path-to-file&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;module-name&gt;</span></code> is the name of a module, and <code class="docutils literal notranslate"><span class="pre">&lt;path-to-file&gt;</span></code> is a path to the embedded file.  (This path may include embedded <code class="docutils literal notranslate"><span class="pre">/</span></code> separators).  Example: <code class="docutils literal notranslate"><span class="pre">my_app/priv/bubbles/sample.txt</span></code></p>
 </div></blockquote>
 <section id="start-flags">
-<h5>Start Flags<a class="headerlink" href="#start-flags" title="Permalink to this heading"></a></h5>
+<h5>Start Flags<a class="headerlink" href="#start-flags" title="Link to this heading"></a></h5>
 <p>An AtomVM application must contain a start entrypoint, i.e., a module that exports the <code class="docutils literal notranslate"><span class="pre">start/0</span></code> function.  You can specify the name of this module via the <code class="docutils literal notranslate"><span class="pre">--start</span></code> flag.  E.g.,</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ packbeam create --start main my_app.avm foo.beam bar.beam main.beam
 </pre></div>
@@ -505,7 +507,7 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 <p>Use of this flag will ensure that the <code class="docutils literal notranslate"><span class="pre">main.beam</span></code> module will be found first in the search order when the AtomVM virtual machine starts your application.</p>
 </section>
 <section id="pruning">
-<h5>Pruning<a class="headerlink" href="#pruning" title="Permalink to this heading"></a></h5>
+<h5>Pruning<a class="headerlink" href="#pruning" title="Link to this heading"></a></h5>
 <p>Pruning an AVM file is a useful mechanism for making your AVM files smaller, and thus faster to flash and including less data than necessary.  You can prune an AVM using the</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell% packbeam create --start main --prune my_app.beam foo.beam bar.beam main.beam a.beam b.beam c.beam
 </pre></div>
@@ -517,7 +519,7 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </section>
 </section>
 <section id="listing-avm-file-contents">
-<h4>Listing AVM file contents<a class="headerlink" href="#listing-avm-file-contents" title="Permalink to this heading"></a></h4>
+<h4>Listing AVM file contents<a class="headerlink" href="#listing-avm-file-contents" title="Link to this heading"></a></h4>
 <p>You can list the contents of an AVM file via the <code class="docutils literal notranslate"><span class="pre">list</span></code> sub-command.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ packbeam list myapp.avm
 myapp.beam * [384]
@@ -528,7 +530,7 @@ myapp/priv/application.bin [220]
 <p>The size (in bytes) of the entries are listed in square brackets (<code class="docutils literal notranslate"><span class="pre">[]</span></code>).</p>
 </section>
 <section id="extracting-avm-file-contents">
-<h4>Extracting AVM file contents<a class="headerlink" href="#extracting-avm-file-contents" title="Permalink to this heading"></a></h4>
+<h4>Extracting AVM file contents<a class="headerlink" href="#extracting-avm-file-contents" title="Link to this heading"></a></h4>
 <p>You can extract elements of an AVM file, writing them to the file system, using the <code class="docutils literal notranslate"><span class="pre">extract</span></code> sub-command.</p>
 <p>Specify the directory location into which you would like to extract the files using the <code class="docutils literal notranslate"><span class="pre">-out</span></code> flag, followed by the path to the input AVM file, and a list of paths from the input AVM you would like to extract.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ mkdir mydir
@@ -539,7 +541,7 @@ x myapp/priv/application.bin
 </div>
 </section>
 <section id="deleting-avm-file-contents">
-<h4>Deleting AVM file contents<a class="headerlink" href="#deleting-avm-file-contents" title="Permalink to this heading"></a></h4>
+<h4>Deleting AVM file contents<a class="headerlink" href="#deleting-avm-file-contents" title="Link to this heading"></a></h4>
 <p>You can delete elements of an AVM file using the <code class="docutils literal notranslate"><span class="pre">delete</span></code> sub-command.</p>
 <p>Specify the AVM file you would like to write as output (which can be the same as the input AVM file) using the <code class="docutils literal notranslate"><span class="pre">-out</span></code> flag, followed by the path to the input AVM file, and a list of paths from the input AVM you would like to delete.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ packbeam delete -out myapp2.avm myapp.avm myapp/priv/application.bin
@@ -551,7 +553,7 @@ myapp.beam * [384]
 </section>
 </section>
 <section id="help">
-<h3>Help<a class="headerlink" href="#help" title="Permalink to this heading"></a></h3>
+<h3>Help<a class="headerlink" href="#help" title="Link to this heading"></a></h3>
 <p>To get help about <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> syntax, use the <code class="docutils literal notranslate"><span class="pre">help</span></code> subcommand:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>shell$ packbeam help
 
@@ -606,7 +608,7 @@ The following sub-commands are supported:
 </section>
 </section>
 <section id="where-to-go-from-here">
-<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Permalink to this heading"></a></h2>
+<h2>Where to go from here<a class="headerlink" href="#where-to-go-from-here" title="Link to this heading"></a></h2>
 <p>With knowledge of AtomVM tooling, you can more easily follow the AtomVM <a class="reference external" href="https://github.com/atomvm/atomvm_examples">Example Programs</a></p>
 </section>
 </section>
