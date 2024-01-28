@@ -132,14 +132,15 @@ This graph shows which files directly or indirectly include this file:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a9be0b4e98707242bb0f0e24a01aa0d89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stacktrace_8h.html#a9be0b4e98707242bb0f0e24a01aa0d89">stacktrace_create_raw</a> (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="struct_module.html">Module</a> *mod, int current_offset, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> exception_class)</td></tr>
 <tr class="separator:a9be0b4e98707242bb0f0e24a01aa0d89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ef0b4e2fe608129f9712b4825ea4725"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stacktrace_8h.html#a3ef0b4e2fe608129f9712b4825ea4725">stacktrace_build</a> (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *stack_info)</td></tr>
-<tr class="separator:a3ef0b4e2fe608129f9712b4825ea4725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab86e3dc85a79bab32945240cb8b2aafa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stacktrace_8h.html#ab86e3dc85a79bab32945240cb8b2aafa">stacktrace_build</a> (<a class="el" href="struct_context.html">Context</a> *ctx, <a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *stack_info, uint32_t live)</td></tr>
+<tr class="memdesc:ab86e3dc85a79bab32945240cb8b2aafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a stack trace.  <a href="stacktrace_8h.html#ab86e3dc85a79bab32945240cb8b2aafa">More...</a><br /></td></tr>
+<tr class="separator:ab86e3dc85a79bab32945240cb8b2aafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd7cc59f4cbc3a676cecd937a4f21c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stacktrace_8h.html#abd7cc59f4cbc3a676cecd937a4f21c45">stacktrace_exception_class</a> (<a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> stack_info)</td></tr>
 <tr class="separator:abd7cc59f4cbc3a676cecd937a4f21c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3ef0b4e2fe608129f9712b4825ea4725"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ef0b4e2fe608129f9712b4825ea4725">&#9670;&nbsp;</a></span>stacktrace_build()</h2>
+<a id="ab86e3dc85a79bab32945240cb8b2aafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab86e3dc85a79bab32945240cb8b2aafa">&#9670;&nbsp;</a></span>stacktrace_build()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +155,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="term__typedef_8h.html#a603769ce1e8eeb1faa458d7e6cf904d8">term</a> *&#160;</td>
-          <td class="paramname"><em>stack_info</em>&#160;</td>
+          <td class="paramname"><em>stack_info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>live</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -164,7 +171,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00035">35</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
+<p>Build a stack trace. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>context </td></tr>
+    <tr><td class="paramname">stack_info</td><td>pointer to stack info tuple </td></tr>
+    <tr><td class="paramname">live</td><td>number of x registers to preserve, which should include stack_info </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the built stack trace </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00036">36</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
 
 </div>
 </div>
@@ -206,7 +224,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00027">27</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00028">28</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
 
 </div>
 </div>
@@ -226,7 +244,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00042">42</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stacktrace_8c_source.html#l00044">44</a> of file <a class="el" href="stacktrace_8c_source.html">stacktrace.c</a>.</p>
 
 </div>
 </div>
