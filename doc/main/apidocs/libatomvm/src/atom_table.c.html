@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>atom_table.c &mdash; AtomVM 0.6.0-beta.1+git.6f516725 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/atom_table.c.html" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=6ab353a5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                main
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome-to-atomvm.html">Welcome to AtomVM!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting-started-guide.html">Getting Started Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AtomVM</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">atom_table.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="atom-table-c">
+<h1>atom_table.c<a class="headerlink" href="#atom-table-c" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Include dependency graph for atom_table.c:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1d9173d4d9af21e2ee9a867e4558d659684c628a.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;6&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
+    &quot;9&quot; [label=&quot;stdatomic.h&quot; tooltip=&quot;stdatomic.h&quot;]
+    &quot;3&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
+    &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
+    &quot;5&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;10&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/atom_table.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/atom_table.c&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;2&quot; [label=&quot;atom_table.h&quot; tooltip=&quot;atom_table.h&quot;]
+    &quot;11&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;7&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;8&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.SMP_RDLOCK">
+<span class="target" id="libatomvmatom__table_8c_1a4c9feb11f5a113dc27430108372b81c5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_RDLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1a536c93df7bdcd2f1f6328dbe41c7106d"><span class="std std-ref"><span class="pre">smp_rwlock_rdlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.SMP_WRLOCK">
+<span class="target" id="libatomvmatom__table_8c_1a1fc5fa3982024b12377e30f39a659355"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_WRLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1ab6f00241960e538e710232ab5a6cef72"><span class="std std-ref"><span class="pre">smp_rwlock_wrlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.SMP_UNLOCK">
+<span class="target" id="libatomvmatom__table_8c_1ab5310a565239be692372181d7aa27bb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_UNLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1a9bd3aaa698e550b327f6ab9c84cd783f"><span class="std std-ref"><span class="pre">smp_rwlock_unlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.DEFAULT_SIZE">
+<span class="target" id="libatomvmatom__table_8c_1a9771cabfd673a8e350f1f8ce0b8f458f"></span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SIZE</span></span></span> <span class="pre">8</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.CAPACITY_INCREASE">
+<span class="target" id="libatomvmatom__table_8c_1a46319f6a99578fd3681e0ef9ef0c2879"></span><span class="sig-name descname"><span class="n"><span class="pre">CAPACITY_INCREASE</span></span></span> <span class="pre">8</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ATOM_TABLE_THRESHOLD">
+<span class="target" id="libatomvmatom__table_8c_1a6d1b5d5c4acd7f44965e67b9e7557550"></span><span class="sig-name descname"><span class="n"><span class="pre">ATOM_TABLE_THRESHOLD</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">capacity</span></span><span class="sig-paren">)</span> <span class="pre">(capacity</span> <span class="pre">+</span> <span class="pre">(capacity</span> <span class="pre">&gt;&gt;</span> <span class="pre">2))</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.ATOM_TABLE_NEW_CAPACITY">
+<span class="target" id="libatomvmatom__table_8c_1a9545e71549bc3e81fcb1c03e5223b4b8"></span><span class="sig-name descname"><span class="n"><span class="pre">ATOM_TABLE_NEW_CAPACITY</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">new_count</span></span><span class="sig-paren">)</span> <span class="pre">(new_count</span> <span class="pre">+</span> <a class="reference internal" href="#libatomvmatom__table_8c_1a46319f6a99578fd3681e0ef9ef0c2879"><span class="std std-ref"><span class="pre">CAPACITY_INCREASE</span></span></a><span class="pre">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.new_node_group">
+<span class="target" id="libatomvmatom__table_8c_1a9842d4c02866d4516d1feb246e36ccf0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.HNodeGroup" title="HNodeGroup"><span class="n"><span class="pre">HNodeGroup</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">new_node_group</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_new">
+<span class="target" id="libatomvmatom__table_8c_1a1dafe3ce210a5d503fc5b8965ada793c"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_destroy">
+<span class="target" id="libatomvmatom__table_8c_1a412a574045dbedaafd1145cb74daec06"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_count">
+<span class="target" id="libatomvmatom__table_8c_1a70644d4f0da502dce2536175a0a19806"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_count</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.sdbm_hash">
+<span class="target" id="libatomvmatom__table_8c_1a35e8f9c3c964d97c688e12913e804fbd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdbm_hash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">str</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.get_node_from_bucket">
+<span class="target" id="libatomvmatom__table_8c_1ab484e0a912b048d70f91e992bde69936"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_node_from_bucket</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">bucket_index</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.get_node_with_hash">
+<span class="target" id="libatomvmatom__table_8c_1a2a2198de6acd12f1e03d39a3f8395a2e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_node_with_hash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">hash</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.get_node">
+<span class="target" id="libatomvmatom__table_8c_1af1cb9c4a265bd875bc512d1a60949daa"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_node</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_get_index">
+<span class="target" id="libatomvmatom__table_8c_1afb30a9167cb1fcc2e58beb3ae639a9ed"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_get_index</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.get_node_using_index">
+<span class="target" id="libatomvmatom__table_8c_1a9f07e1a312117038431f15c2f2afb2ea"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">get_node_using_index</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_get_atom_string">
+<span class="target" id="libatomvmatom__table_8c_1ad6d4b313cf83fef6d955f2fb09b68a1b"></span><a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_get_atom_string</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_cmp_using_atom_index">
+<span class="target" id="libatomvmatom__table_8c_1ad814635fd97e14a7b6d3e9a7bc90b815"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_cmp_using_atom_index</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">t_atom_index</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">other_atom_index</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_get_atom_ptr_and_len">
+<span class="target" id="libatomvmatom__table_8c_1afd93f54c51b4dc43314292d43626b6ef"></span><a class="reference internal" href="../index.html#c.atom_ref_t" title="atom_ref_t"><span class="n"><span class="pre">atom_ref_t</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_get_atom_ptr_and_len</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">out_len</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_write_bytes">
+<span class="target" id="libatomvmatom__table_8c_1a398047d5f6dea63fcf527bd5150d992a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_write_bytes</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <a class="reference internal" href="../index.html#c.atom_ref_t" title="atom_ref_t"><span class="n"><span class="pre">atom_ref_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">atom</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">buf_len</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">outbuf</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_write_cstring">
+<span class="target" id="libatomvmatom__table_8c_1ac290f0b2435846691836915f030920db"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_write_cstring</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <a class="reference internal" href="../index.html#c.atom_ref_t" title="atom_ref_t"><span class="n"><span class="pre">atom_ref_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">atom</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">buf_len</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">outbuf</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.init_node">
+<span class="target" id="libatomvmatom__table_8c_1a01284868f75621be9d142bd09cde1b90"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">init_node</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">node</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">atom</span></span>, <span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.insert_node_into_bucket">
+<span class="target" id="libatomvmatom__table_8c_1a87070c41ead03f2e10baeb5d6381817d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">insert_node_into_bucket</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">bucket_index</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">node</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.insert_node">
+<span class="target" id="libatomvmatom__table_8c_1a47dadad45633e34e37a42db24892b55c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">insert_node</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.HNodeGroup" title="HNodeGroup"><span class="n"><span class="pre">HNodeGroup</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">node_group</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">bucket_index</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.do_rehash">
+<span class="target" id="libatomvmatom__table_8c_1a87bb939073f864b67e9cacfd695ea3a3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">do_rehash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">new_capacity</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.maybe_rehash">
+<span class="target" id="libatomvmatom__table_8c_1a558b3041caffa0bdbe9a69075afa9a66"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">maybe_rehash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">new_entries</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_ensure_atom">
+<span class="target" id="libatomvmatom__table_8c_1aae398d3b4701083187896ddafb3c6e71"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_ensure_atom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTableCopyOpt" title="AtomTableCopyOpt"><span class="n"><span class="pre">AtomTableCopyOpt</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.atom_table_ensure_atoms">
+<span class="target" id="libatomvmatom__table_8c_1a0974a5e2e847e1473e78e53811c21027"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_table_ensure_atoms</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomTable" title="AtomTable"><span class="n"><span class="pre">AtomTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">atoms</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">count</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">translate_table</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.HNode">
+<span class="target" id="libatomvmstruct_h_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNode</span></span></span><br /></dt>
+<dd><p>Collaboration diagram for HNode:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-a4d1327cae0413885be6db8feb42646331a1b313.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;1&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNode.next">
+<span class="target" id="libatomvmstruct_h_node_1abea8de3dcee2d732142001b8eb698050"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">next</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNode.key">
+<span class="target" id="libatomvmstruct_h_node_1a47595d031a8e4cf76063a67062655a91"></span><a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNode.index">
+<span class="target" id="libatomvmstruct_h_node_1a19fc44f475f605257d31776bdaf8c835"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">index</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.HNodeGroup">
+<span class="target" id="libatomvmstruct_h_node_group"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNodeGroup</span></span></span><br /></dt>
+<dd><p>Collaboration diagram for HNodeGroup:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-851c6117922e29f92a952079010fff0a7be0edfc.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;1&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;2&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNodeGroup.next">
+<span class="target" id="libatomvmstruct_h_node_group_1aa6effd6850c4a64ff63f17b8803ce207"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.HNodeGroup" title="HNodeGroup"><span class="n"><span class="pre">HNodeGroup</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">next</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNodeGroup.first_index">
+<span class="target" id="libatomvmstruct_h_node_group_1a62e315dac7faf28fbf14cf6fae9e1261"></span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">first_index</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNodeGroup.len">
+<span class="target" id="libatomvmstruct_h_node_group_1a4343af6ff3e8fd67dc1b7a36b6876b38"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">len</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.HNodeGroup.nodes">
+<span class="target" id="libatomvmstruct_h_node_group_1a13551f118d967b31a0d609ad5d66c4e1"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nodes</span></span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.AtomTable">
+<span class="target" id="libatomvmstruct_atom_table"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AtomTable</span></span></span><br /></dt>
+<dd><p>Collaboration diagram for AtomTable:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-9534ed275b71adfe7250c22cae45c4e973d21e52.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;3&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;1&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;2&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;3&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.capacity">
+<span class="target" id="libatomvmstruct_atom_table_1aca978e65f3b6b54c5f334aa32941374a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">capacity</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.count">
+<span class="target" id="libatomvmstruct_atom_table_1ae84c2826d463365d5114f46c20eafe5b"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">count</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.last_node_group_avail">
+<span class="target" id="libatomvmstruct_atom_table_1a9f2f3808b597fcf8be928e4d8e69e2cb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_node_group_avail</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.lock">
+<span class="target" id="libatomvmstruct_atom_table_1a3d504773bcf32437a53331999f4903aa"></span><a class="reference internal" href="../index.html#c.RWLock" title="RWLock"><span class="n"><span class="pre">RWLock</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">lock</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.buckets">
+<span class="target" id="libatomvmstruct_atom_table_1a5a89650d410821735f61aad677bc13eb"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.HNode" title="HNode"><span class="n"><span class="pre">HNode</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buckets</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.first_node_group">
+<span class="target" id="libatomvmstruct_atom_table_1a04485d1b6353d9b45b3c8b59d2022dee"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.HNodeGroup" title="HNodeGroup"><span class="n"><span class="pre">HNodeGroup</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">first_node_group</span></span></span><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.AtomTable.last_node_group">
+<span class="target" id="libatomvmstruct_atom_table_1a8ad8a3c444b9a82fb461d8a20acef5c4"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.HNodeGroup" title="HNodeGroup"><span class="n"><span class="pre">HNodeGroup</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">last_node_group</span></span></span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2017-2024, AtomVM.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!--
+ Copyright 2023 Winford (Uncle Grumpy) <winford@object.stream>
+
+ SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+
+ Based on the work of  Michael Altfield:
+ https://tech.michaelaltfield.net/2020/07/18/sphinx-rtd-github-pages-1
+-->
+
+
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book">AtomVM Docs</span>
+      v: main
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      
+      <dl>
+        <dt>Versions</dt>
+        
+          
+          <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.0/">v0.6.0-alpha.0</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.1/">v0.6.0-alpha.1</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-alpha.2/">v0.6.0-alpha.2</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.0-beta.0/">v0.6.0-beta.0</a></dd>
+          
+        
+           <strong> 
+          <dd><a href="/doc/main/">main</a></dd>
+           </strong> 
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
+        
+          <dd><a href="/doc/main/epub/AtomVM-main.epub">epub</a></dd>
+        
+      </dl>
+      
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
