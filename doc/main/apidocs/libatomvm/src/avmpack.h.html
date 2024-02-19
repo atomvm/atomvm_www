@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>avmpack.h &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>avmpack.h &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -196,95 +198,180 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p>AVM Pack file format parsing function. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.END_OF_FILE">
-<span class="target" id="libatomvmavmpack_8h_1a7252abca9c1ab5f4ef517b87e5ab12bb"></span><span class="sig-name descname"><span class="n"><span class="pre">END_OF_FILE</span></span></span> <span class="pre">0</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.END_OF_FILE">
+<span class="target" id="libatomvmavmpack_8h_1a7252abca9c1ab5f4ef517b87e5ab12bb"></span><span class="sig-name descname"><span class="n"><span class="pre">END_OF_FILE</span></span></span> <span class="pre">0</span><a class="headerlink" href="#c.libAtomVM.END_OF_FILE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.BEAM_START_FLAG">
-<span class="target" id="libatomvmavmpack_8h_1a0f4254b5594c244185e19199acd4bb17"></span><span class="sig-name descname"><span class="n"><span class="pre">BEAM_START_FLAG</span></span></span> <span class="pre">1</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.BEAM_START_FLAG">
+<span class="target" id="libatomvmavmpack_8h_1a0f4254b5594c244185e19199acd4bb17"></span><span class="sig-name descname"><span class="n"><span class="pre">BEAM_START_FLAG</span></span></span> <span class="pre">1</span><a class="headerlink" href="#c.libAtomVM.BEAM_START_FLAG" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.BEAM_CODE_FLAG">
-<span class="target" id="libatomvmavmpack_8h_1ab3a49dbac17bc83b8f23006e1cd6a21d"></span><span class="sig-name descname"><span class="n"><span class="pre">BEAM_CODE_FLAG</span></span></span> <span class="pre">2</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.BEAM_CODE_FLAG">
+<span class="target" id="libatomvmavmpack_8h_1ab3a49dbac17bc83b8f23006e1cd6a21d"></span><span class="sig-name descname"><span class="n"><span class="pre">BEAM_CODE_FLAG</span></span></span> <span class="pre">2</span><a class="headerlink" href="#c.libAtomVM.BEAM_CODE_FLAG" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="c type">
-<dt class="sig sig-object c" id="c.avmpack_fold_fun">
-<span class="target" id="libatomvmavmpack_8h_1a6c4e59ae55feeb84bf748db015dd72ad"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_fold_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">section_size</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">beam_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_name</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_fold_fun">
+<span class="target" id="libatomvmavmpack_8h_1a6c4e59ae55feeb84bf748db015dd72ad"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_fold_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">section_size</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">beam_ptr</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">section_name</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.avmpack_fold_fun" title="Link to this definition"></a><br /></dt>
+<dd><p>callback function for AVMPack section fold. </p>
+<p>Instances of this function are supplied to the avmpack_fold function, in order to provide a callback mechanism for folding over the contents of the AVM binary. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Param accum<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The accumulator supplied by the application. </p>
+</dd>
+<dt class="field-even">Param section_ptr<span class="colon">:</span></dt>
+<dd class="field-even"><p>a pointer to the start of the AVM section (including the module header). </p>
+</dd>
+<dt class="field-odd">Param section_size<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the size of the entire section (including the module header). </p>
+</dd>
+<dt class="field-even">Param beam_ptr<span class="colon">:</span></dt>
+<dd class="field-even"><p>the start of the beam module portion of the section. This pointers starts immediately after the (aligned) header. </p>
+</dd>
+<dt class="field-odd">Param flags<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the section flags, as defined in the module header. </p>
+</dd>
+<dt class="field-even">Param section_name<span class="colon">:</span></dt>
+<dd class="field-even"><p>the section name, as defined in the module header. </p>
+</dd>
+<dt class="field-odd">Return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>an accumulator, which will be supplied to the next call to this function, and eventually returned from the avmpack_fold function. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_data_init">
-<span class="target" id="libatomvmavmpack_8h_1ab6bfb66981b810eed92cfc2f7bbc0b27"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_data_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avm_pack_data</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">info</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_data_init">
+<span class="target" id="libatomvmavmpack_8h_1ab6bfb66981b810eed92cfc2f7bbc0b27"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_data_init</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avm_pack_data</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">info</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.avmpack_data_init" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_data_destroy">
-<span class="target" id="libatomvmavmpack_8h_1a4b29c1910e28a66ce4828a065409c8d1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_data_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avm_pack_data</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_data_destroy">
+<span class="target" id="libatomvmavmpack_8h_1a4b29c1910e28a66ce4828a065409c8d1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_data_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avm_pack_data</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.avmpack_data_destroy" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_find_section_by_flag">
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_find_section_by_flag">
 <span class="target" id="libatomvmavmpack_8h_1ad6274ef73074b80e4c5c2e08a0376744"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_find_section_by_flag</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avmpack_binary</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">flags_mask</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">size</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dd><p>Finds an AVM Pack section that has certain flags set. </p>
+<p>Finds an AVM Pack section that has certain flags set and returns a pointer to it, its size and its name. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>avmpack_binary</strong> – a pointer to valid AVM Pack file data. </p></li>
+<li><p><strong>flags_mask</strong> – that will be matched against file sections. </p></li>
+<li><p><strong>ptr</strong> – will point to the found file section. </p></li>
+<li><p><strong>size</strong> – will be set to the file section size that has been found, if the section has not been found it will not be updated. </p></li>
+<li><p><strong>name</strong> – the section name, as defined in the module header. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>1 if the file section has been found, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_find_section_by_name">
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_find_section_by_name">
 <span class="target" id="libatomvmavmpack_8h_1abdb50996509adc7ac2bbdbe43636f14a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_find_section_by_name</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avmpack_binary</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">name</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dd><p>Finds an AVM Pack section that has certain name. </p>
+<p>Finds an AVM Pack section with a certain name and returns a pointer to it and its size. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>avmpack_binary</strong> – a pointer to valid AVM Pack file data. </p></li>
+<li><p><strong>name</strong> – the file section name that will be searched. </p></li>
+<li><p><strong>ptr</strong> – will point to the found file section, if the section has not been found it will not be updated. </p></li>
+<li><p><strong>size</strong> – will be set to the file section size that has been found, if the section has not been found it will not be updated. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>1 if the file section has been found, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_is_valid">
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_is_valid">
 <span class="target" id="libatomvmavmpack_8h_1a14a40b6731bba3b13d9e7e57a6c855ce"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_is_valid</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avmpack_binary</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dd><p>Returns 1 if the pointed binary is a valid AVM Pack. </p>
+<p>Returns if the pointed binary is a valid AVM Pack binary or not. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>avmpack_binary</strong> – a pointer to an AVM Pack binary. </p></li>
+<li><p><strong>size</strong> – the size of AVM Pack binary. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>1 if it is a valid AVM Pack binary, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.avmpack_fold">
-<span class="target" id="libatomvmavmpack_8h_1affd384d7550cf8dfcf98ca3e73564e5e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_fold</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avmpack_binary</span></span>, <a class="reference internal" href="../index.html#c.avmpack_fold_fun" title="avmpack_fold_fun"><span class="n"><span class="pre">avmpack_fold_fun</span></span></a><span class="w"> </span><span class="n"><span class="pre">fold_fun</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.avmpack_fold">
+<span class="target" id="libatomvmavmpack_8h_1affd384d7550cf8dfcf98ca3e73564e5e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_fold</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">avmpack_binary</span></span>, <a class="reference internal" href="#c.libAtomVM.avmpack_fold_fun" title="avmpack_fold_fun"><span class="n"><span class="pre">avmpack_fold_fun</span></span></a><span class="w"> </span><span class="n"><span class="pre">fold_fun</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Fold over all the sections in an AVM Pack. </p>
+<p>This function will call the callback on each section of the AVM Pack, passing in the current section of each module in the AVM binary to the supplied fold function. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>accum</strong> – The accumulator supplied by the application. </p></li>
+<li><p><strong>avmpack_binary</strong> – a pointer to an AVM Pack binary. </p></li>
+<li><p><strong>fold_fun</strong> – function that will be called for each AVM section. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.in_memory_avm_pack_info">
-<span class="target" id="libatomvmavmpack_8h_1a3227722cb9ff6a211080f7197c2f21f4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_memory_avm_pack_info</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.in_memory_avm_pack_info">
+<span class="target" id="libatomvmavmpack_8h_1a3227722cb9ff6a211080f7197c2f21f4"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_memory_avm_pack_info</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.const_avm_pack_info">
-<span class="target" id="libatomvmavmpack_8h_1acadcec9d4c37a1f1f53e1b6a7e3f2f13"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">const_avm_pack_info</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.const_avm_pack_info">
+<span class="target" id="libatomvmavmpack_8h_1acadcec9d4c37a1f1f53e1b6a7e3f2f13"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">const_avm_pack_info</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.AVMPackInfo">
-<span class="target" id="libatomvmstruct_a_v_m_pack_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVMPackInfo</span></span></span><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackInfo">
+<span class="target" id="libatomvmstruct_a_v_m_pack_info"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVMPackInfo</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackInfo" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;avmpack.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackInfo.destructor">
-<span class="target" id="libatomvmstruct_a_v_m_pack_info_1a5a59045ab12f515877e1c160e7dbf77b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">destructor</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackInfo.destructor">
+<span class="target" id="libatomvmstruct_a_v_m_pack_info_1a5a59045ab12f515877e1c160e7dbf77b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">destructor</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.AVMPackInfo.destructor" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.AVMPackData">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVMPackData</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for AVMPackData:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVMPackData</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;avmpack.h&gt;</em></div>
+<p>Collaboration diagram for AVMPackData:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-b3b0962daa11224d006c2d67fa696148b2cf0345.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -302,37 +389,39 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackData.obj_info">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a3230e9c6e39b7bde9b3917e561da42c3"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">obj_info</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData.obj_info">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a3230e9c6e39b7bde9b3917e561da42c3"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackInfo" title="AVMPackInfo"><span class="n"><span class="pre">AVMPackInfo</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">obj_info</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData.obj_info" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackData.avmpack_head">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data_1ae3986a0429af5f96400b2a51f1850885"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_head</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData.avmpack_head">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data_1ae3986a0429af5f96400b2a51f1850885"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">avmpack_head</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData.avmpack_head" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackData.in_use">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a6709cfff78708b8198f04da2e2741286"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_use</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData.in_use">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a6709cfff78708b8198f04da2e2741286"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">in_use</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData.in_use" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackData.name_atom_id">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data_1ac0dc7adb4994abca1e9270e9408a5740"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name_atom_id</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData.name_atom_id">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data_1ac0dc7adb4994abca1e9270e9408a5740"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">name_atom_id</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData.name_atom_id" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.AVMPackData.data">
-<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a5ec0abbbebfe62014a9f61c660343b47"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.AVMPackData.data">
+<span class="target" id="libatomvmstruct_a_v_m_pack_data_1a5ec0abbbebfe62014a9f61c660343b47"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#c.libAtomVM.AVMPackData.data" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.InMemoryAVMPack">
-<span class="target" id="libatomvmstruct_in_memory_a_v_m_pack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InMemoryAVMPack</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for InMemoryAVMPack:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.InMemoryAVMPack">
+<span class="target" id="libatomvmstruct_in_memory_a_v_m_pack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InMemoryAVMPack</span></span></span><a class="headerlink" href="#c.libAtomVM.InMemoryAVMPack" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;avmpack.h&gt;</em></div>
+<p>Collaboration diagram for InMemoryAVMPack:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1bffb5d19e7e4fcd636beecb4790376213526081.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -352,17 +441,19 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.InMemoryAVMPack.base">
-<span class="target" id="libatomvmstruct_in_memory_a_v_m_pack_1afa57f0a39577e9eb6578b6082438dbef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.InMemoryAVMPack.base">
+<span class="target" id="libatomvmstruct_in_memory_a_v_m_pack_1afa57f0a39577e9eb6578b6082438dbef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.InMemoryAVMPack.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.ConstAVMPack">
-<span class="target" id="libatomvmstruct_const_a_v_m_pack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConstAVMPack</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for ConstAVMPack:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.ConstAVMPack">
+<span class="target" id="libatomvmstruct_const_a_v_m_pack"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ConstAVMPack</span></span></span><a class="headerlink" href="#c.libAtomVM.ConstAVMPack" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;avmpack.h&gt;</em></div>
+<p>Collaboration diagram for ConstAVMPack:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-4b6bd9d712fabe6478d3c5e080c831b14609243c.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -382,8 +473,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ConstAVMPack.base">
-<span class="target" id="libatomvmstruct_const_a_v_m_pack_1a2567b7f2a9f68ea3060d35df2e92846e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ConstAVMPack.base">
+<span class="target" id="libatomvmstruct_const_a_v_m_pack_1a2567b7f2a9f68ea3060d35df2e92846e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.ConstAVMPack.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

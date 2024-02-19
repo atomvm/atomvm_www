@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>exportedfunction.h &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>exportedfunction.h &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -230,138 +232,144 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p><a class="reference internal" href="module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> exported functions structs and macros. </p>
+<p>Structs required to handle both exported/imported NIFs and functions. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TYPEDEF_MODULE">
-<span class="target" id="libatomvmexportedfunction_8h_1a1729c476b09d3d1eabb3c0e64b8c4186"></span><span class="sig-name descname"><span class="n"><span class="pre">TYPEDEF_MODULE</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.TYPEDEF_MODULE">
+<span class="target" id="libatomvmexportedfunction_8h_1a1729c476b09d3d1eabb3c0e64b8c4186"></span><span class="sig-name descname"><span class="n"><span class="pre">TYPEDEF_MODULE</span></span></span><a class="headerlink" href="#c.libAtomVM.TYPEDEF_MODULE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.EXPORTED_FUNCTION_TO_BIF">
-<span class="target" id="libatomvmexportedfunction_8h_1abae6714c0abc9f65454a4390f4ce8b29"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_BIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_bif"><span class="std std-ref"><span class="pre">Bif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_bif"><span class="std std-ref"><span class="pre">Bif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.EXPORTED_FUNCTION_TO_BIF">
+<span class="target" id="libatomvmexportedfunction_8h_1abae6714c0abc9f65454a4390f4ce8b29"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_BIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_bif"><span class="std std-ref"><span class="pre">Bif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_bif"><span class="std std-ref"><span class="pre">Bif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><a class="headerlink" href="#c.libAtomVM.EXPORTED_FUNCTION_TO_BIF" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.EXPORTED_FUNCTION_TO_GCBIF">
-<span class="target" id="libatomvmexportedfunction_8h_1ae0bb2ab5b7ee6fcd04d844b4c26db108"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_GCBIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_g_c_bif"><span class="std std-ref"><span class="pre">GCBif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_g_c_bif"><span class="std std-ref"><span class="pre">GCBif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.EXPORTED_FUNCTION_TO_GCBIF">
+<span class="target" id="libatomvmexportedfunction_8h_1ae0bb2ab5b7ee6fcd04d844b4c26db108"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_GCBIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_g_c_bif"><span class="std std-ref"><span class="pre">GCBif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_g_c_bif"><span class="std std-ref"><span class="pre">GCBif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><a class="headerlink" href="#c.libAtomVM.EXPORTED_FUNCTION_TO_GCBIF" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.EXPORTED_FUNCTION_TO_NIF">
-<span class="target" id="libatomvmexportedfunction_8h_1a0fcc91c11d532456c23de14cc2340bae"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_NIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_nif"><span class="std std-ref"><span class="pre">Nif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_nif"><span class="std std-ref"><span class="pre">Nif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.EXPORTED_FUNCTION_TO_NIF">
+<span class="target" id="libatomvmexportedfunction_8h_1a0fcc91c11d532456c23de14cc2340bae"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_NIF</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_nif"><span class="std std-ref"><span class="pre">Nif</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_nif"><span class="std std-ref"><span class="pre">Nif</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><a class="headerlink" href="#c.libAtomVM.EXPORTED_FUNCTION_TO_NIF" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL">
-<span class="target" id="libatomvmexportedfunction_8h_1a36c9736c0b64c48a0070fb590698cc76"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((struct</span> <a class="reference internal" href="#libatomvmstruct_unresolved_function_call"><span class="std std-ref"><span class="pre">UnresolvedFunctionCall</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((struct</span> <a class="reference internal" href="#libatomvmstruct_unresolved_function_call"><span class="std std-ref"><span class="pre">UnresolvedFunctionCall</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL">
+<span class="target" id="libatomvmexportedfunction_8h_1a36c9736c0b64c48a0070fb590698cc76"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((struct</span> <a class="reference internal" href="#libatomvmstruct_unresolved_function_call"><span class="std std-ref"><span class="pre">UnresolvedFunctionCall</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((struct</span> <a class="reference internal" href="#libatomvmstruct_unresolved_function_call"><span class="std std-ref"><span class="pre">UnresolvedFunctionCall</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><a class="headerlink" href="#c.libAtomVM.EXPORTED_FUNCTION_TO_UNRESOLVED_FUNCTION_CALL" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.EXPORTED_FUNCTION_TO_MODULE_FUNCTION">
-<span class="target" id="libatomvmexportedfunction_8h_1a21367be5d52528b821ebe600ceb8c45a"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_MODULE_FUNCTION</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_module_function"><span class="std std-ref"><span class="pre">ModuleFunction</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_module_function"><span class="std std-ref"><span class="pre">ModuleFunction</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.EXPORTED_FUNCTION_TO_MODULE_FUNCTION">
+<span class="target" id="libatomvmexportedfunction_8h_1a21367be5d52528b821ebe600ceb8c45a"></span><span class="sig-name descname"><span class="n"><span class="pre">EXPORTED_FUNCTION_TO_MODULE_FUNCTION</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">func</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_module_function"><span class="std std-ref"><span class="pre">ModuleFunction</span></span></a> <span class="pre">*)</span> <span class="pre">(((char</span> <span class="pre">*)</span> <span class="pre">(func))</span> <span class="pre">-</span> <span class="pre">((unsigned</span> <span class="pre">long)</span> <span class="pre">&amp;((const</span> <span class="pre">struct</span> <a class="reference internal" href="#libatomvmstruct_module_function"><span class="std std-ref"><span class="pre">ModuleFunction</span></span></a> <span class="pre">*)</span> <span class="pre">0)-&gt;base)))</span><a class="headerlink" href="#c.libAtomVM.EXPORTED_FUNCTION_TO_MODULE_FUNCTION" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="c type">
-<dt class="sig sig-object c" id="c.Module">
-<span class="target" id="libatomvmexportedfunction_8h_1af3a26d1aa4a6eb8196181f1b6bab5ff7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Module">
+<span class="target" id="libatomvmexportedfunction_8h_1af3a26d1aa4a6eb8196181f1b6bab5ff7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><a class="headerlink" href="#c.libAtomVM.Module" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.BifImpl0">
-<span class="target" id="libatomvmexportedfunction_8h_1a93fc02d34dcfc50a9b5dbd10bd44cd08"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl0</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.BifImpl0">
+<span class="target" id="libatomvmexportedfunction_8h_1a93fc02d34dcfc50a9b5dbd10bd44cd08"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl0</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.BifImpl0" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.BifImpl1">
-<span class="target" id="libatomvmexportedfunction_8h_1a2892fe5519f6d1ab6dd04d9eb7ad58ea"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl1</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.BifImpl1">
+<span class="target" id="libatomvmexportedfunction_8h_1a2892fe5519f6d1ab6dd04d9eb7ad58ea"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl1</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.BifImpl1" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.BifImpl2">
-<span class="target" id="libatomvmexportedfunction_8h_1af069851c58b7c0bcdfae0f2bbc8bc128"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.BifImpl2">
+<span class="target" id="libatomvmexportedfunction_8h_1af069851c58b7c0bcdfae0f2bbc8bc128"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">BifImpl2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.BifImpl2" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.GCBifImpl1">
-<span class="target" id="libatomvmexportedfunction_8h_1a9fa2c169f6c196639d2f315edf1b920d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl1</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBifImpl1">
+<span class="target" id="libatomvmexportedfunction_8h_1a9fa2c169f6c196639d2f315edf1b920d"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl1</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.GCBifImpl1" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.GCBifImpl2">
-<span class="target" id="libatomvmexportedfunction_8h_1ad57b27c664642df763bffb5cdbcdc155"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBifImpl2">
+<span class="target" id="libatomvmexportedfunction_8h_1ad57b27c664642df763bffb5cdbcdc155"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl2</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.GCBifImpl2" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.GCBifImpl3">
-<span class="target" id="libatomvmexportedfunction_8h_1aca9f6d050d1152bad55dc4833a3f2f14"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl3</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBifImpl3">
+<span class="target" id="libatomvmexportedfunction_8h_1aca9f6d050d1152bad55dc4833a3f2f14"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">GCBifImpl3</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">live</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg1</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg2</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">arg3</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.GCBifImpl3" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.NifImpl">
-<span class="target" id="libatomvmexportedfunction_8h_1ae954446dc6fccb026fcee45aaf13a34f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">NifImpl</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">)</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.NifImpl">
+<span class="target" id="libatomvmexportedfunction_8h_1ae954446dc6fccb026fcee45aaf13a34f"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">NifImpl</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.NifImpl" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.FunctionType">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FunctionType</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FunctionType</span></span></span><a class="headerlink" href="#c.libAtomVM.FunctionType" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.InvalidFunctionType">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.InvalidFunctionType">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a17375da3e313c48ca20c7812da101981"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InvalidFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.InvalidFunctionType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.NIFFunctionType">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a520690de440ea0d9cf76b05340b418a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.NIFFunctionType">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a520690de440ea0d9cf76b05340b418a4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.NIFFunctionType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.UnresolvedFunctionCall">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a248d26514e2dc649afea1d8d30e2f3fd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnresolvedFunctionCall</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.UnresolvedFunctionCall">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a248d26514e2dc649afea1d8d30e2f3fd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnresolvedFunctionCall</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.UnresolvedFunctionCall" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.ModuleFunction">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a01b3033e1aac665bfff9baf9b8311323"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModuleFunction</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.ModuleFunction">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a01b3033e1aac665bfff9baf9b8311323"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModuleFunction</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.ModuleFunction" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.BIFFunctionType">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.BIFFunctionType">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371ad468b00b00cd226f774f3062ec5da79e"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">BIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.BIFFunctionType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.FunctionType.GCBIFFunctionType">
-<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a2dac22d5c2102d0609bcb652a75b359d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.FunctionType.GCBIFFunctionType">
+<span class="target" id="libatomvmexportedfunction_8h_1a42a11575cc237e37732d560240e04371a2dac22d5c2102d0609bcb652a75b359d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBIFFunctionType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">6</span></span><a class="headerlink" href="#c.libAtomVM.FunctionType.GCBIFFunctionType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.ExportedFunction">
-<span class="target" id="libatomvmstruct_exported_function"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExportedFunction</span></span></span><br /></dt>
-<dd><div class="breathe-sectiondef docutils container">
+<dt class="sig sig-object c" id="c.libAtomVM.ExportedFunction">
+<span class="target" id="libatomvmstruct_exported_function"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExportedFunction</span></span></span><a class="headerlink" href="#c.libAtomVM.ExportedFunction" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ExportedFunction.type">
-<span class="target" id="libatomvmstruct_exported_function_1a4ab4784df5bcde55f2fd2b5a1e7afc57"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.FunctionType" title="FunctionType"><span class="n"><span class="pre">FunctionType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExportedFunction.type">
+<span class="target" id="libatomvmstruct_exported_function_1a4ab4784df5bcde55f2fd2b5a1e7afc57"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.FunctionType" title="FunctionType"><span class="n"><span class="pre">FunctionType</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">type</span></span></span><a class="headerlink" href="#c.libAtomVM.ExportedFunction.type" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.Bif">
-<span class="target" id="libatomvmstruct_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Bif</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for Bif:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif">
+<span class="target" id="libatomvmstruct_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Bif</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<p>Collaboration diagram for Bif:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-6ed0ea6bd48d2eb6cac924c91ec1ff7fdfb4c7ee.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -427,37 +435,39 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Bif.base">
-<span class="target" id="libatomvmstruct_bif_1a4a8b5f258b0ae9a6e82f1ab38b77bc19"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif.base">
+<span class="target" id="libatomvmstruct_bif_1a4a8b5f258b0ae9a6e82f1ab38b77bc19"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Bif.bif0_ptr">
-<span class="target" id="libatomvmstruct_bif_1ac6acf89012302bdd69190d2d51c1603b"></span><a class="reference internal" href="../index.html#c.BifImpl0" title="BifImpl0"><span class="n"><span class="pre">BifImpl0</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif0_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif.bif0_ptr">
+<span class="target" id="libatomvmstruct_bif_1ac6acf89012302bdd69190d2d51c1603b"></span><a class="reference internal" href="#c.libAtomVM.BifImpl0" title="BifImpl0"><span class="n"><span class="pre">BifImpl0</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif0_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif.bif0_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Bif.bif1_ptr">
-<span class="target" id="libatomvmstruct_bif_1aeb53014dec44d01ab52eec34ecdf3080"></span><a class="reference internal" href="../index.html#c.BifImpl1" title="BifImpl1"><span class="n"><span class="pre">BifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif1_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif.bif1_ptr">
+<span class="target" id="libatomvmstruct_bif_1aeb53014dec44d01ab52eec34ecdf3080"></span><a class="reference internal" href="#c.libAtomVM.BifImpl1" title="BifImpl1"><span class="n"><span class="pre">BifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif1_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif.bif1_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Bif.bif2_ptr">
-<span class="target" id="libatomvmstruct_bif_1a5674e1745cf539dc44ed551aaf306f8c"></span><a class="reference internal" href="../index.html#c.BifImpl2" title="BifImpl2"><span class="n"><span class="pre">BifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif2_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif.bif2_ptr">
+<span class="target" id="libatomvmstruct_bif_1a5674e1745cf539dc44ed551aaf306f8c"></span><a class="reference internal" href="#c.libAtomVM.BifImpl2" title="BifImpl2"><span class="n"><span class="pre">BifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">bif2_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif.bif2_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Bif.&#64;2">
-<span class="target" id="libatomvmstruct_bif_1a55b987d019d3e20795cd8c4a8f796cf7"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.Bif" title="Bif"><span class="n"><span class="pre">Bif</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Bif.&#64;2">
+<span class="target" id="libatomvmstruct_bif_1a55b987d019d3e20795cd8c4a8f796cf7"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.Bif" title="Bif"><span class="n"><span class="pre">Bif</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.Bif.@2" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.GCBif">
-<span class="target" id="libatomvmstruct_g_c_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBif</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for GCBif:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif">
+<span class="target" id="libatomvmstruct_g_c_bif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GCBif</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<p>Collaboration diagram for GCBif:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-bbc0b8daea39f30dd14389eec07bc1b0c4af632c.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -523,37 +533,39 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GCBif.base">
-<span class="target" id="libatomvmstruct_g_c_bif_1a42b9b00ab3cc40eaefc699b12836aa3a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif.base">
+<span class="target" id="libatomvmstruct_g_c_bif_1a42b9b00ab3cc40eaefc699b12836aa3a"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GCBif.gcbif1_ptr">
-<span class="target" id="libatomvmstruct_g_c_bif_1a575b100c1538ea0c2d5006c131b4c180"></span><a class="reference internal" href="../index.html#c.GCBifImpl1" title="GCBifImpl1"><span class="n"><span class="pre">GCBifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif1_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif.gcbif1_ptr">
+<span class="target" id="libatomvmstruct_g_c_bif_1a575b100c1538ea0c2d5006c131b4c180"></span><a class="reference internal" href="#c.libAtomVM.GCBifImpl1" title="GCBifImpl1"><span class="n"><span class="pre">GCBifImpl1</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif1_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif.gcbif1_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GCBif.gcbif2_ptr">
-<span class="target" id="libatomvmstruct_g_c_bif_1a7fab8999dbd19bfd694e0dc8a2641cca"></span><a class="reference internal" href="../index.html#c.GCBifImpl2" title="GCBifImpl2"><span class="n"><span class="pre">GCBifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif2_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif.gcbif2_ptr">
+<span class="target" id="libatomvmstruct_g_c_bif_1a7fab8999dbd19bfd694e0dc8a2641cca"></span><a class="reference internal" href="#c.libAtomVM.GCBifImpl2" title="GCBifImpl2"><span class="n"><span class="pre">GCBifImpl2</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif2_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif.gcbif2_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GCBif.gcbif3_ptr">
-<span class="target" id="libatomvmstruct_g_c_bif_1aaa29043c485efb518d275649728a3943"></span><a class="reference internal" href="../index.html#c.GCBifImpl3" title="GCBifImpl3"><span class="n"><span class="pre">GCBifImpl3</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif3_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif.gcbif3_ptr">
+<span class="target" id="libatomvmstruct_g_c_bif_1aaa29043c485efb518d275649728a3943"></span><a class="reference internal" href="#c.libAtomVM.GCBifImpl3" title="GCBifImpl3"><span class="n"><span class="pre">GCBifImpl3</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">gcbif3_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif.gcbif3_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GCBif.&#64;4">
-<span class="target" id="libatomvmstruct_g_c_bif_1a774b6e240aa0e6e6083ac6509d99d521"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.GCBif" title="GCBif"><span class="n"><span class="pre">GCBif</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GCBif.&#64;4">
+<span class="target" id="libatomvmstruct_g_c_bif_1a774b6e240aa0e6e6083ac6509d99d521"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.GCBif" title="GCBif"><span class="n"><span class="pre">GCBif</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.GCBif.@4" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.Nif">
-<span class="target" id="libatomvmstruct_nif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Nif</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for Nif:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.Nif">
+<span class="target" id="libatomvmstruct_nif"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Nif</span></span></span><a class="headerlink" href="#c.libAtomVM.Nif" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<p>Collaboration diagram for Nif:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-72750d2052dd932f0b28b84e3f756bc2f872148a.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -619,22 +631,24 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Nif.base">
-<span class="target" id="libatomvmstruct_nif_1aee70de6d4d39c187f6e09c3707e2efeb"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Nif.base">
+<span class="target" id="libatomvmstruct_nif_1aee70de6d4d39c187f6e09c3707e2efeb"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.Nif.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.Nif.nif_ptr">
-<span class="target" id="libatomvmstruct_nif_1adfa56a469bc3591bd32eaf6d8061ba58"></span><a class="reference internal" href="../index.html#c.NifImpl" title="NifImpl"><span class="n"><span class="pre">NifImpl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_ptr</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.Nif.nif_ptr">
+<span class="target" id="libatomvmstruct_nif_1adfa56a469bc3591bd32eaf6d8061ba58"></span><a class="reference internal" href="#c.libAtomVM.NifImpl" title="NifImpl"><span class="n"><span class="pre">NifImpl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_ptr</span></span></span><a class="headerlink" href="#c.libAtomVM.Nif.nif_ptr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.UnresolvedFunctionCall">
+<dt class="sig sig-object c" id="c.libAtomVM.UnresolvedFunctionCall">
 <span class="target" id="libatomvmstruct_unresolved_function_call"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnresolvedFunctionCall</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for UnresolvedFunctionCall:</p>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<p>Collaboration diagram for UnresolvedFunctionCall:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-49dcb72e3610718b4dbd2b55ba24ae40b0e6e706.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -649,32 +663,34 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.UnresolvedFunctionCall.base">
-<span class="target" id="libatomvmstruct_unresolved_function_call_1afe9c3a980f3d43e453b10ff1290d3cc7"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.UnresolvedFunctionCall.base">
+<span class="target" id="libatomvmstruct_unresolved_function_call_1afe9c3a980f3d43e453b10ff1290d3cc7"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.UnresolvedFunctionCall.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.UnresolvedFunctionCall.module_atom_index">
-<span class="target" id="libatomvmstruct_unresolved_function_call_1ab4620fba814eb424146c69a569169ad6"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_atom_index</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.UnresolvedFunctionCall.module_atom_index">
+<span class="target" id="libatomvmstruct_unresolved_function_call_1ab4620fba814eb424146c69a569169ad6"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_atom_index</span></span></span><a class="headerlink" href="#c.libAtomVM.UnresolvedFunctionCall.module_atom_index" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.UnresolvedFunctionCall.function_atom_index">
-<span class="target" id="libatomvmstruct_unresolved_function_call_1ac5317e7ed6d7b8f3b3e41f82b2641b2d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">function_atom_index</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.UnresolvedFunctionCall.function_atom_index">
+<span class="target" id="libatomvmstruct_unresolved_function_call_1ac5317e7ed6d7b8f3b3e41f82b2641b2d"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">function_atom_index</span></span></span><a class="headerlink" href="#c.libAtomVM.UnresolvedFunctionCall.function_atom_index" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.UnresolvedFunctionCall.arity">
-<span class="target" id="libatomvmstruct_unresolved_function_call_1a4b3d01ddbf4e203a97c18200ffe06beb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arity</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.UnresolvedFunctionCall.arity">
+<span class="target" id="libatomvmstruct_unresolved_function_call_1a4b3d01ddbf4e203a97c18200ffe06beb"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">arity</span></span></span><a class="headerlink" href="#c.libAtomVM.UnresolvedFunctionCall.arity" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.ModuleFunction">
+<dt class="sig sig-object c" id="c.libAtomVM.ModuleFunction">
 <span class="target" id="libatomvmstruct_module_function"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ModuleFunction</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for ModuleFunction:</p>
+<dd><div class="docutils container">
+<em>#include &lt;exportedfunction.h&gt;</em></div>
+<p>Collaboration diagram for ModuleFunction:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-a2caaa0ea4d2b0023455790424dea97ee4d99251.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -699,18 +715,18 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ModuleFunction.base">
-<span class="target" id="libatomvmstruct_module_function_1adfce6e35ace10cedcdd53539279d5087"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ModuleFunction.base">
+<span class="target" id="libatomvmstruct_module_function_1adfce6e35ace10cedcdd53539279d5087"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.ModuleFunction.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ModuleFunction.target">
-<span class="target" id="libatomvmstruct_module_function_1ae1c76fd6f13c159e07fcce63f137115d"></span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ModuleFunction.target">
+<span class="target" id="libatomvmstruct_module_function_1ae1c76fd6f13c159e07fcce63f137115d"></span><a class="reference internal" href="#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">target</span></span></span><a class="headerlink" href="#c.libAtomVM.ModuleFunction.target" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ModuleFunction.label">
-<span class="target" id="libatomvmstruct_module_function_1a1459dc983103dfa13e6add6de6aba9a0"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">label</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ModuleFunction.label">
+<span class="target" id="libatomvmstruct_module_function_1a1459dc983103dfa13e6add6de6aba9a0"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">label</span></span></span><a class="headerlink" href="#c.libAtomVM.ModuleFunction.label" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

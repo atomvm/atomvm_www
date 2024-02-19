@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>atomshashtable.c &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>atomshashtable.c &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -126,22 +128,22 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.SMP_RDLOCK">
+<dt class="sig sig-object c" id="c.libAtomVM.SMP_RDLOCK">
 <span class="target" id="libatomvmatomshashtable_8c_1a4c9feb11f5a113dc27430108372b81c5"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_RDLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1a536c93df7bdcd2f1f6328dbe41c7106d"><span class="std std-ref"><span class="pre">smp_rwlock_rdlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.SMP_WRLOCK">
+<dt class="sig sig-object c" id="c.libAtomVM.SMP_WRLOCK">
 <span class="target" id="libatomvmatomshashtable_8c_1a1fc5fa3982024b12377e30f39a659355"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_WRLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1ab6f00241960e538e710232ab5a6cef72"><span class="std std-ref"><span class="pre">smp_rwlock_wrlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.SMP_UNLOCK">
+<dt class="sig sig-object c" id="c.libAtomVM.SMP_UNLOCK">
 <span class="target" id="libatomvmatomshashtable_8c_1ab5310a565239be692372181d7aa27bb1"></span><span class="sig-name descname"><span class="n"><span class="pre">SMP_UNLOCK</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">htable</span></span><span class="sig-paren">)</span> <a class="reference internal" href="smp.h.html#libatomvmsmp_8h_1a9bd3aaa698e550b327f6ab9c84cd783f"><span class="std std-ref"><span class="pre">smp_rwlock_unlock</span></span></a><span class="pre">(htable-&gt;lock)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.DEFAULT_SIZE">
+<dt class="sig sig-object c" id="c.libAtomVM.DEFAULT_SIZE">
 <span class="target" id="libatomvmatomshashtable_8c_1a9771cabfd673a8e350f1f8ce0b8f458f"></span><span class="sig-name descname"><span class="n"><span class="pre">DEFAULT_SIZE</span></span></span> <span class="pre">8</span><br /></dt>
 <dd></dd></dl>
 
@@ -149,33 +151,33 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.sdbm_hash">
+<dt class="sig sig-object c" id="c.libAtomVM.sdbm_hash">
 <span class="target" id="libatomvmatomshashtable_8c_1a35e8f9c3c964d97c688e12913e804fbd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sdbm_hash</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">str</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.atomshashtable_new">
-<span class="target" id="libatomvmatomshashtable_8c_1a343ced8d349080c111453916eadb82da"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.atomshashtable_new">
+<span class="target" id="libatomvmatomshashtable_8c_1a343ced8d349080c111453916eadb82da"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="atomshashtable.h.html#c.libAtomVM.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.atomshashtable_new" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.atomshashtable_insert">
-<span class="target" id="libatomvmatomshashtable_8c_1a24c87e61176f4ff086368361d276b832"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.atomshashtable_insert">
+<span class="target" id="libatomvmatomshashtable_8c_1a24c87e61176f4ff086368361d276b832"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="atomshashtable.h.html#c.libAtomVM.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.atomshashtable_insert" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.atomshashtable_get_value">
-<span class="target" id="libatomvmatomshashtable_8c_1acbda1ffdec0d5ed9723d5f9b86140b25"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.atomshashtable_get_value">
+<span class="target" id="libatomvmatomshashtable_8c_1acbda1ffdec0d5ed9723d5f9b86140b25"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_get_value</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="atomshashtable.h.html#c.libAtomVM.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.atomshashtable_get_value" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.atomshashtable_has_key">
-<span class="target" id="libatomvmatomshashtable_8c_1a484cb05e58467dbefc949b5078c1048f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.atomshashtable_has_key">
+<span class="target" id="libatomvmatomshashtable_8c_1a484cb05e58467dbefc949b5078c1048f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atomshashtable_has_key</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="atomshashtable.h.html#c.libAtomVM.AtomsHashTable" title="AtomsHashTable"><span class="n"><span class="pre">AtomsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">string</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.atomshashtable_has_key" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.HNode">
+<dt class="sig sig-object c" id="c.libAtomVM.HNode">
 <span class="target" id="libatomvmstruct_h_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNode</span></span></span><br /></dt>
 <dd></dd></dl>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>externalterm.h &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>externalterm.h &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -169,46 +171,48 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p>External term deserialization functions. </p>
+<p>This header provides external term deserialization functions. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.ExternalTermResult">
-<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermResult</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermResult">
+<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermResult</span></span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermResult" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermResult.EXTERNAL_TERM_OK">
-<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173aa8a9828ad6169d0edc07811accaa7699"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_OK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_OK">
+<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173aa8a9828ad6169d0edc07811accaa7699"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_OK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_OK" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermResult.EXTERNAL_TERM_BAD_ARG">
-<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173ac087ab3016f10c876cffa4ee1db08145"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_BAD_ARG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_BAD_ARG">
+<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173ac087ab3016f10c876cffa4ee1db08145"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_BAD_ARG</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_BAD_ARG" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermResult.EXTERNAL_TERM_MALLOC">
-<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173a5c70846a1c32d1a0cef84b284fb0f785"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_MALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_MALLOC">
+<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173a5c70846a1c32d1a0cef84b284fb0f785"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_MALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_MALLOC" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermResult.EXTERNAL_TERM_HEAP_ALLOC">
-<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173a8e8bae3a4997144f2e359209fafd44ba"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_HEAP_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_HEAP_ALLOC">
+<span class="target" id="libatomvmexternalterm_8h_1a7b610ef1bb7437f006b44fb6c2c5b173a8e8bae3a4997144f2e359209fafd44ba"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_TERM_HEAP_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermResult.EXTERNAL_TERM_HEAP_ALLOC" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.ExternalTermOpts">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermOpts</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermOpts">
+<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermOpts</span></span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermOpts" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermOpts.ExternalTermNoOpts">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2a23d9d0c8a9bec63f823e2c0cc87e1193"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermNoOpts</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermOpts.ExternalTermNoOpts">
+<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2a23d9d0c8a9bec63f823e2c0cc87e1193"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermNoOpts</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermOpts.ExternalTermNoOpts" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.ExternalTermOpts.ExternalTermToHeapFragment">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2ac87298fcf7134b4892d4e069b5218ba4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermToHeapFragment</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ExternalTermOpts.ExternalTermToHeapFragment">
+<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2ac87298fcf7134b4892d4e069b5218ba4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermToHeapFragment</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.ExternalTermOpts.ExternalTermToHeapFragment" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -217,19 +221,62 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.externalterm_to_term">
-<span class="target" id="libatomvmexternalterm_8h_1aad438929de43302a6dd3698b0e4d9bc2"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="../data_structures.html#c.ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm_to_term">
+<span class="target" id="libatomvmexternalterm_8h_1aad438929de43302a6dd3698b0e4d9bc2"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.libAtomVM.ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Gets a term from external term data. </p>
+<p>Deserialize an external term from external format and returns a term. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
+<li><p><strong>size</strong> – to allocate for term. </p></li>
+<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
+<li><p><strong>opts</strong> – if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a term. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.externalterm_from_binary">
-<span class="target" id="libatomvmexternalterm_8h_1a5af48d46cb956f28521530a58010e876"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExternalTermResult" title="ExternalTermResult"><span class="n"><span class="pre">ExternalTermResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm_from_binary">
+<span class="target" id="libatomvmexternalterm_8h_1a5af48d46cb956f28521530a58010e876"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ExternalTermResult" title="ExternalTermResult"><span class="n"><span class="pre">ExternalTermResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Create a term from a binary. </p>
+<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
+<li><p><strong>dst</strong> – a pointer to a term that will contain the binary encoded term. </p></li>
+<li><p><strong>binary</strong> – the binary. </p></li>
+<li><p><strong>bytes_read</strong> – the number of bytes read from the input binary. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the term deserialized from the input term, or an invalid term, if deserialization fails. </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.externalterm_to_binary">
-<span class="target" id="libatomvmexternalterm_8h_1ac206e81a0af456ae80d093af7b255a82"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm_to_binary">
+<span class="target" id="libatomvmexternalterm_8h_1ac206e81a0af456ae80d093af7b255a82"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Create a binary from a term. </p>
+<p>Serialize a term in Erlang external term format, and store the result in a binary term. The heap from the context will be used to allocate the hydrated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
+<li><p><strong>t</strong> – the term to return as binary. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the term deserialized from the input term, or an invalid term, if deserialization fails. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </section>

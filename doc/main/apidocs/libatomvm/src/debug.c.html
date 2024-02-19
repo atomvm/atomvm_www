@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>debug.c &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>debug.c &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -211,37 +213,106 @@
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a961302b353780a0b482883a926c3c9fd"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_dump_memory</span> <span class="pre">(Context</span> <span class="pre">*ctx,</span> <span class="pre">term</span> <span class="pre">*start,</span> <span class="pre">term</span> <span class="pre">*end,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*region)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Print a region of (term) memory to stderr. </p>
+<p>Print the dump of the memory the given context to stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the process context. </p></li>
+<li><p><strong>start</strong> – the start address. </p></li>
+<li><p><strong>end</strong> – the end address. </p></li>
+<li><p><strong>region</strong> – the name of the region to display. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a95a5860910f9be54617bca2a474f4d6c"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_dump_context</span> <span class="pre">(Context</span> <span class="pre">*ctx)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Print a repreentation of the context to stderr. </p>
+<p>Print heap, stack, and registers of the given context to stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the process context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a3ef74cd427bc12c9865bff2196bbbca2"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_dump_heap</span> <span class="pre">(Context</span> <span class="pre">*ctx)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Print heap contents to stderr. </p>
+<p>Print the dump of the heap of the given context to stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the process context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a8959fb9be635ea4ed0987f5b295435a2"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_dump_stack</span> <span class="pre">(Context</span> <span class="pre">*ctx)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Print stack contents to stderr. </p>
+<p>Print the dump of the stack of the given context to stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the process context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1aae89032900692bc7f7ee7595de7df78b"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_dump_registers</span> <span class="pre">(Context</span> <span class="pre">*ctx)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Print register contents to stderr. </p>
+<p>Print the dump of the registers of the given context to stderr. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the process context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a302d1f4bcf8f9890bbeb2f9b39e30856"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">debug_print_processes_list</span> <span class="pre">(struct</span> <span class="pre">ListHead</span> <span class="pre">*processes)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Prints a list of processes. </p>
+<p>Prints to stderr a list of processes. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>processes</strong> – the list of processes that will be printed. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmdebug_8c_1a8c3bb77489d9026ab01dcc325b56c83a"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">char</span> <span class="pre">reg_type_c</span> <span class="pre">(int</span> <span class="pre">reg_type)</span></span></dt>
-<dd></dd></dl>
+<dd><p>Gets a printable char for a given register type. </p>
+<p>Returns a printable char such as x or y for the given register type. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reg_type</strong> – register type. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>printable register type. </p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </section>

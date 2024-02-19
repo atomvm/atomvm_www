@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>resources.h &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>resources.h &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -378,59 +380,112 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p>Private data structures for nif object resources. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TYPEDEF_GLOBALCONTEXT">
+<dt class="sig sig-object c" id="c.libAtomVM.TYPEDEF_GLOBALCONTEXT">
 <span class="target" id="libatomvmresources_8h_1ae255fde495724a05463b14aaafe1cb94"></span><span class="sig-name descname"><span class="n"><span class="pre">TYPEDEF_GLOBALCONTEXT</span></span></span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.SELECT_EVENT_NOTIFICATION_SIZE">
-<span class="target" id="libatomvmresources_8h_1a36b509bb9024519744d128db03eaf681"></span><span class="sig-name descname"><span class="n"><span class="pre">SELECT_EVENT_NOTIFICATION_SIZE</span></span></span> <span class="pre">(</span><a class="reference internal" href="term.h.html#libatomvmterm_8h_1a476d7e8af59a33c4b1a710660e8edd61"><span class="std std-ref"><span class="pre">TUPLE_SIZE</span></span></a><span class="pre">(4)</span> <span class="pre">+</span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1afd9d34c95799384d99b83b115f172f96"><span class="std std-ref"><span class="pre">REF_SIZE</span></span></a> <span class="pre">+</span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a0e4f0056d3a7627395877f2f992b5bf1"><span class="std std-ref"><span class="pre">TERM_BOXED_RESOURCE_SIZE</span></span></a><span class="pre">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SELECT_EVENT_NOTIFICATION_SIZE">
+<span class="target" id="libatomvmresources_8h_1a36b509bb9024519744d128db03eaf681"></span><span class="sig-name descname"><span class="n"><span class="pre">SELECT_EVENT_NOTIFICATION_SIZE</span></span></span> <span class="pre">(</span><a class="reference internal" href="term.h.html#libatomvmterm_8h_1a476d7e8af59a33c4b1a710660e8edd61"><span class="std std-ref"><span class="pre">TUPLE_SIZE</span></span></a><span class="pre">(4)</span> <span class="pre">+</span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1afd9d34c95799384d99b83b115f172f96"><span class="std std-ref"><span class="pre">REF_SIZE</span></span></a> <span class="pre">+</span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a0e4f0056d3a7627395877f2f992b5bf1"><span class="std std-ref"><span class="pre">TERM_BOXED_RESOURCE_SIZE</span></span></a><span class="pre">)</span><a class="headerlink" href="#c.libAtomVM.SELECT_EVENT_NOTIFICATION_SIZE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="c type">
-<dt class="sig sig-object c" id="c.GlobalContext">
-<span class="target" id="libatomvmresources_8h_1ae21a02a8cb159bd3d9eeba3a1dc89580"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.GlobalContext">
+<span class="target" id="libatomvmresources_8h_1ae21a02a8cb159bd3d9eeba3a1dc89580"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.resource_type_destroy">
-<span class="target" id="libatomvmresources_8h_1aa922ae39f445bb1539075dd7eb62a300"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resource_type_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ResourceType" title="ResourceType"><span class="n"><span class="pre">ResourceType</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource_type</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.resource_type_destroy">
+<span class="target" id="libatomvmresources_8h_1aa922ae39f445bb1539075dd7eb62a300"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resource_type_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.ResourceType" title="ResourceType"><span class="n"><span class="pre">ResourceType</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource_type</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resource_type_destroy" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.select_event_notify">
-<span class="target" id="libatomvmresources_8h_1aaa6d0600c80747e71975bdc8e215b795"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_notify</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../index.html#c.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_read</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.select_event_notify">
+<span class="target" id="libatomvmresources_8h_1aaa6d0600c80747e71975bdc8e215b795"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_notify</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_read</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Send a notification that an event was selected. </p>
+<p>This function is called from sys_poll_events platform function if a select event was selected and the read or write flag was set. It modifies the select_event object so the notification is only sent once.</p>
+<p>It is not an error to call this function with an event that is not in the list.</p>
+<p>This function calls <code class="docutils literal notranslate"><span class="pre">sys_unregister_select_event</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – the event to notify </p></li>
+<li><p><strong>is_read</strong> – if the event was selected for reading </p></li>
+<li><p><strong>is_write</strong> – if the event was selected for writing </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the event was found </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.select_event_count_and_destroy_closed">
-<span class="target" id="libatomvmresources_8h_1ac6c3a677804facf137a8b83b59a25f29"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_count_and_destroy_closed</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">select_events</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">write</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">either</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.select_event_count_and_destroy_closed">
+<span class="target" id="libatomvmresources_8h_1ac6c3a677804facf137a8b83b59a25f29"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_count_and_destroy_closed</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">select_events</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">write</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">either</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Count events available for reading and/or writing and destroy the events marked for close. </p>
+<p>Convenience function that can be called by <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> and iterates on events to be closed and count them. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>select_events</strong> – list of events, with a write lock </p></li>
+<li><p><strong>read</strong> – on output number of events with read = 1, can be NULL </p></li>
+<li><p><strong>write</strong> – on output number of events with write = 1, can be NULL </p></li>
+<li><p><strong>either</strong> – on output number of events with either read = 1 or write = 1, can be NULL </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.destroy_resource_monitors">
-<span class="target" id="libatomvmresources_8h_1a1fb067a508327a46fc4f6b5a5b93b421"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">destroy_resource_monitors</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.destroy_resource_monitors">
+<span class="target" id="libatomvmresources_8h_1a1fb067a508327a46fc4f6b5a5b93b421"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">destroy_resource_monitors</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="refc_binary.h.html#c.libAtomVM.RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Destroy monitors associated with a resource. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – resource to destroy monitors for </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.select_event_make_notification">
-<span class="target" id="libatomvmresources_8h_1a5919ca9372c92b67aba98ad50db2e43c"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_make_notification</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span>, <a class="reference internal" href="../data_structures.html#c.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.select_event_make_notification">
+<span class="target" id="libatomvmresources_8h_1a5919ca9372c92b67aba98ad50db2e43c"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">select_event_make_notification</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Build a select event notification. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rsrc_obj</strong> – the resource to build the notification for </p></li>
+<li><p><strong>ref_ticks</strong> – the reference or 0 if it’s undefined </p></li>
+<li><p><strong>is_write</strong> – if the notification is for a write or a read </p></li>
+<li><p><strong>heap</strong> – the heap to create the notification in, should have enough memory available (see SELECT_EVENT_NOTIFICATION_SIZE) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.ResourceType">
-<span class="target" id="libatomvmstruct_resource_type"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ResourceType</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for ResourceType:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType">
+<span class="target" id="libatomvmstruct_resource_type"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ResourceType</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;resources.h&gt;</em></div>
+<p>Collaboration diagram for ResourceType:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-c0b26e0fa285c3ae28438c55cc2478a8ff32a30c.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -475,50 +530,54 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p>A resource type. </p>
+<p>we need a reference to the global context as <code class="docutils literal notranslate"><span class="pre">enif_release_resource</span></code> needs to access the synchronized list of refc_binaries </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.head">
-<span class="target" id="libatomvmstruct_resource_type_1ada1e6629f6b9bb3c32694206fccb6047"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.head">
+<span class="target" id="libatomvmstruct_resource_type_1ada1e6629f6b9bb3c32694206fccb6047"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.head" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.name">
-<span class="target" id="libatomvmstruct_resource_type_1a47b8ff9922e14107482d423f6cf1669a"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.name">
+<span class="target" id="libatomvmstruct_resource_type_1a47b8ff9922e14107482d423f6cf1669a"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">name</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.name" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.global">
-<span class="target" id="libatomvmstruct_resource_type_1a1e33188c008719548d054d022fb1ffd5"></span><a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">global</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.global">
+<span class="target" id="libatomvmstruct_resource_type_1a1e33188c008719548d054d022fb1ffd5"></span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">global</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.global" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.monitors">
-<span class="target" id="libatomvmstruct_resource_type_1ae0608fd73919a1558fcb33a8b11c92ff"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitors</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.monitors">
+<span class="target" id="libatomvmstruct_resource_type_1ae0608fd73919a1558fcb33a8b11c92ff"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitors</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.monitors" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.dtor">
-<span class="target" id="libatomvmstruct_resource_type_1a2d0bb2d4ffa7a3b61f062a83831e4638"></span><a class="reference internal" href="../index.html#c.ErlNifResourceDtor" title="ErlNifResourceDtor"><span class="n"><span class="pre">ErlNifResourceDtor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dtor</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.dtor">
+<span class="target" id="libatomvmstruct_resource_type_1a2d0bb2d4ffa7a3b61f062a83831e4638"></span><a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifResourceDtor" title="ErlNifResourceDtor"><span class="n"><span class="pre">ErlNifResourceDtor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dtor</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.dtor" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.stop">
-<span class="target" id="libatomvmstruct_resource_type_1a72d549c1f020940af103d6d61375c0e1"></span><a class="reference internal" href="../index.html#c.ErlNifResourceStop" title="ErlNifResourceStop"><span class="n"><span class="pre">ErlNifResourceStop</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.stop">
+<span class="target" id="libatomvmstruct_resource_type_1a72d549c1f020940af103d6d61375c0e1"></span><a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifResourceStop" title="ErlNifResourceStop"><span class="n"><span class="pre">ErlNifResourceStop</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stop</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.stop" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.ResourceType.down">
-<span class="target" id="libatomvmstruct_resource_type_1ad9945d4dc66584799b66523f5cd885ff"></span><a class="reference internal" href="../index.html#c.ErlNifResourceDown" title="ErlNifResourceDown"><span class="n"><span class="pre">ErlNifResourceDown</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">down</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ResourceType.down">
+<span class="target" id="libatomvmstruct_resource_type_1ad9945d4dc66584799b66523f5cd885ff"></span><a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifResourceDown" title="ErlNifResourceDown"><span class="n"><span class="pre">ErlNifResourceDown</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">down</span></span></span><a class="headerlink" href="#c.libAtomVM.ResourceType.down" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.SelectEvent">
-<span class="target" id="libatomvmstruct_select_event"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SelectEvent</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for SelectEvent:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent">
+<span class="target" id="libatomvmstruct_select_event"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SelectEvent</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;resources.h&gt;</em></div>
+<p>Collaboration diagram for SelectEvent:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-f81d84be7c35277067a71438f4de06a7bdc03ae4.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -569,46 +628,47 @@
 }" class="graphviz" /></div>
 </div>
 </figure>
+<p>A selectable event. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.head">
-<span class="target" id="libatomvmstruct_select_event_1a98fb01685434dddb5bdf94bfdb583e3f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.head">
+<span class="target" id="libatomvmstruct_select_event_1a98fb01685434dddb5bdf94bfdb583e3f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.head" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.event">
-<span class="target" id="libatomvmstruct_select_event_1a257ccbfb1831dfdb6e459ed7d0742fb7"></span><a class="reference internal" href="../index.html#c.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">event</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.event">
+<span class="target" id="libatomvmstruct_select_event_1a257ccbfb1831dfdb6e459ed7d0742fb7"></span><a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">event</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.event" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.resource">
-<span class="target" id="libatomvmstruct_select_event_1ab6329f9b1a44d9ae9679faf51649b645"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">resource</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.resource">
+<span class="target" id="libatomvmstruct_select_event_1ab6329f9b1a44d9ae9679faf51649b645"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="refc_binary.h.html#c.libAtomVM.RefcBinary" title="RefcBinary"><span class="n"><span class="pre">RefcBinary</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">resource</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.resource" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.read">
-<span class="target" id="libatomvmstruct_select_event_1a5f7c15c7eec9eae1b893bc5255b28d67"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.read">
+<span class="target" id="libatomvmstruct_select_event_1a5f7c15c7eec9eae1b893bc5255b28d67"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">read</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.read" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.write">
-<span class="target" id="libatomvmstruct_select_event_1aca32af8b80e69c6d9fdffb05c6ec6cd2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.write">
+<span class="target" id="libatomvmstruct_select_event_1aca32af8b80e69c6d9fdffb05c6ec6cd2"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">write</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.write" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.close">
-<span class="target" id="libatomvmstruct_select_event_1a08bd14c44fcaf3e5a1f2111bd41441f0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.close">
+<span class="target" id="libatomvmstruct_select_event_1a08bd14c44fcaf3e5a1f2111bd41441f0"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">close</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.close" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.local_pid">
-<span class="target" id="libatomvmstruct_select_event_1a3750c020afdb98f85fd04ceb0cd90246"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">local_pid</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.local_pid">
+<span class="target" id="libatomvmstruct_select_event_1a3750c020afdb98f85fd04ceb0cd90246"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">local_pid</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.local_pid" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.SelectEvent.ref_ticks">
-<span class="target" id="libatomvmstruct_select_event_1aa1d16502f5872bf217f300399922f792"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ref_ticks</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.SelectEvent.ref_ticks">
+<span class="target" id="libatomvmstruct_select_event_1aa1d16502f5872bf217f300399922f792"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ref_ticks</span></span></span><a class="headerlink" href="#c.libAtomVM.SelectEvent.ref_ticks" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

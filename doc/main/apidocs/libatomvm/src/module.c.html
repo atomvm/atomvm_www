@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>module.c &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>module.c &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -244,101 +246,150 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.LITT_UNCOMPRESSED_SIZE_OFFSET">
-<span class="target" id="libatomvmmodule_8c_1a65b02be137ed4db71dcdb6e9a44fca6e"></span><span class="sig-name descname"><span class="n"><span class="pre">LITT_UNCOMPRESSED_SIZE_OFFSET</span></span></span> <span class="pre">8</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.LITT_UNCOMPRESSED_SIZE_OFFSET">
+<span class="target" id="libatomvmmodule_8c_1a65b02be137ed4db71dcdb6e9a44fca6e"></span><span class="sig-name descname"><span class="n"><span class="pre">LITT_UNCOMPRESSED_SIZE_OFFSET</span></span></span> <span class="pre">8</span><a class="headerlink" href="#c.libAtomVM.LITT_UNCOMPRESSED_SIZE_OFFSET" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.LITT_HEADER_SIZE">
-<span class="target" id="libatomvmmodule_8c_1aacf043f93afb2dd5e140b49619696727"></span><span class="sig-name descname"><span class="n"><span class="pre">LITT_HEADER_SIZE</span></span></span> <span class="pre">12</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.LITT_HEADER_SIZE">
+<span class="target" id="libatomvmmodule_8c_1aacf043f93afb2dd5e140b49619696727"></span><span class="sig-name descname"><span class="n"><span class="pre">LITT_HEADER_SIZE</span></span></span> <span class="pre">12</span><a class="headerlink" href="#c.libAtomVM.LITT_HEADER_SIZE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TAG_COMPACT_INT">
-<span class="target" id="libatomvmmodule_8c_1ac79cf1899950f48fc235bf675c96b802"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_COMPACT_INT</span></span></span> <span class="pre">0x01</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.TAG_COMPACT_INT">
+<span class="target" id="libatomvmmodule_8c_1ac79cf1899950f48fc235bf675c96b802"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_COMPACT_INT</span></span></span> <span class="pre">0x01</span><a class="headerlink" href="#c.libAtomVM.TAG_COMPACT_INT" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TAG_COMPACT_ATOM">
-<span class="target" id="libatomvmmodule_8c_1a401763e925e75c212ebd68ad7e648f04"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_COMPACT_ATOM</span></span></span> <span class="pre">0x02</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.TAG_COMPACT_ATOM">
+<span class="target" id="libatomvmmodule_8c_1a401763e925e75c212ebd68ad7e648f04"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_COMPACT_ATOM</span></span></span> <span class="pre">0x02</span><a class="headerlink" href="#c.libAtomVM.TAG_COMPACT_ATOM" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TAG_EXTENDED_INT">
-<span class="target" id="libatomvmmodule_8c_1a9cd3814d30b9883373295f151ba7507a"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_EXTENDED_INT</span></span></span> <span class="pre">0x09</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.TAG_EXTENDED_INT">
+<span class="target" id="libatomvmmodule_8c_1a9cd3814d30b9883373295f151ba7507a"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_EXTENDED_INT</span></span></span> <span class="pre">0x09</span><a class="headerlink" href="#c.libAtomVM.TAG_EXTENDED_INT" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.TAG_EXTENDED_ATOM">
-<span class="target" id="libatomvmmodule_8c_1a1ce520a34a82f79b34a476c6fff07f3f"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_EXTENDED_ATOM</span></span></span> <span class="pre">0x0A</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.TAG_EXTENDED_ATOM">
+<span class="target" id="libatomvmmodule_8c_1a1ce520a34a82f79b34a476c6fff07f3f"></span><span class="sig-name descname"><span class="n"><span class="pre">TAG_EXTENDED_ATOM</span></span></span> <span class="pre">0x0A</span><a class="headerlink" href="#c.libAtomVM.TAG_EXTENDED_ATOM" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.CHECK_FREE_SPACE">
+<dt class="sig sig-object c" id="c.libAtomVM.CHECK_FREE_SPACE">
 <span class="target" id="libatomvmmodule_8c_1a54c65b9091d03aa05298edafd924119f"></span><span class="sig-name descname"><span class="n"><span class="pre">CHECK_FREE_SPACE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">space</span></span>, <span class="n"><span class="pre">error</span></span><span class="sig-paren">)</span> <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a><p><span class="pre">((size_t)</span> <span class="pre">((pos</span> <span class="pre">+</span> <span class="pre">space)</span> <span class="pre">-</span> <span class="pre">data)</span> <span class="pre">&gt;</span> <span class="pre">len)</span> <span class="pre">{</span> <span class="pre">\</span></p>
 <p><span class="pre">fprintf(stderr,</span> <span class="pre">error);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">return;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span></p>
-<br /></dt>
+<a class="headerlink" href="#c.libAtomVM.CHECK_FREE_SPACE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.IMPL_CODE_LOADER">
-<span class="target" id="libatomvmmodule_8c_1a3dc0689c7559341fd6a0544eadd2fe07"></span><span class="sig-name descname"><span class="n"><span class="pre">IMPL_CODE_LOADER</span></span></span> <span class="pre">1</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.IMPL_CODE_LOADER">
+<span class="target" id="libatomvmmodule_8c_1a3dc0689c7559341fd6a0544eadd2fe07"></span><span class="sig-name descname"><span class="n"><span class="pre">IMPL_CODE_LOADER</span></span></span> <span class="pre">1</span><a class="headerlink" href="#c.libAtomVM.IMPL_CODE_LOADER" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_build_literals_table">
-<span class="target" id="libatomvmmodule_8c_1a309d68ffdb7a8c0a75eb357286853d18"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.LiteralEntry" title="LiteralEntry"><span class="n"><span class="pre">LiteralEntry</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_build_literals_table</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">literalsBuf</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_build_literals_table">
+<span class="target" id="libatomvmmodule_8c_1a309d68ffdb7a8c0a75eb357286853d18"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="module.h.html#c.libAtomVM.LiteralEntry" title="LiteralEntry"><span class="n"><span class="pre">LiteralEntry</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_build_literals_table</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">literalsBuf</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_build_literals_table" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_add_label">
-<span class="target" id="libatomvmmodule_8c_1afbb52cc588dd117a7fae12e881756208"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_add_label</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_add_label">
+<span class="target" id="libatomvmmodule_8c_1afbb52cc588dd117a7fae12e881756208"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_add_label</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ptr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_add_label" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_build_imported_functions_table">
-<span class="target" id="libatomvmmodule_8c_1ae7cdd0286589cb73d48c7ee3d81c858d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ModuleLoadResult" title="ModuleLoadResult"><span class="n"><span class="pre">ModuleLoadResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_build_imported_functions_table</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table_data</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_build_imported_functions_table">
+<span class="target" id="libatomvmmodule_8c_1ae7cdd0286589cb73d48c7ee3d81c858d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="module.h.html#c.libAtomVM.ModuleLoadResult" title="ModuleLoadResult"><span class="n"><span class="pre">ModuleLoadResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_build_imported_functions_table</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table_data</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_build_imported_functions_table" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.parse_line_table">
-<span class="target" id="libatomvmmodule_8c_1ad2cf11f0a5591c6bbce25637848aa011"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parse_line_table</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">line_refs</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ModuleFilename" title="ModuleFilename"><span class="n"><span class="pre">ModuleFilename</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">filenames</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.parse_line_table">
+<span class="target" id="libatomvmmodule_8c_1ad2cf11f0a5591c6bbce25637848aa011"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">parse_line_table</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">line_refs</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="module.h.html#c.libAtomVM.ModuleFilename" title="ModuleFilename"><span class="n"><span class="pre">ModuleFilename</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">filenames</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.parse_line_table" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_populate_atoms_table">
-<span class="target" id="libatomvmmodule_8c_1a582b066729d74c556f5cbcd08f92e6b4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ModuleLoadResult" title="ModuleLoadResult"><span class="n"><span class="pre">ModuleLoadResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_populate_atoms_table</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table_data</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_populate_atoms_table">
+<span class="target" id="libatomvmmodule_8c_1a582b066729d74c556f5cbcd08f92e6b4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="module.h.html#c.libAtomVM.ModuleLoadResult" title="ModuleLoadResult"><span class="n"><span class="pre">ModuleLoadResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_populate_atoms_table</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table_data</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_populate_atoms_table" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_get_function_from_label">
-<span class="target" id="libatomvmmodule_8c_1ae69c7ba0a7d8959e8ebd9da84ebe815f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_function_from_label</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">label</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">function_name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">arity</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_get_function_from_label">
+<span class="target" id="libatomvmmodule_8c_1ae69c7ba0a7d8959e8ebd9da84ebe815f"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_function_from_label</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">label</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">function_name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">arity</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_get_function_from_label" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_get_exported_functions_count">
-<span class="target" id="libatomvmmodule_8c_1a7db6bdf217b327974a3cad83284794cc"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions_count</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.module_get_exported_functions_count">
+<span class="target" id="libatomvmmodule_8c_1a7db6bdf217b327974a3cad83284794cc"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions_count</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_get_exported_functions_count" title="Link to this definition"></a><br /></dt>
+<dd><p>Count exported functions of a given module. </p>
+<p>Get the number of exported functions. This function is used to compute the required heap size of the list of exported functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>this_module</strong> – the module to count exported functions of </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the number of exported functions </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_search_exported_function">
-<span class="target" id="libatomvmmodule_8c_1a87757f4eea5a5f1c1ac768ea8fe49aef"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_search_exported_function</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <a class="reference internal" href="../index.html#c.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">func_name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">func_arity</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.module_search_exported_function">
+<span class="target" id="libatomvmmodule_8c_1a87757f4eea5a5f1c1ac768ea8fe49aef"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_search_exported_function</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">func_name</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">func_arity</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_search_exported_function" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets exported function index by searching it by function name and arity. </p>
+<p>Gets exported function index by searching it by function name and arity </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>this_module</strong> – the module on which the function will be searched. </p></li>
+<li><p><strong>func_name</strong> – function name atom string. </p></li>
+<li><p><strong>func_arity</strong> – function arity. </p></li>
+<li><p><strong>glb</strong> – the global context </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_get_exported_functions">
-<span class="target" id="libatomvmmodule_8c_1aed272516e6df09c47f3e896064a6e1cf"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <a class="reference internal" href="../data_structures.html#c.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.module_get_exported_functions">
+<span class="target" id="libatomvmmodule_8c_1aed272516e6df09c47f3e896064a6e1cf"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_get_exported_functions</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">this_module</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_get_exported_functions" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the list of exported functions. </p>
+<p>Create a list of exported functions of the form <code class="docutils literal notranslate"><span class="pre">{FunctionName,</span> <span class="pre">Arity}</span></code> To create this list, the heap must be grown by <code class="docutils literal notranslate"><span class="pre">module_get_exported_functions_list_size</span></code> terms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>this_module</strong> – the module to count exported functions of </p></li>
+<li><p><strong>heap</strong> – heap to allocate tuples </p></li>
+<li><p><strong>global</strong> – global context to fetch atoms </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a list of exported functions </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_new_from_iff_binary">
-<span class="target" id="libatomvmmodule_8c_1a9a11935d7865270ae21850227728d5d6"></span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_new_from_iff_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">iff_binary</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
+<dt class="sig sig-object c" id="c.libAtomVM.module_new_from_iff_binary">
+<span class="target" id="libatomvmmodule_8c_1a9a11935d7865270ae21850227728d5d6"></span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_new_from_iff_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">iff_binary</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_new_from_iff_binary" title="Link to this definition"></a><br /></dt>
+<dd><p>Parse a BEAM file and returns a <a class="reference internal" href="module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a>. </p>
+<p>Parse a BEAM file a returns a newly allocated and initialized <a class="reference internal" href="module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>global</strong> – the global context. </p></li>
+<li><p><strong>iff_binary</strong> – the IFF file data. </p></li>
+<li><p><strong>size</strong> – the size of the buffer containing the IFF data. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c">
@@ -346,33 +397,44 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_load_literal">
-<span class="target" id="libatomvmmodule_8c_1ac8021970832fc9bc6d3e4471153ad663"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_load_literal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span>, <a class="reference internal" href="../data_structures.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_load_literal">
+<span class="target" id="libatomvmmodule_8c_1ac8021970832fc9bc6d3e4471153ad663"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_load_literal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">index</span></span>, <a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_load_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets a literal stored on the literal table of the specified module. </p>
+<p>Loads and deserialize a term stored in the literal table and returns a term. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mod</strong> – The module that owns that is going to be loaded. </p></li>
+<li><p><strong>index</strong> – a valid literal index. </p></li>
+<li><p><strong>ctx</strong> – the target context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.module_resolve_function0">
+<span class="target" id="libatomvmmodule_8c_1ac1e0c45327b2f74e55be7c7dee59caab"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_resolve_function0</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">import_table_index</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.FunctionType.UnresolvedFunctionCall" title="UnresolvedFunctionCall"><span class="n"><span class="pre">UnresolvedFunctionCall</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">unresolved</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_resolve_function0" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_resolve_function0">
-<span class="target" id="libatomvmmodule_8c_1ac1e0c45327b2f74e55be7c7dee59caab"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ExportedFunction" title="ExportedFunction"><span class="n"><span class="pre">ExportedFunction</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_resolve_function0</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">import_table_index</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.UnresolvedFunctionCall" title="UnresolvedFunctionCall"><span class="n"><span class="pre">UnresolvedFunctionCall</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">unresolved</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.parse_line_refs">
+<span class="target" id="libatomvmmodule_8c_1ab37543b1b1f70ab8c2e24fb881b6577c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">parse_line_refs</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_refs</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.parse_line_refs" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.parse_line_refs">
-<span class="target" id="libatomvmmodule_8c_1ab37543b1b1f70ab8c2e24fb881b6577c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">parse_line_refs</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_refs</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.parse_filename_table">
+<span class="target" id="libatomvmmodule_8c_1a575afe8ced2a180a37e25fab3ae66cef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="module.h.html#c.libAtomVM.ModuleFilename" title="ModuleFilename"><span class="n"><span class="pre">ModuleFilename</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">parse_filename_table</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_filenames</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.parse_filename_table" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.parse_filename_table">
-<span class="target" id="libatomvmmodule_8c_1a575afe8ced2a180a37e25fab3ae66cef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ModuleFilename" title="ModuleFilename"><span class="n"><span class="pre">ModuleFilename</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">parse_filename_table</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_filenames</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_insert_line_ref_offset">
+<span class="target" id="libatomvmmodule_8c_1a1336ea824eb160e827a494b82a644043"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_insert_line_ref_offset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">line_ref</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_insert_line_ref_offset" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.module_insert_line_ref_offset">
-<span class="target" id="libatomvmmodule_8c_1a1336ea824eb160e827a494b82a644043"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_insert_line_ref_offset</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">line_ref</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span><span class="sig-paren">)</span><br /></dt>
-<dd></dd></dl>
-
-<dl class="c function">
-<dt class="sig sig-object c" id="c.module_find_line">
-<span class="target" id="libatomvmmodule_8c_1af303d63ee48fda58bcb074556bbe7577"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_find_line</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../data_structures.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.module_find_line">
+<span class="target" id="libatomvmmodule_8c_1af303d63ee48fda58bcb074556bbe7577"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">module_find_line</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">mod</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.module_find_line" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

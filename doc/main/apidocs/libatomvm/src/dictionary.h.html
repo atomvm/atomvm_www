@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dictionary.h &mdash; AtomVM 0.7.0-dev+git.ea6440f8 documentation</title>
+  <title>dictionary.h &mdash; AtomVM 0.6.0-beta.1+git.63dee030 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=016b151a"></script>
+        <script src="../../../_static/documentation_options.js?v=3098e9a1"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -63,6 +63,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../packbeam-format.html">Packbeam Format</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../api-reference-documentation.html">API Reference Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CONTRIBUTING.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../CHANGELOG.html">Changelog</a></li>
 </ul>
 
         </div>
@@ -181,17 +183,17 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.DictionaryFunctionResult">
-<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3ce"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictionaryFunctionResult">
+<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3ce"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></span><a class="headerlink" href="#c.libAtomVM.DictionaryFunctionResult" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.DictionaryFunctionResult.DictionaryOk">
-<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3cea86631ed7b146fe4fc3b85dd728c4f93d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryOk</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictionaryFunctionResult.DictionaryOk">
+<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3cea86631ed7b146fe4fc3b85dd728c4f93d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryOk</span></span></span><a class="headerlink" href="#c.libAtomVM.DictionaryFunctionResult.DictionaryOk" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.DictionaryFunctionResult.DictionaryMemoryAllocFail">
-<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3cea1483e6275be9bce2acd69082f0ed4fcb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryMemoryAllocFail</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictionaryFunctionResult.DictionaryMemoryAllocFail">
+<span class="target" id="libatomvmdictionary_8h_1ad85950c231b4eaf087060ae0b424d3cea1483e6275be9bce2acd69082f0ed4fcb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictionaryMemoryAllocFail</span></span></span><a class="headerlink" href="#c.libAtomVM.DictionaryFunctionResult.DictionaryMemoryAllocFail" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -200,30 +202,32 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.dictionary_put">
-<span class="target" id="libatomvmdictionary_8h_1aaeb3dc648f8ee72f4a2fb511f186b76b"></span><a class="reference internal" href="../data_structures.html#c.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.dictionary_put">
+<span class="target" id="libatomvmdictionary_8h_1aaeb3dc648f8ee72f4a2fb511f186b76b"></span><a class="reference internal" href="#c.libAtomVM.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.dictionary_get">
-<span class="target" id="libatomvmdictionary_8h_1aaf2d0986ab541105d1a68ff760f4d3c0"></span><a class="reference internal" href="../data_structures.html#c.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_get</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.dictionary_get">
+<span class="target" id="libatomvmdictionary_8h_1aaf2d0986ab541105d1a68ff760f4d3c0"></span><a class="reference internal" href="#c.libAtomVM.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_get</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.dictionary_erase">
-<span class="target" id="libatomvmdictionary_8h_1a81cab2187364d7ad3d27d998e0525864"></span><a class="reference internal" href="../data_structures.html#c.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_erase</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="../data_structures.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.dictionary_erase">
+<span class="target" id="libatomvmdictionary_8h_1a81cab2187364d7ad3d27d998e0525864"></span><a class="reference internal" href="#c.libAtomVM.DictionaryFunctionResult" title="DictionaryFunctionResult"><span class="n"><span class="pre">DictionaryFunctionResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_erase</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">old</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.dictionary_destroy">
-<span class="target" id="libatomvmdictionary_8h_1a08f1d293f1dea75860656eeeb2549902"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.dictionary_destroy">
+<span class="target" id="libatomvmdictionary_8h_1a08f1d293f1dea75860656eeeb2549902"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dictionary_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dict</span></span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.DictEntry">
-<span class="target" id="libatomvmstruct_dict_entry"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictEntry</span></span></span><br /></dt>
-<dd><p>Collaboration diagram for DictEntry:</p>
+<dt class="sig sig-object c" id="c.libAtomVM.DictEntry">
+<span class="target" id="libatomvmstruct_dict_entry"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DictEntry</span></span></span><a class="headerlink" href="#c.libAtomVM.DictEntry" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;dictionary.h&gt;</em></div>
+<p>Collaboration diagram for DictEntry:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1c883d0bcabcca44422f10f323950b8410798b53.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
@@ -239,18 +243,18 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.DictEntry.head">
-<span class="target" id="libatomvmstruct_dict_entry_1a66f3998d484a8b40b4f1d6b4dc4d2578"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="../data_structures.html#c.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictEntry.head">
+<span class="target" id="libatomvmstruct_dict_entry_1a66f3998d484a8b40b4f1d6b4dc4d2578"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">head</span></span></span><a class="headerlink" href="#c.libAtomVM.DictEntry.head" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.DictEntry.key">
-<span class="target" id="libatomvmstruct_dict_entry_1a8cbb8987f2ce769769a28a21b3efed06"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictEntry.key">
+<span class="target" id="libatomvmstruct_dict_entry_1a8cbb8987f2ce769769a28a21b3efed06"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">key</span></span></span><a class="headerlink" href="#c.libAtomVM.DictEntry.key" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.DictEntry.value">
-<span class="target" id="libatomvmstruct_dict_entry_1af15cf7020ac82972d535ae98ef95c421"></span><a class="reference internal" href="../index.html#c.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.DictEntry.value">
+<span class="target" id="libatomvmstruct_dict_entry_1af15cf7020ac82972d535ae98ef95c421"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">value</span></span></span><a class="headerlink" href="#c.libAtomVM.DictEntry.value" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
