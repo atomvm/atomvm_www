@@ -17,18 +17,18 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Welcome to AtomVM, the Erlang virtual machine for IoT devices!" />
 <meta property="og:description" content="Welcome to AtomVM, the Erlang virtual machine for IoT devices!" />
-<link rel="canonical" href="https://www.atomvm.net//news/" />
-<meta property="og:url" content="https://www.atomvm.net//news/" />
+<link rel="canonical" href="https://www.atomvm.net/news/" />
+<meta property="og:url" content="https://www.atomvm.net/news/" />
 <meta property="og:site_name" content="AtomVM" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="News" />
 <meta name="twitter:site" content="@abhinav" />
 <meta name="twitter:creator" content="@atomvm.net" />
 <script type="application/ld+json">
-{"url":"https://www.atomvm.net//news/","author":{"@type":"Person","name":"atomvm.net"},"@type":"WebPage","description":"Welcome to AtomVM, the Erlang virtual machine for IoT devices!","headline":"News","@context":"https://schema.org"}</script>
+{"url":"https://www.atomvm.net/news/","author":{"@type":"Person","name":"atomvm.net"},"@type":"WebPage","description":"Welcome to AtomVM, the Erlang virtual machine for IoT devices!","headline":"News","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link type="application/atom+xml" rel="alternate" href="https://www.atomvm.net//feed.xml" title="AtomVM" />
+  <link type="application/atom+xml" rel="alternate" href="https://www.atomvm.net/feed.xml" title="AtomVM" />
 
   <link rel="shortcut icon" type="image/x-icon" href="//logo.png" />
   <link rel="stylesheet" href="/assets/css/main.css" />
@@ -76,18 +76,41 @@
 <body>
     <main class="page-content" aria-label="Content">
       <div class="w">
-        <a href="/">home..</a>
-<h1 class="post-title">News</h1>
-<p class="post-date text-bold text-upcase">
+        <!--
+See README.md for instructions on adding a news post
+-->
+
+<p><a href="/index.html">home..</a></p>
+
+<ul>
   
-</p>
+    <li>
+      <a href="/2024/02/22/master_branch_renamed.html">AtomVM `master` branch renamed</a>
+      <h2 id="20240222-recent-updates-to-the-name-of-the-master-branch">2024/02/22 Recent updates to the name of the <code class="language-plaintext highlighter-rouge">master</code> branch.</h2>
 
-<div class="soopr-btn"
-   data-twitter="SooprCo"
->
-</div>
+<p>Earlier this month the name of the <a href="https://github.com/atomvm/AtomVM">AtomVM</a> <code class="language-plaintext highlighter-rouge">master</code> branch was renamed to <code class="language-plaintext highlighter-rouge">main</code>.  If you have previously made a local clone of the repository, and would like to keep up to date with changes to the <code class="language-plaintext highlighter-rouge">main</code> branch, there are a few <code class="language-plaintext highlighter-rouge">git</code> commands that will rename your local copy and update the git configuration to track the <code class="language-plaintext highlighter-rouge">main</code> AtomVM branch on GitHub.</p>
 
-<h2 id="20231210-announcing-atomvm-v060-alpha2-pre-release">2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release)</h2>
+<p>From inside your local clone of <a href="https://github.com/atomvm/AtomVM">AtomVM</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>shell$ git branch -m master main
+shell$ git fetch origin
+shell$ git branch -u origin/main main
+shell$ git remote set-head origin -a
+</code></pre></div></div>
+
+<p>At this point you now have a local clone that will stay up to date with changes in the upstream AtomVM <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
+
+<p>We have also recently created the <code class="language-plaintext highlighter-rouge">release-0.6</code> branch, which should be used if you wish to contribute any bug fixes.  If you do find a bug, please open an <a href="https://github.com/atomvm/AtomVM/issues">issue on GitHub</a>.</p>
+
+<p>If you encounter a feature you think we are lacking, please <a href="https://github.com/atomvm/AtomVM/issues">open an issue</a> for that too.  Any contributions of new features should be made on the <code class="language-plaintext highlighter-rouge">main</code> branch.</p>
+
+<p>The AtomVM team</p>
+
+    </li>
+  
+    <li>
+      <a href="/2023/12/10/old_news.html">Previous Announcements</a>
+      <h2 id="20231210-announcing-atomvm-v060-alpha2-pre-release">2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release)</h2>
 
 <p>This pre-release has a build dependency change from OpenSSL to one on <a href="https://www.trustedfirmware.org/projects/mbed-tls/">Mbed-TLS</a> to provide cryptographic functions for the generic_unix platform.</p>
 
@@ -154,22 +177,10 @@ v0.6.0-alpha.0 release.</p>
 
 <p>Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.</p>
 
-<h2 id="20220322-announcing-atomvm-050">2022/03/22 Announcing AtomVM 0.5.0</h2>
 
-<p>After many months of work, we are happy to announce version 0.5.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!</p>
-
-<p>This release of AtomVM is our first development preview release. We are still shaking out some of the rough edges, but we feel the release is stable enough for intrepid developers to get started with simple Erlang or Elixir programs.</p>
-
-<p>A binary image of ESP32 release can be found in the <a href="https://atomvm.net/download/">download</a> section of the AtomVM <a href="https://atomvm.net/">web page</a>.</p>
-
-<p>The git repository and tarballs of the AtomVM source release for all other platforms can be found on our <a href="https://github.com/atomvm">GitHub project page</a>.</p>
-
-<p>Documentation of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://doc.atomvm.net/index.html">AtomVM Documentation page</a></p>
-
-<p>Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible.</p>
-
-<p>The AtomVM team</p>
-
+    </li>
+  
+</ul>
 
         
           <button title="Toggle Theme" class="theme-toggle">

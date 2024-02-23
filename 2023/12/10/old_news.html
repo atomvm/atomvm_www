@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="html" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    
+      Previous Announcements
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.7.3 -->
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="Previous Announcements" />
+<meta name="author" content="atomvm.net" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release) This pre-release has a build dependency change from OpenSSL to one on Mbed-TLS to provide cryptographic functions for the generic_unix platform. Numerous bugs have been fixed since the last release including where guards would raise exceptions instead of just being false, precision of integers used with timers which could yield to halts and wait times smaller than expected, and big endian CPUs are working again. New features include the introduction of OTP socket interface support, support for net:getaddrinfo/1,2, minimal OTP ssl interface support, crypto:strong_rand_bytes/1 using Mbed-TLS on generic_unix, ESP32 and RP2040 platforms, support for crypto:one_time/4,5 on Unix and Pico as well as for crypto:hash/2 on Pico. Improvements for the STM32 platform include complete device configuration without the need to edit hardcoded values in the source files, complete GPIO driver support, and improved performance by enabling flash cache and i-cache. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.2 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release) This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features. The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to spawn_opt/2,4. Several platforms now have the ability to set the system clock with atomvm:posix_clock_settime/2. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes consult the Changelog. Download images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from AtomVM Releases on GitHub. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release) After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers! This pre-view contains many improvements and bug fixes that the AtomVM team has been working on, including SMP support on all multi-core platforms, support for the ESP32-S3, ESP32-C3, and ESP32-S2 chips, and the addition of a very basic rp2040 (a.k.a. Raspberry Pi Pico) port, as well as an emscripten port using nodejs with Wasm to run AtomVM in the browser. See the Changelog for all the improvements, bug fixes, and breaking changes since the 0.5.0 release. Download images for the ESP32 family are available on the AtomVM Releases GitHub page. Other platforms should consult the Build Instructions for the v0.6.0-alpha.0 release. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2022/04/05 AtomVM Example Programs We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless. AtomVM Example Programs Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice." />
+<meta property="og:description" content="2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release) This pre-release has a build dependency change from OpenSSL to one on Mbed-TLS to provide cryptographic functions for the generic_unix platform. Numerous bugs have been fixed since the last release including where guards would raise exceptions instead of just being false, precision of integers used with timers which could yield to halts and wait times smaller than expected, and big endian CPUs are working again. New features include the introduction of OTP socket interface support, support for net:getaddrinfo/1,2, minimal OTP ssl interface support, crypto:strong_rand_bytes/1 using Mbed-TLS on generic_unix, ESP32 and RP2040 platforms, support for crypto:one_time/4,5 on Unix and Pico as well as for crypto:hash/2 on Pico. Improvements for the STM32 platform include complete device configuration without the need to edit hardcoded values in the source files, complete GPIO driver support, and improved performance by enabling flash cache and i-cache. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.2 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release) This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features. The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to spawn_opt/2,4. Several platforms now have the ability to set the system clock with atomvm:posix_clock_settime/2. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes consult the Changelog. Download images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from AtomVM Releases on GitHub. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release) After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers! This pre-view contains many improvements and bug fixes that the AtomVM team has been working on, including SMP support on all multi-core platforms, support for the ESP32-S3, ESP32-C3, and ESP32-S2 chips, and the addition of a very basic rp2040 (a.k.a. Raspberry Pi Pico) port, as well as an emscripten port using nodejs with Wasm to run AtomVM in the browser. See the Changelog for all the improvements, bug fixes, and breaking changes since the 0.5.0 release. Download images for the ESP32 family are available on the AtomVM Releases GitHub page. Other platforms should consult the Build Instructions for the v0.6.0-alpha.0 release. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2022/04/05 AtomVM Example Programs We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless. AtomVM Example Programs Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice." />
+<link rel="canonical" href="https://www.atomvm.net/2023/12/10/old_news.html" />
+<meta property="og:url" content="https://www.atomvm.net/2023/12/10/old_news.html" />
+<meta property="og:site_name" content="AtomVM" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-10T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Previous Announcements" />
+<meta name="twitter:site" content="@abhinav" />
+<meta name="twitter:creator" content="@atomvm.net" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.atomvm.net/2023/12/10/old_news.html"},"url":"https://www.atomvm.net/2023/12/10/old_news.html","author":{"@type":"Person","name":"atomvm.net"},"@type":"BlogPosting","description":"2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release) This pre-release has a build dependency change from OpenSSL to one on Mbed-TLS to provide cryptographic functions for the generic_unix platform. Numerous bugs have been fixed since the last release including where guards would raise exceptions instead of just being false, precision of integers used with timers which could yield to halts and wait times smaller than expected, and big endian CPUs are working again. New features include the introduction of OTP socket interface support, support for net:getaddrinfo/1,2, minimal OTP ssl interface support, crypto:strong_rand_bytes/1 using Mbed-TLS on generic_unix, ESP32 and RP2040 platforms, support for crypto:one_time/4,5 on Unix and Pico as well as for crypto:hash/2 on Pico. Improvements for the STM32 platform include complete device configuration without the need to edit hardcoded values in the source files, complete GPIO driver support, and improved performance by enabling flash cache and i-cache. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.2 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release) This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features. The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to spawn_opt/2,4. Several platforms now have the ability to set the system clock with atomvm:posix_clock_settime/2. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes consult the Changelog. Download images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from AtomVM Releases on GitHub. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release) After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers! This pre-view contains many improvements and bug fixes that the AtomVM team has been working on, including SMP support on all multi-core platforms, support for the ESP32-S3, ESP32-C3, and ESP32-S2 chips, and the addition of a very basic rp2040 (a.k.a. Raspberry Pi Pico) port, as well as an emscripten port using nodejs with Wasm to run AtomVM in the browser. See the Changelog for all the improvements, bug fixes, and breaking changes since the 0.5.0 release. Download images for the ESP32 family are available on the AtomVM Releases GitHub page. Other platforms should consult the Build Instructions for the v0.6.0-alpha.0 release. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the AtomVM Documentation page. We have a growing collection of tools, drivers, and modules available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible. The AtomVM team 2022/04/05 AtomVM Example Programs We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless. AtomVM Example Programs Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.","dateModified":"2023-12-10T00:00:00+00:00","datePublished":"2023-12-10T00:00:00+00:00","headline":"Previous Announcements","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://www.atomvm.net/feed.xml" title="AtomVM" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="//logo.png" />
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+    <script type="text/javascript">
+  window.addEventListener('load', themeChange);
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme)
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+  function themeChange() {
+    let button = document.querySelector('.theme-toggle');
+
+    button.addEventListener('click', function (e) {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    let transition = () => {
+      document.documentElement.classList.add('transition');
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+      }, 1000);
+    }
+  }
+</script>
+
+
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon/favicon.ico" /> -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+</head>
+<body>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">home..</a>
+<h1 class="post-title">Previous Announcements</h1>
+<p class="post-date text-bold text-upcase">
+  
+    <span>December 2023</span>
+  
+</p>
+
+<div class="soopr-btn"
+   data-twitter="SooprCo"
+>
+</div>
+
+<h2 id="20231210-announcing-atomvm-v060-alpha2-pre-release">2023/12/10 Announcing AtomVM v0.6.0-alpha.2 (Pre-release)</h2>
+
+<p>This pre-release has a build dependency change from OpenSSL to one on <a href="https://www.trustedfirmware.org/projects/mbed-tls/">Mbed-TLS</a> to provide cryptographic functions for the generic_unix platform.</p>
+
+<p>Numerous bugs have been fixed since the last release including where guards would raise exceptions instead of just being false, precision of integers used with timers which could yield to halts and wait times smaller than expected, and big endian CPUs are working again.</p>
+
+<p>New features include the introduction of OTP socket interface support, support for <code class="language-plaintext highlighter-rouge">net:getaddrinfo/1,2</code>, minimal OTP <code class="language-plaintext highlighter-rouge">ssl</code> interface support, <code class="language-plaintext highlighter-rouge">crypto:strong_rand_bytes/1</code> using Mbed-TLS on generic_unix, ESP32 and RP2040 platforms, support for <code class="language-plaintext highlighter-rouge">crypto:one_time/4,5</code> on Unix and Pico as well as for <code class="language-plaintext highlighter-rouge">crypto:hash/2</code> on Pico. Improvements for the STM32 platform include complete device configuration without the need to edit hardcoded values in the source files, complete GPIO driver support, and improved performance by enabling flash cache and i-cache.</p>
+
+<p>For the full set of bug fixes, changes and additions consult the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.2/CHANGELOG.html">Changelog</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from <a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.2">AtomVM Releases on GitHub</a>. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.2/build-instructions.html">Build Instructions</a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our <a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.0-alpha.2 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.2/">AtomVM Documentation page</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the <a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating such a fine work of software, as well as the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+<h2 id="20231009-announcing-atomvm-v060-alpha1-pre-release">2023/10/09 Announcing AtomVM v0.6.0-alpha.1 (Pre-release)</h2>
+
+<p>This is a follow up to the recent v0.6.0-alpha.0 release that fixes some bugs and adds a few new features.</p>
+
+<p>The ESP32 port gains support for ULP wakeup, and expands crypto support. Basic wifi support has been added for the RPi Pico W. There is now the ability to select from heap growth strategies as a fine-tuning option to <code class="language-plaintext highlighter-rouge">spawn_opt/2,4</code>. Several platforms now have the ability to set the system clock with <code class="language-plaintext highlighter-rouge">atomvm:posix_clock_settime/2</code>. A few more standard Erlang functions have been added to the core libraries as well. For a complete list of all the changes consult the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.1/CHANGELOG.html">Changelog</a>.</p>
+
+<p>Download images and binaries are available for most platforms (for now stm32 ports must be build locally) are available from <a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-alpha.1">AtomVM Releases on GitHub</a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our <a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.0-alpha.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.1/">AtomVM Documentation page</a>.</p>
+
+<p>We have a growing collection of tools, drivers, and modules available on the <a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating such a fine work of software, as well as the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+<h2 id="20230901-announcing-atomvm-v060-alpha0-pre-release">2023/09/01 Announcing AtomVM v0.6.0-alpha.0 (Pre-release)</h2>
+
+<p>After many months of work, we are happy to announce a pre-release of v0.6.0-alpha.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!</p>
+
+<p>This pre-view contains many improvements and bug fixes that the AtomVM team has been working on, including SMP support on all multi-core platforms, support for the ESP32-S3, ESP32-C3, and ESP32-S2 chips, and the addition of a very basic rp2040 (a.k.a. Raspberry Pi Pico) port, as well as an emscripten port using nodejs with Wasm to run AtomVM in the browser. See the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.0/CHANGELOG.html">Changelog</a> for all the improvements, bug fixes, and breaking changes since the 0.5.0 release.</p>
+
+<p>Download images for the ESP32 family are available on the <a href="https://github.com/atomvm/AtomVM/releases">AtomVM Releases GitHub page</a>. Other platforms should consult the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.0/build-instructions.html">Build Instructions</a> for the
+v0.6.0-alpha.0 release.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our <a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.0-alpha.0 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://www.atomvm.net/doc/v0.6.0-alpha.0/">AtomVM Documentation page</a>.</p>
+
+<p>We have a growing collection of tools, drivers, and modules available on the <a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating such a fine work of software, as well as the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues?q=is%3Aissue+is%3Aclosed">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+<h2 id="20220405-atomvm-example-programs">2022/04/05 AtomVM Example Programs</h2>
+
+<p>We have extracted our example programs into a self-contained and growing github repo with minimal dependencies. For example, if you have flashed the AtomVM image to an ESP32 device, you can simply use rebar3 to build and flash your applications, making the compile/flash/debug cycle you experience on embedded devices fairly painless.</p>
+
+<p><a href="https://github.com/atomvm/atomvm_examples">AtomVM Example Programs</a></p>
+
+<p>Please note that at this stage, support for building Elixir programs is quite far behind that of Erlang, so best to stick with Erlang until further notice.</p>
+
+<!--more-->
+
+<h2 id="20220322-announcing-atomvm-050">2022/03/22 Announcing AtomVM 0.5.0</h2>
+
+<p>After many months of work, we are happy to announce version 0.5.0 of the AtomVM virtual machine, a lightweight implementation of the BEAM for small and cheap micro-controllers!</p>
+
+<p>This release of AtomVM is our first development preview release. We are still shaking out some of the rough edges, but we feel the release is stable enough for intrepid developers to get started with simple Erlang or Elixir programs.</p>
+
+<p>A binary image of ESP32 release can be found in the <a href="https://atomvm.net/download/">download</a> section of the AtomVM <a href="https://atomvm.net/">web page</a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all other platforms can be found on our <a href="https://github.com/atomvm">GitHub project page</a>.</p>
+
+<p>Documentation of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://doc.atomvm.net/index.html">AtomVM Documentation page</a></p>
+
+<p>Many thanks go to Davide Bettio, for creating such a fine work of software, as well as the contributors and testers who have helped make this release possible.</p>
+
+<p>The AtomVM team</p>
+
+
+        
+          <button title="Toggle Theme" class="theme-toggle">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentcolor">
+    <circle cx="16" cy="16" r="14" fill="none" stroke="currentcolor" stroke-width="4"></circle>
+    <path d="
+             M 16 0
+             A 16 16 0 0 0 16 32
+             z">
+    </path>
+  </svg>
+</button>
+
+        
+        <div class="credits">&copy;&nbsp;2024&nbsp;atomvm.net
+          &nbsp;
+          •
+          &nbsp;Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
+        </div>
+      </div>
+    </main></body>
+</html>
