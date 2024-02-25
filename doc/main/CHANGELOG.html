@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.0-beta.1+git.a6468b43 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.0-beta.1+git.7846b684 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=9185b2d7"></script>
+        <script src="_static/documentation_options.js?v=74621c79"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -144,6 +144,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>Support for utf8 encoding to <code class="docutils literal notranslate"><span class="pre">*_to_atom</span></code> and <code class="docutils literal notranslate"><span class="pre">atom_to_*</span></code> functions</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">binary_to_atom/1</span></code> and <code class="docutils literal notranslate"><span class="pre">atom_to_binary/1</span></code> that default to utf8 (they were introduced with OTP23)</p></li>
+<li><p>Added Pico cmake option <code class="docutils literal notranslate"><span class="pre">AVM_WAIT_BOOTSEL_ON_EXIT</span></code> (default <code class="docutils literal notranslate"><span class="pre">ON</span></code>) to allow tools to use automated <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> mode after main application exits</p></li>
 </ul>
 </section>
 <section id="fixed">
@@ -152,6 +153,8 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>ESP32: fix i2c_driver_acquire and i2c_driver_release functions, that were working only once.</p></li>
 <li><p>Sending messages to registered processes using the <code class="docutils literal notranslate"><span class="pre">!</span></code> operator now works.</p></li>
 <li><p>Fixed bug in <code class="docutils literal notranslate"><span class="pre">OP_SEND</span></code> that would accept sending a message to any integer or term without raising an error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">binary_to_term</span></code> checks atom encoding validity, and fix latin1 support (when non-ASCII chars are
+used)</p></li>
 </ul>
 </section>
 <section id="changed">
