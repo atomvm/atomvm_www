@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.1+git.7846b684 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.0-beta.1+git.b8619f7d documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=74621c79"></script>
+        <script src="_static/documentation_options.js?v=b9732a70"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -92,6 +92,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#process-management">Process Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#external-term-format">External Term Format</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-apis">System APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-time">System Time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#date-and-time">Date and Time</a></li>
@@ -813,6 +814,24 @@ currently, this service must be managed manually.</p>
 </tbody>
 </table>
 <p>See the <code class="docutils literal notranslate"><span class="pre">word_size</span></code> key in the <a class="reference internal" href="#system-apis">System APIs</a> section for information about how to find the number of bytes used in a machine word on the current platform.</p>
+</section>
+<section id="external-term-format">
+<h3>External Term Format<a class="headerlink" href="#external-term-format" title="Link to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">erlang:term_to_binary/1</span></code> function can be used to serialize arbitrary term data into and out of binary data.  These operations can be useful for applications that wish to share term data over some network protocol, such as HTTP or MQTT, or wish to store serialized term data in some permanant sttorage (e.g., Non-volatile storage on ESP32 devices).</p>
+<p>For example, to convert a term to a binary, use <code class="docutils literal notranslate"><span class="pre">erlang:term_to_binary/1</span></code>, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Term = ...
+Binary = erlang:term_to_binary(Term),
+</pre></div>
+</div>
+<p>And to convert the binary back to a term, use <code class="docutils literal notranslate"><span class="pre">erlang:binary_to_term/1,2</span></code>, e.g.,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>%% erlang
+Binary = ...
+{Term, _Used} = erlang:binary_to_term(Binary, [used]),
+</pre></div>
+</div>
+<p>By default, AtomVM will encode all atoms using UTF-8 encoding.  This encoding is the default encoding for OTP-26 and later releases.</p>
+<p>For more information about Erlang external term format, consult the <a class="reference external" href="https://www.erlang.org/doc/apps/erts/erl_ext_dist.html">Erlang Documentation</a></p>
 </section>
 <section id="system-apis">
 <h3>System APIs<a class="headerlink" href="#system-apis" title="Link to this heading"></a></h3>
