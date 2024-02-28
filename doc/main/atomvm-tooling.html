@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-beta.1+git.75a2ac79 documentation</title>
+  <title>AtomVM Tooling &mdash; AtomVM 0.6.0-beta.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=366284a6"></script>
+        <script src="_static/documentation_options.js?v=6a1be53b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -159,6 +159,7 @@
 <li><p>For flashing to ESP32, the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p></li>
 <li><p>For flashing to STM32, <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> via <a class="reference external" href="https://github.com/stlink-org/stlink">stlink</a></p></li>
 <li><p>(optional) A serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a>, to view console output from a device.</p></li>
+<li><p>(recommended) For rp2040, <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a> for software resets on Raspberry Pi Pico. (optionally used if found in PATH to disconnect active <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions, which normally prevent flashing)</p></li>
 </ul>
 </section>
 <section id="erlang-example-program">
@@ -333,7 +334,7 @@ INFO [78] AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </pre></div>
 </div>
 <p>See the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target.</p>
-<p>You can now use a serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a> to view console output from a device.</p>
+<p>You can now use a serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a> to view console output from a device.  The default build will wait 20 seconds for a serial connection to be established before starting the application.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ###########################################################
 
        ###    ########  #######  ##     ## ##     ## ##     ##
@@ -355,6 +356,15 @@ AtomVM finished with return value: ok
 AtomVM application terminated.  Going to sleep forever ...
 </pre></div>
 </div>
+<p>If no connection is made before the timeout is reached the application will start, but the uart console will not be available.  At this point you can use <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a> to reboot the device into <code class="docutils literal notranslate"><span class="pre">application</span></code> mode.</p>
+<p>Example:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>picotool<span class="w"> </span>reboot<span class="w"> </span>-f
+The<span class="w"> </span>device<span class="w"> </span>was<span class="w"> </span>asked<span class="w"> </span>to<span class="w"> </span>reboot<span class="w"> </span>into<span class="w"> </span>application<span class="w"> </span>mode.
+
+$
+</pre></div>
+</div>
+<p>This will again give you 20 seconds to establish a serial monitor connection.  For information about changing this timeout, or locking down the device so that software resets no longer work (requiring that the device be power cycled and the <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> button help when powering on to flash) consult the <a class="reference internal" href="build-instructions.html#building-for-raspberry-pi-pico"><span class="std std-ref">rp2040 section</span></a> of the <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a>.</p>
 </section>
 </section>
 </section>

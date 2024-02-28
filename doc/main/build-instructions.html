@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.0-beta.1+git.75a2ac79 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.0-beta.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=366284a6"></script>
+        <script src="_static/documentation_options.js?v=6a1be53b"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -987,6 +987,8 @@ $<span class="w"> </span>ninja
 <p class="admonition-title">Tip</p>
 <p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so Pico restarts on error.</p>
 </div>
+<p>The default build configuration allows the device to be re-flashed with the <code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code> <code class="docutils literal notranslate"><span class="pre">atomvm</span> <span class="pre">pico_flash</span></code> task or restarting the application after exiting using <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a>.  This behaviour can be changed to hang the CPU when the application exits, so that power must be cycled to restart, and <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> must be held when power on to flash a new application.  To disable software resets use <code class="docutils literal notranslate"><span class="pre">-DAVM_WAIT_BOOTSEL_ON_EXIT=off</span></code> when configuring <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
+<p>The 20 second default timeout for a USB serial connection can be changed using option <code class="docutils literal notranslate"><span class="pre">AVM_USB_WAIT_SECONDS</span></code>.  The device can also be configured to wait indefinitely for a serial connection using the option <code class="docutils literal notranslate"><span class="pre">AVM_WAIT_FOR_USB_CONNECT=on</span></code>.</p>
 </section>
 <section id="libatomvm-build-steps-for-pico">
 <h3>libAtomVM build steps for Pico<a class="headerlink" href="#libatomvm-build-steps-for-pico" title="Link to this heading"></a></h3>
