@@ -85,6 +85,45 @@ See README.md for instructions on adding a news post
 <ul>
   
     <li>
+      <a href="/2024/02/29/Release_v0.6.0-beta.1.html">Announcing AtomVM v0.6.0-beta.1 (Pre-release)</a>
+      <h2 id="20240229-announcing-atomvm-v060-beta1-pre-release">2024/02/29 Announcing AtomVM v0.6.0-beta.1 (Pre-release)</h2>
+
+<p>We are pleased to announce that our pre-release of v0.6.0 is now in beta!</p>
+
+<blockquote>
+  <p>Wait! What happened to the v0.6.0-beta.0 release?
+Our all volunteer QA team (thank you @petermm) discovered a problem with the ESP32S3 builds that prevented the default <code class="language-plaintext highlighter-rouge">esp32init.beam</code> from working properly. This is the default network application that will create a wireless AP, and allow you to upload an application to an ESP32 that has been flashed with the AtomVM image, but does not have a user application flashed yet. We have determined the cause of the problem, but it has not been fixed in this release. ESP32S3 users will need to flash an application over UART, and a crash-boot-loop is expected if the device is started without an application on the  application partition.</p>
+</blockquote>
+
+<p>In this release <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/apidocs/erlang/eavmlib/spi.html">SPI</a>, <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/apidocs/erlang/eavmlib/i2c.html">I2C</a>, and <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/apidocs/erlang/eavmlib/uart.html">UART</a> peripheral configurations have been changed, for details consult the documentation for these modules in the <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/apidocs/erlang/eavmlib/README.html"><code class="language-plaintext highlighter-rouge">eavmlib</code> documentation</a>. There is now an ESP32 API for allowing coexistence of native and Erlang I2C drivers, for example, allowing the use of the native <a href="https://github.com/atomvm/atomvm_ssd1306"><code class="language-plaintext highlighter-rouge">atomvm_ssd1306</code> Display driver</a>, with a pure erlang driver for the <a href="https://github.com/atomvm/atomvm_examples/tree/master/erlang/i2c_example">SHT3x temperature sensor</a>. GPIO interrupt (currently only supported on ESP32 and STM32 platforms) messages can now be sent to a designated receiver using <code class="language-plaintext highlighter-rouge">gpio:set_int/4</code>. Support for <code class="language-plaintext highlighter-rouge">lists:split/2</code> has also been added. ESP32 platform now supports retrieving the device’s e-fuse MAC address with <code class="language-plaintext highlighter-rouge">esp:get_default_mac/0</code>.</p>
+
+<p>AtomVM now uses UTF-8 encoding for atoms when using <code class="language-plaintext highlighter-rouge">erlang:term_to_binary/1</code>, in conformance with OTP-26, and <code class="language-plaintext highlighter-rouge">binary_to_atom/1</code> and <code class="language-plaintext highlighter-rouge">atom_to_binary/1</code> now default to utf8.  Support has been added for utf8 encoding to <code class="language-plaintext highlighter-rouge">*_to_atom</code> and <code class="language-plaintext highlighter-rouge">atom_to_*</code> functions.</p>
+
+<p>We have made improvements to the rp2040 platform that should make development workflows much smoother.  The device will now accept re-flashing a new application using the <code class="language-plaintext highlighter-rouge">atomvm_rebar3_plugin</code> <code class="language-plaintext highlighter-rouge">pico_flash</code> task after the application has exited.  Previously the device would be unresponsive after exiting.  There is also a default 20 second timeout, which the device will wait for a USB console connection to be established, before running the application.  Previously our default build would start the application immediately, giving the user no time to connect to be able to see the output of <code class="language-plaintext highlighter-rouge">hello_world</code> before the application exited, and the device became unresponsive.</p>
+
+<p>The port call tuple format has been changed to the same format as gen_server, so cast support can be added. This change means older versions of <code class="language-plaintext highlighter-rouge">atomvmlib</code> will not work, libraries from latest version must be used. Check the <a href="https://github.com/atomvm/AtomVM/blob/v0.6.0-beta.1/UPDATING.md">Update Instructions</a> for other breaking changes for both BEAM application developers, as well as for contributors, and driver developers using nifs or ports.</p>
+
+<p>Under the hood enhancements feature a new atom table, which uses less memory, and has improved performance.</p>
+
+<p>Several memory related bugs have been fixed. A random number generation bug has been fixed on ESP32 and RPi2040, as well as a bug shared by both platforms that would cause invalid GPIO pull directions to be silently set to <code class="language-plaintext highlighter-rouge">floating</code> without an error.</p>
+
+<p>For the full set of bug fixes, changes and additions since the v0.6.0-alpha.2 release consult the <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/CHANGELOG.html">Changelog</a>, and check the <a href="https://github.com/atomvm/AtomVM/blob/v0.6.0-beta.1/UPDATING.md">Updating Instructions</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32 (and some generic_unix hosts for this release due to specific Mbed-TLS requirements) are available from <a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.0-beta.1">AtomVM Releases on GitHub</a>. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/build-instructions.html">Build Instructions</a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our <a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.0-beta.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://www.atomvm.net/doc/v0.6.0-beta.1/">AtomVM Documentation page</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the <a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating such a fine work of software, as well as the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+    </li>
+  
+    <li>
       <a href="/2024/02/22/master_branch_renamed.html">AtomVM `master` branch renamed</a>
       <h2 id="20240222-recent-updates-to-the-name-of-the-master-branch">2024/02/22 Recent updates to the name of the <code class="language-plaintext highlighter-rouge">master</code> branch.</h2>
 
