@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>globalcontext.c &mdash; AtomVM 0.7.0-dev+git.dc61bc6e documentation</title>
+  <title>globalcontext.c &mdash; AtomVM 0.6.0-rc.0+git.1f78a79d documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=8cd7211e"></script>
+        <script src="../../../_static/documentation_options.js?v=3a83130a"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -385,11 +385,11 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext_new">
 <span class="target" id="libatomvmglobalcontext_8c_1a619024206491a42933d16452808c874f"></span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext_new" title="Link to this definition"></a><br /></dt>
-<dd><p>Creates a new <a class="reference internal" href="globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
-<p>Allocates a new <a class="reference internal" href="globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a> struct and initialize it, the newly created global context is a new AtomVM instance. </p>
+<dd><p>Creates a new <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<p>Allocates a new <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a> struct and initialize it, the newly created global context is a new AtomVM instance. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A newly created <a class="reference internal" href="globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<dd class="field-odd"><p>A newly created <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -397,7 +397,7 @@
 <dl class="c function">
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmglobalcontext_8c_1ae06f860f2ebb0237b6ed54f4b0b81757"></span><span class="sig-name descname"><span class="pre">COLD_FUNC</span> <span class="pre">void</span> <span class="pre">globalcontext_destroy</span> <span class="pre">(GlobalContext</span> <span class="pre">*glb)</span></span></dt>
-<dd><p>Destoys an existing <a class="reference internal" href="globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<dd><p>Destoys an existing <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
 <p>Frees global context resources and memory and removes it from the processes table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -411,7 +411,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext_get_process_nolock">
 <span class="target" id="libatomvmglobalcontext_8c_1af7ea0d787c69ca653257ee8e1a5e9f3b"></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_process_nolock</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext_get_process_nolock" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a <a class="reference internal" href="context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, without acquiring a lock on the process table. </p>
+<dd><p>Gets a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, without acquiring a lock on the process table. </p>
 <p>Retrieves from the process table the context with the given local process id. If the process can be found, without locking the process table. This is unsafe unless a lock on the process table has been obtained previously. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -421,7 +421,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <a class="reference internal" href="context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
+<dd class="field-even"><p>a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -429,7 +429,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext_get_process_lock">
 <span class="target" id="libatomvmglobalcontext_8c_1a5961836bc63812919b49ce8ec229381e"></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_process_lock</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext_get_process_lock" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a <a class="reference internal" href="context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, acquiring a lock on the process table. </p>
+<dd><p>Gets a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, acquiring a lock on the process table. </p>
 <p>Retrieves from the process table the context with the given local process id. If the process can be found, the process table is locked. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -439,7 +439,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <a class="reference internal" href="context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
+<dd class="field-even"><p>a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -678,7 +678,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a pointer to a <a class="reference internal" href="module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
+<dd class="field-even"><p>a pointer to a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
 </dd>
 </dl>
 </dd></dl>

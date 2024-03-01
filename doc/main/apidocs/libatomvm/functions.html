@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.7.0-dev+git.dc61bc6e documentation</title>
+  <title>Functions &mdash; AtomVM 0.6.0-rc.0+git.1f78a79d documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=8cd7211e"></script>
+        <script src="../../_static/documentation_options.js?v=3a83130a"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -540,7 +540,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – the current <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a>. </p></li>
+<li><p><strong>ctx</strong> – the current <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a>. </p></li>
 <li><p><strong>atom_a</strong> – any term of any type, when it is not an atom false is always returned. </p></li>
 <li><p><strong>atom_string_b</strong> – an atom string, which is the atom length followed by atom characters. </p></li>
 </ul>
@@ -607,7 +607,7 @@
 <dt class="sig sig-object c" id="c.libAtomVM.functions.context_new">
 <span class="target" id="libatomvmcontext_8h_1a5ead3055ac6c4c57a32436c5b48c789b"></span><a class="reference internal" href="src/context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">context_new</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.context_new" title="Link to this definition"></a><br /></dt>
 <dd><p>Creates a new context. </p>
-<p>Allocates a new <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> struct and initialize it. The newly created context is also inserted into the processes table, however it is not scheduled, allowing for further initialization. </p>
+<p>Allocates a new <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> struct and initialize it. The newly created context is also inserted into the processes table, however it is not scheduled, allowing for further initialization. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1194,7 +1194,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_destroy">
 <span class="target" id="libatomvmglobalcontext_8h_1a93332b64c459b51ffb1debed609df84c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_destroy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_destroy" title="Link to this definition"></a><br /></dt>
-<dd><p>Destoys an existing <a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<dd><p>Destoys an existing <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
 <p>Frees global context resources and memory and removes it from the processes table. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1236,7 +1236,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a pointer to a <a class="reference internal" href="src/module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
+<dd class="field-even"><p>a pointer to a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1262,7 +1262,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_get_process_lock">
 <span class="target" id="libatomvmglobalcontext_8h_1a5961836bc63812919b49ce8ec229381e"></span><a class="reference internal" href="src/context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_process_lock</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_get_process_lock" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, acquiring a lock on the process table. </p>
+<dd><p>Gets a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, acquiring a lock on the process table. </p>
 <p>Retrieves from the process table the context with the given local process id. If the process can be found, the process table is locked. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1272,7 +1272,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
+<dd class="field-even"><p>a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1280,7 +1280,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_get_process_nolock">
 <span class="target" id="libatomvmglobalcontext_8h_1af7ea0d787c69ca653257ee8e1a5e9f3b"></span><a class="reference internal" href="src/context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_process_nolock</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_get_process_nolock" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, without acquiring a lock on the process table. </p>
+<dd><p>Gets a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> from the process table, without acquiring a lock on the process table. </p>
 <p>Retrieves from the process table the context with the given local process id. If the process can be found, without locking the process table. This is unsafe unless a lock on the process table has been obtained previously. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1290,7 +1290,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
+<dd class="field-even"><p>a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> * with the requested local process id or NULL if not found. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1459,11 +1459,11 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_new">
 <span class="target" id="libatomvmglobalcontext_8h_1a619024206491a42933d16452808c874f"></span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_new" title="Link to this definition"></a><br /></dt>
-<dd><p>Creates a new <a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
-<p>Allocates a new <a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a> struct and initialize it, the newly created global context is a new AtomVM instance. </p>
+<dd><p>Creates a new <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<p>Allocates a new <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a> struct and initialize it, the newly created global context is a new AtomVM instance. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A newly created <a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
+<dd class="field-odd"><p>A newly created <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a>. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -2399,8 +2399,8 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.module_new_from_iff_binary">
 <span class="target" id="libatomvmmodule_8h_1a9a11935d7865270ae21850227728d5d6"></span><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">module_new_from_iff_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">iff_binary</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">long</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.module_new_from_iff_binary" title="Link to this definition"></a><br /></dt>
-<dd><p>Parse a BEAM file and returns a <a class="reference internal" href="src/module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a>. </p>
-<p>Parse a BEAM file a returns a newly allocated and initialized <a class="reference internal" href="src/module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
+<dd><p>Parse a BEAM file and returns a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a>. </p>
+<p>Parse a BEAM file a returns a newly allocated and initialized <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3131,7 +3131,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <dt class="sig sig-object c" id="c.libAtomVM.functions.sys_create_port">
 <span class="target" id="libatomvmsys_8h_1a3636cbb632253e6146bd3c57c5fd30c1"></span><a class="reference internal" href="src/context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_create_port</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">driver_name</span></span>, <a class="reference internal" href="src/term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.sys_create_port" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a port driver. </p>
-<p>This function creates a port driver, encapsulated in a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object. This function should create a <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object through the supplied global context, which will assume ownership of the new instance. </p>
+<p>This function creates a port driver, encapsulated in a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object. This function should create a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object through the supplied global context, which will assume ownership of the new instance. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3141,7 +3141,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a new <a class="reference internal" href="src/context.h.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> instance, or NULL, if a driver cannot be created from the inputs. </p>
+<dd class="field-even"><p>a new <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> instance, or NULL, if a driver cannot be created from the inputs. </p>
 </dd>
 </dl>
 </dd></dl>
@@ -3195,7 +3195,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <dt class="sig sig-object c" id="c.libAtomVM.functions.sys_load_module">
 <span class="target" id="libatomvmsys_8h_1a0ce28625e5d39c550f71fdd7e7f0891c"></span><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.sys_load_module" title="Link to this definition"></a><br /></dt>
 <dd><p>Loads a BEAM module using platform dependent methods. </p>
-<p>Loads a BEAM module into memory using platform dependent methods and returns a pointer to a <a class="reference internal" href="src/module.h.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
+<p>Loads a BEAM module into memory using platform dependent methods and returns a pointer to a <a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -3640,7 +3640,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fd</strong> – the file where the term will be printed. </p></li>
 <li><p><strong>t</strong> – the term that will be printed. </p></li>
-<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
+<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -3800,7 +3800,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>pf</strong> – function that will handle printing. </p></li>
 <li><p><strong>t</strong> – the term that will be printed. </p></li>
-<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
+<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4363,7 +4363,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 <li><p><strong>buf</strong> – the buffer where the term will be printed. </p></li>
 <li><p><strong>size</strong> – the buffer size. </p></li>
 <li><p><strong>t</strong> – the term that will be printed. </p></li>
-<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="src/globalcontext.h.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
+<li><p><strong>global</strong> – the <code class="docutils literal notranslate"><a class="reference internal" href="../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref"><span class="pre">GlobalContext</span></span></a></code>. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
