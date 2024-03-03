@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>memory.h &mdash; AtomVM 0.6.0-rc.0+git.c978cf82 documentation</title>
+  <title>memory.h &mdash; AtomVM 0.6.0-rc.0+git.168d236b documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=b0075649"></script>
+        <script src="../../../_static/documentation_options.js?v=be3437e6"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -223,7 +223,7 @@
 </figure>
 <p>This graph shows which files directly or indirectly include memory.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-e806133110829e44bf33da01301bdbd0ac5bd58e.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-dee0f0bfb543009e3d0d0139a81e3d93e89dd3d2.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -321,6 +321,7 @@
     &quot;11&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;45&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;45&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;45&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;45&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
@@ -449,6 +450,7 @@
     &quot;51&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;51&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;51&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;51&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;51&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;51&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
@@ -530,9 +532,9 @@
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.END_WITH_STACK_HEAP">
-<span class="target" id="libatomvmmemory_8h_1a375cdc3af6416b703783478ffebfd534"></span><span class="sig-name descname"><span class="n"><span class="pre">END_WITH_STACK_HEAP</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">name</span></span>, <span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span> <a class="reference internal" href="#libatomvmmemory_8h_1a83faa99cba2cd5a16becd07efaf5764f"><span class="std std-ref"><span class="pre">memory_sweep_mso_list</span></span></a><span class="pre">(name.root-&gt;mso_list,</span> <span class="pre">global);</span> <span class="pre">\</span>
-&#160;&#160;&#160; <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a><p><span class="pre">(name.root-&gt;next)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
-<p><span class="pre">memory_destroy_heap_fragment(name.root-&gt;next);</span>&#160; <span class="pre">\</span></p>
+<span class="target" id="libatomvmmemory_8h_1a375cdc3af6416b703783478ffebfd534"></span><span class="sig-name descname"><span class="n"><span class="pre">END_WITH_STACK_HEAP</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">name</span></span>, <span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span> <a class="reference internal" href="#libatomvmmemory_8h_1af565e796d744e507378935dfad5b89f1"><span class="std std-ref"><span class="pre">memory_sweep_mso_list</span></span></a><span class="pre">(name.root-&gt;mso_list,</span> <span class="pre">global,</span> <span class="pre">true);</span> <span class="pre">\</span>
+&#160;&#160;&#160; <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a><p><span class="pre">(name.root-&gt;next)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">memory_destroy_heap_fragment(name.root-&gt;next);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span></p>
 <a class="headerlink" href="#c.libAtomVM.END_WITH_STACK_HEAP" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -642,6 +644,7 @@
 <dt class="sig sig-object c">
 <span class="target" id="libatomvmmemory_8h_1af7919fb7e34575bbeb00a55979d02eac"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">MemoryGCResult</span> <span class="pre">memory_init_heap</span> <span class="pre">(Heap</span> <span class="pre">*heap,</span> <span class="pre">size_t</span> <span class="pre">size)</span> <span class="pre">MUST_CHECK</span></span></dt>
 <dd><p>Initialize a root heap. </p>
+<p>This function should be balanced with <code class="docutils literal notranslate"><span class="pre">memory_destroy_heap</span></code> or <code class="docutils literal notranslate"><span class="pre">memory_destroy_heap_from_task</span></code> if the heap is created by a driver task.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -871,7 +874,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.memory_sweep_mso_list">
-<span class="target" id="libatomvmmemory_8h_1a83faa99cba2cd5a16becd07efaf5764f"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">mso_list</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<span class="target" id="libatomvmmemory_8h_1af565e796d744e507378935dfad5b89f1"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_sweep_mso_list</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">mso_list</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">from_task</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Sweep any unreferenced binaries in the “Mark Sweep Object” (MSO) list. </p>
 <p>The MSO list is a list of term (references) in a heap. Currently, the elements of this list are referenced to reference-counted binaries or match binaries that themselves reference reference counted binaries. This function will iterate over the binaries in this list, and decrement the reference count of any elements that have not been marked for move (e.g., into a new heap). If the reference count reaches 0, then memory associated with the referenced binary will be freed.In a typical GC event, the terms in this list are within in the old heap or potentially in a heap fragment. However, this function may be called in a copy even, such as in a process spawn, or in the copy of a term to or from a process mailbox. </p>
 <dl class="field-list simple">
@@ -901,6 +904,15 @@
 <dt class="sig sig-object c" id="c.libAtomVM.memory_destroy_heap">
 <span class="target" id="libatomvmmemory_8h_1a6be1d019f3d975240ad75f863ad27379"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">memory_destroy_heap</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.memory_destroy_heap" title="Link to this definition"></a><br /></dt>
 <dd><p>Destroy a root heap. First sweep its mso list. </p>
+<p>This function shall only be called from a scheduler thread (native handler or listener) because it decrements the reference count of refc binaries and may call resource destructors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>heap</strong> – the heap to destroy </p></li>
+<li><p><strong>global</strong> – the global context </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </div>

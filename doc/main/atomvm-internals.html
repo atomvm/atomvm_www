@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.6.0-rc.0+git.c978cf82 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.6.0-rc.0+git.168d236b documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=b0075649"></script>
+        <script src="_static/documentation_options.js?v=be3437e6"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -71,6 +71,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#contexts">Contexts</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-and-synchronization-mechanisms">Tasks and synchronization mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mailboxes-and-signals">Mailboxes and signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stacktraces">Stacktraces</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#line-numbers">Line Numbers</a><ul>
@@ -677,8 +678,8 @@ size of a struct, therefore, is determined simply by the size of the component f
 <dt class="sig sig-object c" id="c.sys_signal">
 <span class="target" id="libatomvmsys_8h_1ad373b27d5d7364accaf66a1762a1cd72"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.sys_signal" title="Link to this definition"></a><br /></dt>
 <dd><p>Interrupt the wait in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>. </p>
-<p>This function should signal the thread that is waiting in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> so it returns before the timeout. It is only used for SMP builds.</p>
-<p>Please note that this function may be called while no thread is waiting in sys_poll_events and this should have no effect. This function is called in scheduler loop (internal function <code class="docutils literal notranslate"><span class="pre">scheduler_run0</span></code>).</p>
+<p>This function should signal the thread that is waiting in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> so it returns before the timeout. It is mostly used for SMP builds, but also to abort sleep from driver callbacks on FreeRTOS.</p>
+<p>Please note that this function may be called while no thread is waiting in sys_poll_events and this should have no effect. This function is called in scheduler loop (internal function <code class="docutils literal notranslate"><span class="pre">scheduler_run0</span></code>) and when scheduling processes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -690,6 +691,38 @@ size of a struct, therefore, is determined simply by the size of the component f
 
 </div></blockquote>
 </section>
+</section>
+<section id="tasks-and-synchronization-mechanisms">
+<h2>Tasks and synchronization mechanisms<a class="headerlink" href="#tasks-and-synchronization-mechanisms" title="Link to this heading"></a></h2>
+<p>AtomVM SMP builds run on operating or runtime systems implementing tasks (FreeRTOS SMP on ESP32, Unix and WebAssembly) as well as on systems with no task implementation (Raspberry Pi Pico).</p>
+<p>On runtime systems with tasks, each scheduler thread is implemented as a task. On Pico, a scheduler thread runs on Core 0 and another one runs on Core 1, and they are effectively pinned to each core.</p>
+<p>For synchronization purposes, AtomVM uses mutexes, condition variables, RW locks, spinlocks and Atomics.</p>
+<p>Availability of RW Locks and atomics are verified at compile time using detection of symbols for RW Locks and <code class="docutils literal notranslate"><span class="pre">ATOMIC_*_LOCK_FREE</span></code> C11 macros for atomics.</p>
+<p>Mutexes and condition variables are provided by the SDK or the runtime system. If RW Locks are not available, AtomVM uses mutexes. Atomics are not available on Pico and are replaced by critical sections. Spinlocks are implemented by AtomVM on top of Atomics, or using mutexes on Pico.</p>
+<p>Importantly, locking synchronization mechanisms (mutexes, RW locks, spinlocks) are not interrupt-safe. Interrupt service routines must not try to lock as they could fail forever if interrupted code owns the lock. Atomics, including emulation on Pico, are interrupt-safe.</p>
+<p>Drivers can send messages from event callbacks typically called from FreeRTOS tasks using <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task</span></code> or <code class="docutils literal notranslate"><span class="pre">port_send_message_from_task</span></code> functions instead of <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message</span></code> or <code class="docutils literal notranslate"><span class="pre">port_send_message</span></code>. These functions try to acquire required locks and if they fail, enqueue sent message in a queue, so it is later processed when the scheduler performs context switching. The functions are undefined if option <code class="docutils literal notranslate"><span class="pre">AVM_DISABLE_TASK_DRIVER</span></code> is passed. Some platforms do not include support for task drivers. Define <code class="docutils literal notranslate"><span class="pre">AVM_TASK_DRIVER_ENABLED</span></code> can be checked to determine if these functions are available.</p>
+<blockquote>
+<div><dl class="c function">
+<dt class="sig sig-object c" id="c.globalcontext_send_message">
+<span class="target" id="libatomvmglobalcontext_8h_1a122570266744031d99e7043b14b955c9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_send_message</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.globalcontext_send_message" title="Link to this definition"></a><br /></dt>
+<dd><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “globalcontext_send_message_from_task” in doxygen xml output for project “libatomvm” from directory: /home/runner/work/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
+<p>Send a message to a process identified by its id. </p>
+<p>Safely send a message to the process, doing nothing is the process cannot be found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context (that owns the process table). </p></li>
+<li><p><strong>process_id</strong> – the local process id. </p></li>
+<li><p><strong>t</strong> – the message to send. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div></blockquote>
 </section>
 <section id="mailboxes-and-signals">
 <h2>Mailboxes and signals<a class="headerlink" href="#mailboxes-and-signals" title="Link to this heading"></a></h2>

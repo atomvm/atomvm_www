@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; AtomVM 0.6.0-rc.0+git.c978cf82 documentation</title>
+  <title>Index &mdash; AtomVM 0.6.0-rc.0+git.168d236b documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -18,7 +18,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=b0075649"></script>
+        <script src="_static/documentation_options.js?v=be3437e6"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -217,10 +217,10 @@
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.processes_table">GlobalContext.processes_table (C var)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.GlobalContext.ready_processes">GlobalContext.ready_processes (C var)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.GlobalContext.ref_ticks">GlobalContext.ref_ticks (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.ref_ticks_spinlock">GlobalContext.ref_ticks_spinlock (C var)</a>
@@ -246,6 +246,8 @@
       <li><a href="atomvm-internals.html#c.GlobalContext.timer_spinlock">GlobalContext.timer_spinlock (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.waiting_processes">GlobalContext.waiting_processes (C var)</a>
+</li>
+      <li><a href="atomvm-internals.html#c.globalcontext_send_message">globalcontext_send_message (C function)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -373,9 +375,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/atom.c.html#c.libAtomVM.atom_write_mfa">libAtomVM.atom_write_mfa (C function)</a>, <a href="apidocs/libatomvm/src/atom.h.html#c.libAtomVM.atom_write_mfa">[1]</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.ATOMIC">libAtomVM.ATOMIC (C macro)</a>
-</li>
-      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.ATOMIC_COMPARE_EXCHANGE_WEAK">libAtomVM.ATOMIC_COMPARE_EXCHANGE_WEAK (C macro)</a>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.ATOMIC">libAtomVM.ATOMIC (C macro)</a>, <a href="apidocs/libatomvm/src/refc_binary.h.html#c.libAtomVM.ATOMIC">[1]</a>, <a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.ATOMIC">[2]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/atomshashtable.h.html#c.libAtomVM.AtomsHashTable">libAtomVM.AtomsHashTable (C struct)</a>
 </li>
@@ -990,7 +990,7 @@
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.Context">libAtomVM.Context (C struct)</a>
 
       <ul>
-        <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.Context">(C type)</a>, <a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.Context">[1]</a>
+        <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.Context">(C type)</a>, <a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.Context">[1]</a>, <a href="apidocs/libatomvm/src/refc_binary.h.html#c.libAtomVM.Context">[2]</a>
 </li>
       </ul></li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.Context.bs">libAtomVM.Context.bs (C var)</a>
@@ -2386,7 +2386,7 @@
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.GlobalContext">libAtomVM.GlobalContext (C struct)</a>
 
       <ul>
-        <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.GlobalContext">(C type)</a>, <a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.GlobalContext">[1]</a>, <a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.GlobalContext">[2]</a>
+        <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.GlobalContext">(C type)</a>, <a href="apidocs/libatomvm/src/refc_binary.h.html#c.libAtomVM.GlobalContext">[1]</a>, <a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.GlobalContext">[2]</a>, <a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.GlobalContext">[3]</a>, <a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.GlobalContext">[4]</a>
 </li>
       </ul></li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.GlobalContext.atom_table">libAtomVM.GlobalContext.atom_table (C var)</a>
@@ -2909,6 +2909,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_destroy">libAtomVM.mailbox_destroy (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_destroy">[1]</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_enqueue_message">libAtomVM.mailbox_enqueue_message (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_first">libAtomVM.mailbox_first (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_first">[1]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_has_next">libAtomVM.mailbox_has_next (C function)</a>
@@ -2916,6 +2918,8 @@
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_init">libAtomVM.mailbox_init (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_init">[1]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_len">libAtomVM.mailbox_len (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_len">[1]</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_message_create_from_term">libAtomVM.mailbox_message_create_from_term (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_message_create_from_term">[1]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox_message_dispose">libAtomVM.mailbox_message_dispose (C function)</a>, <a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox_message_dispose">[1]</a>
 </li>
@@ -3085,8 +3089,6 @@
 </li>
       <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory_heap_fragment_memory_size">libAtomVM.memory_heap_fragment_memory_size (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory_heap_memory_size">libAtomVM.memory_heap_memory_size (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory_heap_youngest_size">libAtomVM.memory_heap_youngest_size (C function)</a>
@@ -3101,6 +3103,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/memory.c.html#c.libAtomVM.memory_replace_with_moved_marker">libAtomVM.memory_replace_with_moved_marker (C function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidocs/libatomvm/src/memory.c.html#c.libAtomVM.memory_scan_and_copy">libAtomVM.memory_scan_and_copy (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/memory.c.html#c.libAtomVM.memory_shallow_copy_term">libAtomVM.memory_shallow_copy_term (C function)</a>
@@ -3142,6 +3146,14 @@
       <li><a href="apidocs/libatomvm/src/defaultatoms.h.html#c.libAtomVM.MESSAGE_QUEUE_LEN_ATOM">libAtomVM.MESSAGE_QUEUE_LEN_ATOM (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/defaultatoms.h.html#c.libAtomVM.MESSAGE_QUEUE_LEN_ATOM_INDEX">libAtomVM.MESSAGE_QUEUE_LEN_ATOM_INDEX (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.MessageQueueItem">libAtomVM.MessageQueueItem (C struct)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.MessageQueueItem.message">libAtomVM.MessageQueueItem.message (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.MessageQueueItem.next">libAtomVM.MessageQueueItem.next (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.MessageQueueItem.process_id">libAtomVM.MessageQueueItem.process_id (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.MessageType">libAtomVM.MessageType (C enum)</a>
 </li>
@@ -4227,6 +4239,12 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.RefcBinaryFlags.RefcNoFlags">libAtomVM.RefcBinaryFlags.RefcNoFlags (C enumerator)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.RefcBinaryQueueItem">libAtomVM.RefcBinaryQueueItem (C struct)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.RefcBinaryQueueItem.next">libAtomVM.RefcBinaryQueueItem.next (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.RefcBinaryQueueItem.refc">libAtomVM.RefcBinaryQueueItem.refc (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.RefSignal">libAtomVM.RefSignal (C struct)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.RefSignal.base">libAtomVM.RefSignal.base (C var)</a>
@@ -4425,15 +4443,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_mutex_lock">libAtomVM.smp_mutex_lock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_MUTEX_LOCK">libAtomVM.SMP_MUTEX_LOCK (C macro)</a>, <a href="apidocs/libatomvm/src/scheduler.c.html#c.libAtomVM.SMP_MUTEX_LOCK">[1]</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_MUTEX_LOCK">libAtomVM.SMP_MUTEX_LOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_mutex_trylock">libAtomVM.smp_mutex_trylock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/scheduler.c.html#c.libAtomVM.SMP_MUTEX_TRYLOCK">libAtomVM.SMP_MUTEX_TRYLOCK (C macro)</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_MUTEX_TRYLOCK">libAtomVM.SMP_MUTEX_TRYLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_mutex_unlock">libAtomVM.smp_mutex_unlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_MUTEX_UNLOCK">libAtomVM.SMP_MUTEX_UNLOCK (C macro)</a>, <a href="apidocs/libatomvm/src/scheduler.c.html#c.libAtomVM.SMP_MUTEX_UNLOCK">[1]</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_MUTEX_UNLOCK">libAtomVM.SMP_MUTEX_UNLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/atom_table.c.html#c.libAtomVM.SMP_RDLOCK">libAtomVM.SMP_RDLOCK (C macro)</a>, <a href="apidocs/libatomvm/src/atomshashtable.c.html#c.libAtomVM.SMP_RDLOCK">[1]</a>, <a href="apidocs/libatomvm/src/valueshashtable.c.html#c.libAtomVM.SMP_RDLOCK">[2]</a>
 </li>
@@ -4443,15 +4461,19 @@
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_rwlock_rdlock">libAtomVM.smp_rwlock_rdlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_RWLOCK_RDLOCK">libAtomVM.SMP_RWLOCK_RDLOCK (C macro)</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_RWLOCK_RDLOCK">libAtomVM.SMP_RWLOCK_RDLOCK (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_rwlock_tryrdlock">libAtomVM.smp_rwlock_tryrdlock (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_RWLOCK_TRYRDLOCK">libAtomVM.SMP_RWLOCK_TRYRDLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_rwlock_unlock">libAtomVM.smp_rwlock_unlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_RWLOCK_UNLOCK">libAtomVM.SMP_RWLOCK_UNLOCK (C macro)</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_RWLOCK_UNLOCK">libAtomVM.SMP_RWLOCK_UNLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_rwlock_wrlock">libAtomVM.smp_rwlock_wrlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_RWLOCK_WRLOCK">libAtomVM.SMP_RWLOCK_WRLOCK (C macro)</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_RWLOCK_WRLOCK">libAtomVM.SMP_RWLOCK_WRLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_scheduler_start">libAtomVM.smp_scheduler_start (C function)</a>
 </li>
@@ -4459,11 +4481,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_spinlock_lock">libAtomVM.smp_spinlock_lock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_SPINLOCK_LOCK">libAtomVM.SMP_SPINLOCK_LOCK (C macro)</a>, <a href="apidocs/libatomvm/src/scheduler.c.html#c.libAtomVM.SMP_SPINLOCK_LOCK">[1]</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_SPINLOCK_LOCK">libAtomVM.SMP_SPINLOCK_LOCK (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_spinlock_trylock">libAtomVM.smp_spinlock_trylock (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_SPINLOCK_TRYLOCK">libAtomVM.SMP_SPINLOCK_TRYLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.smp_spinlock_unlock">libAtomVM.smp_spinlock_unlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.SMP_SPINLOCK_UNLOCK">libAtomVM.SMP_SPINLOCK_UNLOCK (C macro)</a>, <a href="apidocs/libatomvm/src/scheduler.c.html#c.libAtomVM.SMP_SPINLOCK_UNLOCK">[1]</a>
+      <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.SMP_SPINLOCK_UNLOCK">libAtomVM.SMP_SPINLOCK_UNLOCK (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/atom_table.c.html#c.libAtomVM.SMP_UNLOCK">libAtomVM.SMP_UNLOCK (C macro)</a>, <a href="apidocs/libatomvm/src/atomshashtable.c.html#c.libAtomVM.SMP_UNLOCK">[1]</a>, <a href="apidocs/libatomvm/src/valueshashtable.c.html#c.libAtomVM.SMP_UNLOCK">[2]</a>
 </li>
@@ -5213,6 +5239,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/synclist.h.html#c.libAtomVM.synclist_remove">libAtomVM.synclist_remove (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/synclist.h.html#c.libAtomVM.synclist_tryrdlock">libAtomVM.synclist_tryrdlock (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/synclist.h.html#c.libAtomVM.synclist_unlock">libAtomVM.synclist_unlock (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/synclist.h.html#c.libAtomVM.synclist_wrlock">libAtomVM.synclist_wrlock (C function)</a>
@@ -5280,6 +5308,8 @@
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.system_time_nif">libAtomVM.system_time_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.system_time_to_universal_time_nif">libAtomVM.system_time_to_universal_time_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.TAG">libAtomVM.TAG (C macro)</a>, <a href="apidocs/libatomvm/src/otp_ssl.c.html#c.libAtomVM.TAG">[1]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/module.c.html#c.libAtomVM.TAG_COMPACT_ATOM">libAtomVM.TAG_COMPACT_ATOM (C macro)</a>
 </li>
@@ -5713,11 +5743,13 @@
 </li>
       <li><a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.TYPEDEF_CONDVAR">libAtomVM.TYPEDEF_CONDVAR (C macro)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.TYPEDEF_CONTEXT">libAtomVM.TYPEDEF_CONTEXT (C macro)</a>, <a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.TYPEDEF_CONTEXT">[1]</a>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.TYPEDEF_CONTEXT">libAtomVM.TYPEDEF_CONTEXT (C macro)</a>, <a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.TYPEDEF_CONTEXT">[1]</a>, <a href="apidocs/libatomvm/src/refc_binary.h.html#c.libAtomVM.TYPEDEF_CONTEXT">[2]</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">libAtomVM.TYPEDEF_GLOBALCONTEXT (C macro)</a>, <a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[1]</a>, <a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[2]</a>
+      <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">libAtomVM.TYPEDEF_GLOBALCONTEXT (C macro)</a>, <a href="apidocs/libatomvm/src/refc_binary.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[1]</a>, <a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[2]</a>, <a href="apidocs/libatomvm/src/smp.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[3]</a>, <a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.TYPEDEF_GLOBALCONTEXT">[4]</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.TYPEDEF_HEAP">libAtomVM.TYPEDEF_HEAP (C macro)</a>, <a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.TYPEDEF_HEAP">[1]</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.TYPEDEF_MAILBOXMESSAGE">libAtomVM.TYPEDEF_MAILBOXMESSAGE (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.TYPEDEF_MODULE">libAtomVM.TYPEDEF_MODULE (C macro)</a>, <a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.TYPEDEF_MODULE">[1]</a>
 </li>
