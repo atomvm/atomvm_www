@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>term.h &mdash; AtomVM 0.6.1+git.b4c48661 documentation</title>
+  <title>term.h &mdash; AtomVM 0.6.1+git.335c0461 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=eaa70ad8"></script>
+        <script src="../../../_static/documentation_options.js?v=295f7392"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -248,7 +248,7 @@
 </figure>
 <p>This graph shows which files directly or indirectly include term.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-4e88e951824c1ddf11d121a16e770aa415f555fe.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-32e62f9d44f076f2f77d0fe6fd8481d52ac942d9.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -390,6 +390,7 @@
     &quot;29&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;29&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;29&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;29&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;49&quot; -&gt; &quot;50&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;49&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;49&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
@@ -701,6 +702,16 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.TERM_FROM_ATOM_INDEX">
 <span class="target" id="libatomvmterm_8h_1a3de30c0bd38e2e31ec36b72fd749a906"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_FROM_ATOM_INDEX</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">atom_index</span></span><span class="sig-paren">)</span> <span class="pre">((atom_index</span> <span class="pre">&lt;&lt;</span> <span class="pre">6)</span> <span class="pre">|</span> <span class="pre">0xB)</span><a class="headerlink" href="#c.libAtomVM.TERM_FROM_ATOM_INDEX" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.REF_AS_CSTRING_LEN">
+<span class="target" id="libatomvmterm_8h_1ab7e4d960d56799abcd9cb81e81fd074f"></span><span class="sig-name descname"><span class="n"><span class="pre">REF_AS_CSTRING_LEN</span></span></span> <span class="pre">33</span><a class="headerlink" href="#c.libAtomVM.REF_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.PID_AS_CSTRING_LEN">
+<span class="target" id="libatomvmterm_8h_1a5976717b4034217a9879116f7ebebdc8"></span><span class="sig-name descname"><span class="n"><span class="pre">PID_AS_CSTRING_LEN</span></span></span> <span class="pre">17</span><a class="headerlink" href="#c.libAtomVM.PID_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -1206,8 +1217,14 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term_is_function">
 <span class="target" id="libatomvmterm_8h_1a667b62bfa3175df2e99aea75432abf23"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_function</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_is_function" title="Link to this definition"></a><br /></dt>
-<dd><p>Checks if a term is a function. </p>
-<p>Returns 1 if a term is a fun, otherwise 0. </p>
+<dd><p>Checks if a term is a fun. </p>
+<p>Returns 1 if a term is a fun, otherwise 0. <dl>
+<dt class="sig sig-object cpp">
+<em><span class="pre">Deprecated:</span></em></dt>
+<dd><p>renamed to term_is_fun. </p>
+</dd></dl>
+
+</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1216,6 +1233,40 @@
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>1 if check succeeds, 0 otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term_is_fun">
+<span class="target" id="libatomvmterm_8h_1a2d0976c261490049b0cb0eea47bbd28f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_is_fun" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a fun. </p>
+<p>Returns true if a term is a fun, otherwise false. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if check succeeds, false otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term_is_external_fun">
+<span class="target" id="libatomvmterm_8h_1abb531ee6abe84d3cd1e69553858341c7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_external_fun</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_is_external_fun" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is an external fun. </p>
+<p>Returns true if a term is an external fun such as “fun m:f/a”, otherwise false. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if check succeeds, false otherwise. </p>
 </dd>
 </dl>
 </dd></dl>
