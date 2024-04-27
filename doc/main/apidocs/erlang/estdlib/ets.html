@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module ets &mdash; AtomVM 0.7.0-dev+git.a8da24c8 documentation</title>
+  <title>Module ets &mdash; AtomVM 0.7.0-dev+git.e07b9376 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=25db36b1"></script>
+        <script src="../../../_static/documentation_options.js?v=46cf605e"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -178,7 +178,7 @@ table_type() = set
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>Delete an entry from an ets table.</td></tr><tr><td valign="top"><a href="#insert-2">insert/2</a></td><td>Insert an entry into an ets table.</td></tr><tr><td valign="top"><a href="#lookup-2">lookup/2</a></td><td>Look up an entry in an ets table.</td></tr><tr><td valign="top"><a href="#new-2">new/2</a></td><td>Create a new ets table.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>Delete an entry from an ets table.</td></tr><tr><td valign="top"><a href="#insert-2">insert/2</a></td><td>Insert an entry into an ets table.</td></tr><tr><td valign="top"><a href="#lookup-2">lookup/2</a></td><td>Look up an entry in an ets table.</td></tr><tr><td valign="top"><a href="#lookup_element-3">lookup_element/3</a></td><td>Look up an element from an entry in an ets table.</td></tr><tr><td valign="top"><a href="#new-2">new/2</a></td><td>Create a new ets table.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -215,6 +215,18 @@ lookup(Table::<a href="#type-table">table()</a>, Key::term()) -&gt; [tuple()]
 <p><code class="docutils literal notranslate"><span class="pre">Table</span></code>: a reference to the ets table<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key used to lookup one or more entries<br /></p>
 <p>returns: the entry in a set, or a list of entries, if the table permits</p>
 <p>Look up an entry in an ets table.</p>
+<p><a name="lookup_element-3"></a></p>
+</section>
+<section id="lookup-element-3">
+<h3>lookup_element/3<a class="headerlink" href="#lookup-element-3" title="Link to this heading"></a></h3>
+<pre><code>
+lookup_element(Table::<a href="#type-table">table()</a>, Key::term(), Pos::pos_integer()) -&gt; term()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Table</span></code>: a reference to the ets table<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key used to lookup one or more entries<br /><code class="docutils literal notranslate"><span class="pre">Pos</span></code>: index of the element to retrieve (1-based)<br /></p>
+<p>returns: the Pos:nth element of entry in a set, or a list of entries, if the
+table permits</p>
+<p>Look up an element from an entry in an ets table.</p>
 <p><a name="new-2"></a></p>
 </section>
 <section id="new-2">
