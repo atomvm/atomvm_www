@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module proplists &mdash; AtomVM 0.6.2+git.c2a9e896 documentation</title>
+  <title>Module proplists &mdash; AtomVM 0.6.2+git.9aa227a0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=e2266cdf"></script>
+        <script src="../../../_static/documentation_options.js?v=76d1d245"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -161,12 +161,76 @@ property() = atom() | {term(), term()}
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#get_value-2">get_value/2</a></td><td>    Get a value from a property list.</td></tr><tr><td valign="top"><a href="#get_value-3">get_value/3</a></td><td>    Get a value from a property list.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#compact-1">compact/1</a></td><td>    Minimizes the representation of all entries in the list.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Deletes all entries associated with <code>Key</code> from <code>List</code>.</td></tr><tr><td valign="top"><a href="#from_map-1">from_map/1</a></td><td>    Converts the map <code>Map</code> to a property list.</td></tr><tr><td valign="top"><a href="#get_all_values-2">get_all_values/2</a></td><td>    Similar to <code>get_value/2</code>, but returns the list of values for _all_ entries
+<code>{Key, Value}</code> in <code>List</code>.</td></tr><tr><td valign="top"><a href="#get_bool-2">get_bool/2</a></td><td>    Returns the value of a boolean key/value option.</td></tr><tr><td valign="top"><a href="#get_value-2">get_value/2</a></td><td>    Get a value from a property list.</td></tr><tr><td valign="top"><a href="#get_value-3">get_value/3</a></td><td>    Get a value from a property list.</td></tr><tr><td valign="top"><a href="#is_defined-2">is_defined/2</a></td><td>    Returns <code>true</code> if <code>List</code> contains at least one entry associated with <code>Key</code>, otherwise
+<code>false</code>.</td></tr><tr><td valign="top"><a href="#lookup-2">lookup/2</a></td><td>    Returns the first entry associated with <code>Key</code> in <code>List</code>, if one exists,
+otherwise returns <code>none</code>.</td></tr><tr><td valign="top"><a href="#lookup_all-2">lookup_all/2</a></td><td>    Returns the list of all entries associated with <code>Key</code> in <code>List</code>.</td></tr><tr><td valign="top"><a href="#property-1">property/1</a></td><td>    Creates a normal form (minimal) representation of a property.</td></tr><tr><td valign="top"><a href="#property-2">property/2</a></td><td>    Creates a normal form (minimal) representation of a simple key/value property.</td></tr><tr><td valign="top"><a href="#to_map-1">to_map/1</a></td><td>    Converts the property list <code>List</code> to a map.</td></tr><tr><td valign="top"><a href="#unfold-1">unfold/1</a></td><td>    Unfolds all occurrences of atoms in <code>ListIn</code> to tuples <code>{Atom, true}</code>.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
 <h2>Function Details<a class="headerlink" href="#function-details" title="Link to this heading"></a></h2>
+<p><a name="compact-1"></a></p>
+<section id="compact-1">
+<h3>compact/1<a class="headerlink" href="#compact-1" title="Link to this heading"></a></h3>
+<pre><code>
+compact(ListIn) -&gt; ListOut
+</code></pre>
+<ul class="definitions"><li><code>ListIn = [<a href="#type-property">property()</a>]</code></li><li><code>ListOut = [<a href="#type-property">property()</a>]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">ListIn</span></code>: the list will be compacted, such as <code class="docutils literal notranslate"><span class="pre">[{key,</span> <span class="pre">true}]</span></code><br /></p>
+<p>returns: the compacted list, such as <code class="docutils literal notranslate"><span class="pre">[key]</span></code></p>
+<p>Minimizes the representation of all entries in the list. This is equivalent to
+<code class="docutils literal notranslate"><span class="pre">[property(P)</span> <span class="pre">||</span> <span class="pre">P</span> <span class="pre">&lt;-</span> <span class="pre">ListIn]</span></code>.
+See also <code class="docutils literal notranslate"><span class="pre">property/1</span></code>, <code class="docutils literal notranslate"><span class="pre">unfold/1</span></code>.</p>
+<p><a name="delete-2"></a></p>
+</section>
+<section id="delete-2">
+<h3>delete/2<a class="headerlink" href="#delete-2" title="Link to this heading"></a></h3>
+<pre><code>
+delete(Key, List) -&gt; List
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the item key that will be deleted<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the property list from which items will be deleted<br /></p>
+<p>returns: A list without items having key <code class="docutils literal notranslate"><span class="pre">Key</span></code></p>
+<p>Deletes all entries associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code> from <code class="docutils literal notranslate"><span class="pre">List</span></code>.</p>
+<p><a name="from_map-1"></a></p>
+</section>
+<section id="from-map-1">
+<h3>from_map/1<a class="headerlink" href="#from-map-1" title="Link to this heading"></a></h3>
+<pre><code>
+from_map(Map) -&gt; List
+</code></pre>
+<ul class="definitions"><li><code>Map = #{Key =&gt; Value}</code></li><li><code>List = [{Key, Value}]</code></li><li><code>Key = term()</code></li><li><code>Value = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Map</span></code>: the map that will be converted, such as <code class="docutils literal notranslate"><span class="pre">#{key</span> <span class="pre">=&gt;</span> <span class="pre">true}</span></code><br /></p>
+<p>returns: the map converted to list, such as <code class="docutils literal notranslate"><span class="pre">[{key,</span> <span class="pre">true}]</span></code></p>
+<p>Converts the map <code class="docutils literal notranslate"><span class="pre">Map</span></code> to a property list.</p>
+<p><a name="get_all_values-2"></a></p>
+</section>
+<section id="get-all-values-2">
+<h3>get_all_values/2<a class="headerlink" href="#get-all-values-2" title="Link to this heading"></a></h3>
+<pre><code>
+get_all_values(Key, List) -&gt; [term()]
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key with which to find the values<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the property list from which to get the value<br /></p>
+<p>returns: a list of values for all entries having <code class="docutils literal notranslate"><span class="pre">Key</span></code> as key</p>
+<p>Similar to <code class="docutils literal notranslate"><span class="pre">get_value/2</span></code>, but returns the list of values for <em>all</em> entries
+<code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">Value}</span></code> in <code class="docutils literal notranslate"><span class="pre">List</span></code>. If no such entry exists, the result is the empty list.</p>
+<p><a name="get_bool-2"></a></p>
+</section>
+<section id="get-bool-2">
+<h3>get_bool/2<a class="headerlink" href="#get-bool-2" title="Link to this heading"></a></h3>
+<pre><code>
+get_bool(Key, List) -&gt; boolean()
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key that will be searched<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the list where key is searched<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> when exists an option with given key that is <code class="docutils literal notranslate"><span class="pre">true</span></code>, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code></p>
+<p>Returns the value of a boolean key/value option. If
+<a class="reference internal" href="#%60lookup/2%60"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">lookup(Key,</span> <span class="pre">List)</span></code></span></a> would yield <code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">true}</span></code>, this function
+returns <code class="docutils literal notranslate"><span class="pre">true</span></code>, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+See also <code class="docutils literal notranslate"><span class="pre">get_value/2</span></code>, <code class="docutils literal notranslate"><span class="pre">lookup/2</span></code>.</p>
 <p><a name="get_value-2"></a></p>
+</section>
 <section id="get-value-2">
 <h3>get_value/2<a class="headerlink" href="#get-value-2" title="Link to this heading"></a></h3>
 <pre><code>
@@ -191,6 +255,102 @@ not in List.</p>
 if the Key is not in the supplied List.  If the Key corresponds to
 an entry in the property list that is just a single atom, this
 function returns the atom true.</p>
+<p><a name="is_defined-2"></a></p>
+</section>
+<section id="is-defined-2">
+<h3>is_defined/2<a class="headerlink" href="#is-defined-2" title="Link to this heading"></a></h3>
+<pre><code>
+is_defined(Key, List) -&gt; boolean()
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key that will be searched<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the list where key is searched<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">Key</span></code> is defined, otherwise false</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if <code class="docutils literal notranslate"><span class="pre">List</span></code> contains at least one entry associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code>, otherwise
+<code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p><a name="lookup-2"></a></p>
+</section>
+<section id="lookup-2">
+<h3>lookup/2<a class="headerlink" href="#lookup-2" title="Link to this heading"></a></h3>
+<pre><code>
+lookup(Key, List) -&gt; none | tuple()
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key with which to find the entry<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the property list from which to get the entry<br /></p>
+<p>returns: Either the found entry (always as a tuple) or <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
+<p>Returns the first entry associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code> in <code class="docutils literal notranslate"><span class="pre">List</span></code>, if one exists,
+otherwise returns <code class="docutils literal notranslate"><span class="pre">none</span></code>. For an atom <code class="docutils literal notranslate"><span class="pre">A</span></code> in the list, the tuple <code class="docutils literal notranslate"><span class="pre">{A,</span> <span class="pre">true}</span></code> is
+the entry associated with <code class="docutils literal notranslate"><span class="pre">A</span></code>.
+See also <code class="docutils literal notranslate"><span class="pre">get_bool/2</span></code>, <code class="docutils literal notranslate"><span class="pre">get_value/2</span></code>, <code class="docutils literal notranslate"><span class="pre">lookup_all/2</span></code>.</p>
+<p><a name="lookup_all-2"></a></p>
+</section>
+<section id="lookup-all-2">
+<h3>lookup_all/2<a class="headerlink" href="#lookup-all-2" title="Link to this heading"></a></h3>
+<pre><code>
+lookup_all(Key, List) -&gt; [tuple()]
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>List = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key with which to find the entries<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the property list from which to get the entries<br /></p>
+<p>returns: all entries having <code class="docutils literal notranslate"><span class="pre">Key</span></code> as key</p>
+<p>Returns the list of all entries associated with <code class="docutils literal notranslate"><span class="pre">Key</span></code> in <code class="docutils literal notranslate"><span class="pre">List</span></code>. If no such
+entry exists, the result is the empty list.
+See also <code class="docutils literal notranslate"><span class="pre">lookup/2</span></code>.</p>
+<p><a name="property-1"></a></p>
+</section>
+<section id="property-1">
+<h3>property/1<a class="headerlink" href="#property-1" title="Link to this heading"></a></h3>
+<pre><code>
+property(PropertyIn) -&gt; PropertyOut
+</code></pre>
+<ul class="definitions"><li><code>PropertyIn = <a href="#type-property">property()</a></code></li><li><code>PropertyOut = <a href="#type-property">property()</a></code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">PropertyIn</span></code>: a property<br /></p>
+<p>returns: the same property in normal form</p>
+<p>Creates a normal form (minimal) representation of a property. If <code class="docutils literal notranslate"><span class="pre">PropertyIn</span></code> is
+<code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">true}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Key</span></code> is an atom, <code class="docutils literal notranslate"><span class="pre">Key</span></code> is returned, otherwise the whole
+term <code class="docutils literal notranslate"><span class="pre">PropertyIn</span></code> is returned.
+See also <code class="docutils literal notranslate"><span class="pre">property/2</span></code>.</p>
+<p><a name="property-2"></a></p>
+</section>
+<section id="property-2">
+<h3>property/2<a class="headerlink" href="#property-2" title="Link to this heading"></a></h3>
+<pre><code>
+property(Key, Value) -&gt; Property
+</code></pre>
+<ul class="definitions"><li><code>Key = term()</code></li><li><code>Value = term()</code></li><li><code>Property = atom() | {term(), term()}</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the property key<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: the property value<br /></p>
+<p>returns: Creates a property in normal form</p>
+<p>Creates a normal form (minimal) representation of a simple key/value property.
+Returns <code class="docutils literal notranslate"><span class="pre">Key</span></code> if <code class="docutils literal notranslate"><span class="pre">Value</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and <code class="docutils literal notranslate"><span class="pre">Key</span></code> is an atom, otherwise a tuple
+<code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">Value}</span></code> is returned.
+See also <code class="docutils literal notranslate"><span class="pre">property/1</span></code>.</p>
+<p><a name="to_map-1"></a></p>
+</section>
+<section id="to-map-1">
+<h3>to_map/1<a class="headerlink" href="#to-map-1" title="Link to this heading"></a></h3>
+<pre><code>
+to_map(List) -&gt; Map
+</code></pre>
+<ul class="definitions"><li><code>List = [Shorthand | {Key, Value} | term()]</code></li><li><code>Map = #{Shorthand =&gt; true, Key =&gt; Value}</code></li><li><code>Shorthand = atom()</code></li><li><code>Key = term()</code></li><li><code>Value = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">List</span></code>: the list will be converted to a map, such as <code class="docutils literal notranslate"><span class="pre">[key,</span> <span class="pre">{one,</span> <span class="pre">1}]</span></code><br /></p>
+<p>returns: the list converted as a map, such as <code class="docutils literal notranslate"><span class="pre">#{key</span> <span class="pre">=&gt;</span> <span class="pre">true,</span> <span class="pre">one</span> <span class="pre">=&gt;</span> <span class="pre">1}</span></code></p>
+<p>Converts the property list <code class="docutils literal notranslate"><span class="pre">List</span></code> to a map</p>
+<p>Shorthand atom values in <code class="docutils literal notranslate"><span class="pre">List</span></code> will be expanded to an association of the form
+<code class="docutils literal notranslate"><span class="pre">Atom</span> <span class="pre">=&gt;</span> <span class="pre">true</span></code>. Tuples of the form <code class="docutils literal notranslate"><span class="pre">{Key,</span> <span class="pre">Value}</span></code> in <code class="docutils literal notranslate"><span class="pre">List</span></code> will be converted to
+an association of the form <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">=&gt;</span> <span class="pre">Value</span></code>. Anything else will be silently
+ignored.</p>
+<p>If the same key appears in <code class="docutils literal notranslate"><span class="pre">List</span></code> multiple times, the value of the one appearing
+nearest to the head of <code class="docutils literal notranslate"><span class="pre">List</span></code> will be in the result map, that is the value that
+would be returned by a call to <a class="reference internal" href="#%60get_value/2%60"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">get_value(Key,</span> <span class="pre">List)</span></code></span></a>.</p>
+<p><a name="unfold-1"></a></p>
+</section>
+<section id="unfold-1">
+<h3>unfold/1<a class="headerlink" href="#unfold-1" title="Link to this heading"></a></h3>
+<pre><code>
+unfold(ListIn) -&gt; ListOut
+</code></pre>
+<ul class="definitions"><li><code>ListIn = [term()]</code></li><li><code>ListOut = [term()]</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">ListIn</span></code>: the list that will be unfolded, such as <code class="docutils literal notranslate"><span class="pre">[key]</span></code><br /></p>
+<p>returns: the unfolded list, such as <code class="docutils literal notranslate"><span class="pre">{key,</span> <span class="pre">true}</span></code></p>
+<p>Unfolds all occurrences of atoms in <code class="docutils literal notranslate"><span class="pre">ListIn</span></code> to tuples <code class="docutils literal notranslate"><span class="pre">{Atom,</span> <span class="pre">true}</span></code>.</p>
 </section>
 </section>
 </section>
