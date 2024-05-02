@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.2+git.9aa227a0 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.2+git.1833d421 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=76d1d245"></script>
+        <script src="_static/documentation_options.js?v=119ece70"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -173,12 +173,17 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Fix invalid read after free in ssl code, see also issue
 <a class="reference external" href="https://github.com/atomvm/AtomVM/issues/1115">#1115</a>.</p></li>
 <li><p>Fix semantic of <code class="docutils literal notranslate"><span class="pre">ssl:recv(Socket,</span> <span class="pre">0)</span></code> to return all available bytes, matching what OTP does.</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">binary</span></code> option handling in <code class="docutils literal notranslate"><span class="pre">ssl:connect/3</span></code> so <code class="docutils literal notranslate"><span class="pre">binary</span></code> can be used instead of
+<code class="docutils literal notranslate"><span class="pre">{binary,</span> <span class="pre">true}</span></code>.</p></li>
 </ul>
 </section>
 <section id="changed">
 <h3>Changed<a class="headerlink" href="#changed" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Stacktraces are included by default on Pico devices.</p></li>
+<li><p>Changed ssl default from <code class="docutils literal notranslate"><span class="pre">{active,</span> <span class="pre">false}</span></code> to <code class="docutils literal notranslate"><span class="pre">{active,</span> <span class="pre">true}</span></code> in order to have same behavior as
+OTP. Since active mode is not supported right now, <code class="docutils literal notranslate"><span class="pre">active</span></code> must be explicitly set to false:
+<code class="docutils literal notranslate"><span class="pre">ssl:connect(...,</span> <span class="pre">...,</span> <span class="pre">[{active,</span> <span class="pre">false},</span> <span class="pre">...])</span></code>, otherwise it will crash.</p></li>
 </ul>
 </section>
 </section>
