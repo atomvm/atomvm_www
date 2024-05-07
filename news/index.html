@@ -85,6 +85,38 @@ See README.md for instructions on adding a news post
 <ul>
   
     <li>
+      <a href="/2024/05/06/Release_v0.6.1.html">Announcing AtomVM v0.6.1</a>
+      <h2 id="20240506-announcing-atomvm-v061">2024/05/06 Announcing AtomVM v0.6.1</h2>
+
+<p>We are pleased to announce the release of v0.6.1 of the AtomVM virtual machine!</p>
+
+<p>This is a small update that introduces a new experimental feature: an optimized GC mode. This mode uses C’s realloc instead of copying data around and can be enabled with the <code class="language-plaintext highlighter-rouge">-DENABLE_REALLOC_GC=On</code> flag.</p>
+
+<p>The other notable changes include several bug fixes:</p>
+
+<ul>
+  <li>A crash on macOS has been addressed by adding a missing call to psa_crypto_init for TLS 1.3.</li>
+  <li>Functions such as fun m:f/a are now correctly displayed and converted to lists.</li>
+  <li>An issue where the unique integer was truncated on some 32-bit architectures has been fixed, particularly when using <code class="language-plaintext highlighter-rouge">erlang:ref_to_list/1</code> and <code class="language-plaintext highlighter-rouge">erlang:display/1</code>.</li>
+</ul>
+
+<p>For the full set of bug fixes, changes and additions consult the <a href="https://www.atomvm.net/doc/v0.6.1/CHANGELOG.html">Changelog</a>, and check the <a href="https://github.com/atomvm/AtomVM/blob/v0.6.1/UPDATING.md">Updating Instructions</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32, are available from <a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.1">AtomVM Releases on GitHub</a>. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the <a href="https://www.atomvm.net/doc/v0.6.1/build-instructions.html">Build Instructions</a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our <a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.1 pre-release of the AtomVM virtual machine, including a Getting Started Guide, can be found at the <a href="https://www.atomvm.net/doc/v0.6.1/">AtomVM Documentation page</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the <a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating such a fine work of software, as well as the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+    </li>
+  
+    <li>
       <a href="/2024/03/23/Release_v0.6.0.html">Announcing AtomVM v0.6.0</a>
       <h2 id="20240323-announcing-atomvm-v060">2024/03/23 Announcing AtomVM v0.6.0</h2>
 
