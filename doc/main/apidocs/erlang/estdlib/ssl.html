@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module ssl &mdash; AtomVM 0.6.2+git.87d12543 documentation</title>
+  <title>Module ssl &mdash; AtomVM 0.6.2+git.7c8ed745 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=35be40c2"></script>
+        <script src="../../../_static/documentation_options.js?v=0f0151ae"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -147,7 +147,7 @@
 <section id="client-option">
 <h3><a name="type-client_option">client_option()</a><a class="headerlink" href="#client-option" title="Link to this heading"></a></h3>
 <pre><code>
-client_option() = {server_name_indication, <a href="#type-sni">sni()</a>}
+client_option() = {server_name_indication, <a href="#type-sni">sni()</a>} | {verify, verify_none}
 </code></pre>
 </section>
 <section id="host">
@@ -180,6 +180,12 @@ reason() = any()
 sni() = <a href="#type-hostname">hostname()</a> | disabled
 </code></pre>
 </section>
+<section id="socket-option">
+<h3><a name="type-socket_option">socket_option()</a><a class="headerlink" href="#socket-option" title="Link to this heading"></a></h3>
+<pre><code>
+socket_option() = <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/gen_tcp.md#type-connect_option">gen_tcp:connect_option()</a> | <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/kernel/doc/gen_tcp.md#type-listen_option">gen_tcp:listen_option()</a>
+</code></pre>
+</section>
 <section id="sslsocket">
 <h3><a name="type-sslsocket">sslsocket()</a><a class="headerlink" href="#sslsocket" title="Link to this heading"></a></h3>
 <p><strong>abstract datatype</strong>: <code class="docutils literal notranslate"><span class="pre">sslsocket()</span></code></p>
@@ -187,7 +193,7 @@ sni() = <a href="#type-hostname">hostname()</a> | disabled
 <section id="tls-client-option">
 <h3><a name="type-tls_client_option">tls_client_option()</a><a class="headerlink" href="#tls-client-option" title="Link to this heading"></a></h3>
 <pre><code>
-tls_client_option() = <a href="#type-client_option">client_option()</a>
+tls_client_option() = <a href="#type-client_option">client_option()</a> | <a href="#type-socket_option">socket_option()</a>
 </code></pre>
 <p><a name="index"></a></p>
 </section>
