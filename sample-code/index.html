@@ -96,7 +96,7 @@
 
   
   
-  (941 Words, 
+  (944 Words, 
   6 Minutes)
   
 
@@ -150,7 +150,7 @@ start() -&gt;
 -define(PIN, 2).
 
 start() -&gt;
-    gpio:set_direction(?PIN, output),
+    gpio:set_pin_mode(?PIN, output),
     loop(?PIN, low).
 
 loop(Pin, Level) -&gt;
@@ -169,9 +169,9 @@ toggle(low) -&gt;
 
 <p>Many development boards come with an LED on GPIO pin 2, so let’s assume we are working with such a board, or that we have attached an LED (and accompanying resistor) to GPIO pin 2.</p>
 
-<p>We set the direction of pin 2 to <code class="language-plaintext highlighter-rouge">output</code>, so that we can change the pin’s value:</p>
+<p>We set the pin mode of pin 2 to <code class="language-plaintext highlighter-rouge">output</code>, so that we can change the pin’s value:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpio:set_direction(?PIN, output)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpio:set_pin_mode(?PIN, output)
 </code></pre></div></div>
 
 <p>We then enter the “loop” in the <code class="language-plaintext highlighter-rouge">loop</code> function.  We start by setting the pin to the specified level via the <code class="language-plaintext highlighter-rouge">gpio:digital_write/2</code> function, sleeping 1000 milliseconds (1 second), and then calling the <code class="language-plaintext highlighter-rouge">loop</code> function recursively, passing in the toggled value of the input level:</p>
@@ -236,7 +236,8 @@ toggle(low) -&gt;
 -export([start/0]).
 
 start() -&gt;
-    gpio:set_direction(2, output),
+    gpio:set_pin_mode(2, output),
+    gpio:set_pin_mode(4, output),
     spawn(fun() -&gt; toggle(2, 1000, low) end),
     spawn(fun() -&gt; toggle(4, 500, low) end),
     timer:sleep(infinity).
