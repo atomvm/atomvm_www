@@ -38,7 +38,7 @@ The "Hello world!" of the IoT world is "blinky", a program that toggles an LED o
     -define(PIN, 2).
 
     start() ->
-        gpio:set_direction(?PIN, output),
+        gpio:set_pin_mode(?PIN, output),
         loop(?PIN, low).
 
     loop(Pin, Level) ->
@@ -56,9 +56,9 @@ Like the Hello World program, this program declares a module and exports the `st
 
 Many development boards come with an LED on GPIO pin 2, so let's assume we are working with such a board, or that we have attached an LED (and accompanying resistor) to GPIO pin 2.
 
-We set the direction of pin 2 to `output`, so that we can change the pin's value:
+We set the pin mode of pin 2 to `output`, so that we can change the pin's value:
 
-    gpio:set_direction(?PIN, output)
+    gpio:set_pin_mode(?PIN, output)
 
 We then enter the "loop" in the `loop` function.  We start by setting the pin to the specified level via the `gpio:digital_write/2` function, sleeping 1000 milliseconds (1 second), and then calling the `loop` function recursively, passing in the toggled value of the input level:
 
@@ -115,7 +115,8 @@ Here is the full program, in its entirety:
     -export([start/0]).
 
     start() ->
-        gpio:set_direction(2, output),
+        gpio:set_pin_mode(2, output),
+        gpio:set_pin_mode(4, output),
         spawn(fun() -> toggle(2, 1000, low) end),
         spawn(fun() -> toggle(4, 500, low) end),
         timer:sleep(infinity).
