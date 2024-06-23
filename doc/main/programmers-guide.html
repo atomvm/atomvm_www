@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.3+git.c58e2413 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.3+git.35d8b165 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=ca397b1e"></script>
+        <script src="_static/documentation_options.js?v=74a7a706"></script>
         <script src="_static/doctools.js?v=888ff710"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -1233,14 +1233,14 @@ will be truncated.</p>
 <p>As noted above, the <a class="reference internal" href="apidocs/erlang/estdlib/erlang.html#system-info-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">erlang:system_info/1</span></code></span></a> function can be used to obtain system-specific information about the platform on which your application is deployed.</p>
 <p>You can request ESP32-specific information using using the following input atoms:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">esp_free_heap_size</span></code> Returns the available free space in the ESP32 heap.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">esp_largest_free_block</span></code> Returns the size of the largest free continuous block in the ESP32 heap.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">esp_get_minimum_free_size</span></code> Returns the smallest ever free space available in the ESP32 heap since boot, this will tell you how close you have come to running out of free memory.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">esp_chip_info</span></code> Returns map of the form <code class="docutils literal notranslate"><span class="pre">#{features</span> <span class="pre">:=</span> <span class="pre">Features,</span> <span class="pre">cores</span> <span class="pre">:=</span> <span class="pre">Cores,</span> <span class="pre">revision</span> <span class="pre">:=</span> <span class="pre">Revision,</span> <span class="pre">model</span> <span class="pre">:=</span> <span class="pre">Model}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Features</span></code> is a list of features enabled in the chip, from among the following atoms: <code class="docutils literal notranslate"><span class="pre">[emb_flash,</span> <span class="pre">bgn,</span> <span class="pre">ble,</span> <span class="pre">bt]</span></code>; <code class="docutils literal notranslate"><span class="pre">Cores</span></code> is the number of CPU cores on the chip; <code class="docutils literal notranslate"><span class="pre">Revision</span></code> is the chip version; and <code class="docutils literal notranslate"><span class="pre">Model</span></code> is one of the following atoms: <code class="docutils literal notranslate"><span class="pre">esp32</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_s2</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_s3</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_c3</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_free_heap_size</span></code> Returns the available free space in the ESP32 heap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_largest_free_block</span></code> Returns the size of the largest free continuous block in the ESP32 heap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_minimum_free_size</span></code> Returns the smallest ever free space available in the ESP32 heap since boot, this will tell you how close you have come to running out of free memory.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_chip_info</span></code> Returns map of the form <code class="docutils literal notranslate"><span class="pre">#{features</span> <span class="pre">:=</span> <span class="pre">Features,</span> <span class="pre">cores</span> <span class="pre">:=</span> <span class="pre">Cores,</span> <span class="pre">revision</span> <span class="pre">:=</span> <span class="pre">Revision,</span> <span class="pre">model</span> <span class="pre">:=</span> <span class="pre">Model}</span></code>, where <code class="docutils literal notranslate"><span class="pre">Features</span></code> is a list of features enabled in the chip, from among the following atoms: <code class="docutils literal notranslate"><span class="pre">[emb_flash,</span> <span class="pre">bgn,</span> <span class="pre">ble,</span> <span class="pre">bt]</span></code>; <code class="docutils literal notranslate"><span class="pre">Cores</span></code> is the number of CPU cores on the chip; <code class="docutils literal notranslate"><span class="pre">Revision</span></code> is the chip version; and <code class="docutils literal notranslate"><span class="pre">Model</span></code> is one of the following atoms: <code class="docutils literal notranslate"><span class="pre">esp32</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_s2</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_s3</span></code>, <code class="docutils literal notranslate"><span class="pre">esp32_c3</span></code>, etc.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">esp_idf_version</span></code> Return the IDF SDK version, as a string.</p></li>
 </ul>
 <p>For example,</p>
-<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">FreeHeapSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">erlang</span><span class="p">:</span><span class="nb">system_info</span><span class="p">(</span><span class="n">esp_free_heap_size</span><span class="p">).</span>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">FreeHeapSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">erlang</span><span class="p">:</span><span class="nb">system_info</span><span class="p">(</span><span class="n">esp32_free_heap_size</span><span class="p">).</span>
 </pre></div>
 </div>
 </section>
