@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module network &mdash; AtomVM 0.7.0-dev+git.52c34192 documentation</title>
+  <title>Module network &mdash; AtomVM 0.7.0-dev+git.eb406a82 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=48fe27ef"></script>
+        <script src="../../../_static/documentation_options.js?v=eda7d0fe"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -134,6 +134,12 @@
 <p><a name="types"></a></p>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
+<section id="ap-channel-cfg">
+<h3><a name="type-ap_channel_cfg">ap_channel_cfg()</a><a class="headerlink" href="#ap-channel-cfg" title="Link to this heading"></a></h3>
+<pre><code>
+ap_channel_cfg() = {ap_channel, <a href="#type-wifi_channel">wifi_channel()</a>}
+</code></pre>
+</section>
 <section id="ap-config">
 <h3><a name="type-ap_config">ap_config()</a><a class="headerlink" href="#ap-config" title="Link to this heading"></a></h3>
 <pre><code>
@@ -143,7 +149,7 @@ ap_config() = {ap, [<a href="#type-ap_config_property">ap_config_property()</a>]
 <section id="ap-config-property">
 <h3><a name="type-ap_config_property">ap_config_property()</a><a class="headerlink" href="#ap-config-property" title="Link to this heading"></a></h3>
 <pre><code>
-ap_config_property() = <a href="#type-ssid_config">ssid_config()</a> | <a href="#type-psk_config">psk_config()</a> | <a href="#type-ap_ssid_hidden_config">ap_ssid_hidden_config()</a> | <a href="#type-ap_max_connections_config">ap_max_connections_config()</a> | <a href="#type-ap_started_config">ap_started_config()</a> | <a href="#type-ap_sta_connected_config">ap_sta_connected_config()</a> | <a href="#type-ap_sta_disconnected_config">ap_sta_disconnected_config()</a> | <a href="#type-ap_sta_ip_assigned_config">ap_sta_ip_assigned_config()</a>
+ap_config_property() = <a href="#type-ssid_config">ssid_config()</a> | <a href="#type-psk_config">psk_config()</a> | <a href="#type-ap_channel_cfg">ap_channel_cfg()</a> | <a href="#type-ap_ssid_hidden_config">ap_ssid_hidden_config()</a> | <a href="#type-ap_max_connections_config">ap_max_connections_config()</a> | <a href="#type-ap_started_config">ap_started_config()</a> | <a href="#type-ap_sta_connected_config">ap_sta_connected_config()</a> | <a href="#type-ap_sta_disconnected_config">ap_sta_disconnected_config()</a> | <a href="#type-ap_sta_ip_assigned_config">ap_sta_ip_assigned_config()</a>
 </code></pre>
 </section>
 <section id="ap-max-connections-config">
@@ -193,6 +199,41 @@ db() = integer()
 <pre><code>
 dhcp_hostname_config() = {dhcp_hostname, string() | binary()}
 </code></pre>
+</section>
+<section id="ghz24-channel">
+<h3><a name="type-ghz24_channel">ghz24_channel()</a><a class="headerlink" href="#ghz24-channel" title="Link to this heading"></a></h3>
+<pre><code>
+ghz24_channel() = 1..14
+</code></pre>
+<p>This is the global 2.4 Ghz WiFI channel range, check your local jurisdiction for allowed channels in your geographic region.</p>
+</section>
+<section id="ghz5-160mhz-channel">
+<h3><a name="type-ghz5_160mhz_channel">ghz5_160mhz_channel()</a><a class="headerlink" href="#ghz5-160mhz-channel" title="Link to this heading"></a></h3>
+<pre><code>
+ghz5_160mhz_channel() = 50 | 82 | 114 | 163
+</code></pre>
+<p>This is the global 5 Ghz WiFI channel range when using 160Mhz bandwidth channels, check your local jurisdiction for allowed channels in your geographic region.</p>
+</section>
+<section id="ghz5-20mhz-channel">
+<h3><a name="type-ghz5_20mhz_channel">ghz5_20mhz_channel()</a><a class="headerlink" href="#ghz5-20mhz-channel" title="Link to this heading"></a></h3>
+<pre><code>
+ghz5_20mhz_channel() = 32 | 36 | 40 | 44 | 48 | 52 | 56 | 60 | 64 | 68 | 96 | 104 | 108 | 112 | 116 | 120 | 122 | 128 | 132 | 136 | 140 | 144 | 149 | 153 | 157 | 161 | 165 | 169 | 173 | 177
+</code></pre>
+<p>This is the global 5 Ghz WiFI channel range when using 20Mhz bandwidth channels, check your local jurisdiction for allowed channels in your geographic region.</p>
+</section>
+<section id="ghz5-40mhz-channel">
+<h3><a name="type-ghz5_40mhz_channel">ghz5_40mhz_channel()</a><a class="headerlink" href="#ghz5-40mhz-channel" title="Link to this heading"></a></h3>
+<pre><code>
+ghz5_40mhz_channel() = 38 | 46 | 54 | 62 | 102 | 110 | 118 | 126 | 134 | 142 | 151 | 159 | 167 | 175
+</code></pre>
+<p>This is the global 5 Ghz WiFI channel range when using 40Mhz bandwidth channels, check your local jurisdiction for allowed channels in your geographic region.</p>
+</section>
+<section id="ghz5-80mhz-channel">
+<h3><a name="type-ghz5_80mhz_channel">ghz5_80mhz_channel()</a><a class="headerlink" href="#ghz5-80mhz-channel" title="Link to this heading"></a></h3>
+<pre><code>
+ghz5_80mhz_channel() = 42 | 58 | 74 | 90 | 106 | 122 | 138 | 155 | 171
+</code></pre>
+<p>This is the global 5 Ghz WiFI channel range when using 80Mhz bandwidth channels, check your local jurisdiction for allowed channels in your geographic region.</p>
 </section>
 <section id="ip-info">
 <h3><a name="type-ip_info">ip_info()</a><a class="headerlink" href="#ip-info" title="Link to this heading"></a></h3>
@@ -294,6 +335,12 @@ sta_disconnected_config() = {disconnected, fun(() -&gt; term())}
 <h3><a name="type-sta_got_ip_config">sta_got_ip_config()</a><a class="headerlink" href="#sta-got-ip-config" title="Link to this heading"></a></h3>
 <pre><code>
 sta_got_ip_config() = {got_ip, fun((<a href="#type-ip_info">ip_info()</a>) -&gt; term())}
+</code></pre>
+</section>
+<section id="wifi-channel">
+<h3><a name="type-wifi_channel">wifi_channel()</a><a class="headerlink" href="#wifi-channel" title="Link to this heading"></a></h3>
+<pre><code>
+wifi_channel() = <a href="#type-ghz24_channel">ghz24_channel()</a> | <a href="#type-ghz5_20mhz_channel">ghz5_20mhz_channel()</a> | <a href="#type-ghz5_40mhz_channel">ghz5_40mhz_channel()</a> | <a href="#type-ghz5_80mhz_channel">ghz5_80mhz_channel()</a> | <a href="#type-ghz5_160mhz_channel">ghz5_160mhz_channel()</a>
 </code></pre>
 <p><a name="index"></a></p>
 </section>
