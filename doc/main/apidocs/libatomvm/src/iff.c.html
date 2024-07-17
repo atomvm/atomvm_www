@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>iff.c &mdash; AtomVM 0.7.0-dev+git.8b294df5 documentation</title>
+  <title>iff.c &mdash; AtomVM 0.6.3+git.6d64f678 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=31841927"></script>
+        <script src="../../../_static/documentation_options.js?v=e5f84fac"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -92,10 +92,6 @@
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ets.h.html">ets.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ets_hashtable.c.html">ets_hashtable.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ets_hashtable.h.html">ets_hashtable.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="exportedfunction.h.html">exportedfunction.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="externalterm.c.html">externalterm.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="externalterm.h.html">externalterm.h</a></li>
@@ -131,8 +127,6 @@
 <li class="toctree-l4"><a class="reference internal" href="platform_nifs.h.html">platform_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="port.c.html">port.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="port.h.html">port.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="portnifloader.c.html">portnifloader.c</a></li>
-<li class="toctree-l4"><a class="reference internal" href="portnifloader.h.html">portnifloader.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="posix_nifs.c.html">posix_nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="posix_nifs.h.html">posix_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.c.html">refc_binary.c</a></li>
@@ -200,29 +194,27 @@
 </div>
 <p>Include dependency graph for iff.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-230fa571be814d2d3c49c4ddd706e9d30ec6d2f7.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-b0aa4edf079ad82632559f284362507da2d1aebf.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;3&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
     &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/iff.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/iff.c&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;2&quot; [label=&quot;iff.h&quot; tooltip=&quot;iff.h&quot;]
-    &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
-    &quot;8&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
-    &quot;5&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;6&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
-    &quot;9&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
-    &quot;7&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;3&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
+    &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
+    &quot;4&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;5&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;5&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;5&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;4&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -235,8 +227,8 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.iff_is_valid_beam">
-<span class="target" id="libatomvmiff_8c_1a007ea68a116ebb5d5cf625d7365b5bd8"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iff_is_valid_beam</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">beam_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.iff_is_valid_beam" title="Link to this definition"></a><br /></dt>
-<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if pointed binary is valid BEAM IFF. </p>
+<span class="target" id="libatomvmiff_8c_1a934100a550a6d7bed8c9e0820358d626"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">iff_is_valid_beam</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">beam_data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.iff_is_valid_beam" title="Link to this definition"></a><br /></dt>
+<dd><p>Returns 1 if pointed binary is valid BEAM IFF. </p>
 <p>Checks if the pointed binary has a valid BEAM IFF header. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -245,7 +237,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if beam_data points to a valid binary, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code> is returned. </p>
+<dd class="field-even"><p>1 if beam_data points to a valid binary, otherwise 0 is returned. </p>
 </dd>
 </dl>
 </dd></dl>

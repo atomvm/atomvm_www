@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module lists &mdash; AtomVM 0.7.0-dev+git.8b294df5 documentation</title>
+  <title>Module lists &mdash; AtomVM 0.6.3+git.6d64f678 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=31841927"></script>
+        <script src="../../../_static/documentation_options.js?v=e5f84fac"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -75,7 +75,6 @@
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erlang.html">Module erlang</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ets.html">Module ets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_server.html">Module gen_server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_statem.html">Module gen_statem</a></li>
@@ -90,6 +89,7 @@
 <li class="toctree-l4"><a class="reference internal" href="math.html">Module math</a></li>
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
+<li class="toctree-l4"><a class="reference internal" href="queue.html">Module queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="socket.html">Module socket</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
@@ -151,7 +151,8 @@ interface.<a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all-2">all/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for all E in List.</td></tr><tr><td valign="top"><a href="#any-2">any/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for some E in List.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Remove E from L.</td></tr><tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>    Duplicate an element.</td></tr><tr><td valign="top"><a href="#filter-2">filter/2</a></td><td>    Filter a list by a predicate, returning the list of elements
-for which the predicate is true.</td></tr><tr><td valign="top"><a href="#flatten-1">flatten/1</a></td><td>    recursively flattens elements of L into a single list.</td></tr><tr><td valign="top"><a href="#foldl-3">foldl/3</a></td><td>    Fold over a list of terms, from left to right, applying Fun(E, Accum)
+for which the predicate is true.</td></tr><tr><td valign="top"><a href="#filtermap-2">filtermap/2</a></td><td>    Calls <code>Fun(Elem)</code> on successive elements <code>Elem</code> of <code>List1</code> in order to update or
+remove elements from <code>List1</code>.</td></tr><tr><td valign="top"><a href="#flatten-1">flatten/1</a></td><td>    recursively flattens elements of L into a single list.</td></tr><tr><td valign="top"><a href="#foldl-3">foldl/3</a></td><td>    Fold over a list of terms, from left to right, applying Fun(E, Accum)
 to each successive element in List.</td></tr><tr><td valign="top"><a href="#foldr-3">foldr/3</a></td><td>    Fold over a list of terms, from right to left, applying Fun(E, Accum)
 to each successive element in List.</td></tr><tr><td valign="top"><a href="#foreach-2">foreach/2</a></td><td>    Applies given fun to each list element.</td></tr><tr><td valign="top"><a href="#join-2">join/2</a></td><td>    Inserts Sep between every element of List.</td></tr><tr><td valign="top"><a href="#keydelete-3">keydelete/3</a></td><td>    Delete the entry in L whose Ith element matches K.</td></tr><tr><td valign="top"><a href="#keyfind-3">keyfind/3</a></td><td>    Find the entry in L whose Ith element matches K.</td></tr><tr><td valign="top"><a href="#keymember-3">keymember/3</a></td><td>    Returns true if a Ith element matches K.</td></tr><tr><td valign="top"><a href="#keyreplace-4">keyreplace/4</a></td><td>    Returns the result of replacing NewTuple for the first element in L with who's Ith element matches K.</td></tr><tr><td valign="top"><a href="#keystore-4">keystore/4</a></td><td>    Searches the list of tuples <code>TupleList</code> for a tuple whose <code>N</code>th
 element compares equal to <code>Key</code>, replaces it with <code>NewTuple</code> if
@@ -218,6 +219,24 @@ filter(Pred::fun((Elem::term()) -&gt; boolean()), List::list()) -&gt; list()
 <p>returns: all values in L for which Pred is true.</p>
 <p>Filter a list by a predicate, returning the list of elements
 for which the predicate is true.</p>
+<p><a name="filtermap-2"></a></p>
+</section>
+<section id="filtermap-2">
+<h3>filtermap/2<a class="headerlink" href="#filtermap-2" title="Link to this heading"></a></h3>
+<pre><code>
+filtermap(Fun, List1) -&gt; List2
+</code></pre>
+<ul class="definitions"><li><code>Fun = fun((Elem) -&gt; boolean() | {true, Value})</code></li><li><code>List1 = [Elem]</code></li><li><code>List2 = [Elem | Value]</code></li><li><code>Elem = term()</code></li><li><code>Value = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Fun</span></code>: the filter/map fun<br /><code class="docutils literal notranslate"><span class="pre">List1</span></code>: the list where given fun will be applied<br /></p>
+<p>returns: Returns the result of application of given fun over given list items</p>
+<p>Calls <code class="docutils literal notranslate"><span class="pre">Fun(Elem)</span></code> on successive elements <code class="docutils literal notranslate"><span class="pre">Elem</span></code> of <code class="docutils literal notranslate"><span class="pre">List1</span></code> in order to update or
+remove elements from <code class="docutils literal notranslate"><span class="pre">List1</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Fun/1</span></code> must return either a Boolean or a tuple <code class="docutils literal notranslate"><span class="pre">{true,</span> <span class="pre">Value}</span></code>. The function
+returns the list of elements for which <code class="docutils literal notranslate"><span class="pre">Fun</span></code> returns a new value, where a value
+of <code class="docutils literal notranslate"><span class="pre">true</span></code> is synonymous with <code class="docutils literal notranslate"><span class="pre">{true,</span> <span class="pre">Elem}</span></code>.</p>
+<p>Example:
+<code class="docutils literal notranslate"><span class="pre">1&gt;</span> <span class="pre">lists:filtermap(fun(X)</span> <span class="pre">-&gt;</span> <span class="pre">case</span> <span class="pre">X</span> <span class="pre">rem</span> <span class="pre">2</span> <span class="pre">of</span> <span class="pre">0</span> <span class="pre">-&gt;</span> <span class="pre">{true,</span> <span class="pre">X</span> <span class="pre">div</span> <span class="pre">2};</span> <span class="pre">_</span> <span class="pre">-&gt;</span> <span class="pre">false</span> <span class="pre">end</span> <span class="pre">end,</span> <span class="pre">[1,2,3,4,5]).</span></code>
+<code class="docutils literal notranslate"><span class="pre">[1,2]</span></code></p>
 <p><a name="flatten-1"></a></p>
 </section>
 <section id="flatten-1">
