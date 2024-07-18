@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>term.h &mdash; AtomVM 0.6.3+git.6d64f678 documentation</title>
+  <title>term.h &mdash; AtomVM 0.6.3+git.423be731 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=e5f84fac"></script>
+        <script src="../../../_static/documentation_options.js?v=949e2639"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -2152,6 +2152,22 @@
 <dd></dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term_truncate_boxed">
+<span class="target" id="libatomvmterm_8h_1ac2bd8d712c5ea0181a5c6460fec8d50b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_truncate_boxed</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">boxed</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">new_size</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_truncate_boxed" title="Link to this definition"></a><br /></dt>
+<dd><p>truncates last allocated boxed term to given size </p>
+<p>This function can be used to shrink last allocated boxed term </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>boxed</strong> – the boxed term that will be shrinked (it must be the last allocated) </p></li>
+<li><p><strong>new_size</strong> – in terms </p></li>
+<li><p><strong>heap</strong> – the heap where the term has been allocated </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term_is_map">
 <span class="target" id="libatomvmterm_8h_1a1141723463128a9da3456c98790aab38"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_map</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_is_map" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -2209,6 +2225,11 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term_get_map_value">
 <span class="target" id="libatomvmterm_8h_1a2160b851defde1c86debf196ea0c5bce"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_map_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.avm_uint_t" title="avm_uint_t"><span class="n"><span class="pre">avm_uint_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">pos</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_get_map_value" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term_set_map_value">
+<span class="target" id="libatomvmterm_8h_1a1709466bd651d3be8119c73f7333abc7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_set_map_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.avm_uint_t" title="avm_uint_t"><span class="n"><span class="pre">avm_uint_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">pos</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_set_map_value" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
