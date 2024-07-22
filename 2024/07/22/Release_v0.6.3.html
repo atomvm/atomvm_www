@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" class="html" data-theme="dark"><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>
+    
+      Announcing AtomVM v0.6.3
+    
+  </title>
+
+  <!-- Begin Jekyll SEO tag v2.7.3 -->
+<meta name="generator" content="Jekyll v4.2.2" />
+<meta property="og:title" content="Announcing AtomVM v0.6.3" />
+<meta name="author" content="atomvm.net" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="2024/07/22 Announcing AtomVM v0.6.3 We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine! This release expands OTP coverage to include the Erlang sets and queue modules and several Elixir Keyword functions: Keyword.merge, Keyword.take, Keyword.pop(!), Keyword.keyword?, and Keyword.has_key?. Support for ~kp with io_lib:format/2 and maps:iterator/2 that were introduced with OTP26 have added, along with maps:from_keys/2. The lists modules gains support for lists:keytake/3, lists:keystore/4, and lists:filtermap/2. Support for erlang:size/1 and erlang:apply/2 has also been added. A simple http client, that can be used for different use cases, such as downloading OTA updates has been added to eavmlib. The channel used in access point mode can now be changed in the network driver. This release adds support for ESP32-H2 devices. Support has also been added for USB serial output on ESP32 devices with native USB support (ESP32-S2 for example). Notable changes include: the default size of ESP32 RTC slow memory being bumped from 4086 to 4096, except on ESP32-H2 where it’s 3072 bytes updates to byte_size/1 and bit_size/1 to implement OTP27 match context reuse optimization OTP-18987 ESP32 network driver messages for event 40 (home channel change events) are now suppressed, but the details for the channel changes can be observed in the console log if “debug” level logging is enabled in ESP-IDF Kconfig options. Several bugs have been fixed, including the creation of multiple links for the same process and links not being removed at trapped exits. A bug affecting binary pattern matching (for builds with OTP-21) has been fixed, and several memory related bugs have been corrected, as well as a bug that could yield crashes when functions are sent in messages. The error that is raised when a function is undefined has also been fixed. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32, are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. MacOS users also have the option of installing with macports, and an updated HomeBrew tap should be available in the near future. The “tap” is currently out of date, but a fix has already been submitted. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.3 release of the AtomVM virtual machine, including a Getting Started Guide, can be found in the AtomVM Documentation. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating and maintaining such a fine work of software. Special thanks also to takasehideki and Mikael Karlsson for their first contributions to the project :tada , along with the rest of the contributors and testers who have helped make this release possible. The AtomVM team" />
+<meta property="og:description" content="2024/07/22 Announcing AtomVM v0.6.3 We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine! This release expands OTP coverage to include the Erlang sets and queue modules and several Elixir Keyword functions: Keyword.merge, Keyword.take, Keyword.pop(!), Keyword.keyword?, and Keyword.has_key?. Support for ~kp with io_lib:format/2 and maps:iterator/2 that were introduced with OTP26 have added, along with maps:from_keys/2. The lists modules gains support for lists:keytake/3, lists:keystore/4, and lists:filtermap/2. Support for erlang:size/1 and erlang:apply/2 has also been added. A simple http client, that can be used for different use cases, such as downloading OTA updates has been added to eavmlib. The channel used in access point mode can now be changed in the network driver. This release adds support for ESP32-H2 devices. Support has also been added for USB serial output on ESP32 devices with native USB support (ESP32-S2 for example). Notable changes include: the default size of ESP32 RTC slow memory being bumped from 4086 to 4096, except on ESP32-H2 where it’s 3072 bytes updates to byte_size/1 and bit_size/1 to implement OTP27 match context reuse optimization OTP-18987 ESP32 network driver messages for event 40 (home channel change events) are now suppressed, but the details for the channel changes can be observed in the console log if “debug” level logging is enabled in ESP-IDF Kconfig options. Several bugs have been fixed, including the creation of multiple links for the same process and links not being removed at trapped exits. A bug affecting binary pattern matching (for builds with OTP-21) has been fixed, and several memory related bugs have been corrected, as well as a bug that could yield crashes when functions are sent in messages. The error that is raised when a function is undefined has also been fixed. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32, are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. MacOS users also have the option of installing with macports, and an updated HomeBrew tap should be available in the near future. The “tap” is currently out of date, but a fix has already been submitted. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.3 release of the AtomVM virtual machine, including a Getting Started Guide, can be found in the AtomVM Documentation. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating and maintaining such a fine work of software. Special thanks also to takasehideki and Mikael Karlsson for their first contributions to the project :tada , along with the rest of the contributors and testers who have helped make this release possible. The AtomVM team" />
+<link rel="canonical" href="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html" />
+<meta property="og:url" content="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html" />
+<meta property="og:site_name" content="AtomVM" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-22T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Announcing AtomVM v0.6.3" />
+<meta name="twitter:site" content="@abhinav" />
+<meta name="twitter:creator" content="@atomvm.net" />
+<script type="application/ld+json">
+{"datePublished":"2024-07-22T00:00:00+00:00","dateModified":"2024-07-22T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.atomvm.net/2024/07/22/Release_v0.6.3.html"},"author":{"@type":"Person","name":"atomvm.net"},"@type":"BlogPosting","description":"2024/07/22 Announcing AtomVM v0.6.3 We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine! This release expands OTP coverage to include the Erlang sets and queue modules and several Elixir Keyword functions: Keyword.merge, Keyword.take, Keyword.pop(!), Keyword.keyword?, and Keyword.has_key?. Support for ~kp with io_lib:format/2 and maps:iterator/2 that were introduced with OTP26 have added, along with maps:from_keys/2. The lists modules gains support for lists:keytake/3, lists:keystore/4, and lists:filtermap/2. Support for erlang:size/1 and erlang:apply/2 has also been added. A simple http client, that can be used for different use cases, such as downloading OTA updates has been added to eavmlib. The channel used in access point mode can now be changed in the network driver. This release adds support for ESP32-H2 devices. Support has also been added for USB serial output on ESP32 devices with native USB support (ESP32-S2 for example). Notable changes include: the default size of ESP32 RTC slow memory being bumped from 4086 to 4096, except on ESP32-H2 where it’s 3072 bytes updates to byte_size/1 and bit_size/1 to implement OTP27 match context reuse optimization OTP-18987 ESP32 network driver messages for event 40 (home channel change events) are now suppressed, but the details for the channel changes can be observed in the console log if “debug” level logging is enabled in ESP-IDF Kconfig options. Several bugs have been fixed, including the creation of multiple links for the same process and links not being removed at trapped exits. A bug affecting binary pattern matching (for builds with OTP-21) has been fixed, and several memory related bugs have been corrected, as well as a bug that could yield crashes when functions are sent in messages. The error that is raised when a function is undefined has also been fixed. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32, are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. MacOS users also have the option of installing with macports, and an updated HomeBrew tap should be available in the near future. The “tap” is currently out of date, but a fix has already been submitted. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.3 release of the AtomVM virtual machine, including a Getting Started Guide, can be found in the AtomVM Documentation. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating and maintaining such a fine work of software. Special thanks also to takasehideki and Mikael Karlsson for their first contributions to the project :tada , along with the rest of the contributors and testers who have helped make this release possible. The AtomVM team","url":"https://www.atomvm.net/2024/07/22/Release_v0.6.3.html","headline":"Announcing AtomVM v0.6.3","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link type="application/atom+xml" rel="alternate" href="https://www.atomvm.net/feed.xml" title="AtomVM" />
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+  <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#00aba9">
+  <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+  <!-- Favicon -->
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  
+    <script type="text/javascript">
+  window.addEventListener('load', themeChange);
+  const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+  if (currentTheme)
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+  function themeChange() {
+    let button = document.querySelector('.theme-toggle');
+
+    button.addEventListener('click', function (e) {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+      } else {
+        transition();
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    let transition = () => {
+      document.documentElement.classList.add('transition');
+      window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+      }, 1000);
+    }
+  }
+</script>
+
+
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon/favicon.ico" /> -->
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
+<link rel="manifest" href="/assets/images/favicon/site.webmanifest">
+<link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+</head>
+<body>
+    <main class="page-content" aria-label="Content">
+      <div class="w">
+        <a href="/">home..</a>
+<h1 class="post-title">Announcing AtomVM v0.6.3</h1>
+<p class="post-date text-bold">
+  
+  
+    <span class="text-upcase">July 2024</span>
+  
+
+
+  
+  
+  (375 Words, 
+  3 Minutes)
+  
+
+</p>
+
+<div class="soopr-btn"
+   data-twitter="SooprCo"
+>
+</div>
+
+
+  <div class="">
+    
+  </div>
+
+
+<h2 id="20240722-announcing-atomvm-v063">2024/07/22 Announcing AtomVM v0.6.3</h2>
+
+<p>We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine!</p>
+
+<p>This release expands OTP coverage to include the Erlang <code class="language-plaintext highlighter-rouge">sets</code> and <code class="language-plaintext highlighter-rouge">queue</code> modules and several
+Elixir <code class="language-plaintext highlighter-rouge">Keyword</code> functions: <code class="language-plaintext highlighter-rouge">Keyword.merge</code>, <code class="language-plaintext highlighter-rouge">Keyword.take</code>, <code class="language-plaintext highlighter-rouge">Keyword.pop(!)</code>, <code class="language-plaintext highlighter-rouge">Keyword.keyword?</code>,
+and <code class="language-plaintext highlighter-rouge">Keyword.has_key?</code>. Support for <code class="language-plaintext highlighter-rouge">~kp</code> with <code class="language-plaintext highlighter-rouge">io_lib:format/2</code> and <code class="language-plaintext highlighter-rouge">maps:iterator/2</code> that were
+introduced with OTP26 have added, along with <code class="language-plaintext highlighter-rouge">maps:from_keys/2</code>. The <code class="language-plaintext highlighter-rouge">lists</code> modules gains support
+for <code class="language-plaintext highlighter-rouge">lists:keytake/3</code>, <code class="language-plaintext highlighter-rouge">lists:keystore/4</code>, and <code class="language-plaintext highlighter-rouge">lists:filtermap/2</code>. Support for <code class="language-plaintext highlighter-rouge">erlang:size/1</code> and
+<code class="language-plaintext highlighter-rouge">erlang:apply/2</code> has also been added.</p>
+
+<p>A simple <a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/ahttp_client.html">http client</a>,
+that can be used for different use cases, such as downloading OTA updates has been added to
+<a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/README.html"><code class="language-plaintext highlighter-rouge">eavmlib</code></a>.</p>
+
+<p>The <a href="https://www.atomvm.net/doc/v0.6.3/network-programming-guide.html#ap-mode">channel used in access point mode</a>
+can now be changed in the
+<a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/network.html"><code class="language-plaintext highlighter-rouge">network</code></a> driver.</p>
+
+<p>This release adds support for <a href="https://www.espressif.com/en/products/socs/esp32-h2">ESP32-H2</a>
+devices. Support has also been added for USB serial output on ESP32 devices with native USB support
+(ESP32-S2 for example).</p>
+
+<p>Notable changes include:</p>
+<ul>
+  <li>the default size of ESP32 RTC slow memory being bumped from 4086 to 4096, except on ESP32-H2
+where it’s 3072 bytes</li>
+  <li>updates to <code class="language-plaintext highlighter-rouge">byte_size/1</code> and <code class="language-plaintext highlighter-rouge">bit_size/1</code> to implement OTP27 match context reuse optimization
+OTP-18987</li>
+  <li>ESP32 network driver messages for event 40 (home channel change events) are now suppressed,
+but the details for the channel changes can be observed in the console log if “debug” level
+logging is enabled in ESP-IDF Kconfig options.</li>
+</ul>
+
+<p>Several bugs have been fixed, including the creation of multiple links for the same process and
+links not being removed at trapped exits. A bug affecting binary pattern matching (for builds with
+OTP-21) has been fixed, and several memory related bugs have been corrected, as well as a bug that
+could yield crashes when functions are sent in messages. The error that is raised when a function
+is undefined has also been fixed.</p>
+
+<p>For the full set of bug fixes, changes and additions consult the
+<a href="https://www.atomvm.net/doc/v0.6.3/CHANGELOG.html">Changelog</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32, are available from
+<a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.3">AtomVM Releases on GitHub</a>. STM32 users as
+well as anyone needing to build a generic_unix port for a device without release binaries should
+consult the <a href="https://www.atomvm.net/doc/v0.6.3/build-instructions.html">Build Instructions</a>. MacOS
+users also have the option of
+<a href="https://www.atomvm.net/doc/v0.6.3/getting-started-guide.html#installation-on-macos">installing with <code class="language-plaintext highlighter-rouge">macports</code></a>,
+and an updated HomeBrew tap should be available in the near future. The “tap” is currently out of date, but a fix
+has already been submitted.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our
+<a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.3 release of the AtomVM virtual machine, including a
+<a href="https://www.atomvm.net/doc/v0.6.3/getting-started-guide.html">Getting Started Guide</a>, can be found in the
+<a href="https://www.atomvm.net/doc/v0.6.3/">AtomVM Documentation</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the
+<a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating and maintaining such a
+fine work of software. Special thanks also to <a href="https://github.com/takasehideki">takasehideki</a> and
+<a href="https://github.com/karlsson">Mikael Karlsson</a> for their first contributions to the project :tada ,
+along with the rest of the  <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and
+<a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+
+        
+          <button title="Toggle Theme" class="theme-toggle">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentcolor">
+    <circle cx="16" cy="16" r="14" fill="none" stroke="currentcolor" stroke-width="4"></circle>
+    <path d="
+             M 16 0
+             A 16 16 0 0 0 16 32
+             z">
+    </path>
+  </svg>
+</button>
+
+        
+        <div class="credits">&copy;&nbsp;2024&nbsp;atomvm.net
+          &nbsp;
+          •
+          &nbsp;Theme&nbsp; <a href="https://github.com/abhinavs/moonwalk" target="_blank" rel="noreferrer">Moonwalk</a>
+        </div>
+      </div>
+    </main></body>
+</html>

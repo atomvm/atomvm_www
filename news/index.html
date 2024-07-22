@@ -96,6 +96,80 @@ See README.md for instructions on adding a news post
 <ul>
   
     <li>
+      <a href="/2024/07/22/Release_v0.6.3.html">Announcing AtomVM v0.6.3</a>
+      <h2 id="20240722-announcing-atomvm-v063">2024/07/22 Announcing AtomVM v0.6.3</h2>
+
+<p>We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine!</p>
+
+<p>This release expands OTP coverage to include the Erlang <code class="language-plaintext highlighter-rouge">sets</code> and <code class="language-plaintext highlighter-rouge">queue</code> modules and several
+Elixir <code class="language-plaintext highlighter-rouge">Keyword</code> functions: <code class="language-plaintext highlighter-rouge">Keyword.merge</code>, <code class="language-plaintext highlighter-rouge">Keyword.take</code>, <code class="language-plaintext highlighter-rouge">Keyword.pop(!)</code>, <code class="language-plaintext highlighter-rouge">Keyword.keyword?</code>,
+and <code class="language-plaintext highlighter-rouge">Keyword.has_key?</code>. Support for <code class="language-plaintext highlighter-rouge">~kp</code> with <code class="language-plaintext highlighter-rouge">io_lib:format/2</code> and <code class="language-plaintext highlighter-rouge">maps:iterator/2</code> that were
+introduced with OTP26 have added, along with <code class="language-plaintext highlighter-rouge">maps:from_keys/2</code>. The <code class="language-plaintext highlighter-rouge">lists</code> modules gains support
+for <code class="language-plaintext highlighter-rouge">lists:keytake/3</code>, <code class="language-plaintext highlighter-rouge">lists:keystore/4</code>, and <code class="language-plaintext highlighter-rouge">lists:filtermap/2</code>. Support for <code class="language-plaintext highlighter-rouge">erlang:size/1</code> and
+<code class="language-plaintext highlighter-rouge">erlang:apply/2</code> has also been added.</p>
+
+<p>A simple <a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/ahttp_client.html">http client</a>,
+that can be used for different use cases, such as downloading OTA updates has been added to
+<a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/README.html"><code class="language-plaintext highlighter-rouge">eavmlib</code></a>.</p>
+
+<p>The <a href="https://www.atomvm.net/doc/v0.6.3/network-programming-guide.html#ap-mode">channel used in access point mode</a>
+can now be changed in the
+<a href="https://www.atomvm.net/doc/v0.6.3/apidocs/erlang/eavmlib/network.html"><code class="language-plaintext highlighter-rouge">network</code></a> driver.</p>
+
+<p>This release adds support for <a href="https://www.espressif.com/en/products/socs/esp32-h2">ESP32-H2</a>
+devices. Support has also been added for USB serial output on ESP32 devices with native USB support
+(ESP32-S2 for example).</p>
+
+<p>Notable changes include:</p>
+<ul>
+  <li>the default size of ESP32 RTC slow memory being bumped from 4086 to 4096, except on ESP32-H2
+where it’s 3072 bytes</li>
+  <li>updates to <code class="language-plaintext highlighter-rouge">byte_size/1</code> and <code class="language-plaintext highlighter-rouge">bit_size/1</code> to implement OTP27 match context reuse optimization
+OTP-18987</li>
+  <li>ESP32 network driver messages for event 40 (home channel change events) are now suppressed,
+but the details for the channel changes can be observed in the console log if “debug” level
+logging is enabled in ESP-IDF Kconfig options.</li>
+</ul>
+
+<p>Several bugs have been fixed, including the creation of multiple links for the same process and
+links not being removed at trapped exits. A bug affecting binary pattern matching (for builds with
+OTP-21) has been fixed, and several memory related bugs have been corrected, as well as a bug that
+could yield crashes when functions are sent in messages. The error that is raised when a function
+is undefined has also been fixed.</p>
+
+<p>For the full set of bug fixes, changes and additions consult the
+<a href="https://www.atomvm.net/doc/v0.6.3/CHANGELOG.html">Changelog</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32, are available from
+<a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.3">AtomVM Releases on GitHub</a>. STM32 users as
+well as anyone needing to build a generic_unix port for a device without release binaries should
+consult the <a href="https://www.atomvm.net/doc/v0.6.3/build-instructions.html">Build Instructions</a>. MacOS
+users also have the option of
+<a href="https://www.atomvm.net/doc/v0.6.3/getting-started-guide.html#installation-on-macos">installing with <code class="language-plaintext highlighter-rouge">macports</code></a>,
+and an updated HomeBrew tap should be available in the near future. The “tap” is currently out of date, but a fix
+has already been submitted.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our
+<a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.3 release of the AtomVM virtual machine, including a
+<a href="https://www.atomvm.net/doc/v0.6.3/getting-started-guide.html">Getting Started Guide</a>, can be found in the
+<a href="https://www.atomvm.net/doc/v0.6.3/">AtomVM Documentation</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the
+<a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating and maintaining such a
+fine work of software. Special thanks also to <a href="https://github.com/takasehideki">takasehideki</a> and
+<a href="https://github.com/karlsson">Mikael Karlsson</a> for their first contributions to the project :tada ,
+along with the rest of the  <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and
+<a href="https://github.com/atomvm/AtomVM/issues">testers who have helped make this release possible</a>.</p>
+
+<p>The AtomVM team</p>
+
+    </li>
+  
+    <li>
       <a href="/2024/05/29/Release_v0.6.2.html">Announcing AtomVM v0.6.2</a>
       <h2 id="20240529-announcing-atomvm-v062">2024/05/29 Announcing AtomVM v0.6.2</h2>
 
