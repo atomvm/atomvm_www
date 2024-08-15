@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>otp_socket.h &mdash; AtomVM 0.6.4+git.b284f385 documentation</title>
+  <title>otp_socket.h &mdash; AtomVM 0.6.4+git.a2390604 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2e36ff7"></script>
+        <script src="../../../_static/documentation_options.js?v=00786cbb"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -114,7 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -133,7 +131,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -141,7 +138,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -315,22 +311,22 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.SocketErrors">
-<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketErrors</span></span></span><a class="headerlink" href="#c.libAtomVM.SocketErrors" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.SocketErrors">
+<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketErrors</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.SocketErrors" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.SocketErrors.SocketClosed">
-<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a9d05b4feb8467cdb436d83243edbc907"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketClosed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.SocketErrors.SocketClosed" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.SocketErrors.SocketClosed">
+<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a9d05b4feb8467cdb436d83243edbc907"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketClosed</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.SocketErrors.SocketClosed" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.SocketErrors.SocketWouldBlock">
-<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a367f7d6bc71ac3fcbbd712152e823c95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketWouldBlock</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.SocketErrors.SocketWouldBlock" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.SocketErrors.SocketWouldBlock">
+<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a367f7d6bc71ac3fcbbd712152e823c95"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketWouldBlock</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.SocketErrors.SocketWouldBlock" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.SocketErrors.SocketOtherError">
-<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a53d582ba65080b896c7c5b047f3b9e6c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketOtherError</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.SocketErrors.SocketOtherError" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.SocketErrors.SocketOtherError">
+<span class="target" id="libatomvmotp__socket_8h_1affee9abf0ddb47e6f1ae4c76b1aff0b2a53d582ba65080b896c7c5b047f3b9e6c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SocketOtherError</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.SocketErrors.SocketOtherError" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -339,18 +335,18 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.otp_socket_nif_get_nif">
-<span class="target" id="libatomvmotp__socket_8h_1a80e44e491b07bbe74664ab16703f6d65"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Nif" title="Nif"><span class="n"><span class="pre">Nif</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_nif_get_nif</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">nifname</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.otp_socket_nif_get_nif">
+<span class="target" id="libatomvmotp__socket_8h_1a80e44e491b07bbe74664ab16703f6d65"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_nif_get_nif</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">nifname</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.otp_socket_nif_get_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.otp_socket_init">
-<span class="target" id="libatomvmotp__socket_8h_1afba2882565ffd01d24744550c0a8e08d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.otp_socket_init">
+<span class="target" id="libatomvmotp__socket_8h_1afba2882565ffd01d24744550c0a8e08d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_init</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.otp_socket_init" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_to_otp_socket">
-<span class="target" id="libatomvmotp__socket_8h_1ab02a6c1223069172dc71d254e9707b7e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_otp_socket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">socket_term</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">otp_socket</span></span>, <a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.term_to_otp_socket">
+<span class="target" id="libatomvmotp__socket_8h_1ab02a6c1223069172dc71d254e9707b7e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_otp_socket</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">socket_term</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">otp_socket</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.term_to_otp_socket" title="Link to this definition"></a><br /></dt>
 <dd><p>Get the resource object associated with a socket term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -367,8 +363,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_is_otp_socket">
-<span class="target" id="libatomvmotp__socket_8h_1afe2256b3bbeae7b41bb7da5992216d42"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_otp_socket</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">socket_term</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.term_is_otp_socket">
+<span class="target" id="libatomvmotp__socket_8h_1afe2256b3bbeae7b41bb7da5992216d42"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_otp_socket</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">socket_term</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.term_is_otp_socket" title="Link to this definition"></a><br /></dt>
 <dd><p>Determine if a term is a socket term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -383,8 +379,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.socket_send">
-<span class="target" id="libatomvmotp__socket_8h_1a57240b1ef53dc763965393a57e85f701"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">socket</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.socket_send">
+<span class="target" id="libatomvmotp__socket_8h_1a57240b1ef53dc763965393a57e85f701"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">socket</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.socket_send" title="Link to this definition"></a><br /></dt>
 <dd><p>Send data to a socket (without blocking) </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -402,8 +398,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.socket_recv">
-<span class="target" id="libatomvmotp__socket_8h_1ad3aaa3d1743b316c9cac57b50fbf375b"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_recv</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">socket</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">from</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.socket_recv">
+<span class="target" id="libatomvmotp__socket_8h_1ad3aaa3d1743b316c9cac57b50fbf375b"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_recv</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">socket</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">from</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.socket_recv" title="Link to this definition"></a><br /></dt>
 <dd><p>Read data from a socket. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -422,7 +418,195 @@
 </dl>
 </dd></dl>
 
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.otp_socket_lwip_enqueue">
+<span class="target" id="libatomvmotp__socket_8h_1ab1a1367216e9b10ee8633e606368ec4d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">otp_socket_lwip_enqueue</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.otp_socket_lwip_enqueue" title="Link to this definition"></a><br /></dt>
+<dd><p>Enqueue an event to be processed in task context. </p>
+<p>
+This function must be implemented in otp_socket_platform.c. Platforms using lwIP implementation may have lwIP callbacks coming from ISR and in such case need to implement a queue mechanism to process them in task context. <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context"><span class="std std-ref">GlobalContext</span></a> is not always available in lwIP callbacks so platforms using a queue need a global variable. If lwIP callbacks are not called from ISR, calling handler with the event is sufficient. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event</strong> – the event to enqueue</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent">
+<span class="target" id="libatomvmstruct_l_w_i_p_event"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LWIPEvent</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;otp_socket.h&gt;</em></div>
+<p>Collaboration diagram for LWIPEvent:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-dee84cbe0e3f9c5e944170ffdc62b3dd1ac0f63b.png" alt="digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;20&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;12&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;14&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
+    &quot;3&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;10&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
+    &quot;4&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;16&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;9&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;19&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;17&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;6&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;5&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;18&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;11&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;1&quot; [label=&quot;LWIPEvent&quot; tooltip=&quot;LWIPEvent&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;2&quot; [label=&quot;SocketResource&quot; tooltip=&quot;SocketResource&quot;]
+    &quot;7&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;15&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;13&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;8&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;12&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+}" class="graphviz" /></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.handler">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a277ce0df8b9bfd1fb7eef0c4b7d2cb08"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">handler</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">event</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.handler" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.rsrc_obj">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1ab88bd4e6c057a6ec567c95ac452d4842"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SocketResource</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">rsrc_obj</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.rsrc_obj" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.newpcb">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1aa7560674de95930be8e57e6106a225fe"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">tcp_pcb</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">newpcb</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.newpcb" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.tcp_accept">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1af038e0f10167cbdc817b64f72a439637"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_accept</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_accept" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.tpcb">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a02ecfb2cb4c04ceb0cada153380cccf2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">tcp_pcb</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">tpcb</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tpcb" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.buf">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a08803934063404a378e01d63420bfe9d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">pbuf</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buf</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.buf" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.err">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a47baa2c329edd9121d1f3ac808196ccf"></span><span class="n"><span class="pre">err_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">err</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.err" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.tcp_recv">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a60966f7d9184277302a575a3021f9c21"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_recv" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.addr">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a9bce607e37eee27ffdf2591d670c3586"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">addr</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.addr" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.port">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a57bd9330946115cdb7528722c567907b"></span><span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">port</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.port" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.udp_recv">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a87c201b72d3ec0028b6667a7dc86f977"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.udp_recv" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.global">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1aa19e437eb3d18929a1603faf4eb09199"></span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">global</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.global" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.target_pid">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a4faf3ff5d51a9d0bb0bcb8b7f8bcc069"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">target_pid</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.target_pid" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_ok">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a2d7f541945720b9d20f22154b9529ef5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_ok</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_ok" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_closed">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a97fc9563483d3147a1250c1752aa2b4f"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_closed</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_closed" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.finalize_close">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a7c6afb1fd9ba59e1b312b986f313d300"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize_close</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.finalize_close" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.callback_arg">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a3dd49f7b7bfd568af42a591caaa231c8"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">callback_arg</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.callback_arg" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.success">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1aac6bfe642e0ab69b875078b6913a94a1"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">success</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.success" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a75880dd4645cbaa430c790bbcb6cf22e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dns_gethostbyname</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.&#64;12">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1ae796f8f57fdaf33806069d812c4ede3f"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.@12" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
 </section>
 
 
@@ -462,14 +646,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v:  branch (unreleased)
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+       branch (unreleased)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -523,7 +707,7 @@
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc//pdf/AtomVM-.pdf">pdf</a></dd>
         

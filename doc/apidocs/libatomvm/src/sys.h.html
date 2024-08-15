@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sys.h &mdash; AtomVM 0.6.4+git.b284f385 documentation</title>
+  <title>sys.h &mdash; AtomVM 0.6.4+git.a2390604 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2e36ff7"></script>
+        <script src="../../../_static/documentation_options.js?v=00786cbb"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -114,7 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -133,7 +131,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -141,7 +138,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -311,11 +307,10 @@
 </figure>
 <p>This graph shows which files directly or indirectly include sys.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-eacf499d82a74a483920ad4f18b73397ce80e519.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-8b3bbbe7dbbb8bfe7b94d9c3da73fc58b992bd5e.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;8&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/scheduler.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/scheduler.c&quot;]
     &quot;2&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/context.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/context.c&quot;]
     &quot;4&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
     &quot;7&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
@@ -329,7 +324,6 @@
     &quot;1&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -338,15 +332,15 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="c type">
-<dt class="sig sig-object c" id="c.libAtomVM.EventListener">
-<span class="target" id="libatomvmsys_8h_1ac544ff53d6f7affdcc93e58538a1702a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EventListener</span></span></span><a class="headerlink" href="#c.libAtomVM.EventListener" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.EventListener">
+<span class="target" id="libatomvmsys_8h_1ac544ff53d6f7affdcc93e58538a1702a"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.sys.h.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">EventListener</span></span></span><a class="headerlink" href="#c.libAtomVM.sys.h.EventListener" title="Link to this definition"></a><br /></dt>
 <dd><p>Event listener. </p>
 <p>An event listener structure should be defined by the platform. Event listeners belong to the <code class="docutils literal notranslate"><a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_global_context_1a9219a7e5d9396ea0141e1612cf5cff48"><span class="std std-ref"><span class="pre">GlobalContext.listeners</span></span></a></code> synchronized list. </p>
 </dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.libAtomVM.event_handler_t">
-<span class="target" id="libatomvmsys_8h_1aa264b48d0e98aa3fbf7255b3958dd3fc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_handler_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.event_handler_t" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.event_handler_t">
+<span class="target" id="libatomvmsys_8h_1aa264b48d0e98aa3fbf7255b3958dd3fc"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.sys.h.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">event_handler_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.sys.h.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.event_handler_t" title="Link to this definition"></a><br /></dt>
 <dd><p>Event handlers (for ports) </p>
 <p>The event handler is called from the scheduler thread but outside any process. It can send messages to processes using <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message</span></code> function.</p>
 <p>Result of this callback alters the list of handlers which is locked for writing when it is called. It can:<ul class="simple">
@@ -374,53 +368,53 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.&#64;9">
-<span class="target" id="libatomvmsys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.@9" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.&#64;20">
+<span class="target" id="libatomvmsys_8h_1adb49720dc49f7d4e4cf9adbf2948e409"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.sys.h.@20" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.&#64;9.SYS_POLL_EVENTS_DO_NOT_WAIT">
-<span class="target" id="libatomvmsys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57a91b5ea3292a67ea0b5f1f814b32625ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.@9.SYS_POLL_EVENTS_DO_NOT_WAIT" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.&#64;20.SYS_POLL_EVENTS_DO_NOT_WAIT">
+<span class="target" id="libatomvmsys_8h_1adb49720dc49f7d4e4cf9adbf2948e409a91b5ea3292a67ea0b5f1f814b32625ad"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.@20.SYS_POLL_EVENTS_DO_NOT_WAIT" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.&#64;9.SYS_POLL_EVENTS_WAIT_FOREVER">
-<span class="target" id="libatomvmsys_8h_1ab04a0655cd1e3bcac5e8f48c18df1a57a47e43a38d2014c9a9fc78347330c3ded"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.@9.SYS_POLL_EVENTS_WAIT_FOREVER" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.&#64;20.SYS_POLL_EVENTS_WAIT_FOREVER">
+<span class="target" id="libatomvmsys_8h_1adb49720dc49f7d4e4cf9adbf2948e409a47e43a38d2014c9a9fc78347330c3ded"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="o"><span class="pre">-</span></span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.@20.SYS_POLL_EVENTS_WAIT_FOREVER" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenAVMResult</span></span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">OpenAVMResult</span></span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_OK">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aac15d372726476d62ee4c3495a6c138b2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_OK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_OK" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_OK">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aac15d372726476d62ee4c3495a6c138b2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_OK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_OK" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_FAILED_ALLOC">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aa830c5c214094ba785ff215529f6a0a65"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_FAILED_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_FAILED_ALLOC" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_FAILED_ALLOC">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aa830c5c214094ba785ff215529f6a0a65"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_FAILED_ALLOC</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_FAILED_ALLOC" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_INVALID">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaf6c7f84fc8b3a05f7cf71b99e2bb0827"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_INVALID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_INVALID" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_INVALID">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaf6c7f84fc8b3a05f7cf71b99e2bb0827"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_INVALID</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_INVALID" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_CANNOT_OPEN">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaa8f97d475193d37a6f6a9d2669be63d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_CANNOT_OPEN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_CANNOT_OPEN" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_CANNOT_OPEN">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaa8f97d475193d37a6f6a9d2669be63d6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_CANNOT_OPEN</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">3</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_CANNOT_OPEN" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_CANNOT_READ">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaf3535598e3de136c1c027360f79a7e98"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_CANNOT_READ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_CANNOT_READ" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_CANNOT_READ">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aaf3535598e3de136c1c027360f79a7e98"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_CANNOT_READ</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">4</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_CANNOT_READ" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.OpenAVMResult.AVM_OPEN_NOT_SUPPORTED">
-<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aa3f909a1e427fe9b8feb367343e2cdffc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_NOT_SUPPORTED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#c.libAtomVM.OpenAVMResult.AVM_OPEN_NOT_SUPPORTED" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_NOT_SUPPORTED">
+<span class="target" id="libatomvmsys_8h_1a271673c2a3455ae579f3bfe492e98b4aa3f909a1e427fe9b8feb367343e2cdffc"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AVM_OPEN_NOT_SUPPORTED</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">5</span></span><a class="headerlink" href="#c.libAtomVM.sys.h.OpenAVMResult.AVM_OPEN_NOT_SUPPORTED" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -429,8 +423,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_poll_events">
-<span class="target" id="libatomvmsys_8h_1a08afcd2c2575b364a30426ea0062b0e4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_poll_events</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">timeout_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_poll_events" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_poll_events">
+<span class="target" id="libatomvmsys_8h_1a08afcd2c2575b364a30426ea0062b0e4"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_poll_events</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">timeout_ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_poll_events" title="Link to this definition"></a><br /></dt>
 <dd><p>Poll events (from drivers and select events), with a timeout (in ms), or until <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> is called. </p>
 <p>Depending on platforms, check all open file descriptors/queues and call drivers that should send messages to contexts (which will unblock them). With SMP builds, this function can be called from any scheduler.</p>
 <p>If selectable events are supported on the platform, this function should also:<ul class="simple">
@@ -450,8 +444,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_register_select_event">
-<span class="target" id="libatomvmsys_8h_1aa4f09ccbbabd8523af97169ccbfbb093"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_register_select_event" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_register_select_event">
+<span class="target" id="libatomvmsys_8h_1aa4f09ccbbabd8523af97169ccbfbb093"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">ErlNifEvent</span></span><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_register_select_event" title="Link to this definition"></a><br /></dt>
 <dd><p>Update the select set by adding an event for reading or writing. </p>
 <p>This function probably should update set and call <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> so new set is taken into account.</p>
 <dl class="field-list simple">
@@ -466,8 +460,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_unregister_select_event">
-<span class="target" id="libatomvmsys_8h_1a742c2c5e8b93c885d2e6c286993e8711"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <a class="reference internal" href="erl_nif.h.html#c.libAtomVM.ErlNifEvent" title="ErlNifEvent"><span class="n"><span class="pre">ErlNifEvent</span></span></a><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_unregister_select_event" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_unregister_select_event">
+<span class="target" id="libatomvmsys_8h_1a742c2c5e8b93c885d2e6c286993e8711"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_select_event</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">ErlNifEvent</span></span><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_write</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_unregister_select_event" title="Link to this definition"></a><br /></dt>
 <dd><p>Update the select set by removing an event for reading or writing. </p>
 <p>This function probably should update set and call <code class="docutils literal notranslate"><span class="pre">sys_signal</span></code> so new set is taken into account. After this function is called, <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> must check for closed select events.</p>
 <dl class="field-list simple">
@@ -482,8 +476,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_register_listener">
-<span class="target" id="libatomvmsys_8h_1ac7b7db052990bcae1c3960b29b908cf7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <a class="reference internal" href="#c.libAtomVM.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_register_listener" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_register_listener">
+<span class="target" id="libatomvmsys_8h_1ac7b7db052990bcae1c3960b29b908cf7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_register_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <a class="reference internal" href="#c.libAtomVM.sys.h.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_register_listener" title="Link to this definition"></a><br /></dt>
 <dd><p>Register a listener. </p>
 <p>This function is called by ports to register a listener which is a native alternative to select events. The actual definition of listeners is platform dependent.</p>
 <dl class="field-list simple">
@@ -497,8 +491,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_unregister_listener">
-<span class="target" id="libatomvmsys_8h_1a9e226610fbb47c05444cbef9357db5b3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <a class="reference internal" href="#c.libAtomVM.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_unregister_listener" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_unregister_listener">
+<span class="target" id="libatomvmsys_8h_1a9e226610fbb47c05444cbef9357db5b3"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_unregister_listener</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <a class="reference internal" href="#c.libAtomVM.sys.h.EventListener" title="EventListener"><span class="n"><span class="pre">EventListener</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">listener</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_unregister_listener" title="Link to this definition"></a><br /></dt>
 <dd><p>Unregister a listener. </p>
 <p>This function is called by ports to unregister a listener which is a native alternative to select events. The actual definition of listeners is platform dependent.</p>
 <dl class="field-list simple">
@@ -512,8 +506,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_listener_destroy">
-<span class="target" id="libatomvmsys_8h_1aa964190388e51e054170f047ea7ab076"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_listener_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="list.h.html#c.libAtomVM.ListHead" title="ListHead"><span class="n"><span class="pre">ListHead</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_listener_destroy" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_listener_destroy">
+<span class="target" id="libatomvmsys_8h_1aa964190388e51e054170f047ea7ab076"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_listener_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ListHead</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_listener_destroy" title="Link to this definition"></a><br /></dt>
 <dd><p>Free a listener. </p>
 <p>This function is called when the global context is destroyed on every remaining listener. An implementation is available in <code class="docutils literal notranslate"><span class="pre">listeners.h</span></code>.</p>
 <dl class="field-list simple">
@@ -526,8 +520,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_signal">
-<span class="target" id="libatomvmsys_8h_1ad373b27d5d7364accaf66a1762a1cd72"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_signal" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_signal">
+<span class="target" id="libatomvmsys_8h_1ad373b27d5d7364accaf66a1762a1cd72"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_signal" title="Link to this definition"></a><br /></dt>
 <dd><p>Interrupt the wait in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>. </p>
 <p>This function should signal the thread that is waiting in <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> so it returns before the timeout. It is mostly used for SMP builds, but also to abort sleep from driver callbacks on FreeRTOS.</p>
 <p>Please note that this function may be called while no thread is waiting in sys_poll_events and this should have no effect. This function is called in scheduler loop (internal function <code class="docutils literal notranslate"><span class="pre">scheduler_run0</span></code>) and when scheduling processes.</p>
@@ -541,13 +535,13 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_open_avm_from_file">
-<span class="target" id="libatomvmsys_8h_1a233ade1ed94995c576f395d229fb6bad"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.OpenAVMResult" title="OpenAVMResult"><span class="n"><span class="pre">OpenAVMResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_open_avm_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="avmpack.h.html#c.libAtomVM.AVMPackData" title="AVMPackData"><span class="n"><span class="pre">AVMPackData</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_open_avm_from_file" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_open_avm_from_file">
+<span class="target" id="libatomvmsys_8h_1a233ade1ed94995c576f395d229fb6bad"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.sys.h.OpenAVMResult" title="OpenAVMResult"><span class="n"><span class="pre">OpenAVMResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_open_avm_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">AVMPackData</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_open_avm_from_file" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_time">
-<span class="target" id="libatomvmsys_8h_1a3c35c7b6c0ff3c0401f6b8e45ed17d26"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_time" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_time">
+<span class="target" id="libatomvmsys_8h_1a3c35c7b6c0ff3c0401f6b8e45ed17d26"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_time" title="Link to this definition"></a><br /></dt>
 <dd><p>gets wall clock time </p>
 <p>gets system wall clock time, used by <code class="docutils literal notranslate"><span class="pre">erlang:system_time/1</span></code> </p>
 <dl class="field-list simple">
@@ -560,8 +554,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_monotonic_time">
-<span class="target" id="libatomvmsys_8h_1a55b857f3c7de74a921d9bf4584f36867"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_monotonic_time" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_monotonic_time">
+<span class="target" id="libatomvmsys_8h_1a55b857f3c7de74a921d9bf4584f36867"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">timespec</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_monotonic_time" title="Link to this definition"></a><br /></dt>
 <dd><p>gets monotonic time </p>
 <p>gets the time that is used by <code class="docutils literal notranslate"><span class="pre">erlang:monotonic_time/1</span></code> </p>
 <dl class="field-list simple">
@@ -574,8 +568,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_monotonic_time_u64">
-<span class="target" id="libatomvmsys_8h_1afa3b8cc61790e4d7c99a5582a6861d92"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_u64</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_monotonic_time_u64" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_monotonic_time_u64">
+<span class="target" id="libatomvmsys_8h_1afa3b8cc61790e4d7c99a5582a6861d92"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_u64</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_monotonic_time_u64" title="Link to this definition"></a><br /></dt>
 <dd><p>gets monotonic time for timers </p>
 <p>This function must return a non-overflowing counter in the highest precision the platform permits to make sure that we don’t have truncation errors when compared with sys_time or sys_monotonic_time. Returning the number of microseconds or nanoseconds since boot would work.</p>
 <dl class="field-list simple">
@@ -586,8 +580,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_monotonic_time_ms_to_u64">
-<span class="target" id="libatomvmsys_8h_1ab14bbc97773835c2d8b613ba025f8db8"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_ms_to_u64</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_monotonic_time_ms_to_u64" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_monotonic_time_ms_to_u64">
+<span class="target" id="libatomvmsys_8h_1ab14bbc97773835c2d8b613ba025f8db8"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_ms_to_u64</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ms</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_monotonic_time_ms_to_u64" title="Link to this definition"></a><br /></dt>
 <dd><p>convert a number of milliseconds to system-chosen unit </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -602,8 +596,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_monotonic_time_u64_to_ms">
-<span class="target" id="libatomvmsys_8h_1a61aceb5e055c2e25e3cfaaba93416198"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_u64_to_ms</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_monotonic_time_u64_to_ms" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_monotonic_time_u64_to_ms">
+<span class="target" id="libatomvmsys_8h_1a61aceb5e055c2e25e3cfaaba93416198"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_monotonic_time_u64_to_ms</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_monotonic_time_u64_to_ms" title="Link to this definition"></a><br /></dt>
 <dd><p>convert a number in system-chosen unit to milliseconds </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -618,8 +612,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_load_module">
-<span class="target" id="libatomvmsys_8h_1a0ce28625e5d39c550f71fdd7e7f0891c"></span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_load_module" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_load_module">
+<span class="target" id="libatomvmsys_8h_1a0ce28625e5d39c550f71fdd7e7f0891c"></span><a class="reference internal" href="../../../atomvm-internals.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">module_name</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_load_module" title="Link to this definition"></a><br /></dt>
 <dd><p>Loads a BEAM module using platform dependent methods. </p>
 <p>Loads a BEAM module into memory using platform dependent methods and returns a pointer to a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_module"><span class="std std-ref">Module</span></a> struct. </p>
 <dl class="field-list simple">
@@ -633,13 +627,13 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_load_module_from_file">
-<span class="target" id="libatomvmsys_8h_1af8e4b5086ab22d8ccc2105b8837f321a"></span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_load_module_from_file" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_load_module_from_file">
+<span class="target" id="libatomvmsys_8h_1af8e4b5086ab22d8ccc2105b8837f321a"></span><a class="reference internal" href="../../../atomvm-internals.html#c.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_load_module_from_file</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">path</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_load_module_from_file" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_create_port">
-<span class="target" id="libatomvmsys_8h_1a3636cbb632253e6146bd3c57c5fd30c1"></span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_create_port</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">driver_name</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_create_port" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_create_port">
+<span class="target" id="libatomvmsys_8h_1a3636cbb632253e6146bd3c57c5fd30c1"></span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">sys_create_port</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">driver_name</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_create_port" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a port driver. </p>
 <p>This function creates a port driver, encapsulated in a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object. This function should create a <a class="reference internal" href="../../../atomvm-internals.html#libatomvmstruct_context"><span class="std std-ref">Context</span></a> object through the supplied global context, which will assume ownership of the new instance. </p>
 <dl class="field-list simple">
@@ -657,8 +651,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_get_info">
-<span class="target" id="libatomvmsys_8h_1a0ba0d315b0fd073464228451df3db80e"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_get_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_get_info" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_get_info">
+<span class="target" id="libatomvmsys_8h_1a0ba0d315b0fd073464228451df3db80e"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_get_info</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_get_info" title="Link to this definition"></a><br /></dt>
 <dd><p>Get platform-dependent information for the specified key. </p>
 <p>This function returns platform-dependent information specified by the supplied key. If not information is available for the specified key, this function should return the atom ‘undefined’ </p>
 <dl class="field-list simple">
@@ -675,14 +669,14 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_init_platform">
-<span class="target" id="libatomvmsys_8h_1a61111673aa3ce5d3a6fb6c8b2c8e2f60"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_init_platform</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_init_platform" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_init_platform">
+<span class="target" id="libatomvmsys_8h_1a61111673aa3ce5d3a6fb6c8b2c8e2f60"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_init_platform</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_init_platform" title="Link to this definition"></a><br /></dt>
 <dd><p>Initialize the platform, setting global-&gt;platform_data. </p>
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.sys_free_platform">
-<span class="target" id="libatomvmsys_8h_1a0f279c47141788bebc349721bea68fdb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_free_platform</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys_free_platform" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.sys.h.sys_free_platform">
+<span class="target" id="libatomvmsys_8h_1a0f279c47141788bebc349721bea68fdb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">sys_free_platform</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.sys.h.sys_free_platform" title="Link to this definition"></a><br /></dt>
 <dd><p>Free the platform data structure. </p>
 <p>Cleanup the platform data structure. Called by global_context_destroy. </p>
 </dd></dl>
@@ -727,14 +721,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v:  branch (unreleased)
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+       branch (unreleased)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -788,7 +782,7 @@
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc//pdf/AtomVM-.pdf">pdf</a></dd>
         

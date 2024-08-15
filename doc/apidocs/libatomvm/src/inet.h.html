@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>inet.h &mdash; AtomVM 0.6.4+git.b284f385 documentation</title>
+  <title>inet.h &mdash; AtomVM 0.6.4+git.a2390604 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2e36ff7"></script>
+        <script src="../../../_static/documentation_options.js?v=00786cbb"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -114,7 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -133,7 +131,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -141,7 +138,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -314,72 +310,72 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.INET_ADDR4_TUPLE_SIZE">
-<span class="target" id="libatomvminet_8h_1afa51b5c96c3e7dcb90044ad581e7de3e"></span><span class="sig-name descname"><span class="n"><span class="pre">INET_ADDR4_TUPLE_SIZE</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a476d7e8af59a33c4b1a710660e8edd61"><span class="std std-ref"><span class="pre">TUPLE_SIZE</span></span></a><span class="pre">(4)</span><a class="headerlink" href="#c.libAtomVM.INET_ADDR4_TUPLE_SIZE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.INET_ADDR4_TUPLE_SIZE">
+<span class="target" id="libatomvminet_8h_1afa51b5c96c3e7dcb90044ad581e7de3e"></span><span class="sig-name descname"><span class="n"><span class="pre">INET_ADDR4_TUPLE_SIZE</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a476d7e8af59a33c4b1a710660e8edd61"><span class="std std-ref"><span class="pre">TUPLE_SIZE</span></span></a><span class="pre">(4)</span><a class="headerlink" href="#c.libAtomVM.inet.h.INET_ADDR4_TUPLE_SIZE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_domain">
-<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_domain</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_domain" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_domain">
+<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596d"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_domain</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_domain" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_domain.InetInvalidDomain">
-<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596da2b3d308f0f2a582e730b5f8973ea5cd9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidDomain</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet_domain.InetInvalidDomain" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_domain.InetInvalidDomain">
+<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596da2b3d308f0f2a582e730b5f8973ea5cd9"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidDomain</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_domain.InetInvalidDomain" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_domain.InetDomain">
-<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596dae9cc993b737fa48a898742b58f7955b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetDomain</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_domain.InetDomain" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_domain.InetDomain">
+<span class="target" id="libatomvminet_8h_1a9d7802aa1f0de19c270447309179596dae9cc993b737fa48a898742b58f7955b5"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetDomain</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_domain.InetDomain" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_type">
-<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_type</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_type" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_type">
+<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_type</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_type" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_type.InetInvalidType">
-<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0af53b09615c1393ebd6b7b61620ee2044"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet_type.InetInvalidType" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_type.InetInvalidType">
+<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0af53b09615c1393ebd6b7b61620ee2044"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidType</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_type.InetInvalidType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_type.InetStreamType">
-<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0a1048a5b5300ff76b41b1d52c83c2c840"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetStreamType</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_type.InetStreamType" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_type.InetStreamType">
+<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0a1048a5b5300ff76b41b1d52c83c2c840"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetStreamType</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_type.InetStreamType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_type.InetDgramType">
-<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0abba4ce93d0917349a4ff73e94fed41c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetDgramType</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_type.InetDgramType" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_type.InetDgramType">
+<span class="target" id="libatomvminet_8h_1ac386e0e4d2ec0c72939c9259db3347e0abba4ce93d0917349a4ff73e94fed41c1"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetDgramType</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_type.InetDgramType" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_protocol">
-<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_protocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_protocol" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_protocol">
+<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_protocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_protocol" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_protocol.InetInvalidProtocol">
-<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754af1c489256116a8d4059c4e153e44632c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidProtocol</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet_protocol.InetInvalidProtocol" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_protocol.InetInvalidProtocol">
+<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754af1c489256116a8d4059c4e153e44632c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetInvalidProtocol</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_protocol.InetInvalidProtocol" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_protocol.InetIpProtocol">
-<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754a25146ffe7206661791f3869b56f6e2de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetIpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_protocol.InetIpProtocol" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_protocol.InetIpProtocol">
+<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754a25146ffe7206661791f3869b56f6e2de"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetIpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_protocol.InetIpProtocol" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_protocol.InetTcpProtocol">
-<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754ab9b586c9d7d14844ae05e95e45f0855f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetTcpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_protocol.InetTcpProtocol" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_protocol.InetTcpProtocol">
+<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754ab9b586c9d7d14844ae05e95e45f0855f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetTcpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_protocol.InetTcpProtocol" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_protocol.InetUdpProtocol">
-<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754a2c35147a0a62a021e8aa90558a71688d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetUdpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet_protocol.InetUdpProtocol" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_protocol.InetUdpProtocol">
+<span class="target" id="libatomvminet_8h_1a4b9bebf2bd24c5c9711611edb443f754a2c35147a0a62a021e8aa90558a71688d"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InetUdpProtocol</span></span></span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_protocol.InetUdpProtocol" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -388,8 +384,8 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_atom_to_domain">
-<span class="target" id="libatomvminet_8h_1a95fe18ab5a4d4841338f5d136e2b0e80"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet_domain" title="inet_domain"><span class="n"><span class="pre">inet_domain</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_domain</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">domain</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_atom_to_domain">
+<span class="target" id="libatomvminet_8h_1a95fe18ab5a4d4841338f5d136e2b0e80"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet.h.inet_domain" title="inet_domain"><span class="n"><span class="pre">inet_domain</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_domain</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">domain</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_atom_to_domain" title="Link to this definition"></a><br /></dt>
 <dd><p>Parse an inet domain atom. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -405,8 +401,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_atom_to_type">
-<span class="target" id="libatomvminet_8h_1ad74a69112e52f002d158225adac915d5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet_type" title="inet_type"><span class="n"><span class="pre">inet_type</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_type</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_atom_to_type">
+<span class="target" id="libatomvminet_8h_1ad74a69112e52f002d158225adac915d5"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet.h.inet_type" title="inet_type"><span class="n"><span class="pre">inet_type</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_type</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_atom_to_type" title="Link to this definition"></a><br /></dt>
 <dd><p>Parse an inet type. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -422,8 +418,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_atom_to_protocol">
-<span class="target" id="libatomvminet_8h_1ab45a415fec649dbb2ed974c763def202"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet_protocol" title="inet_protocol"><span class="n"><span class="pre">inet_protocol</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_protocol</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">protocol</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_atom_to_protocol">
+<span class="target" id="libatomvminet_8h_1ab45a415fec649dbb2ed974c763def202"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.inet.h.inet_protocol" title="inet_protocol"><span class="n"><span class="pre">inet_protocol</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_atom_to_protocol</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">protocol</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_atom_to_protocol" title="Link to this definition"></a><br /></dt>
 <dd><p>Parse an inet protocol. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -439,8 +435,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_addr4_to_uint32">
-<span class="target" id="libatomvminet_8h_1a0e364b039ff17d79d7a5f6bf675a1c3a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_addr4_to_uint32</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">addr_tuple</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_addr4_to_uint32">
+<span class="target" id="libatomvminet_8h_1a0e364b039ff17d79d7a5f6bf675a1c3a"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_addr4_to_uint32</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">addr_tuple</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_addr4_to_uint32" title="Link to this definition"></a><br /></dt>
 <dd><p>Parse an inet IPv4 address tuple. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -455,8 +451,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.inet_make_addr4">
-<span class="target" id="libatomvminet_8h_1a3a25a294db2e4f06451ef32a832c4adf"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_make_addr4</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">addr</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.inet.h.inet_make_addr4">
+<span class="target" id="libatomvminet_8h_1a3a25a294db2e4f06451ef32a832c4adf"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inet_make_addr4</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">addr</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.inet.h.inet_make_addr4" title="Link to this definition"></a><br /></dt>
 <dd><p>Make an inet IPv4 address tuple. </p>
 <p>
 this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the heap. </p>
@@ -513,14 +509,14 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v:  branch (unreleased)
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+       branch (unreleased)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -574,7 +570,7 @@ this function requires that at least INET_ADDR4_TUPLE_SIZE terms are free on the
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc//pdf/AtomVM-.pdf">pdf</a></dd>
         

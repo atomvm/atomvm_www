@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.6.4+git.b284f385 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.6.4+git.a2390604 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=c2e36ff7"></script>
+        <script src="_static/documentation_options.js?v=00786cbb"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -71,6 +71,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#contexts">Contexts</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#the-scheduler">The Scheduler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tasks-and-synchronization-mechanisms">Tasks and synchronization mechanisms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#mailboxes-and-signals">Mailboxes and signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#stacktraces">Stacktraces</a><ul>
@@ -80,7 +81,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#the-line-ref-offsets-list">The line-ref-offsets list</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#raw-stacktraces">Raw Stacktraces</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#atomvm-webassembly-port">AtomVM WebAssembly port</a><ul>
@@ -160,43 +160,59 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <span class="target" id="libatomvmstruct_global_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><a class="headerlink" href="#c.GlobalContext" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for GlobalContext:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-caf19c5c2db6a6be84ec07485c2a331c4498e891.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-a7d2b39cbd9b1e69874b1598c222277450048582.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;7&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
-    &quot;6&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;18&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;9&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;12&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
+    &quot;10&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;7&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
     &quot;1&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;4&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
-    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;2&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
-    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
-    &quot;5&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;3&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;14&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;6&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;17&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;15&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;2&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;16&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;8&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;4&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;13&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;11&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;5&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;9&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -220,6 +236,16 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dl class="c var">
 <dt class="sig sig-object c" id="c.GlobalContext.processes_spinlock">
 <span class="target" id="libatomvmstruct_global_context_1a12ca12420125fa259f729acb824050c5"></span><span class="n"><span class="pre">SpinLock</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">processes_spinlock</span></span></span><a class="headerlink" href="#c.GlobalContext.processes_spinlock" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.message_queue">
+<span class="target" id="libatomvmstruct_global_context_1ab39e4517e206471ae77524bab7fc54f8"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">MessageQueueItem</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">message_queue</span></span></span><a class="headerlink" href="#c.GlobalContext.message_queue" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.refc_queue">
+<span class="target" id="libatomvmstruct_global_context_1ab7da580a8b492f6e4d911254f9bcb1ee"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">RefcBinaryQueueItem</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">refc_queue</span></span></span><a class="headerlink" href="#c.GlobalContext.refc_queue" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -308,8 +334,8 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c">
-<span class="target" id="libatomvmstruct_global_context_1af6425d477baffd3b179c831b2b2593c4"></span><span class="sig-name descname"><span class="pre">int</span> <span class="pre">ATOMIC</span> <span class="pre">online_schedulers</span></span></dt>
+<dt class="sig sig-object c" id="c.GlobalContext.online_schedulers">
+<span class="target" id="libatomvmstruct_global_context_1a212d4255ff7c995c91505cb2cbb65aa2"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">online_schedulers</span></span></span><a class="headerlink" href="#c.GlobalContext.online_schedulers" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -318,8 +344,8 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c">
-<span class="target" id="libatomvmstruct_global_context_1aef0ead296062ec02652a8a01ee698bcc"></span><span class="sig-name descname"><span class="pre">bool</span> <span class="pre">ATOMIC</span> <span class="pre">waiting_scheduler</span></span></dt>
+<dt class="sig sig-object c" id="c.GlobalContext.waiting_scheduler">
+<span class="target" id="libatomvmstruct_global_context_1a5b9d0ec2a9b8d9d7d2c56aac09c75fce"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">waiting_scheduler</span></span></span><a class="headerlink" href="#c.GlobalContext.waiting_scheduler" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -333,8 +359,8 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c">
-<span class="target" id="libatomvmstruct_global_context_1a11890c49efc66434d8f09514bfc28aa6"></span><span class="sig-name descname"><span class="pre">bool</span> <span class="pre">ATOMIC</span> <span class="pre">scheduler_stop_all</span></span></dt>
+<dt class="sig sig-object c" id="c.GlobalContext.scheduler_stop_all">
+<span class="target" id="libatomvmstruct_global_context_1a22b7f8eae29a7f0b69c3bd5800202222"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">scheduler_stop_all</span></span></span><a class="headerlink" href="#c.GlobalContext.scheduler_stop_all" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -411,45 +437,55 @@ size of a struct, therefore, is determined simply by the size of the component f
 <span class="target" id="libatomvmstruct_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#c.Context" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for Context:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-35bf9d49dfc11ca7a48171a6a1430e407018c2f9.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-e3cb947a02905aa84b7016cf3efcc18ea54582d5.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;19&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;23&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;19&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;11&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;17&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
     &quot;12&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
     &quot;8&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;15&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
-    &quot;18&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;16&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;22&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
     &quot;9&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
     &quot;10&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;17&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;13&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;21&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;18&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
     &quot;2&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;13&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;14&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;16&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;14&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;20&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;15&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;19&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -459,13 +495,17 @@ size of a struct, therefore, is determined simply by the size of the component f
     &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;21&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -488,7 +528,7 @@ size of a struct, therefore, is determined simply by the size of the component f
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.Context.x">
-<span class="target" id="libatomvmstruct_context_1a61524fa509f110a3dfbc310dd98aa404"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">x</span></span></span><span class="p"><span class="pre">[</span></span><span class="n"><span class="pre">MAX_REG</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#c.Context.x" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_context_1a54c62db44f41fa7fd29c602ac69fd75f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">x</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">16</span></span><span class="w"> </span><span class="o"><span class="pre">+</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#c.Context.x" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -602,8 +642,33 @@ size of a struct, therefore, is determined simply by the size of the component f
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c">
-<span class="target" id="libatomvmstruct_context_1aab748d6f6fa18955b7529a051c82b964"></span><span class="sig-name descname"><span class="pre">enum</span> <span class="pre">ContextFlags</span> <span class="pre">ATOMIC</span> <span class="pre">flags</span></span></dt>
+<dt class="sig sig-object c" id="c.Context.trace_calls">
+<span class="target" id="libatomvmstruct_context_1aff0d67c5a35410c5fbfb67a385d77a1e"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trace_calls</span></span></span><a class="headerlink" href="#c.Context.trace_calls" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Context.trace_call_args">
+<span class="target" id="libatomvmstruct_context_1a6a5562646544b79528beb229dc7367cd"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trace_call_args</span></span></span><a class="headerlink" href="#c.Context.trace_call_args" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Context.trace_returns">
+<span class="target" id="libatomvmstruct_context_1a05d91adde03bea58705cfd326ec4d6f7"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trace_returns</span></span></span><a class="headerlink" href="#c.Context.trace_returns" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Context.trace_send">
+<span class="target" id="libatomvmstruct_context_1af4100e2f0fa37ff023f316bb4b5c5cc9"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trace_send</span></span></span><a class="headerlink" href="#c.Context.trace_send" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Context.trace_receive">
+<span class="target" id="libatomvmstruct_context_1ac3478aeb7119d6e9725c8dcf85265e14"></span><span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trace_receive</span></span></span><a class="headerlink" href="#c.Context.trace_receive" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Context.flags">
+<span class="target" id="libatomvmstruct_context_1a2ec3cefa6ed0787cbe8f88414cbc0f65"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.ContextFlags" title="ContextFlags"><span class="n"><span class="pre">ContextFlags</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">flags</span></span></span><a class="headerlink" href="#c.Context.flags" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -643,9 +708,11 @@ size of a struct, therefore, is determined simply by the size of the component f
 ## Function Calls and Return Values
 
 ## Exception Handling
-
-## The Scheduler
 -->
+</section>
+</section>
+<section id="the-scheduler">
+<h2>The Scheduler<a class="headerlink" href="#the-scheduler" title="Link to this heading"></a></h2>
 <p>In SMP builds, AtomVM runs one scheduler thread per core.  Scheduler threads are actually started on demand.  The number of scheduler threads can be queried with <a class="reference internal" href="apidocs/erlang/estdlib/erlang.html#system-info-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">erlang:system_info/1</span></code></span></a> and be modified with <a class="reference internal" href="apidocs/erlang/estdlib/erlang.html#system-flag-2"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">erlang:system_flag/2</span></code></span></a>.  All scheduler threads are considered equal and there is no notion of main thread except when shutting down (main thread is shut down last).</p>
 <p>Each scheduler thread picks a ready process and execute it until it yields.  Erlang processes yield when they are waiting (for a message) and after a number of reductions elapsed.  Native processes yield when they are done consuming messages (when the handler returns).</p>
 <p>Once a scheduler thread is done executing a process, if no other thread is waiting into <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code>, it calls <code class="docutils literal notranslate"><span class="pre">sys_poll_events</span></code> with a timeout that correspond to the time to wait for next execution.  If there are ready processes, the timeout is 0.  If there is no ready process, this scheduler thread will wait into <code class="docutils literal notranslate"><span class="pre">sys_poll_event</span></code> and depending on the platform implementation, the CPU usage can drop.</p>
@@ -691,7 +758,6 @@ size of a struct, therefore, is determined simply by the size of the component f
 
 </div></blockquote>
 </section>
-</section>
 <section id="tasks-and-synchronization-mechanisms">
 <h2>Tasks and synchronization mechanisms<a class="headerlink" href="#tasks-and-synchronization-mechanisms" title="Link to this heading"></a></h2>
 <p>AtomVM SMP builds run on operating or runtime systems implementing tasks (FreeRTOS SMP on ESP32, Unix and WebAssembly) as well as on systems with no task implementation (Raspberry Pi Pico).</p>
@@ -720,10 +786,23 @@ size of a struct, therefore, is determined simply by the size of the component f
 
 </div></blockquote>
 <blockquote>
-<div><div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>doxygenfunction: Cannot find function “globalcontext_send_message_from_task” in doxygen xml output for project “libatomvm” from directory: /home/runner/work/AtomVM/AtomVM/build/doc/xml/</p>
-</div>
+<div><dl class="c function">
+<dt class="sig sig-object c" id="c.globalcontext_send_message_from_task">
+<span class="target" id="libatomvmglobalcontext_8h_1a5f551c2a4838addcb446975fb410c49e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_send_message_from_task</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">MessageType</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.globalcontext_send_message_from_task" title="Link to this definition"></a><br /></dt>
+<dd><p>Send a message to a process identified by its id. This variant is to be used from task drivers. It tries to acquire the necessary locks and if it fails, it enqueues the message which will be delivered on the next scheduler context switch. </p>
+<p>Safely send a message to the process, doing nothing if the process cannot be found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context (that owns the process table). </p></li>
+<li><p><strong>process_id</strong> – the target process id. </p></li>
+<li><p><strong>type</strong> – the type of message to send, can be NormalMessage or a signal </p></li>
+<li><p><strong>t</strong> – the message to send. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </div></blockquote>
 </section>
 <section id="mailboxes-and-signals">
@@ -793,8 +872,8 @@ size of a struct, therefore, is determined simply by the size of the component f
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c">
-<span class="target" id="libatomvmstruct_mailbox_1a4002265aaf67fb09af3b7bab352fe631"></span><span class="sig-name descname"><span class="pre">MailboxMessage</span> <span class="pre">*ATOMIC</span> <span class="pre">outer_first</span></span></dt>
+<dt class="sig sig-object c" id="c.Mailbox.outer_first">
+<span class="target" id="libatomvmstruct_mailbox_1afe6762adf11597d131775ad7561fae37"></span><span class="n"><span class="pre">MailboxMessage</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">outer_first</span></span></span><a class="headerlink" href="#c.Mailbox.outer_first" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -909,6 +988,11 @@ instead on logging or other mechanisms for diagnosing problems in the field.</p>
 </figure>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.Module.import_table">
+<span class="target" id="libatomvmstruct_module_1a824bcc902b13a06d73e26e55eb76e9ba"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">import_table</span></span></span><a class="headerlink" href="#c.Module.import_table" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
 <dl class="c var">
 <dt class="sig sig-object c" id="c.Module.code">
 <span class="target" id="libatomvmstruct_module_1a7800255a49fb908d7b27ffaacfbbdcb9"></span><span class="n"><span class="pre">CodeChunk</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">code</span></span></span><a class="headerlink" href="#c.Module.code" title="Link to this definition"></a><br /></dt>
@@ -1085,10 +1169,10 @@ instead on logging or other mechanisms for diagnosing problems in the field.</p>
 </div></blockquote>
 <p>This list is populated at code load time.  When a line reference is encountered during code loading, a <code class="docutils literal notranslate"><span class="pre">LineRefOffset</span></code> structure is allocated and added to the line-ref-offsets list.  This list is used at a later time to find the line number at which a stack frame is called, in a manner described below.</p>
 <p>The memory cost of this list is <code class="docutils literal notranslate"><span class="pre">num_line_refs</span> <span class="pre">*</span> <span class="pre">sizeof(struct</span> <span class="pre">LineRefOffset)</span></code>, for each loaded module, or 0, if there is no <code class="docutils literal notranslate"><span class="pre">Line</span></code> chunk in the associated BEAM file.</p>
+<!-- TODO: this sub-section can be expanded at a later date.
+### Raw Stacktraces
+-->
 </section>
-</section>
-<section id="raw-stacktraces">
-<h3>Raw Stacktraces<a class="headerlink" href="#raw-stacktraces" title="Link to this heading"></a></h3>
 </section>
 </section>
 <section id="atomvm-webassembly-port">
@@ -1160,14 +1244,14 @@ instead on logging or other mechanisms for diagnosing problems in the field.</p>
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v:  branch (unreleased)
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+       branch (unreleased)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -1221,7 +1305,7 @@ instead on logging or other mechanisms for diagnosing problems in the field.</p>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc//pdf/AtomVM-.pdf">pdf</a></dd>
         
