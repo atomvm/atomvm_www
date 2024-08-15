@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.4+git.2c0f5d04 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=608e0b4b"></script>
+        <script src="_static/documentation_options.js?v=c2693c45"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#date-and-time">Date and Time</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#miscellaneous-apis">Miscellaneous APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#stacktraces">StackTraces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ets-tables">ETS Tables</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reading-data-from-avm-files">Reading data from AVM files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#code-loading">Code Loading</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#math">Math</a></li>
@@ -1040,6 +1041,86 @@ and line information can have a non-negligible impact on memory usage.  Memory-s
 consider not including line information in BEAM files.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">packbeam</span></code> tool does include file and line information in the AVM files it creates by default, but file and line information can be omitted via a command line option.  For information about the packbeam too, see the <a class="reference internal" href="atomvm-tooling.html#atomvm-packbeam"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">atomvm_packbeam</span></code> tool</span></a>.</p>
+</section>
+<section id="ets-tables">
+<h3>ETS Tables<a class="headerlink" href="#ets-tables" title="Link to this heading"></a></h3>
+<p>AtomVM includes a limited implementation of the Erlang <a class="reference external" href="https://www.erlang.org/doc/man/ets"><code class="docutils literal notranslate"><span class="pre">ets</span></code></a> interface, allowing applications to efficiently store term data in a potentially shared key-value store.  Conceptually, and ETS table is a collection of key-value pairs (represented as Erlang tuples), which can be efficiently stored, retrieved, and deleted using insertion, lookup, and deletion functions across processes.  Storage and retrieval of data in ETS tables is typically faster than communicating with a process which stores state, but still comes at a cost of copying data in and out of the ETS tables.</p>
+<p>The current AtomVM implementation of ETS is limited to the <code class="docutils literal notranslate"><span class="pre">set</span></code> table type, meaning that all entries in an ETS table are unique, and that the entries in the ETS table are unordered, when enumerated.</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">ordered_set</span></code>, <code class="docutils literal notranslate"><span class="pre">bag</span></code>, and <code class="docutils literal notranslate"><span class="pre">duplicate_bag</span></code> OTP ETS types are not currently supported.</p>
+</div></blockquote>
+<p>The lifecycle of an ETS table is associated with the lifecycle of the Erlang process that created it.  An Erlang process may create as many ETS tables as memory permits, but ETS tables are automatically destroyed when the process with which they are associated terminates.</p>
+<blockquote>
+<div><p>Note.  AtomVM does not currently support transfer of ETS table ownership across processes.</p>
+</div></blockquote>
+<p>To create an ETS table, use the <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">TableId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ets</span><span class="p">:</span><span class="nf">new</span><span class="p">(</span><span class="n">my_table</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span>
+</pre></div>
+</div>
+<p>The first argument is the table name, which may be optionally registered internally.  The second parameter is a list of configuration options.  The return value is an opaque reference to the table, which can be used in subsequent ETS operations.  If the table is specified as a named table (see below), then the return value is the atom used to name the table (i.e., the first parameter to the <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code> function).</p>
+<p>The process that creates an ETS table becomes the “owner” of the ETS table. ETS tables owned by a process are automatically destroyed when the process terminates.</p>
+<p>The following configuration options are supported:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Access Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">named_table</span></code></p></td>
+<td><p>If set, the table name is registered internally and can be used as the table id for subsequent ETS operations.  If this option is set, the return value from <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code> is the table name specified in the first parameter.  By default, ETS tables are not named.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{keypos,</span> <span class="pre">K}</span></code></p></td>
+<td><p>The position of the key field in table entries (Erlang tuples).  Key position values should be in the range <code class="docutils literal notranslate"><span class="pre">{1..n}</span></code>, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the minimum arity of any entry in the table.  If unspecified, the default key position is <code class="docutils literal notranslate"><span class="pre">1</span></code>.  An attempt to insert an entry into a ETS table whose arity is less than the specified key position will result in a <code class="docutils literal notranslate"><span class="pre">badarg</span></code> error.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">private</span></code></p></td>
+<td><p>Only the owning process may read from or write to the ETS table.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">protected</span></code></p></td>
+<td><p>The owning process may read and write to the ETS table; any other process can only read from the ETS table.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">public</span></code></p></td>
+<td><p>Any process may read from or write to the ETS table.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">keypos</span></code>, <code class="docutils literal notranslate"><span class="pre">private</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code>, and <code class="docutils literal notranslate"><span class="pre">public</span></code> fields should only be specified once in configuration.  The presence of more than one key position or protection field results in behavior that is <em>undefined</em>.</p>
+<p>In the absence of any protection field, tables are marked <code class="docutils literal notranslate"><span class="pre">protected</span></code>.</p>
+<p>To insert an entry into an ETS table, use the <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="n">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ets</span><span class="p">:</span><span class="nf">insert</span><span class="p">(</span><span class="nv">TableId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Specify the table identifier returned from <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>, as well as the tuple data you would like to store in the ETS table.  The <code class="docutils literal notranslate"><span class="pre">keypos</span></code>’th field of the tuple can be used for subsequent retrieval or deletion.</p>
+<p>If the arity of the supplied tuple entry is less than the configured key position for the ETS table, the <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code> function will raise a <code class="docutils literal notranslate"><span class="pre">badarg</span></code> error.</p>
+<blockquote>
+<div><p>Note that the fields of a tuple entry, whether they are designated key fields or arbitrary data, can be any term type, not just atoms, as in this example.</p>
+</div></blockquote>
+<p>If an entry already exists with the same key field, the entry will be over-written in the table.</p>
+<p>The return type from this function is the atom <code class="docutils literal notranslate"><span class="pre">true</span></code>.  Any errors in insertion will resulting in raising an <code class="docutils literal notranslate"><span class="pre">error</span></code> with an appropriate reason, e.g., <code class="docutils literal notranslate"><span class="pre">badarg</span></code>.</p>
+<blockquote>
+<div><p>Note that a process may only insert values into an ETS table if they are permitted; i.e., either they are the owner of the table, or if the table is <code class="docutils literal notranslate"><span class="pre">public</span></code>.</p>
+</div></blockquote>
+<p>To retrieve an entry from an ETS table, use the <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="n">foo</span><span class="p">,</span><span class="w"> </span><span class="n">bar</span><span class="p">}]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ets</span><span class="p">:</span><span class="nf">lookup</span><span class="p">(</span><span class="nv">TableId</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Specify the table identifier returned from <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>, as well as a key with which you would like to search the table.  This function will search the ETS table using the <code class="docutils literal notranslate"><span class="pre">keypos</span></code>’th field of tuples in the ETS table for retrieval.</p>
+<p>The return value is a list containing the found object(s).  An empty list (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) indicates that there is no such entry in the specified ETS table.</p>
+<blockquote>
+<div><p>Note.  Since the only table type currently supported is <code class="docutils literal notranslate"><span class="pre">set</span></code>, the return value will only contain a singleton value, if an entry exists in the table under the specified key.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Note that a process may only look up values from an ETS table if they are permitted; i.e., either they are the owner of the table, or if the table is <code class="docutils literal notranslate"><span class="pre">protected</span></code> or <code class="docutils literal notranslate"><span class="pre">public</span></code>.</p>
+</div></blockquote>
+<p>To delete an entry from an ETS table, use the <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="n">true</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ets</span><span class="p">:</span><span class="nf">delete</span><span class="p">(</span><span class="nv">Table</span><span class="p">,</span><span class="w"> </span><span class="n">foo</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Specify the table identifier returned from <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>, as well as a key with which you would like to search the table to delete the entry.  This function will search the ETS table using the <code class="docutils literal notranslate"><span class="pre">keypos</span></code>’th field of tuples in the ETS table for retrieval.</p>
+<p>The return value from this function is the atom <code class="docutils literal notranslate"><span class="pre">true</span></code>, regardless of whether the entry existed previously.  Any errors in deletion will resulting in raising an <code class="docutils literal notranslate"><span class="pre">error</span></code> with an appropriate reason, e.g., <code class="docutils literal notranslate"><span class="pre">badarg</span></code>.</p>
+<blockquote>
+<div><p>Note that a process may only delete values from an ETS table if they are permitted; i.e., either they are the owner of the table, or if the table is <code class="docutils literal notranslate"><span class="pre">public</span></code>.</p>
+</div></blockquote>
 </section>
 <section id="reading-data-from-avm-files">
 <h3>Reading data from AVM files<a class="headerlink" href="#reading-data-from-avm-files" title="Link to this heading"></a></h3>

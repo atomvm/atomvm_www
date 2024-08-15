@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.6.4+git.2c0f5d04 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=608e0b4b"></script>
+        <script src="_static/documentation_options.js?v=c2693c45"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -81,6 +81,12 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#raw-stacktraces">Raw Stacktraces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ets-tables">ETS Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ownership-and-lookup">Ownership and Lookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-hashing">Key Hashing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#concurrency">Concurrency</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#atomvm-webassembly-port">AtomVM WebAssembly port</a><ul>
@@ -160,43 +166,51 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <span class="target" id="libatomvmstruct_global_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><a class="headerlink" href="#c.GlobalContext" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for GlobalContext:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-caf19c5c2db6a6be84ec07485c2a331c4498e891.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-0db8fb1d4139976f8ad0495ec5f6e8d80c3438e8.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;13&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;7&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
-    &quot;6&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;16&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;10&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
+    &quot;4&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
+    &quot;8&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
     &quot;1&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;9&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;4&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
-    &quot;12&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;10&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;11&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;2&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
-    &quot;8&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
-    &quot;5&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;3&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
+    &quot;2&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;9&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;15&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;13&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;7&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;14&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;5&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;11&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
+    &quot;3&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;6&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -253,6 +267,11 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.ets">
+<span class="target" id="libatomvmstruct_global_context_1aa4f2d3d154f01abbdc631a90903c28ff"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Ets</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets</span></span></span><a class="headerlink" href="#c.GlobalContext.ets" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
 <dt class="sig sig-object c" id="c.GlobalContext.last_process_id">
 <span class="target" id="libatomvmstruct_global_context_1ae1231412b947b55064b923bdc9cc7bc3"></span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">last_process_id</span></span></span><a class="headerlink" href="#c.GlobalContext.last_process_id" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -278,8 +297,8 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.GlobalContext.loaded_modules_count">
-<span class="target" id="libatomvmstruct_global_context_1a4b8161b912d14156fcace3e7262813a8"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">loaded_modules_count</span></span></span><a class="headerlink" href="#c.GlobalContext.loaded_modules_count" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c">
+<span class="target" id="libatomvmstruct_global_context_1ad106dc9d3ee7895404d272ecf103b0e4"></span><span class="sig-name descname"><span class="pre">int</span> <span class="pre">ATOMIC</span> <span class="pre">loaded_modules_count</span></span></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -411,29 +430,30 @@ size of a struct, therefore, is determined simply by the size of the component f
 <span class="target" id="libatomvmstruct_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#c.Context" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for Context:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-35bf9d49dfc11ca7a48171a6a1430e407018c2f9.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="_images/graphviz-18da9046cda5a5bc948debac7222bc7932733f10.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;19&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;20&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;11&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
     &quot;12&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
     &quot;8&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;15&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
-    &quot;18&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;13&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;17&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;19&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
     &quot;9&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
     &quot;10&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;17&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;18&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
     &quot;2&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;13&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;15&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;16&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;14&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -441,15 +461,17 @@ size of a struct, therefore, is determined simply by the size of the component f
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -459,13 +481,14 @@ size of a struct, therefore, is determined simply by the size of the component f
     &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -1089,6 +1112,98 @@ instead on logging or other mechanisms for diagnosing problems in the field.</p>
 </section>
 <section id="raw-stacktraces">
 <h3>Raw Stacktraces<a class="headerlink" href="#raw-stacktraces" title="Link to this heading"></a></h3>
+<p>TODO</p>
+</section>
+</section>
+<section id="ets-tables">
+<h2>ETS Tables<a class="headerlink" href="#ets-tables" title="Link to this heading"></a></h2>
+<p>AtomVM includes a very basic implementation of the OTP ETS interface, allowing applications to efficiently store term data in tables, and to access term data across processes.</p>
+<blockquote>
+<div><p>For information about ETS tables from the user’s perspective, see the AtomVM <a class="reference internal" href="programmers-guide.html"><span class="std std-doc">Programmers Guide</span></a>.</p>
+</div></blockquote>
+<p>ETS tables are represented internally by the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> structure, which records information about the table configured by the user (via <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>), such as the table name, whether is it a named table, the access type (<code class="docutils literal notranslate"><span class="pre">private</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code>, or <code class="docutils literal notranslate"><span class="pre">public</span></code>), the key position, etc.</p>
+<p>ETS tables are uniquely identifiable via Erlang references, and generally this reference is returned as the “table identifier” when an ETS table is created (via <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>).  ETS tables can also be referenced via their name, if they are designated as a “named table” in configuration.  Table identifiers are unique, and the ETS implementation also ensures that if tables are named, they are named uniquely.</p>
+<p>In addition, the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> structure records the table type, which in the current implementation is limited to the <code class="docutils literal notranslate"><span class="pre">set</span></code> type.  Future versions may support alternative table types (<code class="docutils literal notranslate"><span class="pre">ordered_set</span></code>, <code class="docutils literal notranslate"><span class="pre">bag</span></code>, <code class="docutils literal notranslate"><span class="pre">duplicate_bag</span></code>).</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">set</span></code> table type, the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> instantiates an <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code>, a  hash table implementation with an array of buckets (to which keys hash), and for each bucket, a (possibly empty) linked list of <code class="docutils literal notranslate"><span class="pre">HNode</span></code> elements, where <code class="docutils literal notranslate"><span class="pre">HNode</span></code> in the list contains a reference to an AtomVM <code class="docutils literal notranslate"><span class="pre">Heap</span></code> (fragment).  Each <code class="docutils literal notranslate"><span class="pre">Heap</span></code> instance stores a copy of the tuple element that has been added to the table (via <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code>).  The <code class="docutils literal notranslate"><span class="pre">HNode</span></code> also stores a <code class="docutils literal notranslate"><span class="pre">term</span></code> representing the key used to store the element, as well as a term representing the element, itself.  Note that the <code class="docutils literal notranslate"><span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">entry</span></code> term fields refer to elements stored in the heap fragment referenced from the <code class="docutils literal notranslate"><span class="pre">HNode</span></code>, not terms in a process heap.</p>
+<p>When an element is inserted into the table or retrieved from the table (e.g., via <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code>), the <code class="docutils literal notranslate"><span class="pre">term</span></code> data is copied into or from, respectively, the <code class="docutils literal notranslate"><span class="pre">Heap</span></code> instance stored in the table.  The <code class="docutils literal notranslate"><span class="pre">Heap</span></code> instance in each entry is allocated to hold exactly the amount of data needed to store the <code class="docutils literal notranslate"><span class="pre">term</span></code>.  This <code class="docutils literal notranslate"><span class="pre">Heap</span></code> is owned by the <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code>, in the sense that an instance is created when an entry is inserted into the table, and destroyed when an entry is deleted from the table.</p>
+<p>For more information about the <code class="docutils literal notranslate"><span class="pre">Heap</span></code> data structure, see the <a class="reference internal" href="memory-management.html"><span class="std std-doc">Memory Management</span></a> chapter of the AtomVM documentation.</p>
+<p>The relationship between an <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> and <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code> and its elements is illustrated in the following “class” diagram (some elements are removed for the sake of brevity):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+--------------------+
+| EtsTable           |
++--------------------+
+| name               |
+| is_named           |
+| ref_ticks          |
+| access_type        |
+| keypos             |
+| table_type         |
+| ets_hashtable -----------&gt; +-----------------+
+| rw_lock            |       | EtsHashTable    |
++--------------------+       +-----------------+
+                             | capacity        |
+                             | count           |
+                             | buckets ---------------&gt; +-----------------------+
+                             |                 |        |   | o |   ...     |   |
+                             +-----------------+        +-----|-----------------+
+                                                              |
+                                                              v
+                                                              +----------+   +----&gt; +----------+
+                                                              | HNode    |   |      | HNode    |
+                                                              +----------+   |      +----------+
+                                                              | next --------+      | next -------&gt; ...
+                                                              | key      |          | key      |
+                                                              | entry    |          | entry    |
+                                                              | heap --------+      | heap --------+
+                                                              +----------+   |      +----------+   |
+                                                                             |                     |
+                                                                             +---&gt; +----------+    +---&gt; +----------+
+                                                                                   | Heap     |          | Heap     |
+                                                                                   +----------+          +----------+
+                                                                                   | ...      |          | ...      |
+                                                                                   +----------+          +----------+
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Ets</span></code> structure contains a <code class="docutils literal notranslate"><span class="pre">SyncList</span></code> of <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> structures, protected from concurrent access via a read-write lock.  A single instance of an <code class="docutils literal notranslate"><span class="pre">Ets</span></code> structure is stored in the <code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code> structure.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+---------------+
+| GlobalContext |
++---------------+
+| ...           |
+| ets ---------------&gt; +------------+
+| ...           |      | Ets        |
++---------------+      +------------+
+                       | ets_tables --------&gt; +----------+   +---&gt; +----------+
+                       +------------+         | EtsTable |   |     | EtsTable |
+                                              +----------+   |     +----------+
+                                              | next --------+     | next ------&gt; ...
+                                              +----------+         +----------+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A deficiency in this implementation is that lookup of an ETs table in this list is <code class="docutils literal notranslate"><span class="pre">O(&lt;number</span> <span class="pre">of</span> <span class="pre">ETS</span> <span class="pre">tables&gt;)</span></code>, whereas a “promise” of ETS is that insertion, lookup, and deletion of entries in at least the <code class="docutils literal notranslate"><span class="pre">set</span></code> table type is or should be constant (modulo poor hashing functions).  A future implementation of this data structure could use a map or table structure to make lookup of ETS tables more efficient (i.e., constant), but at the expense of i) increased memory consumption and heap fragmentation, and ii) code complexity.  Given the likely relative paucity of ETS tables instances likely to be instantiated by applications, we feel that using a list of ETS tables is an acceptable tradeoff for embedded systems deployments, but we are open to being wrong about our assumptions.</p>
+</div>
+<section id="ownership-and-lookup">
+<h3>Ownership and Lookup<a class="headerlink" href="#ownership-and-lookup" title="Link to this heading"></a></h3>
+<p>An ETS table is conceptually “owned” by the Erlang process that creates it (via <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code>).  This generally means that:</p>
+<ul class="simple">
+<li><p>The owning process has exclusive access for reading and writing entries in the table (unless the table is declared <code class="docutils literal notranslate"><span class="pre">public</span></code>, in which case other processes may change entries in the table, e.g., via <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code> or <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code>);</p></li>
+<li><p>The lifecycle of the ETS table is associated with the lifecycle of the owning process, meaning that the ETS table is destroyed when the owning process terminates.  Note that any references to the ETS table are invalid once the table has been destroyed.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">{important}</span> <span class="pre">AtomVM</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">currently</span> <span class="pre">support</span> <span class="pre">transfer</span> <span class="pre">of</span> <span class="pre">ownership</span> <span class="pre">of</span> <span class="pre">an</span> <span class="pre">ETS</span> <span class="pre">table</span> <span class="pre">from</span> <span class="pre">one</span> <span class="pre">process</span> <span class="pre">to</span> <span class="pre">another.</span></code></p>
+<p>When a table is used in an <code class="docutils literal notranslate"><span class="pre">ets</span></code> operation (e.g., <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code>, <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code>, <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code>, etc), the <code class="docutils literal notranslate"><span class="pre">ets_tables</span></code> sync list is searched for the first entry in the table that matches the requested table id (as a name or reference).</p>
+<p>If the Erlang process that requests a table is the same process that owns the table, then the operation is permitted.  Otherwise, the access type on the table must be <code class="docutils literal notranslate"><span class="pre">public</span></code> in order for an operation that modifies the table (e.g., <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code> or <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code>) to be permitted, or <code class="docutils literal notranslate"><span class="pre">protected</span></code> in order for an operation that simply reads from the table (e.g., <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code>).</p>
+</section>
+<section id="key-hashing">
+<h3>Key Hashing<a class="headerlink" href="#key-hashing" title="Link to this heading"></a></h3>
+<p>A “key” in an ETS table is an arbitrary term.  In order to insert, lookup, or delete a key in an <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code>, we need a way to efficiently hash a key into a bucket, preferably without any memory allocation.</p>
+<p>The implementation of the <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code> uses a variant of the <a class="reference external" href="https://en.wikipedia.org/wiki/Hash_function#Character_folding">Character Folding</a> hash algorithm, using a collection of sufficiently large prime numbers for each Erlang term type (atom, integer, tuple, list, map, etc), and adapted to Erlang recursively structured terms.</p>
+<p>This algorithm resembles the term hashing algorithm in <a class="reference external" href="https://github.com/erlang/otp/blob/cbd1378ee1fde835e55614bac9290b281bafe49a/erts/emulator/beam/utils.c#L644">OTP</a>; however, for the purposes of the <code class="docutils literal notranslate"><span class="pre">EtsHashTable</span></code> implementation, the algorithm is not designed to be interoperable with the OTP implementation.  Future versions of AtomVM that, for example, implement the Erlang portable hash function (<a class="reference external" href="https://www.erlang.org/doc/man/erlang#phash2-1"><code class="docutils literal notranslate"><span class="pre">erlang:phash2/1,2</span></code></a>) can be adapted to use the OTP algorithm for this implementation.</p>
+</section>
+<section id="concurrency">
+<h3>Concurrency<a class="headerlink" href="#concurrency" title="Link to this heading"></a></h3>
+<p>ETS tables are designed to be accessed concurrently from multiple Erlang processes.  Depending on how table are configured, they may be accessed concurrently for reads but serially for writes (typical), or in probably non-standard cases, concurrently for both reads and writes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ets_tables</span></code> sync list is protected by a read-write lock, so that multiple processes calling operations that read the list (e.g., for common <code class="docutils literal notranslate"><span class="pre">ets</span></code> operations like <code class="docutils literal notranslate"><span class="pre">ets:insert/1</span></code>, <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code>, or <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code>) can do so concurrently, whereas operation that mutate this list (e.g., <code class="docutils literal notranslate"><span class="pre">ets:new/2</span></code> or termination of a process) are serialized with a write lock.</p>
+<p>When an <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> is retrieved from this list, before the read lock is released on the sync list, either a read or write lock is acquired on the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code>, depending on the operation being called.  For example, operations that change the state of the table, such as <code class="docutils literal notranslate"><span class="pre">ets:insert/2</span></code> or <code class="docutils literal notranslate"><span class="pre">ets:delete/2</span></code>, acquire a write lock, whereas operation that merely read table contents, such as <code class="docutils literal notranslate"><span class="pre">ets:lookup/2</span></code> acquire a read lock.  This way, a lock is held on the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> before another thread might race to delete the table, which would otherwise render the reference to the <code class="docutils literal notranslate"><span class="pre">EtsTable</span></code> invalid, and likely crash the VM.</p>
 </section>
 </section>
 <section id="atomvm-webassembly-port">
