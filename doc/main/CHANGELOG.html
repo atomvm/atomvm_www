@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
+  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=c2693c45"></script>
+        <script src="_static/documentation_options.js?v=fcfd7b37"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -42,7 +42,7 @@
               <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                main
+                main branch (unstable)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
@@ -71,11 +71,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#added">Added</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id1">[0.6.4] - Unreleased</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">[0.6.4] - 2024-08-18</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Added</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">[0.6.3] - 20-07-2024</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id3">[0.6.3] - 2024-07-20</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id4">Added</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changed">Changed</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#fixed">Fixed</a></li>
@@ -182,17 +182,30 @@ and this project adheres to <a class="reference external" href="https://semver.o
 </section>
 </section>
 <section id="id1">
-<h2>[0.6.4] - Unreleased<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<h2>[0.6.4] - 2024-08-18<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
 <section id="id2">
 <h3>Added<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>Implement <code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code> on esp32 to initialize pins for GPIO usage, which some pins
 require depending on default function and bootloader code</p></li>
+<li><p>Implement missing opcode 161 (raw_raise), that looks more likely to be generated with Elixir code</p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Map.replace/3</span></code> and <code class="docutils literal notranslate"><span class="pre">Map.replace!/3</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Kernel.struct</span></code> and <code class="docutils literal notranslate"><span class="pre">Kernel.struct!</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">IO.iodata_to_binary/1</span></code></p></li>
+<li><p>Support for Elixir exceptions: <code class="docutils literal notranslate"><span class="pre">Exception</span></code> module and the other error related modules such as
+<code class="docutils literal notranslate"><span class="pre">ArgumentError</span></code>, <code class="docutils literal notranslate"><span class="pre">UndefinedFunctionError</span></code>, etc…</p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Enumerable</span></code> and <code class="docutils literal notranslate"><span class="pre">Collectable</span></code> protocol</p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Enum</span></code> functions: <code class="docutils literal notranslate"><span class="pre">split_with</span></code>, <code class="docutils literal notranslate"><span class="pre">join</span></code>, <code class="docutils literal notranslate"><span class="pre">map_join</span></code>, <code class="docutils literal notranslate"><span class="pre">into</span></code>, <code class="docutils literal notranslate"><span class="pre">reverse</span></code>,
+<code class="docutils literal notranslate"><span class="pre">slice</span></code> and <code class="docutils literal notranslate"><span class="pre">to_list</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">MapSet</span></code> module</p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Range</span></code> module</p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Kernel.min</span></code> and <code class="docutils literal notranslate"><span class="pre">Kernel.max</span></code></p></li>
+<li><p>Support (as stub) for <code class="docutils literal notranslate"><span class="pre">erlang:error/3</span></code> (that is required from Elixir code)</p></li>
 </ul>
 </section>
 </section>
 <section id="id3">
-<h2>[0.6.3] - 20-07-2024<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<h2>[0.6.3] - 2024-07-20<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
 <section id="id4">
 <h3>Added<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
 <ul class="simple">
@@ -690,14 +703,14 @@ bit length is not a multiple of 8.</p></li>
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v: main
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+      main branch (unstable)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -743,15 +756,19 @@ bit length is not a multiple of 8.</p></li>
           <dd><a href="/doc/v0.6.3/">v0.6.3</a></dd>
           
         
+          
+          <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
            <strong> 
-          <dd><a href="/doc/main/">main</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
            </strong> 
         
       </dl>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
         

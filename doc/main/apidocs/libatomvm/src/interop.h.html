@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>interop.h &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
+  <title>interop.h &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2693c45"></script>
+        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -42,7 +42,7 @@
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                main
+                main branch (unstable)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -118,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -139,7 +137,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -147,7 +144,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -338,11 +334,11 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.SELECT_INT_DEFAULT">
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.SELECT_INT_DEFAULT">
 <span class="target" id="libatomvminterop_8h_1a3ad0dc0d142cc3af5b7bdde779cc8b7f"></span><span class="sig-name descname"><span class="n"><span class="pre">SELECT_INT_DEFAULT</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">i_val</span></span><span class="sig-paren">)</span> <p><span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">.as_val</span> <span class="pre">=</span> <span class="pre">NULL,</span> <span class="pre">i_val</span>&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span></p>
-<a class="headerlink" href="#c.libAtomVM.SELECT_INT_DEFAULT" title="Link to this definition"></a><br /></dt>
+<a class="headerlink" href="#c.libAtomVM.interop.h.SELECT_INT_DEFAULT" title="Link to this definition"></a><br /></dt>
 <dd><p>An idiomatic macro for marking an <a class="reference internal" href="#libatomvmstruct_atom_string_int_pair"><span class="std std-ref">AtomStringIntPair</span></a> table entry as a interop_atom_term_select_int default. </p>
 </dd></dl>
 
@@ -350,87 +346,87 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
 <dl class="c type">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_chardata_fold_fun">
-<span class="target" id="libatomvminterop_8h_1aa7c6a37c604717cd0a15a099224a50db"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_fold_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.interop_chardata_fold_fun" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_chardata_fold_fun">
+<span class="target" id="libatomvminterop_8h_1aa7c6a37c604717cd0a15a099224a50db"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.InteropFunctionResult" title="InteropFunctionResult"><span class="n"><span class="pre">InteropFunctionResult</span></span></a><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_fold_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_chardata_fold_fun" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c type">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_chardata_rest_fun">
-<span class="target" id="libatomvminterop_8h_1a6ca083db17faad88c5e003d010e55dd5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_rest_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.interop_chardata_rest_fun" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_chardata_rest_fun">
+<span class="target" id="libatomvminterop_8h_1a6ca083db17faad88c5e003d010e55dd5"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_chardata_rest_fun</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">accum</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_chardata_rest_fun" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.InteropFunctionResult">
-<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropFunctionResult</span></span></span><a class="headerlink" href="#c.libAtomVM.InteropFunctionResult" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.InteropFunctionResult">
+<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropFunctionResult</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.InteropFunctionResult" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.InteropFunctionResult.InteropOk">
-<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropOk</span></span></span><a class="headerlink" href="#c.libAtomVM.InteropFunctionResult.InteropOk" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.InteropFunctionResult.InteropOk">
+<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8ab9f38b2cce76a588f209e68e3cb24c13"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropOk</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropOk" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.InteropFunctionResult.InteropMemoryAllocFail">
-<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropMemoryAllocFail</span></span></span><a class="headerlink" href="#c.libAtomVM.InteropFunctionResult.InteropMemoryAllocFail" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.InteropFunctionResult.InteropMemoryAllocFail">
+<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8aa0caf1a1b32bceb916c3cf7ad11e6ca6"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropMemoryAllocFail</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropMemoryAllocFail" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.InteropFunctionResult.InteropBadArg">
-<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropBadArg</span></span></span><a class="headerlink" href="#c.libAtomVM.InteropFunctionResult.InteropBadArg" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.InteropFunctionResult.InteropBadArg">
+<span class="target" id="libatomvminterop_8h_1a3f8762f470fb4c0f30adf31db71049f8ab526f8f6007bfe26363ad880fbf38c38"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">InteropBadArg</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropBadArg" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeConversionResult</span></span></span><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeConversionResult</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult.UnicodeOk">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1afa9179a2f3b5a5f40ee6991edada2515"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeOk</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.InteropFunctionResult.InteropOk" title="InteropOk"><span class="n"><span class="pre">InteropOk</span></span></a><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult.UnicodeOk" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeOk">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1afa9179a2f3b5a5f40ee6991edada2515"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeOk</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropOk" title="InteropOk"><span class="n"><span class="pre">InteropOk</span></span></a><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeOk" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult.UnicodeMemoryAllocFail">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a345923a6d65d72d29036bd9632c6754f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeMemoryAllocFail</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.InteropFunctionResult.InteropMemoryAllocFail" title="InteropMemoryAllocFail"><span class="n"><span class="pre">InteropMemoryAllocFail</span></span></a><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult.UnicodeMemoryAllocFail" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeMemoryAllocFail">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a345923a6d65d72d29036bd9632c6754f"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeMemoryAllocFail</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropMemoryAllocFail" title="InteropMemoryAllocFail"><span class="n"><span class="pre">InteropMemoryAllocFail</span></span></a><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeMemoryAllocFail" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult.UnicodeBadArg">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1ac65497b735bba309a3134fba2ea80bb2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeBadArg</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.InteropFunctionResult.InteropBadArg" title="InteropBadArg"><span class="n"><span class="pre">InteropBadArg</span></span></a><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult.UnicodeBadArg" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeBadArg">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1ac65497b735bba309a3134fba2ea80bb2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeBadArg</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.InteropFunctionResult.InteropBadArg" title="InteropBadArg"><span class="n"><span class="pre">InteropBadArg</span></span></a><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeBadArg" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult.UnicodeError">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a29e08f0dccedd8dc01d6c180722707f3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeError</span></span></span><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult.UnicodeError" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeError">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a29e08f0dccedd8dc01d6c180722707f3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeError</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeError" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.UnicodeConversionResult.UnicodeIncompleteTransform">
-<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a2b2353df9e969c5e46eddd41dec7dceb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeIncompleteTransform</span></span></span><a class="headerlink" href="#c.libAtomVM.UnicodeConversionResult.UnicodeIncompleteTransform" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeIncompleteTransform">
+<span class="target" id="libatomvminterop_8h_1ad9f8c39aef7a08b893b31109640a33c1a2b2353df9e969c5e46eddd41dec7dceb"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnicodeIncompleteTransform</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.UnicodeConversionResult.UnicodeIncompleteTransform" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.CharDataEncoding">
-<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CharDataEncoding</span></span></span><a class="headerlink" href="#c.libAtomVM.CharDataEncoding" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.CharDataEncoding">
+<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">CharDataEncoding</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.CharDataEncoding" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.CharDataEncoding.Latin1Encoding">
-<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1afe3bc6c6595f64a933c55ebb96a8dd50"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Latin1Encoding</span></span></span><a class="headerlink" href="#c.libAtomVM.CharDataEncoding.Latin1Encoding" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.CharDataEncoding.Latin1Encoding">
+<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1afe3bc6c6595f64a933c55ebb96a8dd50"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Latin1Encoding</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.CharDataEncoding.Latin1Encoding" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.CharDataEncoding.UTF8Encoding">
-<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1a598d150f27d92a171465aa14496200c8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTF8Encoding</span></span></span><a class="headerlink" href="#c.libAtomVM.CharDataEncoding.UTF8Encoding" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.CharDataEncoding.UTF8Encoding">
+<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1a598d150f27d92a171465aa14496200c8"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UTF8Encoding</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.CharDataEncoding.UTF8Encoding" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.CharDataEncoding.UCS4NativeEncoding">
-<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1a1fb6addbc678763d1418ccb2964576e2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UCS4NativeEncoding</span></span></span><a class="headerlink" href="#c.libAtomVM.CharDataEncoding.UCS4NativeEncoding" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.CharDataEncoding.UCS4NativeEncoding">
+<span class="target" id="libatomvminterop_8h_1a4ff3dd94615c11fcdbb6022d762e57c1a1fb6addbc678763d1418ccb2964576e2"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UCS4NativeEncoding</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.CharDataEncoding.UCS4NativeEncoding" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -439,58 +435,58 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_term_to_string">
-<span class="target" id="libatomvminterop_8h_1aae56b92071ee07b8c29cb1b386f35f42"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_term_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_term_to_string">
+<span class="target" id="libatomvminterop_8h_1aae56b92071ee07b8c29cb1b386f35f42"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_term_to_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_term_to_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_binary_to_string">
-<span class="target" id="libatomvminterop_8h_1afc1180439076744df2ab198e569f4c9b"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_binary_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">binary</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_binary_to_string">
+<span class="target" id="libatomvminterop_8h_1afc1180439076744df2ab198e569f4c9b"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_binary_to_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_binary_to_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_list_to_utf8_string">
-<span class="target" id="libatomvminterop_8h_1aa55b3c9aa118f9eb04a7a3feab03413e"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_list_to_utf8_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_list_to_utf8_string">
+<span class="target" id="libatomvminterop_8h_1aa55b3c9aa118f9eb04a7a3feab03413e"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_list_to_utf8_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_list_to_utf8_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_list_to_string">
-<span class="target" id="libatomvminterop_8h_1a746e7c4cffa27df574a8aa5bc88307d5"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_list_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_list_to_string">
+<span class="target" id="libatomvminterop_8h_1a746e7c4cffa27df574a8aa5bc88307d5"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_list_to_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_list_to_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_iolist_to_string">
-<span class="target" id="libatomvminterop_8h_1a06d4419c1087e197d49e7632e242906d"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_iolist_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_iolist_to_string">
+<span class="target" id="libatomvminterop_8h_1a06d4419c1087e197d49e7632e242906d"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_iolist_to_string</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ok</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_iolist_to_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_atom_to_string">
-<span class="target" id="libatomvminterop_8h_1af9c541ed7a7b4a313f9a5157d9a6c730"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">atom</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_atom_to_string">
+<span class="target" id="libatomvminterop_8h_1af9c541ed7a7b4a313f9a5157d9a6c730"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_to_string</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">atom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_atom_to_string" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_proplist_get_value">
-<span class="target" id="libatomvminterop_8h_1aae47ae0a0d934384e1a76e0ac2d1c904"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_proplist_get_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_proplist_get_value">
+<span class="target" id="libatomvminterop_8h_1aae47ae0a0d934384e1a76e0ac2d1c904"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_proplist_get_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_proplist_get_value" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_proplist_get_value_default">
-<span class="target" id="libatomvminterop_8h_1a215657558022d947817821ae61a62a8a"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_proplist_get_value_default</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_proplist_get_value_default">
+<span class="target" id="libatomvminterop_8h_1a215657558022d947817821ae61a62a8a"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_proplist_get_value_default</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_proplist_get_value_default" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_map_get_value">
-<span class="target" id="libatomvminterop_8h_1ae786122cebdf5916d033d75afcd3709c"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_map_get_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_map_get_value">
+<span class="target" id="libatomvminterop_8h_1ae786122cebdf5916d033d75afcd3709c"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_map_get_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_map_get_value" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_map_get_value_default">
-<span class="target" id="libatomvminterop_8h_1a3677efada06f0f94f205a91945ee41d4"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_map_get_value_default</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_map_get_value_default">
+<span class="target" id="libatomvminterop_8h_1a3677efada06f0f94f205a91945ee41d4"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_map_get_value_default</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_map_get_value_default" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_chars_to_list">
-<span class="target" id="libatomvminterop_8h_1ac2d2b25e82c31c29440f52c8995adc96"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chars_to_list</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">chars</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_chars_to_list">
+<span class="target" id="libatomvminterop_8h_1ac2d2b25e82c31c29440f52c8995adc96"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_chars_to_list</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">chars</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_chars_to_list" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -519,8 +515,8 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_atom_term_select_int">
-<span class="target" id="libatomvminterop_8h_1a77a52c8719e2510d9bca4cf5cae32d6c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_int</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">atom</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_atom_term_select_int">
+<span class="target" id="libatomvminterop_8h_1a77a52c8719e2510d9bca4cf5cae32d6c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_int</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">atom</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_atom_term_select_int" title="Link to this definition"></a><br /></dt>
 <dd><p>Finds on a table the first matching atom string. </p>
 <p>Allows to quickly translate atoms to any integer constant. This function is useful for creating switch statements for atom values. A linear search is performed, so table entries should be sorted by frequency. </p>
 <dl class="field-list simple">
@@ -538,8 +534,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_atom_term_select_atom">
-<span class="target" id="libatomvminterop_8h_1a0d64ae3d8a0297b93f298bad8184362f"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_atom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_atom_term_select_atom">
+<span class="target" id="libatomvminterop_8h_1a0d64ae3d8a0297b93f298bad8184362f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_atom_term_select_atom</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.interop.h.AtomStringIntPair" title="AtomStringIntPair"><span class="n"><span class="pre">AtomStringIntPair</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">table</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_atom_term_select_atom" title="Link to this definition"></a><br /></dt>
 <dd><p>Finds the first matching atom in an atoms table . </p>
 <p>Allows to quickly translate integer constants to an atom in an atoms table. This function is the inverse of interop_atom_term_select_int. </p>
 <dl class="field-list simple">
@@ -557,8 +553,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_kv_get_value_default">
-<span class="target" id="libatomvminterop_8h_1aeca0a310d3e09064bfafcdbcecdbadbb"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_kv_get_value_default</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">kv</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">default_value</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_kv_get_value_default">
+<span class="target" id="libatomvminterop_8h_1aeca0a310d3e09064bfafcdbcecdbadbb"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_kv_get_value_default</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">kv</span></span>, <span class="n"><span class="pre">AtomString</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_kv_get_value_default" title="Link to this definition"></a><br /></dt>
 <dd><p>Get a value given a key (as AtomString) from any proplist or map. </p>
 <p>This function allows to easily get values from proplists or maps, without poluting the atom table. </p>
 <dl class="field-list simple">
@@ -577,8 +573,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_kv_get_value">
-<span class="target" id="libatomvminterop_8h_1a5eadaff30e3a6e5348d27824cacef678"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_kv_get_value</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">kv</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop_kv_get_value" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_kv_get_value">
+<span class="target" id="libatomvminterop_8h_1a5eadaff30e3a6e5348d27824cacef678"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_kv_get_value</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">kv</span></span>, <span class="n"><span class="pre">AtomString</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_kv_get_value" title="Link to this definition"></a><br /></dt>
 <dd><p>Get a value given a key (as AtomString) from any proplist or map. </p>
 <p>This function allows to easily get values from proplists or maps, without poluting the atom table. This function returns the invalid term if there is no such entry in kv. </p>
 <dl class="field-list simple">
@@ -596,27 +592,27 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.interop_bytes_to_list">
-<span class="target" id="libatomvminterop_8h_1ad42158998e16cd90dfb5c0bfab9de40e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_bytes_to_list</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop_bytes_to_list" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.interop_bytes_to_list">
+<span class="target" id="libatomvminterop_8h_1ad42158998e16cd90dfb5c0bfab9de40e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">interop_bytes_to_list</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.interop.h.interop_bytes_to_list" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.libAtomVM.AtomStringIntPair">
-<span class="target" id="libatomvmstruct_atom_string_int_pair"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AtomStringIntPair</span></span></span><a class="headerlink" href="#c.libAtomVM.AtomStringIntPair" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.AtomStringIntPair">
+<span class="target" id="libatomvmstruct_atom_string_int_pair"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">AtomStringIntPair</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.AtomStringIntPair" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
 <em>#include &lt;interop.h&gt;</em></div>
 <p>A structure to represent atom strings and int pairs. Such as {“\x8” “universe”, 42}. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.AtomStringIntPair.as_val">
-<span class="target" id="libatomvmstruct_atom_string_int_pair_1a69c8a4bc410dbf7e74b61cf403c896d1"></span><a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">as_val</span></span></span><a class="headerlink" href="#c.libAtomVM.AtomStringIntPair.as_val" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.AtomStringIntPair.as_val">
+<span class="target" id="libatomvmstruct_atom_string_int_pair_1a69c8a4bc410dbf7e74b61cf403c896d1"></span><span class="n"><span class="pre">AtomString</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">as_val</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.AtomStringIntPair.as_val" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.AtomStringIntPair.i_val">
-<span class="target" id="libatomvmstruct_atom_string_int_pair_1a39cf0462705fb32ad2584dced5d3548f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">i_val</span></span></span><a class="headerlink" href="#c.libAtomVM.AtomStringIntPair.i_val" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.interop.h.AtomStringIntPair.i_val">
+<span class="target" id="libatomvmstruct_atom_string_int_pair_1a39cf0462705fb32ad2584dced5d3548f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">i_val</span></span></span><a class="headerlink" href="#c.libAtomVM.interop.h.AtomStringIntPair.i_val" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -661,14 +657,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v: main
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+      main branch (unstable)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -714,15 +710,19 @@
           <dd><a href="/doc/v0.6.3/">v0.6.3</a></dd>
           
         
+          
+          <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
            <strong> 
-          <dd><a href="/doc/main/">main</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
            </strong> 
         
       </dl>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
         

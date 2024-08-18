@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ets_hashtable.c &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
+  <title>ets_hashtable.c &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2693c45"></script>
+        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -42,7 +42,7 @@
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                main
+                main branch (unstable)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -118,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -139,7 +137,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -147,7 +144,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -308,127 +304,127 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_INITIAL">
-<span class="target" id="libatomvmets__hashtable_8c_1a1b5957809b9c8a988989e3345ea82797"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_INITIAL</span></span></span> <span class="pre">16777259</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_INITIAL" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_INITIAL">
+<span class="target" id="libatomvmets__hashtable_8c_1a1b5957809b9c8a988989e3345ea82797"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_INITIAL</span></span></span> <span class="pre">16777259</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_INITIAL" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_ATOM">
-<span class="target" id="libatomvmets__hashtable_8c_1a13470e9ca18721ebaf24506331283b71"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_ATOM</span></span></span> <span class="pre">16777643</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_ATOM" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_ATOM">
+<span class="target" id="libatomvmets__hashtable_8c_1a13470e9ca18721ebaf24506331283b71"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_ATOM</span></span></span> <span class="pre">16777643</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_ATOM" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_INTEGER">
-<span class="target" id="libatomvmets__hashtable_8c_1ab87e982b1d09ae3704f4f900336a983c"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_INTEGER</span></span></span> <span class="pre">16777781</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_INTEGER" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_INTEGER">
+<span class="target" id="libatomvmets__hashtable_8c_1ab87e982b1d09ae3704f4f900336a983c"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_INTEGER</span></span></span> <span class="pre">16777781</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_INTEGER" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_FLOAT">
-<span class="target" id="libatomvmets__hashtable_8c_1ac047d65f055d881c7b4451dd3210a763"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_FLOAT</span></span></span> <span class="pre">16777973</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_FLOAT" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_FLOAT">
+<span class="target" id="libatomvmets__hashtable_8c_1ac047d65f055d881c7b4451dd3210a763"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_FLOAT</span></span></span> <span class="pre">16777973</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_FLOAT" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_PID">
-<span class="target" id="libatomvmets__hashtable_8c_1a35e0a494091950e8866eec90fbedea93"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_PID</span></span></span> <span class="pre">16778147</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_PID" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_PID">
+<span class="target" id="libatomvmets__hashtable_8c_1a35e0a494091950e8866eec90fbedea93"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_PID</span></span></span> <span class="pre">16778147</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_PID" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_REF">
-<span class="target" id="libatomvmets__hashtable_8c_1a29ebc99afff1279029da4ceaefa23623"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_REF</span></span></span> <span class="pre">16778441</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_REF" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_REF">
+<span class="target" id="libatomvmets__hashtable_8c_1a29ebc99afff1279029da4ceaefa23623"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_REF</span></span></span> <span class="pre">16778441</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_REF" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_BINARY">
-<span class="target" id="libatomvmets__hashtable_8c_1a054a6305047bfefd39d7067c54969fd3"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_BINARY</span></span></span> <span class="pre">16780483</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_BINARY" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_BINARY">
+<span class="target" id="libatomvmets__hashtable_8c_1a054a6305047bfefd39d7067c54969fd3"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_BINARY</span></span></span> <span class="pre">16780483</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_BINARY" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_TUPLE">
-<span class="target" id="libatomvmets__hashtable_8c_1a25633a3a955447a37751e661d1314af2"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_TUPLE</span></span></span> <span class="pre">16778821</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_TUPLE" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_TUPLE">
+<span class="target" id="libatomvmets__hashtable_8c_1a25633a3a955447a37751e661d1314af2"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_TUPLE</span></span></span> <span class="pre">16778821</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_TUPLE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_LIST">
-<span class="target" id="libatomvmets__hashtable_8c_1a50bbf32bf494f7af557daef914af24d5"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_LIST</span></span></span> <span class="pre">16779179</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_LIST" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_LIST">
+<span class="target" id="libatomvmets__hashtable_8c_1a50bbf32bf494f7af557daef914af24d5"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_LIST</span></span></span> <span class="pre">16779179</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_LIST" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.LARGE_PRIME_MAP">
-<span class="target" id="libatomvmets__hashtable_8c_1a46bdcb429c2a7d7a76c54960b3f61b41"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_MAP</span></span></span> <span class="pre">16779449</span><a class="headerlink" href="#c.libAtomVM.LARGE_PRIME_MAP" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.LARGE_PRIME_MAP">
+<span class="target" id="libatomvmets__hashtable_8c_1a46bdcb429c2a7d7a76c54960b3f61b41"></span><span class="sig-name descname"><span class="n"><span class="pre">LARGE_PRIME_MAP</span></span></span> <span class="pre">16779449</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_MAP" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_term">
-<span class="target" id="libatomvmets__hashtable_8c_1a4fb40c8c8dc2c274f0ca7bf5dcb9dc67"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_term</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_term" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_term">
+<span class="target" id="libatomvmets__hashtable_8c_1a4fb40c8c8dc2c274f0ca7bf5dcb9dc67"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_term</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_term" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable_new">
-<span class="target" id="libatomvmets__hashtable_8c_1af0255d5b64fc1f0f0f9e1a9324b99cdc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashTable" title="EtsHashTable"><span class="n"><span class="pre">EtsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable_new" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.ets_hashtable_new">
+<span class="target" id="libatomvmets__hashtable_8c_1af0255d5b64fc1f0f0f9e1a9324b99cdc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">EtsHashTable</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_new</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.ets_hashtable_new" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable_destroy">
-<span class="target" id="libatomvmets__hashtable_8c_1a053d9887d20720635d0748670a0b3121"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashTable" title="EtsHashTable"><span class="n"><span class="pre">EtsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable_destroy" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.ets_hashtable_destroy">
+<span class="target" id="libatomvmets__hashtable_8c_1a053d9887d20720635d0748670a0b3121"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_destroy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">EtsHashTable</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.ets_hashtable_destroy" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable_insert">
-<span class="target" id="libatomvmets__hashtable_8c_1a4a23541fdcb153db393f34cc1c56552a"></span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashtableErrorCode" title="EtsHashtableErrorCode"><span class="n"><span class="pre">EtsHashtableErrorCode</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashTable" title="EtsHashTable"><span class="n"><span class="pre">EtsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">entry</span></span>, <a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashtableOptions" title="EtsHashtableOptions"><span class="n"><span class="pre">EtsHashtableOptions</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable_insert" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.ets_hashtable_insert">
+<span class="target" id="libatomvmets__hashtable_8c_1a4a23541fdcb153db393f34cc1c56552a"></span><span class="n"><span class="pre">EtsHashtableErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_insert</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">EtsHashTable</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">entry</span></span>, <span class="n"><span class="pre">EtsHashtableOptions</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.ets_hashtable_insert" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable_lookup">
-<span class="target" id="libatomvmets__hashtable_8c_1a8bb6e3d84a322f512e6bac5b0a19bbfc"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_lookup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashTable" title="EtsHashTable"><span class="n"><span class="pre">EtsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">keypos</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable_lookup" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.ets_hashtable_lookup">
+<span class="target" id="libatomvmets__hashtable_8c_1a8bb6e3d84a322f512e6bac5b0a19bbfc"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_lookup</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">EtsHashTable</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">keypos</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.ets_hashtable_lookup" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable_remove">
-<span class="target" id="libatomvmets__hashtable_8c_1a519495730218e1a5adb91cba31ade090"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_remove</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="ets_hashtable.h.html#c.libAtomVM.EtsHashTable" title="EtsHashTable"><span class="n"><span class="pre">EtsHashTable</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">keypos</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable_remove" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.ets_hashtable_remove">
+<span class="target" id="libatomvmets__hashtable_8c_1a519495730218e1a5adb91cba31ade090"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_hashtable_remove</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">EtsHashTable</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">hash_table</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">keypos</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.ets_hashtable_remove" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_atom">
-<span class="target" id="libatomvmets__hashtable_8c_1aa735c1ae1a5ef5c3f0f22fc1e0310eac"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_atom</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_atom" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_atom">
+<span class="target" id="libatomvmets__hashtable_8c_1aa735c1ae1a5ef5c3f0f22fc1e0310eac"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_atom</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_atom" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_integer">
-<span class="target" id="libatomvmets__hashtable_8c_1a861b966f4a5635c3d8be6cd724822814"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_integer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_integer" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_integer">
+<span class="target" id="libatomvmets__hashtable_8c_1a861b966f4a5635c3d8be6cd724822814"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_integer</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_integer" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_float">
-<span class="target" id="libatomvmets__hashtable_8c_1aad7c4acf438a93a4df63045e1e688eb5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_float</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_float" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_float">
+<span class="target" id="libatomvmets__hashtable_8c_1aad7c4acf438a93a4df63045e1e688eb5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_float</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_float" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_pid">
-<span class="target" id="libatomvmets__hashtable_8c_1a9a0e691483f4a16498bd2ef9bfd42791"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_pid</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_pid" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_pid">
+<span class="target" id="libatomvmets__hashtable_8c_1a9a0e691483f4a16498bd2ef9bfd42791"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_pid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_pid" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_reference">
-<span class="target" id="libatomvmets__hashtable_8c_1a91a8fcbcf341f7f4f00e20c615d9a91b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_reference</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_reference" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_reference">
+<span class="target" id="libatomvmets__hashtable_8c_1a91a8fcbcf341f7f4f00e20c615d9a91b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_reference</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_reference" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_binary">
-<span class="target" id="libatomvmets__hashtable_8c_1a25d955977ccdbec2f7e590ebcf93cf08"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_binary" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_binary">
+<span class="target" id="libatomvmets__hashtable_8c_1a25d955977ccdbec2f7e590ebcf93cf08"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_binary" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.hash_term_incr">
-<span class="target" id="libatomvmets__hashtable_8c_1a861700a5ce60e5506a81c75067edba95"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_term_incr</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.hash_term_incr" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.hash_term_incr">
+<span class="target" id="libatomvmets__hashtable_8c_1a861700a5ce60e5506a81c75067edba95"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">hash_term_incr</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">h</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.hash_term_incr" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.libAtomVM.HNode">
-<span class="target" id="libatomvmstruct_h_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNode</span></span></span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.ets_hashtable.c.HNode">
+<span class="target" id="libatomvmstruct_h_node"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">HNode</span></span></span><a class="headerlink" href="#c.libAtomVM.ets_hashtable.c.HNode" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </section>
@@ -470,14 +466,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v: main
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+      main branch (unstable)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -523,15 +519,19 @@
           <dd><a href="/doc/v0.6.3/">v0.6.3</a></dd>
           
         
+          
+          <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
            <strong> 
-          <dd><a href="/doc/main/">main</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
            </strong> 
         
       </dl>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
         

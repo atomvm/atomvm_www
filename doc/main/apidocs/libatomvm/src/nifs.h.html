@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nifs.h &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
+  <title>nifs.h &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2693c45"></script>
+        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -42,7 +42,7 @@
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                main
+                main branch (unstable)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -118,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -139,7 +137,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -147,7 +144,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.c.html">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -350,31 +346,32 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.VALIDATE_VALUE">
-<span class="target" id="libatomvmnifs_8h_1a69bd4b915966835c42a2b14b8c91483f"></span><span class="sig-name descname"><span class="n"><span class="pre">VALIDATE_VALUE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">verify_function</span></span><span class="sig-paren">)</span> <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a> <span class="pre">(</span><a class="reference internal" href="utils.h.html#libatomvmutils_8h_1ab10d0a221f4d7a706701b806c8135fd7"><span class="std std-ref"><span class="pre">UNLIKELY</span></span></a><span class="pre">(!verify_function((</span><a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a1a4da12440461137d66e86ba30030aab"><span class="std std-ref"><span class="pre">value</span></span></a><p><span class="pre">))))</span> <span class="pre">{</span> <span class="pre">\</span></p>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.h.VALIDATE_VALUE">
+<span class="target" id="libatomvmnifs_8h_1a69bd4b915966835c42a2b14b8c91483f"></span><span class="sig-name descname"><span class="n"><span class="pre">VALIDATE_VALUE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">verify_function</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">if</span> <span class="pre">(</span><a class="reference internal" href="utils.h.html#libatomvmutils_8h_1ab10d0a221f4d7a706701b806c8135fd7"><span class="std std-ref"><span class="pre">UNLIKELY</span></span></a><p><span class="pre">(!verify_function((value))))</span> <span class="pre">{</span> <span class="pre">\</span></p>
 <p><span class="pre">argv[0]</span> <span class="pre">=</span></p>
 <a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1a44cbb241677d97b870f957e462caf3b3"><span class="std std-ref"><span class="pre">ERROR_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">argv[1]</span> <span class="pre">=</span></p>
 <a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1af18728853e2246cba0937458e40c1a35"><span class="std std-ref"><span class="pre">BADARG_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
-<p><span class="pre">return</span> <span class="pre">term_invalid_term();</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">return</span></p>
+<a class="reference internal" href="term.h.html#libatomvmterm_8h_1a94e2218b5d376c7edf7f9037adad4a17"><span class="std std-ref"><span class="pre">term_invalid_term</span></span></a><p><span class="pre">();</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span></p>
-<a class="headerlink" href="#c.libAtomVM.VALIDATE_VALUE" title="Link to this definition"></a><br /></dt>
+<a class="headerlink" href="#c.libAtomVM.nifs.h.VALIDATE_VALUE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.RAISE_ERROR">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.h.RAISE_ERROR">
 <span class="target" id="libatomvmnifs_8h_1a832199d5ff8e170484b8ad190f1e37b2"></span><span class="sig-name descname"><span class="n"><span class="pre">RAISE_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">error_type_atom</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">ctx-&gt;x[0]</span> <span class="pre">=</span> <a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1a44cbb241677d97b870f957e462caf3b3"><span class="std std-ref"><span class="pre">ERROR_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">ctx-&gt;x[1]</span> <span class="pre">=</span> <span class="pre">(error_type_atom);</span>&#160;&#160; <span class="pre">\</span></p>
-<p><span class="pre">return</span> <span class="pre">term_invalid_term();</span></p>
-<br /></dt>
+<p><span class="pre">return</span></p>
+<a class="reference internal" href="term.h.html#libatomvmterm_8h_1a94e2218b5d376c7edf7f9037adad4a17"><span class="std std-ref"><span class="pre">term_invalid_term</span></span></a><span class="pre">();</span><a class="headerlink" href="#c.libAtomVM.nifs.h.RAISE_ERROR" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.nifs_get">
-<span class="target" id="libatomvmnifs_8h_1a740573ba6d70d2f51087511ffc0cdaf1"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="exportedfunction.h.html#c.libAtomVM.Nif" title="Nif"><span class="n"><span class="pre">Nif</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">nifs_get</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">module</span></span>, <a class="reference internal" href="atom.h.html#c.libAtomVM.AtomString" title="AtomString"><span class="n"><span class="pre">AtomString</span></span></a><span class="w"> </span><span class="n"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">arity</span></span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.h.nifs_get">
+<span class="target" id="libatomvmnifs_8h_1a740573ba6d70d2f51087511ffc0cdaf1"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">nifs_get</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">AtomString</span></span><span class="w"> </span><span class="n"><span class="pre">module</span></span>, <span class="n"><span class="pre">AtomString</span></span><span class="w"> </span><span class="n"><span class="pre">function</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">arity</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.h.nifs_get" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -417,14 +414,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v: main
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+      main branch (unstable)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -470,15 +467,19 @@
           <dd><a href="/doc/v0.6.3/">v0.6.3</a></dd>
           
         
+          
+          <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
            <strong> 
-          <dd><a href="/doc/main/">main</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
            </strong> 
         
       </dl>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
         

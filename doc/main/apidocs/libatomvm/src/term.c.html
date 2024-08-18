@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>term.c &mdash; AtomVM 0.7.0-dev+git.47271c8c documentation</title>
+  <title>term.c &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -19,14 +19,14 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=c2693c45"></script>
+        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
         <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="term.h" href="term.h.html" />
-    <link rel="prev" title="tempstack.h" href="tempstack.h.html" /> 
+    <link rel="prev" title="sys_mbedtls.h" href="sys_mbedtls.h.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,7 +42,7 @@
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
               <div class="version">
-                main
+                main branch (unstable)
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -68,7 +68,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#atomvm-c-apis">AtomVM ‘C’ APIs</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../index.html">libAtomVM</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-header-files">libAtomVM Header Files</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#libatomvm-source-files">libAtomVM source files</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="atom.c.html">atom.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom.h.html">atom.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="atom_table.c.html">atom_table.c</a></li>
@@ -86,7 +86,6 @@
 <li class="toctree-l4"><a class="reference internal" href="context.h.html">context.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.c.html">debug.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="debug.h.html">debug.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="defaultatoms.c.html">defaultatoms.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
@@ -118,7 +117,6 @@
 <li class="toctree-l4"><a class="reference internal" href="nifs.c.html">nifs.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nifs.h.html">nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="opcodes.h.html">opcodes.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="opcodesswitch.h.html">opcodesswitch.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.c.html">otp_crypto.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_crypto.h.html">otp_crypto.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="otp_net.c.html">otp_net.c</a></li>
@@ -139,7 +137,6 @@
 <li class="toctree-l4"><a class="reference internal" href="refc_binary.h.html">refc_binary.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.c.html">resources.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="resources.h.html">resources.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="scheduler.c.html">scheduler.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="scheduler.h.html">scheduler.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="smp.h.html">smp.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="stacktrace.c.html">stacktrace.c</a></li>
@@ -147,7 +144,6 @@
 <li class="toctree-l4"><a class="reference internal" href="synclist.h.html">synclist.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys.h.html">sys.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sys_mbedtls.h.html">sys_mbedtls.h</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tempstack.h.html">tempstack.h</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">term.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term.h.html">term.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="term_typedef.h.html">term_typedef.h</a></li>
@@ -200,7 +196,7 @@
 </div>
 <p>Include dependency graph for term.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-da11a9105d353545df37fc826e78525ff0bee8db.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-3def61c740e441393607d4c46523e3feefeac7c7.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -209,7 +205,6 @@
     &quot;19&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
     &quot;11&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;24&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
-    &quot;33&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
     &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;6&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
     &quot;32&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
@@ -233,6 +228,7 @@
     &quot;25&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
     &quot;34&quot; [label=&quot;ctype.h&quot; tooltip=&quot;ctype.h&quot;]
     &quot;30&quot; [label=&quot;atomshashtable.h&quot; tooltip=&quot;atomshashtable.h&quot;]
+    &quot;33&quot; [label=&quot;tempstack.h&quot; tooltip=&quot;tempstack.h&quot;]
     &quot;22&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
     &quot;8&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
     &quot;5&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
@@ -244,9 +240,6 @@
     &quot;24&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;31&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;21&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;21&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -340,46 +333,47 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-defines">Defines</p>
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.BEGIN_MAP_KEY">
-<span class="target" id="libatomvmterm_8c_1ab27de2bdce561b02013482aaff828238"></span><span class="sig-name descname"><span class="n"><span class="pre">BEGIN_MAP_KEY</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1ac307b174fc487c3de6b43b31db3dc482"><span class="std std-ref"><span class="pre">TERM_RESERVED_MARKER</span></span></a><span class="pre">(1)</span><a class="headerlink" href="#c.libAtomVM.BEGIN_MAP_KEY" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.BEGIN_MAP_KEY">
+<span class="target" id="libatomvmterm_8c_1ab27de2bdce561b02013482aaff828238"></span><span class="sig-name descname"><span class="n"><span class="pre">BEGIN_MAP_KEY</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1ac307b174fc487c3de6b43b31db3dc482"><span class="std std-ref"><span class="pre">TERM_RESERVED_MARKER</span></span></a><span class="pre">(1)</span><a class="headerlink" href="#c.libAtomVM.term.c.BEGIN_MAP_KEY" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.END_MAP_KEY">
-<span class="target" id="libatomvmterm_8c_1a811e0764314012ebd3ce9911f2bfdacf"></span><span class="sig-name descname"><span class="n"><span class="pre">END_MAP_KEY</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1ac307b174fc487c3de6b43b31db3dc482"><span class="std std-ref"><span class="pre">TERM_RESERVED_MARKER</span></span></a><span class="pre">(0)</span><a class="headerlink" href="#c.libAtomVM.END_MAP_KEY" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.END_MAP_KEY">
+<span class="target" id="libatomvmterm_8c_1a811e0764314012ebd3ce9911f2bfdacf"></span><span class="sig-name descname"><span class="n"><span class="pre">END_MAP_KEY</span></span></span> <a class="reference internal" href="term.h.html#libatomvmterm_8h_1ac307b174fc487c3de6b43b31db3dc482"><span class="std std-ref"><span class="pre">TERM_RESERVED_MARKER</span></span></a><span class="pre">(0)</span><a class="headerlink" href="#c.libAtomVM.term.c.END_MAP_KEY" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.CMP_POP_AND_CONTINUE">
-<span class="target" id="libatomvmterm_8c_1ae6c56ef0cc80e4f6288bee44f9890298"></span><span class="sig-name descname"><span class="n"><span class="pre">CMP_POP_AND_CONTINUE</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">other</span> <span class="pre">=</span> <span class="pre">temp_stack_pop(&amp;temp_stack);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span>
-&#160;&#160;&#160; <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a> <span class="pre">(other</span> <span class="pre">==</span> <a class="reference internal" href="#libatomvmterm_8c_1ab27de2bdce561b02013482aaff828238"><span class="std std-ref"><span class="pre">BEGIN_MAP_KEY</span></span></a><p><span class="pre">)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.CMP_POP_AND_CONTINUE">
+<span class="target" id="libatomvmterm_8c_1ae6c56ef0cc80e4f6288bee44f9890298"></span><span class="sig-name descname"><span class="n"><span class="pre">CMP_POP_AND_CONTINUE</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <p><span class="pre">other</span> <span class="pre">=</span> <span class="pre">temp_stack_pop(&amp;temp_stack);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">if</span> <span class="pre">(other</span> <span class="pre">==</span></p>
+<a class="reference internal" href="#libatomvmterm_8c_1ab27de2bdce561b02013482aaff828238"><span class="std std-ref"><span class="pre">BEGIN_MAP_KEY</span></span></a><p><span class="pre">)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">map_key_nesting++;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">other</span> <span class="pre">=</span> <span class="pre">temp_stack_pop(&amp;temp_stack);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
-<p><span class="pre">}</span></p>
-<a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a0544c3fe466e421738dae463968b70ba"><span class="std std-ref"><span class="pre">else</span></span></a> <a class="reference internal" href="otp_socket.c.html#libatomvmotp__socket_8c_1a347613d4af6b3f01a1c8da830f57e45e"><span class="std std-ref"><span class="pre">if</span></span></a> <span class="pre">(other</span> <span class="pre">==</span> <a class="reference internal" href="#libatomvmterm_8c_1a811e0764314012ebd3ce9911f2bfdacf"><span class="std std-ref"><span class="pre">END_MAP_KEY</span></span></a><p><span class="pre">)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">}</span> <span class="pre">else</span> <span class="pre">if</span> <span class="pre">(other</span> <span class="pre">==</span></p>
+<a class="reference internal" href="#libatomvmterm_8c_1a811e0764314012ebd3ce9911f2bfdacf"><span class="std std-ref"><span class="pre">END_MAP_KEY</span></span></a><p><span class="pre">)</span> <span class="pre">{</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">map_key_nesting--;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">other</span> <span class="pre">=</span> <span class="pre">temp_stack_pop(&amp;temp_stack);</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">t</span> <span class="pre">=</span> <span class="pre">temp_stack_pop(&amp;temp_stack);</span></p>
-<a class="headerlink" href="#c.libAtomVM.CMP_POP_AND_CONTINUE" title="Link to this definition"></a><br /></dt>
+<a class="headerlink" href="#c.libAtomVM.term.c.CMP_POP_AND_CONTINUE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.fprintf_printer">
-<span class="target" id="libatomvmterm_8c_1a6e2c6f7ca56bb95e7eebe1e9ab5e99b7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fprintf_printer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term.h.html#c.libAtomVM.PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.fprintf_printer" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.fprintf_printer">
+<span class="target" id="libatomvmterm_8c_1a6e2c6f7ca56bb95e7eebe1e9ab5e99b7"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">fprintf_printer</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">PrinterFun</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.fprintf_printer" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.snprintf_printer">
-<span class="target" id="libatomvmterm_8c_1aab6ee1483c0256e78c589c50d4abefe9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">snprintf_printer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term.h.html#c.libAtomVM.PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.snprintf_printer" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.snprintf_printer">
+<span class="target" id="libatomvmterm_8c_1aab6ee1483c0256e78c589c50d4abefe9"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">snprintf_printer</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">PrinterFun</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fmt</span></span>, <span class="p"><span class="pre">...</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.snprintf_printer" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_display">
-<span class="target" id="libatomvmterm_8c_1a9f9ceebb235582ade132478178412e2d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_display</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fd</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="context.h.html#c.libAtomVM.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_display" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_display">
+<span class="target" id="libatomvmterm_8c_1a9f9ceebb235582ade132478178412e2d"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_display</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fd</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_display" title="Link to this definition"></a><br /></dt>
 <dd><p>Prints a term to stdout. </p>
 <p>Print any term to the given file. </p>
 <dl class="field-list simple">
@@ -394,8 +388,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_fprint">
-<span class="target" id="libatomvmterm_8c_1a61a0f4231399e6be30d9d5307f44f961"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_fprint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_fprint" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_fprint">
+<span class="target" id="libatomvmterm_8c_1a61a0f4231399e6be30d9d5307f44f961"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_fprint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">stream</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_fprint" title="Link to this definition"></a><br /></dt>
 <dd><p>Prints a term to the given file. </p>
 <p>Print any given term to the given file. </p>
 <dl class="field-list simple">
@@ -413,8 +407,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_snprint">
-<span class="target" id="libatomvmterm_8c_1a041be752ef5f4e437d06b31d1b82610c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_snprint</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_snprint" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_snprint">
+<span class="target" id="libatomvmterm_8c_1a041be752ef5f4e437d06b31d1b82610c"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_snprint</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_snprint" title="Link to this definition"></a><br /></dt>
 <dd><p>Write a term to a string as text. </p>
 <p>Print any given term to the given buffer. </p>
 <dl class="field-list simple">
@@ -433,8 +427,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_funprint">
-<span class="target" id="libatomvmterm_8c_1a309659e6659010ae78dbe264106aec0f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_funprint</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term.h.html#c.libAtomVM.PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_funprint" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_funprint">
+<span class="target" id="libatomvmterm_8c_1a309659e6659010ae78dbe264106aec0f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_funprint</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">PrinterFun</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">fun</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_funprint" title="Link to this definition"></a><br /></dt>
 <dd><p>Prints a term using given printer fun. </p>
 <p>Print any given term using a printer fun </p>
 <dl class="field-list simple">
@@ -452,13 +446,13 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_type_to_index">
-<span class="target" id="libatomvmterm_8c_1a96971e9d1f9f2597b0a58ea46883eccf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_type_to_index</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_type_to_index" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_type_to_index">
+<span class="target" id="libatomvmterm_8c_1a96971e9d1f9f2597b0a58ea46883eccf"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_type_to_index</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_type_to_index" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_compare">
-<span class="target" id="libatomvmterm_8c_1a28711edef0c7dc12d57d1b0dad50cb7c"></span><a class="reference internal" href="term.h.html#c.libAtomVM.TermCompareResult" title="TermCompareResult"><span class="n"><span class="pre">TermCompareResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_compare</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">other</span></span>, <a class="reference internal" href="term.h.html#c.libAtomVM.TermCompareOpts" title="TermCompareOpts"><span class="n"><span class="pre">TermCompareOpts</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_compare" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_compare">
+<span class="target" id="libatomvmterm_8c_1a28711edef0c7dc12d57d1b0dad50cb7c"></span><span class="n"><span class="pre">TermCompareResult</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_compare</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">other</span></span>, <span class="n"><span class="pre">TermCompareOpts</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_compare" title="Link to this definition"></a><br /></dt>
 <dd><p>Compares two terms. </p>
 <p>Tells if first term is &gt;, &lt; or == to the second term. </p>
 <dl class="field-list simple">
@@ -477,8 +471,8 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_alloc_refc_binary">
-<span class="target" id="libatomvmterm_8c_1a6d4937d03781326a3ebd773585d1d303"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_alloc_refc_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_const</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_alloc_refc_binary" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_alloc_refc_binary">
+<span class="target" id="libatomvmterm_8c_1a6d4937d03781326a3ebd773585d1d303"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_alloc_refc_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_const</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_alloc_refc_binary" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a reference-counted binary on the heap. </p>
 <p>This function will create a reference-counted binary on the heap. If the data supplied is “const” (e.g., read from a literal in a BEAM file), then the returned term will point directly to the supplied data, and will not technically be reference-counted. Otherwise, a block of memory will be allocated to contain a copy of the data, in addition to a reference counter, so that the block can be free’d when no other terms reference the created object. (The reference count will be initialized to 1). If the data is non-NULL, it will be copied into the newly allocated block of memory. </p>
 <dl class="field-list simple">
@@ -497,13 +491,13 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.find_binary">
-<span class="target" id="libatomvmterm_8c_1afc59903b72452cd3ff8c57567fe4a627"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">find_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">binary_or_state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.find_binary" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.find_binary">
+<span class="target" id="libatomvmterm_8c_1afc59903b72452cd3ff8c57567fe4a627"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">find_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary_or_state</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.find_binary" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_alloc_sub_binary">
-<span class="target" id="libatomvmterm_8c_1afa5e34087895294b385be6044ae6148c"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_alloc_sub_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">binary_or_state</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <a class="reference internal" href="mailbox.h.html#c.libAtomVM.Heap" title="Heap"><span class="n"><span class="pre">Heap</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_alloc_sub_binary" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_alloc_sub_binary">
+<span class="target" id="libatomvmterm_8c_1afa5e34087895294b385be6044ae6148c"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_alloc_sub_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary_or_state</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_alloc_sub_binary" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a sub-binary. </p>
 <p>This function will create a sub-binary on the heap, using the supplied binary, offset into the binary, and length of the sub-binary. This function assumes the length of the referenced binary is greater or equal to offset + len. </p>
 <dl class="field-list simple">
@@ -522,23 +516,23 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.term_get_map_assoc">
-<span class="target" id="libatomvmterm_8c_1aa83f70c6586e08413736b62207603e81"></span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_map_assoc</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="globalcontext.h.html#c.libAtomVM.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term_get_map_assoc" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.term_get_map_assoc">
+<span class="target" id="libatomvmterm_8c_1aa83f70c6586e08413736b62207603e81"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_map_assoc</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">map</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.c.term_get_map_assoc" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-variables">Variables</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.empty_tuple">
-<span class="target" id="libatomvmterm_8c_1ac04d344fdfa2ea9d687ac6ed07729d0c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="term_typedef.h.html#c.libAtomVM.term" title="term"><span class="n"><span class="pre">term</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">empty_tuple</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.empty_tuple" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.empty_tuple">
+<span class="target" id="libatomvmterm_8c_1ac04d344fdfa2ea9d687ac6ed07729d0c"></span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">empty_tuple</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.term.c.empty_tuple" title="Link to this definition"></a><br /></dt>
 <dd><p>All empty tuples will reference this. </p>
 </dd></dl>
 
 </div>
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.libAtomVM.FprintfFun">
-<span class="target" id="libatomvmstruct_fprintf_fun"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FprintfFun</span></span></span><a class="headerlink" href="#c.libAtomVM.FprintfFun" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.FprintfFun">
+<span class="target" id="libatomvmstruct_fprintf_fun"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">FprintfFun</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.FprintfFun" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for FprintfFun:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-b3d11b8b7dae7702d981fb3a598e43ab0e6caf92.png" alt="digraph {
@@ -555,21 +549,21 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.FprintfFun.base">
-<span class="target" id="libatomvmstruct_fprintf_fun_1abcc1230e247d1426102921e1da336a2f"></span><a class="reference internal" href="term.h.html#c.libAtomVM.PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.FprintfFun.base" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.FprintfFun.base">
+<span class="target" id="libatomvmstruct_fprintf_fun_1abcc1230e247d1426102921e1da336a2f"></span><span class="n"><span class="pre">PrinterFun</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.FprintfFun.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.FprintfFun.stream">
-<span class="target" id="libatomvmstruct_fprintf_fun_1ab54d123edb001fadb0de7a5e55053ab7"></span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream</span></span></span><a class="headerlink" href="#c.libAtomVM.FprintfFun.stream" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.FprintfFun.stream">
+<span class="target" id="libatomvmstruct_fprintf_fun_1ab54d123edb001fadb0de7a5e55053ab7"></span><span class="n"><span class="pre">FILE</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">stream</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.FprintfFun.stream" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
 </dd></dl>
 
 <dl class="c struct">
-<dt class="sig sig-object c" id="c.libAtomVM.SnprintfFun">
-<span class="target" id="libatomvmstruct_snprintf_fun"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnprintfFun</span></span></span><a class="headerlink" href="#c.libAtomVM.SnprintfFun" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.SnprintfFun">
+<span class="target" id="libatomvmstruct_snprintf_fun"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SnprintfFun</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.SnprintfFun" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for SnprintfFun:</p>
 <figure class="align-default">
 <div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-7aad1625de3d0e606ed619dc784eb364a5da9a2b.png" alt="digraph {
@@ -586,18 +580,18 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.SnprintfFun.base">
-<span class="target" id="libatomvmstruct_snprintf_fun_1adca4762a16be52403a31e8ad274e5864"></span><a class="reference internal" href="term.h.html#c.libAtomVM.PrinterFun" title="PrinterFun"><span class="n"><span class="pre">PrinterFun</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.SnprintfFun.base" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.SnprintfFun.base">
+<span class="target" id="libatomvmstruct_snprintf_fun_1adca4762a16be52403a31e8ad274e5864"></span><span class="n"><span class="pre">PrinterFun</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.SnprintfFun.base" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.SnprintfFun.size">
-<span class="target" id="libatomvmstruct_snprintf_fun_1a45015b0437107c23d7868d42ad12f857"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#c.libAtomVM.SnprintfFun.size" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.SnprintfFun.size">
+<span class="target" id="libatomvmstruct_snprintf_fun_1a45015b0437107c23d7868d42ad12f857"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">size</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.SnprintfFun.size" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.SnprintfFun.buf">
-<span class="target" id="libatomvmstruct_snprintf_fun_1a093a84ca292cbc7bb0b43244185a464b"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buf</span></span></span><a class="headerlink" href="#c.libAtomVM.SnprintfFun.buf" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.c.SnprintfFun.buf">
+<span class="target" id="libatomvmstruct_snprintf_fun_1a093a84ca292cbc7bb0b43244185a464b"></span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">buf</span></span></span><a class="headerlink" href="#c.libAtomVM.term.c.SnprintfFun.buf" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -609,7 +603,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="tempstack.h.html" class="btn btn-neutral float-left" title="tempstack.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sys_mbedtls.h.html" class="btn btn-neutral float-left" title="sys_mbedtls.h" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="term.h.html" class="btn btn-neutral float-right" title="term.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -642,14 +636,14 @@
 
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book">AtomVM Docs</span>
-      v: main
+      <span class="fa fa-download"></span><span class="fa fa-book"> AtomVM Docs version:</span>
+      main branch (unstable)
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       
       <dl>
-        <dt>Versions</dt>
+        <dt><span class="fa fa-book"> Versions</span></dt>
         
           
           <dd><a href="/doc/v0.5.0/">v0.5.0</a></dd>
@@ -695,15 +689,19 @@
           <dd><a href="/doc/v0.6.3/">v0.6.3</a></dd>
           
         
+          
+          <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
            <strong> 
-          <dd><a href="/doc/main/">main</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
            </strong> 
         
       </dl>
       
       
       <dl>
-        <dt>Downloads</dt>
+        <dt><span class="fa fa-download"> Downloads</span></dt>
         
           <dd><a href="/doc/main/pdf/AtomVM-main.pdf">pdf</a></dd>
         
