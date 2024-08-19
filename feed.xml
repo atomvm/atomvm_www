@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://www.atomvm.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.atomvm.net/" rel="alternate" type="text/html" /><updated>2024-08-05T01:46:06+00:00</updated><id>https://www.atomvm.net/feed.xml</id><title type="html">AtomVM</title><subtitle>Welcome to AtomVM, the Erlang virtual machine for IoT devices!</subtitle><author><name>atomvm.net</name></author><entry><title type="html">Announcing AtomVM v0.6.3</title><link href="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html" rel="alternate" type="text/html" title="Announcing AtomVM v0.6.3" /><published>2024-07-22T00:00:00+00:00</published><updated>2024-07-22T00:00:00+00:00</updated><id>https://www.atomvm.net/2024/07/22/Release_v0.6.3</id><content type="html" xml:base="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html">&lt;h2 id=&quot;20240722-announcing-atomvm-v063&quot;&gt;2024/07/22 Announcing AtomVM v0.6.3&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://www.atomvm.net/feed.xml" rel="self" type="application/atom+xml" /><link href="https://www.atomvm.net/" rel="alternate" type="text/html" /><updated>2024-08-19T02:03:34+00:00</updated><id>https://www.atomvm.net/feed.xml</id><title type="html">AtomVM</title><subtitle>Welcome to AtomVM, the Erlang virtual machine for IoT devices!</subtitle><author><name>atomvm.net</name></author><entry><title type="html">Announcing AtomVM v0.6.4</title><link href="https://www.atomvm.net/2024/08/18/Release_v0.6.4.html" rel="alternate" type="text/html" title="Announcing AtomVM v0.6.4" /><published>2024-08-18T00:00:00+00:00</published><updated>2024-08-18T00:00:00+00:00</updated><id>https://www.atomvm.net/2024/08/18/Release_v0.6.4</id><content type="html" xml:base="https://www.atomvm.net/2024/08/18/Release_v0.6.4.html">&lt;h2 id=&quot;20240818-announcing-atomvm-v064&quot;&gt;2024/08/18 Announcing AtomVM v0.6.4&lt;/h2&gt;
+
+&lt;p&gt;We are pleased to announce the release of v0.6.4 of the AtomVM virtual machine!&lt;/p&gt;
+
+&lt;p&gt;This release greatly enhances support for Elixir language programming. Many Elixir modules and functions have been added:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Implement missing opcode 161 (raw_raise), that looks more likely to be generated with Elixir code&lt;/li&gt;
+  &lt;li&gt;Support for Elixir Kernel:
+    &lt;ul&gt;
+      &lt;li&gt;Kernel.struct and Kernel.struct!&lt;/li&gt;
+      &lt;li&gt;Kernel.min and Kernel.max&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;MapSet module&lt;/li&gt;
+  &lt;li&gt;Range module&lt;/li&gt;
+  &lt;li&gt;Enum functions: split_with, join, map_join, into, reverse, slice and to_list&lt;/li&gt;
+  &lt;li&gt;Map.replace/3 and Map.replace!/3&lt;/li&gt;
+  &lt;li&gt;IO.iodata_to_binary/1&lt;/li&gt;
+  &lt;li&gt;Support for Elixir Enumerable and Collectable protocol&lt;/li&gt;
+  &lt;li&gt;Support for Elixir exceptions: Exception module and the other error related modules such as ArgumentError, UndefinedFunctionError, etc…&lt;/li&gt;
+  &lt;li&gt;Support (as stub) for erlang:error/3 (that is required from Elixir code)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The ESP32 platform now implements &lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/apidocs/erlang/eavmlib/gpio.html#init-1&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpio:init/1&lt;/code&gt;&lt;/a&gt;, which was previously only used (and required) on the rp2040 platform. This function is used to initialize pins for GPIO usage, which some pins require depending on default function and bootloader code.&lt;/p&gt;
+
+&lt;p&gt;For the full set of bug fixes, changes and additions consult the
+&lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/CHANGELOG.html&quot;&gt;Changelog&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Download images and binaries are available for most platforms, except STM32, are available from
+&lt;a href=&quot;https://github.com/atomvm/AtomVM/releases/tag/v0.6.4&quot;&gt;AtomVM Releases on GitHub&lt;/a&gt;. STM32 users as
+well as anyone needing to build a generic_unix port for a device without release binaries should
+consult the &lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/build-instructions.html&quot;&gt;Build Instructions&lt;/a&gt;. MacOS
+users also have the option of
+&lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/getting-started-guide.html#installation-on-macos&quot;&gt;installing with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;macports&lt;/code&gt;&lt;/a&gt;,
+and an updated HomeBrew tap should be available in the near future.&lt;/p&gt;
+
+&lt;p&gt;The git repository and tarballs of the AtomVM source release for all platforms can be found on our
+&lt;a href=&quot;https://github.com/atomvm/AtomVM&quot;&gt;GitHub AtomVM page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Documentation for the v0.6.4 release of the AtomVM virtual machine, including a
+&lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/getting-started-guide.html&quot;&gt;Getting Started Guide&lt;/a&gt;, can be found in the
+&lt;a href=&quot;https://www.atomvm.net/doc/v0.6.4/&quot;&gt;AtomVM Documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As always, tools, drivers, and modules are available on the
+&lt;a href=&quot;https://github.com/atomvm&quot;&gt;GitHub AtomVM Project page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Many thanks go to &lt;a href=&quot;https://github.com/bettio&quot;&gt;Davide Bettio&lt;/a&gt;, for creating and maintaining such a
+fine work of software, as well as the &lt;a href=&quot;https://github.com/atomvm/AtomVM/graphs/contributors&quot;&gt;contributors&lt;/a&gt; and &lt;a href=&quot;https://github.com/atomvm/AtomVM/issues&quot;&gt;bug reporters&lt;/a&gt; who have helped make this release possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The AtomVM team&lt;/em&gt;&lt;/p&gt;</content><author><name>atomvm.net</name></author><summary type="html">2024/08/18 Announcing AtomVM v0.6.4 We are pleased to announce the release of v0.6.4 of the AtomVM virtual machine! This release greatly enhances support for Elixir language programming. Many Elixir modules and functions have been added: Implement missing opcode 161 (raw_raise), that looks more likely to be generated with Elixir code Support for Elixir Kernel: Kernel.struct and Kernel.struct! Kernel.min and Kernel.max MapSet module Range module Enum functions: split_with, join, map_join, into, reverse, slice and to_list Map.replace/3 and Map.replace!/3 IO.iodata_to_binary/1 Support for Elixir Enumerable and Collectable protocol Support for Elixir exceptions: Exception module and the other error related modules such as ArgumentError, UndefinedFunctionError, etc… Support (as stub) for erlang:error/3 (that is required from Elixir code) The ESP32 platform now implements gpio:init/1, which was previously only used (and required) on the rp2040 platform. This function is used to initialize pins for GPIO usage, which some pins require depending on default function and bootloader code. For the full set of bug fixes, changes and additions consult the Changelog. Download images and binaries are available for most platforms, except STM32, are available from AtomVM Releases on GitHub. STM32 users as well as anyone needing to build a generic_unix port for a device without release binaries should consult the Build Instructions. MacOS users also have the option of installing with macports, and an updated HomeBrew tap should be available in the near future. The git repository and tarballs of the AtomVM source release for all platforms can be found on our GitHub AtomVM page. Documentation for the v0.6.4 release of the AtomVM virtual machine, including a Getting Started Guide, can be found in the AtomVM Documentation. As always, tools, drivers, and modules are available on the GitHub AtomVM Project page. Many thanks go to Davide Bettio, for creating and maintaining such a fine work of software, as well as the contributors and bug reporters who have helped make this release possible. The AtomVM team</summary></entry><entry><title type="html">Announcing AtomVM v0.6.3</title><link href="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html" rel="alternate" type="text/html" title="Announcing AtomVM v0.6.3" /><published>2024-07-22T00:00:00+00:00</published><updated>2024-07-22T00:00:00+00:00</updated><id>https://www.atomvm.net/2024/07/22/Release_v0.6.3</id><content type="html" xml:base="https://www.atomvm.net/2024/07/22/Release_v0.6.3.html">&lt;h2 id=&quot;20240722-announcing-atomvm-v063&quot;&gt;2024/07/22 Announcing AtomVM v0.6.3&lt;/h2&gt;
 
 &lt;p&gt;We are pleased to announce the release of v0.6.3 of the AtomVM virtual machine!&lt;/p&gt;
 
