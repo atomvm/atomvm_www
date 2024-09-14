@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Update Instructions &mdash; AtomVM 0.6.5+git.d5762d9b documentation</title>
+  <title>AtomVM Update Instructions &mdash; AtomVM 0.6.5+git.2aaf7a3c documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -19,7 +19,7 @@
   
         <script src="_static/jquery.js?v=5d32c60e"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=cb357c61"></script>
+        <script src="_static/documentation_options.js?v=fd695e0b"></script>
         <script src="_static/doctools.js?v=9a2dae69"></script>
         <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -99,6 +99,16 @@
 -->
 <section id="atomvm-update-instructions">
 <h1>AtomVM Update Instructions<a class="headerlink" href="#atomvm-update-instructions" title="Link to this heading"></a></h1>
+<section id="v0-6-4-v0-6-5">
+<h2>v0.6.4 -&gt; v0.6.5<a class="headerlink" href="#v0-6-4-v0-6-5" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>ESP32: <code class="docutils literal notranslate"><span class="pre">esp32boot.avm</span></code> doesn’t contain anymore Elixir standard library, use instead
+<code class="docutils literal notranslate"><span class="pre">elixir_esp32boot.avm</span></code>, or the Elixir release flavor when using an image.</p></li>
+<li><p>ESP32: partitioning schema for Elixir flavor is different, so app offset has been changed for
+Elixir images. Make sure to use <code class="docutils literal notranslate"><span class="pre">0x250000</span></code> as offset in your mix.exs or when performing manual
+flashing.</p></li>
+</ul>
+</section>
 <section id="v0-6-0-beta-1-v0-6-0-rc-0">
 <h2>v0.6.0-beta.1 -&gt; v0.6.0-rc.0<a class="headerlink" href="#v0-6-0-beta-1-v0-6-0-rc-0" title="Link to this heading"></a></h2>
 <ul class="simple">
