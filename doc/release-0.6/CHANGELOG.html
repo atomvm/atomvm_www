@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.5+git.8bcca512 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.5+git.0bd366d2 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=7ab3649f" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=d8af7ae9"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=f6e5b14d"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             
               <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                release-0.6 branch (unreleased)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -185,8 +180,30 @@ Elixir standard library modules</p></li>
 <li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">String.Chars</span></code> protocol, now functions such as <code class="docutils literal notranslate"><span class="pre">Enum.join</span></code> are able to take
 also non string parameters (e.g. <code class="docutils literal notranslate"><span class="pre">Enum.join([1,</span> <span class="pre">2],</span> <span class="pre">&quot;,&quot;)</span></code></p></li>
 <li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">Enum.at/3</span></code></p></li>
-<li><p>Add support to Elixir <code class="docutils literal notranslate"><span class="pre">Enumerable</span></code> protocol also for <code class="docutils literal notranslate"><span class="pre">Enum.all?</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.any?</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.each</span></code> and
-<code class="docutils literal notranslate"><span class="pre">Enum.filter</span></code></p></li>
+<li><p>Add support for <code class="docutils literal notranslate"><span class="pre">is_bitstring/1</span></code> construct which is used in Elixir protocols runtime.</p></li>
+<li><p>Add support to Elixir <code class="docutils literal notranslate"><span class="pre">Enumerable</span></code> protocol also for <code class="docutils literal notranslate"><span class="pre">Enum.all?</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.any?</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.each</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Enum.filter</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.flat_map</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.reject</span></code>, <code class="docutils literal notranslate"><span class="pre">Enum.chunk_by</span></code> and <code class="docutils literal notranslate"><span class="pre">Enum.chunk_while</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">maps:merge_with/3</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">lists:last/1</span></code> and <code class="docutils literal notranslate"><span class="pre">lists:mapfoldl/3</span></code></p></li>
+<li><p>Add support to Elixir for <code class="docutils literal notranslate"><span class="pre">Process.send/2</span></code> <code class="docutils literal notranslate"><span class="pre">Process.send_after/3/4</span></code> and <code class="docutils literal notranslate"><span class="pre">Process.cancel_timer/1</span></code></p></li>
+<li><p>Add support for <code class="docutils literal notranslate"><span class="pre">handle_continue</span></code> callback in <code class="docutils literal notranslate"><span class="pre">gen_server</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">List.Chars</span></code> protocol</p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">gen_server:start_monitor/3,4</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">code:ensure_loaded/1</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">io_lib:latin1_char_list/1</span></code></p></li>
+<li><p>Add support to Elixir for <code class="docutils literal notranslate"><span class="pre">Keyword.split/2</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">binary:split/3</span></code> and <code class="docutils literal notranslate"><span class="pre">string:find/2,3</span></code></p></li>
+<li><p>Support for large tuples (more than 255 elements) in external terms.</p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">io:put_chars/2</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">lists:nthtail/2</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">IO.chardata_to_string/1</span></code></p></li>
+<li><p>Support for Elixir <code class="docutils literal notranslate"><span class="pre">List.duplicate/2</span></code></p></li>
+<li><p>Support for <code class="docutils literal notranslate"><span class="pre">binary:copy/1,2</span></code></p></li>
+<li><p>Support for directory listing using POSIX APIs: (<code class="docutils literal notranslate"><span class="pre">atomvm:posix_opendir/1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">atomvm:posix_readdir/1</span></code>, <code class="docutils literal notranslate"><span class="pre">atomvm:posix_closedir/1</span></code>).</p></li>
+<li><p>ESP32: add support for <code class="docutils literal notranslate"><span class="pre">esp_adc</span></code> ADC driver, with Erlang and Elixir examples</p></li>
+<li><p>Add handler for ESP32 network driver STA mode <code class="docutils literal notranslate"><span class="pre">beacon_timeout</span></code> (event: 21), see issue
+<a class="reference external" href="https://github.com/atomvm/AtomVM/issues/1100">#1100</a></p></li>
 </ul>
 </section>
 <section id="changed">
@@ -194,12 +211,25 @@ also non string parameters (e.g. <code class="docutils literal notranslate"><spa
 <ul class="simple">
 <li><p>ESP32: Elixir library is not shipped anymore with <code class="docutils literal notranslate"><span class="pre">esp32boot.avm</span></code>. Use <code class="docutils literal notranslate"><span class="pre">elixir_esp32boot.avm</span></code>
 instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Enum.find_index</span></code> and <code class="docutils literal notranslate"><span class="pre">Enum.find_value</span></code> support Enumerable and not just lists</p></li>
+<li><p>Install AtomVM libraries source code and binaries for better dialyzer integration</p></li>
+<li><p>Made the <code class="docutils literal notranslate"><span class="pre">device_config</span></code> properties list in <code class="docutils literal notranslate"><span class="pre">spi:open/1</span></code> optional (defaults to <code class="docutils literal notranslate"><span class="pre">[]</span></code>), so you can use the function with only a <code class="docutils literal notranslate"><span class="pre">bus_config</span></code></p></li>
 </ul>
 </section>
 <section id="fixed">
 <h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>ESP32: content of <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> partition is not truncated anymore</p></li>
+<li><p>ESP32: <code class="docutils literal notranslate"><span class="pre">Fixed</span> <span class="pre">gpio:set_int</span></code> to accept any pin, not only pin 2</p></li>
+<li><p>Fix memory corruption in <code class="docutils literal notranslate"><span class="pre">unicode:characters_to_binary</span></code></p></li>
+<li><p>Fix handling of large literal indexes and large extended literal indexes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unicode:characters_to_list</span></code>: fixed bogus out_of_memory error on some platforms such as ESP32</p></li>
+<li><p>Fix crash in Elixir library when doing <code class="docutils literal notranslate"><span class="pre">inspect(:atom)</span></code></p></li>
+<li><p>General inspect() compliance with Elixir behavior (but there are still some minor differences)</p></li>
+<li><p>Fix several uses of free on prevously released memory on ESP32, under certain error condition using
+<code class="docutils literal notranslate"><span class="pre">network:start/1</span></code>, that would lead to a hard crash of the VM.</p></li>
+<li><p>Fix a bug in ESP32 network driver where the low level driver was not being stopped and resoureces were not freed
+when <code class="docutils literal notranslate"><span class="pre">network:stop/0</span></code> was used, see issue <a class="reference external" href="https://github.com/atomvm/AtomVM/issues/643">#643</a></p></li>
 </ul>
 </section>
 </section>

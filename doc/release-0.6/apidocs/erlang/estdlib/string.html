@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module string &mdash; AtomVM 0.6.5+git.8bcca512 documentation</title>
+  <title>Module string &mdash; AtomVM 0.6.5+git.0bd366d2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/string.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=d8af7ae9"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f6e5b14d"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -41,9 +39,6 @@
             
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                release-0.6 branch (unreleased)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -151,16 +146,39 @@ interface.<a name="index"></a></p>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Equivalent to <a href="#split-3"><tt>split(String, Pattern, leading)</tt></a>.</td></tr><tr><td valign="top"><a href="#split-3">split/3</a></td><td>Splits String where SearchPattern is encountered and return the remaining parts.</td></tr><tr><td valign="top"><a href="#to_lower-1">to_lower/1</a></td><td>Convert string or character to uppercase.</td></tr><tr><td valign="top"><a href="#to_upper-1">to_upper/1</a></td><td>Convert string or character to uppercase.</td></tr><tr><td valign="top"><a href="#trim-1">trim/1</a></td><td>Equivalent to <a href="#trim-2"><tt>trim(String, both)</tt></a>.</td></tr><tr><td valign="top"><a href="#trim-2">trim/2</a></td><td>Returns a string, where leading or trailing, or both, whitespace has been removed.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#find-2">find/2</a></td><td>Equivalent to <a href="#find-3"><tt>find(String, SearchPattern, leading)</tt></a>.</td></tr><tr><td valign="top"><a href="#find-3">find/3</a></td><td></td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Equivalent to <a href="#split-3"><tt>split(String, Pattern, leading)</tt></a>.</td></tr><tr><td valign="top"><a href="#split-3">split/3</a></td><td>Splits String where SearchPattern is encountered and return the remaining parts.</td></tr><tr><td valign="top"><a href="#to_lower-1">to_lower/1</a></td><td>Convert string or character to uppercase.</td></tr><tr><td valign="top"><a href="#to_upper-1">to_upper/1</a></td><td>Convert string or character to uppercase.</td></tr><tr><td valign="top"><a href="#trim-1">trim/1</a></td><td>Equivalent to <a href="#trim-2"><tt>trim(String, both)</tt></a>.</td></tr><tr><td valign="top"><a href="#trim-2">trim/2</a></td><td>Returns a string, where leading or trailing, or both, whitespace has been removed.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
 <h2>Function Details<a class="headerlink" href="#function-details" title="Link to this heading"></a></h2>
+<p><a name="find-2"></a></p>
+<section id="find-2">
+<h3>find/2<a class="headerlink" href="#find-2" title="Link to this heading"></a></h3>
+<pre><code>
+find(String::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, SearchPattern::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>) -&gt; <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a> | nomatch
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: string to search in<br /><code class="docutils literal notranslate"><span class="pre">SearchPattern</span></code>: pattern to search<br /></p>
+<p>returns: remainder of String starting from first occurrence of SearchPattern
+or <code class="docutils literal notranslate"><span class="pre">nomatch</span></code> if SearchPattern cannot be found in String</p>
+<p>Equivalent to <a class="reference internal" href="#find-3"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">find(String,</span> <span class="pre">SearchPattern,</span> <span class="pre">leading)</span></code></span></a>.</p>
+<p><a name="find-3"></a></p>
+</section>
+<section id="find-3">
+<h3>find/3<a class="headerlink" href="#find-3" title="Link to this heading"></a></h3>
+<pre><code>
+find(String::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, SearchPattern::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, Direction::leading | trailing) -&gt; <a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a> | nomatch
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: string to search in<br /><code class="docutils literal notranslate"><span class="pre">SearchPattern</span></code>: pattern to search<br /><code class="docutils literal notranslate"><span class="pre">Direction</span></code>: direction to search, <code class="docutils literal notranslate"><span class="pre">leading</span></code> or <code class="docutils literal notranslate"><span class="pre">trailing</span></code><br /></p>
+<p>returns: remainder of String starting from first or last occurrence of
+SearchPattern or <code class="docutils literal notranslate"><span class="pre">nomatch</span></code> if SearchPattern cannot be found in String</p>
 <p><a name="split-2"></a></p>
+</section>
 <section id="split-2">
 <h3>split/2<a class="headerlink" href="#split-2" title="Link to this heading"></a></h3>
 <pre><code>
-split(String::string(), Pattern::string()) -&gt; string() | char()
+split(String::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, Pattern::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>) -&gt; [<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>]
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">String</span></code>: a string to split<br /><code class="docutils literal notranslate"><span class="pre">Pattern</span></code>: the search pattern to split at<br /></p>
@@ -171,7 +189,7 @@ split(String::string(), Pattern::string()) -&gt; string() | char()
 <section id="split-3">
 <h3>split/3<a class="headerlink" href="#split-3" title="Link to this heading"></a></h3>
 <pre><code>
-split(String::string(), Pattern::string() | char(), Where::atom()) -&gt; string() | char()
+split(String::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, Pattern::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, Where::leading | trailing | all) -&gt; [<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>]
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">String</span></code>: a string to split<br /><code class="docutils literal notranslate"><span class="pre">Pattern</span></code>: the search pattern to split at<br /><code class="docutils literal notranslate"><span class="pre">Where</span></code>: position to split (leading, trailing, or all)<br /></p>

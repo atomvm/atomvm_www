@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module binary &mdash; AtomVM 0.6.5+git.8bcca512 documentation</title>
+  <title>Module binary &mdash; AtomVM 0.6.5+git.0bd366d2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/binary.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=d8af7ae9"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f6e5b14d"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -41,9 +39,6 @@
             
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                release-0.6 branch (unreleased)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -146,7 +141,7 @@
 <p><a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a binary according to pattern.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a binary according to pattern.</td></tr><tr><td valign="top"><a href="#split-3">split/3</a></td><td>Split a binary according to pattern.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -183,9 +178,24 @@ split(Binary::binary(), Pattern::binary()) -&gt; [binary()]
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to split<br /><code class="docutils literal notranslate"><span class="pre">Pattern</span></code>: pattern to perform the split<br /></p>
 <p>returns: a list composed of one or two binaries</p>
+<p>Equivalent to <a class="reference internal" href="#split-3"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">split(Binary,</span> <span class="pre">Pattern,</span> <span class="pre">[])</span></code></span></a>.</p>
 <p>Split a binary according to pattern.
 If pattern is not found, returns a singleton list with the passed binary.
 Unlike Erlang/OTP, pattern must be a binary.</p>
+<p><a name="split-3"></a></p>
+</section>
+<section id="split-3">
+<h3>split/3<a class="headerlink" href="#split-3" title="Link to this heading"></a></h3>
+<pre><code>
+split(Binary::binary(), Pattern::binary(), Option::[global]) -&gt; [binary()]
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to split<br /><code class="docutils literal notranslate"><span class="pre">Pattern</span></code>: pattern to perform the split<br /></p>
+<p>returns: a list composed of one or two binaries</p>
+<p>Split a binary according to pattern.
+If pattern is not found, returns a singleton list with the passed binary.
+Unlike Erlang/OTP, pattern must be a binary.
+Only implemented option is <code class="docutils literal notranslate"><span class="pre">global</span></code></p>
 </section>
 </section>
 </section>
