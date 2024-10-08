@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module esp &mdash; AtomVM 0.6.5+git.0bd366d2 documentation</title>
+  <title>Module esp &mdash; AtomVM 0.6.5+git.9be487f1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/esp.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=f6e5b14d"></script>
+      <script src="../../../_static/documentation_options.js?v=14061681"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -197,6 +197,10 @@ interface() = wifi_sta | wifi_softap
 mac() = binary()
 </code></pre>
 </section>
+<section id="mounted-fs">
+<h3><a name="type-mounted_fs">mounted_fs()</a><a class="headerlink" href="#mounted-fs" title="Link to this heading"></a></h3>
+<p><strong>abstract datatype</strong>: <code class="docutils literal notranslate"><span class="pre">mounted_fs()</span></code></p>
+</section>
 <section id="task-wdt-config">
 <h3><a name="type-task_wdt_config">task_wdt_config()</a><a class="headerlink" href="#task-wdt-config" title="Link to this heading"></a></h3>
 <pre><code>
@@ -211,14 +215,14 @@ task_wdt_config() = {TimeoutMS::pos_integer(), IdleCoreMask::non_neg_integer(), 
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#deep_sleep-0">deep_sleep/0</a></td><td>Put the esp32 into deep sleep.</td></tr><tr><td valign="top"><a href="#deep_sleep-1">deep_sleep/1</a></td><td>Put the esp32 into deep sleep.</td></tr><tr><td valign="top"><a href="#deep_sleep_enable_gpio_wakeup-2">deep_sleep_enable_gpio_wakeup/2</a></td><td>Configure multiple gpio pins for wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#freq_hz-0">freq_hz/0</a></td><td>    Return the clock frequency on the chip.</td></tr><tr><td valign="top"><a href="#get_default_mac-0">get_default_mac/0</a></td><td>    Retrieve the default MAC address of the ESP32 device.</td></tr><tr><td valign="top"><a href="#get_mac-1">get_mac/1</a></td><td>    Return the network MAC address of the specified interface.</td></tr><tr><td valign="top"><a href="#nvs_erase_all-0">nvs_erase_all/0</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_erase_all(?ATOMVM_NVS_NS).</td></tr><tr><td valign="top"><a href="#nvs_erase_all-1">nvs_erase_all/1</a></td><td>    Erase all values in the specified namespace.</td></tr><tr><td valign="top"><a href="#nvs_erase_key-1">nvs_erase_key/1</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_erase_key(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_erase_key-2">nvs_erase_key/2</a></td><td>    Erase the value associated with a key.</td></tr><tr><td valign="top"><a href="#nvs_fetch_binary-2">nvs_fetch_binary/2</a></td><td>    Get the binary value associated with a key, or undefined, if
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#deep_sleep-0">deep_sleep/0</a></td><td>Put the esp32 into deep sleep.</td></tr><tr><td valign="top"><a href="#deep_sleep-1">deep_sleep/1</a></td><td>Put the esp32 into deep sleep.</td></tr><tr><td valign="top"><a href="#deep_sleep_enable_gpio_wakeup-2">deep_sleep_enable_gpio_wakeup/2</a></td><td>Configure multiple gpio pins for wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#freq_hz-0">freq_hz/0</a></td><td>    Return the clock frequency on the chip.</td></tr><tr><td valign="top"><a href="#get_default_mac-0">get_default_mac/0</a></td><td>    Retrieve the default MAC address of the ESP32 device.</td></tr><tr><td valign="top"><a href="#get_mac-1">get_mac/1</a></td><td>    Return the network MAC address of the specified interface.</td></tr><tr><td valign="top"><a href="#mount-4">mount/4</a></td><td>    Mount a filesystem, and return a resource that can be used later for unmounting it.</td></tr><tr><td valign="top"><a href="#nvs_erase_all-0">nvs_erase_all/0</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_erase_all(?ATOMVM_NVS_NS).</td></tr><tr><td valign="top"><a href="#nvs_erase_all-1">nvs_erase_all/1</a></td><td>    Erase all values in the specified namespace.</td></tr><tr><td valign="top"><a href="#nvs_erase_key-1">nvs_erase_key/1</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_erase_key(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_erase_key-2">nvs_erase_key/2</a></td><td>    Erase the value associated with a key.</td></tr><tr><td valign="top"><a href="#nvs_fetch_binary-2">nvs_fetch_binary/2</a></td><td>    Get the binary value associated with a key, or undefined, if
 there is no value associated with this key.</td></tr><tr><td valign="top"><a href="#nvs_get_binary-1">nvs_get_binary/1</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_get_binary(?ATOMVM_NVS_NS, Key).</td></tr><tr><td valign="top"><a href="#nvs_get_binary-2">nvs_get_binary/2</a></td><td>    Get the binary value associated with a key, or undefined, if
 there is no value associated with this key.</td></tr><tr><td valign="top"><a href="#nvs_get_binary-3">nvs_get_binary/3</a></td><td>    Get the binary value associated with a key, or Default, if
 there is no value associated with this key.</td></tr><tr><td valign="top"><a href="#nvs_put_binary-3">nvs_put_binary/3</a></td><td>    Set an binary value associated with a key.</td></tr><tr><td valign="top"><a href="#nvs_reformat-0">nvs_reformat/0</a></td><td>    Reformat the entire NVS partition.</td></tr><tr><td valign="top"><a href="#nvs_set_binary-2">nvs_set_binary/2</a></td><td>(<em>Deprecated</em>.) Equivalent to nvs_set_binary(?ATOMVM_NVS_NS, Key, Value).</td></tr><tr><td valign="top"><a href="#nvs_set_binary-3">nvs_set_binary/3</a></td><td>(<em>Deprecated</em>.)     Set an binary value associated with a key.</td></tr><tr><td valign="top"><a href="#partition_list-0">partition_list/0</a></td><td>    Gets the list of partitions as tuples, such as {name, type, subtype,
 offset, size, props}.</td></tr><tr><td valign="top"><a href="#reset_reason-0">reset_reason/0</a></td><td>    Returns the reason for the restart.</td></tr><tr><td valign="top"><a href="#restart-0">restart/0</a></td><td>    Restarts the ESP device.</td></tr><tr><td valign="top"><a href="#rtc_slow_get_binary-0">rtc_slow_get_binary/0</a></td><td>    Get the binary currently stored in RTC slow memory.</td></tr><tr><td valign="top"><a href="#rtc_slow_set_binary-1">rtc_slow_set_binary/1</a></td><td>    Store a binary to RTC slow memory.</td></tr><tr><td valign="top"><a href="#sleep_disable_ext1_wakeup_io-1">sleep_disable_ext1_wakeup_io/1</a></td><td>Unconfigure one or more gpio pins for wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#sleep_enable_ext0_wakeup-2">sleep_enable_ext0_wakeup/2</a></td><td>Configure gpio wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#sleep_enable_ext1_wakeup-2">sleep_enable_ext1_wakeup/2</a></td><td>(<em>Deprecated</em>.) Configure multiple gpio pins for wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#sleep_enable_ext1_wakeup_io-2">sleep_enable_ext1_wakeup_io/2</a></td><td>Configure multiple gpio pins for wakeup from deep sleep.</td></tr><tr><td valign="top"><a href="#sleep_enable_ulp_wakeup-0">sleep_enable_ulp_wakeup/0</a></td><td></td></tr><tr><td valign="top"><a href="#sleep_get_wakeup_cause-0">sleep_get_wakeup_cause/0</a></td><td>    Returns the cause for the wakeup.</td></tr><tr><td valign="top"><a href="#task_wdt_add_user-1">task_wdt_add_user/1</a></td><td>    Register a user of the task watchdog timer.</td></tr><tr><td valign="top"><a href="#task_wdt_deinit-0">task_wdt_deinit/0</a></td><td>    Deinitialize the task watchdog timer
 Available with ESP-IDF 5.0 or higher.</td></tr><tr><td valign="top"><a href="#task_wdt_delete_user-1">task_wdt_delete_user/1</a></td><td>    Unsubscribe a given user from the task watchdog timer.</td></tr><tr><td valign="top"><a href="#task_wdt_init-1">task_wdt_init/1</a></td><td>    Initialize the task watchdog timer with a configuration
 Available with ESP-IDF 5.0 or higher.</td></tr><tr><td valign="top"><a href="#task_wdt_reconfigure-1">task_wdt_reconfigure/1</a></td><td>    Update the configuration of the task watchdog timer
-Available with ESP-IDF 5.0 or higher.</td></tr><tr><td valign="top"><a href="#task_wdt_reset_user-1">task_wdt_reset_user/1</a></td><td>    Reset the timer a previously registered user.</td></tr></table>
+Available with ESP-IDF 5.0 or higher.</td></tr><tr><td valign="top"><a href="#task_wdt_reset_user-1">task_wdt_reset_user/1</a></td><td>    Reset the timer a previously registered user.</td></tr><tr><td valign="top"><a href="#umount-1">umount/1</a></td><td>    Unmounts filesystem located at given path.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -299,6 +303,17 @@ get_mac(Interface::<a href="#type-interface">interface()</a>) -&gt; <a href="#ty
 <p>Return the network MAC address of the specified interface.</p>
 <p>The mac address is returned as a 6-byte binary, per the
 IEEE 802 family of specifications.</p>
+<p><a name="mount-4"></a></p>
+</section>
+<section id="mount-4">
+<h3>mount/4<a class="headerlink" href="#mount-4" title="Link to this heading"></a></h3>
+<pre><code>
+mount(Source::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, Target::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-chardata">unicode:chardata()</a>, FS::fat, Opts::<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/proplists.md#type-proplist">proplists:proplist()</a> | #{atom() =&gt; term()}) -&gt; {ok, <a href="#type-mounted_fs">mounted_fs()</a>} | {error, term()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Source</span></code>: the device that will be mounted<br /><code class="docutils literal notranslate"><span class="pre">Target</span></code>: the path where the filesystem will be mounted<br /><code class="docutils literal notranslate"><span class="pre">FS</span></code>: the filesystem, only fat is supported now<br /></p>
+<p>returns: either a tuple having <code class="docutils literal notranslate"><span class="pre">ok</span></code> and the mounted fs resource, or an error tuple</p>
+<p>Mount a filesystem, and return a resource that can be used later for unmounting it</p>
 <p><a name="nvs_erase_all-0"></a></p>
 </section>
 <section id="nvs-erase-all-0">
@@ -650,6 +665,16 @@ task_wdt_reset_user(UserHandle::<a href="#type-task_wdt_user_handle">task_wdt_us
 <p>returns: ok or an error tuple</p>
 <p>Reset the timer a previously registered user.
 Available with ESP-IDF 5.0 or higher.</p>
+<p><a name="umount-1"></a></p>
+</section>
+<section id="umount-1">
+<h3>umount/1<a class="headerlink" href="#umount-1" title="Link to this heading"></a></h3>
+<pre><code>
+umount(Target::<a href="#type-mounted_fs">mounted_fs()</a>) -&gt; ok | {error, term()}
+</code></pre>
+<br />
+<p>returns: either <code class="docutils literal notranslate"><span class="pre">ok</span></code> or an error tuple</p>
+<p>Unmounts filesystem located at given path</p>
 </section>
 </section>
 </section>
