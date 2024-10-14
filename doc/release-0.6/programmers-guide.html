@@ -6,9 +6,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.5+git.9be487f1 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.5+git.fac89c1e documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e925141f" />
 
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/programmers-guide.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=14061681"></script>
+      <script src="_static/documentation_options.js?v=2a86f8f4"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -102,6 +102,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#esp32-specific-apis">ESP32-specific APIs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-level-apis">System-Level APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#non-volatile-storage">Non-volatile Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage">Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-mmc-sd-card">Mounting MMC SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-spi-sd-card">Mounting SPI SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-internal-flash">Mounting internal flash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unmounting-storage">Unmounting Storage</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#restart-and-deep-sleep">Restart and Deep Sleep</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rtc-memory">RTC Memory</a></li>
 </ul>
@@ -1281,6 +1288,77 @@ storage, as the flash storage may degrade more rapidly with repeated writes to t
 <p>NVS entries are currently stored in plaintext and are not encrypted.  Applications should exercise caution if
 sensitive security information, such as account passwords, are stored in NVS storage.</p>
 </div>
+</section>
+<section id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h3>
+<p>AtomVM provides support for mounting and unmounting storage on ESP32 devices, such as SD cards or internal flash memory. This functionality is accessible through the <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#mount-4"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code></span></a> and <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#umount-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:umount/1</span></code></span></a> functions.</p>
+<section id="mounting-mmc-sd-card">
+<h4>Mounting MMC SD card<a class="headerlink" href="#mounting-mmc-sd-card" title="Link to this heading"></a></h4>
+<p>To mount a MMC SD card, use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;sdmmc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sdcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;SD card mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount SD card: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="mounting-spi-sd-card">
+<h4>Mounting SPI SD card<a class="headerlink" href="#mounting-spi-sd-card" title="Link to this heading"></a></h4>
+<p>To mount a SPI SD card, first create a SPI instance configured for your specific board, then use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">SPIConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="n">bus_config</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="n">miso</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">mosi</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">sclk</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">peripheral</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;spi3&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">]}],</span>
+<span class="nv">SPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">spi</span><span class="p">:</span><span class="nf">open</span><span class="p">(</span><span class="nv">SPIConfig</span><span class="p">),</span>
+<span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;sdspi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sdcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="n">spi_host</span><span class="p">,</span><span class="w"> </span><span class="nv">SPI</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;SD card mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount SD card: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="mounting-internal-flash">
+<h4>Mounting internal flash<a class="headerlink" href="#mounting-internal-flash" title="Link to this heading"></a></h4>
+<p>To mount internal flash, use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;/dev/partition/by-name/partition_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/test&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Flash mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount partition: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="unmounting-storage">
+<h4>Unmounting Storage<a class="headerlink" href="#unmounting-storage" title="Link to this heading"></a></h4>
+<p>To unmount a previously mounted storage device, use the <code class="docutils literal notranslate"><span class="pre">esp:umount/1</span></code> function, with the reference returned from <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code>:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">umount</span><span class="p">(</span><span class="nv">MountedRef</span><span class="p">)</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="n">ok</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Storage unmounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to unmount storage: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">])</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>These functions allow you to work with external storage devices or partitions on your ESP32, enabling you to read from and write to files on the mounted filesystem. This can be particularly useful for applications that need to store or access large amounts of data that don’t fit in the device’s main memory or non-volatile storage.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to properly unmount any mounted filesystems before powering off or resetting the device to prevent data corruption.</p>
+</div>
+</section>
 </section>
 <section id="restart-and-deep-sleep">
 <h3>Restart and Deep Sleep<a class="headerlink" href="#restart-and-deep-sleep" title="Link to this heading"></a></h3>

@@ -6,9 +6,9 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module binary &mdash; AtomVM 0.6.5+git.9be487f1 documentation</title>
+  <title>Module binary &mdash; AtomVM 0.6.5+git.fac89c1e documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=7ab3649f" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/binary.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=14061681"></script>
+      <script src="../../../_static/documentation_options.js?v=2a86f8f4"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -141,7 +141,7 @@
 <p><a name="index"></a></p>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a binary according to pattern.</td></tr><tr><td valign="top"><a href="#split-3">split/3</a></td><td>Split a binary according to pattern.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#at-2">at/2</a></td><td>    Get a byte from a binary by index.</td></tr><tr><td valign="top"><a href="#decode_hex-1">decode_hex/1</a></td><td>    Decodes a hex encoded binary into a binary.</td></tr><tr><td valign="top"><a href="#encode_hex-1">encode_hex/1</a></td><td>    Encodes a binary into a hex encoded binary using the specified case for the hexadecimal digits "a" to "f".</td></tr><tr><td valign="top"><a href="#encode_hex-2">encode_hex/2</a></td><td>    Encodes a binary into a hex encoded binary using the specified case for the hexadecimal digits "a" to "f".</td></tr><tr><td valign="top"><a href="#part-3">part/3</a></td><td>Get the part of a given binary.</td></tr><tr><td valign="top"><a href="#split-2">split/2</a></td><td>Split a binary according to pattern.</td></tr><tr><td valign="top"><a href="#split-3">split/3</a></td><td>Split a binary according to pattern.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -156,6 +156,39 @@ at(Binary::binary(), Index::non_neg_integer()) -&gt; byte()
 <p><code class="docutils literal notranslate"><span class="pre">Binary</span></code>: binary to get a byte from<br /><code class="docutils literal notranslate"><span class="pre">Index</span></code>: 0-based index of the byte to return<br /></p>
 <p>returns: value of the byte from the binary</p>
 <p>Get a byte from a binary by index.</p>
+<p><a name="decode_hex-1"></a></p>
+</section>
+<section id="decode-hex-1">
+<h3>decode_hex/1<a class="headerlink" href="#decode-hex-1" title="Link to this heading"></a></h3>
+<pre><code>
+decode_hex(Data::&lt;&lt;_:_*16&gt;&gt;) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: hex encoded binary to decode<br /></p>
+<p>returns: decoded binary</p>
+<p>Decodes a hex encoded binary into a binary.</p>
+<p><a name="encode_hex-1"></a></p>
+</section>
+<section id="encode-hex-1">
+<h3>encode_hex/1<a class="headerlink" href="#encode-hex-1" title="Link to this heading"></a></h3>
+<pre><code>
+encode_hex(Data::binary()) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: binary data to convert into hex encoded binary<br /></p>
+<p>returns: hex encoded binary</p>
+<p>Encodes a binary into a hex encoded binary using the specified case for the hexadecimal digits “a” to “f”.</p>
+<p><a name="encode_hex-2"></a></p>
+</section>
+<section id="encode-hex-2">
+<h3>encode_hex/2<a class="headerlink" href="#encode-hex-2" title="Link to this heading"></a></h3>
+<pre><code>
+encode_hex(Data::binary(), Case::lowercase | uppercase) -&gt; binary()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Data</span></code>: binary data to convert into hex encoded binary<br /><code class="docutils literal notranslate"><span class="pre">Case</span></code>: which case to encode into<br /></p>
+<p>returns: hex encoded binary</p>
+<p>Encodes a binary into a hex encoded binary using the specified case for the hexadecimal digits “a” to “f”.</p>
 <p><a name="part-3"></a></p>
 </section>
 <section id="part-3">
