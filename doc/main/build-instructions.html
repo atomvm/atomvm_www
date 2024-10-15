@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             
               <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -818,7 +813,7 @@ $<span class="w"> </span>make
 <section id="changing-the-target-device">
 <h3>Changing the target device<a class="headerlink" href="#changing-the-target-device" title="Link to this heading"></a></h3>
 <p>The default build is based on the STM32F4Discovery board chip (<code class="docutils literal notranslate"><span class="pre">stm32f407vgt6</span></code>). If you want to target a different
-chip, pass the <code class="docutils literal notranslate"><span class="pre">-DDEVICE</span></code> flag when invoking cmake. For example, to use the BlackPill V2.0, pass <code class="docutils literal notranslate"><span class="pre">-DDEVICE=STM32F411CEU6</span></code>. At this time any <code class="docutils literal notranslate"><span class="pre">STM32F4</span></code> or <code class="docutils literal notranslate"><span class="pre">STM32F7</span></code> device with 512KB or more of on package flash should work with AtomVM. If an unsupported device is passed with the <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> parameter the configuration will fail. For devices with either 512KB or 768KB of flash the available application flash space will be limited to 128KB. Devices with only 512KB of flash may also suffer from slightly reduced performance because the compiler must optimize for size rather than performance.</p>
+chip, pass the <code class="docutils literal notranslate"><span class="pre">-DDEVICE</span></code> flag when invoking cmake. For example, to use the BlackPill V2.0, pass <code class="docutils literal notranslate"><span class="pre">-DDEVICE=stm32f411ceu6</span></code>. At this time any <code class="docutils literal notranslate"><span class="pre">STM32F4</span></code> or <code class="docutils literal notranslate"><span class="pre">STM32F7</span></code> device with 512KB or more of on package flash should work with AtomVM. If an unsupported device is passed with the <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> parameter the configuration will fail. For devices with either 512KB or 768KB of flash the available application flash space will be limited to 128KB. Devices with only 512KB of flash may also suffer from slightly reduced performance because the compiler must optimize for size rather than performance.</p>
 <div class="admonition attention">
 <p class="admonition-title">Attention</p>
 <p>For devices with only 512KB of flash the application address is different and must be adjusted when flashing your
@@ -828,7 +823,7 @@ devices is <code class="docutils literal notranslate"><span class="pre">0x806000
 </section>
 <section id="configuring-the-console">
 <h3>Configuring the Console<a class="headerlink" href="#configuring-the-console" title="Link to this heading"></a></h3>
-<p>The default build for any <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> will use <code class="docutils literal notranslate"><span class="pre">USART2</span></code> and output will be on <code class="docutils literal notranslate"><span class="pre">PA2</span></code>. This default will work well for most <code class="docutils literal notranslate"><span class="pre">Discovery</span></code> and generic boards that do not have an on-board TTL to USB-COM support (including the <code class="docutils literal notranslate"><span class="pre">STM32F411CEU6</span></code> A.K.A. <code class="docutils literal notranslate"><span class="pre">BlackPill</span> <span class="pre">V2.0</span></code>). For <code class="docutils literal notranslate"><span class="pre">Nucleo</span></code> boards that do have on board UART to USB-COM support you may pass the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> parameter <code class="docutils literal notranslate"><span class="pre">-DBOARD=nucleo</span></code> to have the correct USART and TX pins configured automatically. The <code class="docutils literal notranslate"><span class="pre">Nucleo-144</span></code> series use <code class="docutils literal notranslate"><span class="pre">USART3</span></code> and <code class="docutils literal notranslate"><span class="pre">PD8</span></code>, while the supported <code class="docutils literal notranslate"><span class="pre">Nucleo-64</span></code> boards use <code class="docutils literal notranslate"><span class="pre">USART2</span></code>, but passing the <code class="docutils literal notranslate"><span class="pre">BOARD</span></code> parameter along with <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> will configure the correct <code class="docutils literal notranslate"><span class="pre">USART</span></code> for your model. If any other boards are discovered to have on board USB UART support pull requests, or opening issues with the details, are more than welcome.</p>
+<p>The default build for any <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> will use <code class="docutils literal notranslate"><span class="pre">USART2</span></code> and output will be on <code class="docutils literal notranslate"><span class="pre">PA2</span></code>. This default will work well for most <code class="docutils literal notranslate"><span class="pre">Discovery</span></code> and generic boards that do not have an on-board TTL to USB-COM support (including the <code class="docutils literal notranslate"><span class="pre">stm32f411ceu6</span></code> A.K.A. <code class="docutils literal notranslate"><span class="pre">BlackPill</span> <span class="pre">V2.0</span></code>). For <code class="docutils literal notranslate"><span class="pre">Nucleo</span></code> boards that do have on board UART to USB-COM support you may pass the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> parameter <code class="docutils literal notranslate"><span class="pre">-DBOARD=nucleo</span></code> to have the correct USART and TX pins configured automatically. The <code class="docutils literal notranslate"><span class="pre">Nucleo-144</span></code> series use <code class="docutils literal notranslate"><span class="pre">USART3</span></code> and <code class="docutils literal notranslate"><span class="pre">PD8</span></code>, while the supported <code class="docutils literal notranslate"><span class="pre">Nucleo-64</span></code> boards use <code class="docutils literal notranslate"><span class="pre">USART2</span></code>, but passing the <code class="docutils literal notranslate"><span class="pre">BOARD</span></code> parameter along with <code class="docutils literal notranslate"><span class="pre">DEVICE</span></code> will configure the correct <code class="docutils literal notranslate"><span class="pre">USART</span></code> for your model. If any other boards are discovered to have on board USB UART support pull requests, or opening issues with the details, are more than welcome.</p>
 <p>Example to configure a <code class="docutils literal notranslate"><span class="pre">NUCLEO-F429ZI</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cmake<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>../cmake/arm-toolchain.cmake<span class="w"> </span>-DDEVICE<span class="o">=</span>stm32f429zit6<span class="w"> </span><span class="se">\</span>
 -DBOARD<span class="o">=</span>nucleo
@@ -1208,6 +1203,14 @@ $<span class="w"> </span>npx<span class="w"> </span>cypress<span class="w"> </sp
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 

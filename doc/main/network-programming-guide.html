@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network Programming Guide &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>Network Programming Guide &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/network-programming-guide.html" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             
               <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -143,6 +138,7 @@
 <p>In addition, the following optional parameters can be specified to configure the AP network (ESP32 only):</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{dhcp_hostname,</span> <span class="pre">string()|binary()}</span></code> The DHCP hostname as which the device should register (<code class="docutils literal notranslate"><span class="pre">&lt;&lt;&quot;atomvm-&lt;hexmac&gt;&quot;&gt;&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;hexmac&gt;</span></code> is the hexadecimal representation of the factory-assigned MAC address of the device).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{beacon_timeout,</span> <span class="pre">fun(()</span> <span class="pre">-&gt;</span> <span class="pre">term())}</span></code> A callback function which will be called when the device does not receive a beacon frame from the connected access point during the “inactive time” (6 second default, currently not configurable).</p></li>
 </ul>
 <p>The following example illustrates initialization of the WiFi network in STA mode.  The example program will configure the network to connect to a specified network.  Events that occur during the lifecycle of the network will trigger invocations of the specified callback functions.</p>
 <div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">Config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
@@ -413,6 +409,14 @@ encrypted NVS storage.</p>
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 

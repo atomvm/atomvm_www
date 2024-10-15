@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module atomvm &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>Module atomvm &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/atomvm.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -41,9 +39,6 @@
             
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -75,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="console.html">Module console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="emscripten.html">Module emscripten</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp.html">Module esp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gpio.html">Module gpio</a></li>
 <li class="toctree-l4"><a class="reference internal" href="http_server.html">Module http_server</a></li>
 <li class="toctree-l4"><a class="reference internal" href="i2c.html">Module i2c</a></li>
@@ -153,6 +149,10 @@ avm_path() = iodata()
 platform_name() = generic_unix | emscripten | esp32 | pico | stm32
 </code></pre>
 </section>
+<section id="posix-dir">
+<h3><a name="type-posix_dir">posix_dir()</a><a class="headerlink" href="#posix-dir" title="Link to this heading"></a></h3>
+<p><strong>abstract datatype</strong>: <code class="docutils literal notranslate"><span class="pre">posix_dir()</span></code></p>
+</section>
 <section id="posix-error">
 <h3><a name="type-posix_error">posix_error()</a><a class="headerlink" href="#posix-error" title="Link to this heading"></a></h3>
 <pre><code>
@@ -173,7 +173,9 @@ posix_open_flag() = o_exec | o_rdonly | o_rdwr | o_search | o_wronly | o_append 
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_avm_pack_binary-2">add_avm_pack_binary/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#add_avm_pack_file-2">add_avm_pack_file/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#close_avm_pack-2">close_avm_pack/2</a></td><td>    Close previously opened AVM binary from your application.</td></tr><tr><td valign="top"><a href="#get_start_beam-1">get_start_beam/1</a></td><td>    Get the start beam for a given avm.</td></tr><tr><td valign="top"><a href="#platform-0">platform/0</a></td><td>    Return the platform moniker.</td></tr><tr><td valign="top"><a href="#posix_clock_settime-2">posix_clock_settime/2</a></td><td>Set the system time.</td></tr><tr><td valign="top"><a href="#posix_close-1">posix_close/1</a></td><td>    Close a file that was opened with <code>posix_open/2,3</code></td></tr><tr><td valign="top"><a href="#posix_open-2">posix_open/2</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_open-3">posix_open/3</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_read-2">posix_read/2</a></td><td>    Read at most <code>Count</code> bytes from a file.</td></tr><tr><td valign="top"><a href="#posix_write-2">posix_write/2</a></td><td>    Write data to a file.</td></tr><tr><td valign="top"><a href="#rand_bytes-1">rand_bytes/1</a></td><td>(<em>Deprecated</em>.)     Returns a binary containing random sequence of bytes of length Len.</td></tr><tr><td valign="top"><a href="#random-0">random/0</a></td><td>    Returns a random 32-bit integer value.</td></tr><tr><td valign="top"><a href="#read_priv-2">read_priv/2</a></td><td>    This function allows to fetch priv/ resources content.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_avm_pack_binary-2">add_avm_pack_binary/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#add_avm_pack_file-2">add_avm_pack_file/2</a></td><td>    Add code from an AVM binary to your application.</td></tr><tr><td valign="top"><a href="#close_avm_pack-2">close_avm_pack/2</a></td><td>    Close previously opened AVM binary from your application.</td></tr><tr><td valign="top"><a href="#get_start_beam-1">get_start_beam/1</a></td><td>    Get the start beam for a given avm.</td></tr><tr><td valign="top"><a href="#platform-0">platform/0</a></td><td>    Return the platform moniker.</td></tr><tr><td valign="top"><a href="#posix_clock_settime-2">posix_clock_settime/2</a></td><td>Set the system time.</td></tr><tr><td valign="top"><a href="#posix_close-1">posix_close/1</a></td><td>    Close a file that was opened with <code>posix_open/2,3</code></td></tr><tr><td valign="top"><a href="#posix_closedir-1">posix_closedir/1</a></td><td>    Close a directory that was opened with <code>posix_opendir/1</code></td></tr><tr><td valign="top"><a href="#posix_open-2">posix_open/2</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_open-3">posix_open/3</a></td><td>    Open a file (on platforms that have <code>open(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_opendir-1">posix_opendir/1</a></td><td>    Open a file (on platforms that have <code>opendir(3)</code>).</td></tr><tr><td valign="top"><a href="#posix_read-2">posix_read/2</a></td><td>    Read at most <code>Count</code> bytes from a file.</td></tr><tr><td valign="top"><a href="#posix_readdir-1">posix_readdir/1</a></td><td>    Read a directory entry
+<code>eof</code> is returned if no more data can be read because the directory cursor
+reached the end.</td></tr><tr><td valign="top"><a href="#posix_write-2">posix_write/2</a></td><td>    Write data to a file.</td></tr><tr><td valign="top"><a href="#rand_bytes-1">rand_bytes/1</a></td><td>(<em>Deprecated</em>.)     Returns a binary containing random sequence of bytes of length Len.</td></tr><tr><td valign="top"><a href="#random-0">random/0</a></td><td>    Returns a random 32-bit integer value.</td></tr><tr><td valign="top"><a href="#read_priv-2">read_priv/2</a></td><td>    This function allows to fetch priv/ resources content.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -280,6 +282,17 @@ posix_close(File::<a href="#type-posix_fd">posix_fd()</a>) -&gt; ok | {error, <a
 <p><code class="docutils literal notranslate"><span class="pre">File</span></code>: Descriptor to a file to close<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or an error tuple</p>
 <p>Close a file that was opened with <code class="docutils literal notranslate"><span class="pre">posix_open/2,3</span></code></p>
+<p><a name="posix_closedir-1"></a></p>
+</section>
+<section id="posix-closedir-1">
+<h3>posix_closedir/1<a class="headerlink" href="#posix-closedir-1" title="Link to this heading"></a></h3>
+<pre><code>
+posix_closedir(Dir::<a href="#type-posix_dir">posix_dir()</a>) -&gt; ok | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Dir</span></code>: Descriptor to a directory to close<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> or an error tuple</p>
+<p>Close a directory that was opened with <code class="docutils literal notranslate"><span class="pre">posix_opendir/1</span></code></p>
 <p><a name="posix_open-2"></a></p>
 </section>
 <section id="posix-open-2">
@@ -306,6 +319,17 @@ posix_open(Path::iodata(), Flags::[<a href="#type-posix_open_flag">posix_open_fl
 <p>returns: A tuple with a file descriptor or an error tuple.</p>
 <p>Open a file (on platforms that have <code class="docutils literal notranslate"><span class="pre">open(3)</span></code>).
 This variant can be used to specify the mode for new file.</p>
+<p><a name="posix_opendir-1"></a></p>
+</section>
+<section id="posix-opendir-1">
+<h3>posix_opendir/1<a class="headerlink" href="#posix-opendir-1" title="Link to this heading"></a></h3>
+<pre><code>
+posix_opendir(Path::iodata()) -&gt; {ok, <a href="#type-posix_dir">posix_dir()</a>} | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code>: Path to the directory to open<br /></p>
+<p>returns: A tuple with a directory descriptor or an error tuple.</p>
+<p>Open a file (on platforms that have <code class="docutils literal notranslate"><span class="pre">opendir(3)</span></code>).</p>
 <p><a name="posix_read-2"></a></p>
 </section>
 <section id="posix-read-2">
@@ -320,6 +344,19 @@ posix_read(File::<a href="#type-posix_fd">posix_fd()</a>, Count::non_neg_integer
 Files are open non-blocking. ˋatomvm:posix_select_read/3’ can be used to
 determine if the file can be read.
 <code class="docutils literal notranslate"><span class="pre">eof</span></code> is returned if no more data can be read because the file cursor
+reached the end.</p>
+<p><a name="posix_readdir-1"></a></p>
+</section>
+<section id="posix-readdir-1">
+<h3>posix_readdir/1<a class="headerlink" href="#posix-readdir-1" title="Link to this heading"></a></h3>
+<pre><code>
+posix_readdir(Dir::<a href="#type-posix_dir">posix_dir()</a>) -&gt; {ok, {dirent, Inode::integer(), Name::binary()}} | eof | {error, <a href="#type-posix_error">posix_error()</a>}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Dir</span></code>: Descriptor to an open directory<br /></p>
+<p>returns: a <code class="docutils literal notranslate"><span class="pre">{dirent,</span> <span class="pre">InodeNo,</span> <span class="pre">Name}</span></code> tuple, <code class="docutils literal notranslate"><span class="pre">eof</span></code> or an error tuple</p>
+<p>Read a directory entry
+<code class="docutils literal notranslate"><span class="pre">eof</span></code> is returned if no more data can be read because the directory cursor
 reached the end.</p>
 <p><a name="posix_write-2"></a></p>
 </section>
@@ -468,6 +505,14 @@ read_priv(App::atom(), Path::list()) -&gt; binary()
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 

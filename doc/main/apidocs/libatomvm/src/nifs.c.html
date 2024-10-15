@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nifs.c &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>nifs.c &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/nifs.c.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -41,9 +39,6 @@
             
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -196,156 +191,63 @@
 </div>
 <p>Include dependency graph for nifs.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-73169248166d886b65d665e669bef1b65723ccd4.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-0c360579cae2e06d2de859235f57a472557d3176.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;9&quot; [label=&quot;stdbool.h&quot; tooltip=&quot;stdbool.h&quot;]
-    &quot;36&quot; [label=&quot;bif.h&quot; tooltip=&quot;bif.h&quot;]
-    &quot;42&quot; [label=&quot;dictionary.h&quot; tooltip=&quot;dictionary.h&quot;]
-    &quot;40&quot; [label=&quot;bitstring.h&quot; tooltip=&quot;bitstring.h&quot;]
-    &quot;45&quot; [label=&quot;platform_nifs.h&quot; tooltip=&quot;platform_nifs.h&quot;]
-    &quot;3&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
-    &quot;47&quot; [label=&quot;posix_nifs.h&quot; tooltip=&quot;posix_nifs.h&quot;]
-    &quot;12&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
-    &quot;17&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;44&quot; [label=&quot;interop.h&quot; tooltip=&quot;interop.h&quot;]
+    &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;25&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
+    &quot;2&quot; [label=&quot;nifs.h&quot; tooltip=&quot;nifs.h&quot;]
     &quot;41&quot; [label=&quot;defaultatoms.h&quot; tooltip=&quot;defaultatoms.h&quot;]
+    &quot;3&quot; [label=&quot;atom.h&quot; tooltip=&quot;atom.h&quot;]
+    &quot;12&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
+    &quot;42&quot; [label=&quot;dictionary.h&quot; tooltip=&quot;dictionary.h&quot;]
+    &quot;23&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;17&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;31&quot; [label=&quot;fenv.h&quot; tooltip=&quot;fenv.h&quot;]
+    &quot;16&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;5&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
-    &quot;39&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
-    &quot;48&quot; [label=&quot;scheduler.h&quot; tooltip=&quot;scheduler.h&quot;]
-    &quot;29&quot; [label=&quot;exportedfunction.h&quot; tooltip=&quot;exportedfunction.h&quot;]
     &quot;6&quot; [label=&quot;context.h&quot; tooltip=&quot;context.h&quot;]
-    &quot;30&quot; [label=&quot;errno.h&quot; tooltip=&quot;errno.h&quot;]
-    &quot;46&quot; [label=&quot;port.h&quot; tooltip=&quot;port.h&quot;]
-    &quot;23&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;15&quot; [label=&quot;ets.h&quot; tooltip=&quot;ets.h&quot;]
-    &quot;8&quot; [label=&quot;atom_table.h&quot; tooltip=&quot;atom_table.h&quot;]
-    &quot;11&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
-    &quot;24&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
-    &quot;13&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
-    &quot;25&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
-    &quot;21&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
-    &quot;27&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
-    &quot;37&quot; [label=&quot;module.h&quot; tooltip=&quot;module.h&quot;]
-    &quot;35&quot; [label=&quot;avmpack.h&quot; tooltip=&quot;avmpack.h&quot;]
-    &quot;34&quot; [label=&quot;avm_version.h&quot; tooltip=&quot;avm_version.h&quot;]
-    &quot;20&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
-    &quot;10&quot; [label=&quot;erl_nif.h&quot; tooltip=&quot;erl_nif.h&quot;]
-    &quot;44&quot; [label=&quot;interop.h&quot; tooltip=&quot;interop.h&quot;]
-    &quot;33&quot; [label=&quot;time.h&quot; tooltip=&quot;time.h&quot;]
-    &quot;50&quot; [label=&quot;unicode.h&quot; tooltip=&quot;unicode.h&quot;]
-    &quot;32&quot; [label=&quot;math.h&quot; tooltip=&quot;math.h&quot;]
-    &quot;26&quot; [label=&quot;resources.h&quot; tooltip=&quot;resources.h&quot;]
-    &quot;19&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
-    &quot;49&quot; [label=&quot;sys.h&quot; tooltip=&quot;sys.h&quot;]
-    &quot;38&quot; [label=&quot;atomshashtable.h&quot; tooltip=&quot;atomshashtable.h&quot;]
-    &quot;51&quot; [label=&quot;nifs_hash.h&quot; tooltip=&quot;nifs_hash.h&quot;]
-    &quot;1&quot; [label=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/home/runner/work/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;2&quot; [label=&quot;nifs.h&quot; tooltip=&quot;nifs.h&quot;]
-    &quot;7&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
+    &quot;36&quot; [label=&quot;bif.h&quot; tooltip=&quot;bif.h&quot;]
     &quot;22&quot; [label=&quot;memory.h&quot; tooltip=&quot;memory.h&quot;]
-    &quot;18&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
-    &quot;28&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
-    &quot;16&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
-    &quot;14&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
+    &quot;49&quot; [label=&quot;sys.h&quot; tooltip=&quot;sys.h&quot;]
+    &quot;30&quot; [label=&quot;errno.h&quot; tooltip=&quot;errno.h&quot;]
+    &quot;37&quot; [label=&quot;module.h&quot; tooltip=&quot;module.h&quot;]
+    &quot;39&quot; [label=&quot;valueshashtable.h&quot; tooltip=&quot;valueshashtable.h&quot;]
+    &quot;26&quot; [label=&quot;resources.h&quot; tooltip=&quot;resources.h&quot;]
+    &quot;20&quot; [label=&quot;term.h&quot; tooltip=&quot;term.h&quot;]
+    &quot;24&quot; [label=&quot;stddef.h&quot; tooltip=&quot;stddef.h&quot;]
+    &quot;10&quot; [label=&quot;erl_nif.h&quot; tooltip=&quot;erl_nif.h&quot;]
+    &quot;29&quot; [label=&quot;exportedfunction.h&quot; tooltip=&quot;exportedfunction.h&quot;]
+    &quot;13&quot; [label=&quot;limits.h&quot; tooltip=&quot;limits.h&quot;]
+    &quot;8&quot; [label=&quot;atom_table.h&quot; tooltip=&quot;atom_table.h&quot;]
     &quot;43&quot; [label=&quot;externalterm.h&quot; tooltip=&quot;externalterm.h&quot;]
-    &quot;36&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;40&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;40&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;40&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;3&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;17&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;41&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;27&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;6&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;41&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;15&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;8&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;11&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;25&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;27&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;27&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;27&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;27&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;38&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;39&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; [label=&quot;avmpack.h&quot; tooltip=&quot;avmpack.h&quot;]
+    &quot;21&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
+    &quot;11&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
+    &quot;34&quot; [label=&quot;avm_version.h&quot; tooltip=&quot;avm_version.h&quot;]
+    &quot;7&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
+    &quot;45&quot; [label=&quot;platform_nifs.h&quot; tooltip=&quot;platform_nifs.h&quot;]
+    &quot;40&quot; [label=&quot;bitstring.h&quot; tooltip=&quot;bitstring.h&quot;]
+    &quot;48&quot; [label=&quot;scheduler.h&quot; tooltip=&quot;scheduler.h&quot;]
+    &quot;19&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;38&quot; [label=&quot;atomshashtable.h&quot; tooltip=&quot;atomshashtable.h&quot;]
+    &quot;33&quot; [label=&quot;time.h&quot; tooltip=&quot;time.h&quot;]
+    &quot;32&quot; [label=&quot;math.h&quot; tooltip=&quot;math.h&quot;]
+    &quot;50&quot; [label=&quot;unicode.h&quot; tooltip=&quot;unicode.h&quot;]
+    &quot;28&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
+    &quot;47&quot; [label=&quot;posix_nifs.h&quot; tooltip=&quot;posix_nifs.h&quot;]
+    &quot;51&quot; [label=&quot;nifs_hash.h&quot; tooltip=&quot;nifs_hash.h&quot;]
+    &quot;27&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
+    &quot;46&quot; [label=&quot;port.h&quot; tooltip=&quot;port.h&quot;]
+    &quot;18&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
+    &quot;15&quot; [label=&quot;ets.h&quot; tooltip=&quot;ets.h&quot;]
+    &quot;14&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;44&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;44&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;50&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;50&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;50&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;26&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;26&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;26&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;26&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;33&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;38&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;30&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;31&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -380,9 +282,82 @@
     &quot;1&quot; -&gt; &quot;50&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;51&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;41&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;3&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;42&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;42&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;17&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;27&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;6&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;33&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;38&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;39&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;29&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;8&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;11&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -394,16 +369,36 @@
     &quot;7&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;45&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;45&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;40&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;40&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;40&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;38&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;16&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;29&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;27&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;41&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -476,6 +471,11 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY">
 <span class="target" id="libatomvmnifs_8c_1a6248bf46965d448685d203917a4fde09"></span><span class="sig-name descname"><span class="n"><span class="pre">IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">expr</span></span><span class="sig-paren">)</span> <span class="pre">NULL</span><a class="headerlink" href="#c.libAtomVM.nifs.c.IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.IF_HAVE_OPENDIR_READDIR_CLOSEDIR">
+<span class="target" id="libatomvmnifs_8c_1a36013314dced74446108b540ab3937e6"></span><span class="sig-name descname"><span class="n"><span class="pre">IF_HAVE_OPENDIR_READDIR_CLOSEDIR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">expr</span></span><span class="sig-paren">)</span> <span class="pre">NULL</span><a class="headerlink" href="#c.libAtomVM.nifs.c.IF_HAVE_OPENDIR_READDIR_CLOSEDIR" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -582,6 +582,11 @@
 <dd></dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_binary_copy">
+<span class="target" id="libatomvmnifs_8c_1a177aa0bdb9e4a2a9763bfb870e41e291"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_binary_copy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_binary_copy" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_binary_first_1">
 <span class="target" id="libatomvmnifs_8c_1a4f66914af6586819f65a36953eb029d3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_binary_first_1</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_binary_first_1" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -597,8 +602,8 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_binary_split_2">
-<span class="target" id="libatomvmnifs_8c_1a2668d722b50588fa05e55efa6877938a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_binary_split_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_binary_split_2" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_binary_split">
+<span class="target" id="libatomvmnifs_8c_1aa52c43be58d9b1708002cd333990df30"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_binary_split</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_binary_split" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -612,8 +617,8 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_atom_to_binary_2">
-<span class="target" id="libatomvmnifs_8c_1a2e24fd806f6fcbcff9cd0feb5a0e0995"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_atom_to_binary_2</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_atom_to_binary_2" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_atom_to_binary">
+<span class="target" id="libatomvmnifs_8c_1a36157ee21e3a502d87d07b05c0b45331"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_atom_to_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_atom_to_binary" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -632,8 +637,8 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_binary_to_integer_1">
-<span class="target" id="libatomvmnifs_8c_1a85414364960bfce651c4513c2d7093e7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_binary_to_integer_1</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_binary_to_integer_1" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_binary_to_integer">
+<span class="target" id="libatomvmnifs_8c_1a8facc23667f2ec3dffa3575d7699dbc9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_binary_to_integer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_binary_to_integer" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -727,8 +732,8 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_list_to_integer_1">
-<span class="target" id="libatomvmnifs_8c_1aa29216c1fb0bdb395fb4b4d84b8b3926"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_list_to_integer_1</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_list_to_integer_1" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_erlang_list_to_integer">
+<span class="target" id="libatomvmnifs_8c_1a909115bdd915113e1307b9f754542c0a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_erlang_list_to_integer</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_erlang_list_to_integer" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -1037,6 +1042,11 @@
 <dd></dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_code_ensure_loaded">
+<span class="target" id="libatomvmnifs_8c_1ae993ea1e4f4eeb3ca4b296b17aa734a7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_code_ensure_loaded</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_code_ensure_loaded" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.nif_lists_reverse">
 <span class="target" id="libatomvmnifs_8c_1ab09188212125501366141f48bd366d11"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_lists_reverse</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.nif_lists_reverse" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -1224,6 +1234,11 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.get_float_format_opts">
 <span class="target" id="libatomvmnifs_8c_1a7ea895d2a8d0a84bfafe3ebdb92ac709"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">get_float_format_opts</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">scientific</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">decimals</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">compact</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.get_float_format_opts" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.to_digit_index">
+<span class="target" id="libatomvmnifs_8c_1a6c0da6b5cdad3f56b182e4a376948cd7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">avm_int_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">to_digit_index</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">avm_int_t</span></span><span class="w"> </span><span class="n"><span class="pre">character</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.nifs.c.to_digit_index" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -1470,6 +1485,11 @@
 <dd></dd></dl>
 
 <dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.binary_copy_nif">
+<span class="target" id="libatomvmnifs_8c_1ac445c9e717f38b42f47edd5fcfe131e1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_copy_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_binary_copy" title="nif_binary_copy"><span class="n"><span class="pre">nif_binary_copy</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_copy_nif" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.binary_first_nif">
 <span class="target" id="libatomvmnifs_8c_1a4dc3955cad178ebadf6d3e8c8b228e6f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_first_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_binary_first_1" title="nif_binary_first_1"><span class="n"><span class="pre">nif_binary_first_1</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_first_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -1486,7 +1506,7 @@
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.binary_split_nif">
-<span class="target" id="libatomvmnifs_8c_1a22edee93eb320e2c4f04164df44514d9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_split_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_binary_split_2" title="nif_binary_split_2"><span class="n"><span class="pre">nif_binary_split_2</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_split_nif" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmnifs_8c_1a22edee93eb320e2c4f04164df44514d9"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_split_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_binary_split" title="nif_binary_split"><span class="n"><span class="pre">nif_binary_split</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_split_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -1496,7 +1516,7 @@
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.atom_to_binary_nif">
-<span class="target" id="libatomvmnifs_8c_1ae1e89cd74ca6ad452d2178a879036048"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_to_binary_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_atom_to_binary_2" title="nif_erlang_atom_to_binary_2"><span class="n"><span class="pre">nif_erlang_atom_to_binary_2</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.atom_to_binary_nif" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmnifs_8c_1ae1e89cd74ca6ad452d2178a879036048"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">atom_to_binary_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_atom_to_binary" title="nif_erlang_atom_to_binary"><span class="n"><span class="pre">nif_erlang_atom_to_binary</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.atom_to_binary_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -1516,7 +1536,7 @@
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.binary_to_integer_nif">
-<span class="target" id="libatomvmnifs_8c_1a4a734d86049d08975e697bedfc08e4f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_to_integer_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_binary_to_integer_1" title="nif_erlang_binary_to_integer_1"><span class="n"><span class="pre">nif_erlang_binary_to_integer_1</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_to_integer_nif" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmnifs_8c_1a4a734d86049d08975e697bedfc08e4f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">binary_to_integer_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_binary_to_integer" title="nif_erlang_binary_to_integer"><span class="n"><span class="pre">nif_erlang_binary_to_integer</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.binary_to_integer_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -1601,7 +1621,7 @@
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.list_to_integer_nif">
-<span class="target" id="libatomvmnifs_8c_1adc6c26445c19e9c973bdce78e9dfe7c0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">list_to_integer_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_list_to_integer_1" title="nif_erlang_list_to_integer_1"><span class="n"><span class="pre">nif_erlang_list_to_integer_1</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.list_to_integer_nif" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmnifs_8c_1adc6c26445c19e9c973bdce78e9dfe7c0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">list_to_integer_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_erlang_list_to_integer" title="nif_erlang_list_to_integer"><span class="n"><span class="pre">nif_erlang_list_to_integer</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.list_to_integer_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -1925,6 +1945,11 @@
 <dd></dd></dl>
 
 <dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.nifs.c.code_ensure_loaded_nif">
+<span class="target" id="libatomvmnifs_8c_1ac4b12f09beccd115491cb7d6d4c4c9eb"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">code_ensure_loaded_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_code_ensure_loaded" title="nif_code_ensure_loaded"><span class="n"><span class="pre">nif_code_ensure_loaded</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.code_ensure_loaded_nif" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.lists_reverse_nif">
 <span class="target" id="libatomvmnifs_8c_1a3ccd662c49cb49eeca72c8142bf27d05"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Nif</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">lists_reverse_nif</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="p"><span class="pre">{</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">type</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="n"><span class="pre">NIFFunctionType</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">nif_ptr</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.nifs.c.nif_lists_reverse" title="nif_lists_reverse"><span class="n"><span class="pre">nif_lists_reverse</span></span></a><span class="p"><span class="pre">}</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.lists_reverse_nif" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -2067,6 +2092,11 @@
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.c.b64_table">
 <span class="target" id="libatomvmnifs_8c_1a0edff3b8648b00a61725cdd40b0e69dd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">b64_table</span></span></span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">64</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span></span><a class="headerlink" href="#c.libAtomVM.nifs.c.b64_table" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c">
+<span class="target" id="libatomvmnifs_8c_1ad64e12bf838101a109d21b206422b4ba"></span><span class="sig-name descname"><span class="pre">static</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*const</span> <span class="pre">embedded_atom</span>&#160;&#160; <span class="pre">=</span> <span class="pre">&quot;\x8&quot;</span> <span class="pre">&quot;embedded&quot;</span></span></dt>
 <dd></dd></dl>
 
 </div>
@@ -2466,6 +2496,14 @@
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 

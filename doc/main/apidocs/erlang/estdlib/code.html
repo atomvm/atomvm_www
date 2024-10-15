@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../../../">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module code &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>Module code &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/code.html" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -41,9 +39,6 @@
             
               <img src="../../../_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -148,7 +143,7 @@
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all_available-0">all_available/0</a></td><td>    Return all modules available from loaded avm packs, in addition
-to loaded modules.</td></tr><tr><td valign="top"><a href="#all_loaded-0">all_loaded/0</a></td><td>    Return a list of all loaded modules.</td></tr><tr><td valign="top"><a href="#load_abs-1">load_abs/1</a></td><td>    Load a module from a path.</td></tr><tr><td valign="top"><a href="#load_binary-3">load_binary/3</a></td><td>    Load a module from a binary.</td></tr></table>
+to loaded modules.</td></tr><tr><td valign="top"><a href="#all_loaded-0">all_loaded/0</a></td><td>    Return a list of all loaded modules.</td></tr><tr><td valign="top"><a href="#ensure_loaded-1">ensure_loaded/1</a></td><td>    Try to load a module if it's not already loaded.</td></tr><tr><td valign="top"><a href="#load_abs-1">load_abs/1</a></td><td>    Load a module from a path.</td></tr><tr><td valign="top"><a href="#load_binary-3">load_binary/3</a></td><td>    Load a module from a binary.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -157,7 +152,7 @@ to loaded modules.</td></tr><tr><td valign="top"><a href="#all_loaded-0">all_loa
 <section id="all-available-0">
 <h3>all_available/0<a class="headerlink" href="#all-available-0" title="Link to this heading"></a></h3>
 <pre><code>
-all_available() -&gt; [{<a href="/home/runner/work/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-unicode_binary">unicode:unicode_binary()</a>, term(), boolean()}]
+all_available() -&gt; [{<a href="/__w/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/unicode.md#type-unicode_binary">unicode:unicode_binary()</a>, term(), boolean()}]
 </code></pre>
 <br />
 <p>returns: A list of available modules, including loaded modules</p>
@@ -179,6 +174,21 @@ all_loaded() -&gt; [{atom(), term()}]
 <p>Return a list of all loaded modules.
 Result type differs from Erlang/OTP: second term of tuples is
 currently unspecified</p>
+<p><a name="ensure_loaded-1"></a></p>
+</section>
+<section id="ensure-loaded-1">
+<h3>ensure_loaded/1<a class="headerlink" href="#ensure-loaded-1" title="Link to this heading"></a></h3>
+<pre><code>
+ensure_loaded(Module) -&gt; {module, Module} | {error, embedded | any()}
+</code></pre>
+<ul class="definitions"><li><code>Module = atom()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: module to load<br /></p>
+<p>returns: Tuple <code class="docutils literal notranslate"><span class="pre">{module,</span> <span class="pre">Module}</span></code> if module is loaded or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">embedded}</span></code></p>
+<p>Try to load a module if it’s not already loaded. AtomVM works in
+an embedded-like mode where modules are loaded at start-up but modules
+can be loaded explicitely as well (especially from a binary with <code class="docutils literal notranslate"><span class="pre">load_binary/3</span></code>).
+So this function can be used to determine if a module is loaded.
+It is called by Elixir Code module.</p>
 <p><a name="load_abs-1"></a></p>
 </section>
 <section id="load-abs-1">
@@ -301,6 +311,14 @@ matches the name of the loaded module.</p>
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 

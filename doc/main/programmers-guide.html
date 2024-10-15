@@ -1,27 +1,25 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.7.0-dev+git.5c41ac86 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.7.0-dev+git.24084c59 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
       <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=e925141f" />
 
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="canonical" href="https://atomvm.net/doc/programmers-guide.html" />
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=fcfd7b37"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=efa3aa12"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -41,9 +39,6 @@
             
               <img src="_static/avm_logo_banner.png" class="logo" alt="Logo"/>
           </a>
-              <div class="version">
-                main branch (unstable)
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -108,6 +103,13 @@
 <li class="toctree-l2"><a class="reference internal" href="#esp32-specific-apis">ESP32-specific APIs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#system-level-apis">System-Level APIs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#non-volatile-storage">Non-volatile Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage">Storage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-mmc-sd-card">Mounting MMC SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-spi-sd-card">Mounting SPI SD card</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mounting-internal-flash">Mounting internal flash</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unmounting-storage">Unmounting Storage</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#restart-and-deep-sleep">Restart and Deep Sleep</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rtc-memory">RTC Memory</a></li>
 </ul>
@@ -120,6 +122,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#digital-read">Digital Read</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#digital-write">Digital Write</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#interrupt-handling">Interrupt Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#esp32-adc">ESP32 ADC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#esp32-adc-configuration-options">ESP32 ADC configuration options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#esp32-adc-read-options">ESP32 ADC read options</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#i2c">I2C</a></li>
@@ -1363,6 +1370,77 @@ storage, as the flash storage may degrade more rapidly with repeated writes to t
 sensitive security information, such as account passwords, are stored in NVS storage.</p>
 </div>
 </section>
+<section id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h3>
+<p>AtomVM provides support for mounting and unmounting storage on ESP32 devices, such as SD cards or internal flash memory. This functionality is accessible through the <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#mount-4"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code></span></a> and <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#umount-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:umount/1</span></code></span></a> functions.</p>
+<section id="mounting-mmc-sd-card">
+<h4>Mounting MMC SD card<a class="headerlink" href="#mounting-mmc-sd-card" title="Link to this heading"></a></h4>
+<p>To mount a MMC SD card, use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;sdmmc&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sdcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;SD card mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount SD card: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="mounting-spi-sd-card">
+<h4>Mounting SPI SD card<a class="headerlink" href="#mounting-spi-sd-card" title="Link to this heading"></a></h4>
+<p>To mount a SPI SD card, first create a SPI instance configured for your specific board, then use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">SPIConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="n">bus_config</span><span class="p">,</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span><span class="n">miso</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">mosi</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">sclk</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="n">peripheral</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;spi3&quot;</span><span class="p">}</span>
+<span class="w">    </span><span class="p">]}],</span>
+<span class="nv">SPI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">spi</span><span class="p">:</span><span class="nf">open</span><span class="p">(</span><span class="nv">SPIConfig</span><span class="p">),</span>
+<span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;sdspi&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/sdcard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="n">spi_host</span><span class="p">,</span><span class="w"> </span><span class="nv">SPI</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">cs</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">}])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;SD card mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount SD card: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="mounting-internal-flash">
+<h4>Mounting internal flash<a class="headerlink" href="#mounting-internal-flash" title="Link to this heading"></a></h4>
+<p>To mount internal flash, use the <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code> function:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">mount</span><span class="p">(</span><span class="s">&quot;/dev/partition/by-name/partition_name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/test&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fat</span><span class="p">,</span><span class="w"> </span><span class="p">[])</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Flash mounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="nv">MountedRef</span><span class="p">};</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to mount partition: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">]),</span>
+<span class="w">        </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+</section>
+<section id="unmounting-storage">
+<h4>Unmounting Storage<a class="headerlink" href="#unmounting-storage" title="Link to this heading"></a></h4>
+<p>To unmount a previously mounted storage device, use the <code class="docutils literal notranslate"><span class="pre">esp:umount/1</span></code> function, with the reference returned from <code class="docutils literal notranslate"><span class="pre">esp:mount/4</span></code>:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="k">case</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">umount</span><span class="p">(</span><span class="nv">MountedRef</span><span class="p">)</span><span class="w"> </span><span class="k">of</span>
+<span class="w">    </span><span class="n">ok</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Storage unmounted successfully</span><span class="si">~n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">{</span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="nv">Reason</span><span class="p">}</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">        </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;Failed to unmount storage: </span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Reason</span><span class="p">])</span>
+<span class="k">end</span><span class="p">.</span>
+</pre></div>
+</div>
+<p>These functions allow you to work with external storage devices or partitions on your ESP32, enabling you to read from and write to files on the mounted filesystem. This can be particularly useful for applications that need to store or access large amounts of data that don’t fit in the device’s main memory or non-volatile storage.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Remember to properly unmount any mounted filesystems before powering off or resetting the device to prevent data corruption.</p>
+</div>
+</section>
+</section>
 <section id="restart-and-deep-sleep">
 <h3>Restart and Deep Sleep<a class="headerlink" href="#restart-and-deep-sleep" title="Link to this heading"></a></h3>
 <p>You can use the <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#restart-0"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:restart/0</span></code></span></a> function to immediately restart the ESP32 device.  This function does not return a value.</p>
@@ -1589,6 +1667,73 @@ The <code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</
 </div>
 </section>
 </section>
+<section id="esp32-adc">
+<h3>ESP32 ADC<a class="headerlink" href="#esp32-adc" title="Link to this heading"></a></h3>
+<p>The <a class="reference internal" href="apidocs/erlang/eavmlib/esp_adc.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">esp_adc</span></code> module</span></a> provides the functionality to use the ESP32 family <a class="reference external" href="https://en.wikipedia.org/wiki/Successive-approximation_ADC">SAR ADC</a> peripheral to measure (analog) voltages from a pin and obtain both raw bit values as well as calibrated voltage values in millivolts.</p>
+<p>The module provides two sets of APIs for using the ADC peripheral; there is a set of low level resource based nifs, and a gen_server managed set of convenience functions. The nifs rely on unit and channel handle resources for configuring and taking measurements. The convenience functions use the gen_server to maintain these resources and use pin numbers to interact with the driver. Examples for both APIs can be found the <a class="reference external" href="https://github.com/atomvm/AtomVM/tree/main/examples/erlang/esp32">AtomVM repository atomvm/examples/erlang/esp32</a> directory. A demonstration of the simple APIs is as follows:</p>
+<div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="w">    </span><span class="nv">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">esp_adc</span><span class="p">:</span><span class="nf">start</span><span class="p">(</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="p">[{</span><span class="n">bitwidth</span><span class="p">,</span><span class="w"> </span><span class="n">bit_12</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="n">atten</span><span class="p">,</span><span class="w"> </span><span class="n">db_2_5</span><span class="p">}]),</span>
+<span class="w">    </span><span class="p">{</span><span class="n">ok</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nv">Raw</span><span class="p">,</span><span class="w"> </span><span class="nv">Mv</span><span class="p">}}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">esp_adc</span><span class="p">:</span><span class="nf">read</span><span class="p">(</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="n">raw</span><span class="p">,</span><span class="w"> </span><span class="n">voltage</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">samples</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">}]),</span>
+<span class="w">    </span><span class="nn">io</span><span class="p">:</span><span class="nf">format</span><span class="p">(</span><span class="s">&quot;ADC pin </span><span class="si">~p</span><span class="s"> raw value=</span><span class="si">~p</span><span class="s"> millivolts=</span><span class="si">~p~n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="nv">Raw</span><span class="p">,</span><span class="w"> </span><span class="nv">Mv</span><span class="p">]),</span>
+<span class="w">    </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">esp_adc</span><span class="p">:</span><span class="nf">stop</span><span class="p">(),</span>
+<span class="p">...</span>
+</pre></div>
+</div>
+<section id="esp32-adc-configuration-options">
+<h4>ESP32 ADC configuration options<a class="headerlink" href="#esp32-adc-configuration-options" title="Link to this heading"></a></h4>
+<p>Some newer ESP32 family devices only use a single fixed bit width, this is typically 12 bits, but some provide 13 bit resolution. The ESP32 classic supports 9 bit up to 12 bit resolutions. The <code class="docutils literal notranslate"><span class="pre">bitwidth</span></code> option <code class="docutils literal notranslate"><span class="pre">bit_max</span></code> will use the highest supported resolution for the device.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">attenuation</span></code> option determines the range of voltage to be measured, the specific voltage range for each setting varies by chip, so as always consult your devices datasheet before connecting an ADC pin to a voltage supply to be measured. The chart below depicts the approximate safe voltage ranges for each attenuation level:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Attenuation</p></th>
+<th class="head"><p>Min Millivolts</p></th>
+<th class="head"><p>Max Millivolts</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_0</span></code></p></td>
+<td><p>0-100</p></td>
+<td><p>750-950</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_2_5</span></code></p></td>
+<td><p>0-100</p></td>
+<td><p>1050-1250</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">db_6</span></code></p></td>
+<td><p>0-150</p></td>
+<td><p>1300-1750</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">db_11</span> <span class="pre">|</span> <span class="pre">db_12</span></code></p></td>
+<td><p>0-150</p></td>
+<td><p>2450-2500</p></td>
+</tr>
+</tbody>
+</table>
+<p>Consult the datasheet of your device for the exact voltage ranges supported by each attenuation level.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The option <code class="docutils literal notranslate"><span class="pre">db_11</span></code> has been superseded by <code class="docutils literal notranslate"><span class="pre">db_12</span></code>. The option <code class="docutils literal notranslate"><span class="pre">db_11</span></code> and will be deprecated in a future release, applications should be updated to use <code class="docutils literal notranslate"><span class="pre">db_12</span></code> (except for builds with ESP-IDF versions prior to v5.2). To Continue to support older IDF version builds, the default will remain <code class="docutils literal notranslate"><span class="pre">db_11</span></code>, which is the maximum tolerated voltage on all builds, as <code class="docutils literal notranslate"><span class="pre">db_12</span></code> supported builds will automatically use <code class="docutils literal notranslate"><span class="pre">db_12</span></code> in place of <code class="docutils literal notranslate"><span class="pre">db_11</span></code>. After <code class="docutils literal notranslate"><span class="pre">db_11</span></code> is deprecated in all builds (with the sunset of ESP-IDF v5.1 support) the default will be changed to <code class="docutils literal notranslate"><span class="pre">db_12</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a higher degree of accuracy increase the number of sample taken, the default is 64. If highly stable and accurate ADC measurements are required for an application you may need to connect a bypass capacitor (e.g., a 100 nF ceramic capacitor) to the ADC input pad in use, to minimize noise. This chart from the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/v5.3/esp32/api-reference/peripherals/adc_calibration.html">Espressif ADC Calibration Driver documentation</a> shows the difference between the use of a capacitor and without, as well as with a capacitor and multisampling of 64 samples.</p>
+<p><img alt="ADC Noise Comparison" src="https://docs.espressif.com/projects/esp-idf/en/v5.3/esp32/_images/adc-noise-graph.jpg" /></p>
+<p>You can clearly see the noisy results without a capacitor. This is mitigated by the use of multisampling but without a decoupling capacitor results will likely still contain some noise.</p>
+</div>
+<p>When an ADC channel is configured by the use of <code class="docutils literal notranslate"><span class="pre">esp_adc:acquire/2,4</span></code> or <code class="docutils literal notranslate"><span class="pre">esp_adc:start/1,2</span></code> the driver will select the optimal calibration mechanism supported by the device and channel configuration. If neither the line fitting or curve fitting mechanisms are supported by the device using the provided configuration options an estimated result will be used to provide <code class="docutils literal notranslate"><span class="pre">voltage</span></code> values, based on the <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/v5.3/esp32/api-reference/peripherals/adc_oneshot.html#read-conversion-result">formula suggested by Espressif</a>. For chips using the line fitting calibration scheme that do not have the default vref efuse set, a default vref of 1100 mV is used, this is not currently settable.</p>
+</section>
+<section id="esp32-adc-read-options">
+<h4>ESP32 ADC read options<a class="headerlink" href="#esp32-adc-read-options" title="Link to this heading"></a></h4>
+<p>The read options take the form of a proplist, if the key <code class="docutils literal notranslate"><span class="pre">raw</span></code> is true (<code class="docutils literal notranslate"><span class="pre">{raw,</span> <span class="pre">true}</span></code> or simply appears in the list as the atom <code class="docutils literal notranslate"><span class="pre">raw</span></code>), then the raw value will be returned in the first element of the returned tuple.  Otherwise, this element will be the atom <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</p>
+<p>If the key <code class="docutils literal notranslate"><span class="pre">voltage</span></code> is true (or simply appears in the list as an atom), then a calibrated voltage value will be returned in millivolts in the second element of the returned tuple.  Otherwise, this element will be the atom <code class="docutils literal notranslate"><span class="pre">undefined</span></code>.</p>
+<p>You may specify the number of samples (1 - 100000) to be taken and averaged over using the tuple <code class="docutils literal notranslate"><span class="pre">{samples,</span> <span class="pre">Samples</span> <span class="pre">::</span> <span class="pre">1..100000}</span></code>, the default is <code class="docutils literal notranslate"><span class="pre">64</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Using a large number of samples can significantly increase the amount of time before a response, up to several seconds.</p>
+</div>
+</section>
+</section>
 <section id="i2c">
 <h3>I2C<a class="headerlink" href="#i2c" title="Link to this heading"></a></h3>
 <p>The <a class="reference internal" href="apidocs/erlang/eavmlib/i2c.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">i2c</span></code> module</span></a> encapsulates functionality associated with the 2-wire Inter-Integrated Circuit (I2C) interface.</p>
@@ -1668,10 +1813,10 @@ The <code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</
 <p class="admonition-title">See also</p>
 <p>Information about the ESP32 SPI leader mode interface can be found in the IDF SDK <a class="reference external" href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/spi_master.html">SPI Documentation</a>.</p>
 </div>
-<p>The AtomVM SPI implementation uses the AtomVM Port mechanism and must be initialized using the <a class="reference internal" href="apidocs/erlang/eavmlib/spi.html#open-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">spi:open/1</span></code></span></a> function.  The single parameter to this function is a properties list containing two elements:</p>
+<p>The AtomVM SPI implementation uses the AtomVM Port mechanism and must be initialized using the <a class="reference internal" href="apidocs/erlang/eavmlib/spi.html#open-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">spi:open/1</span></code></span></a> function.  The single parameter to this function is a properties list containing:</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="apidocs/erlang/eavmlib/spi.html#bus-config"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">bus_config</span></code></span></a> – a properties list containing entries for the SPI bus</p></li>
-<li><p><a class="reference internal" href="apidocs/erlang/eavmlib/spi.html#device-config"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">device_config</span></code></span></a> – a properties list containing entries for each device attached to the SPI Bus</p></li>
+<li><p><a class="reference internal" href="apidocs/erlang/eavmlib/spi.html#device-config"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">device_config</span></code></span></a> – an optional properties list containing entries for each device attached to the SPI Bus</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">bus_config</span></code> properties list contains the following entries:</p>
 <table class="docutils align-default">
@@ -2653,6 +2798,14 @@ supported, AtomVM will resort to retrying the request without the service parame
         
           
           <dd><a href="/doc/v0.6.4/">v0.6.4</a></dd>
+          
+        
+          
+          <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
+          
+        
+          
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 
