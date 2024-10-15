@@ -96,6 +96,99 @@ See README.md for instructions on adding a news post
 <ul>
   
     <li>
+      <a href="/2024/10/14/Release_v0.6.5.html">Announcing AtomVM v0.6.5</a>
+      <h2 id="20241014-announcing-atomvm-v065">2024/10/14 Announcing AtomVM v0.6.5</h2>
+
+<p>We are pleased to announce the release of v0.6.5 of the AtomVM virtual machine!</p>
+
+<p>First and foremost our apologies to ESP32 users wanting to use all the great new Elixir features added in the V0.6.4 release. The binary images were corrupted and may Elixir features were unavailable. We have fixed the problem and now publish an Elixir flavored image that has a larger library partition. This change necessitates changing the application partition offset to 0x250000. The <a href="https://github.com/atomvm/exatomvm">ExAtomVM <code class="language-plaintext highlighter-rouge">mix</code></a> plugin repository has already been updated with the correct default offset, a new release should be available in the very near future.</p>
+
+<blockquote>
+  <p>Note: We are investigating <a href="https://github.com/atomvm/AtomVM/issues/1324">a bug</a> in the ESP32 <code class="language-plaintext highlighter-rouge">i2c</code> driver, that was reported hours before this release, <code class="language-plaintext highlighter-rouge">i2c:write_bytes</code> on ESP32 seems to be causing a hard fault, as a workaround use <code class="language-plaintext highlighter-rouge">i2c:write_byte</code> instead.</p>
+</blockquote>
+
+<p>Expanded Erlang support includes:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">erlang:atom_to_binary/1</code> that is equivalent to <code class="language-plaintext highlighter-rouge">erlang:atom_to_binary(Atom, utf8)</code></li>
+  <li><code class="language-plaintext highlighter-rouge">is_bitstring/1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">maps:merge_with/3</code></li>
+  <li><code class="language-plaintext highlighter-rouge">lists:keytake/3</code>, <code class="language-plaintext highlighter-rouge">lists:last/1</code>, <code class="language-plaintext highlighter-rouge">lists:mapfoldl/3</code>, and <code class="language-plaintext highlighter-rouge">lists:nthtail/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">support for handle_continue callback in gen_server</code></li>
+  <li><code class="language-plaintext highlighter-rouge">gen_server:start_monitor/3,4</code></li>
+  <li><code class="language-plaintext highlighter-rouge">code:ensure_loaded/1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">io_lib:latin1_char_list/1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">io:put_chars/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">erlang:list_to_integer/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">binary_to_integer/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">binary:copy/1,2</code>, <code class="language-plaintext highlighter-rouge">binary:split/3</code>, <code class="language-plaintext highlighter-rouge">binary:decode_hex/1</code>, and <code class="language-plaintext highlighter-rouge">binary:encode_hex/1,2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">string:find/2,3</code></li>
+  <li>Support for directory listing using POSIX APIs: (<code class="language-plaintext highlighter-rouge">atomvm:posix_opendir/1</code>,
+<code class="language-plaintext highlighter-rouge">atomvm:posix_readdir/1</code>, <code class="language-plaintext highlighter-rouge">atomvm:posix_closedir/1</code>)</li>
+</ul>
+
+<p>Expanded Elixir support features:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">String.Chars</code> protocol, now functions such as <code class="language-plaintext highlighter-rouge">Enum.join</code> are able to take
+also non string parameters; e.g. <code class="language-plaintext highlighter-rouge">Enum.join([1, 2], ",")</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Enumerable</code> protocol</li>
+  <li><code class="language-plaintext highlighter-rouge">Process.send/2</code>, <code class="language-plaintext highlighter-rouge">Process.send_after/3/4</code>, and <code class="language-plaintext highlighter-rouge">Process.cancel_timer/1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">List.Chars</code> protocol</li>
+  <li><code class="language-plaintext highlighter-rouge">List.duplicate/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Keyword.split/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">IO.chardata_to_string/1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Base.decode16/2</code> and <code class="language-plaintext highlighter-rouge">Base.encode16/2</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Enum.find_index</code> and <code class="language-plaintext highlighter-rouge">Enum.find_value</code> support Enumerable and not just lists</li>
+</ul>
+
+<p>Enhancements to the ESP32 platform:</p>
+<ul>
+  <li>The ESP32 platform now includes the <a href="https://www.atomvm.net/doc/v0.6.5/apidocs/erlang/eavmlib/esp_adc.html"><code class="language-plaintext highlighter-rouge">esp_adc</code></a> driver module for using the ADC peripheral to measure analog voltages. Building from source, and including the atomvm_adc component is no longer necessary (or even supported, now that ESP-IDF v4.4.x has been deprecated).</li>
+  <li>Support for mounting/unmounting storage on ESP32 (such as SD or internal flash) using
+<code class="language-plaintext highlighter-rouge">esp:mount/4</code> and <code class="language-plaintext highlighter-rouge">esp:umount/1</code></li>
+  <li>Made the device_config properties list in <code class="language-plaintext highlighter-rouge">spi:open/1</code> optional (defaults to <code class="language-plaintext highlighter-rouge">[]</code>), so you can use the function with only a <code class="language-plaintext highlighter-rouge">bus_config</code></li>
+  <li>The network driver supports a callback for beacon lost events (usually encountered when signal quality is poor or network congestion), <code class="language-plaintext highlighter-rouge">network:stop/0</code> works as expected.</li>
+</ul>
+
+<p>Many bugs have been fixed in addition to the previously mentioned fix for ESP32 images, including:</p>
+<ul>
+  <li>Fixed memory corruption in <code class="language-plaintext highlighter-rouge">unicode:characters_to_binary</code></li>
+  <li>Fixed handling of large literal indexes and large extended literal indexes</li>
+  <li>Fixed bogus out_of_memory error when using <code class="language-plaintext highlighter-rouge">unicode:characters_to_list</code> on some platforms such as ESP32</li>
+  <li>Fix crash in Elixir library when doing <code class="language-plaintext highlighter-rouge">inspect(:atom)</code></li>
+  <li>General <code class="language-plaintext highlighter-rouge">inspect()</code> compliance with Elixir behavior (but there are still some minor differences)</li>
+  <li>On ESP32 <code class="language-plaintext highlighter-rouge">uart:open/1,2</code> now works with uppercase peripheral names</li>
+  <li>Several edge case memory bugs were fixed in the ESP32 network driver, ans when stopped all resources are freed.</li>
+  <li>Fixed a bug in decoding terms that led to some pin numbers being rejected when setting GPIO interrupts on the ESP32 platform.</li>
+</ul>
+
+<p>For the full set of bug fixes, changes and additions consult the
+<a href="https://www.atomvm.net/doc/v0.6.5/CHANGELOG.html">Changelog</a>.</p>
+
+<p>Download images and binaries are available for most platforms, except STM32, are available from
+<a href="https://github.com/atomvm/AtomVM/releases/tag/v0.6.5">AtomVM Releases on GitHub</a>. STM32 users as
+well as anyone needing to build a generic_unix port for a device without release binaries should
+consult the <a href="https://www.atomvm.net/doc/v0.6.5/build-instructions.html">Build Instructions</a>. MacOS
+users also have the option of
+<a href="https://www.atomvm.net/doc/v0.6.5/getting-started-guide.html#installation-on-macos">installing with <code class="language-plaintext highlighter-rouge">macports</code></a>.</p>
+
+<p>The git repository and tarballs of the AtomVM source release for all platforms can be found on our
+<a href="https://github.com/atomvm/AtomVM">GitHub AtomVM page</a>.</p>
+
+<p>Documentation for the v0.6.5 release of the AtomVM virtual machine, including a
+<a href="https://www.atomvm.net/doc/v0.6.5/getting-started-guide.html">Getting Started Guide</a>, can be found in the
+<a href="https://www.atomvm.net/doc/v0.6.5/">AtomVM Documentation</a>.</p>
+
+<p>As always, tools, drivers, and modules are available on the
+<a href="https://github.com/atomvm">GitHub AtomVM Project page</a>.</p>
+
+<p>Many thanks go to <a href="https://github.com/bettio">Davide Bettio</a>, for creating and maintaining such a
+fine work of software. Special thanks to first time contributors <a href="https://github.com/aiotter">Yuto Oguchi</a>, <a href="https://github.com/rafaltrojniak">Rafał Trójniak</a>, <a href="https://github.com/jakub-gonet">Jakub Gonet</a>, and <a href="https://github.com/kevinschweikert">Kevin Schweikert</a>, as well as the rest of the <a href="https://github.com/atomvm/AtomVM/graphs/contributors">contributors</a> and <a href="https://github.com/atomvm/AtomVM/issues">bug reporters</a> who have helped make this release possible.</p>
+
+<p><em>The AtomVM team</em></p>
+
+    </li>
+  
+    <li>
       <a href="/2024/08/18/Release_v0.6.4.html">Announcing AtomVM v0.6.4</a>
       <h2 id="20240818-announcing-atomvm-v064">2024/08/18 Announcing AtomVM v0.6.4</h2>
 
