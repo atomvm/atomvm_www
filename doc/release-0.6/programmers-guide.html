@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.6.6+git.0d5437f0 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.6.6+git.6acfcb54 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/programmers-guide.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=49b12909"></script>
+      <script src="_static/documentation_options.js?v=81f13f6e"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -1437,6 +1437,10 @@ sensitive security information, such as account passwords, are stored in NVS sto
 <div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">esp</span><span class="p">:</span><span class="nf">rtc_slow_get_binary</span><span class="p">()</span>
 </pre></div>
 </div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Calling <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#rtc-slow-get-binary-0"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:rtc_slow_get_binary/0</span></code></span></a> without having stored a binary first using <a class="reference internal" href="apidocs/erlang/eavmlib/esp.html#rtc-slow-set-binary-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">esp:rtc_slow_set_binary/1</span></code></span></a>, will raise with badarg. So make sure to wrap such a call with a try/catch or similar.</p>
+</div>
 <p>By default, RTC slow memory in AtomVM is limited to 4098 (4k) bytes.  This value can be modified at build time using an IDF SDK <code class="docutils literal notranslate"><span class="pre">KConfig</span></code> setting.  For  instructions about how to build AtomVM, see the AtomVM <a class="reference internal" href="build-instructions.html#building-for-esp32"><span class="std std-ref">Build Instructions</span></a>.</p>
 </section>
 </section>
@@ -2735,13 +2739,13 @@ supported, AtomVM will resort to retrying the request without the service parame
           <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
           
         
-           <strong> 
-          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
-           </strong> 
-        
           
           <dd><a href="/doc/main/">main branch (unstable)</a></dd>
           
+        
+           <strong> 
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
+           </strong> 
         
       </dl>
       
