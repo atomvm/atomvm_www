@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Tooling &mdash; AtomVM 0.7.0-dev+git.43e770b2 documentation</title>
+  <title>AtomVM Tooling &mdash; AtomVM 0.7.0-dev+git.1cddf549 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-tooling.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=35fda6c1"></script>
+      <script src="_static/documentation_options.js?v=e573992b"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -61,7 +61,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#flashing-your-application-with-rebar3">Flashing your application with <code class="docutils literal notranslate"><span class="pre">rebar3</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#esp32">ESP32</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stm32">STM32</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raspberry-pico">Raspberry Pico</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry-pi-rp2">Raspberry Pi RP2</a></li>
 </ul>
 </li>
 </ul>
@@ -154,7 +154,7 @@
 <li><p>For flashing to ESP32, the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p></li>
 <li><p>For flashing to STM32, <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> via <a class="reference external" href="https://github.com/stlink-org/stlink">stlink</a></p></li>
 <li><p>(optional) A serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a>, to view console output from a device.</p></li>
-<li><p>(recommended) For rp2040, <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a> for software resets on Raspberry Pi Pico. (optionally used if found in PATH to disconnect active <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions, which normally prevent flashing)</p></li>
+<li><p>(recommended) For rp2040 and rp2350, <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a> for software resets on Raspberry Pi Pico. (optionally used if found in PATH to disconnect active <code class="docutils literal notranslate"><span class="pre">screen</span></code> sessions, which normally prevent flashing)</p></li>
 </ul>
 </section>
 <section id="erlang-example-program">
@@ -315,9 +315,9 @@ INFO [78] AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </pre></div>
 </div>
 </section>
-<section id="raspberry-pico">
-<h4>Raspberry Pico<a class="headerlink" href="#raspberry-pico" title="Link to this heading"></a></h4>
-<p>To generate a Raspberry Pico uf2 file from an AtomVM AVM file and flash it to an rp2040 device, use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
+<section id="raspberry-pi-rp2">
+<h4>Raspberry Pi RP2<a class="headerlink" href="#raspberry-pi-rp2" title="Link to this heading"></a></h4>
+<p>To generate a Raspberry Pi RP2 uf2 file from an AtomVM AVM file and flash it to an RP2 device, use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target in the <code class="docutils literal notranslate"><span class="pre">atomvm</span></code> namespace.</p>
 <p>For example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rebar3<span class="w"> </span>atomvm<span class="w"> </span>pico_flash
 ...
@@ -328,7 +328,7 @@ INFO [78] AtomVM: AtomVM application terminated.  Going to sleep forever ...
 <span class="w">     </span>/run/media/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>/RPI-RP2...
 </pre></div>
 </div>
-<p>See the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target.</p>
+<p>See the <a class="reference external" href="https://atomvm.github.io/atomvm_rebar3_plugin"><code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">pico_flash</span></code> target. By default it will generate a universal UF2 that works on both RP2040 and RP2350 but you can optionally target only one of socs.</p>
 <p>You can now use a serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a> to view console output from a device.  The default build will wait 20 seconds for a serial connection to be established before starting the application.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ###########################################################
 
@@ -359,7 +359,7 @@ The<span class="w"> </span>device<span class="w"> </span>was<span class="w"> </s
 $
 </pre></div>
 </div>
-<p>This will again give you 20 seconds to establish a serial monitor connection.  For information about changing this timeout, or locking down the device so that software resets no longer work (requiring that the device be power cycled and the <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> button help when powering on to flash) consult the <a class="reference internal" href="build-instructions.html#building-for-raspberry-pi-pico"><span class="std std-ref">rp2040 section</span></a> of the <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a>.</p>
+<p>This will again give you 20 seconds to establish a serial monitor connection.  For information about changing this timeout, or locking down the device so that software resets no longer work (requiring that the device be power cycled and the <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> button help when powering on to flash) consult the <a class="reference internal" href="build-instructions.html#building-for-raspberry-pi-rp2"><span class="std std-ref">rp2040 section</span></a> of the <a class="reference internal" href="build-instructions.html"><span class="std std-doc">Build Instructions</span></a>.</p>
 </section>
 </section>
 </section>

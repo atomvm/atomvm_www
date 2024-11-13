@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.43e770b2 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.1cddf549 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-internals.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=35fda6c1"></script>
+      <script src="_static/documentation_options.js?v=e573992b"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -778,12 +778,12 @@ size of a struct, therefore, is determined simply by the size of the component f
 </section>
 <section id="tasks-and-synchronization-mechanisms">
 <h2>Tasks and synchronization mechanisms<a class="headerlink" href="#tasks-and-synchronization-mechanisms" title="Link to this heading"></a></h2>
-<p>AtomVM SMP builds run on operating or runtime systems implementing tasks (FreeRTOS SMP on ESP32, Unix and WebAssembly) as well as on systems with no task implementation (Raspberry Pi Pico).</p>
-<p>On runtime systems with tasks, each scheduler thread is implemented as a task. On Pico, a scheduler thread runs on Core 0 and another one runs on Core 1, and they are effectively pinned to each core.</p>
+<p>AtomVM SMP builds run on operating or runtime systems implementing tasks (FreeRTOS SMP on ESP32, Unix and WebAssembly) as well as on systems with no task implementation (Raspberry Pi RP2).</p>
+<p>On runtime systems with tasks, each scheduler thread is implemented as a task. On RP2, a scheduler thread runs on Core 0 and another one runs on Core 1, and they are effectively pinned to each core.</p>
 <p>For synchronization purposes, AtomVM uses mutexes, condition variables, RW locks, spinlocks and Atomics.</p>
 <p>Availability of RW Locks and atomics are verified at compile time using detection of symbols for RW Locks and <code class="docutils literal notranslate"><span class="pre">ATOMIC_*_LOCK_FREE</span></code> C11 macros for atomics.</p>
-<p>Mutexes and condition variables are provided by the SDK or the runtime system. If RW Locks are not available, AtomVM uses mutexes. Atomics are not available on Pico and are replaced by critical sections. Spinlocks are implemented by AtomVM on top of Atomics, or using mutexes on Pico.</p>
-<p>Importantly, locking synchronization mechanisms (mutexes, RW locks, spinlocks) are not interrupt-safe. Interrupt service routines must not try to lock as they could fail forever if interrupted code owns the lock. Atomics, including emulation on Pico, are interrupt-safe.</p>
+<p>Mutexes and condition variables are provided by the SDK or the runtime system. If RW Locks are not available, AtomVM uses mutexes. Atomics are not available on RP2 and are replaced by critical sections. Spinlocks are implemented by AtomVM on top of Atomics, or using mutexes on RP2.</p>
+<p>Importantly, locking synchronization mechanisms (mutexes, RW locks, spinlocks) are not interrupt-safe. Interrupt service routines must not try to lock as they could fail forever if interrupted code owns the lock. Atomics, including emulation on RP2040, are interrupt-safe.</p>
 <p>Drivers can send messages from event callbacks typically called from FreeRTOS tasks using <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task</span></code> or <code class="docutils literal notranslate"><span class="pre">port_send_message_from_task</span></code> functions instead of <code class="docutils literal notranslate"><span class="pre">globalcontext_send_message</span></code> or <code class="docutils literal notranslate"><span class="pre">port_send_message</span></code>. These functions try to acquire required locks and if they fail, enqueue sent message in a queue, so it is later processed when the scheduler performs context switching. The functions are undefined if option <code class="docutils literal notranslate"><span class="pre">AVM_DISABLE_TASK_DRIVER</span></code> is passed. Some platforms do not include support for task drivers. Define <code class="docutils literal notranslate"><span class="pre">AVM_TASK_DRIVER_ENABLED</span></code> can be checked to determine if these functions are available.</p>
 <blockquote>
 <div><dl class="c function">

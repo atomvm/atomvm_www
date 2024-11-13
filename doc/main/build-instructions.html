@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.43e770b2 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.1cddf549 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=35fda6c1"></script>
+      <script src="_static/documentation_options.js?v=e573992b"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -100,12 +100,13 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuring-deployment-builds-for-stm32">Configuring deployment builds for STM32</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#building-for-raspberry-pi-pico">Building for Raspberry Pi Pico</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#pico-prerequisites">Pico Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico">AtomVM build steps (Pico)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-for-raspberry-pi-rp2">Building for Raspberry Pi RP2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rp2-prerequisites">RP2 Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico-or-most-boards-based-on-rp2040">AtomVM build steps (Pico or most boards based on RP2040)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico-w">AtomVM build steps (Pico-W)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#libatomvm-build-steps-for-pico">libAtomVM build steps for Pico</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-tests-for-pico">Running tests for Pico</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atomvm-build-steps-pico2-or-boards-based-on-rp2350">AtomVM build steps (Pico2 or boards based on RP2350)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#libatomvm-build-steps-for-rp2">libAtomVM build steps for RP2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests-for-rp2">Running tests for RP2</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#building-for-emscripten">Building for <code class="docutils literal notranslate"><span class="pre">emscripten</span></code></a><ul>
@@ -218,7 +219,7 @@ it is optional.</p>
 <li><p><a class="reference internal" href="#building-for-generic-unix">Generic UNIX</a></p></li>
 <li><p><a class="reference internal" href="#building-for-esp32">ESP32</a></p></li>
 <li><p><a class="reference internal" href="#building-for-stm32">STM32</a></p></li>
-<li><p><a class="reference internal" href="#building-for-raspberry-pi-pico">Raspberry Pi Pico</a> (rp2040)</p></li>
+<li><p><a class="reference internal" href="#building-for-rp2"><span class="xref myst">RP2</span></a> (including Pico boards)</p></li>
 <li><p><a class="reference internal" href="#building-for-emscripten">WASM</a> (NodeJS or web)</p></li>
 </ul>
 </section>
@@ -944,20 +945,22 @@ is 8N1 with no flow control.</p>
 <p>After your application has been tested (<em>and debugged</em>) and is ready to put into active use you may want to tune the build of AtomVM.  For instance disabling logging with <code class="docutils literal notranslate"><span class="pre">-DAVM_LOG_DISABLE=on</span></code> as a <code class="docutils literal notranslate"><span class="pre">cmake</span></code> configuration option may result in slightly better performance. This will have no affect on the console output of your application, just disable low level log messages from the AtomVM system. You may also want to enabling automatic reboot in the case that your application ever exits with a return other than <code class="docutils literal notranslate"><span class="pre">ok</span></code>. This can be enabled with the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> option <code class="docutils literal notranslate"><span class="pre">-DAVM_CONFIG_REBOOT_ON_NOT_OK=on</span></code>.</p>
 </section>
 </section>
-<section id="building-for-raspberry-pi-pico">
-<h2>Building for Raspberry Pi Pico<a class="headerlink" href="#building-for-raspberry-pi-pico" title="Link to this heading"></a></h2>
-<section id="pico-prerequisites">
-<h3>Pico Prerequisites<a class="headerlink" href="#pico-prerequisites" title="Link to this heading"></a></h3>
+<section id="building-for-raspberry-pi-rp2">
+<h2>Building for Raspberry Pi RP2<a class="headerlink" href="#building-for-raspberry-pi-rp2" title="Link to this heading"></a></h2>
+<p>You can build with all boards supported by Raspberry Pi pico SDK, including Pico, Pico-W and Pico2. AtomVM also works with clones such as RP2040 Zero.</p>
+<section id="rp2-prerequisites">
+<h3>RP2 Prerequisites<a class="headerlink" href="#rp2-prerequisites" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cmake</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">ninja</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Erlang/OTP</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Elixir</span></code> (optional)</p></li>
+<li><p>A toolchain for the target (ARM or Risc-V)</p></li>
 </ul>
 </section>
-<section id="atomvm-build-steps-pico">
-<h3>AtomVM build steps (Pico)<a class="headerlink" href="#atomvm-build-steps-pico" title="Link to this heading"></a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2040/
+<section id="atomvm-build-steps-pico-or-most-boards-based-on-rp2040">
+<h3>AtomVM build steps (Pico or most boards based on RP2040)<a class="headerlink" href="#atomvm-build-steps-pico-or-most-boards-based-on-rp2040" title="Link to this heading"></a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2/
 $<span class="w"> </span>mkdir<span class="w"> </span>build
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 $<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-G<span class="w"> </span>Ninja
@@ -966,12 +969,12 @@ $<span class="w"> </span>ninja
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so Pico restarts on error.</p>
+<p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so AtomVM restarts on error.</p>
 </div>
 </section>
 <section id="atomvm-build-steps-pico-w">
 <h3>AtomVM build steps (Pico-W)<a class="headerlink" href="#atomvm-build-steps-pico-w" title="Link to this heading"></a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2040/
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2/
 $<span class="w"> </span>mkdir<span class="w"> </span>build
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
 $<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-DPICO_BOARD<span class="o">=</span>pico_w
@@ -980,13 +983,36 @@ $<span class="w"> </span>ninja
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so Pico restarts on error.</p>
+<p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so AtomVM restarts on error.</p>
+</div>
+</section>
+<section id="atomvm-build-steps-pico2-or-boards-based-on-rp2350">
+<h3>AtomVM build steps (Pico2 or boards based on RP2350)<a class="headerlink" href="#atomvm-build-steps-pico2-or-boards-based-on-rp2350" title="Link to this heading"></a></h3>
+<p>For ARM S platform (recommended) :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2/
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-DPICO_BOARD<span class="o">=</span>pico2
+$<span class="w"> </span>ninja
+</pre></div>
+</div>
+<p>For RISC-V platform (supported but slower) :</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2/
+$<span class="w"> </span>mkdir<span class="w"> </span>build
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>build
+$<span class="w"> </span>cmake<span class="w"> </span>..<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>-DPICO_BOARD<span class="o">=</span>pico2<span class="w"> </span>-DPICO_PLATFORM<span class="o">=</span>rp2350-riscv
+$<span class="w"> </span>ninja
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You may want to build with option <code class="docutils literal notranslate"><span class="pre">AVM_REBOOT_ON_NOT_OK</span></code> so AtomVM restarts on error.</p>
 </div>
 <p>The default build configuration allows the device to be re-flashed with the <code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code> <code class="docutils literal notranslate"><span class="pre">atomvm</span> <span class="pre">pico_flash</span></code> task or restarting the application after exiting using <a class="reference external" href="https://github.com/raspberrypi/picotool"><code class="docutils literal notranslate"><span class="pre">picotool</span></code></a>.  This behaviour can be changed to hang the CPU when the application exits, so that power must be cycled to restart, and <code class="docutils literal notranslate"><span class="pre">BOOTSEL</span></code> must be held when power on to flash a new application.  To disable software resets use <code class="docutils literal notranslate"><span class="pre">-DAVM_WAIT_BOOTSEL_ON_EXIT=off</span></code> when configuring <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p>
 <p>The 20 second default timeout for a USB serial connection can be changed using option <code class="docutils literal notranslate"><span class="pre">AVM_USB_WAIT_SECONDS</span></code>.  The device can also be configured to wait indefinitely for a serial connection using the option <code class="docutils literal notranslate"><span class="pre">AVM_WAIT_FOR_USB_CONNECT=on</span></code>.</p>
 </section>
-<section id="libatomvm-build-steps-for-pico">
-<h3>libAtomVM build steps for Pico<a class="headerlink" href="#libatomvm-build-steps-for-pico" title="Link to this heading"></a></h3>
+<section id="libatomvm-build-steps-for-rp2">
+<h3>libAtomVM build steps for RP2<a class="headerlink" href="#libatomvm-build-steps-for-rp2" title="Link to this heading"></a></h3>
 <p>Build of standard libraries is part of the generic unix build.</p>
 <p>From the root of the project:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>build
@@ -996,13 +1022,13 @@ $<span class="w"> </span>ninja
 </pre></div>
 </div>
 </section>
-<section id="running-tests-for-pico">
-<h3>Running tests for Pico<a class="headerlink" href="#running-tests-for-pico" title="Link to this heading"></a></h3>
-<p>Tests for Pico/RP2040 are run on the desktop (or CI) using <a class="reference external" href="https://github.com/wokwi/rp2040js">rp2040js</a>.
+<section id="running-tests-for-rp2">
+<h3>Running tests for RP2<a class="headerlink" href="#running-tests-for-rp2" title="Link to this heading"></a></h3>
+<p>Tests for RP2040 are run on the desktop (or CI) using <a class="reference external" href="https://github.com/wokwi/rp2040js">rp2040js</a>.
 Running tests currently require nodejs 20.</p>
-<p>Change directory to the <code class="docutils literal notranslate"><span class="pre">src/platforms/rp2040/tests</span></code> directory under the AtomVM source tree root:</p>
+<p>Change directory to the <code class="docutils literal notranslate"><span class="pre">src/platforms/rp2/tests</span></code> directory under the AtomVM source tree root:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>&lt;atomvm-source-tree-root&gt;
-$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2040/tests
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/rp2/tests
 $
 </pre></div>
 </div>

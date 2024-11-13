@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Programmers Guide &mdash; AtomVM 0.7.0-dev+git.43e770b2 documentation</title>
+  <title>Programmers Guide &mdash; AtomVM 0.7.0-dev+git.1cddf549 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/programmers-guide.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=35fda6c1"></script>
+      <script src="_static/documentation_options.js?v=e573992b"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -62,7 +62,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#development-environment">Development Environment</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#esp32-deployment-requirements">ESP32 Deployment Requirements</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#stm32-deployment-requirements">STM32 Deployment Requirements</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raspberry-pi-pico-deployment-requirements">Raspberry Pi Pico Deployment Requirements</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry-pi-rp2-deployment-requirements">Raspberry Pi RP2 Deployment Requirements</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#development-workflow">Development Workflow</a></li>
@@ -306,12 +306,12 @@
 <li><p>(Optional, but recommended) A serial console program, such as <code class="docutils literal notranslate"><span class="pre">minicom</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code>, so that you can view console output from your AtomVM application.</p></li>
 </ul>
 </section>
-<section id="raspberry-pi-pico-deployment-requirements">
-<h4>Raspberry Pi Pico Deployment Requirements<a class="headerlink" href="#raspberry-pi-pico-deployment-requirements" title="Link to this heading"></a></h4>
+<section id="raspberry-pi-rp2-deployment-requirements">
+<h4>Raspberry Pi RP2 Deployment Requirements<a class="headerlink" href="#raspberry-pi-rp2-deployment-requirements" title="Link to this heading"></a></h4>
 <ul class="simple">
 <li><p>A computer running MacOS or Linux (Windows support is not currently supported);</p></li>
-<li><p>A Raspberry Pico board with a USB/UART connector (typically part of a development board);</p></li>
-<li><p>A USB cable capable of connecting the Raspberry Pico module or board to your development machine (laptop or PC);</p></li>
+<li><p>A board with a Raspberry Pi RP2 soc such as Raspberry Pi Pico or Pico W or Pico 2, with a USB connector (typically part of a development board);</p></li>
+<li><p>A USB cable capable of connecting the module or board to your development machine (laptop or PC);</p></li>
 <li><p>(Optional, but recommended) A serial console program, such as <code class="docutils literal notranslate"><span class="pre">minicom</span></code> or <code class="docutils literal notranslate"><span class="pre">screen</span></code>, so that you can view console output from your AtomVM application.</p></li>
 </ul>
 </section>
@@ -1600,7 +1600,7 @@ The <code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</
 <span class="k">end</span><span class="p">.</span>
 </pre></div>
 </div>
-<p>The Pico has an additional initialization step <a class="reference internal" href="apidocs/erlang/eavmlib/gpio.html#init-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code></span></a> before using a pin for gpio:</p>
+<p>The RP2 has an additional initialization step <a class="reference internal" href="apidocs/erlang/eavmlib/gpio.html#init-1"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code></span></a> before using a pin for gpio:</p>
 <div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="nn">gpio</span><span class="p">:</span><span class="nf">init</span><span class="p">(</span><span class="nv">Pin</span><span class="p">),</span>
 <span class="nn">gpio</span><span class="p">:</span><span class="nf">set_pin_mode</span><span class="p">(</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="n">input</span><span class="p">),</span>
@@ -1628,7 +1628,7 @@ The <code class="docutils literal notranslate"><span class="pre">esp:get_mac/1</
 <span class="nn">gpio</span><span class="p">:</span><span class="nf">digital_write</span><span class="p">(</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="n">low</span><span class="p">).</span>
 </pre></div>
 </div>
-<p>Pico needs the extra <code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code> before <code class="docutils literal notranslate"><span class="pre">gpio:read/1</span></code> too:</p>
+<p>RP2 needs the extra <code class="docutils literal notranslate"><span class="pre">gpio:init/1</span></code> before <code class="docutils literal notranslate"><span class="pre">gpio:read/1</span></code> too:</p>
 <div class="highlight-erlang notranslate"><div class="highlight"><pre><span></span><span class="nv">Pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="nn">gpio</span><span class="p">:</span><span class="nf">init</span><span class="p">(</span><span class="nv">Pin</span><span class="p">),</span>
 <span class="nn">gpio</span><span class="p">:</span><span class="nf">set_pin_mode</span><span class="p">(</span><span class="nv">Pin</span><span class="p">,</span><span class="w"> </span><span class="n">output</span><span class="p">),</span>
