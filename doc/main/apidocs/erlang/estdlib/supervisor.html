@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module supervisor &mdash; AtomVM 0.7.0-dev+git.1cddf549 documentation</title>
+  <title>Module supervisor &mdash; AtomVM 0.7.0-dev+git.eb4943af documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/supervisor.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=e573992b"></script>
+      <script src="../../../_static/documentation_options.js?v=078b4178"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -134,13 +134,54 @@
   <section id="module-supervisor">
 <h1>Module supervisor<a class="headerlink" href="#module-supervisor" title="Link to this heading"></a></h1>
 <ul class="simple">
+<li><p><a class="reference internal" href="#data-types">Data Types</a></p></li>
 <li><p><a class="reference internal" href="#function-index">Function Index</a></p></li>
 <li><p><a class="reference internal" href="#function-details">Function Details</a></p></li>
 </ul>
+<p><a name="types"></a></p>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
+<section id="child-spec">
+<h3><a name="type-child_spec">child_spec()</a><a class="headerlink" href="#child-spec" title="Link to this heading"></a></h3>
+<pre><code>
+child_spec() = #{id =&gt; any(), start =&gt; {module(), atom(), [any()]}, restart =&gt; <a href="#type-restart">restart()</a>, shutdown =&gt; <a href="#type-shutdown">shutdown()</a>, type =&gt; <a href="#type-child_type">child_type()</a>, modules =&gt; [module()] | dynamic} | {Id::any(), StartFunc::{module(), atom(), [any()]}, Restart::<a href="#type-restart">restart()</a>, Shutdown::<a href="#type-shutdown">shutdown()</a>, Type::<a href="#type-child_type">child_type()</a>, Modules::[module()] | dynamic}
+</code></pre>
+</section>
+<section id="child-type">
+<h3><a name="type-child_type">child_type()</a><a class="headerlink" href="#child-type" title="Link to this heading"></a></h3>
+<pre><code>
+child_type() = worker | supervisor
+</code></pre>
+</section>
+<section id="restart">
+<h3><a name="type-restart">restart()</a><a class="headerlink" href="#restart" title="Link to this heading"></a></h3>
+<pre><code>
+restart() = permanent | transient | temporary
+</code></pre>
+</section>
+<section id="shutdown">
+<h3><a name="type-shutdown">shutdown()</a><a class="headerlink" href="#shutdown" title="Link to this heading"></a></h3>
+<pre><code>
+shutdown() = brutal_kill | timeout()
+</code></pre>
+</section>
+<section id="strategy">
+<h3><a name="type-strategy">strategy()</a><a class="headerlink" href="#strategy" title="Link to this heading"></a></h3>
+<pre><code>
+strategy() = one_for_all | one_for_one
+</code></pre>
+</section>
+<section id="sup-flags">
+<h3><a name="type-sup_flags">sup_flags()</a><a class="headerlink" href="#sup-flags" title="Link to this heading"></a></h3>
+<pre><code>
+sup_flags() = #{strategy =&gt; <a href="#type-strategy">strategy()</a>, intensity =&gt; non_neg_integer(), period =&gt; pos_integer()} | {RestartStrategy::<a href="#type-strategy">strategy()</a>, Intensity::non_neg_integer(), Period::pos_integer()}
+</code></pre>
 <p><a name="index"></a></p>
+</section>
+</section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#handle_call-3">handle_call/3</a></td><td></td></tr><tr><td valign="top"><a href="#handle_cast-2">handle_cast/2</a></td><td></td></tr><tr><td valign="top"><a href="#handle_info-2">handle_info/2</a></td><td></td></tr><tr><td valign="top"><a href="#init-1">init/1</a></td><td></td></tr><tr><td valign="top"><a href="#start_link-2">start_link/2</a></td><td></td></tr><tr><td valign="top"><a href="#start_link-3">start_link/3</a></td><td></td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#handle_call-3">handle_call/3</a></td><td></td></tr><tr><td valign="top"><a href="#handle_cast-2">handle_cast/2</a></td><td></td></tr><tr><td valign="top"><a href="#handle_info-2">handle_info/2</a></td><td></td></tr><tr><td valign="top"><a href="#init-1">init/1</a></td><td></td></tr><tr><td valign="top"><a href="#start_child-2">start_child/2</a></td><td></td></tr><tr><td valign="top"><a href="#start_link-2">start_link/2</a></td><td></td></tr><tr><td valign="top"><a href="#start_link-3">start_link/3</a></td><td></td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -148,7 +189,7 @@
 <p><a name="handle_call-3"></a></p>
 <section id="handle-call-3">
 <h3>handle_call/3<a class="headerlink" href="#handle-call-3" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">handle_call(Msg,</span> <span class="pre">_from,</span> <span class="pre">State)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">handle_call(X1,</span> <span class="pre">From,</span> <span class="pre">State)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
 <p><a name="handle_cast-2"></a></p>
 </section>
 <section id="handle-cast-2">
@@ -164,6 +205,11 @@
 <section id="init-1">
 <h3>init/1<a class="headerlink" href="#init-1" title="Link to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">init(X1)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p><a name="start_child-2"></a></p>
+</section>
+<section id="start-child-2">
+<h3>start_child/2<a class="headerlink" href="#start-child-2" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">start_child(Supervisor,</span> <span class="pre">ChildSpec)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
 <p><a name="start_link-2"></a></p>
 </section>
 <section id="start-link-2">
