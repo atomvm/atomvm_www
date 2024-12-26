@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>nifs.h &mdash; AtomVM 0.7.0-dev+git.9ee3c3bc documentation</title>
+  <title>nifs.h &mdash; AtomVM 0.7.0-dev+git.ba76d773 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/nifs.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=391829ee"></script>
+      <script src="../../../_static/documentation_options.js?v=3ad03e5a"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -343,10 +343,8 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.h.VALIDATE_VALUE">
 <span class="target" id="libatomvmnifs_8h_1a69bd4b915966835c42a2b14b8c91483f"></span><span class="sig-name descname"><span class="n"><span class="pre">VALIDATE_VALUE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">value</span></span>, <span class="n"><span class="pre">verify_function</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">if</span> <span class="pre">(</span><a class="reference internal" href="utils.h.html#libatomvmutils_8h_1ab10d0a221f4d7a706701b806c8135fd7"><span class="std std-ref"><span class="pre">UNLIKELY</span></span></a><p><span class="pre">(!verify_function((value))))</span> <span class="pre">{</span> <span class="pre">\</span></p>
-<p><span class="pre">argv[0]</span> <span class="pre">=</span></p>
-<a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1a44cbb241677d97b870f957e462caf3b3"><span class="std std-ref"><span class="pre">ERROR_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
-<p><span class="pre">argv[1]</span> <span class="pre">=</span></p>
-<a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1af18728853e2246cba0937458e40c1a35"><span class="std std-ref"><span class="pre">BADARG_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">argv[0]</span> <span class="pre">=</span> <span class="pre">ERROR_ATOM;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<p><span class="pre">argv[1]</span> <span class="pre">=</span> <span class="pre">BADARG_ATOM;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">return</span></p>
 <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a94e2218b5d376c7edf7f9037adad4a17"><span class="std std-ref"><span class="pre">term_invalid_term</span></span></a><p><span class="pre">();</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">}</span></p>
@@ -355,7 +353,7 @@
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.nifs.h.RAISE_ERROR">
-<span class="target" id="libatomvmnifs_8h_1a832199d5ff8e170484b8ad190f1e37b2"></span><span class="sig-name descname"><span class="n"><span class="pre">RAISE_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">error_type_atom</span></span><span class="sig-paren">)</span> &#160;&#160;&#160; <span class="pre">ctx-&gt;x[0]</span> <span class="pre">=</span> <a class="reference internal" href="defaultatoms.h.html#libatomvmdefaultatoms_8h_1a44cbb241677d97b870f957e462caf3b3"><span class="std std-ref"><span class="pre">ERROR_ATOM</span></span></a><p><span class="pre">;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
+<span class="target" id="libatomvmnifs_8h_1a832199d5ff8e170484b8ad190f1e37b2"></span><span class="sig-name descname"><span class="n"><span class="pre">RAISE_ERROR</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">error_type_atom</span></span><span class="sig-paren">)</span> <p><span class="pre">ctx-&gt;x[0]</span> <span class="pre">=</span> <span class="pre">ERROR_ATOM;</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">ctx-&gt;x[1]</span> <span class="pre">=</span> <span class="pre">(error_type_atom);</span>&#160;&#160; <span class="pre">\</span></p>
 <p><span class="pre">return</span></p>
 <a class="reference internal" href="term.h.html#libatomvmterm_8h_1a94e2218b5d376c7edf7f9037adad4a17"><span class="std std-ref"><span class="pre">term_invalid_term</span></span></a><span class="pre">();</span><a class="headerlink" href="#c.libAtomVM.nifs.h.RAISE_ERROR" title="Link to this definition"></a><br /></dt>
