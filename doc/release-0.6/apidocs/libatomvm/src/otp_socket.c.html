@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>otp_socket.c &mdash; AtomVM 0.6.6+git.04737353 documentation</title>
+  <title>otp_socket.c &mdash; AtomVM 0.6.6+git.8d5f8dc1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/otp_socket.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=15052066"></script>
+      <script src="../../../_static/documentation_options.js?v=9897f535"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -185,7 +185,7 @@
 </div>
 <p>Include dependency graph for otp_socket.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-5986a2c16013130e45a9da87755275559b700594.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-62e87f91f76b83a8faddfa86db9fd53e07390e42.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -335,6 +335,7 @@
     &quot;1&quot; -&gt; &quot;36&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;37&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;38&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;39&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -713,7 +714,7 @@ This function is meant to be called from a nif that should return its result dir
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.send_closed_notification">
-<span class="target" id="libatomvmotp__socket_8c_1af9291ee22fdfd060a6442974169b9944"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">send_closed_notification</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.send_closed_notification" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmotp__socket_8c_1a7dba3bdb2dfe2c01d0b684853193e14e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">send_closed_notification</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">socket_term</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">selecting_process_id</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.send_closed_notification" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -802,6 +803,11 @@ This function is meant to be called from a nif that should return its result dir
 <dd></dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.do_socket_recv">
+<span class="target" id="libatomvmotp__socket_8c_1a64248b3314546f2f9c253c7a4213c9f8"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">do_socket_recv</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">from</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.do_socket_recv" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.socket_recv">
 <span class="target" id="libatomvmotp__socket_8c_1a2b75c6a7174715da4056d6beb325cea6"></span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">socket_recv</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">from</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.socket_recv" title="Link to this definition"></a><br /></dt>
 <dd><p>Read data from a socket. </p>
@@ -824,7 +830,7 @@ This function is meant to be called from a nif that should return its result dir
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.nif_socket_recv_lwip">
-<span class="target" id="libatomvmotp__socket_8c_1aee268dfd4c703742b9f0d9311e4a45b0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_lwip</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.nif_socket_recv_lwip" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmotp__socket_8c_1a932c0b60d314f51b218db2cbd98684a5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recv_lwip</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">resource_term</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_recvfrom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.nif_socket_recv_lwip" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -840,6 +846,11 @@ This function is meant to be called from a nif that should return its result dir
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.nif_socket_recvfrom">
 <span class="target" id="libatomvmotp__socket_8c_1a9e1fc4103aa7f56a42be89e661dcf38e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nif_socket_recvfrom</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">argc</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">argv</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">]</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.nif_socket_recvfrom" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.do_socket_send">
+<span class="target" id="libatomvmotp__socket_8c_1a3549254a5c008a6de1bc49b247cae85f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">ssize_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">do_socket_send</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.c.SocketResource" title="SocketResource"><span class="n"><span class="pre">SocketResource</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">rsrc_obj</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">buf</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">dest</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.do_socket_send" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c function">
@@ -1244,6 +1255,11 @@ This function is meant to be called from a nif that should return its result dir
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.SocketResource.buf_size">
 <span class="target" id="libatomvmstruct_socket_resource_1ae30c7c39db5a3c394e6de949c99d9394"></span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">buf_size</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.SocketResource.buf_size" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.c.SocketResource.socket_lock">
+<span class="target" id="libatomvmstruct_socket_resource_1af56353867aac9eaac10b7a98b49a2d45"></span><span class="n"><span class="pre">RWLock</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">socket_lock</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.c.SocketResource.socket_lock" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
