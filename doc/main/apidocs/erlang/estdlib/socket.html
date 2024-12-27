@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module socket &mdash; AtomVM 0.7.0-dev+git.3220e390 documentation</title>
+  <title>Module socket &mdash; AtomVM 0.7.0-dev+git.74258a11 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/socket.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=ccbdc987"></script>
+      <script src="../../../_static/documentation_options.js?v=5e7471c2"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -184,7 +184,7 @@ sockaddr_in() = #{family =&gt; inet, port =&gt; <a href="#type-port_number">port
 <section id="socket-option">
 <h3><a name="type-socket_option">socket_option()</a><a class="headerlink" href="#socket-option" title="Link to this heading"></a></h3>
 <pre><code>
-socket_option() = {socket, reuseaddr} | {socket, linger}
+socket_option() = {socket, reuseaddr | linger | type} | {otp, recvbuf}
 </code></pre>
 </section>
 <section id="type">
@@ -197,7 +197,7 @@ type() = stream | dgram
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept-1">accept/1</a></td><td>Equivalent to <a href="socket.md#accept-2"><tt>socket:accept(ListeningSocket, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#accept-2">accept/2</a></td><td>    Wait for the socket to accept a connection.</td></tr><tr><td valign="top"><a href="#bind-2">bind/2</a></td><td>    Bind a socket to an interface.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close a socket.</td></tr><tr><td valign="top"><a href="#connect-2">connect/2</a></td><td>    Wait for the socket to connect to an address.</td></tr><tr><td valign="top"><a href="#listen-1">listen/1</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#listen-2">listen/2</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#open-3">open/3</a></td><td>    Create a socket.</td></tr><tr><td valign="top"><a href="#peername-1">peername/1</a></td><td>    Return the address of the peer connected to the specified socket.</td></tr><tr><td valign="top"><a href="#recv-1">recv/1</a></td><td>Equivalent to <a href="socket.md#recv-2"><tt>socket:recv(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-2">recv/2</a></td><td>Equivalent to <a href="socket.md#recv-3"><tt>socket:recv(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-3">recv/3</a></td><td>    Receive data on the specified socket.</td></tr><tr><td valign="top"><a href="#recvfrom-1">recvfrom/1</a></td><td>Equivalent to <a href="socket.md#recvfrom-2"><tt>socket:recvfrom(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-2">recvfrom/2</a></td><td>Equivalent to <a href="socket.md#recvfrom-3"><tt>socket:recvfrom(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-3">recvfrom/3</a></td><td>    Receive data on the specified socket, returning the from address.</td></tr><tr><td valign="top"><a href="#send-2">send/2</a></td><td>    Send data on the specified socket.</td></tr><tr><td valign="top"><a href="#sendto-3">sendto/3</a></td><td>    Send data on the specified socket to the specified destination.</td></tr><tr><td valign="top"><a href="#setopt-3">setopt/3</a></td><td>    Set a socket option.</td></tr><tr><td valign="top"><a href="#shutdown-2">shutdown/2</a></td><td>    Shut down one or both ends of a full-duplex socket connection.</td></tr><tr><td valign="top"><a href="#sockname-1">sockname/1</a></td><td>    Return the current address for the specified socket.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept-1">accept/1</a></td><td>Equivalent to <a href="socket.md#accept-2"><tt>socket:accept(ListeningSocket, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#accept-2">accept/2</a></td><td>    Wait for the socket to accept a connection.</td></tr><tr><td valign="top"><a href="#bind-2">bind/2</a></td><td>    Bind a socket to an interface.</td></tr><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close a socket.</td></tr><tr><td valign="top"><a href="#connect-2">connect/2</a></td><td>    Wait for the socket to connect to an address.</td></tr><tr><td valign="top"><a href="#getopt-2">getopt/2</a></td><td>    Get a socket option.</td></tr><tr><td valign="top"><a href="#listen-1">listen/1</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#listen-2">listen/2</a></td><td>    Set the socket to listen for connections.</td></tr><tr><td valign="top"><a href="#open-3">open/3</a></td><td>    Create a socket.</td></tr><tr><td valign="top"><a href="#peername-1">peername/1</a></td><td>    Return the address of the peer connected to the specified socket.</td></tr><tr><td valign="top"><a href="#recv-1">recv/1</a></td><td>Equivalent to <a href="socket.md#recv-2"><tt>socket:recv(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-2">recv/2</a></td><td>Equivalent to <a href="socket.md#recv-3"><tt>socket:recv(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recv-3">recv/3</a></td><td>    Receive data on the specified socket.</td></tr><tr><td valign="top"><a href="#recvfrom-1">recvfrom/1</a></td><td>Equivalent to <a href="socket.md#recvfrom-2"><tt>socket:recvfrom(Socket, 0)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-2">recvfrom/2</a></td><td>Equivalent to <a href="socket.md#recvfrom-3"><tt>socket:recvfrom(Socket, Length, infinity)</tt></a>.</td></tr><tr><td valign="top"><a href="#recvfrom-3">recvfrom/3</a></td><td>    Receive data on the specified socket, returning the from address.</td></tr><tr><td valign="top"><a href="#send-2">send/2</a></td><td>    Send data on the specified socket.</td></tr><tr><td valign="top"><a href="#sendto-3">sendto/3</a></td><td>    Send data on the specified socket to the specified destination.</td></tr><tr><td valign="top"><a href="#setopt-3">setopt/3</a></td><td>    Set a socket option.</td></tr><tr><td valign="top"><a href="#shutdown-2">shutdown/2</a></td><td>    Shut down one or both ends of a full-duplex socket connection.</td></tr><tr><td valign="top"><a href="#sockname-1">sockname/1</a></td><td>    Return the current address for the specified socket.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -276,6 +276,23 @@ be a connection-based socket.</p>
 to a server.</p>
 <p>Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">=</span> <span class="pre">socket:connect(Socket,</span> <span class="pre">#{family</span> <span class="pre">=&gt;</span> <span class="pre">inet,</span> <span class="pre">addr</span> <span class="pre">=&gt;</span> <span class="pre">loopback,</span> <span class="pre">port</span> <span class="pre">=&gt;</span> <span class="pre">44404})</span></code></p>
+<p><a name="getopt-2"></a></p>
+</section>
+<section id="getopt-2">
+<h3>getopt/2<a class="headerlink" href="#getopt-2" title="Link to this heading"></a></h3>
+<pre><code>
+getopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type-socket_option">socket_option()</a>) -&gt; {ok, Value::term()} | {error, Reason::term()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /><code class="docutils literal notranslate"><span class="pre">SocketOption</span></code>: the option<br /></p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Value}</span></code> if successful; <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, otherwise.</p>
+<p>Get a socket option.</p>
+<p>Currently, the following options are supported:</p>
+<table>
+<tr><td><code>{socket, type}</code></td><td><code>type()</code></td></tr>
+</table>
+<p>Example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">stream}</span> <span class="pre">=</span> <span class="pre">socket:getopt(ListeningSocket,</span> <span class="pre">{socket,</span> <span class="pre">type})</span></code></p>
 <p><a name="listen-1"></a></p>
 </section>
 <section id="listen-1">
@@ -447,17 +464,18 @@ over the network.</p>
 <section id="setopt-3">
 <h3>setopt/3<a class="headerlink" href="#setopt-3" title="Link to this heading"></a></h3>
 <pre><code>
-setopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type-socket_option">socket_option()</a>, Value::term()) -&gt; ok | {error, Reason::term()}
+setopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type-socket_option">socket_option()</a>, Value::term()) -&gt; ok | {error, any()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /><code class="docutils literal notranslate"><span class="pre">SocketOption</span></code>: the option<br /><code class="docutils literal notranslate"><span class="pre">Value</span></code>: the option value<br /></p>
-<p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Address}</span></code> if successful; <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, otherwise.</p>
+<p>returns: <code class="docutils literal notranslate"><span class="pre">ok</span></code> if successful; <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, otherwise.</p>
 <p>Set a socket option.</p>
 <p>Set an option on a socket.</p>
 <p>Currently, the following options are supported:</p>
 <table>
 <tr><td><code>{socket, reuseaddr}</code></td><td><code>boolean()</code></td></tr>
 <tr><td><code>{socket, linger}</code></td><td><code>#{onoff => boolean(), linger => non_neg_integer()}</code></td></tr>
+<tr><td><code>{otp, recvbuf}</code></td><td><code>non_neg_integer()</code></td></tr>
 </table>
 <p>Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">=</span> <span class="pre">socket:setopt(ListeningSocket,</span> <span class="pre">{socket,</span> <span class="pre">reuseaddr},</span> <span class="pre">true)</span></code>
