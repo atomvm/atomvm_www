@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.03dcfa52 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.13b327da documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=203ac42b"></script>
+      <script src="_static/documentation_options.js?v=320c8264"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -197,6 +197,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <h3>Fixed<a class="headerlink" href="#fixed" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p>ESP32: improved sntp sync speed from a cold boot.</p></li>
+<li><p>Utilize reserved <code class="docutils literal notranslate"><span class="pre">phy_init</span></code> partition on ESP32 to store wifi calibration for faster connections.</p></li>
 </ul>
 </section>
 </section>
@@ -207,6 +208,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <ul class="simple">
 <li><p>Added the ability to run beams from the CLI for Generic Unix platform (it was already possible with nodejs and emscripten).</p></li>
 <li><p>Added support for ‘erlang:–/2’.</p></li>
+<li><p>Added preliminary support for ESP32P4 (no networking support yet).</p></li>
 </ul>
 </section>
 <section id="id3">
@@ -230,6 +232,7 @@ certain VM instructions are used.</p></li>
 <li><p>Fixed a race condition affecting multi-core MCUs where a timeout would not be properly cleared</p></li>
 <li><p>Fixed a double free when esp32 uart driver was closed, yielding an assert abort</p></li>
 <li><p>Fixed compilation with latest debian gcc-arm-none-eabi</p></li>
+<li><p>Fix <code class="docutils literal notranslate"><span class="pre">network:stop/0</span></code> on ESP32 so the network can be started again</p></li>
 </ul>
 </section>
 </section>
