@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.a00098a0 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.d4b1c563 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=da7af504"></script>
+      <script src="_static/documentation_options.js?v=173cbe3d"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -72,6 +72,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#esp32-build-requirements">ESP32 Build Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#esp32-build-instructions">ESP32 Build Instructions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-tests-for-esp32">Running tests for ESP32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-and-power">Performance and Power</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cpu-frequency">CPU frequency</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#flash-mode-and-speed">Flash mode and speed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#psram-speed">PSRAM speed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sleep-mode-deep-sleep">Sleep mode - Deep sleep</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sleep-mode-light-sleep">Sleep mode - Light sleep</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#flash-layout">Flash Layout</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-boot-avm-and-main-avm-partitions">The <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> and <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partitions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-a-release-image">Building a Release Image</a><ul>
@@ -419,6 +427,53 @@ $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/p
 </pre></div>
 </div>
 <p>ESP32 tests are erlang modules located in <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32/test/main/test_erl_sources/</span></code> and executed from <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32/test/main/test_main.c</span></code>.</p>
+</section>
+<section id="performance-and-power">
+<h3>Performance and Power<a class="headerlink" href="#performance-and-power" title="Link to this heading"></a></h3>
+<p>AtomVM comes with conservative defaults for broad compatibility with different ESP32 boards, and a reasonable performance/power/longevity tradeoff.</p>
+<p>You may want to change these settings to optimize for your specific application’s performance and power needs.</p>
+<p>Factors like heat dissipation should also be considered, and the effect on overall longevity of components.</p>
+<section id="cpu-frequency">
+<h4>CPU frequency<a class="headerlink" href="#cpu-frequency" title="Link to this heading"></a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code> in <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code>
+<code class="docutils literal notranslate"><span class="pre">Component</span> <span class="pre">config</span> <span class="pre">---&gt;</span> <span class="pre">ESP</span> <span class="pre">System</span> <span class="pre">Settings</span>&#160; <span class="pre">---&gt;</span> <span class="pre">CPU</span> <span class="pre">frequency</span> <span class="pre">(160</span> <span class="pre">MHz)</span>&#160; <span class="pre">---&gt;</span></code></p>
+<p>You can increase or decrease the CPU frequency, this is a tradeoff against power usage.
+Eg. 160 MHz is the conservative default for the ESP32, but you can increase it to 240 MHz or decrease it to 80 MHz. The higher the frequency, the more power is consumed. The lower the frequency, the less power is consumed.</p>
+</section>
+<section id="flash-mode-and-speed">
+<h4>Flash mode and speed<a class="headerlink" href="#flash-mode-and-speed" title="Link to this heading"></a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code> in <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code>
+<code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">flasher</span> <span class="pre">config</span>&#160; <span class="pre">---&gt;</span> <span class="pre">Flash</span> <span class="pre">SPI</span> <span class="pre">mode</span> <span class="pre">(DIO)</span>&#160; <span class="pre">---&gt;</span></code>
+You can change the mode of the SPI flash. QIO is the fastest mode, but not all flash chips support it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Serial</span> <span class="pre">flasher</span> <span class="pre">config</span>&#160; <span class="pre">---&gt;</span> <span class="pre">Flash</span> <span class="pre">SPI</span> <span class="pre">speed</span> <span class="pre">(40</span> <span class="pre">MHz)</span>&#160; <span class="pre">---&gt;</span></code>
+You can change the speed of the SPI flash. The higher the speed, the faster the flash will be, at the cost of higher power usage, but not all flash chips support higher speeds.</p>
+<p>See external docs: <a class="reference external" href="https://docs.espressif.com/projects/esptool/en/latest/esp32/advanced-topics/spi-flash-modes.html">ESP-IDF flash modes</a></p>
+</section>
+<section id="psram-speed">
+<h4>PSRAM speed<a class="headerlink" href="#psram-speed" title="Link to this heading"></a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code> in <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code>
+<code class="docutils literal notranslate"><span class="pre">Component</span> <span class="pre">config</span> <span class="pre">---&gt;</span> <span class="pre">ESP</span> <span class="pre">PSRAM</span>&#160; <span class="pre">---&gt;</span> <span class="pre">SPI</span> <span class="pre">RAM</span> <span class="pre">config</span>&#160; <span class="pre">---&gt;</span></code></p>
+<p>If your board has PSRAM and it’s enabled, you can configure the SPI RAM settings here.
+<code class="docutils literal notranslate"><span class="pre">Set</span> <span class="pre">RAM</span> <span class="pre">clock</span> <span class="pre">speed</span> <span class="pre">(40MHz</span> <span class="pre">clock</span> <span class="pre">speed)</span>&#160; <span class="pre">---&gt;</span></code>
+You can increase or decrease the clock speed of the PSRAM.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may have to increase “Flash SPI speed” (see above) before you can increase PSRAM speed.</p>
+</div>
+<p>The higher the speed, the faster the PSRAM will be, at the cost of higher power usage, but not all PSRAM chips support higher speeds.</p>
+</section>
+<section id="sleep-mode-deep-sleep">
+<h4>Sleep mode - Deep sleep<a class="headerlink" href="#sleep-mode-deep-sleep" title="Link to this heading"></a></h4>
+<p>For low power applications, you should use the <a class="reference internal" href="programmers-guide.html#restart-and-deep-sleep"><span class="std std-ref">deep sleep functionality</span></a> of the ESP32.</p>
+<p>This will put the ESP32 into a very low power state, and it will consume very little power.
+You can wake the ESP32 from deep sleep using a timer, or an interrupt etc.</p>
+<p>Make sure your board is suitable for low power deep sleep, some boards have voltage regulators and/or LEDs constantly draining power, also make sure sensors are powered down or in low power mode when the ESP32 is in deep sleep.</p>
+<p>For persisting small amounts of data during deep sleep, you can use the <a class="reference internal" href="programmers-guide.html#rtc-memory"><span class="std std-ref">RTC memory</span></a> of the ESP32, which is preserved during deep sleep.</p>
+</section>
+<section id="sleep-mode-light-sleep">
+<h4>Sleep mode - Light sleep<a class="headerlink" href="#sleep-mode-light-sleep" title="Link to this heading"></a></h4>
+<p>Usage of light sleep is untested, and no support for controlling light sleep is currently implemented. Reach out if you do any experiments and measurements.</p>
+</section>
 </section>
 <section id="flash-layout">
 <h3>Flash Layout<a class="headerlink" href="#flash-layout" title="Link to this heading"></a></h3>
