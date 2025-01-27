@@ -47,9 +47,9 @@ jobs:
       - name: Install Bundler Deps
         if: steps.cache.outputs.bundler-cache-hit != 'true'
         run: |
-          export PATH=${PATH}:/home/runner/.local/share/gem/ruby/3.0.0/bin
-          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle config set --local path '/home/runner/.local/vendor/bundle'
-          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle install
+          export PATH=${PATH}:/home/runner/.local/share/gem/ruby/3.2.0/bin
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle config set --local path '/home/runner/.local/vendor/bundle'
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle install
 
       - uses: actions/checkout@v3
         id: checkout-production
@@ -60,7 +60,7 @@ jobs:
 
       - name: Build Site
         run: |
-          /home/runner/.local/share/gem/ruby/3.0.0/bin/bundle exec jekyll build -d www
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle exec jekyll build -d www
           touch www/.nojekyll
 
       - name: Commit files
