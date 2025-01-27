@@ -64,7 +64,6 @@ jobs:
           touch www/.nojekyll
 
       - name: Commit files
-        if: github.repository == 'atomvm/atomvm_www'
         working-directory: ./www
         run: |
           git checkout Production
@@ -72,7 +71,9 @@ jobs:
           git config --local user.email "atomvm-doc-bot@object.stream"
           git config --local user.name "AtomVM Doc Bot"
           git add .
-          git commit -m "Update Documentation"
+          git commit -m "Update Website Frontend\n${{ github.event.workflow_run.head_commit.message }}"
+          git log -1
+
       - name: Push changes
         if: github.repository == 'atomvm/atomvm_www'
         working-directory: ./www
