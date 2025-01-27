@@ -1,0 +1,74 @@
+#
+#  Copyright 2022 Winford (Uncle Grumpy) <winford@object.stream>
+#
+#  SPDX-License-Identifier: Apache-2.0 OR LGPL-2.1-or-later
+#
+# This is a workflow for atomvm/atomvm_www to Publish atomvm.net documentation using GitHub Pages
+
+name: Build
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ "*" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - uses: actions/cache@v1
+        id: gem-cache
+        with:
+          path: /home/runner/.local/share/gem
+          key: ${{ runner.os }}-${{ hashFiles('**/gem-lockfiles') }}
+
+      - name: Install Bundler
+        if: steps.cache.outputs.gem-cache-hit != 'true'
+        run: gem install bundler --user-install
+
+      - uses: actions/cache@v1
+        id: bundler-cache
+        with:
+          path: /home/runner/.local/vendor/bundle
+          key: ${{ runner.os }}-${{ hashFiles('**/bundler-lockfiles') }}
+
+      - name: Install Bundler Deps
+        if: steps.cache.outputs.bundler-cache-hit != 'true'
+        run: |
+          export PATH=${PATH}:/home/runner/.local/share/gem/ruby/3.2.0/bin
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle config set --local path '/home/runner/.local/vendor/bundle'
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle install
+
+      - uses: actions/checkout@v3
+        id: checkout-production
+        with:
+          repository: atomvm/atomvm_www
+          ref: Production
+          path: ./www
+
+      - name: Build Site
+        run: |
+          /home/runner/.local/share/gem/ruby/3.2.0/bin/bundle exec jekyll build -d www
+          touch www/.nojekyll
+
+      - name: Commit files
+        working-directory: ./www
+        run: |
+          git checkout Production
+          git branch --show-current
+          git config --local user.email "atomvm-doc-bot@object.stream"
+          git config --local user.name "AtomVM Doc Bot"
+          git add .
+          git commit -m "Update Documentation"
