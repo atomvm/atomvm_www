@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.6+git.0d6a00e0 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.6+git.a7dbecde documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=54e86f11"></script>
+      <script src="_static/documentation_options.js?v=47bf3cca"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -205,6 +205,10 @@ certain VM instructions are used.</p></li>
 <li><p>Fixed compilation with latest debian gcc-arm-none-eabi</p></li>
 <li><p>Fix <code class="docutils literal notranslate"><span class="pre">network:stop/0</span></code> on ESP32 so the network can be started again</p></li>
 <li><p>Fix a memory corruption caused by <code class="docutils literal notranslate"><span class="pre">binary:split/2,3</span></code></p></li>
+<li><p>Fix deadlock in socket code</p></li>
+<li><p>Fix bug in opcode implementation (<code class="docutils literal notranslate"><span class="pre">select_val</span></code>): when selecting a value among many others a
+shallow comparison was performed, so it was working just for plain values such as atoms and small
+integers</p></li>
 </ul>
 </section>
 </section>
@@ -866,17 +870,17 @@ bit length is not a multiple of 8.</p></li>
           <dd><a href="/doc/v0.6.5/">v0.6.5</a></dd>
           
         
-          
-          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
-          
+           <strong> 
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
+           </strong> 
         
           
           <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
-           <strong> 
-          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
-           </strong> 
+          
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
+          
         
       </dl>
       
