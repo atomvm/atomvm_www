@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.6+git.2ac2041f documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.6+git.f30ff07a documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=4e79e4b4"></script>
+      <script src="_static/documentation_options.js?v=47a839fe"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -212,6 +212,9 @@ integers</p></li>
 <li><p>Fixed support for setting esp32 boot_path in NVS.</p></li>
 <li><p>Fixed race conditions in network:start/stop.</p></li>
 <li><p>Fixed crash calling network:sta_rssi(), when network not up.</p></li>
+<li><p>Fix error handling when calling <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> with code compiled before OTP-26: there was a
+bug when handling errors from BIFs used as NIFs (when called with <code class="docutils literal notranslate"><span class="pre">CALL_EXT</span></code> and similar opcodes)`</p></li>
+<li><p>Fix matching of binaries on unaligned boundaries for code compiled with older versions of OTP</p></li>
 </ul>
 </section>
 </section>
@@ -877,13 +880,13 @@ bit length is not a multiple of 8.</p></li>
           <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
-          
-          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
-          
-        
            <strong> 
           <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
            </strong> 
+        
+          
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
+          
         
       </dl>
       
