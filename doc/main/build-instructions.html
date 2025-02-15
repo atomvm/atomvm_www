@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.2c82f477 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.d3f73ce1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=4091f4e0"></script>
+      <script src="_static/documentation_options.js?v=f1ccdf65"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -359,6 +359,10 @@ $<span class="w"> </span>.<span class="w"> </span>./export.sh
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/platforms/esp32
 </pre></div>
 </div>
+<p>If you want to build an image with Elixir modules included you must first have a version of Elixir installed that is compatible with your OTP version, then add the following line to sdkconfig.defaults:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nv">CONFIG_PARTITION_TABLE_CUSTOM_FILENAME</span><span class="o">=</span><span class="s2">&quot;partitions-elixir.csv&quot;</span>
+</pre></div>
+</div>
 <p>Start by updating the default build configuration of local <code class="docutils literal notranslate"><span class="pre">sdkconfig</span></code> file via the <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">reconfigure</span></code> command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>idf.py<span class="w"> </span>set-target<span class="w"> </span>esp32
 $<span class="w"> </span>idf.py<span class="w"> </span>reconfigure
@@ -479,11 +483,7 @@ You can wake the ESP32 from deep sleep using a timer, or an interrupt etc.</p>
 <h3>Flash Layout<a class="headerlink" href="#flash-layout" title="Link to this heading"></a></h3>
 <p>The AtomVM Flash memory is partitioned to include areas for the above binary artifacts created from the build, as well areas for runtime information used by the ESP32 and compiled Erlang/Elixir code.</p>
 <p>The flash layout is roughly as follows (not to scale):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+-----------------+  ------------- 0x0000
-|    secure       |
-|     boot        | 4KB
-|                 |
-+-----------------+  ------------- 0x1000
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>+-----------------+  ------------- 0x0 | 0x1000 | 0x2000
 |                 |             ^
 |   boot loader   | 28KB        |
 |                 |             |
@@ -505,9 +505,9 @@ You can wake the ESP32 from deep sleep using a timer, or an interrupt etc.</p>
 |                 |             |
 |                 |             |
 +-----------------+             |
-|     boot.avm    | 256KB       v
-+-----------------+  ------------- 0x210000
-|                 |             ^
+|     boot.avm    | 256-512KB   v
++-----------------+  ------------- 0x210000 for Erlang only images or
+|                 |             ^  0x250000 for images with Elixir modules
 |                 |             |
 |     main.avm    | 1MB+        | Erlang/Elixir
 |                 |             | Application
@@ -526,54 +526,53 @@ You can wake the ESP32 from deep sleep using a timer, or an interrupt etc.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>Secure Boot</p></td>
-<td class="text-left"><p>0x00</p></td>
-<td class="text-left"><p>4kB</p></td>
-<td class="text-left"><p>Initialization vectors and other data needed for ESP32 secure boot.</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>Bootloader</p></td>
-<td class="text-left"><p>0x1000</p></td>
+<tr class="row-even"><td class="text-left"><p>Bootloader</p></td>
+<td class="text-left"><p>0x0 | 0x1000 | 0x2000</p></td>
 <td class="text-left"><p>28kB</p></td>
-<td class="text-left"><p>The ESP32 bootloader, as built from the IDF-SDK.  AtomVM does not define its own bootloader.</p></td>
+<td class="text-left"><p>The ESP32 bootloader, as built from the IDF-SDK.  AtomVM does not define its own bootloader. The offset of the bootloader varies by chip.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>Partition Table</p></td>
+<tr class="row-odd"><td class="text-left"><p>Partition Table</p></td>
 <td class="text-left"><p>0x8000</p></td>
 <td class="text-left"><p>3kB</p></td>
 <td class="text-left"><p>The AtomVM-defined partition table.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>NVS</p></td>
+<tr class="row-even"><td class="text-left"><p>NVS</p></td>
 <td class="text-left"><p>0x9000</p></td>
 <td class="text-left"><p>24kB</p></td>
 <td class="text-left"><p>Space for non-volatile storage.</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>PHY_INIT</p></td>
+<tr class="row-odd"><td class="text-left"><p>PHY_INIT</p></td>
 <td class="text-left"><p>0xF000</p></td>
 <td class="text-left"><p>4kB</p></td>
 <td class="text-left"><p>Initialization data for physical layer radio signal data.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>AtomVM virtual machine</p></td>
+<tr class="row-even"><td class="text-left"><p>AtomVM virtual machine</p></td>
 <td class="text-left"><p>0x10000</p></td>
 <td class="text-left"><p>1.75mB</p></td>
 <td class="text-left"><p>The AtomVM virtual machine (compiled from C code).</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>boot.avm</p></td>
+<tr class="row-odd"><td class="text-left"><p>boot.avm</p></td>
 <td class="text-left"><p>0x1D0000</p></td>
 <td class="text-left"><p>256k</p></td>
 <td class="text-left"><p>The AtomVM BEAM library, compiled from Erlang and Elixir files in the AtomVM source tree.</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>main.avm</p></td>
-<td class="text-left"><p>0x210000</p></td>
+<tr class="row-even"><td class="text-left"><p>main.avm</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">0x210000</span></code> | <code class="docutils literal notranslate"><span class="pre">0x250000</span></code></p></td>
 <td class="text-left"><p>1mB</p></td>
 <td class="text-left"><p>The user application.  This is where users flash their compiled Erlang/Elixir code</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>There is an important difference in the partition layout between the minimal images and those build with Elixir support. To accommodate the extra Elixir modules the boot.avm partition on these images is larger, and the application offset is moved accordingly. When working with Elixir supported images it is important to always use the offset <code class="docutils literal notranslate"><span class="pre">0x250000</span></code> whether using <code class="docutils literal notranslate"><span class="pre">mix</span></code> or the <code class="docutils literal notranslate"><span class="pre">atomvm_rebar3_plugin</span></code> (possibly to test an Erlang app), otherwise part of the boot.avm partition (specifically the area where many Elixir modules are located) will be overwritten with the application, but the VM will still be trying to load from the later <code class="docutils literal notranslate"><span class="pre">0x250000</span></code> offset. This should be kept in mind reading the rest of build instructions, and <a class="reference internal" href="atomvm-tooling.html"><span class="std std-doc">AtomVM Tooling</span></a> sections of the docs that cover the use of rebar3, for these sections an Erlang only image is assumed.</p>
+</div>
 </section>
 <section id="the-boot-avm-and-main-avm-partitions">
 <h3>The <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> and <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partitions<a class="headerlink" href="#the-boot-avm-and-main-avm-partitions" title="Link to this heading"></a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> and <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partitions are intended to store Erlang/Elixir libraries (compiled down to BEAM files, and assembled as AVM files).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> partition is intended for core Erlang/Elixir libraries that are built as part of the AtomVM build.  The release image of AtomVM (see below) includes both the AtomVM virtual machine and the <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> partition, which includes the BEAM files from the <code class="docutils literal notranslate"><span class="pre">estdlib</span></code> and <code class="docutils literal notranslate"><span class="pre">eavmlib</span></code> libraries.</p>
-<p>In contrast, the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition is intended for user applications.  Currently, the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition starts at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>, and it is to that location to which application developers should flash their application AVM files.</p>
+<p>In contrast, the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition is intended for user applications.  Currently, the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition starts at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code> for thin images or <code class="docutils literal notranslate"><span class="pre">0x250000</span></code> for images with Elixir modules, and it is to that location to which application developers should flash their application AVM files.</p>
 <p>The AtomVM search path for BEAM modules starts in the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition and falls back to <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code>.  Users should not have a need to override any functionality in the <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> partition, but if necessary, a BEAM module of the same name in the <code class="docutils literal notranslate"><span class="pre">main.avm</span></code> partition will be loaded instead of the version in the <code class="docutils literal notranslate"><span class="pre">boot.avm</span></code> partition.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -593,18 +592,27 @@ core Erlang libraries will be written to the <code class="docutils literal notra
 you target a different build directory when running CMake.</p>
 </div>
 <p>Running this script will generate a single <code class="docutils literal notranslate"><span class="pre">atomvm-&lt;sha&gt;.img</span></code> file in the <code class="docutils literal notranslate"><span class="pre">build</span></code> directory of the esp32 source tree, where <code class="docutils literal notranslate"><span class="pre">&lt;sha&gt;</span></code> is the git hash of the current checkout.  This image contains the ESP32 bootloader, AtomVM executable, and the <code class="docutils literal notranslate"><span class="pre">eavmlib</span></code> and <code class="docutils literal notranslate"><span class="pre">estdlib</span></code> Erlang libraries in one file, which can then be flashed to address <code class="docutils literal notranslate"><span class="pre">0x1000</span></code> for the esp32. The bootloader address varies for other chip variants. See the <a class="reference internal" href="getting-started-guide.html#flashing-a-binary-image-to-esp32"><span class="std std-ref">flashing a binary image to ESP32</span></a> section of the <a class="reference internal" href="getting-started-guide.html"><span class="std std-doc">Getting Started Guide</span></a> for a chart with the bootloader offset address of each model.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script is run from the <code class="docutils literal notranslate"><span class="pre">src/platform/esp32</span></code> directory as follows:</p>
+<p>To build a thin image with only Erlang libraries <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script is run from the <code class="docutils literal notranslate"><span class="pre">src/platform/esp32</span></code> directory as follows:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./build/mkimage.sh
-Writing<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>/home/joe/AtomVM/src/platforms/esp32/build/atomvm-esp32-0.6.0
--dev+git.602e6bc.img
+Writing<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>/home/joe/AtomVM/src/platforms/esp32/build/atomvm-esp32.img
 <span class="o">=============================================</span>
 Wrote<span class="w"> </span>bootloader<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x1000<span class="w"> </span><span class="o">(</span><span class="m">4096</span><span class="o">)</span>
 Wrote<span class="w"> </span>partition-table<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x8000<span class="w"> </span><span class="o">(</span><span class="m">32768</span><span class="o">)</span>
 Wrote<span class="w"> </span>AtomVM<span class="w"> </span>Virtual<span class="w"> </span>Machine<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x10000<span class="w"> </span><span class="o">(</span><span class="m">65536</span><span class="o">)</span>
-Wrote<span class="w"> </span>AtomVM<span class="w"> </span>Core<span class="w"> </span>BEAM<span class="w"> </span>Library<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x110000<span class="w"> </span><span class="o">(</span><span class="m">1114112</span><span class="o">)</span>
+Wrote<span class="w"> </span>AtomVM<span class="w"> </span>Core<span class="w"> </span>BEAM<span class="w"> </span>Library<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x1D0000<span class="w"> </span><span class="o">(</span><span class="m">1114112</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>Users can then use the <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly to flash the entire image to the ESP32 device, and then flash their applications to the <code class="docutils literal notranslate"><span class="pre">main.app</span></code> partition at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>,</p>
+<p>To build a full image with Erlang and Elixir libraries the path to the previously (during the generic_unix build) built <code class="docutils literal notranslate"><span class="pre">elixir_esp32boot.avm</span></code> must be passed to the <code class="docutils literal notranslate"><span class="pre">mkimage.sh</span></code> script as follows (Note: this is still run from the AtomVM/src/platforms/esp32 directory for the relative path to work - feel free to use the absolute path to this file):</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./build/mkimage.sh<span class="w"> </span>--boot<span class="w"> </span>../../../build/libs/esp32boot/elixir_esp32boot.avm
+Writing<span class="w"> </span>output<span class="w"> </span>to<span class="w"> </span>/home/joe/AtomVM/src/platforms/esp32/build/atomvm-esp32.img
+<span class="o">=============================================</span>
+Wrote<span class="w"> </span>bootloader<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x1000<span class="w"> </span><span class="o">(</span><span class="m">4096</span><span class="o">)</span>
+Wrote<span class="w"> </span>partition-table<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x8000<span class="w"> </span><span class="o">(</span><span class="m">32768</span><span class="o">)</span>
+Wrote<span class="w"> </span>AtomVM<span class="w"> </span>Virtual<span class="w"> </span>Machine<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x10000<span class="w"> </span><span class="o">(</span><span class="m">65536</span><span class="o">)</span>
+Wrote<span class="w"> </span>AtomVM<span class="w"> </span>Core<span class="w"> </span>BEAM<span class="w"> </span>Library<span class="w"> </span>at<span class="w"> </span>offset<span class="w"> </span>0x1D0000<span class="w"> </span><span class="o">(</span><span class="m">1114112</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Users can then use the <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly to flash the entire image to the ESP32 device, and then flash their applications to the <code class="docutils literal notranslate"><span class="pre">main.app</span></code> partition at address <code class="docutils literal notranslate"><span class="pre">0x210000</span></code>, (or <code class="docutils literal notranslate"><span class="pre">0x250000</span></code> for Elixir images)</p>
 <p>But first, it is a good idea to erase the flash, e.g.,</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>esptool.py<span class="w"> </span>--chip<span class="w"> </span>esp32<span class="w"> </span>--port<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span>erase_flash
 esptool.py<span class="w"> </span>v2.1
@@ -620,12 +628,12 @@ Hard<span class="w"> </span>resetting...
 </div>
 <section id="flashing-release-images">
 <h4>Flashing Release Images<a class="headerlink" href="#flashing-release-images" title="Link to this heading"></a></h4>
-<p>After preparing a release image you can use the <code class="docutils literal notranslate"><span class="pre">flashimage.sh</span></code>, which is generated with each build that will flash the full image using the correct flash offset for the chip the build was configured for.</p>
+<p>After preparing a release image you can use the <code class="docutils literal notranslate"><span class="pre">flashimage.sh</span></code>, which is generated with each build that will flash the full image using the correct flash offset for the chip the build was configured for using the either the default Erlang only <code class="docutils literal notranslate"><span class="pre">partitions.cvs</span></code> table, or the <code class="docutils literal notranslate"><span class="pre">partitions-elixir.cvs</span></code> table if that was used during the configuration.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./build/flashimage.sh
 </pre></div>
 </div>
 <p>To perform this action manually you can use the <code class="docutils literal notranslate"><span class="pre">./build/flash.sh</span></code> tool (or <code class="docutils literal notranslate"><span class="pre">esptool.py</span></code> directly, if you prefer):</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">FLASH_OFFSET</span><span class="o">=</span>0x1000<span class="w"> </span>./build/flash.sh<span class="w"> </span>./build/atomvm-esp32-0.6.0-beta-0.img
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nv">FLASH_OFFSET</span><span class="o">=</span>0x1000<span class="w"> </span>./build/flash.sh<span class="w"> </span>./build/atomvm-esp32-0.6.6.img
 esptool.py<span class="w"> </span>v2.8-dev
 Serial<span class="w"> </span>port<span class="w"> </span>/dev/tty.SLAB_USBtoUART
 Connecting........_
@@ -655,7 +663,8 @@ have a way to recover and re-write any such data, if you need to retain it.</p>
 </section>
 <section id="flashing-applications">
 <h3>Flashing Applications<a class="headerlink" href="#flashing-applications" title="Link to this heading"></a></h3>
-<p>Applications can be flashed using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory:</p>
+<p>Applications can be flashed using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory (the application offset is set
+correctly depending on the build configuration):</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./build/flash.sh<span class="w"> </span>../../../build/examples/erlang/esp32/blink.avm
 %%
 %%<span class="w"> </span>Flashing<span class="w"> </span>examples/erlang/esp32/blink.avm<span class="w"> </span><span class="o">(</span><span class="nv">size</span><span class="o">=</span>4k<span class="o">)</span>
@@ -690,10 +699,10 @@ applications for the AtomVM platform.</p>
 </div>
 <section id="flashing-the-core-libraries">
 <h4>Flashing the core libraries<a class="headerlink" href="#flashing-the-core-libraries" title="Link to this heading"></a></h4>
-<p>If you are doing development work on the core Erlang/Elixir libraries and wish to test changes that do not involve the <code class="docutils literal notranslate"><span class="pre">C</span></code> code in the core VM you may flash <code class="docutils literal notranslate"><span class="pre">atomvmlib.avm</span></code> to the avm.lib partition (offset 0x1D0000) by using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory as follows:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>build/flash.sh<span class="w"> </span>-l<span class="w"> </span>../../../build/libs/atomvmlib.avm
+<p>If you are doing development work on the core Erlang/Elixir libraries and wish to test changes that do not involve the <code class="docutils literal notranslate"><span class="pre">C</span></code> code in the core VM you may flash <code class="docutils literal notranslate"><span class="pre">esp32boot.avm</span></code> (or <code class="docutils literal notranslate"><span class="pre">elixir_esp32boot.avm</span></code> when using an Elixir partition table) to the boot.avm partition (offset 0x1D0000) by using the <code class="docutils literal notranslate"><span class="pre">flash.sh</span></code> script in the esp32 build directory as follows:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>build/flash.sh<span class="w"> </span>-l<span class="w"> </span>../../../build/libs/esp32boot.avm
 %%
-%%<span class="w"> </span>Flashing<span class="w"> </span>../../../build/libs/atomvmlib.avm<span class="w"> </span><span class="o">(</span><span class="nv">size</span><span class="o">=</span>116k<span class="o">)</span>
+%%<span class="w"> </span>Flashing<span class="w"> </span>../../../build/libs/esp32boot.avm<span class="w"> </span><span class="o">(</span><span class="nv">size</span><span class="o">=</span>116k<span class="o">)</span>
 %%
 esptool.py<span class="w"> </span>v4.5.1
 Serial<span class="w"> </span>port<span class="w"> </span>/dev/ttyUSB0

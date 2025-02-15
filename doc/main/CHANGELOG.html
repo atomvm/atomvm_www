@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.2c82f477 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.7.0-dev+git.d3f73ce1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=4091f4e0"></script>
+      <script src="_static/documentation_options.js?v=f1ccdf65"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -191,6 +191,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">net:gethostname/0</span></code> on platforms with gethostname(3).</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">socket:getopt/2</span></code></p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">supervisor:terminate_child/2</span></code>, <code class="docutils literal notranslate"><span class="pre">supervisor:restart_child/2</span></code> and <code class="docutils literal notranslate"><span class="pre">supervisor:delete_child/2</span></code></p></li>
+<li><p>Added support for ‘erlang:–/2’.</p></li>
 <li><p>Added <code class="docutils literal notranslate"><span class="pre">esp:partition_read/3</span></code>, and documentation for <code class="docutils literal notranslate"><span class="pre">esp:partition_erase_range/2/3</span></code> and <code class="docutils literal notranslate"><span class="pre">esp:partition_write/3</span></code></p></li>
 <li><p>Added support for list insertion in ‘ets:insert/2’.</p></li>
 <li><p>Support to OTP-28</p></li>
@@ -209,9 +210,10 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <section id="id2">
 <h3>Added<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>Added the ability to run beams from the CLI for Generic Unix platform (it was already possible with nodejs and emscripten).</p></li>
-<li><p>Added support for ‘erlang:–/2’.</p></li>
+<li><p>Added the ability to run beams from the CLI for Generic Unix platform (it was already possible
+with nodejs and emscripten)</p></li>
 <li><p>Added preliminary support for ESP32P4 (no networking support yet).</p></li>
+<li><p>Added memory info in <code class="docutils literal notranslate"><span class="pre">out_of_memory</span></code> crash logs to help developers fix memory issues.</p></li>
 </ul>
 </section>
 <section id="id3">
@@ -222,11 +224,12 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Adding missing check, passing a non numeric argument to a function expecting a floating point
 might lead to a crash in certain situations.</p></li>
 <li><p>Fixed several bugs in <code class="docutils literal notranslate"><span class="pre">http_server</span></code> (#1366)</p></li>
-<li><p>Fixed generic_unix <code class="docutils literal notranslate"><span class="pre">socket_driver</span></code> to return <code class="docutils literal notranslate"><span class="pre">{gen_tcp,</span> <span class="pre">closed}</span></code> when socket is closed on Linux instead of <code class="docutils literal notranslate"><span class="pre">{gen_tcp,</span> <span class="pre">{recv,</span> <span class="pre">104}}</span></code></p></li>
+<li><p>Fixed generic_unix <code class="docutils literal notranslate"><span class="pre">socket_driver</span></code> to return <code class="docutils literal notranslate"><span class="pre">{gen_tcp,</span> <span class="pre">closed}</span></code> when socket is closed on Linux
+instead of <code class="docutils literal notranslate"><span class="pre">{gen_tcp,</span> <span class="pre">{recv,</span> <span class="pre">104}}</span></code></p></li>
 <li><p>Fixed a memory leak where modules were not properly destroyed when the global context is destroyd</p></li>
 <li><p>alisp: fix support to variables that are not binaries or integers.</p></li>
 <li><p>Fixed destruction of ssl-related resources</p></li>
-<li><p>Fix corruption when dealing with specific situations that involve more than 16 x registers when
+<li><p>Fixed corruption when dealing with specific situations that involve more than 16 x registers when
 certain VM instructions are used.</p></li>
 <li><p>Fixed ESP32 GPIO interrupt trigger <code class="docutils literal notranslate"><span class="pre">none</span></code></p></li>
 <li><p>Fixed an issue where a timeout would occur immediately in a race condition</p></li>
@@ -235,19 +238,22 @@ certain VM instructions are used.</p></li>
 <li><p>Fixed a race condition affecting multi-core MCUs where a timeout would not be properly cleared</p></li>
 <li><p>Fixed a double free when esp32 uart driver was closed, yielding an assert abort</p></li>
 <li><p>Fixed compilation with latest debian gcc-arm-none-eabi</p></li>
-<li><p>Fix <code class="docutils literal notranslate"><span class="pre">network:stop/0</span></code> on ESP32 so the network can be started again</p></li>
-<li><p>Fix matching of binaries on unaligned boundaries for code compiled with older versions of OTP</p></li>
-<li><p>Fix a memory corruption caused by <code class="docutils literal notranslate"><span class="pre">binary:split/2,3</span></code></p></li>
-<li><p>Fix deadlock in socket code</p></li>
-<li><p>Fix bug in opcode implementation (<code class="docutils literal notranslate"><span class="pre">select_val</span></code>): when selecting a value among many others a
+<li><p>Fixed <code class="docutils literal notranslate"><span class="pre">network:stop/0</span></code> on ESP32 so the network can be started again</p></li>
+<li><p>Fixed a memory corruption caused by <code class="docutils literal notranslate"><span class="pre">binary:split/2,3</span></code></p></li>
+<li><p>Fixed deadlock in socket code</p></li>
+<li><p>Fixed bug in opcode implementation (<code class="docutils literal notranslate"><span class="pre">select_val</span></code>): when selecting a value among many others a
 shallow comparison was performed, so it was working just for plain values such as atoms and small
 integers</p></li>
 <li><p>Fixed support for setting esp32 boot_path in NVS.</p></li>
 <li><p>Fixed race conditions in network:start/stop.</p></li>
 <li><p>Fixed crash calling network:sta_rssi(), when network not up.</p></li>
-<li><p>Fix error handling when calling <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> with code compiled before OTP-26: there was a
-bug when handling errors from BIFs used as NIFs (when called with <code class="docutils literal notranslate"><span class="pre">CALL_EXT</span></code> and similar opcodes)`</p></li>
-<li><p>Fix matching of binaries on unaligned boundaries for code compiled with older versions of OTP</p></li>
+<li><p>Fixed error handling when calling <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> with code compiled before OTP-26: there was a
+bug when handling errors from BIFs used as NIFs (when called with <code class="docutils literal notranslate"><span class="pre">CALL_EXT</span></code> and similar opcodes)</p></li>
+<li><p>Fixed matching of binaries on unaligned boundaries for code compiled with older versions of OTP</p></li>
+<li><p>Added missing out of memory handling in binary_to_atom</p></li>
+<li><p>Fixed call to funs such as fun erlang:’not’/1, that make use of BIFs</p></li>
+<li><p>Fixed potential crashes or memory leaks caused by a mistake in calculation of reference counts
+and a race condition in otp_socket code</p></li>
 </ul>
 </section>
 </section>
