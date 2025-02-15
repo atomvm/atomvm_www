@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Changelog &mdash; AtomVM 0.6.6+git.ac46edd3 documentation</title>
+  <title>Changelog &mdash; AtomVM 0.6.6+git.18f961b7 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/CHANGELOG.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=ea00de0d"></script>
+      <script src="_static/documentation_options.js?v=a63935d8"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -181,6 +181,7 @@ and this project adheres to <a class="reference external" href="https://semver.o
 <li><p>Added the ability to run beams from the CLI for Generic Unix platform (it was already possible
 with nodejs and emscripten)</p></li>
 <li><p>Added preliminary support for ESP32P4 (no networking support yet).</p></li>
+<li><p>Added memory info in <code class="docutils literal notranslate"><span class="pre">out_of_memory</span></code> crash logs to help developers fix memory issues.</p></li>
 </ul>
 </section>
 <section id="fixed">
@@ -219,6 +220,8 @@ bug when handling errors from BIFs used as NIFs (when called with <code class="d
 <li><p>Fixed matching of binaries on unaligned boundaries for code compiled with older versions of OTP</p></li>
 <li><p>Added missing out of memory handling in binary_to_atom</p></li>
 <li><p>Fixed call to funs such as fun erlang:’not’/1, that make use of BIFs</p></li>
+<li><p>Fixed potential crashes or memory leaks caused by a mistake in calculation of reference counts
+and a race condition in otp_socket code</p></li>
 </ul>
 </section>
 </section>
