@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module ets &mdash; AtomVM 0.7.0-dev+git.431cc4ad documentation</title>
+  <title>Module ets &mdash; AtomVM 0.7.0-dev+git.7caa5663 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/ets.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=6156d0f4"></script>
+      <script src="../../../_static/documentation_options.js?v=806211c5"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -175,7 +175,7 @@ table_type() = set
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>Delete an entry from an ets table.</td></tr><tr><td valign="top"><a href="#insert-2">insert/2</a></td><td>Insert an entry into an ets table.</td></tr><tr><td valign="top"><a href="#lookup-2">lookup/2</a></td><td>Look up an entry in an ets table.</td></tr><tr><td valign="top"><a href="#lookup_element-3">lookup_element/3</a></td><td>Look up an element from an entry in an ets table.</td></tr><tr><td valign="top"><a href="#new-2">new/2</a></td><td>Create a new ets table.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>Delete an entry from an ets table.</td></tr><tr><td valign="top"><a href="#insert-2">insert/2</a></td><td>Insert an entry into an ets table.</td></tr><tr><td valign="top"><a href="#lookup-2">lookup/2</a></td><td>Look up an entry in an ets table.</td></tr><tr><td valign="top"><a href="#lookup_element-3">lookup_element/3</a></td><td>Look up an element from an entry in an ets table.</td></tr><tr><td valign="top"><a href="#new-2">new/2</a></td><td>Create a new ets table.</td></tr><tr><td valign="top"><a href="#update_counter-3">update_counter/3</a></td><td>Updates a counter value at Key in the table.</td></tr><tr><td valign="top"><a href="#update_counter-4">update_counter/4</a></td><td>Updates a counter value at Key in the table.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -235,6 +235,30 @@ new(Name::atom(), Options::<a href="#type-options">options()</a>) -&gt; <a href=
 <p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: the ets table name<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: the options used to create the table<br /></p>
 <p>returns: A new ets table</p>
 <p>Create a new ets table.</p>
+<p><a name="update_counter-3"></a></p>
+</section>
+<section id="update-counter-3">
+<h3>update_counter/3<a class="headerlink" href="#update-counter-3" title="Link to this heading"></a></h3>
+<pre><code>
+update_counter(Table::<a href="#type-table">table()</a>, Key::term(), Params::integer() | {pos_integer(), integer()} | {pos_integer(), integer(), integer(), integer()}) -&gt; integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Table</span></code>: a reference to the ets table<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key used to look up the entry expecting to contain a tuple of integers or a single integer<br /><code class="docutils literal notranslate"><span class="pre">Params</span></code>: the increment value or a tuple {Pos, Increment} or {Pos, Increment, Treshold, SetValue},
+where Pos is an integer (1-based index) specifying the position in the tuple to increment. Value is clamped to SetValue if it exceeds Threshold after update.<br /></p>
+<p>returns: the updated element’s value after performing the increment, or the default value if applicable</p>
+<p>Updates a counter value at Key in the table. If Params is a single integer, it increments the direct integer value at Key or the first integer in a tuple. If Params is a tuple {Pos, Increment}, it increments the integer at the specified position Pos in the tuple stored at Key.</p>
+<p><a name="update_counter-4"></a></p>
+</section>
+<section id="update-counter-4">
+<h3>update_counter/4<a class="headerlink" href="#update-counter-4" title="Link to this heading"></a></h3>
+<pre><code>
+update_counter(Table::<a href="#type-table">table()</a>, Key::term(), Params::integer() | {pos_integer(), integer()} | {pos_integer(), integer(), integer(), integer()}, Default::integer()) -&gt; integer()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Table</span></code>: a reference to the ets table<br /><code class="docutils literal notranslate"><span class="pre">Key</span></code>: the key used to look up the entry expecting to contain a tuple of integers or a single integer<br /><code class="docutils literal notranslate"><span class="pre">Params</span></code>: the increment value or a tuple {Pos, Increment} or {Pos, Increment, Treshold, SetValue},
+where Pos is an integer (1-based index) specifying the position in the tuple to increment. If after incrementation value exceeds the Treshold, it is set to SetValue.<br /><code class="docutils literal notranslate"><span class="pre">Default</span></code>: the default value used if the entry at Key doesn’t exist or doesn’t contain a valid tuple with a sufficient size or integer at Pos<br /></p>
+<p>returns: the updated element’s value after performing the increment, or the default value if applicable</p>
+<p>Updates a counter value at Key in the table. If Params is a single integer, it increments the direct integer value at Key or the first integer in a tuple. If Params is a tuple {Pos, Increment}, it increments the integer at the specified position Pos in the tuple stored at Key. If the needed element does not exist, uses Default value as a fallback.</p>
 </section>
 </section>
 </section>
@@ -338,11 +362,11 @@ new(Name::atom(), Options::<a href="#type-options">options()</a>) -&gt; <a href=
           
         
           
-          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
           
-          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
+          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
            <strong> 

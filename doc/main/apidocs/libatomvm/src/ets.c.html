@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ets.c &mdash; AtomVM 0.7.0-dev+git.431cc4ad documentation</title>
+  <title>ets.c &mdash; AtomVM 0.7.0-dev+git.7caa5663 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/ets.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=6156d0f4"></script>
+      <script src="../../../_static/documentation_options.js?v=806211c5"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -191,7 +191,7 @@
 </div>
 <p>Include dependency graph for ets.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-5a1b189b1031131fd80f6b4333e2df275bba8194.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-3d2e12966973d97066368dc71bd4c07293dbcf3c.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -219,6 +219,7 @@
     &quot;12&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;15&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
     &quot;24&quot; [label=&quot;globalcontext.h&quot; tooltip=&quot;globalcontext.h&quot;]
+    &quot;32&quot; [label=&quot;overflow_helpers.h&quot; tooltip=&quot;overflow_helpers.h&quot;]
     &quot;7&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
     &quot;28&quot; [label=&quot;timer_list.h&quot; tooltip=&quot;timer_list.h&quot;]
     &quot;27&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
@@ -287,6 +288,8 @@
     &quot;24&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;28&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;32&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;32&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -301,6 +304,7 @@
     &quot;1&quot; -&gt; &quot;31&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;32&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -458,6 +462,16 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.ets.c.ets_delete">
 <span class="target" id="libatomvmets_8c_1a91e3370145cfbdfea8c8d3142d261408"></span><span class="n"><span class="pre">EtsErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_delete</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">name_or_ref</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ret</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets.c.ets_delete" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.ets.c.operation_to_tuple4">
+<span class="target" id="libatomvmets_8c_1a32e8b0c031800cba50c665b0ddce1ab6"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">operation_to_tuple4</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">operation</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">default_pos</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">position</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">increment</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">threshold</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">set_value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets.c.operation_to_tuple4" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.ets.c.ets_update_counter">
+<span class="target" id="libatomvmets_8c_1ac9c75fbc43fee5206a610558121bca33"></span><span class="n"><span class="pre">EtsErrorCode</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ets_update_counter</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">ref</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">key</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">operation</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">default_value</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ret</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.ets.c.ets_update_counter" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -643,11 +657,11 @@
           
         
           
-          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
           
-          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
+          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
            <strong> 
