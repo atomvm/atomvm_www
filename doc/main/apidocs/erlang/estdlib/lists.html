@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module lists &mdash; AtomVM 0.7.0-dev+git.7caa5663 documentation</title>
+  <title>Module lists &mdash; AtomVM 0.7.0-dev+git.c9051f15 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/lists.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=806211c5"></script>
+      <script src="../../../_static/documentation_options.js?v=2565efb9"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -147,7 +147,7 @@ interface.<a name="index"></a></p>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all-2">all/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for all E in List.</td></tr><tr><td valign="top"><a href="#any-2">any/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for some E in List.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Remove E from L.</td></tr><tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>    Duplicate an element.</td></tr><tr><td valign="top"><a href="#filter-2">filter/2</a></td><td>    Filter a list by a predicate, returning the list of elements
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all-2">all/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for all E in List.</td></tr><tr><td valign="top"><a href="#any-2">any/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for some E in List.</td></tr><tr><td valign="top"><a href="#append-1">append/1</a></td><td>    Returns a list in which all the sublists of <code>ListOfLists</code> have been appended.</td></tr><tr><td valign="top"><a href="#append-2">append/2</a></td><td>    Returns a new list <code>List3</code>, which is made from the elements of <code>List1</code> followed by the elements of <code>List2</code>.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Remove E from L.</td></tr><tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>    Duplicate an element.</td></tr><tr><td valign="top"><a href="#filter-2">filter/2</a></td><td>    Filter a list by a predicate, returning the list of elements
 for which the predicate is true.</td></tr><tr><td valign="top"><a href="#filtermap-2">filtermap/2</a></td><td>    Calls <code>Fun(Elem)</code> on successive elements <code>Elem</code> of <code>List1</code> in order to update or
 remove elements from <code>List1</code>.</td></tr><tr><td valign="top"><a href="#flatten-1">flatten/1</a></td><td>    recursively flattens elements of L into a single list.</td></tr><tr><td valign="top"><a href="#foldl-3">foldl/3</a></td><td>    Fold over a list of terms, from left to right, applying Fun(E, Accum)
 to each successive element in List.</td></tr><tr><td valign="top"><a href="#foldr-3">foldr/3</a></td><td>    Fold over a list of terms, from right to left, applying Fun(E, Accum)
@@ -182,6 +182,28 @@ any(Fun::fun((Elem::term()) -&gt; boolean()), List::list()) -&gt; boolean()
 <p><code class="docutils literal notranslate"><span class="pre">Fun</span></code>: the predicate to evaluate<br /><code class="docutils literal notranslate"><span class="pre">List</span></code>: the list over which to evaluate elements<br /></p>
 <p>returns: true if Fun(E) evaluates to true, for at least one in List</p>
 <p>Evaluates to true iff Fun(E) =:= true, for some E in List</p>
+<p><a name="append-1"></a></p>
+</section>
+<section id="append-1">
+<h3>append/1<a class="headerlink" href="#append-1" title="Link to this heading"></a></h3>
+<pre><code>
+append(ListOfLists) -&gt; List1
+</code></pre>
+<ul class="definitions"><li><code>ListOfLists = [List]</code></li><li><code>List = [T]</code></li><li><code>List1 = [T]</code></li><li><code>T = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">ListOfLists</span></code>: a list of lists to make the general list from<br /></p>
+<p>returns: a list made of the sublists of <code class="docutils literal notranslate"><span class="pre">ListOfLists</span></code>.</p>
+<p>Returns a list in which all the sublists of <code class="docutils literal notranslate"><span class="pre">ListOfLists</span></code> have been appended.</p>
+<p><a name="append-2"></a></p>
+</section>
+<section id="append-2">
+<h3>append/2<a class="headerlink" href="#append-2" title="Link to this heading"></a></h3>
+<pre><code>
+append(List1, List2) -&gt; List3
+</code></pre>
+<ul class="definitions"><li><code>List1 = [T]</code></li><li><code>List2 = [T]</code></li><li><code>List3 = [T]</code></li><li><code>T = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">List1</span></code>: a list<br /><code class="docutils literal notranslate"><span class="pre">List2</span></code>: a list<br /></p>
+<p>returns: a list made of the elements of <code class="docutils literal notranslate"><span class="pre">List1</span></code> and <code class="docutils literal notranslate"><span class="pre">List2</span></code>.</p>
+<p>Returns a new list <code class="docutils literal notranslate"><span class="pre">List3</span></code>, which is made from the elements of <code class="docutils literal notranslate"><span class="pre">List1</span></code> followed by the elements of <code class="docutils literal notranslate"><span class="pre">List2</span></code>.</p>
 <p><a name="delete-2"></a></p>
 </section>
 <section id="delete-2">
@@ -696,11 +718,11 @@ usort(Fun::fun((T, T) -&gt; boolean()), List::[T]) -&gt; [T]
           
         
           
-          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
+          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
           
-          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
+          <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
           
         
            <strong> 
