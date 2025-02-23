@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.0296bb35 documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.858cee89 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-internals.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=eb66c457"></script>
+      <script src="_static/documentation_options.js?v=85235a46"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -60,15 +60,32 @@
 <li class="toctree-l2"><a class="reference internal" href="#what-is-an-abstract-machine">What is an Abstract Machine?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#atomvm-data-structures">AtomVM Data Structures</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#the-globalcontext">The GlobalContext</a><ul>
+<li><a class="reference internal" href="#c.GlobalContext"><code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#process-management">Process Management</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#contexts">Contexts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contexts">Contexts</a><ul>
+<li><a class="reference internal" href="#c.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#the-scheduler">The Scheduler</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#tasks-and-synchronization-mechanisms">Tasks and synchronization mechanisms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mailboxes-and-signals">Mailboxes and signals</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-scheduler">The Scheduler</a><ul>
+<li><a class="reference internal" href="#c.sys_poll_events"><code class="docutils literal notranslate"><span class="pre">sys_poll_events()</span></code></a></li>
+<li><a class="reference internal" href="#c.sys_signal"><code class="docutils literal notranslate"><span class="pre">sys_signal()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-and-synchronization-mechanisms">Tasks and synchronization mechanisms</a><ul>
+<li><a class="reference internal" href="#c.globalcontext_send_message"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message()</span></code></a></li>
+<li><a class="reference internal" href="#c.globalcontext_send_message_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#mailboxes-and-signals">Mailboxes and signals</a><ul>
+<li><a class="reference internal" href="#c.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li><a class="reference internal" href="#c.Mailbox"><code class="docutils literal notranslate"><span class="pre">Mailbox</span></code></a></li>
+<li><a class="reference internal" href="#c.ContextFlags"><code class="docutils literal notranslate"><span class="pre">ContextFlags</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#stacktraces">Stacktraces</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#line-numbers">Line Numbers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#the-line-refs-table">The line-refs table</a></li>
