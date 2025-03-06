@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>exportedfunction.h &mdash; AtomVM 0.6.6+git.7607279c documentation</title>
+  <title>exportedfunction.h &mdash; AtomVM 0.6.6+git.33af0563 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/exportedfunction.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=50630bf1"></script>
+      <script src="../../../_static/documentation_options.js?v=3738796e"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -185,7 +185,7 @@
 </div>
 <p>Include dependency graph for exportedfunction.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-5c0511e1535bdf7460e988c7f72514596f7991c0.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-51c5f3f7bdfb540b4bbc590805b4092533340482.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -193,6 +193,7 @@
     &quot;17&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
     &quot;12&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;15&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
+    &quot;20&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;18&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
@@ -206,6 +207,7 @@
     &quot;3&quot; [label=&quot;sys/types.h&quot; tooltip=&quot;sys/types.h&quot;]
     &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;11&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
+    &quot;21&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
     &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;14&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;17&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -215,6 +217,9 @@
     &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -224,6 +229,7 @@
     &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -240,6 +246,7 @@
     &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -459,7 +466,7 @@
 <em>#include &lt;exportedfunction.h&gt;</em></div>
 <p>Collaboration diagram for Bif:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-af89e3a62c9f22982905f154c06988e14994c9b4.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-e8744aa710cbbd5e7b690c3903368a476f5fe70f.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -487,6 +494,7 @@
     &quot;6&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
     &quot;21&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -571,7 +579,7 @@
 <em>#include &lt;exportedfunction.h&gt;</em></div>
 <p>Collaboration diagram for GCBif:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-ac2e15cedbf7945b3f2e764278d353b910ed1a42.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-bacde458b912a4231b971a45c4898eed8eaf5d17.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -601,6 +609,7 @@
     &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -683,7 +692,7 @@
 <em>#include &lt;exportedfunction.h&gt;</em></div>
 <p>Collaboration diagram for Nif:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-56e58c8273be07871ae0c1970462ef26f5c719a3.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-1244afb8bea562362551fd48c4d1d3ee7673ae88.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -711,6 +720,7 @@
     &quot;6&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
     &quot;21&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
     &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;20&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
