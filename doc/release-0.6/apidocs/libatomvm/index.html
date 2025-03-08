@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>libAtomVM &mdash; AtomVM 0.6.6+git.33af0563 documentation</title>
+  <title>libAtomVM &mdash; AtomVM 0.6.6+git.bc21d17e documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/index.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=3738796e"></script>
+      <script src="../../_static/documentation_options.js?v=80ae7437"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -721,8 +721,10 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.fun_table"><code class="docutils literal notranslate"><span class="pre">fun_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.str_table"><code class="docutils literal notranslate"><span class="pre">str_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.str_table_len"><code class="docutils literal notranslate"><span class="pre">str_table_len</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.line_refs"><code class="docutils literal notranslate"><span class="pre">line_refs</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.filenames"><code class="docutils literal notranslate"><span class="pre">filenames</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.line_refs_count"><code class="docutils literal notranslate"><span class="pre">line_refs_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.line_refs_table"><code class="docutils literal notranslate"><span class="pre">line_refs_table</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.locations_count"><code class="docutils literal notranslate"><span class="pre">locations_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.locations_table"><code class="docutils literal notranslate"><span class="pre">locations_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.line_ref_offsets"><code class="docutils literal notranslate"><span class="pre">line_ref_offsets</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.imported_funcs"><code class="docutils literal notranslate"><span class="pre">imported_funcs</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.Module.labels"><code class="docutils literal notranslate"><span class="pre">labels</span></code></a></li>
@@ -2616,7 +2618,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_build_literals_table"><code class="docutils literal notranslate"><span class="pre">module_build_literals_table()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_add_label"><code class="docutils literal notranslate"><span class="pre">module_add_label()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_build_imported_functions_table"><code class="docutils literal notranslate"><span class="pre">module_build_imported_functions_table()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.parse_line_table"><code class="docutils literal notranslate"><span class="pre">parse_line_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_parse_line_table"><code class="docutils literal notranslate"><span class="pre">module_parse_line_table()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_populate_atoms_table"><code class="docutils literal notranslate"><span class="pre">module_populate_atoms_table()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_get_imported_function_module_and_name"><code class="docutils literal notranslate"><span class="pre">module_get_imported_function_module_and_name()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_get_function_from_label"><code class="docutils literal notranslate"><span class="pre">module_get_function_from_label()</span></code></a></li>
@@ -2627,9 +2629,12 @@
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_destroy"><code class="docutils literal notranslate"><span class="pre">module_destroy()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_load_literal"><code class="docutils literal notranslate"><span class="pre">module_load_literal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_resolve_function0"><code class="docutils literal notranslate"><span class="pre">module_resolve_function0()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.parse_line_refs"><code class="docutils literal notranslate"><span class="pre">parse_line_refs()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.parse_filename_table"><code class="docutils literal notranslate"><span class="pre">parse_filename_table()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_check_line_refs"><code class="docutils literal notranslate"><span class="pre">module_check_line_refs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_check_locations"><code class="docutils literal notranslate"><span class="pre">module_check_locations()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_get_line_ref"><code class="docutils literal notranslate"><span class="pre">module_get_line_ref()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_get_location"><code class="docutils literal notranslate"><span class="pre">module_get_location()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_insert_line_ref_offset"><code class="docutils literal notranslate"><span class="pre">module_insert_line_ref_offset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_find_line_ref"><code class="docutils literal notranslate"><span class="pre">module_find_line_ref()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/module.c.html#c.libAtomVM.module.c.module_find_line"><code class="docutils literal notranslate"><span class="pre">module_find_line()</span></code></a></li>
 </ul>
 </li>
@@ -2698,8 +2703,10 @@
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.fun_table"><code class="docutils literal notranslate"><span class="pre">fun_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.str_table"><code class="docutils literal notranslate"><span class="pre">str_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.str_table_len"><code class="docutils literal notranslate"><span class="pre">str_table_len</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.line_refs"><code class="docutils literal notranslate"><span class="pre">line_refs</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.filenames"><code class="docutils literal notranslate"><span class="pre">filenames</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.line_refs_count"><code class="docutils literal notranslate"><span class="pre">line_refs_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.line_refs_table"><code class="docutils literal notranslate"><span class="pre">line_refs_table</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.locations_count"><code class="docutils literal notranslate"><span class="pre">locations_count</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.locations_table"><code class="docutils literal notranslate"><span class="pre">locations_table</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.line_ref_offsets"><code class="docutils literal notranslate"><span class="pre">line_ref_offsets</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.imported_funcs"><code class="docutils literal notranslate"><span class="pre">imported_funcs</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/module.h.html#c.libAtomVM.module.h.Module.labels"><code class="docutils literal notranslate"><span class="pre">labels</span></code></a></li>
@@ -4312,13 +4319,13 @@
           <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
-          
-          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
-          
-        
            <strong> 
           <dd><a href="/doc/release-0.6/">release-0.6 branch (unreleased)</a></dd>
            </strong> 
+        
+          
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
+          
         
       </dl>
       
