@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mailbox.c &mdash; AtomVM 0.7.0-dev+git.69418518 documentation</title>
+  <title>mailbox.c &mdash; AtomVM 0.7.0-dev+git.bc73bf9a documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/mailbox.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=74f0cdb7"></script>
+      <script src="../../../_static/documentation_options.js?v=0a8ff819"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -191,7 +191,7 @@
 </div>
 <p>Include dependency graph for mailbox.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-7ffd3e1007c8dbea961487fc9bf78a1275745d84.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-cf6f6ebde1413793a5060927108fd314ba8977b1.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -253,6 +253,7 @@
     &quot;28&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;28&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;28&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -504,15 +505,15 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.mailbox.c.mailbox_send_built_in_atom_signal">
-<span class="target" id="libatomvmmailbox_8c_1a2905d3f98c30c037019557feae7bed3e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mailbox_send_built_in_atom_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">MessageType</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">atom</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.mailbox.c.mailbox_send_built_in_atom_signal" title="Link to this definition"></a><br /></dt>
-<dd><p>Sends a built-in atom signal to a certain mailbox. </p>
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.c.mailbox_send_immediate_signal">
+<span class="target" id="libatomvmmailbox_8c_1a40b83cc445658e41ab063c93824d267b"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mailbox_send_immediate_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">MessageType</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">immediate</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.mailbox.c.mailbox_send_immediate_signal" title="Link to this definition"></a><br /></dt>
+<dd><p>Sends an immediate signal to a certain mailbox. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>c</strong> – the process context. </p></li>
 <li><p><strong>type</strong> – the type of the signal </p></li>
-<li><p><strong>atom</strong> – the built-in atom </p></li>
+<li><p><strong>immediate</strong> – the immediate term to send (atom or pid) </p></li>
 </ul>
 </dd>
 </dl>
@@ -544,6 +545,21 @@
 <li><p><strong>c</strong> – the process context. </p></li>
 <li><p><strong>type</strong> – the type of the signal </p></li>
 <li><p><strong>ref_ticks</strong> – the ref </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.c.mailbox_send_monitor_signal">
+<span class="target" id="libatomvmmailbox_8c_1aea2e1f572dac78b4268063bde1cca922"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mailbox_send_monitor_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">MessageType</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">Monitor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">monitor</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.mailbox.c.mailbox_send_monitor_signal" title="Link to this definition"></a><br /></dt>
+<dd><p>Sends a ref immediate signal to a certain mailbox. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – the process context. </p></li>
+<li><p><strong>type</strong> – the type of the signal </p></li>
+<li><p><strong>monitor</strong> – the monitor </p></li>
 </ul>
 </dd>
 </dl>

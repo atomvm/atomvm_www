@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>context.h &mdash; AtomVM 0.7.0-dev+git.69418518 documentation</title>
+  <title>context.h &mdash; AtomVM 0.7.0-dev+git.bc73bf9a documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/context.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=74f0cdb7"></script>
+      <script src="../../../_static/documentation_options.js?v=0a8ff819"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -191,7 +191,7 @@
 </div>
 <p>Include dependency graph for context.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-e8d43fa7bfab2fbe084795ba65ecec724fc1f58a.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-a233d90a26927bc8c1059d71e5ed633690a1ec11.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
@@ -250,6 +250,7 @@
     &quot;25&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -444,6 +445,21 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.context.h.MAX_REG">
 <span class="target" id="libatomvmcontext_8h_1a90041df447240c9713db37f9516cc1f9"></span><span class="sig-name descname"><span class="n"><span class="pre">MAX_REG</span></span></span> <span class="pre">16</span><a class="headerlink" href="#c.libAtomVM.context.h.MAX_REG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.CONTEXT_MONITOR_RESOURCE_TAG">
+<span class="target" id="libatomvmcontext_8h_1ac32731f128900fd80372592b08b777a7"></span><span class="sig-name descname"><span class="n"><span class="pre">CONTEXT_MONITOR_RESOURCE_TAG</span></span></span> <span class="pre">0x2</span><a class="headerlink" href="#c.libAtomVM.context.h.CONTEXT_MONITOR_RESOURCE_TAG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.CONTEXT_MONITOR_MONITORED_PID_TAG">
+<span class="target" id="libatomvmcontext_8h_1a9b3659aa62da04a666c318f145fa04c4"></span><span class="sig-name descname"><span class="n"><span class="pre">CONTEXT_MONITOR_MONITORED_PID_TAG</span></span></span> <span class="pre">0x3</span><a class="headerlink" href="#c.libAtomVM.context.h.CONTEXT_MONITOR_MONITORED_PID_TAG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.CONTEXT_MONITOR_MONITORING_PID_TAG">
+<span class="target" id="libatomvmcontext_8h_1ad416d9b8c3905c13d2d97bb54aed05bb"></span><span class="sig-name descname"><span class="n"><span class="pre">CONTEXT_MONITOR_MONITORING_PID_TAG</span></span></span> <span class="pre">0x1</span><a class="headerlink" href="#c.libAtomVM.context.h.CONTEXT_MONITOR_MONITORING_PID_TAG" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -852,15 +868,67 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_link">
-<span class="target" id="libatomvmcontext_8h_1a381a0d1bcc02bb1d8e87361391e56e1f"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_link</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_link" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.monitor_link_new">
+<span class="target" id="libatomvmcontext_8h_1a5a9cec4e4b8b8d62cb1047b4e73f2504"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.Monitor" title="Monitor"><span class="n"><span class="pre">Monitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">monitor_link_new</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.monitor_link_new" title="Link to this definition"></a><br /></dt>
 <dd><p>Half-link process to another process. </p>
-<p>Caller must hold the global process lock. This creates one half of the link.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – context to link </p></li>
-<li><p><strong>monitor_pid</strong> – process to link ctx to </p></li>
+<li><p><strong>monitor_pid</strong> – process to link to </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the allocated monitor or NULL if allocation failed </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.monitor_new">
+<span class="target" id="libatomvmcontext_8h_1a7d1f8b3e970cd6f95cadc2aa451e66cd"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.Monitor" title="Monitor"><span class="n"><span class="pre">Monitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">monitor_new</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">is_monitoring</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.monitor_new" title="Link to this definition"></a><br /></dt>
+<dd><p>Create a monitor on a process. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>monitor_pid</strong> – monitoring process </p></li>
+<li><p><strong>ref_ticks</strong> – reference of the monitor </p></li>
+<li><p><strong>is_monitoring</strong> – if ctx is the monitoring process </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the allocated monitor or NULL if allocation failed </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.monitor_resource_monitor_new">
+<span class="target" id="libatomvmcontext_8h_1a1a65e1625f157373d231ed4f4b97e4e3"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.Monitor" title="Monitor"><span class="n"><span class="pre">Monitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">monitor_resource_monitor_new</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.monitor_resource_monitor_new" title="Link to this definition"></a><br /></dt>
+<dd><p>Create a resource monitor. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource</strong> – resource object </p></li>
+<li><p><strong>ref_ticks</strong> – reference associated with the monitor </p></li>
+<li><p><strong>process_id</strong> – process being monitored </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the allocated resource monitor or NULL if allocation failed </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_unlink">
+<span class="target" id="libatomvmcontext_8h_1a398dcfdc1f2ec7df24020ad38325044c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_unlink</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_unlink" title="Link to this definition"></a><br /></dt>
+<dd><p>Half-unlink process to another process. </p>
+<p>Called within the process only. For the other end of the link, an UnlinkSignal is sent that calls this function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> – the context being executed </p></li>
+<li><p><strong>monitor_pid</strong> – process to unlink from </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -870,51 +938,51 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_monitor">
-<span class="target" id="libatomvmcontext_8h_1a850b8c7479cc93745b92dc666600ee56"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_monitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_monitor" title="Link to this definition"></a><br /></dt>
-<dd><p>Create a monitor on a process. </p>
-<p>Caller must hold the global process lock.</p>
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_demonitor">
+<span class="target" id="libatomvmcontext_8h_1a175dc6a2600f5c5aee45605a083b41b6"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_demonitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_demonitor" title="Link to this definition"></a><br /></dt>
+<dd><p>Destroy a monitor on a process. </p>
+<p>Called within the process only. This function is called from DemonitorSignal.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – context to monitor </p></li>
-<li><p><strong>monitor_pid</strong> – monitoring process </p></li>
+<li><p><strong>ctx</strong> – the context being executed </p></li>
+<li><p><strong>ref_ticks</strong> – reference of the monitor to remove </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the ref ticks </p>
+<dd class="field-even"><p>0 on success </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_resource_monitor">
-<span class="target" id="libatomvmcontext_8h_1aa662d96705af3b49e943b009c582f1c3"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.ResourceMonitor" title="ResourceMonitor"><span class="n"><span class="pre">ResourceMonitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">context_resource_monitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_resource_monitor" title="Link to this definition"></a><br /></dt>
-<dd><p>Create a resource monitor on a process. </p>
-<p>Caller must hold the global process lock. The returned resource monitor is not added to the monitors list on the resource type.</p>
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_get_monitor_pid">
+<span class="target" id="libatomvmcontext_8h_1af5a4fe2a6ba535051fdbac1c2586ccd8"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_get_monitor_pid</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">is_monitoring</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_get_monitor_pid" title="Link to this definition"></a><br /></dt>
+<dd><p>Get target of a monitor. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – context to monitor </p></li>
-<li><p><strong>resource</strong> – resource object </p></li>
+<li><p><strong>ctx</strong> – the context being executed </p></li>
+<li><p><strong>ref_ticks</strong> – reference of the monitor to remove </p></li>
+<li><p><strong>is_monitoring</strong> – whether ctx is the monitoring process. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the resource monitor </p>
+<dd class="field-even"><p>pid of monitoring process, self() if process is monitoring (and not monitored) or term_invalid() if no monitor could be found. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_unlink">
-<span class="target" id="libatomvmcontext_8h_1a398dcfdc1f2ec7df24020ad38325044c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_unlink</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_unlink" title="Link to this definition"></a><br /></dt>
-<dd><p>Remove a half-link from a process. </p>
-<p>Caller must hold the global process lock. This removes one half of the link.</p>
+<dt class="sig sig-object c" id="c.libAtomVM.context.h.context_add_monitor">
+<span class="target" id="libatomvmcontext_8h_1a393f7eb23e0ee18fcb16dc2108d1fda5"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_add_monitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.context.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.Monitor" title="Monitor"><span class="n"><span class="pre">Monitor</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">new_monitor</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.context.h.context_add_monitor" title="Link to this definition"></a><br /></dt>
+<dd><p>Add a monitor on a process. </p>
+<p>Called within the process only. This function is called from MonitorSignal. <a class="reference internal" href="#libatomvmstruct_monitor"><span class="std std-ref">Monitor</span></a> is not added if it already exists. Monitors are identified by a reference, but links have no reference and a link can only exist once.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – context to monitor </p></li>
-<li><p><strong>monitor_pid</strong> – process to unlink </p></li>
+<li><p><strong>ctx</strong> – the context being executed </p></li>
+<li><p><strong>new_monitor</strong> – monitor object to add </p></li>
 </ul>
 </dd>
 </dl>
@@ -928,79 +996,78 @@
 <em>#include &lt;context.h&gt;</em></div>
 <p>Collaboration diagram for Context:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-9c8bea5f274cdfa1b78b7ffbd880c7e14588976e.png" alt="digraph {
+<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-8695dfad91d168e64d5270b61a5db8fc9b68b188.png" alt="digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;24&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;21&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;23&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
+    &quot;20&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;11&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;19&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
-    &quot;12&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;8&quot; [label=&quot;ModuleFilename&quot; tooltip=&quot;ModuleFilename&quot;]
-    &quot;13&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
-    &quot;18&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
-    &quot;23&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
-    &quot;9&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
+    &quot;10&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;18&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
+    &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
+    &quot;12&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;17&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;22&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
+    &quot;8&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;10&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;9&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;15&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
-    &quot;22&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;20&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;14&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;21&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
+    &quot;19&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
     &quot;2&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;16&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;15&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
-    &quot;14&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;17&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
-    &quot;21&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;21&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
+    &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;20&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;6&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;24&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;18&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;23&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;22&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;21&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
 }" class="graphviz" /></div>
 </div>
 </figure>
@@ -1228,43 +1295,6 @@
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.context.h.Monitor.monitor_obj">
 <span class="target" id="libatomvmstruct_monitor_1a3a1498202e5af885a5f184d8e2638ef6"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitor_obj</span></span></span><a class="headerlink" href="#c.libAtomVM.context.h.Monitor.monitor_obj" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-</div>
-</dd></dl>
-
-<dl class="c struct">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.ResourceMonitor">
-<span class="target" id="libatomvmstruct_resource_monitor"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ResourceMonitor</span></span></span><a class="headerlink" href="#c.libAtomVM.context.h.ResourceMonitor" title="Link to this definition"></a><br /></dt>
-<dd><div class="docutils container">
-<em>#include &lt;context.h&gt;</em></div>
-<p>Collaboration diagram for ResourceMonitor:</p>
-<figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><img src="../../../_images/graphviz-4914c3137bbce2cc42a2954239e9ac7f5a679164.png" alt="digraph {
-    graph [bgcolor=&quot;#00000000&quot;]
-    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
-    edge [color=&quot;#1414CE&quot;]
-    &quot;2&quot; [label=&quot;Monitor&quot; tooltip=&quot;Monitor&quot;]
-    &quot;3&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;1&quot; [label=&quot;ResourceMonitor&quot; tooltip=&quot;ResourceMonitor&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-}" class="graphviz" /></div>
-</div>
-</figure>
-<p>A resource monitor. </p>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.ResourceMonitor.base">
-<span class="target" id="libatomvmstruct_resource_monitor_1a5725fd596cd89f1bc1bd201ce1b62fba"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.context.h.Monitor" title="Monitor"><span class="n"><span class="pre">Monitor</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.context.h.ResourceMonitor.base" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.context.h.ResourceMonitor.resource_list_head">
-<span class="target" id="libatomvmstruct_resource_monitor_1a70629a5f19cf73148fe1d7ba12684564"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">ListHead</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resource_list_head</span></span></span><a class="headerlink" href="#c.libAtomVM.context.h.ResourceMonitor.resource_list_head" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
