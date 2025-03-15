@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module lists &mdash; AtomVM 0.7.0-dev+git.f583afc6 documentation</title>
+  <title>Module lists &mdash; AtomVM 0.7.0-dev+git.c60d1265 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/lists.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=60a8d652"></script>
+      <script src="../../../_static/documentation_options.js?v=8fcf4b29"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -147,7 +147,8 @@ interface.<a name="index"></a></p>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all-2">all/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for all E in List.</td></tr><tr><td valign="top"><a href="#any-2">any/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for some E in List.</td></tr><tr><td valign="top"><a href="#append-1">append/1</a></td><td>    Returns a list in which all the sublists of <code>ListOfLists</code> have been appended.</td></tr><tr><td valign="top"><a href="#append-2">append/2</a></td><td>    Returns a new list <code>List3</code>, which is made from the elements of <code>List1</code> followed by the elements of <code>List2</code>.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Remove E from L.</td></tr><tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>    Duplicate an element.</td></tr><tr><td valign="top"><a href="#filter-2">filter/2</a></td><td>    Filter a list by a predicate, returning the list of elements
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#all-2">all/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for all E in List.</td></tr><tr><td valign="top"><a href="#any-2">any/2</a></td><td>    Evaluates to true iff Fun(E) =:= true, for some E in List.</td></tr><tr><td valign="top"><a href="#append-1">append/1</a></td><td>    Returns a list in which all the sublists of <code>ListOfLists</code> have been appended.</td></tr><tr><td valign="top"><a href="#append-2">append/2</a></td><td>    Returns a new list <code>List3</code>, which is made from the elements of <code>List1</code> followed by the elements of <code>List2</code>.</td></tr><tr><td valign="top"><a href="#delete-2">delete/2</a></td><td>    Remove E from L.</td></tr><tr><td valign="top"><a href="#dropwhile-2">dropwhile/2</a></td><td>    Drops elements Elem from List1 while Pred(Elem) returns true and returns
+the remaining list.</td></tr><tr><td valign="top"><a href="#duplicate-2">duplicate/2</a></td><td>    Duplicate an element.</td></tr><tr><td valign="top"><a href="#filter-2">filter/2</a></td><td>    Filter a list by a predicate, returning the list of elements
 for which the predicate is true.</td></tr><tr><td valign="top"><a href="#filtermap-2">filtermap/2</a></td><td>    Calls <code>Fun(Elem)</code> on successive elements <code>Elem</code> of <code>List1</code> in order to update or
 remove elements from <code>List1</code>.</td></tr><tr><td valign="top"><a href="#flatten-1">flatten/1</a></td><td>    recursively flattens elements of L into a single list.</td></tr><tr><td valign="top"><a href="#foldl-3">foldl/3</a></td><td>    Fold over a list of terms, from left to right, applying Fun(E, Accum)
 to each successive element in List.</td></tr><tr><td valign="top"><a href="#foldr-3">foldr/3</a></td><td>    Fold over a list of terms, from right to left, applying Fun(E, Accum)
@@ -215,6 +216,18 @@ delete(E::term(), L::list()) -&gt; Result::list()
 <p><code class="docutils literal notranslate"><span class="pre">E</span></code>: the member to delete<br /><code class="docutils literal notranslate"><span class="pre">L</span></code>: the list from which to delete the value<br /></p>
 <p>returns: the result of removing E from L, if it exists in L; otherwise, L.</p>
 <p>Remove E from L</p>
+<p><a name="dropwhile-2"></a></p>
+</section>
+<section id="dropwhile-2">
+<h3>dropwhile/2<a class="headerlink" href="#dropwhile-2" title="Link to this heading"></a></h3>
+<pre><code>
+dropwhile(Pred, List1) -&gt; List2
+</code></pre>
+<ul class="definitions"><li><code>Pred = fun((Elem::T) -&gt; boolean())</code></li><li><code>List1 = [T]</code></li><li><code>List2 = [T]</code></li><li><code>T = term()</code></li></ul>
+<p><code class="docutils literal notranslate"><span class="pre">Pred</span></code>: the predicate to check against elements in List1<br /></p>
+<p>returns: List List1 tail at the point predicate returned false for a element</p>
+<p>Drops elements Elem from List1 while Pred(Elem) returns true and returns
+the remaining list. The Pred function must return a boolean.</p>
 <p><a name="duplicate-2"></a></p>
 </section>
 <section id="duplicate-2">
