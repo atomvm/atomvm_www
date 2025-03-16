@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.012d7850 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.7.0-dev+git.025f33bb documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d408179e"></script>
+      <script src="_static/documentation_options.js?v=acc65a24"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -58,6 +58,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Build Instructions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#downloading-atomvm">Downloading AtomVM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-code-organization">Source code organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#external-dependencies">External dependencies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#uf2tool"><code class="docutils literal notranslate"><span class="pre">uf2tool</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#platform-specific-build-instructions">Platform Specific Build Instructions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#building-for-generic-unix">Building for Generic UNIX</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#generic-unix-build-requirements">Generic UNIX Build Requirements</a></li>
@@ -221,6 +225,14 @@ it is optional.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">doc</span></code> Contains documentation source code and content.</p></li>
 </ul>
 <p>The <code class="docutils literal notranslate"><span class="pre">src</span></code> directory is broken up into the core platform-independent AtomVM library (<code class="docutils literal notranslate"><span class="pre">libAtomVM</span></code>), and platform-dependent code for each of the supported platforms  (Generic UNIX, ESP32, and STM32).</p>
+</section>
+<section id="external-dependencies">
+<h2>External dependencies<a class="headerlink" href="#external-dependencies" title="Link to this heading"></a></h2>
+<section id="uf2tool">
+<h3><code class="docutils literal notranslate"><span class="pre">uf2tool</span></code><a class="headerlink" href="#uf2tool" title="Link to this heading"></a></h3>
+<p>AtomVM depends on <code class="docutils literal notranslate"><span class="pre">uf2tool</span></code>. It is used to pack both native and Erlang/Elixir/Gleam code for RP2. uf2tool is downloaded automatically by <code class="docutils literal notranslate"><span class="pre">rebar3</span></code> from <code class="docutils literal notranslate"><span class="pre">hex</span></code> mirrors.</p>
+<p>It is possible to use a local copy of uf2tool by setting <code class="docutils literal notranslate"><span class="pre">UF2TOOL_PATH</span></code> variable to a path to a source checkout of <a class="reference external" href="https://github.com/pguyot/uf2tool"><code class="docutils literal notranslate"><span class="pre">uf2tool</span></code></a> when invoking CMake.</p>
+</section>
 </section>
 <section id="platform-specific-build-instructions">
 <h2>Platform Specific Build Instructions<a class="headerlink" href="#platform-specific-build-instructions" title="Link to this heading"></a></h2>
