@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>resources.h &mdash; AtomVM 0.6.6+git.b1347851 documentation</title>
+  <title>resources.h &mdash; AtomVM 0.6.6+git.d416d90c documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/resources.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=c685560f"></script>
+      <script src="../../../_static/documentation_options.js?v=722eedf6"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -569,6 +569,24 @@
 <li><p><strong>ref_ticks</strong> – the reference or 0 if it’s undefined </p></li>
 <li><p><strong>is_write</strong> – if the notification is for a write or a read </p></li>
 <li><p><strong>heap</strong> – the heap to create the notification in, should have enough memory available (see SELECT_EVENT_NOTIFICATION_SIZE) </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.resources.h.resource_type_fire_monitor">
+<span class="target" id="libatomvmresources_8h_1a9613c9858f516b31f5e1211c86053848"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">resource_type_fire_monitor</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.resources.h.ResourceType" title="ResourceType"><span class="n"><span class="pre">ResourceType</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource_type</span></span>, <span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">resource</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.h.resource_type_fire_monitor" title="Link to this definition"></a><br /></dt>
+<dd><p>Call down handler for a given resource and remove monitor from list. </p>
+<p>handler is called while holding lock on the list of monitors and if monitor is still in the list of resource monitors, thus ensuring that the resource still exists. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>resource_type</strong> – type holding the list of monitors </p></li>
+<li><p><strong>env</strong> – environment for calling the down handler </p></li>
+<li><p><strong>resource</strong> – resource that monitored the process </p></li>
+<li><p><strong>process_id</strong> – id of the process monitored </p></li>
+<li><p><strong>ref_ticks</strong> – reference of the monitor </p></li>
 </ul>
 </dd>
 </dl>
