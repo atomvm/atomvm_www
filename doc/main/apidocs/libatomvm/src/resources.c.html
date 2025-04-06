@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>resources.c &mdash; AtomVM 0.7.0-dev+git.ca3f7c73 documentation</title>
+  <title>resources.c &mdash; AtomVM 0.7.0-dev+git.3044560c documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/resources.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=a28fce2f"></script>
+      <script src="../../../_static/documentation_options.js?v=624949a7"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -364,6 +364,8 @@
 <dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_alloc_resource">
 <span class="target" id="libatomvmresources_8c_1aba976aba3ac3a10795dbb7d240b0a5f7"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">enif_alloc_resource</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ErlNifResourceType</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">type</span></span>, <span class="kt"><span class="pre">unsigned</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_alloc_resource" title="Link to this definition"></a><br /></dt>
 <dd><p>Allocate a resource for given type for <code class="docutils literal notranslate"><span class="pre">size</span></code> bytes. </p>
+<p>following BEAM semantics, the resource is created with a refcount of 1. A call to <code class="docutils literal notranslate"><span class="pre">enif_release_resource</span></code> will decrement the refcount and destroy the resource if it is zero.</p>
+<p>Typical usage (as suggested by BEAM documentation) is to call <code class="docutils literal notranslate"><span class="pre">enif_make_resource</span></code> and then <code class="docutils literal notranslate"><span class="pre">enif_release_resource</span></code> to somewhat transfer ownership to the garbage collector. <code class="docutils literal notranslate"><span class="pre">enif_make_resource</span></code> will increment refcount to 2 and also add the resource to the MSO list of the context, so when the term is no longer referenced in the context heap, the reference counter will be decremented by gc.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -432,7 +434,10 @@
 <dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_make_resource">
 <span class="target" id="libatomvmresources_8c_1ae5786c2a3432fd525f56faf876f00051"></span><span class="n"><span class="pre">ERL_NIF_TERM</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_make_resource</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">env</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_make_resource" title="Link to this definition"></a><br /></dt>
 <dd><p>create a term from a resource </p>
-<p>the term can be later passed to <code class="docutils literal notranslate"><span class="pre">enif_get_resource</span></code>. The resource is typically released (by calling <code class="docutils literal notranslate"><span class="pre">enif_release_resource</span></code>) just after calling this function to “transfer ownership” to Erlang code so that it will be destroyed when garbage collected. </p>
+<p>the term can be later passed to <code class="docutils literal notranslate"><span class="pre">enif_get_resource</span></code>.</p>
+<p>The resource reference counter is incremented and it is added to the MSO list of the heap of env (which must be a context).</p>
+<p>If the resource was just allocated with <code class="docutils literal notranslate"><span class="pre">enif_alloc_resource</span></code>, the reference counter should typically be decremented by a call to <code class="docutils literal notranslate"><span class="pre">enif_release_resource</span></code> matching usage documented by BEAM.</p>
+<p>If the resource was not just allocated with <code class="docutils literal notranslate"><span class="pre">enif_alloc_resource</span></code>, to clear usage confusion, users should rather call <code class="docutils literal notranslate"><span class="pre">term_from_resource</span></code> and should not decrement the reference counter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
