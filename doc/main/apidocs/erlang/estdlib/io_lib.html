@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module io_lib &mdash; AtomVM 0.7.0-dev+git.510122a9 documentation</title>
+  <title>Module io_lib &mdash; AtomVM 0.7.0-dev+git.670d89b0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/io_lib.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=34043726"></script>
+      <script src="../../../_static/documentation_options.js?v=1d8aa50e"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -135,6 +135,7 @@
 <h1>Module io_lib<a class="headerlink" href="#module-io-lib" title="Link to this heading"></a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="#description">Description</a></p></li>
+<li><p><a class="reference internal" href="#data-types">Data Types</a></p></li>
 <li><p><a class="reference internal" href="#function-index">Function Index</a></p></li>
 <li><p><a class="reference internal" href="#function-details">Function Details</a></p></li>
 </ul>
@@ -143,11 +144,22 @@
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>This module implements a strict subset of the Erlang/OTP io_lib
-interface.<a name="index"></a></p>
+interface.
+<a name="types"></a></p>
+</section>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
+<section id="chars">
+<h3><a name="type-chars">chars()</a><a class="headerlink" href="#chars" title="Link to this heading"></a></h3>
+<pre><code>
+chars() = [char() | <a href="#type-chars">chars()</a>]
+</code></pre>
+<p><a name="index"></a></p>
+</section>
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#format-2">format/2</a></td><td>    Format string and data to a string.</td></tr><tr><td valign="top"><a href="#latin1_char_list-1">latin1_char_list/1</a></td><td>    Determine if passed term is a list of ISO-8859-1 characters (0-255).</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#format-2">format/2</a></td><td>    Format string and data to a string.</td></tr><tr><td valign="top"><a href="#fwrite-2">fwrite/2</a></td><td>    Format string and data to a string.</td></tr><tr><td valign="top"><a href="#latin1_char_list-1">latin1_char_list/1</a></td><td>    Determine if passed term is a list of ISO-8859-1 characters (0-255).</td></tr><tr><td valign="top"><a href="#printable_list-1">printable_list/1</a></td><td>Determine if <code>List</code> is a flat list of printable characters.</td></tr><tr><td valign="top"><a href="#write-1">write/1</a></td><td>Returns a character list that represents Term.</td></tr><tr><td valign="top"><a href="#write_atom-1">write_atom/1</a></td><td></td></tr><tr><td valign="top"><a href="#write_string-1">write_string/1</a></td><td>Returns the list of characters needed to print String as a string.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -156,14 +168,23 @@ interface.<a name="index"></a></p>
 <section id="format-2">
 <h3>format/2<a class="headerlink" href="#format-2" title="Link to this heading"></a></h3>
 <pre><code>
-format(Format::string(), Args::list()) -&gt; string()
+format(Format::<a href="/__w/AtomVM/AtomVM/build/doc/edoc/stdlib/doc/io.md#type-format">io:format()</a>, Args::list()) -&gt; string()
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Format</span></code>: format string<br /><code class="docutils literal notranslate"><span class="pre">Args</span></code>: format argument<br /></p>
 <p>returns: string</p>
 <p>Format string and data to a string.
-Approximates features of OTP io_lib:format/2, but
-only supports ~p and ~n format specifiers.
+Features most of OTP <code class="docutils literal notranslate"><span class="pre">io_lib:format/2</span></code>.
+Raises <code class="docutils literal notranslate"><span class="pre">badarg</span></code> error if the number of format specifiers
+does not match the length of the Args.</p>
+<p><a name="fwrite-2"></a></p>
+</section>
+<section id="fwrite-2">
+<h3>fwrite/2<a class="headerlink" href="#fwrite-2" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">fwrite(Format,</span> <span class="pre">Args)</span> <span class="pre">-&gt;</span> <span class="pre">any()</span></code></p>
+<p>Equivalent to <a class="reference internal" href="#format-2"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">format(Format,</span> <span class="pre">Args)</span></code></span></a>.</p>
+<p>Format string and data to a string.
+Features most of OTP <code class="docutils literal notranslate"><span class="pre">io_lib:format/2</span></code>.
 Raises <code class="docutils literal notranslate"><span class="pre">badarg</span></code> error if the number of format specifiers
 does not match the length of the Args.</p>
 <p><a name="latin1_char_list-1"></a></p>
@@ -177,6 +198,46 @@ latin1_char_list(Term::any()) -&gt; boolean()
 <p><code class="docutils literal notranslate"><span class="pre">Term</span></code>: term to test<br /></p>
 <p>returns: true if Term is a list of latin1 characters, false otherwise.</p>
 <p>Determine if passed term is a list of ISO-8859-1 characters (0-255).</p>
+<p><a name="printable_list-1"></a></p>
+</section>
+<section id="printable-list-1">
+<h3>printable_list/1<a class="headerlink" href="#printable-list-1" title="Link to this heading"></a></h3>
+<pre><code>
+printable_list(List::any()) -&gt; boolean()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">List</span></code>: term to test<br /></p>
+<p>Determine if <code class="docutils literal notranslate"><span class="pre">List</span></code> is a flat list of printable characters</p>
+<p><a name="write-1"></a></p>
+</section>
+<section id="write-1">
+<h3>write/1<a class="headerlink" href="#write-1" title="Link to this heading"></a></h3>
+<pre><code>
+write(Term::any()) -&gt; <a href="#type-chars">chars()</a>
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Term</span></code>: term to represent<br /></p>
+<p>Equivalent to <a class="reference internal" href="#forma-2"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">forma(&quot;~w&quot;,</span> <span class="pre">[Term])</span></code></span></a>.</p>
+<p>Returns a character list that represents Term</p>
+<p><a name="write_atom-1"></a></p>
+</section>
+<section id="write-atom-1">
+<h3>write_atom/1<a class="headerlink" href="#write-atom-1" title="Link to this heading"></a></h3>
+<pre><code>
+write_atom(Atom::atom()) -&gt; <a href="#type-chars">chars()</a>
+</code></pre>
+<br />
+<p><a name="write_string-1"></a></p>
+</section>
+<section id="write-string-1">
+<h3>write_string/1<a class="headerlink" href="#write-string-1" title="Link to this heading"></a></h3>
+<pre><code>
+write_string(String::string()) -&gt; <a href="#type-chars">chars()</a>
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">String</span></code>: string to print<br /></p>
+<p>Equivalent to <a class="reference internal" href="#write_string-2"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">write_string(String,</span> <span class="pre">$&quot;)</span></code></span></a>.</p>
+<p>Returns the list of characters needed to print String as a string.</p>
 </section>
 </section>
 </section>
