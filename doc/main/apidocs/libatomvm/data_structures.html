@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Structures &mdash; AtomVM 0.7.0-dev+git.8971c26a documentation</title>
+  <title>Data Structures &mdash; AtomVM 0.7.0-dev+git.bc50bc16 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/data_structures.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=0aeafae9"></script>
+      <script src="../../_static/documentation_options.js?v=71b1ec5c"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -1920,13 +1920,8 @@
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.structs.Monitor.ref_ticks">
-<span class="target" id="libatomvmstruct_monitor_1a64d0bef751da6178ab84e7b31f021386"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ref_ticks</span></span></span><a class="headerlink" href="#c.libAtomVM.structs.Monitor.ref_ticks" title="Link to this definition"></a><br /></dt>
-<dd></dd></dl>
-
-<dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.structs.Monitor.monitor_obj">
-<span class="target" id="libatomvmstruct_monitor_1a3a1498202e5af885a5f184d8e2638ef6"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitor_obj</span></span></span><a class="headerlink" href="#c.libAtomVM.structs.Monitor.monitor_obj" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.structs.Monitor.monitor_type">
+<span class="target" id="libatomvmstruct_monitor_1a668f04db464d881146fb13e31994f18f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ContextMonitorType</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">monitor_type</span></span></span><a class="headerlink" href="#c.libAtomVM.structs.Monitor.monitor_type" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>
@@ -3385,13 +3380,28 @@
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.UnlinkSignal">
-<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013aee8fa2436992a15aac6c9a59ea9e9635"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.UnlinkSignal" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.UnlinkIDSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013a1c2f558df290c0cfee60157f11432400"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkIDSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.UnlinkIDSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.UnlinkIDAckSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acc9159cee077e3c737ee744ef72f228c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkIDAckSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.UnlinkIDAckSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.LinkExitSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acbd7454b5fa4811d0dc1184f8f6ac5e7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LinkExitSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.LinkExitSignal" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.DemonitorSignal">
 <span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acdf9fc233915a937e8ab823b163c5610"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DemonitorSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.DemonitorSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.enums.MessageType.MonitorDownSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013a4cb649687451fc24221296a87ea0e99c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MonitorDownSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.enums.MessageType.MonitorDownSignal" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>

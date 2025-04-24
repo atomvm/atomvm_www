@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.7.0-dev+git.8971c26a documentation</title>
+  <title>Functions &mdash; AtomVM 0.7.0-dev+git.bc50bc16 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/functions.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=0aeafae9"></script>
+      <script src="../../_static/documentation_options.js?v=71b1ec5c"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -767,13 +767,14 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.context_process_process_info_request_signal">
-<span class="target" id="libatomvmcontext_8h_1a8664068d13a362d04bceccc8ca774400"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_process_process_info_request_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">BuiltInAtomRequestSignal</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">signal</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.context_process_process_info_request_signal" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmcontext_8h_1a2bba5ee3d06bd0ba2767dc064531bf24"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_process_process_info_request_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">BuiltInAtomRequestSignal</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">signal</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">process_table_locked</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.context_process_process_info_request_signal" title="Link to this definition"></a><br /></dt>
 <dd><p>Process a process info request signal. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ctx</strong> – the context being executed </p></li>
-<li><p><strong>signal</strong> – the kill message </p></li>
+<li><p><strong>signal</strong> – the process info signal </p></li>
+<li><p><strong>process_table_locked</strong> – whether process table is already locked </p></li>
 </ul>
 </dd>
 </dl>
@@ -850,24 +851,10 @@
 </dl>
 </dd></dl>
 
-<dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.functions.context_unlink">
-<span class="target" id="libatomvmcontext_8h_1a398dcfdc1f2ec7df24020ad38325044c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_unlink</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">monitor_pid</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.context_unlink" title="Link to this definition"></a><br /></dt>
-<dd><p>Half-unlink process to another process. </p>
-<p>Called within the process only. For the other end of the link, an UnlinkSignal is sent that calls this function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> – the context being executed </p></li>
-<li><p><strong>monitor_pid</strong> – process to unlink from </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>0 on success </p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “context_unlink” in doxygen xml output for project “libatomvm” from directory: /__w/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.context_update_flags">
 <span class="target" id="libatomvmcontext_8h_1af438fde9632aa75a349cca85a2b7c52a"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">context_update_flags</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">mask</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">value</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.context_update_flags" title="Link to this definition"></a><br /></dt>
@@ -1306,24 +1293,10 @@ terms in a heap fragment, otherwise terms are stored in the context heap.</p></l
 </dl>
 </dd></dl>
 
-<dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_demonitor">
-<span class="target" id="libatomvmglobalcontext_8h_1a487674c09e840bf18fc0a74a738ee857"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_demonitor</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_demonitor" title="Link to this definition"></a><br /></dt>
-<dd><p>remove a monitor </p>
-<p>iterate on the list of all processes and then on each monitor to find a given monitor, and remove it </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>global</strong> – the global context </p></li>
-<li><p><strong>ref_ticks</strong> – the reference to the monitor </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>true if the monitor was found </p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “globalcontext_demonitor” in doxygen xml output for project “libatomvm” from directory: /__w/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_destroy">
 <span class="target" id="libatomvmglobalcontext_8h_1a93332b64c459b51ffb1debed609df84c"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_destroy</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_destroy" title="Link to this definition"></a><br /></dt>
