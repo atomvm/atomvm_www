@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>mailbox.h &mdash; AtomVM 0.6.6+git.95ac53cb documentation</title>
+  <title>mailbox.h &mdash; AtomVM 0.6.6+git.5eb7cf85 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/mailbox.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=db26b4fe"></script>
+      <script src="../../../_static/documentation_options.js?v=4bd73c2d"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -515,13 +515,28 @@
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.UnlinkSignal">
-<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013aee8fa2436992a15aac6c9a59ea9e9635"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.UnlinkSignal" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.UnlinkIDSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013a1c2f558df290c0cfee60157f11432400"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkIDSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.UnlinkIDSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.UnlinkIDAckSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acc9159cee077e3c737ee744ef72f228c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">UnlinkIDAckSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.UnlinkIDAckSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.LinkExitSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acbd7454b5fa4811d0dc1184f8f6ac5e7"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">LinkExitSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.LinkExitSignal" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.DemonitorSignal">
 <span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013acdf9fc233915a937e8ab823b163c5610"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">DemonitorSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.DemonitorSignal" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MessageType.MonitorDownSignal">
+<span class="target" id="libatomvmmailbox_8h_1ac6606ebe91c8ac66a2c314c79f5ab013a4cb649687451fc24221296a87ea0e99c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MonitorDownSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MessageType.MonitorDownSignal" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -657,6 +672,22 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>c</strong> – the process context. </p></li>
 <li><p><strong>type</strong> – the type of the signal </p></li>
+<li><p><strong>ref_ticks</strong> – the ref </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.mailbox_send_immediate_ref_signal">
+<span class="target" id="libatomvmmailbox_8h_1a6e60af2bd5b531c2831d8f1a594c7dfb"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">mailbox_send_immediate_ref_signal</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.mailbox.h.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">c</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.mailbox.h.MessageType" title="MessageType"><span class="n"><span class="pre">MessageType</span></span></a><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">immediate</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">ref_ticks</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.mailbox.h.mailbox_send_immediate_ref_signal" title="Link to this definition"></a><br /></dt>
+<dd><p>Sends an immediate and ref signal to a certain mailbox. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>c</strong> – the process context. </p></li>
+<li><p><strong>type</strong> – the type of the signal </p></li>
+<li><p><strong>immediate</strong> – the immediate term to send (atom or pid) </p></li>
 <li><p><strong>ref_ticks</strong> – the ref </p></li>
 </ul>
 </dd>
@@ -1112,6 +1143,45 @@
 </dd></dl>
 
 <dl class="c struct">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.ImmediateRefSignal">
+<span class="target" id="libatomvmstruct_immediate_ref_signal"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ImmediateRefSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.ImmediateRefSignal" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;mailbox.h&gt;</em></div>
+<p>Collaboration diagram for ImmediateRefSignal:</p>
+<figure class="align-default">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-59cad9a415e0ac99e9b22c3e21c8b736510adfbd.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph {
+    graph [bgcolor=&quot;#00000000&quot;]
+    node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
+    edge [color=&quot;#1414CE&quot;]
+    &quot;2&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;1&quot; [label=&quot;ImmediateRefSignal&quot; tooltip=&quot;ImmediateRefSignal&quot; fillcolor=&quot;#BFBFBF&quot;]
+    &quot;2&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+}</p></object></div>
+</div>
+</figure>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.ImmediateRefSignal.base">
+<span class="target" id="libatomvmstruct_immediate_ref_signal_1a5ce38c6e953e02b184929821b31ed8b4"></span><a class="reference internal" href="#c.libAtomVM.mailbox.h.MailboxMessage" title="MailboxMessage"><span class="n"><span class="pre">MailboxMessage</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">base</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.ImmediateRefSignal.base" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.ImmediateRefSignal.immediate">
+<span class="target" id="libatomvmstruct_immediate_ref_signal_1aefc4e4142a03d050d31ba7e234902ff2"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">immediate</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.ImmediateRefSignal.immediate" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.ImmediateRefSignal.ref_ticks">
+<span class="target" id="libatomvmstruct_immediate_ref_signal_1a020d0ee15dadef5301d368de8727ee2a"></span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ref_ticks</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.ImmediateRefSignal.ref_ticks" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+<dl class="c struct">
 <dt class="sig sig-object c" id="c.libAtomVM.mailbox.h.MonitorPointerSignal">
 <span class="target" id="libatomvmstruct_monitor_pointer_signal"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MonitorPointerSignal</span></span></span><a class="headerlink" href="#c.libAtomVM.mailbox.h.MonitorPointerSignal" title="Link to this definition"></a><br /></dt>
 <dd><div class="docutils container">
@@ -1276,11 +1346,11 @@
           
         
           
-          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
+          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
           
         
           
-          <dd><a href="/doc/feature/distributed-erlang/">feature/distributed-erlang branch (unreleased)</a></dd>
+          <dd><a href="/doc/main/">main branch (unstable)</a></dd>
           
         
            <strong> 
