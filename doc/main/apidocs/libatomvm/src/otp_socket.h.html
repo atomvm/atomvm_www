@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>otp_socket.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>otp_socket.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/otp_socket.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for otp_socket.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-57fe52d9eb3e7d491859ab357c936bcd2736d041.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-dd7e2fe39c1697c06888e9d0f05c82c4a25c5337.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -257,6 +260,7 @@
     &quot;25&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -453,7 +457,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 <em>#include &lt;otp_socket.h&gt;</em></div>
 <p>Collaboration diagram for LWIPEvent:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-760fba8651bce3d64e6c4d0c70105787dda9d5eb.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-3da22326821faec534d35b914eac03603f0ea5ed.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -491,6 +495,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
     &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;16&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -544,7 +549,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.tcp_accept">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1ab892c82b7e2ee8e6fbb78f710e6874c1"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_accept</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_accept" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a5085e0f94540bb8f3dce645056943a02"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_accept</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_accept" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -564,7 +569,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.tcp_recv">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1aad69977c089e0f9a2950bd5673777ea8"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_recv" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a5c7443e009c69232c024278196405fc2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">tcp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.tcp_recv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -579,7 +584,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.udp_recv">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1a644b950fc270e520522569b6ec34ffa2"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.udp_recv" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a6d89d4d75aaa6c5339de6b24250cdc9d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">udp_recv</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.udp_recv" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -594,17 +599,17 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_ok">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1aef15599cca31bda98b7ed6c495006637"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_ok</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_ok" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a3ae2dd00ec89b63126cfedc8fdb8b60e"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_ok</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_ok" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_closed">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1a2fcb80b2cf8c657a1eff900b70659455"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_closed</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_closed" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a5dc8845407e8352b401ce7a8cf2e2db8"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trap_answer_closed</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.trap_answer_closed" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.finalize_close">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1a5bcbd61a9c74358a83de9d94bd3f393d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize_close</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.finalize_close" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1a1a8742e72f543abf07c7ff3ae6c2571b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">finalize_close</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.finalize_close" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
@@ -619,12 +624,12 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1a827ed6275f809b151798aa147b208840"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dns_gethostbyname</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1afbf70339279fcac204a1f711b78145db"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dns_gethostbyname</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">
-<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.&#64;14">
-<span class="target" id="libatomvmstruct_l_w_i_p_event_1a312892c0e2f212977e1ad35117d8eb84"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.@14" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.otp_socket.h.LWIPEvent.&#64;16">
+<span class="target" id="libatomvmstruct_l_w_i_p_event_1af96300dd70ae2286267b8f8f6b53471f"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.otp_socket.h.LWIPEvent" title="LWIPEvent"><span class="n"><span class="pre">LWIPEvent</span></span></a><span class="p"><span class="pre">.</span></span><span class="n"><span class="pre">[anonymous]</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">[anonymous]</span></span></span><a class="headerlink" href="#c.libAtomVM.otp_socket.h.LWIPEvent.@16" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </div>

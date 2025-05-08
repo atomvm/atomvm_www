@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>externalterm.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>externalterm.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/externalterm.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for externalterm.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-b6e5364ba10663668e7e573723e7dd77b5e3b9d1.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-7fac7b908ae54dd2e8f4e67f599fc1ec5a91b42f.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -200,7 +203,7 @@
     &quot;17&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
     &quot;12&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;15&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;20&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;21&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;18&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;5&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;7&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
@@ -214,7 +217,8 @@
     &quot;3&quot; [label=&quot;sys/types.h&quot; tooltip=&quot;sys/types.h&quot;]
     &quot;8&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;11&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
-    &quot;21&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;22&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;20&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
     &quot;6&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;14&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;17&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -224,9 +228,9 @@
     &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -236,8 +240,9 @@
     &quot;19&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -254,24 +259,30 @@
     &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;21&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
 <p>This graph shows which files directly or indirectly include externalterm.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-1e37ad059eaee0aa9b9101ca8944607f4db4e3d1.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-0e7bcda40fc50368297a50847e13e56de8b76ecf.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;4&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
-    &quot;3&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
-    &quot;2&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
+    &quot;5&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
+    &quot;4&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
+    &quot;2&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot;]
+    &quot;3&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
     &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -314,17 +325,22 @@
 </dd></dl>
 
 <dl class="c enum">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermOpts">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermOpts</span></span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermOpts" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermFlags">
+<span class="target" id="libatomvmexternalterm_8h_1ad0c11ff3a31266f2f3ca6dbf11670443"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermFlags</span></span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermFlags" title="Link to this definition"></a><br /></dt>
 <dd><p><em>Values:</em></p>
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermNoOpts">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2a23d9d0c8a9bec63f823e2c0cc87e1193"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermNoOpts</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermNoOpts" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermNoOpts">
+<span class="target" id="libatomvmexternalterm_8h_1ad0c11ff3a31266f2f3ca6dbf11670443a23d9d0c8a9bec63f823e2c0cc87e1193"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermNoOpts</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermNoOpts" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c enumerator">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermToHeapFragment">
-<span class="target" id="libatomvmexternalterm_8h_1af6168d43e9676554af376320c5f8caa2ac87298fcf7134b4892d4e069b5218ba4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermToHeapFragment</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermToHeapFragment" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermToHeapFragment">
+<span class="target" id="libatomvmexternalterm_8h_1ad0c11ff3a31266f2f3ca6dbf11670443ac87298fcf7134b4892d4e069b5218ba4"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermToHeapFragment</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermToHeapFragment" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermCopy">
+<span class="target" id="libatomvmexternalterm_8h_1ad0c11ff3a31266f2f3ca6dbf11670443a949b24638679cd781f36f10ade864ca3"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ExternalTermCopy</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">2</span></span><a class="headerlink" href="#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermCopy" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -334,7 +350,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.externalterm_to_term">
-<span class="target" id="libatomvmexternalterm_8h_1aad438929de43302a6dd3698b0e4d9bc2"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.libAtomVM.externalterm.h.ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.h.externalterm_to_term" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmexternalterm_8h_1a2c3a1ef95a2dac7caa0a47dc3e91d61f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.libAtomVM.externalterm.h.ExternalTermFlags" title="ExternalTermFlags"><span class="n"><span class="pre">ExternalTermFlags</span></span></a><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.h.externalterm_to_term" title="Link to this definition"></a><br /></dt>
 <dd><p>Gets a term from external term data. </p>
 <p>Deserialize an external term from external format and returns a term. </p>
 <dl class="field-list simple">
@@ -343,7 +359,11 @@
 <li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
 <li><p><strong>size</strong> – to allocate for term. </p></li>
 <li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
-<li><p><strong>opts</strong> – if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </p></li>
+<li><p><strong>flags</strong> – options to deserialize data. The following flags are supported:<ul>
+<li><p>ExternalTermToHeapFragment : use a heap fragment to store the generated terms (default is to use the heap in the provided context). Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms.</p></li>
+<li><p>ExternalTermCopy : copy (binary and atom) data. Suitable when external_term pointer is not a const literal. </p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -353,21 +373,23 @@
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.externalterm_to_term_copy">
-<span class="target" id="libatomvmexternalterm_8h_1aee7d1c33855e87dd75085afbdbb88a2c"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term_copy</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.libAtomVM.externalterm.h.ExternalTermOpts" title="ExternalTermOpts"><span class="n"><span class="pre">ExternalTermOpts</span></span></a><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.h.externalterm_to_term_copy" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a term from external term data, and makes a copy of all data. </p>
-<p>Deserialize an external term from external format and returns a term. </p>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.h.externalterm_to_term_with_roots">
+<span class="target" id="libatomvmexternalterm_8h_1a111858521e98b8234f0a23534a55b1e4"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term_with_roots</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <a class="reference internal" href="#c.libAtomVM.externalterm.h.ExternalTermFlags" title="ExternalTermFlags"><span class="n"><span class="pre">ExternalTermFlags</span></span></a><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_roots</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">roots</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.h.externalterm_to_term_with_roots" title="Link to this definition"></a><br /></dt>
+<dd><p>Create a term from external term data. This variant is meant to be used for distribution or in cases where the number of bytes read is important. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
-<li><p><strong>size</strong> – to allocate for term. </p></li>
-<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
-<li><p><strong>opts</strong> – if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </p></li>
+<li><p><strong>external_term</strong> – buffer containing external term </p></li>
+<li><p><strong>size</strong> – size of the external_term </p></li>
+<li><p><strong>ctx</strong> – current context in which terms may be stored </p></li>
+<li><p><strong>flags</strong> – additional flags (see above) </p></li>
+<li><p><strong>bytes_read</strong> – the number of bytes read off external_term in order to yield a term </p></li>
+<li><p><strong>num_roots</strong> – number of roots when invoking GC </p></li>
+<li><p><strong>roots</strong> – roots to preserve when invoking GC </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a term. </p>
+<dd class="field-even"><p>the parsed term </p>
 </dd>
 </dl>
 </dd></dl>

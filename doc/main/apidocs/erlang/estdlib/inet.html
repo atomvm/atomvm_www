@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module inet &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module inet &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/inet.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -63,12 +64,16 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../api-reference-documentation.html#estdlib">estdlib</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="README.html">The estdlib library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.html">Module application</a></li>
 <li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="binary.html">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_util.html">Module dist_util</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erl_epmd.html">Module erl_epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erlang.html">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erpc.html">Module erpc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.html">Module ets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
@@ -80,15 +85,20 @@
 <li class="toctree-l4"><a class="reference internal" href="init.html">Module init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io.html">Module io</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io_lib.html">Module io_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Module kernel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lists.html">Module lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logger.html">Module logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maps.html">Module maps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="math.html">Module math</a></li>
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel.html">Module net_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel_sup.html">Module net_kernel_sup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="queue.html">Module queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sets.html">Module sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="socket.html">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist.html">Module socket_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist_controller.html">Module socket_dist_controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
@@ -142,10 +152,16 @@
 <p><a name="types"></a></p>
 <section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
+<section id="address-family">
+<h3><a name="type-address_family">address_family()</a><a class="headerlink" href="#address-family" title="Link to this heading"></a></h3>
+<pre><code>
+address_family() = inet
+</code></pre>
+</section>
 <section id="hostname">
 <h3><a name="type-hostname">hostname()</a><a class="headerlink" href="#hostname" title="Link to this heading"></a></h3>
 <pre><code>
-hostname() = iodata()
+hostname() = atom() | string()
 </code></pre>
 </section>
 <section id="ip4-address">
@@ -188,7 +204,7 @@ socket_impl() = any()
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close the socket.</td></tr><tr><td valign="top"><a href="#peername-1">peername/1</a></td><td>    The address and port representing the "remote" end of a connection.</td></tr><tr><td valign="top"><a href="#port-1">port/1</a></td><td>    Retrieve the actual port number to which the socket is bound.</td></tr><tr><td valign="top"><a href="#sockname-1">sockname/1</a></td><td>    The address and port representing the "local" end of a connection.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#close-1">close/1</a></td><td>    Close the socket.</td></tr><tr><td valign="top"><a href="#getaddr-2">getaddr/2</a></td><td>    Get the IP address associated with a given name.</td></tr><tr><td valign="top"><a href="#peername-1">peername/1</a></td><td>    The address and port representing the "remote" end of a connection.</td></tr><tr><td valign="top"><a href="#port-1">port/1</a></td><td>    Retrieve the actual port number to which the socket is bound.</td></tr><tr><td valign="top"><a href="#sockname-1">sockname/1</a></td><td>    The address and port representing the "local" end of a connection.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -203,6 +219,17 @@ close(Socket::<a href="#type-socket">socket()</a>) -&gt; ok
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket to close<br /></p>
 <p>returns: ok.</p>
 <p>Close the socket.</p>
+<p><a name="getaddr-2"></a></p>
+</section>
+<section id="getaddr-2">
+<h3>getaddr/2<a class="headerlink" href="#getaddr-2" title="Link to this heading"></a></h3>
+<pre><code>
+getaddr(Name::<a href="#type-ip_address">ip_address()</a> | <a href="#type-hostname">hostname()</a>, Family::<a href="#type-address_family">address_family()</a>) -&gt; {ok, <a href="#type-ip_address">ip_address()</a>} | {error, Reason::term()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: the name to resolve<br /><code class="docutils literal notranslate"><span class="pre">Family</span></code>: the family to resolve it to<br /></p>
+<p>returns: The address or an error tuple.</p>
+<p>Get the IP address associated with a given name.</p>
 <p><a name="peername-1"></a></p>
 </section>
 <section id="peername-1">

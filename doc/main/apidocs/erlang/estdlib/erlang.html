@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module erlang &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module erlang &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,14 +17,14 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/erlang.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Module erts_debug" href="erts_debug.html" />
-    <link rel="prev" title="Module crypto" href="crypto.html" /> 
+    <link rel="next" title="Module erpc" href="erpc.html" />
+    <link rel="prev" title="Module erl_epmd" href="erl_epmd.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -63,12 +64,16 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../api-reference-documentation.html#estdlib">estdlib</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="README.html">The estdlib library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.html">Module application</a></li>
 <li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="binary.html">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_util.html">Module dist_util</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erl_epmd.html">Module erl_epmd</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erpc.html">Module erpc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.html">Module ets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
@@ -80,15 +85,20 @@
 <li class="toctree-l4"><a class="reference internal" href="init.html">Module init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io.html">Module io</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io_lib.html">Module io_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Module kernel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lists.html">Module lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logger.html">Module logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maps.html">Module maps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="math.html">Module math</a></li>
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel.html">Module net_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel_sup.html">Module net_kernel_sup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="queue.html">Module queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sets.html">Module sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="socket.html">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist.html">Module socket_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist_controller.html">Module socket_dist_controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
@@ -175,6 +185,12 @@ heap_growth_strategy() = bounded_free | minimum | fibonacci
 mem_type() = binary
 </code></pre>
 </section>
+<section id="send-destination">
+<h3><a name="type-send_destination">send_destination()</a><a class="headerlink" href="#send-destination" title="Link to this heading"></a></h3>
+<pre><code>
+send_destination() = pid() | port() | atom()
+</code></pre>
+</section>
 <section id="spawn-option">
 <h3><a name="type-spawn_option">spawn_option()</a><a class="headerlink" href="#spawn-option" title="Link to this heading"></a></h3>
 <pre><code>
@@ -198,10 +214,12 @@ timestamp() = {MegaSecs::non_neg_integer(), Secs::non_neg_integer(), MicroSecs::
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
 <table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply-2">apply/2</a></td><td>    Returns the result of applying Function to Args.</td></tr><tr><td valign="top"><a href="#apply-3">apply/3</a></td><td>    Returns the result of applying Function in Module to Args.</td></tr><tr><td valign="top"><a href="#atom_to_binary-1">atom_to_binary/1</a></td><td>    Convert an atom to a binary, defaults to utf8.</td></tr><tr><td valign="top"><a href="#atom_to_binary-2">atom_to_binary/2</a></td><td>    Convert an atom to a binary.</td></tr><tr><td valign="top"><a href="#atom_to_list-1">atom_to_list/1</a></td><td>    Convert an atom to a string.</td></tr><tr><td valign="top"><a href="#binary_to_atom-1">binary_to_atom/1</a></td><td>    Convert a binary to atom, defaults to utf8.</td></tr><tr><td valign="top"><a href="#binary_to_atom-2">binary_to_atom/2</a></td><td>    Convert a binary to atom.</td></tr><tr><td valign="top"><a href="#binary_to_integer-1">binary_to_integer/1</a></td><td>    Parse the text in a given binary as an integer.</td></tr><tr><td valign="top"><a href="#binary_to_integer-2">binary_to_integer/2</a></td><td>    Parse the text in a given binary as an integer.</td></tr><tr><td valign="top"><a href="#binary_to_list-1">binary_to_list/1</a></td><td>    Convert a binary to a list of bytes.</td></tr><tr><td valign="top"><a href="#binary_to_term-1">binary_to_term/1</a></td><td>Decode a term that was previously encodes with <code>term_to_binary/1</code>
-This function should be mostly compatible with its Erlang/OTP counterpart.</td></tr><tr><td valign="top"><a href="#demonitor-1">demonitor/1</a></td><td>    Remove a monitor.</td></tr><tr><td valign="top"><a href="#demonitor-2">demonitor/2</a></td><td>    Remove a monitor, with options.</td></tr><tr><td valign="top"><a href="#display-1">display/1</a></td><td>    Print a term to stdout.</td></tr><tr><td valign="top"><a href="#erase-0">erase/0</a></td><td>    Erase all keys from the process dictionary.</td></tr><tr><td valign="top"><a href="#erase-1">erase/1</a></td><td>    Erase a key from the process dictionary.</td></tr><tr><td valign="top"><a href="#exit-1">exit/1</a></td><td>    Raises an exception of class <code>exit</code> with reason <code>Reason</code>.</td></tr><tr><td valign="top"><a href="#exit-2">exit/2</a></td><td>    Send an exit signal to target process.</td></tr><tr><td valign="top"><a href="#float_to_binary-1">float_to_binary/1</a></td><td>    Convert a float to a binary.</td></tr><tr><td valign="top"><a href="#float_to_binary-2">float_to_binary/2</a></td><td>    Convert a float to a binary.</td></tr><tr><td valign="top"><a href="#float_to_list-1">float_to_list/1</a></td><td>    Convert a float to a string.</td></tr><tr><td valign="top"><a href="#float_to_list-2">float_to_list/2</a></td><td>    Convert a float to a string.</td></tr><tr><td valign="top"><a href="#fun_info-2">fun_info/2</a></td><td>            Returns information about the function <code>Fun</code> in unspecified order.</td></tr><tr><td valign="top"><a href="#fun_to_list-1">fun_to_list/1</a></td><td>    Create a string representing a function.</td></tr><tr><td valign="top"><a href="#function_exported-3">function_exported/3</a></td><td>    Determine if a function is exported.</td></tr><tr><td valign="top"><a href="#garbage_collect-0">garbage_collect/0</a></td><td>    Run a garbage collect in current process.</td></tr><tr><td valign="top"><a href="#garbage_collect-1">garbage_collect/1</a></td><td>    Run a garbage collect in a given process.</td></tr><tr><td valign="top"><a href="#get-0">get/0</a></td><td>    Return all values from the process dictionary.</td></tr><tr><td valign="top"><a href="#get-1">get/1</a></td><td>    Return a value associated with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#get_module_info-1">get_module_info/1</a></td><td>    Get info for a given module.</td></tr><tr><td valign="top"><a href="#get_module_info-2">get_module_info/2</a></td><td>    Get specific info for a given module.</td></tr><tr><td valign="top"><a href="#group_leader-0">group_leader/0</a></td><td>    Return the pid of the group leader of caller.</td></tr><tr><td valign="top"><a href="#group_leader-2">group_leader/2</a></td><td>Set the group leader for a given process.</td></tr><tr><td valign="top"><a href="#integer_to_binary-1">integer_to_binary/1</a></td><td>    Convert an integer to a binary.</td></tr><tr><td valign="top"><a href="#integer_to_binary-2">integer_to_binary/2</a></td><td>    Convert an integer to a binary.</td></tr><tr><td valign="top"><a href="#integer_to_list-1">integer_to_list/1</a></td><td>    Convert an integer to a string.</td></tr><tr><td valign="top"><a href="#integer_to_list-2">integer_to_list/2</a></td><td>    Convert an integer to a string.</td></tr><tr><td valign="top"><a href="#iolist_size-1">iolist_size/1</a></td><td>    Compute the length in bytes of the IO list or <code>binary()</code></td></tr><tr><td valign="top"><a href="#iolist_to_binary-1">iolist_to_binary/1</a></td><td>    Convert an IO list to binary.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#is_map_key-2">is_map_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#is_process_alive-1">is_process_alive/1</a></td><td>    Determine if a process is alive.</td></tr><tr><td valign="top"><a href="#is_record-2">is_record/2</a></td><td>    Returns true if Term is a tuple and its first element is RecordTag, false otherwise.</td></tr><tr><td valign="top"><a href="#link-1">link/1</a></td><td>    Link current process with a given process.</td></tr><tr><td valign="top"><a href="#list_to_atom-1">list_to_atom/1</a></td><td>    Convert a string into an atom.</td></tr><tr><td valign="top"><a href="#list_to_binary-1">list_to_binary/1</a></td><td>    Convert a list into a binary.</td></tr><tr><td valign="top"><a href="#list_to_existing_atom-1">list_to_existing_atom/1</a></td><td>    Convert a string into an atom.</td></tr><tr><td valign="top"><a href="#list_to_integer-1">list_to_integer/1</a></td><td>    Convert a string (list of characters) to integer.</td></tr><tr><td valign="top"><a href="#list_to_integer-2">list_to_integer/2</a></td><td>    Convert a string (list of characters) to integer in specified base.</td></tr><tr><td valign="top"><a href="#list_to_tuple-1">list_to_tuple/1</a></td><td>    Convert a list to a tuple with the same size.</td></tr><tr><td valign="top"><a href="#localtime-0">localtime/0</a></td><td>Return the current time and day for system local timezone.</td></tr><tr><td valign="top"><a href="#make_ref-0">make_ref/0</a></td><td>    Create a new reference.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the maximum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
-https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monitor-2">monitor/2</a></td><td>    Create a monitor on a process or on a port.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#open_port-2">open_port/2</a></td><td>    Open a port.</td></tr><tr><td valign="top"><a href="#pid_to_list-1">pid_to_list/1</a></td><td>    Create a string representing a pid.</td></tr><tr><td valign="top"><a href="#process_flag-2">process_flag/2</a></td><td>    Set a flag for the current process.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#processes-0">processes/0</a></td><td>    Return a list of all current processes.</td></tr><tr><td valign="top"><a href="#put-2">put/2</a></td><td>    Store a value with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#ref_to_list-1">ref_to_list/1</a></td><td>    Create a string representing a reference.</td></tr><tr><td valign="top"><a href="#register-2">register/2</a></td><td>    Register a name for a given process.</td></tr><tr><td valign="top"><a href="#send-2">send/2</a></td><td>    Send a message to a given process.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#spawn-1">spawn/1</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn-3">spawn/3</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#spawn_link-1">spawn_link/1</a></td><td>    Create a new process and link it.</td></tr><tr><td valign="top"><a href="#spawn_link-3">spawn_link/3</a></td><td>    Create a new process by calling exported Function from Module with Args
+This function should be mostly compatible with its Erlang/OTP counterpart.</td></tr><tr><td valign="top"><a href="#demonitor-1">demonitor/1</a></td><td>    Remove a monitor.</td></tr><tr><td valign="top"><a href="#demonitor-2">demonitor/2</a></td><td>    Remove a monitor, with options.</td></tr><tr><td valign="top"><a href="#display-1">display/1</a></td><td>    Print a term to stdout.</td></tr><tr><td valign="top"><a href="#erase-0">erase/0</a></td><td>    Erase all keys from the process dictionary.</td></tr><tr><td valign="top"><a href="#erase-1">erase/1</a></td><td>    Erase a key from the process dictionary.</td></tr><tr><td valign="top"><a href="#exit-1">exit/1</a></td><td>    Raises an exception of class <code>exit</code> with reason <code>Reason</code>.</td></tr><tr><td valign="top"><a href="#exit-2">exit/2</a></td><td>    Send an exit signal to target process.</td></tr><tr><td valign="top"><a href="#float_to_binary-1">float_to_binary/1</a></td><td>    Convert a float to a binary.</td></tr><tr><td valign="top"><a href="#float_to_binary-2">float_to_binary/2</a></td><td>    Convert a float to a binary.</td></tr><tr><td valign="top"><a href="#float_to_list-1">float_to_list/1</a></td><td>    Convert a float to a string.</td></tr><tr><td valign="top"><a href="#float_to_list-2">float_to_list/2</a></td><td>    Convert a float to a string.</td></tr><tr><td valign="top"><a href="#fun_info-2">fun_info/2</a></td><td>            Returns information about the function <code>Fun</code> in unspecified order.</td></tr><tr><td valign="top"><a href="#fun_to_list-1">fun_to_list/1</a></td><td>    Create a string representing a function.</td></tr><tr><td valign="top"><a href="#function_exported-3">function_exported/3</a></td><td>    Determine if a function is exported.</td></tr><tr><td valign="top"><a href="#garbage_collect-0">garbage_collect/0</a></td><td>    Run a garbage collect in current process.</td></tr><tr><td valign="top"><a href="#garbage_collect-1">garbage_collect/1</a></td><td>    Run a garbage collect in a given process.</td></tr><tr><td valign="top"><a href="#get-0">get/0</a></td><td>    Return all values from the process dictionary.</td></tr><tr><td valign="top"><a href="#get-1">get/1</a></td><td>    Return a value associated with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#get_cookie-0">get_cookie/0</a></td><td>Return the cookie used by this node or <code>nocookie</code> if
+distribution was not started.</td></tr><tr><td valign="top"><a href="#get_cookie-1">get_cookie/1</a></td><td>Return the cookie used to connect to another node or <code>nocookie</code> if
+distribution was not started.</td></tr><tr><td valign="top"><a href="#get_module_info-1">get_module_info/1</a></td><td>    Get info for a given module.</td></tr><tr><td valign="top"><a href="#get_module_info-2">get_module_info/2</a></td><td>    Get specific info for a given module.</td></tr><tr><td valign="top"><a href="#group_leader-0">group_leader/0</a></td><td>    Return the pid of the group leader of caller.</td></tr><tr><td valign="top"><a href="#group_leader-2">group_leader/2</a></td><td>Set the group leader for a given process.</td></tr><tr><td valign="top"><a href="#integer_to_binary-1">integer_to_binary/1</a></td><td>    Convert an integer to a binary.</td></tr><tr><td valign="top"><a href="#integer_to_binary-2">integer_to_binary/2</a></td><td>    Convert an integer to a binary.</td></tr><tr><td valign="top"><a href="#integer_to_list-1">integer_to_list/1</a></td><td>    Convert an integer to a string.</td></tr><tr><td valign="top"><a href="#integer_to_list-2">integer_to_list/2</a></td><td>    Convert an integer to a string.</td></tr><tr><td valign="top"><a href="#iolist_size-1">iolist_size/1</a></td><td>    Compute the length in bytes of the IO list or <code>binary()</code></td></tr><tr><td valign="top"><a href="#iolist_to_binary-1">iolist_to_binary/1</a></td><td>    Convert an IO list to binary.</td></tr><tr><td valign="top"><a href="#is_alive-0">is_alive/0</a></td><td>    Determine if current node is part of distribution.</td></tr><tr><td valign="top"><a href="#is_map-1">is_map/1</a></td><td>    Return <code>true</code> if <code>Map</code> is a map; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#is_map_key-2">is_map_key/2</a></td><td>    Return <code>true</code> if <code>Key</code> is associated with a value in <code>Map</code>; <code>false</code>, otherwise.</td></tr><tr><td valign="top"><a href="#is_process_alive-1">is_process_alive/1</a></td><td>    Determine if a process is alive.</td></tr><tr><td valign="top"><a href="#is_record-2">is_record/2</a></td><td>    Returns true if Term is a tuple and its first element is RecordTag, false otherwise.</td></tr><tr><td valign="top"><a href="#link-1">link/1</a></td><td>    Link current process with a given process.</td></tr><tr><td valign="top"><a href="#list_to_atom-1">list_to_atom/1</a></td><td>    Convert a string into an atom.</td></tr><tr><td valign="top"><a href="#list_to_binary-1">list_to_binary/1</a></td><td>    Convert a list into a binary.</td></tr><tr><td valign="top"><a href="#list_to_existing_atom-1">list_to_existing_atom/1</a></td><td>    Convert a string into an atom.</td></tr><tr><td valign="top"><a href="#list_to_integer-1">list_to_integer/1</a></td><td>    Convert a string (list of characters) to integer.</td></tr><tr><td valign="top"><a href="#list_to_integer-2">list_to_integer/2</a></td><td>    Convert a string (list of characters) to integer in specified base.</td></tr><tr><td valign="top"><a href="#list_to_tuple-1">list_to_tuple/1</a></td><td>    Convert a list to a tuple with the same size.</td></tr><tr><td valign="top"><a href="#localtime-0">localtime/0</a></td><td>Return the current time and day for system local timezone.</td></tr><tr><td valign="top"><a href="#make_ref-0">make_ref/0</a></td><td>    Create a new reference.</td></tr><tr><td valign="top"><a href="#map_get-2">map_get/2</a></td><td>    Get the value in <code>Map</code> associated with <code>Key</code>, if it exists.</td></tr><tr><td valign="top"><a href="#map_size-1">map_size/1</a></td><td>Returns the size of (i.e., the number of entries in) the map.</td></tr><tr><td valign="top"><a href="#max-2">max/2</a></td><td>    Return the maximum value of two terms.</td></tr><tr><td valign="top"><a href="#md5-1">md5/1</a></td><td>    Computes the MD5 hash of an input binary, as defined by
+https://www.ietf.org/rfc/rfc1321.txt.</td></tr><tr><td valign="top"><a href="#memory-1">memory/1</a></td><td>    Return the amount of memory (in bytes) used of the specified type.</td></tr><tr><td valign="top"><a href="#min-2">min/2</a></td><td>    Return the minimum value of two terms.</td></tr><tr><td valign="top"><a href="#monitor-2">monitor/2</a></td><td>    Create a monitor on a process or on a port.</td></tr><tr><td valign="top"><a href="#monotonic_time-1">monotonic_time/1</a></td><td>    Return the monotonic time in the specified units.</td></tr><tr><td valign="top"><a href="#open_port-2">open_port/2</a></td><td>    Open a port.</td></tr><tr><td valign="top"><a href="#pid_to_list-1">pid_to_list/1</a></td><td>    Create a string representing a pid.</td></tr><tr><td valign="top"><a href="#port_to_list-1">port_to_list/1</a></td><td>    Create a string representing a port.</td></tr><tr><td valign="top"><a href="#process_flag-2">process_flag/2</a></td><td>    Set a flag for the current process.</td></tr><tr><td valign="top"><a href="#process_info-2">process_info/2</a></td><td>    Return process information.</td></tr><tr><td valign="top"><a href="#processes-0">processes/0</a></td><td>    Return a list of all current processes.</td></tr><tr><td valign="top"><a href="#put-2">put/2</a></td><td>    Store a value with a given key in the process dictionary.</td></tr><tr><td valign="top"><a href="#ref_to_list-1">ref_to_list/1</a></td><td>    Create a string representing a reference.</td></tr><tr><td valign="top"><a href="#register-2">register/2</a></td><td>    Register a name for a given process.</td></tr><tr><td valign="top"><a href="#send-2">send/2</a></td><td>    Send a message to a given process.</td></tr><tr><td valign="top"><a href="#send_after-3">send_after/3</a></td><td>    Send Msg to Dest after Time ms.</td></tr><tr><td valign="top"><a href="#set_cookie-1">set_cookie/1</a></td><td>Set the cookie of this node.</td></tr><tr><td valign="top"><a href="#set_cookie-2">set_cookie/2</a></td><td>Set the cookie of a given node.</td></tr><tr><td valign="top"><a href="#spawn-1">spawn/1</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn-3">spawn/3</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#spawn_link-1">spawn_link/1</a></td><td>    Create a new process and link it.</td></tr><tr><td valign="top"><a href="#spawn_link-3">spawn_link/3</a></td><td>    Create a new process by calling exported Function from Module with Args
 and link it.</td></tr><tr><td valign="top"><a href="#spawn_monitor-1">spawn_monitor/1</a></td><td>    Create a new process and monitor it.</td></tr><tr><td valign="top"><a href="#spawn_monitor-3">spawn_monitor/3</a></td><td>    Create a new process by calling exported Function from Module with Args
-and monitor it.</td></tr><tr><td valign="top"><a href="#spawn_opt-2">spawn_opt/2</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn_opt-4">spawn_opt/4</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
+and monitor it.</td></tr><tr><td valign="top"><a href="#spawn_opt-2">spawn_opt/2</a></td><td>    Create a new process.</td></tr><tr><td valign="top"><a href="#spawn_opt-4">spawn_opt/4</a></td><td>    Create a new process by calling exported Function from Module with Args.</td></tr><tr><td valign="top"><a href="#split_binary-2">split_binary/2</a></td><td>Split a binary into two sub-binaries.</td></tr><tr><td valign="top"><a href="#start_timer-3">start_timer/3</a></td><td>    Start a timer, and send {timeout, TimerRef, Msg} to Dest after
 Time ms, where TimerRef is the reference returned from this function.</td></tr><tr><td valign="top"><a href="#system_flag-2">system_flag/2</a></td><td>    Update system flags.</td></tr><tr><td valign="top"><a href="#system_info-1">system_info/1</a></td><td>    Return system information.</td></tr><tr><td valign="top"><a href="#system_time-1">system_time/1</a></td><td>    Get the current system time in provided unit.</td></tr><tr><td valign="top"><a href="#term_to_binary-1">term_to_binary/1</a></td><td>Encode a term to a binary that can later be decoded with <code>binary_to_term/1</code>.</td></tr><tr><td valign="top"><a href="#timestamp-0">timestamp/0</a></td><td>Return the timestamp in <code>{MegaSec, Sec, MicroSec}</code> format.</td></tr><tr><td valign="top"><a href="#unique_integer-0">unique_integer/0</a></td><td>    Same as erlang:unique_integer([]).</td></tr><tr><td valign="top"><a href="#unique_integer-1">unique_integer/1</a></td><td>    Return a unique integer.</td></tr><tr><td valign="top"><a href="#universaltime-0">universaltime/0</a></td><td>Return the current time and day for UTC.</td></tr><tr><td valign="top"><a href="#unlink-1">unlink/1</a></td><td>    Unlink current process from a given process.</td></tr><tr><td valign="top"><a href="#unregister-1">unregister/1</a></td><td>    Lookup a process by name.</td></tr><tr><td valign="top"><a href="#whereis-1">whereis/1</a></td><td>    Lookup a process by name.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
@@ -573,6 +591,28 @@ get(Key::any()) -&gt; any()
 <p><code class="docutils literal notranslate"><span class="pre">Key</span></code>: key in the process dictionary<br /></p>
 <p>returns: value associated with this key or undefined</p>
 <p>Return a value associated with a given key in the process dictionary</p>
+<p><a name="get_cookie-0"></a></p>
+</section>
+<section id="get-cookie-0">
+<h3>get_cookie/0<a class="headerlink" href="#get-cookie-0" title="Link to this heading"></a></h3>
+<pre><code>
+get_cookie() -&gt; nocookie | atom()
+</code></pre>
+<br />
+<p>returns: The cookie used by this node</p>
+<p>Return the cookie used by this node or <code class="docutils literal notranslate"><span class="pre">nocookie</span></code> if
+distribution was not started</p>
+<p><a name="get_cookie-1"></a></p>
+</section>
+<section id="get-cookie-1">
+<h3>get_cookie/1<a class="headerlink" href="#get-cookie-1" title="Link to this heading"></a></h3>
+<pre><code>
+get_cookie(Node::node()) -&gt; nocookie | atom()
+</code></pre>
+<br />
+<p>returns: The cookie used to connect to another node</p>
+<p>Return the cookie used to connect to another node or <code class="docutils literal notranslate"><span class="pre">nocookie</span></code> if
+distribution was not started</p>
 <p><a name="get_module_info-1"></a></p>
 </section>
 <section id="get-module-info-1">
@@ -688,6 +728,16 @@ iolist_to_binary(IOList::iodata()) -&gt; binary()
 <p><code class="docutils literal notranslate"><span class="pre">IOList</span></code>: IO list to convert to binary<br /></p>
 <p>returns: a binary with the bytes of the IO list</p>
 <p>Convert an IO list to binary.</p>
+<p><a name="is_alive-0"></a></p>
+</section>
+<section id="is-alive-0">
+<h3>is_alive/0<a class="headerlink" href="#is-alive-0" title="Link to this heading"></a></h3>
+<pre><code>
+is_alive() -&gt; boolean()
+</code></pre>
+<br />
+<p>returns: true if current node is part of distribution</p>
+<p>Determine if current node is part of distribution</p>
 <p><a name="is_map-1"></a></p>
 </section>
 <section id="is-map-1">
@@ -924,10 +974,15 @@ https://www.erlang.org/doc/reference_manual/expressions.html#term-comparisons</p
 <section id="monitor-2">
 <h3>monitor/2<a class="headerlink" href="#monitor-2" title="Link to this heading"></a></h3>
 <pre><code>
-monitor(Type::process | port, Pid::pid()) -&gt; reference()
+monitor(Type::process, Pid::pid()) -&gt; reference()
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: type of monitor to create<br /><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid of the object to monitor<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: type of monitor to create<br /></p>
+<pre><code>
+monitor(Type::port, Port::port()) -&gt; reference()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Type</span></code>: type of monitor to create<br /></p>
 <p>returns: a monitor reference</p>
 <p>Create a monitor on a process or on a port.
 When the process or the port terminates, the following message is sent to
@@ -960,7 +1015,7 @@ systems the value may vary among UNIX systems (e.g., Linux, macOS, FreeBSD).</p>
 <section id="open-port-2">
 <h3>open_port/2<a class="headerlink" href="#open-port-2" title="Link to this heading"></a></h3>
 <pre><code>
-open_port(PortName::{spawn, iodata()}, Options::[any()] | map()) -&gt; pid()
+open_port(PortName::{spawn, iodata()}, Options::[any()] | map()) -&gt; port()
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">PortName</span></code>: Tuple {spawn, Name} identifying the port<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: Options, meaningful for the port<br /></p>
@@ -978,6 +1033,17 @@ pid_to_list(Pid::pid()) -&gt; string()
 <p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid to convert to a string<br /></p>
 <p>returns: a string representation of the pid</p>
 <p>Create a string representing a pid.</p>
+<p><a name="port_to_list-1"></a></p>
+</section>
+<section id="port-to-list-1">
+<h3>port_to_list/1<a class="headerlink" href="#port-to-list-1" title="Link to this heading"></a></h3>
+<pre><code>
+port_to_list(Port::port()) -&gt; string()
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: port to convert to a string<br /></p>
+<p>returns: a string representation of the port</p>
+<p>Create a string representing a port.</p>
 <p><a name="process_flag-2"></a></p>
 </section>
 <section id="process-flag-2">
@@ -1086,24 +1152,23 @@ ref_to_list(Ref::reference()) -&gt; string()
 <section id="register-2">
 <h3>register/2<a class="headerlink" href="#register-2" title="Link to this heading"></a></h3>
 <pre><code>
-register(Name::atom(), Pid::pid()) -&gt; true
+register(Name::atom(), PidOrPort::pid() | port()) -&gt; true
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name of the process to register<br /><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: pid of the process to register<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name of the process to register<br /><code class="docutils literal notranslate"><span class="pre">PidOrPort</span></code>: pid or port of the process to register<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
 <p>Register a name for a given process.
-Processes can be registered with several names.
-Unlike Erlang/OTP, ports are not distinguished from processes.
-Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the name is already registered.</p>
+Errors with <code class="docutils literal notranslate"><span class="pre">badarg</span></code> if the name is already registered or if the process
+is already registered.</p>
 <p><a name="send-2"></a></p>
 </section>
 <section id="send-2">
 <h3>send/2<a class="headerlink" href="#send-2" title="Link to this heading"></a></h3>
 <pre><code>
-send(Pid::pid(), Message) -&gt; Message
+send(Target::<a href="#type-send_destination">send_destination()</a>, Message) -&gt; Message
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: process to send the message to<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: message to send<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Message</span></code>: message to send<br /></p>
 <p>returns: the sent message</p>
 <p>Send a message to a given process</p>
 <p><a name="send_after-3"></a></p>
@@ -1117,6 +1182,26 @@ send_after(Time::non_neg_integer(), Dest::pid() | atom(), Msg::term()) -&gt; ref
 <p><code class="docutils literal notranslate"><span class="pre">Time</span></code>: time in milliseconds after which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Dest</span></code>: Pid or server name to which to send the message.<br /><code class="docutils literal notranslate"><span class="pre">Msg</span></code>: Message to send to Dest after Time ms.<br /></p>
 <p>returns: a reference that can be used to cancel the timer, if desired.</p>
 <p>Send Msg to Dest after Time ms.</p>
+<p><a name="set_cookie-1"></a></p>
+</section>
+<section id="set-cookie-1">
+<h3>set_cookie/1<a class="headerlink" href="#set-cookie-1" title="Link to this heading"></a></h3>
+<pre><code>
+set_cookie(Cookie::atom()) -&gt; ok
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Cookie</span></code>: the cookie to use to connect to this node<br /></p>
+<p>Set the cookie of this node. Fails if distribution was not started.</p>
+<p><a name="set_cookie-2"></a></p>
+</section>
+<section id="set-cookie-2">
+<h3>set_cookie/2<a class="headerlink" href="#set-cookie-2" title="Link to this heading"></a></h3>
+<pre><code>
+set_cookie(Node::node(), Cookie::atom()) -&gt; ok
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Node</span></code>: the node to set the cookie for<br /><code class="docutils literal notranslate"><span class="pre">Cookie</span></code>: the cookie to use to connect to Node<br /></p>
+<p>Set the cookie of a given node. Fails if distribution was not started.</p>
 <p><a name="spawn-1"></a></p>
 </section>
 <section id="spawn-1">
@@ -1207,6 +1292,18 @@ spawn_opt(Module::module(), Function::atom(), Args::[any()], Options::[<a href="
 <p><code class="docutils literal notranslate"><span class="pre">Module</span></code>: module of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Function</span></code>: name of the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Args</span></code>: arguments to pass to the function to create a process from<br /><code class="docutils literal notranslate"><span class="pre">Options</span></code>: additional options.<br /></p>
 <p>returns: pid of the new process</p>
 <p>Create a new process by calling exported Function from Module with Args.</p>
+<p><a name="split_binary-2"></a></p>
+</section>
+<section id="split-binary-2">
+<h3>split_binary/2<a class="headerlink" href="#split-binary-2" title="Link to this heading"></a></h3>
+<pre><code>
+split_binary(Bin::binary(), Pos::non_neg_integer()) -&gt; {binary(), binary()}
+</code></pre>
+<br />
+<p><code class="docutils literal notranslate"><span class="pre">Bin</span></code>: binary to split<br /><code class="docutils literal notranslate"><span class="pre">Pos</span></code>: position to split the binary, from 0 to <code class="docutils literal notranslate"><span class="pre">byte_size(Bin)</span></code><br /></p>
+<p>returns: A tuple with two subbinaries</p>
+<p>Split a binary into two sub-binaries. This operation is not destructive
+and will create two new binaries.</p>
 <p><a name="start_timer-3"></a></p>
 </section>
 <section id="start-timer-3">
@@ -1372,7 +1469,7 @@ Errors with <code class="docutils literal notranslate"><span class="pre">badarg<
 <section id="whereis-1">
 <h3>whereis/1<a class="headerlink" href="#whereis-1" title="Link to this heading"></a></h3>
 <pre><code>
-whereis(Name::atom()) -&gt; pid() | undefined
+whereis(Name::atom()) -&gt; pid() | port() | undefined
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: name of the process to locate<br /></p>
@@ -1386,8 +1483,8 @@ whereis(Name::atom()) -&gt; pid() | undefined
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="crypto.html" class="btn btn-neutral float-left" title="Module crypto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="erts_debug.html" class="btn btn-neutral float-right" title="Module erts_debug" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="erl_epmd.html" class="btn btn-neutral float-left" title="Module erl_epmd" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="erpc.html" class="btn btn-neutral float-right" title="Module erpc" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

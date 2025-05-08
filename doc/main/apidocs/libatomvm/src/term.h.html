@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>term.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>term.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/term.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for term.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-195d98dfc6e0554f5c01e7a61e13ebc34e1fa24e.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-5aeda2c07cc98b532b7d96db667ace095138f7be.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -200,7 +203,7 @@
     &quot;16&quot; [label=&quot;refc_binary.h&quot; tooltip=&quot;refc_binary.h&quot;]
     &quot;11&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;14&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;19&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;20&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;17&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;4&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;6&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
@@ -213,7 +216,8 @@
     &quot;2&quot; [label=&quot;sys/types.h&quot; tooltip=&quot;sys/types.h&quot;]
     &quot;7&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;10&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
-    &quot;20&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;21&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;19&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
     &quot;5&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;13&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;16&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -223,9 +227,9 @@
     &quot;14&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;17&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -235,8 +239,9 @@
     &quot;18&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;18&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -252,275 +257,298 @@
     &quot;10&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
 <p>This graph shows which files directly or indirectly include term.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-8311a5d17ff54e071435be455bd920f56fa712ce.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-f175849576a3c7e481c22fe5a9cdb47d922b91a2.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;6&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
-    &quot;20&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot;]
-    &quot;23&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot;]
+    &quot;21&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot;]
+    &quot;24&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot;]
     &quot;15&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/erl_nif_priv.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/erl_nif_priv.h&quot;]
     &quot;7&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
-    &quot;34&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot;]
-    &quot;51&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot;]
-    &quot;45&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot;]
-    &quot;46&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot;]
+    &quot;35&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot;]
+    &quot;53&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot;]
+    &quot;46&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot;]
+    &quot;47&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot;]
     &quot;8&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot;]
     &quot;2&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot;]
     &quot;9&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.h&quot;]
     &quot;10&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.h&quot;]
-    &quot;53&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot;]
-    &quot;27&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
-    &quot;52&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot;]
-    &quot;40&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot;]
-    &quot;35&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot;]
+    &quot;55&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot;]
+    &quot;28&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
+    &quot;54&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot;]
+    &quot;41&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot;]
+    &quot;36&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot;]
     &quot;14&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/memory.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/memory.c&quot;]
-    &quot;39&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot;]
-    &quot;33&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot;]
+    &quot;40&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot;]
+    &quot;34&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot;]
     &quot;11&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
-    &quot;29&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot;]
-    &quot;26&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
-    &quot;36&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot;]
-    &quot;21&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
-    &quot;25&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
-    &quot;28&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
-    &quot;24&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot;]
+    &quot;30&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot;]
+    &quot;27&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
+    &quot;37&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot;]
+    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot;]
+    &quot;48&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.h&quot;]
+    &quot;22&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
+    &quot;26&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
+    &quot;29&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
+    &quot;25&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot;]
     &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.h&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;55&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/exportedfunction.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/exportedfunction.h&quot;]
+    &quot;57&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/exportedfunction.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/exportedfunction.h&quot;]
     &quot;13&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.c&quot;]
     &quot;12&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.h&quot;]
     &quot;5&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
-    &quot;56&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot;]
-    &quot;50&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot;]
-    &quot;49&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot;]
-    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot;]
-    &quot;48&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot;]
-    &quot;30&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot;]
+    &quot;58&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.h&quot;]
+    &quot;52&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot;]
+    &quot;51&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot;]
+    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot;]
+    &quot;50&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot;]
+    &quot;31&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot;]
     &quot;4&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bitstring.c&quot;]
     &quot;3&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bitstring.h&quot;]
-    &quot;57&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/overflow_helpers.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/overflow_helpers.h&quot;]
-    &quot;43&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot;]
-    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
-    &quot;37&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot;]
-    &quot;32&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
-    &quot;31&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot;]
-    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
-    &quot;38&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot;]
-    &quot;19&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
-    &quot;54&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot;]
-    &quot;44&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot;]
-    &quot;41&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
-    &quot;42&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
-    &quot;22&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
-    &quot;47&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.h&quot;]
-    &quot;23&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;59&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/overflow_helpers.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/overflow_helpers.h&quot;]
+    &quot;44&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot;]
+    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
+    &quot;38&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot;]
+    &quot;33&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
+    &quot;32&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot;]
+    &quot;19&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
+    &quot;39&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot;]
+    &quot;20&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
+    &quot;56&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot;]
+    &quot;45&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot;]
+    &quot;42&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
+    &quot;43&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
+    &quot;23&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
+    &quot;49&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.h&quot;]
+    &quot;24&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;15&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;15&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;51&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;46&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;15&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;46&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;53&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;46&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;47&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;9&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;9&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;9&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;52&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;52&quot; -&gt; &quot;53&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;39&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;24&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;54&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;54&quot; -&gt; &quot;55&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;40&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;46&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;47&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;53&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;52&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;55&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;56&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;49&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;55&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;57&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;58&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;50&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;57&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;55&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;55&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;55&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;55&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;55&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;59&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;56&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;57&quot; -&gt; &quot;56&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;56&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;56&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;56&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;50&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;49&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;51&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;52&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;48&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;30&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;58&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;58&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;58&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;58&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;52&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;51&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;53&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;54&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;56&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;50&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;31&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;3&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;57&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;57&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;31&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;59&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;59&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;38&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;54&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;54&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;54&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;54&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;54&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;38&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;32&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;39&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;56&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;56&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;56&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;56&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;56&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;50&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -534,13 +562,23 @@
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_INTEGER_TAG">
-<span class="target" id="libatomvmterm_8h_1aa42228a7890a684dbbd5cf33aa1ec5fa"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_INTEGER_TAG</span></span></span> <span class="pre">0xF</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_INTEGER_TAG" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_IMMED_TAG_MASK">
+<span class="target" id="libatomvmterm_8h_1aa7b7b9fec629f3cc3691f5744befbc13"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_IMMED_TAG_MASK</span></span></span> <span class="pre">0xF</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_IMMED_TAG_MASK" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_CATCH_TAG">
-<span class="target" id="libatomvmterm_8h_1a9ad4d037b891f1786972da85e2160eb1"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_CATCH_TAG</span></span></span> <span class="pre">0x1B</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_CATCH_TAG" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_PID_TAG">
+<span class="target" id="libatomvmterm_8h_1ade520144468aab8f14e2068535936aea"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_PID_TAG</span></span></span> <span class="pre">0x3</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_PID_TAG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_PORT_TAG">
+<span class="target" id="libatomvmterm_8h_1a32dc9755eaf19638e01a5204e3fb6f2a"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_PORT_TAG</span></span></span> <span class="pre">0x7</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_PORT_TAG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_INTEGER_TAG">
+<span class="target" id="libatomvmterm_8h_1aa42228a7890a684dbbd5cf33aa1ec5fa"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_INTEGER_TAG</span></span></span> <span class="pre">0xF</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_INTEGER_TAG" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -579,6 +617,11 @@
 <dd></dd></dl>
 
 <dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_CATCH_TAG">
+<span class="target" id="libatomvmterm_8h_1a9ad4d037b891f1786972da85e2160eb1"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_CATCH_TAG</span></span></span> <span class="pre">0x1B</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_CATCH_TAG" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_REFC_BINARY">
 <span class="target" id="libatomvmterm_8h_1a337619d3e38c1ce80e7a6fa3ce1ee0f2"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_REFC_BINARY</span></span></span> <span class="pre">0x20</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_REFC_BINARY" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -589,13 +632,33 @@
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_MAP">
-<span class="target" id="libatomvmterm_8h_1accea75ae6c8097ad86c750fa64521d02"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_MAP</span></span></span> <span class="pre">0x3C</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_MAP" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_SUB_BINARY">
+<span class="target" id="libatomvmterm_8h_1a68df9325323d217fa5e90ee2cc310707"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_SUB_BINARY</span></span></span> <span class="pre">0x28</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_SUB_BINARY" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
-<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_SUB_BINARY">
-<span class="target" id="libatomvmterm_8h_1a68df9325323d217fa5e90ee2cc310707"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_SUB_BINARY</span></span></span> <span class="pre">0x28</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_SUB_BINARY" title="Link to this definition"></a><br /></dt>
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_MAP">
+<span class="target" id="libatomvmterm_8h_1accea75ae6c8097ad86c750fa64521d02"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_MAP</span></span></span> <span class="pre">0x2C</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_MAP" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_THING">
+<span class="target" id="libatomvmterm_8h_1a9292c85ad52ca7d220ca6468d8a91457"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_EXTERNAL_THING</span></span></span> <span class="pre">0x30</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_THING" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PID">
+<span class="target" id="libatomvmterm_8h_1a14fbdfab5cdf5ba177067d12242e6c25"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_EXTERNAL_PID</span></span></span> <span class="pre">0x30</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PORT">
+<span class="target" id="libatomvmterm_8h_1a391f92a779104465248406c9df3528ec"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_EXTERNAL_PORT</span></span></span> <span class="pre">0x34</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PORT" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_REF">
+<span class="target" id="libatomvmterm_8h_1a1ee4d23ee088ac2ecc553cda0c36a256"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_BOXED_EXTERNAL_REF</span></span></span> <span class="pre">0x38</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_REF" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -639,6 +702,11 @@
 <dd></dd></dl>
 
 <dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.TERM_MAX_LOCAL_PROCESS_ID">
+<span class="target" id="libatomvmterm_8h_1a863c1a21aa6e544072cc05547929d735"></span><span class="sig-name descname"><span class="n"><span class="pre">TERM_MAX_LOCAL_PROCESS_ID</span></span></span> <span class="pre">((1</span> <span class="pre">&lt;&lt;</span> <span class="pre">28)</span> <span class="pre">-</span> <span class="pre">1)</span><a class="headerlink" href="#c.libAtomVM.term.h.TERM_MAX_LOCAL_PROCESS_ID" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.BINARY_HEADER_SIZE">
 <span class="target" id="libatomvmterm_8h_1a43754dc6b12e505cd63a6f8a59fbd04b"></span><span class="sig-name descname"><span class="n"><span class="pre">BINARY_HEADER_SIZE</span></span></span> <span class="pre">2</span><a class="headerlink" href="#c.libAtomVM.term.h.BINARY_HEADER_SIZE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -671,6 +739,21 @@
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.REF_SIZE">
 <span class="target" id="libatomvmterm_8h_1afd9d34c95799384d99b83b115f172f96"></span><span class="sig-name descname"><span class="n"><span class="pre">REF_SIZE</span></span></span> <span class="pre">((int)</span> <span class="pre">((sizeof(uint64_t)</span> <span class="pre">/</span> <span class="pre">sizeof(</span><a class="reference internal" href="../types.html#libatomvmterm__typedef_8h_1a603769ce1e8eeb1faa458d7e6cf904d8"><span class="std std-ref"><span class="pre">term</span></span></a><span class="pre">))</span> <span class="pre">+</span> <span class="pre">1))</span><a class="headerlink" href="#c.libAtomVM.term.h.REF_SIZE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.EXTERNAL_PID_SIZE">
+<span class="target" id="libatomvmterm_8h_1a6c5b67bb94f47e5a72bb4519c5d4e877"></span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_PID_SIZE</span></span></span> <span class="pre">5</span><a class="headerlink" href="#c.libAtomVM.term.h.EXTERNAL_PID_SIZE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.EXTERNAL_PORT_SIZE">
+<span class="target" id="libatomvmterm_8h_1a7ddb3a54a72af2e9d056806af97cc050"></span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_PORT_SIZE</span></span></span> <a class="reference internal" href="#libatomvmterm_8h_1a6c5b67bb94f47e5a72bb4519c5d4e877"><span class="std std-ref"><span class="pre">EXTERNAL_PID_SIZE</span></span></a><a class="headerlink" href="#c.libAtomVM.term.h.EXTERNAL_PORT_SIZE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.EXTERNAL_REF_SIZE">
+<span class="target" id="libatomvmterm_8h_1a0f5bcc0b10171b815352951306be7c76"></span><span class="sig-name descname"><span class="n"><span class="pre">EXTERNAL_REF_SIZE</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">words</span></span><span class="sig-paren">)</span> <span class="pre">(3</span> <span class="pre">+</span> <span class="pre">words)</span><a class="headerlink" href="#c.libAtomVM.term.h.EXTERNAL_REF_SIZE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -740,12 +823,17 @@
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.REF_AS_CSTRING_LEN">
-<span class="target" id="libatomvmterm_8h_1ab7e4d960d56799abcd9cb81e81fd074f"></span><span class="sig-name descname"><span class="n"><span class="pre">REF_AS_CSTRING_LEN</span></span></span> <span class="pre">33</span><a class="headerlink" href="#c.libAtomVM.term.h.REF_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmterm_8h_1ab7e4d960d56799abcd9cb81e81fd074f"></span><span class="sig-name descname"><span class="n"><span class="pre">REF_AS_CSTRING_LEN</span></span></span> <span class="pre">70</span><a class="headerlink" href="#c.libAtomVM.term.h.REF_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.PID_AS_CSTRING_LEN">
-<span class="target" id="libatomvmterm_8h_1a5976717b4034217a9879116f7ebebdc8"></span><span class="sig-name descname"><span class="n"><span class="pre">PID_AS_CSTRING_LEN</span></span></span> <span class="pre">17</span><a class="headerlink" href="#c.libAtomVM.term.h.PID_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmterm_8h_1a5976717b4034217a9879116f7ebebdc8"></span><span class="sig-name descname"><span class="n"><span class="pre">PID_AS_CSTRING_LEN</span></span></span> <span class="pre">32</span><a class="headerlink" href="#c.libAtomVM.term.h.PID_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c macro">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.PORT_AS_CSTRING_LEN">
+<span class="target" id="libatomvmterm_8h_1af3e5779fe89ad0751c51fb70f26ba8e5"></span><span class="sig-name descname"><span class="n"><span class="pre">PORT_AS_CSTRING_LEN</span></span></span> <span class="pre">37</span><a class="headerlink" href="#c.libAtomVM.term.h.PORT_AS_CSTRING_LEN" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c macro">
@@ -1040,7 +1128,7 @@
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_size_from_boxed_header">
 <span class="target" id="libatomvmterm_8h_1aee9a7c3894db9c273dcba80f33ba378e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_size_from_boxed_header</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">header</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_size_from_boxed_header" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns size of a boxed term from its header. </p>
-<p>Returns the size that is stored in boxed term header most significant bits. </p>
+<p>Returns the size that is stored in boxed term header most significant bits for variable size boxed terms. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1090,7 +1178,24 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_refc_binary">
 <span class="target" id="libatomvmterm_8h_1aa156f5e789e8ba2f137ee66c9039f191"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_refc_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_refc_binary" title="Link to this definition"></a><br /></dt>
-<dd><p>Checks if a term is a binary. </p>
+<dd><p>Checks if a term is a refc binary. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a ref-counted binary, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_heap_binary">
+<span class="target" id="libatomvmterm_8h_1a04fe083cda562d5e5c5eec387ad5e4db"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_heap_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_heap_binary" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a heap binary. </p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a binary stored on the heap, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1176,6 +1281,57 @@
 <dd></dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_local_pid">
+<span class="target" id="libatomvmterm_8h_1a423b78f962016bd34d620134d18cd53f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_local_pid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_local_pid" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a local pid. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a process id, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_external_pid">
+<span class="target" id="libatomvmterm_8h_1a768566ac02f17d1ac33f85ce8f73486c"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_external_pid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_external_pid" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is an external pid. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is an external process id, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_external">
+<span class="target" id="libatomvmterm_8h_1ad7aab2f8116c0de81c1b14536a35325d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_external</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_external" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is an external thing. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is an external thing, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_pid">
 <span class="target" id="libatomvmterm_8h_1ac4663436f587f5231adcc8304e68533b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_pid</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_pid" title="Link to this definition"></a><br /></dt>
 <dd><p>Checks if a term is a pid. </p>
@@ -1193,10 +1349,112 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_local_port">
+<span class="target" id="libatomvmterm_8h_1a676c7fd8c492e2d0fe8e0786c12f8fa7"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_local_port</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_local_port" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a local port. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a local port, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_external_port">
+<span class="target" id="libatomvmterm_8h_1ae066aa87fe58bb167c1c9c3507f7d9e3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_external_port</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_external_port" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is an external port. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is an external port, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_port">
+<span class="target" id="libatomvmterm_8h_1a91afae48444331784cb44fc1f8b40cd8"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_port</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_port" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a port. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a port, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_local_pid_or_port">
+<span class="target" id="libatomvmterm_8h_1a468de213e39e5b726ea8cf7f4dc3a769"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_local_pid_or_port</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_local_pid_or_port" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a local port or a local pid. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a local port or a local process id, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_tuple">
 <span class="target" id="libatomvmterm_8h_1a3c087f9a596a8d02590b5fbc990caa0d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_tuple</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_tuple" title="Link to this definition"></a><br /></dt>
 <dd><p>Checks if a term is a tuple. </p>
 <p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a tuple, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_local_reference">
+<span class="target" id="libatomvmterm_8h_1a82fca49ef986d9ef6fda27933e4be80a"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_local_reference</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_local_reference" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is a local reference. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a local reference, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> – the term that will be checked. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">true</span></code> if check succeeds, <code class="docutils literal notranslate"><span class="pre">false</span></code> otherwise. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_is_external_reference">
+<span class="target" id="libatomvmterm_8h_1a0d78ff4223bf3e015a30b0c5aa35f692"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_external_reference</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_is_external_reference" title="Link to this definition"></a><br /></dt>
+<dd><p>Checks if a term is an external reference. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a local reference, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1405,7 +1663,7 @@
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_to_local_process_id">
 <span class="target" id="libatomvmterm_8h_1a20b67853b542f85c35e7f99756deb810"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_local_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_to_local_process_id" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets process table index. </p>
+<dd><p>Gets process table index for a local pid or port. </p>
 <p>Returns local process table index for given atom term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1529,6 +1787,23 @@
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_from_local_process_id">
 <span class="target" id="libatomvmterm_8h_1afb356b83b622de33c5e38189b9ac2c22"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_from_local_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">local_process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_from_local_process_id" title="Link to this definition"></a><br /></dt>
 <dd><p>Term from local process id. </p>
+<p>Returns a term for a given local process table index. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>local_process_id</strong> – the local process table index that will be converted to a term. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a term that encapsulates a PID. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_port_from_local_process_id">
+<span class="target" id="libatomvmterm_8h_1aba432d7562f884fb3cac472bf9c4d5a3"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_port_from_local_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">local_process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_port_from_local_process_id" title="Link to this definition"></a><br /></dt>
+<dd><p>Port term from local process id. </p>
 <p>Returns a term for a given local process table index. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1802,6 +2077,177 @@
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_to_ref_ticks">
 <span class="target" id="libatomvmterm_8h_1ad31047282c09cee9d7b644faef5d37d1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_ref_ticks</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">rt</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_to_ref_ticks" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_make_external_process_id">
+<span class="target" id="libatomvmterm_8h_1a39bc5f03210c362c3f083f5df94146f4"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_make_external_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">node</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">serial</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">creation</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_make_external_process_id" title="Link to this definition"></a><br /></dt>
+<dd><p>Make an external pid term from node, process_id, serial and creation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – name of the node (atom) </p></li>
+<li><p><strong>process_id</strong> – process id on that node </p></li>
+<li><p><strong>serial</strong> – serial of process id on that node </p></li>
+<li><p><strong>creation</strong> – creation of that node </p></li>
+<li><p><strong>heap</strong> – the heap to allocate memory in </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an external heap term created using given parameters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_make_external_port_number">
+<span class="target" id="libatomvmterm_8h_1a0ec89b6d1cb8328539887505afef01f0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_make_external_port_number</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">node</span></span>, <span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">number</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">creation</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_make_external_port_number" title="Link to this definition"></a><br /></dt>
+<dd><p>Get a port term from node, number and creation. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – name of the node (atom) </p></li>
+<li><p><strong>number</strong> – port number on that node </p></li>
+<li><p><strong>creation</strong> – creation of that node </p></li>
+<li><p><strong>heap</strong> – the heap to allocate memory in </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an external heap term created using given parameters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_node">
+<span class="target" id="libatomvmterm_8h_1ac31c42c228da7b28b31657daa409a057"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_node</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_node" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the name of a node for a given external thing. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the name of the node </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_node_creation">
+<span class="target" id="libatomvmterm_8h_1ae262d8b1d4a2040f7026147eddf0263f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_node_creation</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_node_creation" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the creation for a given external thing. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the serial of the external pid </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_pid_process_id">
+<span class="target" id="libatomvmterm_8h_1ad4f2ea919162a90b67b9cc2c26c5b58e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_pid_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_pid_process_id" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the process id of an external pid. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external pid </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the process id of the external pid </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_pid_serial">
+<span class="target" id="libatomvmterm_8h_1a9193ef72a62129e24b23fd05c3681abc"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_pid_serial</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_pid_serial" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the serial of an external pid. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the serial of the external pid </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_port_number">
+<span class="target" id="libatomvmterm_8h_1a3cadc721591f48d448640d71b9c33c41"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_port_number</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_port_number" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the port number of an external port. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external port </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the port number of the external port </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_make_external_reference">
+<span class="target" id="libatomvmterm_8h_1a901b6da4145da39f2fe14211432c889d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_make_external_reference</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">node</span></span>, <span class="n"><span class="pre">uint16_t</span></span><span class="w"> </span><span class="n"><span class="pre">len</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">data</span></span>, <span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="n"><span class="pre">creation</span></span>, <span class="n"><span class="pre">Heap</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">heap</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_make_external_reference" title="Link to this definition"></a><br /></dt>
+<dd><p>Make an external reference term from node, creation, number of words and words. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – name of the node (atom) </p></li>
+<li><p><strong>len</strong> – number of words (1..5) </p></li>
+<li><p><strong>data</strong> – words </p></li>
+<li><p><strong>creation</strong> – creation of that node </p></li>
+<li><p><strong>heap</strong> – the heap to allocate memory in </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>an external heap term created using given parameters. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_reference_len">
+<span class="target" id="libatomvmterm_8h_1ae1c035fed9b7209e7fa70b74c78c5340"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_reference_len</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_reference_len" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the number of words of an external reference. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the number of words of the external reference (from 1 to 5) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.term.h.term_get_external_reference_words">
+<span class="target" id="libatomvmterm_8h_1acecd175f6989ec4a873fce075803d89d"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">term_get_external_reference_words</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.term.h.term_get_external_reference_words" title="Link to this definition"></a><br /></dt>
+<dd><p>Get the words of an external reference. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>term</strong> – external term </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a pointer to (len) words of the external reference </p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.term.h.term_alloc_tuple">

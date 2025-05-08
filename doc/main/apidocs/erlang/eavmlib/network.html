@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module network &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module network &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,14 +17,14 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/network.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Module network_fsm" href="network_fsm.html" />
-    <link rel="prev" title="Module ledc" href="ledc.html" /> 
+    <link rel="prev" title="Module mdns" href="mdns.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -69,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="avm_pubsub.html">Module avm_pubsub</a></li>
 <li class="toctree-l4"><a class="reference internal" href="console.html">Module console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="emscripten.html">Module emscripten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="epmd.html">Module epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp.html">Module esp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gpio.html">Module gpio</a></li>
@@ -76,6 +78,7 @@
 <li class="toctree-l4"><a class="reference internal" href="i2c.html">Module i2c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="json_encoder.html">Module json_encoder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ledc.html">Module ledc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mdns.html">Module mdns</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Module network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="network_fsm.html">Module network_fsm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pico.html">Module pico</a></li>
@@ -83,6 +86,7 @@
 <li class="toctree-l4"><a class="reference internal" href="spi.html">Module spi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timestamp_util.html">Module timestamp_util</a></li>
 <li class="toctree-l4"><a class="reference internal" href="uart.html">Module uart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="websocket.html">Module websocket</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#alisp">alisp</a></li>
@@ -175,7 +179,7 @@ ap_sta_disconnected_config() = {sta_disconnected, fun((<a href="#type-mac">mac()
 <section id="ap-sta-ip-assigned-config">
 <h3><a name="type-ap_sta_ip_assigned_config">ap_sta_ip_assigned_config()</a><a class="headerlink" href="#ap-sta-ip-assigned-config" title="Link to this heading"></a></h3>
 <pre><code>
-ap_sta_ip_assigned_config() = {sta_ip_assigned, fun((<a href="#type-ipv4_address">ipv4_address()</a>) -&gt; term())}
+ap_sta_ip_assigned_config() = {sta_ip_assigned, fun((<a href="/__w/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip4_address">inet:ip4_address()</a>) -&gt; term())}
 </code></pre>
 </section>
 <section id="ap-started-config">
@@ -237,16 +241,10 @@ ghz5_80mhz_channel() = 42 | 58 | 74 | 90 | 106 | 122 | 138 | 155 | 171
 ip_info() = <a href="#type-ipv4_info">ipv4_info()</a>
 </code></pre>
 </section>
-<section id="ipv4-address">
-<h3><a name="type-ipv4_address">ipv4_address()</a><a class="headerlink" href="#ipv4-address" title="Link to this heading"></a></h3>
-<pre><code>
-ipv4_address() = {<a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>, <a href="#type-octet">octet()</a>}
-</code></pre>
-</section>
 <section id="ipv4-info">
 <h3><a name="type-ipv4_info">ipv4_info()</a><a class="headerlink" href="#ipv4-info" title="Link to this heading"></a></h3>
 <pre><code>
-ipv4_info() = {IPAddress::<a href="#type-ipv4_address">ipv4_address()</a>, NetMask::<a href="#type-ipv4_address">ipv4_address()</a>, Gateway::<a href="#type-ipv4_address">ipv4_address()</a>}
+ipv4_info() = {IPAddress::<a href="/__w/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip4_address">inet:ip4_address()</a>, NetMask::<a href="/__w/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip4_address">inet:ip4_address()</a>, Gateway::<a href="/__w/AtomVM/AtomVM/build/doc/edoc/kernel/doc/inet.md#type-ip4_address">inet:ip4_address()</a>}
 </code></pre>
 </section>
 <section id="mac">
@@ -255,16 +253,34 @@ ipv4_info() = {IPAddress::<a href="#type-ipv4_address">ipv4_address()</a>, NetMa
 mac() = binary()
 </code></pre>
 </section>
+<section id="mdns-config">
+<h3><a name="type-mdns_config">mdns_config()</a><a class="headerlink" href="#mdns-config" title="Link to this heading"></a></h3>
+<pre><code>
+mdns_config() = {mdns, [<a href="#type-mdns_config_property">mdns_config_property()</a>]}
+</code></pre>
+</section>
+<section id="mdns-config-property">
+<h3><a name="type-mdns_config_property">mdns_config_property()</a><a class="headerlink" href="#mdns-config-property" title="Link to this heading"></a></h3>
+<pre><code>
+mdns_config_property() = <a href="#type-mdns_hostname_config">mdns_hostname_config()</a> | <a href="#type-mdns_ttl_config">mdns_ttl_config()</a>
+</code></pre>
+</section>
+<section id="mdns-hostname-config">
+<h3><a name="type-mdns_hostname_config">mdns_hostname_config()</a><a class="headerlink" href="#mdns-hostname-config" title="Link to this heading"></a></h3>
+<pre><code>
+mdns_hostname_config() = {host, string() | binary()}
+</code></pre>
+</section>
+<section id="mdns-ttl-config">
+<h3><a name="type-mdns_ttl_config">mdns_ttl_config()</a><a class="headerlink" href="#mdns-ttl-config" title="Link to this heading"></a></h3>
+<pre><code>
+mdns_ttl_config() = {ttl, pos_integer()}
+</code></pre>
+</section>
 <section id="network-config">
 <h3><a name="type-network_config">network_config()</a><a class="headerlink" href="#network-config" title="Link to this heading"></a></h3>
 <pre><code>
-network_config() = [<a href="#type-sta_config">sta_config()</a> | <a href="#type-ap_config">ap_config()</a> | <a href="#type-sntp_config">sntp_config()</a>]
-</code></pre>
-</section>
-<section id="octet">
-<h3><a name="type-octet">octet()</a><a class="headerlink" href="#octet" title="Link to this heading"></a></h3>
-<pre><code>
-octet() = 0..255
+network_config() = [<a href="#type-sta_config">sta_config()</a> | <a href="#type-ap_config">ap_config()</a> | <a href="#type-sntp_config">sntp_config()</a> | <a href="#type-mdns_config">mdns_config()</a>]
 </code></pre>
 </section>
 <section id="psk-config">
@@ -484,7 +500,7 @@ changes in the network.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="ledc.html" class="btn btn-neutral float-left" title="Module ledc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mdns.html" class="btn btn-neutral float-left" title="Module mdns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="network_fsm.html" class="btn btn-neutral float-right" title="Module network_fsm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

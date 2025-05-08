@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module socket &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module socket &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,13 +17,13 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/estdlib/socket.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Module ssl" href="ssl.html" />
+    <link rel="next" title="Module socket_dist" href="socket_dist.html" />
     <link rel="prev" title="Module sets" href="sets.html" /> 
 </head>
 
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -63,12 +64,16 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../../../api-reference-documentation.html#erlang-libraries">Erlang Libraries</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../../../api-reference-documentation.html#estdlib">estdlib</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="README.html">The estdlib library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="application.html">Module application</a></li>
 <li class="toctree-l4"><a class="reference internal" href="base64.html">Module base64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="binary.html">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="calendar.html">Module calendar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="crypto.html">Module crypto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_util.html">Module dist_util</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erl_epmd.html">Module erl_epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erlang.html">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="erpc.html">Module erpc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.html">Module ets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gen_event.html">Module gen_event</a></li>
@@ -80,15 +85,20 @@
 <li class="toctree-l4"><a class="reference internal" href="init.html">Module init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io.html">Module io</a></li>
 <li class="toctree-l4"><a class="reference internal" href="io_lib.html">Module io_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="kernel.html">Module kernel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="lists.html">Module lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="logger.html">Module logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="maps.html">Module maps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="math.html">Module math</a></li>
 <li class="toctree-l4"><a class="reference internal" href="net.html">Module net</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel.html">Module net_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="net_kernel_sup.html">Module net_kernel_sup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="queue.html">Module queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="sets.html">Module sets</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist.html">Module socket_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="socket_dist_controller.html">Module socket_dist_controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="supervisor.html">Module supervisor</a></li>
@@ -154,6 +164,12 @@ domain() = inet
 in_addr() = {0..255, 0..255, 0..255, 0..255}
 </code></pre>
 </section>
+<section id="ip-mreq">
+<h3><a name="type-ip_mreq">ip_mreq()</a><a class="headerlink" href="#ip-mreq" title="Link to this heading"></a></h3>
+<pre><code>
+ip_mreq() = #{multiaddr =&gt; <a href="#type-in_addr">in_addr()</a>, interface =&gt; <a href="#type-in_addr">in_addr()</a>}
+</code></pre>
+</section>
 <section id="port-number">
 <h3><a name="type-port_number">port_number()</a><a class="headerlink" href="#port-number" title="Link to this heading"></a></h3>
 <pre><code>
@@ -185,7 +201,7 @@ sockaddr_in() = #{family =&gt; inet, port =&gt; <a href="#type-port_number">port
 <section id="socket-option">
 <h3><a name="type-socket_option">socket_option()</a><a class="headerlink" href="#socket-option" title="Link to this heading"></a></h3>
 <pre><code>
-socket_option() = {socket, reuseaddr | linger | type} | {otp, recvbuf}
+socket_option() = {socket, reuseaddr | linger | type} | {otp, recvbuf} | {ip, add_membership}
 </code></pre>
 </section>
 <section id="type">
@@ -216,7 +232,7 @@ accept(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Connection::<a hr
 <section id="accept-2">
 <h3>accept/2<a class="headerlink" href="#accept-2" title="Link to this heading"></a></h3>
 <pre><code>
-accept(Socket::<a href="#type-socket">socket()</a>, Timeout::timeout()) -&gt; {ok, Connection::<a href="#type-socket">socket()</a>} | {error, Reason::term()}
+accept(Socket::<a href="#type-socket">socket()</a>, Timeout::timeout() | nowait | reference()) -&gt; {ok, Connection::<a href="#type-socket">socket()</a>} | {select, {select_info, accept, reference()}} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: timeout (in milliseconds)<br /></p>
@@ -225,8 +241,8 @@ accept(Socket::<a href="#type-socket">socket()</a>, Timeout::timeout()) -&gt; {o
 <p>Wait for the socket to accept a connection.  The socket should
 be set to listen for connections.</p>
 <p>Note that this function will block until a connection is made
-from a client.  Typically, users will spawn a call to <code class="docutils literal notranslate"><span class="pre">accept</span></code>
-in a separate process.</p>
+from a client, unless <code class="docutils literal notranslate"><span class="pre">nowait</span></code> or a reference is passed as <code class="docutils literal notranslate"><span class="pre">Timeout</span></code>.
+Typically, users will spawn a call to <code class="docutils literal notranslate"><span class="pre">accept</span></code> in a separate process.</p>
 <p>Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">ConnectedSocket}</span> <span class="pre">=</span> <span class="pre">socket:accept(ListeningSocket)</span></code></p>
 <p><a name="bind-2"></a></p>
@@ -377,7 +393,7 @@ recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer()) -&g
 <section id="recv-3">
 <h3>recv/3<a class="headerlink" href="#recv-3" title="Link to this heading"></a></h3>
 <pre><code>
-recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, Data::binary()} | {error, Reason::term()}
+recv(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout() | nowait | reference()) -&gt; {ok, Data::binary()} | {select, {select_info, recvfrom, reference()}} | {select, {{select_info, recvfrom, reference()}, Data::binary()}} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /><code class="docutils literal notranslate"><span class="pre">Length</span></code>: number of bytes to receive<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: timeout (in milliseconds)<br /></p>
@@ -409,7 +425,7 @@ recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer())
 <section id="recvfrom-3">
 <h3>recvfrom/3<a class="headerlink" href="#recvfrom-3" title="Link to this heading"></a></h3>
 <pre><code>
-recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout()) -&gt; {ok, {Address::<a href="#type-sockaddr">sockaddr()</a>, Data::binary()}} | {error, Reason::term()}
+recvfrom(Socket::<a href="#type-socket">socket()</a>, Length::non_neg_integer(), Timeout::timeout() | nowait | reference()) -&gt; {ok, {Address::<a href="#type-sockaddr">sockaddr()</a>, Data::binary()}} | {select, {select_info, recvfrom, reference()}} | {error, Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Socket</span></code>: the socket<br /><code class="docutils literal notranslate"><span class="pre">Length</span></code>: number of bytes to receive<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: timeout (in milliseconds)<br /></p>
@@ -477,6 +493,7 @@ setopt(Socket::<a href="#type-socket">socket()</a>, SocketOption::<a href="#type
 <tr><td><code>{socket, reuseaddr}</code></td><td><code>boolean()</code></td></tr>
 <tr><td><code>{socket, linger}</code></td><td><code>#{onoff => boolean(), linger => non_neg_integer()}</code></td></tr>
 <tr><td><code>{otp, recvbuf}</code></td><td><code>non_neg_integer()</code></td></tr>
+<tr><td><code>{ip, add_membership}</code></td><td><code>ip_mreq()</code></td></tr>
 </table>
 <p>Example:</p>
 <p><code class="docutils literal notranslate"><span class="pre">ok</span> <span class="pre">=</span> <span class="pre">socket:setopt(ListeningSocket,</span> <span class="pre">{socket,</span> <span class="pre">reuseaddr},</span> <span class="pre">true)</span></code>
@@ -516,7 +533,7 @@ sockname(Socket::<a href="#type-socket">socket()</a>) -&gt; {ok, Address::<a hre
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="sets.html" class="btn btn-neutral float-left" title="Module sets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="ssl.html" class="btn btn-neutral float-right" title="Module ssl" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="socket_dist.html" class="btn btn-neutral float-right" title="Module socket_dist" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

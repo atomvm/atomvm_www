@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>resources.c &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>resources.c &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/resources.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for resources.c:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-ecad93797f2f60e481dbdba8dee741c39e4b681b.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-20a9da2169383d92d7f3d72b3b0bb6f1926f5f36.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -292,6 +295,7 @@
     &quot;26&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;26&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;26&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;26&quot; -&gt; &quot;27&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;26&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;26&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -452,6 +456,16 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_select_event_message_dispose">
+<span class="target" id="libatomvmresources_8c_1a7113447c79650430b5532768a3c040e0"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_select_event_message_dispose</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">message</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">global</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">from_task</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_select_event_message_dispose" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_select_common">
+<span class="target" id="libatomvmresources_8c_1aef960517c54d56929c3db567a2bf06dd"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_select_common</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">env</span></span>, <span class="n"><span class="pre">ErlNifEvent</span></span><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ErlNifSelectFlags</span></span><span class="w"> </span><span class="n"><span class="pre">mode</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ErlNifPid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">pid</span></span>, <span class="n"><span class="pre">ERL_NIF_TERM</span></span><span class="w"> </span><span class="n"><span class="pre">ref</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">message</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_select_common" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_select">
 <span class="target" id="libatomvmresources_8c_1a915974f4921601ed0981270eb91a3ca0"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_select</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">env</span></span>, <span class="n"><span class="pre">ErlNifEvent</span></span><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ErlNifSelectFlags</span></span><span class="w"> </span><span class="n"><span class="pre">mode</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ErlNifPid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">pid</span></span>, <span class="n"><span class="pre">ERL_NIF_TERM</span></span><span class="w"> </span><span class="n"><span class="pre">ref</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_select" title="Link to this definition"></a><br /></dt>
 <dd><p>Run a POSIX-like select on a given object (event) and send a message when the object is readable or writable. </p>
@@ -467,6 +481,27 @@
 <li><p><strong>obj</strong> – resource object working as a container of the event object. </p></li>
 <li><p><strong>pid</strong> – process id to send a message to or NULL to use the current process (from <code class="docutils literal notranslate"><span class="pre">env</span></code>) </p></li>
 <li><p><strong>ref</strong> – reference object used in sent messages or <code class="docutils literal notranslate"><span class="pre">undefined</span></code> atom. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>a negative value on failure, 0 or flags on success. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.resources.c.enif_select_read">
+<span class="target" id="libatomvmresources_8c_1a15ba5e97d43627e47fef05ad077d81a4"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">enif_select_read</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">env</span></span>, <span class="n"><span class="pre">ErlNifEvent</span></span><span class="w"> </span><span class="n"><span class="pre">event</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">obj</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">ErlNifPid</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">pid</span></span>, <span class="n"><span class="pre">ERL_NIF_TERM</span></span><span class="w"> </span><span class="n"><span class="pre">msg</span></span>, <span class="n"><span class="pre">ErlNifEnv</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">msg_env</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.resources.c.enif_select_read" title="Link to this definition"></a><br /></dt>
+<dd><p>Variant of <code class="docutils literal notranslate"><span class="pre">enif_select</span></code> where sent message is <code class="docutils literal notranslate"><span class="pre">msg</span></code> instead of default. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>env</strong> – current environment </p></li>
+<li><p><strong>event</strong> – event object (typically a file descriptor) </p></li>
+<li><p><strong>obj</strong> – resource object working as a container of the event object. </p></li>
+<li><p><strong>pid</strong> – process id to send a message to or NULL to use the current process (from <code class="docutils literal notranslate"><span class="pre">env</span></code>) </p></li>
+<li><p><strong>msg</strong> – message to send (copied). </p></li>
+<li><p><strong>msg_env</strong> – must be NULL. </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Index &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -16,7 +16,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/genindex.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=22e86435"></script>
+      <script src="_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -52,6 +52,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="memory-management.html">Memory Management</a></li>
@@ -142,10 +143,10 @@
 </li>
       <li><a href="atomvm-internals.html#c.Context.native_handler">Context.native_handler (C var)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.Context.platform_data">Context.platform_data (C var)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.Context.process_id">Context.process_id (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.Context.processes_list_head">Context.processes_list_head (C var)</a>
@@ -176,6 +177,8 @@
 </li>
       <li><a href="atomvm-internals.html#c.ContextFlags">ContextFlags (C enum)</a>
 </li>
+      <li><a href="atomvm-internals.html#c.ContextFlags.Distribution">ContextFlags.Distribution (C enumerator)</a>
+</li>
       <li><a href="atomvm-internals.html#c.ContextFlags.Killed">ContextFlags.Killed (C enumerator)</a>
 </li>
       <li><a href="atomvm-internals.html#c.ContextFlags.NoFlags">ContextFlags.NoFlags (C enumerator)</a>
@@ -202,6 +205,12 @@
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.avmpack_data">GlobalContext.avmpack_data (C var)</a>
 </li>
+      <li><a href="atomvm-internals.html#c.GlobalContext.creation">GlobalContext.creation (C var)</a>
+</li>
+      <li><a href="atomvm-internals.html#c.GlobalContext.dist_connection_resource_type">GlobalContext.dist_connection_resource_type (C var)</a>
+</li>
+      <li><a href="atomvm-internals.html#c.GlobalContext.dist_connections">GlobalContext.dist_connections (C var)</a>
+</li>
       <li><a href="atomvm-internals.html#c.GlobalContext.env_spinlock">GlobalContext.env_spinlock (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.ets">GlobalContext.ets (C var)</a>
@@ -220,18 +229,20 @@
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.modules_table">GlobalContext.modules_table (C var)</a>
 </li>
+      <li><a href="atomvm-internals.html#c.GlobalContext.node_name">GlobalContext.node_name (C var)</a>
+</li>
       <li><a href="atomvm-internals.html#c.GlobalContext.online_schedulers">GlobalContext.online_schedulers (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.platform_data">GlobalContext.platform_data (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.processes_spinlock">GlobalContext.processes_spinlock (C var)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.GlobalContext.processes_table">GlobalContext.processes_table (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.ready_processes">GlobalContext.ready_processes (C var)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="atomvm-internals.html#c.GlobalContext.ref_ticks">GlobalContext.ref_ticks (C var)</a>
 </li>
       <li><a href="atomvm-internals.html#c.GlobalContext.ref_ticks_spinlock">GlobalContext.ref_ticks_spinlock (C var)</a>
@@ -640,6 +651,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_pid_1">libAtomVM.bif.c.bif_erlang_is_pid_1 (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_port_1">libAtomVM.bif.c.bif_erlang_is_port_1 (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_record_2">libAtomVM.bif.c.bif_erlang_is_record_2 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_reference_1">libAtomVM.bif.c.bif_erlang_is_reference_1 (C function)</a>
@@ -667,6 +680,8 @@
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_mul_2">libAtomVM.bif.c.bif_erlang_mul_2 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_neg_1">libAtomVM.bif.c.bif_erlang_neg_1 (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_node_0">libAtomVM.bif.c.bif_erlang_node_0 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_not_1">libAtomVM.bif.c.bif_erlang_not_1 (C function)</a>
 </li>
@@ -824,6 +839,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_pid_1">libAtomVM.bif.h.bif_erlang_is_pid_1 (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_port_1">libAtomVM.bif.h.bif_erlang_is_port_1 (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_record_2">libAtomVM.bif.h.bif_erlang_is_record_2 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_reference_1">libAtomVM.bif.h.bif_erlang_is_reference_1 (C function)</a>
@@ -851,6 +868,8 @@
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_mul_2">libAtomVM.bif.h.bif_erlang_mul_2 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_neg_1">libAtomVM.bif.h.bif_erlang_neg_1 (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_node_0">libAtomVM.bif.h.bif_erlang_node_0 (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_not_1">libAtomVM.bif.h.bif_erlang_not_1 (C function)</a>
 </li>
@@ -1010,6 +1029,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_destroy">libAtomVM.context.c.context_destroy (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_distribution_handle_terminate">libAtomVM.context.c.context_distribution_handle_terminate (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_get_monitor_pid">libAtomVM.context.c.context_get_monitor_pid (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_get_process_info">libAtomVM.context.c.context_get_process_info (C function)</a>
@@ -1029,6 +1050,8 @@
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_process_monitor_down_signal">libAtomVM.context.c.context_process_monitor_down_signal (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_process_process_info_request_signal">libAtomVM.context.c.context_process_process_info_request_signal (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_process_signal_set_group_leader">libAtomVM.context.c.context_process_signal_set_group_leader (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.context_process_signal_trap_answer">libAtomVM.context.c.context_process_signal_trap_answer (C function)</a>
 </li>
@@ -1051,6 +1074,8 @@
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.monitor_new">libAtomVM.context.c.monitor_new (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.monitor_resource_monitor_new">libAtomVM.context.c.monitor_resource_monitor_new (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/context.c.html#c.libAtomVM.context.c.term_pid_or_port_from_context">libAtomVM.context.c.term_pid_or_port_from_context (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.Context">libAtomVM.context.h.Context (C struct)</a>
 </li>
@@ -1166,6 +1191,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.context_process_process_info_request_signal">libAtomVM.context.h.context_process_process_info_request_signal (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.context_process_signal_set_group_leader">libAtomVM.context.h.context_process_signal_set_group_leader (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.context_process_signal_trap_answer">libAtomVM.context.h.context_process_signal_trap_answer (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.context_set_unlink_id">libAtomVM.context.h.context_set_unlink_id (C function)</a>
@@ -1181,6 +1208,8 @@
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.context_update_flags">libAtomVM.context.h.context_update_flags (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.ContextFlags">libAtomVM.context.h.ContextFlags (C enum)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.ContextFlags.Distribution">libAtomVM.context.h.ContextFlags.Distribution (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/context.h.html#c.libAtomVM.context.h.ContextFlags.Killed">libAtomVM.context.h.ContextFlags.Killed (C enumerator)</a>
 </li>
@@ -1354,6 +1383,152 @@
 </li>
       <li><a href="apidocs/libatomvm/src/dictionary.h.html#c.libAtomVM.dictionary.h.DictionaryFunctionResult.DictionaryOk">libAtomVM.dictionary.h.DictionaryFunctionResult.DictionaryOk (C enumerator)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2">libAtomVM.dist_nifs.c.[anonymous] (C enum)</a>, <a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@3">[1]</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_ALIAS_SEND">libAtomVM.dist_nifs.c.[anonymous].OPERATION_ALIAS_SEND (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_ALIAS_SEND_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_ALIAS_SEND_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_DEMONITOR_P">libAtomVM.dist_nifs.c.[anonymous].OPERATION_DEMONITOR_P (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_GROUP_LEADER">libAtomVM.dist_nifs.c.[anonymous].OPERATION_GROUP_LEADER (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_LINK">libAtomVM.dist_nifs.c.[anonymous].OPERATION_LINK (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_MONITOR_P">libAtomVM.dist_nifs.c.[anonymous].OPERATION_MONITOR_P (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_NODE_LINK">libAtomVM.dist_nifs.c.[anonymous].OPERATION_NODE_LINK (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_PAYLOAD_EXIT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_PAYLOAD_EXIT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_PAYLOAD_EXIT2">libAtomVM.dist_nifs.c.[anonymous].OPERATION_PAYLOAD_EXIT2 (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_PAYLOAD_EXIT2_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_PAYLOAD_EXIT2_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_PAYLOAD_EXIT_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_PAYLOAD_EXIT_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_PAYLOAD_MONITOR_P_EXIT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_PAYLOAD_MONITOR_P_EXIT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_REG_SEND">libAtomVM.dist_nifs.c.[anonymous].OPERATION_REG_SEND (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_REG_SEND_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_REG_SEND_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SEND_SENDER">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SEND_SENDER (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SEND_SENDER_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SEND_SENDER_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SPAWN_REPLY">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SPAWN_REPLY (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SPAWN_REPLY_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SPAWN_REPLY_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SPAWN_REQUEST">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SPAWN_REQUEST (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_SPAWN_REQUEST_TT">libAtomVM.dist_nifs.c.[anonymous].OPERATION_SPAWN_REQUEST_TT (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_UNLINK_ID">libAtomVM.dist_nifs.c.[anonymous].OPERATION_UNLINK_ID (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@2.OPERATION_UNLINK_ID_ACK">libAtomVM.dist_nifs.c.[anonymous].OPERATION_UNLINK_ID_ACK (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@3.SPAWN_REPLY_FLAGS_LINK_CREATED">libAtomVM.dist_nifs.c.[anonymous].SPAWN_REPLY_FLAGS_LINK_CREATED (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.@3.SPAWN_REPLY_FLAGS_MONITOR_CREATED">libAtomVM.dist_nifs.c.[anonymous].SPAWN_REPLY_FLAGS_MONITOR_CREATED (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_down">libAtomVM.dist_nifs.c.dist_connection_down (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_dtor">libAtomVM.dist_nifs.c.dist_connection_dtor (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_resource_type_init">libAtomVM.dist_nifs.c.dist_connection_resource_type_init (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_get_data_nif">libAtomVM.dist_nifs.c.dist_ctrl_get_data_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_get_data_notification_nif">libAtomVM.dist_nifs.c.dist_ctrl_get_data_notification_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_put_data_nif">libAtomVM.dist_nifs.c.dist_ctrl_put_data_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_message">libAtomVM.dist_nifs.c.dist_enqueue_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_monitor_exit_message">libAtomVM.dist_nifs.c.dist_enqueue_monitor_exit_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_reg_send_message">libAtomVM.dist_nifs.c.dist_enqueue_reg_send_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_send_sender_message">libAtomVM.dist_nifs.c.dist_enqueue_send_sender_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_monitor">libAtomVM.dist_nifs.c.dist_monitor (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_send_message">libAtomVM.dist_nifs.c.dist_send_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_spawn_reply">libAtomVM.dist_nifs.c.dist_spawn_reply (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection">libAtomVM.dist_nifs.c.DistConnection (C struct)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.connection_process_id">libAtomVM.dist_nifs.c.DistConnection.connection_process_id (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.connection_process_monitor">libAtomVM.dist_nifs.c.DistConnection.connection_process_monitor (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.head">libAtomVM.dist_nifs.c.DistConnection.head (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.node_atom_index">libAtomVM.dist_nifs.c.DistConnection.node_atom_index (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.node_creation">libAtomVM.dist_nifs.c.DistConnection.node_creation (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.pending_packets">libAtomVM.dist_nifs.c.DistConnection.pending_packets (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.remote_monitors">libAtomVM.dist_nifs.c.DistConnection.remote_monitors (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.selecting_process_id">libAtomVM.dist_nifs.c.DistConnection.selecting_process_id (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket">libAtomVM.dist_nifs.c.DistributionPacket (C struct)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.bytes">libAtomVM.dist_nifs.c.DistributionPacket.bytes (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.head">libAtomVM.dist_nifs.c.DistributionPacket.head (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.size">libAtomVM.dist_nifs.c.DistributionPacket.size (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data">libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data_notification">libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data_notification (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_put_data">libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_put_data (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_setnode_3">libAtomVM.dist_nifs.c.nif_erlang_setnode_3 (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor">libAtomVM.dist_nifs.c.RemoteMonitor (C struct)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.head">libAtomVM.dist_nifs.c.RemoteMonitor.head (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.pid_number">libAtomVM.dist_nifs.c.RemoteMonitor.pid_number (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.pid_serial">libAtomVM.dist_nifs.c.RemoteMonitor.pid_serial (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.process_monitor">libAtomVM.dist_nifs.c.RemoteMonitor.process_monitor (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.ref_len">libAtomVM.dist_nifs.c.RemoteMonitor.ref_len (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.ref_words">libAtomVM.dist_nifs.c.RemoteMonitor.ref_words (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.target_proc">libAtomVM.dist_nifs.c.RemoteMonitor.target_proc (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.setnode_3_nif">libAtomVM.dist_nifs.c.setnode_3_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_connection_resource_type_init">libAtomVM.dist_nifs.h.dist_connection_resource_type_init (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_get_data_nif">libAtomVM.dist_nifs.h.dist_ctrl_get_data_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_get_data_notification_nif">libAtomVM.dist_nifs.h.dist_ctrl_get_data_notification_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_put_data_nif">libAtomVM.dist_nifs.h.dist_ctrl_put_data_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_monitor">libAtomVM.dist_nifs.h.dist_monitor (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.DIST_OTP_RELEASE">libAtomVM.dist_nifs.h.DIST_OTP_RELEASE (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_send_message">libAtomVM.dist_nifs.h.dist_send_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_spawn_reply">libAtomVM.dist_nifs.h.dist_spawn_reply (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.setnode_3_nif">libAtomVM.dist_nifs.h.setnode_3_nif (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.AtomTableCopyOpt">libAtomVM.enums.AtomTableCopyOpt (C enum)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.AtomTableCopyOpt.AtomTableAlreadyExisting">libAtomVM.enums.AtomTableCopyOpt.AtomTableAlreadyExisting (C enumerator)</a>
@@ -1381,6 +1556,8 @@
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.CharDataEncoding.UTF8Encoding">libAtomVM.enums.CharDataEncoding.UTF8Encoding (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ContextFlags">libAtomVM.enums.ContextFlags (C enum)</a>
+</li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ContextFlags.Distribution">libAtomVM.enums.ContextFlags.Distribution (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ContextFlags.Killed">libAtomVM.enums.ContextFlags.Killed (C enumerator)</a>
 </li>
@@ -1413,12 +1590,6 @@
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_STOP">libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_STOP (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_WRITE">libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_WRITE (C enumerator)</a>
-</li>
-      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ExternalTermOpts">libAtomVM.enums.ExternalTermOpts (C enum)</a>
-</li>
-      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ExternalTermOpts.ExternalTermNoOpts">libAtomVM.enums.ExternalTermOpts.ExternalTermNoOpts (C enumerator)</a>
-</li>
-      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ExternalTermOpts.ExternalTermToHeapFragment">libAtomVM.enums.ExternalTermOpts.ExternalTermToHeapFragment (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.ExternalTermResult">libAtomVM.enums.ExternalTermResult (C enum)</a>
 </li>
@@ -1530,6 +1701,8 @@
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.MessageType.ProcessInfoRequestSignal">libAtomVM.enums.MessageType.ProcessInfoRequestSignal (C enumerator)</a>
 </li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.MessageType.SetGroupLeaderSignal">libAtomVM.enums.MessageType.SetGroupLeaderSignal (C enumerator)</a>
+</li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.MessageType.TrapAnswerSignal">libAtomVM.enums.MessageType.TrapAnswerSignal (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.MessageType.TrapExceptionSignal">libAtomVM.enums.MessageType.TrapExceptionSignal (C enumerator)</a>
@@ -1616,17 +1789,17 @@
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.enums.UnicodeTransformDecodeResult.UnicodeTransformDecodeSuccess">libAtomVM.enums.UnicodeTransformDecodeResult.UnicodeTransformDecodeSuccess (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2">libAtomVM.erl_nif.h.[anonymous] (C enum)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4">libAtomVM.erl_nif.h.[anonymous] (C enum)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2.ERL_NIF_SELECT_BADARG">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_BADARG (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4.ERL_NIF_SELECT_BADARG">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_BADARG (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2.ERL_NIF_SELECT_FAILED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_FAILED (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4.ERL_NIF_SELECT_FAILED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_FAILED (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2.ERL_NIF_SELECT_INVALID_EVENT">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_INVALID_EVENT (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4.ERL_NIF_SELECT_INVALID_EVENT">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_INVALID_EVENT (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2.ERL_NIF_SELECT_STOP_CALLED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_STOP_CALLED (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4.ERL_NIF_SELECT_STOP_CALLED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_STOP_CALLED (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@2.ERL_NIF_SELECT_STOP_SCHEDULED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_STOP_SCHEDULED (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.@4.ERL_NIF_SELECT_STOP_SCHEDULED">libAtomVM.erl_nif.h.[anonymous].ERL_NIF_SELECT_STOP_SCHEDULED (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_alloc_resource">libAtomVM.erl_nif.h.enif_alloc_resource (C function)</a>
 </li>
@@ -1647,6 +1820,10 @@
       <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_release_resource">libAtomVM.erl_nif.h.enif_release_resource (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select">libAtomVM.erl_nif.h.enif_select (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select_read">libAtomVM.erl_nif.h.enif_select_read (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select_write">libAtomVM.erl_nif.h.enif_select_write (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/erl_nif.h.html#c.libAtomVM.erl_nif.h.ERL_NIF_TERM">libAtomVM.erl_nif.h.ERL_NIF_TERM (C type)</a>
 </li>
@@ -1892,13 +2069,21 @@
 </li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_binary">libAtomVM.ets_hashtable.c.hash_binary (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_pid">libAtomVM.ets_hashtable.c.hash_external_pid (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_port">libAtomVM.ets_hashtable.c.hash_external_port (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_reference">libAtomVM.ets_hashtable.c.hash_external_reference (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_float">libAtomVM.ets_hashtable.c.hash_float (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_integer">libAtomVM.ets_hashtable.c.hash_integer (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_pid">libAtomVM.ets_hashtable.c.hash_pid (C function)</a>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_pid">libAtomVM.ets_hashtable.c.hash_local_pid (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_reference">libAtomVM.ets_hashtable.c.hash_reference (C function)</a>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_port">libAtomVM.ets_hashtable.c.hash_local_port (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_reference">libAtomVM.ets_hashtable.c.hash_local_reference (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_term">libAtomVM.ets_hashtable.c.hash_term (C function)</a>
 </li>
@@ -1921,6 +2106,8 @@
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_MAP">libAtomVM.ets_hashtable.c.LARGE_PRIME_MAP (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_PID">libAtomVM.ets_hashtable.c.LARGE_PRIME_PID (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_PORT">libAtomVM.ets_hashtable.c.LARGE_PRIME_PORT (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_REF">libAtomVM.ets_hashtable.c.LARGE_PRIME_REF (C macro)</a>
 </li>
@@ -1970,7 +2157,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif">libAtomVM.exportedfunction.h.Bif (C struct)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.@4">libAtomVM.exportedfunction.h.Bif.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.@6">libAtomVM.exportedfunction.h.Bif.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.base">libAtomVM.exportedfunction.h.Bif.base (C var)</a>
 </li>
@@ -2016,7 +2203,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif">libAtomVM.exportedfunction.h.GCBif (C struct)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.@6">libAtomVM.exportedfunction.h.GCBif.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.@8">libAtomVM.exportedfunction.h.GCBif.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.base">libAtomVM.exportedfunction.h.GCBif.base (C var)</a>
 </li>
@@ -2088,9 +2275,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term">libAtomVM.externalterm.c.externalterm_to_term (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_copy">libAtomVM.externalterm.c.externalterm_to_term_copy (C function)</a>
-</li>
-      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_internal">libAtomVM.externalterm.c.externalterm_to_term_internal (C function)</a>
+      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_with_roots">libAtomVM.externalterm.c.externalterm_to_term_with_roots (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.get_num_bytes">libAtomVM.externalterm.c.get_num_bytes (C function)</a>
 </li>
@@ -2114,9 +2299,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.NEW_FLOAT_EXT_SIZE">libAtomVM.externalterm.c.NEW_FLOAT_EXT_SIZE (C macro)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.NEW_PID_EXT">libAtomVM.externalterm.c.NEW_PID_EXT (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.NEWER_REFERENCE_EXT">libAtomVM.externalterm.c.NEWER_REFERENCE_EXT (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.NIL_EXT">libAtomVM.externalterm.c.NIL_EXT (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.parse_external_terms">libAtomVM.externalterm.c.parse_external_terms (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.PID_EXT">libAtomVM.externalterm.c.PID_EXT (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.read_bytes">libAtomVM.externalterm.c.read_bytes (C function)</a>
 </li>
@@ -2142,6 +2333,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.STRING_EXT_BASE_SIZE">libAtomVM.externalterm.c.STRING_EXT_BASE_SIZE (C macro)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.V4_PORT_EXT">libAtomVM.externalterm.c.V4_PORT_EXT (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/externalterm.c.html#c.libAtomVM.externalterm.c.write_bytes">libAtomVM.externalterm.c.write_bytes (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.EXTERNAL_TERM_TAG">libAtomVM.externalterm.h.EXTERNAL_TERM_TAG (C macro)</a>
@@ -2160,13 +2353,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term">libAtomVM.externalterm.h.externalterm_to_term (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term_copy">libAtomVM.externalterm.h.externalterm_to_term_copy (C function)</a>
+      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term_with_roots">libAtomVM.externalterm.h.externalterm_to_term_with_roots (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts">libAtomVM.externalterm.h.ExternalTermOpts (C enum)</a>
+      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags">libAtomVM.externalterm.h.ExternalTermFlags (C enum)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermNoOpts">libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermNoOpts (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermCopy">libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermCopy (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermToHeapFragment">libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermToHeapFragment (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermNoOpts">libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermNoOpts (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermToHeapFragment">libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermToHeapFragment (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermResult">libAtomVM.externalterm.h.ExternalTermResult (C enum)</a>
 </li>
@@ -2780,6 +2975,10 @@
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_new">libAtomVM.globalcontext.c.globalcontext_new (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_post_message">libAtomVM.globalcontext.c.globalcontext_post_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_post_message_from_task">libAtomVM.globalcontext.c.globalcontext_post_message_from_task (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_process_exists">libAtomVM.globalcontext.c.globalcontext_process_exists (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_process_message_queue">libAtomVM.globalcontext.c.globalcontext_process_message_queue (C function)</a>
@@ -2796,6 +2995,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_from_task">libAtomVM.globalcontext.c.globalcontext_send_message_from_task (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_from_task_common">libAtomVM.globalcontext.c.globalcontext_send_message_from_task_common (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_nolock">libAtomVM.globalcontext.c.globalcontext_send_message_nolock (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_unregister_process">libAtomVM.globalcontext.c.globalcontext_unregister_process (C function)</a>
@@ -2804,7 +3005,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.atom_index">libAtomVM.globalcontext.c.RegisteredProcess.atom_index (C var)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.local_process_id">libAtomVM.globalcontext.c.RegisteredProcess.local_process_id (C var)</a>
+      <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.local_pid_or_port">libAtomVM.globalcontext.c.RegisteredProcess.local_pid_or_port (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.registered_processes_list_head">libAtomVM.globalcontext.c.RegisteredProcess.registered_processes_list_head (C var)</a>
 </li>
@@ -2813,6 +3014,12 @@
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.atom_table">libAtomVM.globalcontext.h.GlobalContext.atom_table (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.avmpack_data">libAtomVM.globalcontext.h.GlobalContext.avmpack_data (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.creation">libAtomVM.globalcontext.h.GlobalContext.creation (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.dist_connection_resource_type">libAtomVM.globalcontext.h.GlobalContext.dist_connection_resource_type (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.dist_connections">libAtomVM.globalcontext.h.GlobalContext.dist_connections (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.env_spinlock">libAtomVM.globalcontext.h.GlobalContext.env_spinlock (C var)</a>
 </li>
@@ -2831,6 +3038,8 @@
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.modules_lock">libAtomVM.globalcontext.h.GlobalContext.modules_lock (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.modules_table">libAtomVM.globalcontext.h.GlobalContext.modules_table (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.node_name">libAtomVM.globalcontext.h.GlobalContext.node_name (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.online_schedulers">libAtomVM.globalcontext.h.GlobalContext.online_schedulers (C var)</a>
 </li>
@@ -2916,6 +3125,10 @@
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_new">libAtomVM.globalcontext.h.globalcontext_new (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_post_message">libAtomVM.globalcontext.h.globalcontext_post_message (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_post_message_from_task">libAtomVM.globalcontext.h.globalcontext_post_message_from_task (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_process_exists">libAtomVM.globalcontext.h.globalcontext_process_exists (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_process_task_driver_queues">libAtomVM.globalcontext.h.globalcontext_process_task_driver_queues (C function)</a>
@@ -2949,6 +3162,12 @@
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.RefcBinaryQueueItem.next">libAtomVM.globalcontext.h.RefcBinaryQueueItem.next (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.RefcBinaryQueueItem.refc">libAtomVM.globalcontext.h.RefcBinaryQueueItem.refc (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult">libAtomVM.globalcontext.h.SendMessageResult (C enum)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_OK">libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_OK (C enumerator)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_PROCESS_NOT_FOUND">libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_PROCESS_NOT_FOUND (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/globalcontext.h.html#c.libAtomVM.globalcontext.h.TYPEDEF_MODULE">libAtomVM.globalcontext.h.TYPEDEF_MODULE (C macro)</a>
 </li>
@@ -3256,7 +3475,11 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_create_from_term">libAtomVM.mailbox.c.mailbox_message_create_from_term (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_create_normal_message_from_term">libAtomVM.mailbox.c.mailbox_message_create_normal_message_from_term (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_dispose">libAtomVM.mailbox.c.mailbox_message_dispose (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_dispose_unsent">libAtomVM.mailbox.c.mailbox_message_dispose_unsent (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_to_heap_fragment">libAtomVM.mailbox.c.mailbox_message_to_heap_fragment (C function)</a>
 </li>
@@ -3302,6 +3525,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.Context">libAtomVM.mailbox.h.Context (C type)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.GlobalContext">libAtomVM.mailbox.h.GlobalContext (C type)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.Heap">libAtomVM.mailbox.h.Heap (C type)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.ImmediateRefSignal">libAtomVM.mailbox.h.ImmediateRefSignal (C struct)</a>
@@ -3346,11 +3571,17 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_create_from_term">libAtomVM.mailbox.h.mailbox_message_create_from_term (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_create_normal_message_from_term">libAtomVM.mailbox.h.mailbox_message_create_normal_message_from_term (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_dispose">libAtomVM.mailbox.h.mailbox_message_dispose (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_dispose_unsent">libAtomVM.mailbox.h.mailbox_message_dispose_unsent (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_next">libAtomVM.mailbox.h.mailbox_next (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_peek">libAtomVM.mailbox.h.mailbox_peek (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_post_message">libAtomVM.mailbox.h.mailbox_post_message (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_process_outer_list">libAtomVM.mailbox.h.mailbox_process_outer_list (C function)</a>
 </li>
@@ -3384,7 +3615,7 @@
         <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage">(C type)</a>
 </li>
       </ul></li>
-      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.@8">libAtomVM.mailbox.h.MailboxMessage.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.@10">libAtomVM.mailbox.h.MailboxMessage.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.heap_fragment_end">libAtomVM.mailbox.h.MailboxMessage.heap_fragment_end (C var)</a>
 </li>
@@ -3428,6 +3659,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.ProcessInfoRequestSignal">libAtomVM.mailbox.h.MessageType.ProcessInfoRequestSignal (C enumerator)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.SetGroupLeaderSignal">libAtomVM.mailbox.h.MessageType.SetGroupLeaderSignal (C enumerator)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.TrapAnswerSignal">libAtomVM.mailbox.h.MessageType.TrapAnswerSignal (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.TrapExceptionSignal">libAtomVM.mailbox.h.MessageType.TrapExceptionSignal (C enumerator)</a>
@@ -3460,9 +3693,13 @@
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_CONTEXT">libAtomVM.mailbox.h.TYPEDEF_CONTEXT (C macro)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_GLOBALCONTEXT">libAtomVM.mailbox.h.TYPEDEF_GLOBALCONTEXT (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_HEAP">libAtomVM.mailbox.h.TYPEDEF_HEAP (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_MAILBOXMESSAGE">libAtomVM.mailbox.h.TYPEDEF_MAILBOXMESSAGE (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_MESSAGE">libAtomVM.mailbox.h.TYPEDEF_MESSAGE (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/memory.c.html#c.libAtomVM.memory.c.FIBONACCI_HEAP_GROWTH_REDUCTION_THRESHOLD">libAtomVM.memory.c.FIBONACCI_HEAP_GROWTH_REDUCTION_THRESHOLD (C macro)</a>
 </li>
@@ -3540,7 +3777,7 @@
         <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory.h.HeapFragment">(C type)</a>
 </li>
       </ul></li>
-      <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.@10">libAtomVM.memory.h.HeapFragment.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.@12">libAtomVM.memory.h.HeapFragment.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.heap_end">libAtomVM.memory.h.HeapFragment.heap_end (C var)</a>
 </li>
@@ -3720,6 +3957,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.Module.import_table">libAtomVM.module.h.Module.import_table (C var)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.Module.imported_funcs">libAtomVM.module.h.Module.imported_funcs (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.Module.labels">libAtomVM.module.h.Module.labels (C var)</a>
@@ -3774,8 +4013,6 @@
 </li>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.module_get_function_from_label">libAtomVM.module.h.module_get_function_from_label (C function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.module_get_imported_function_module_and_name">libAtomVM.module.h.module_get_imported_function_module_and_name (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/module.h.html#c.libAtomVM.module.h.module_get_name">libAtomVM.module.h.module_get_name (C function)</a>
@@ -3825,6 +4062,8 @@
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_add_avm_pack_file_nif">libAtomVM.nifs.c.atomvm_add_avm_pack_file_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_close_avm_pack_nif">libAtomVM.nifs.c.atomvm_close_avm_pack_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_get_creation_nif">libAtomVM.nifs.c.atomvm_get_creation_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_get_start_beam_nif">libAtomVM.nifs.c.atomvm_get_start_beam_nif (C var)</a>
 </li>
@@ -3973,6 +4212,8 @@
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.group_leader_nif">libAtomVM.nifs.c.group_leader_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY">libAtomVM.nifs.c.IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_EXECVE">libAtomVM.nifs.c.IF_HAVE_EXECVE (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_MKFIFO">libAtomVM.nifs.c.IF_HAVE_MKFIFO (C macro)</a>
 </li>
@@ -4142,6 +4383,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_close_avm_pack">libAtomVM.nifs.c.nif_atomvm_close_avm_pack (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_get_creation">libAtomVM.nifs.c.nif_atomvm_get_creation (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_get_start_beam">libAtomVM.nifs.c.nif_atomvm_get_start_beam (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_read_priv">libAtomVM.nifs.c.nif_atomvm_read_priv (C function)</a>
@@ -4276,6 +4519,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_pid_to_list">libAtomVM.nifs.c.nif_erlang_pid_to_list (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_port_to_list">libAtomVM.nifs.c.nif_erlang_port_to_list (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_process_flag">libAtomVM.nifs.c.nif_erlang_process_flag (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_process_flag_3">libAtomVM.nifs.c.nif_erlang_process_flag_3 (C function)</a>
@@ -4296,9 +4541,13 @@
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_setelement_3">libAtomVM.nifs.c.nif_erlang_setelement_3 (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_setnode_2">libAtomVM.nifs.c.nif_erlang_setnode_2 (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_spawn_fun_opt">libAtomVM.nifs.c.nif_erlang_spawn_fun_opt (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_spawn_opt">libAtomVM.nifs.c.nif_erlang_spawn_opt (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_split_binary">libAtomVM.nifs.c.nif_erlang_split_binary (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_system_flag">libAtomVM.nifs.c.nif_erlang_system_flag (C function)</a>
 </li>
@@ -4414,6 +4663,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.pid_to_list_nif">libAtomVM.nifs.c.pid_to_list_nif (C var)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.port_to_list_nif">libAtomVM.nifs.c.port_to_list_nif (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.process_console_mailbox">libAtomVM.nifs.c.process_console_mailbox (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.process_console_message">libAtomVM.nifs.c.process_console_message (C function)</a>
@@ -4450,11 +4701,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.setelement_nif">libAtomVM.nifs.c.setelement_nif (C var)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.setnode_2_nif">libAtomVM.nifs.c.setnode_2_nif (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.sort_keys_uniq">libAtomVM.nifs.c.sort_keys_uniq (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.spawn_fun_opt_nif">libAtomVM.nifs.c.spawn_fun_opt_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.spawn_opt_nif">libAtomVM.nifs.c.spawn_opt_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.split_binary_nif">libAtomVM.nifs.c.split_binary_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.system_flag_nif">libAtomVM.nifs.c.system_flag_nif (C var)</a>
 </li>
@@ -4487,6 +4742,8 @@
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.unregister_nif">libAtomVM.nifs.c.unregister_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.c.html#c.libAtomVM.nifs.c.whereis_nif">libAtomVM.nifs.c.whereis_nif (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/nifs.h.html#c.libAtomVM.nifs.h.nif_erlang_spawn_opt">libAtomVM.nifs.h.nif_erlang_spawn_opt (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/nifs.h.html#c.libAtomVM.nifs.h.nifs_get">libAtomVM.nifs.h.nifs_get (C function)</a>
 </li>
@@ -4886,6 +5143,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.ACCEPT_ATOM">libAtomVM.otp_socket.c.ACCEPT_ATOM (C macro)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.add_membership_atom">libAtomVM.otp_socket.c.add_membership_atom (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.ADDR_ATOM">libAtomVM.otp_socket.c.ADDR_ATOM (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.addr_atom">libAtomVM.otp_socket.c.addr_atom (C var)</a>
@@ -4980,6 +5239,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketInvalidSetoptLevel">libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketInvalidSetoptLevel (C enumerator)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelIP">libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelIP (C enumerator)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelOTP">libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelOTP (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelSocket">libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelSocket (C enumerator)</a>
@@ -5032,6 +5293,10 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_listen_nif">libAtomVM.otp_socket.c.socket_listen_nif (C var)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_make_select_notification">libAtomVM.otp_socket.c.socket_make_select_notification (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SOCKET_MAKE_SELECT_NOTIFICATION_SIZE">libAtomVM.otp_socket.c.SOCKET_MAKE_SELECT_NOTIFICATION_SIZE (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_open_nif">libAtomVM.otp_socket.c.socket_open_nif (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_peername_nif">libAtomVM.otp_socket.c.socket_peername_nif (C var)</a>
@@ -5074,7 +5339,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource">libAtomVM.otp_socket.c.SocketResource (C struct)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.@12">libAtomVM.otp_socket.c.SocketResource.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.@14">libAtomVM.otp_socket.c.SocketResource.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.buf_size">libAtomVM.otp_socket.c.SocketResource.buf_size (C var)</a>
 </li>
@@ -5086,13 +5351,15 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.received_list">libAtomVM.otp_socket.c.SocketResource.received_list (C var)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.ref_ticks">libAtomVM.otp_socket.c.SocketResource.ref_ticks (C var)</a>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.select_ref_ticks">libAtomVM.otp_socket.c.SocketResource.select_ref_ticks (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.selecting_process_id">libAtomVM.otp_socket.c.SocketResource.selecting_process_id (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.selecting_process_monitor">libAtomVM.otp_socket.c.SocketResource.selecting_process_monitor (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.socket_lock">libAtomVM.otp_socket.c.SocketResource.socket_lock (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.socket_ref_ticks">libAtomVM.otp_socket.c.SocketResource.socket_ref_ticks (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.socket_state">libAtomVM.otp_socket.c.SocketResource.socket_state (C var)</a>
 </li>
@@ -5188,7 +5455,7 @@
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent">libAtomVM.otp_socket.h.LWIPEvent (C struct)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.@14">libAtomVM.otp_socket.h.LWIPEvent.[anonymous] (C var)</a>
+      <li><a href="apidocs/libatomvm/src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.@16">libAtomVM.otp_socket.h.LWIPEvent.[anonymous] (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.addr">libAtomVM.otp_socket.h.LWIPEvent.addr (C var)</a>
 </li>
@@ -5566,6 +5833,10 @@
 </li>
       <li><a href="apidocs/libatomvm/src/portnifloader.h.html#c.libAtomVM.portnifloader.h.REGISTER_PORT_DRIVER">libAtomVM.portnifloader.h.REGISTER_PORT_DRIVER (C macro)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.errno_to_error_tuple_maybe_gc">libAtomVM.posix_nifs.c.errno_to_error_tuple_maybe_gc (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.error_tuple_maybe_gc">libAtomVM.posix_nifs.c.error_tuple_maybe_gc (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.posix_errno_to_term">libAtomVM.posix_nifs.c.posix_errno_to_term (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/posix_nifs.h.html#c.libAtomVM.posix_nifs.h.posix_errno_to_term">libAtomVM.posix_nifs.h.posix_errno_to_term (C function)</a>
@@ -5640,6 +5911,12 @@
 </li>
       <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.enif_select">libAtomVM.resources.c.enif_select (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.enif_select_common">libAtomVM.resources.c.enif_select_common (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.enif_select_event_message_dispose">libAtomVM.resources.c.enif_select_event_message_dispose (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.enif_select_read">libAtomVM.resources.c.enif_select_read (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.resource_type_demonitor">libAtomVM.resources.c.resource_type_demonitor (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/resources.c.html#c.libAtomVM.resources.c.resource_type_fire_monitor">libAtomVM.resources.c.resource_type_fire_monitor (C function)</a>
@@ -5705,6 +5982,8 @@
       <li><a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.head">libAtomVM.resources.h.SelectEvent.head (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.local_pid">libAtomVM.resources.h.SelectEvent.local_pid (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.message">libAtomVM.resources.h.SelectEvent.message (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.read">libAtomVM.resources.h.SelectEvent.read (C var)</a>
 </li>
@@ -6068,6 +6347,12 @@
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.avmpack_data">libAtomVM.structs.GlobalContext.avmpack_data (C var)</a>
 </li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.creation">libAtomVM.structs.GlobalContext.creation (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.dist_connection_resource_type">libAtomVM.structs.GlobalContext.dist_connection_resource_type (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.dist_connections">libAtomVM.structs.GlobalContext.dist_connections (C var)</a>
+</li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.env_spinlock">libAtomVM.structs.GlobalContext.env_spinlock (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.ets">libAtomVM.structs.GlobalContext.ets (C var)</a>
@@ -6085,6 +6370,8 @@
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.modules_lock">libAtomVM.structs.GlobalContext.modules_lock (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.modules_table">libAtomVM.structs.GlobalContext.modules_table (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.node_name">libAtomVM.structs.GlobalContext.node_name (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.GlobalContext.online_schedulers">libAtomVM.structs.GlobalContext.online_schedulers (C var)</a>
 </li>
@@ -6336,7 +6623,7 @@
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.RegisteredProcess.atom_index">libAtomVM.structs.RegisteredProcess.atom_index (C var)</a>
 </li>
-      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.RegisteredProcess.local_process_id">libAtomVM.structs.RegisteredProcess.local_process_id (C var)</a>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.RegisteredProcess.local_pid_or_port">libAtomVM.structs.RegisteredProcess.local_pid_or_port (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.RegisteredProcess.registered_processes_list_head">libAtomVM.structs.RegisteredProcess.registered_processes_list_head (C var)</a>
 </li>
@@ -6375,6 +6662,8 @@
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.SelectEvent.head">libAtomVM.structs.SelectEvent.head (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.SelectEvent.local_pid">libAtomVM.structs.SelectEvent.local_pid (C var)</a>
+</li>
+      <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.SelectEvent.message">libAtomVM.structs.SelectEvent.message (C var)</a>
 </li>
       <li><a href="apidocs/libatomvm/data_structures.html#c.libAtomVM.structs.SelectEvent.read">libAtomVM.structs.SelectEvent.read (C var)</a>
 </li>
@@ -6478,11 +6767,11 @@
 </li>
       <li><a href="apidocs/libatomvm/src/synclist.h.html#c.libAtomVM.synclist.h.synclist_wrlock">libAtomVM.synclist.h.synclist_wrlock (C function)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@22">libAtomVM.sys.h.[anonymous] (C enum)</a>
+      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@24">libAtomVM.sys.h.[anonymous] (C enum)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@22.SYS_POLL_EVENTS_DO_NOT_WAIT">libAtomVM.sys.h.[anonymous].SYS_POLL_EVENTS_DO_NOT_WAIT (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@24.SYS_POLL_EVENTS_DO_NOT_WAIT">libAtomVM.sys.h.[anonymous].SYS_POLL_EVENTS_DO_NOT_WAIT (C enumerator)</a>
 </li>
-      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@22.SYS_POLL_EVENTS_WAIT_FOREVER">libAtomVM.sys.h.[anonymous].SYS_POLL_EVENTS_WAIT_FOREVER (C enumerator)</a>
+      <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.@24.SYS_POLL_EVENTS_WAIT_FOREVER">libAtomVM.sys.h.[anonymous].SYS_POLL_EVENTS_WAIT_FOREVER (C enumerator)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/sys.h.html#c.libAtomVM.sys.h.event_handler_t">libAtomVM.sys.h.event_handler_t (C type)</a>
 </li>
@@ -6618,6 +6907,12 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.empty_tuple">libAtomVM.term.h.empty_tuple (C var)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.EXTERNAL_PID_SIZE">libAtomVM.term.h.EXTERNAL_PID_SIZE (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.EXTERNAL_PORT_SIZE">libAtomVM.term.h.EXTERNAL_PORT_SIZE (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.EXTERNAL_REF_SIZE">libAtomVM.term.h.EXTERNAL_REF_SIZE (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.FLOAT_SIZE">libAtomVM.term.h.FLOAT_SIZE (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.FUNCTION_REFERENCE_SIZE">libAtomVM.term.h.FUNCTION_REFERENCE_SIZE (C macro)</a>
@@ -6629,6 +6924,8 @@
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.LIST_TAIL_INDEX">libAtomVM.term.h.LIST_TAIL_INDEX (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.PID_AS_CSTRING_LEN">libAtomVM.term.h.PID_AS_CSTRING_LEN (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.PORT_AS_CSTRING_LEN">libAtomVM.term.h.PORT_AS_CSTRING_LEN (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.printer_function_t">libAtomVM.term.h.printer_function_t (C type)</a>
 </li>
@@ -6687,6 +6984,14 @@
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_BIN_MATCH_STATE">libAtomVM.term.h.TERM_BOXED_BIN_MATCH_STATE (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_BIN_MATCH_STATE_SIZE">libAtomVM.term.h.TERM_BOXED_BIN_MATCH_STATE_SIZE (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PID">libAtomVM.term.h.TERM_BOXED_EXTERNAL_PID (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PORT">libAtomVM.term.h.TERM_BOXED_EXTERNAL_PORT (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_REF">libAtomVM.term.h.TERM_BOXED_EXTERNAL_REF (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_THING">libAtomVM.term.h.TERM_BOXED_EXTERNAL_THING (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_FLOAT">libAtomVM.term.h.TERM_BOXED_FLOAT (C macro)</a>
 </li>
@@ -6772,6 +7077,20 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_funprint">libAtomVM.term.h.term_funprint (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_node">libAtomVM.term.h.term_get_external_node (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_node_creation">libAtomVM.term.h.term_get_external_node_creation (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_pid_process_id">libAtomVM.term.h.term_get_external_pid_process_id (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_pid_serial">libAtomVM.term.h.term_get_external_pid_serial (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_port_number">libAtomVM.term.h.term_get_external_port_number (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_reference_len">libAtomVM.term.h.term_get_external_reference_len (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_external_reference_words">libAtomVM.term.h.term_get_external_reference_words (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_function_mfa">libAtomVM.term.h.term_get_function_mfa (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_list_head">libAtomVM.term.h.term_get_list_head (C function)</a>
@@ -6808,6 +7127,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_get_tuple_element">libAtomVM.term.h.term_get_tuple_element (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_IMMED_TAG_MASK">libAtomVM.term.h.TERM_IMMED_TAG_MASK (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_INTEGER_TAG">libAtomVM.term.h.TERM_INTEGER_TAG (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_invalid_binary_pos_len">libAtomVM.term.h.term_invalid_binary_pos_len (C function)</a>
@@ -6828,13 +7149,23 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_cp">libAtomVM.term.h.term_is_cp (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_external">libAtomVM.term.h.term_is_external (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_external_fun">libAtomVM.term.h.term_is_external_fun (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_external_pid">libAtomVM.term.h.term_is_external_pid (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_external_port">libAtomVM.term.h.term_is_external_port (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_external_reference">libAtomVM.term.h.term_is_external_reference (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_float">libAtomVM.term.h.term_is_float (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_fun">libAtomVM.term.h.term_is_fun (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_function">libAtomVM.term.h.term_is_function (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_heap_binary">libAtomVM.term.h.term_is_heap_binary (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_integer">libAtomVM.term.h.term_is_integer (C function)</a>
 </li>
@@ -6843,6 +7174,14 @@
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_invalid_term">libAtomVM.term.h.term_is_invalid_term (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_list">libAtomVM.term.h.term_is_list (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_local_pid">libAtomVM.term.h.term_is_local_pid (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_local_pid_or_port">libAtomVM.term.h.term_is_local_pid_or_port (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_local_port">libAtomVM.term.h.term_is_local_port (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_local_reference">libAtomVM.term.h.term_is_local_reference (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_map">libAtomVM.term.h.term_is_map (C function)</a>
 </li>
@@ -6855,6 +7194,8 @@
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_number">libAtomVM.term.h.term_is_number (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_pid">libAtomVM.term.h.term_is_pid (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_port">libAtomVM.term.h.term_is_port (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_is_refc_binary">libAtomVM.term.h.term_is_refc_binary (C function)</a>
 </li>
@@ -6882,6 +7223,12 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_boxed_int64">libAtomVM.term.h.term_make_boxed_int64 (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_external_port_number">libAtomVM.term.h.term_make_external_port_number (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_external_process_id">libAtomVM.term.h.term_make_external_process_id (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_external_reference">libAtomVM.term.h.term_make_external_reference (C function)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_function_reference">libAtomVM.term.h.term_make_function_reference (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_make_maybe_boxed_int64">libAtomVM.term.h.term_make_maybe_boxed_int64 (C function)</a>
@@ -6906,6 +7253,8 @@
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_match_state_save_start_offset">libAtomVM.term.h.term_match_state_save_start_offset (C function)</a>
 </li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_MAX_LOCAL_PROCESS_ID">libAtomVM.term.h.TERM_MAX_LOCAL_PROCESS_ID (C macro)</a>
+</li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_maybe_create_sub_binary">libAtomVM.term.h.term_maybe_create_sub_binary (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_maybe_unbox_int">libAtomVM.term.h.term_maybe_unbox_int (C function)</a>
@@ -6915,6 +7264,12 @@
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_nil">libAtomVM.term.h.term_nil (C function)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_normalize_binary_pos_len">libAtomVM.term.h.term_normalize_binary_pos_len (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_PID_TAG">libAtomVM.term.h.TERM_PID_TAG (C macro)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_port_from_local_process_id">libAtomVM.term.h.term_port_from_local_process_id (C function)</a>
+</li>
+      <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.TERM_PORT_TAG">libAtomVM.term.h.TERM_PORT_TAG (C macro)</a>
 </li>
       <li><a href="apidocs/libatomvm/src/term.h.html#c.libAtomVM.term.h.term_put_tuple_element">libAtomVM.term.h.term_put_tuple_element (C function)</a>
 </li>

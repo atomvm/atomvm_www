@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>defaultatoms.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>defaultatoms.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/defaultatoms.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for defaultatoms.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-db1532695199df2e17e12b7791bce054d757c7b3.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-df6f7372842d614832cc42f341fc10b72d2ba68d.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -247,6 +250,7 @@
     &quot;25&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;25&quot; -&gt; &quot;26&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;25&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -293,29 +297,32 @@
 </figure>
 <p>This graph shows which files directly or indirectly include defaultatoms.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-2308be7c79d2bdaadd89166c94d8b2c56821f520.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-7c992507fb99697228da4692ec06c49e46a1d216.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;7&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
-    &quot;8&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
+    &quot;9&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
+    &quot;10&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
     &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;4&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot;]
     &quot;3&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot;]
     &quot;2&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot;]
-    &quot;9&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
-    &quot;10&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
-    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
-    &quot;15&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
-    &quot;6&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot;]
-    &quot;11&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
-    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
-    &quot;12&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
-    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
-    &quot;13&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
-    &quot;14&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
-    &quot;5&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
+    &quot;11&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
+    &quot;12&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
+    &quot;5&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot;]
+    &quot;19&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
+    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
+    &quot;21&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
+    &quot;7&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
+    &quot;8&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot;]
+    &quot;13&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
+    &quot;20&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
+    &quot;14&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
+    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
+    &quot;15&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
+    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
+    &quot;6&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
@@ -329,15 +336,18 @@
     &quot;1&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;16&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>

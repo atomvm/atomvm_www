@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module uart &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module uart &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,13 +17,13 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/uart.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="The alisp library" href="../alisp/README.html" />
+    <link rel="next" title="Module websocket" href="websocket.html" />
     <link rel="prev" title="Module timestamp_util" href="timestamp_util.html" /> 
 </head>
 
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -69,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="avm_pubsub.html">Module avm_pubsub</a></li>
 <li class="toctree-l4"><a class="reference internal" href="console.html">Module console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="emscripten.html">Module emscripten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="epmd.html">Module epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp.html">Module esp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gpio.html">Module gpio</a></li>
@@ -76,6 +78,7 @@
 <li class="toctree-l4"><a class="reference internal" href="i2c.html">Module i2c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="json_encoder.html">Module json_encoder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ledc.html">Module ledc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mdns.html">Module mdns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="network.html">Module network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="network_fsm.html">Module network_fsm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pico.html">Module pico</a></li>
@@ -83,6 +86,7 @@
 <li class="toctree-l4"><a class="reference internal" href="spi.html">Module spi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timestamp_util.html">Module timestamp_util</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Module uart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="websocket.html">Module websocket</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#alisp">alisp</a></li>
@@ -156,10 +160,10 @@ uart_opts() = [{tx, Tx_pin::integer()} | {rx, Rx_pin::integer()} | {rts, Rts_pin
 <section id="close-1">
 <h3>close/1<a class="headerlink" href="#close-1" title="Link to this heading"></a></h3>
 <pre><code>
-close(Pid::pid()) -&gt; ok | {error, _Reason::term()}
+close(Port::port()) -&gt; ok | {error, _Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: of the uart port to be closed<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: of the uart port to be closed<br /></p>
 <p>returns: ok.</p>
 <p>Close a port connection to the UART driver</p>
 <p>This function will close the given port connection to the UART driver.</p>
@@ -168,11 +172,11 @@ close(Pid::pid()) -&gt; ok | {error, _Reason::term()}
 <section id="open-1">
 <h3>open/1<a class="headerlink" href="#open-1" title="Link to this heading"></a></h3>
 <pre><code>
-open(Opts::<a href="#type-uart_opts">uart_opts()</a>) -&gt; Pid::pid() | {error, _Reason::term()}
+open(Opts::<a href="#type-uart_opts">uart_opts()</a>) -&gt; Port::port() | {error, _Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Opts</span></code>: uart configuration options<br /></p>
-<p>returns: Pid of the driver.</p>
+<p>returns: Port of the driver.</p>
 <p>Open a connection to the UART driver default port</p>
 <p>This function will open a connection to the UART driver.</p>
 <p><a name="open-2"></a></p>
@@ -180,11 +184,11 @@ open(Opts::<a href="#type-uart_opts">uart_opts()</a>) -&gt; Pid::pid() | {error,
 <section id="open-2">
 <h3>open/2<a class="headerlink" href="#open-2" title="Link to this heading"></a></h3>
 <pre><code>
-open(Name::<a href="#type-peripheral">peripheral()</a>, Opts::<a href="#type-uart_opts">uart_opts()</a>) -&gt; Pid::pid() | {error, _Reason::term()}
+open(Name::<a href="#type-peripheral">peripheral()</a>, Opts::<a href="#type-uart_opts">uart_opts()</a>) -&gt; Port::port() | {error, _Reason::term()}
 </code></pre>
 <br />
 <p><code class="docutils literal notranslate"><span class="pre">Name</span></code>: the uart peripheral to be opened<br /><code class="docutils literal notranslate"><span class="pre">Opts</span></code>: uart configuration options<br /></p>
-<p>returns: Pid of the driver.</p>
+<p>returns: Port of the driver.</p>
 <p>Open a connection to the UART driver</p>
 <p>This function will open a connection to the UART driver.</p>
 <p><a name="read-1"></a></p>
@@ -192,10 +196,10 @@ open(Name::<a href="#type-peripheral">peripheral()</a>, Opts::<a href="#type-uar
 <section id="read-1">
 <h3>read/1<a class="headerlink" href="#read-1" title="Link to this heading"></a></h3>
 <pre><code>
-read(Pid::pid()) -&gt; {ok, Data::iodata()} | {error, _Reason::term()}
+read(Port::port()) -&gt; {ok, Data::iodata()} | {error, _Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: of the uart port to be read<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: of the uart port to be read<br /></p>
 <p>returns: {ok, Data} or {error, Reason}</p>
 <p>Read data from a UART port</p>
 <p>This function will return any data that is available, or return
@@ -220,10 +224,10 @@ next uart payload is sent by the driver will result in <code class="docutils lit
 <section id="read-2">
 <h3>read/2<a class="headerlink" href="#read-2" title="Link to this heading"></a></h3>
 <pre><code>
-read(Pid::pid(), Timeout::pos_integer()) -&gt; {ok, Data::iodata()} | {error, _Reason::term()}
+read(Port::port(), Timeout::pos_integer()) -&gt; {ok, Data::iodata()} | {error, _Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: of the uart port to be read<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: millisecond to wait for data to become available<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: of the uart port to be read<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: millisecond to wait for data to become available<br /></p>
 <p>returns: <code class="docutils literal notranslate"><span class="pre">{ok,</span> <span class="pre">Data}</span></code>, or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code></p>
 <p>Read data from a UART port</p>
 <p>This function will return any data that is available within the
@@ -248,10 +252,10 @@ immediately begin another read.</p>
 <section id="write-2">
 <h3>write/2<a class="headerlink" href="#write-2" title="Link to this heading"></a></h3>
 <pre><code>
-write(Pid::pid(), Data::iodata()) -&gt; ok | {error, _Reason::term()}
+write(Port::port(), Data::iodata()) -&gt; ok | {error, _Reason::term()}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Pid</span></code>: of the uart port to be written to<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: to be written to the given uart port<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: of the uart port to be written to<br /><code class="docutils literal notranslate"><span class="pre">Data</span></code>: to be written to the given uart port<br /></p>
 <p>returns: ok or {error, Reason}</p>
 <p>Write data to a UART port</p>
 <p>This function will write the given data to the UART port.</p>
@@ -264,7 +268,7 @@ write(Pid::pid(), Data::iodata()) -&gt; ok | {error, _Reason::term()}
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="timestamp_util.html" class="btn btn-neutral float-left" title="Module timestamp_util" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../alisp/README.html" class="btn btn-neutral float-right" title="The alisp library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="websocket.html" class="btn btn-neutral float-right" title="Module websocket" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

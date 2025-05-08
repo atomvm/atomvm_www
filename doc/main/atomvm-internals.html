@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>AtomVM Internals &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-internals.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=22e86435"></script>
+      <script src="_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">AtomVM Internals</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-an-abstract-machine">What is an Abstract Machine?</a></li>
@@ -178,67 +179,68 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <span class="target" id="libatomvmstruct_global_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GlobalContext</span></span></span><a class="headerlink" href="#c.GlobalContext" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for GlobalContext:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="_images/graphviz-7f951dd2e2d16934610fe0aa2357cd088a816869.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="_images/graphviz-7437962c776da322c65eb880ec87104485cd09fa.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;20&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;14&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;2&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;15&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;4&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;10&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;12&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
+    &quot;11&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;13&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
     &quot;1&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;2&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
-    &quot;11&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;5&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;12&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
     &quot;19&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
     &quot;17&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;6&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;9&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
-    &quot;5&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;7&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;10&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;6&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
     &quot;18&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;13&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
-    &quot;7&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;14&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;8&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;16&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;3&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;8&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
-    &quot;14&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;19&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -400,6 +402,26 @@ implementation by the Erlang/OTP team is the definitive specification of its beh
 <dd></dd></dl>
 
 <dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.node_name">
+<span class="target" id="libatomvmstruct_global_context_1a2e8dd69f7af16b119c2c75798381a3ff"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_name</span></span></span><a class="headerlink" href="#c.GlobalContext.node_name" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.creation">
+<span class="target" id="libatomvmstruct_global_context_1a1d59c7dd0f876c913ef6126a24a3d0cb"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">creation</span></span></span><a class="headerlink" href="#c.GlobalContext.creation" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.dist_connection_resource_type">
+<span class="target" id="libatomvmstruct_global_context_1aae6bee9d1a7b994345721b000e7c48a8"></span><span class="n"><span class="pre">ErlNifResourceType</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dist_connection_resource_type</span></span></span><a class="headerlink" href="#c.GlobalContext.dist_connection_resource_type" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.GlobalContext.dist_connections">
+<span class="target" id="libatomvmstruct_global_context_1a37c3462b8494701eeb8f7e73df5969bf"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SyncList</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_connections</span></span></span><a class="headerlink" href="#c.GlobalContext.dist_connections" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
 <dt class="sig sig-object c" id="c.GlobalContext.platform_data">
 <span class="target" id="libatomvmstruct_global_context_1a6a45bd6ef1e87e2c39923f35610083d9"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">platform_data</span></span></span><a class="headerlink" href="#c.GlobalContext.platform_data" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
@@ -468,57 +490,58 @@ size of a struct, therefore, is determined simply by the size of the component f
 <span class="target" id="libatomvmstruct_context"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Context</span></span></span><a class="headerlink" href="#c.Context" title="Link to this definition"></a><br /></dt>
 <dd><p>Collaboration diagram for Context:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="_images/graphviz-8695dfad91d168e64d5270b61a5db8fc9b68b188.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="_images/graphviz-cb0e485bab6dec9f8a849a8579553698c406f033.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;23&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;20&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;12&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;6&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;5&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
     &quot;10&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;18&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
+    &quot;19&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
     &quot;11&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot;]
-    &quot;12&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
-    &quot;17&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;14&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;18&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
     &quot;22&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
     &quot;8&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
     &quot;3&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
     &quot;9&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
     &quot;1&quot; [label=&quot;Context&quot; tooltip=&quot;Context&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;14&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;15&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
     &quot;21&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;19&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;20&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
     &quot;2&quot; [label=&quot;Mailbox&quot; tooltip=&quot;Mailbox&quot;]
-    &quot;15&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;16&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;7&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;4&quot; [label=&quot;TimerListItem&quot; tooltip=&quot;TimerListItem&quot;]
     &quot;13&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;16&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
-    &quot;20&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;19&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;23&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;11&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;22&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;3&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -529,18 +552,18 @@ size of a struct, therefore, is determined simply by the size of the component f
     &quot;1&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;21&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;19&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;15&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;21&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;20&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;16&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;13&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;16&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;17&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -972,6 +995,11 @@ size of a struct, therefore, is determined simply by the size of the component f
 <dl class="c enumerator">
 <dt class="sig sig-object c" id="c.ContextFlags.Trap">
 <span class="target" id="libatomvmcontext_8h_1a5c9a39ccda8c700b8722f9027ef63f1da178e499decd0c21272bc34e4b3056eab"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Trap</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">32</span></span><a class="headerlink" href="#c.ContextFlags.Trap" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.ContextFlags.Distribution">
+<span class="target" id="libatomvmcontext_8h_1a5c9a39ccda8c700b8722f9027ef63f1da719bfa2b559ba1e14638c71989792f9c"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Distribution</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">64</span></span><a class="headerlink" href="#c.ContextFlags.Distribution" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 </dd></dl>

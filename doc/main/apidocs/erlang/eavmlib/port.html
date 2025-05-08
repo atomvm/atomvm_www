@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module port &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Module port &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/erlang/eavmlib/port.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -69,6 +70,7 @@
 <li class="toctree-l4"><a class="reference internal" href="avm_pubsub.html">Module avm_pubsub</a></li>
 <li class="toctree-l4"><a class="reference internal" href="console.html">Module console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="emscripten.html">Module emscripten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="epmd.html">Module epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp.html">Module esp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="gpio.html">Module gpio</a></li>
@@ -76,6 +78,7 @@
 <li class="toctree-l4"><a class="reference internal" href="i2c.html">Module i2c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="json_encoder.html">Module json_encoder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ledc.html">Module ledc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mdns.html">Module mdns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="network.html">Module network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="network_fsm.html">Module network_fsm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="pico.html">Module pico</a></li>
@@ -83,6 +86,7 @@
 <li class="toctree-l4"><a class="reference internal" href="spi.html">Module spi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="timestamp_util.html">Module timestamp_util</a></li>
 <li class="toctree-l4"><a class="reference internal" href="uart.html">Module uart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="websocket.html">Module websocket</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../api-reference-documentation.html#alisp">alisp</a></li>
@@ -136,7 +140,7 @@ rely on a <code class="docutils literal notranslate"><span class="pre">port</spa
 <p>The port driver should be initialized with:
 <code class="docutils literal notranslate"><span class="pre">open_port({spawn,</span> <span class="pre">&quot;Name&quot;},</span> <span class="pre">Param)</span></code>
 Where Name is an atom(), and is the name of the driver. The return from <code class="docutils literal notranslate"><span class="pre">open_port/2</span></code>
-will be the Pid that will be required for future <code class="docutils literal notranslate"><span class="pre">port:call/2</span></code> or <code class="docutils literal notranslate"><span class="pre">port:call/3</span></code> use.</p>
+will be the Port that will be required for future <code class="docutils literal notranslate"><span class="pre">port:call/2</span></code> or <code class="docutils literal notranslate"><span class="pre">port:call/3</span></code> use.</p>
 <p>Examples:</p>
 <div class="highlight-guess notranslate"><div class="highlight"><pre><span></span>     open_port({spawn, &quot;i2c&quot;}, Param)
 </pre></div>
@@ -149,7 +153,7 @@ will be the Pid that will be required for future <code class="docutils literal n
 </section>
 <section id="function-index">
 <h2>Function Index<a class="headerlink" href="#function-index" title="Link to this heading"></a></h2>
-<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#call-2">call/2</a></td><td>    Send a message to a given port driver pid.</td></tr><tr><td valign="top"><a href="#call-3">call/3</a></td><td>    Send a message to a given port driver pid with a timeout.</td></tr></table>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#call-2">call/2</a></td><td>    Send a message to a given port driver.</td></tr><tr><td valign="top"><a href="#call-3">call/3</a></td><td>    Send a message to a given port driver with a timeout.</td></tr></table>
 <p><a name="functions"></a></p>
 </section>
 <section id="function-details">
@@ -158,26 +162,26 @@ will be the Pid that will be required for future <code class="docutils literal n
 <section id="call-2">
 <h3>call/2<a class="headerlink" href="#call-2" title="Link to this heading"></a></h3>
 <pre><code>
-call(Port::pid(), Message::term()) -&gt; term()
+call(Port::port(), Message::term()) -&gt; term()
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: Pid to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: Port to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /></p>
 <p>returns: term() | {error, Reason}.</p>
-<p>Send a message to a given port driver pid.</p>
-<p>This function is used to send a message to an open port divers pid and will
+<p>Send a message to a given port driver.</p>
+<p>This function is used to send a message to an open port drivers port and will
 return a term or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>.</p>
 <p><a name="call-3"></a></p>
 </section>
 <section id="call-3">
 <h3>call/3<a class="headerlink" href="#call-3" title="Link to this heading"></a></h3>
 <pre><code>
-call(Port::pid(), Message::term(), Timeout::timeout()) -&gt; term() | {error, timeout}
+call(Port::port(), Message::term(), Timeout::timeout()) -&gt; term() | {error, timeout}
 </code></pre>
 <br />
-<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: Pid to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: the timeout value in milliseconds<br /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Port</span></code>: Port to which to send messages<br /><code class="docutils literal notranslate"><span class="pre">Message</span></code>: the message to send<br /><code class="docutils literal notranslate"><span class="pre">Timeout</span></code>: the timeout value in milliseconds<br /></p>
 <p>returns: term() | {error, Reason}.</p>
-<p>Send a message to a given port driver pid with a timeout.</p>
-<p>This function is used to send a message to an open port divers pid and will return
+<p>Send a message to a given port driver with a timeout.</p>
+<p>This function is used to send a message to an open port drivers port and will return
 a term or <code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">Reason}</span></code>, or<code class="docutils literal notranslate"><span class="pre">{error,</span> <span class="pre">timeout}</span></code> if the TimeoutMs is reached first.</p>
 </section>
 </section>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>globalcontext.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>globalcontext.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/globalcontext.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for globalcontext.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-13877c39c2ca9088b65892ceb74648a8ba3c50dd.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-fabab77f4a133f92afca34576c6044744bd6c92c.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -243,6 +246,7 @@
     &quot;24&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;25&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;24&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;17&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -289,156 +293,167 @@
 </figure>
 <p>This graph shows which files directly or indirectly include globalcontext.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-030486cadcf8f3966c342b9b540fab8ea98a6eff.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-90c1e0848f528430772de2548b83e7cc39047aa8.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
-    &quot;26&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
-    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot;]
-    &quot;22&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot;]
+    &quot;27&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.c&quot;]
+    &quot;19&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/refc_binary.c&quot;]
+    &quot;23&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/interop.h&quot;]
     &quot;14&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/erl_nif_priv.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/erl_nif_priv.h&quot;]
     &quot;5&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.c&quot;]
-    &quot;34&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot;]
-    &quot;45&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot;]
-    &quot;46&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot;]
+    &quot;35&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/nifs.h&quot;]
+    &quot;46&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/defaultatoms.h&quot;]
+    &quot;47&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.c&quot;]
     &quot;6&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.c&quot;]
     &quot;9&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.c&quot;]
     &quot;7&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/context.h&quot;]
     &quot;8&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/bif.h&quot;]
-    &quot;48&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot;]
-    &quot;27&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
-    &quot;47&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot;]
-    &quot;40&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot;]
-    &quot;35&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot;]
+    &quot;50&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.c&quot;]
+    &quot;28&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.c&quot;]
+    &quot;49&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets_hashtable.h&quot;]
+    &quot;41&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.c&quot;]
+    &quot;36&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_crypto.h&quot;]
     &quot;13&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/memory.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/memory.c&quot;]
-    &quot;39&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot;]
-    &quot;33&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot;]
+    &quot;40&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/portnifloader.h&quot;]
+    &quot;34&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/sys.h&quot;]
     &quot;10&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.c&quot;]
-    &quot;29&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot;]
-    &quot;25&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
-    &quot;36&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot;]
-    &quot;19&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
-    &quot;24&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
-    &quot;28&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
-    &quot;23&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot;]
+    &quot;30&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/module.h&quot;]
+    &quot;26&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.c&quot;]
+    &quot;37&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_net.h&quot;]
+    &quot;15&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.c&quot;]
+    &quot;48&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dist_nifs.h&quot;]
+    &quot;20&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/resources.c&quot;]
+    &quot;25&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.c&quot;]
+    &quot;29&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/term.c&quot;]
+    &quot;24&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/inet.h&quot;]
     &quot;12&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.c&quot;]
     &quot;11&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/debug.h&quot;]
-    &quot;21&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
+    &quot;22&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/externalterm.c&quot;]
     &quot;3&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.c&quot;]
     &quot;2&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/avmpack.h&quot;]
     &quot;4&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.c&quot;]
     &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/globalcontext.h&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;30&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot;]
-    &quot;43&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot;]
-    &quot;15&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
-    &quot;37&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot;]
-    &quot;32&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
-    &quot;31&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot;]
-    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
-    &quot;38&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot;]
-    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
-    &quot;49&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot;]
-    &quot;44&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot;]
-    &quot;41&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
-    &quot;42&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
-    &quot;20&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
-    &quot;22&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;22&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;31&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/platform_nifs.h&quot;]
+    &quot;44&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/scheduler.h&quot;]
+    &quot;16&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.c&quot;]
+    &quot;38&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_socket.h&quot;]
+    &quot;33&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.c&quot;]
+    &quot;32&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/stacktrace.h&quot;]
+    &quot;17&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.c&quot;]
+    &quot;39&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/otp_ssl.h&quot;]
+    &quot;18&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.c&quot;]
+    &quot;51&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/posix_nifs.h&quot;]
+    &quot;45&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/mailbox.c&quot;]
+    &quot;42&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.c&quot;]
+    &quot;43&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/port.h&quot;]
+    &quot;21&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/ets.c&quot;]
+    &quot;23&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;23&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;14&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;14&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;14&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;14&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;34&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;46&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;45&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;14&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;35&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;47&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;46&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;11&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;14&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;22&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;23&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;7&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;35&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;7&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;7&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;8&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;47&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;35&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;39&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;33&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;29&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;36&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;23&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;21&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;49&quot; -&gt; &quot;50&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;36&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;40&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;34&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;8&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;31&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;30&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;37&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;48&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;24&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;12&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;11&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=back tooltip=&quot;include&quot;]
@@ -447,49 +462,51 @@
     &quot;1&quot; -&gt; &quot;2&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;6&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;7&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;47&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;46&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;48&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;49&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;13&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;10&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;29&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;30&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;27&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;36&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;28&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;37&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;38&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;49&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;19&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;39&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;43&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;1&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;40&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;51&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;20&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;1&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;30&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;44&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;43&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;37&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;31&quot; -&gt; &quot;32&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;1&quot; -&gt; &quot;34&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;31&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;45&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;44&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
     &quot;38&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;49&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;24&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;15&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
-    &quot;42&quot; -&gt; &quot;41&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;38&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;32&quot; -&gt; &quot;33&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;39&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;4&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;51&quot; -&gt; &quot;18&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;25&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;5&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;26&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;16&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;17&quot; [dir=back tooltip=&quot;include&quot;]
+    &quot;43&quot; -&gt; &quot;42&quot; [dir=back tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -514,6 +531,25 @@
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.Module">
 <span class="target" id="libatomvmglobalcontext_8h_1af3a26d1aa4a6eb8196181f1b6bab5ff7"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.Module" title="Module"><span class="n"><span class="pre">Module</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Module</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.Module" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-enums">Enums</p>
+<dl class="c enum">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.SendMessageResult">
+<span class="target" id="libatomvmglobalcontext_8h_1a8506d86a5b47d02082b823b0c172f17f"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SendMessageResult</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.SendMessageResult" title="Link to this definition"></a><br /></dt>
+<dd><p><em>Values:</em></p>
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_OK">
+<span class="target" id="libatomvmglobalcontext_8h_1a8506d86a5b47d02082b823b0c172f17facadba6edf16059cd1fe25041e608122b"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SEND_MESSAGE_OK</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">0</span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_OK" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c enumerator">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_PROCESS_NOT_FOUND">
+<span class="target" id="libatomvmglobalcontext_8h_1a8506d86a5b47d02082b823b0c172f17fafa895cb3b06cdd2105b11bb40b3ad4cd"></span><span class="k"><span class="pre">enumerator</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">SEND_MESSAGE_PROCESS_NOT_FOUND</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_PROCESS_NOT_FOUND" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="breathe-sectiondef docutils container">
@@ -644,6 +680,25 @@
 </dd></dl>
 
 <dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.globalcontext_post_message">
+<span class="target" id="libatomvmglobalcontext_8h_1a7d3605de61ee5a7b842e8415f414db9a"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.SendMessageResult" title="SendMessageResult"><span class="n"><span class="pre">SendMessageResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_post_message</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_post_message" title="Link to this definition"></a><br /></dt>
+<dd><p>Post a mailbox message to a process identified by its id. </p>
+<p>This function is only used by enif_select_read/enif_select_write to post a message that is built before.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context (that owns the process table). </p></li>
+<li><p><strong>process_id</strong> – the local process id. </p></li>
+<li><p><strong>m</strong> – the mailbox message to send. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SEND_MESSAGE_OK if the message was sent (and ownership transfered). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.globalcontext_send_message_from_task">
 <span class="target" id="libatomvmglobalcontext_8h_1a5f551c2a4838addcb446975fb410c49e"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_send_message_from_task</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">MessageType</span></span><span class="w"> </span><span class="n"><span class="pre">type</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_send_message_from_task" title="Link to this definition"></a><br /></dt>
 <dd><p>Send a message to a process identified by its id. This variant is to be used from task drivers. It tries to acquire the necessary locks and if it fails, it enqueues the message which will be delivered on the next scheduler context switch. </p>
@@ -656,6 +711,25 @@
 <li><p><strong>type</strong> – the type of message to send, can be NormalMessage or a signal </p></li>
 <li><p><strong>t</strong> – the message to send. </p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.globalcontext_post_message_from_task">
+<span class="target" id="libatomvmglobalcontext_8h_1ac3fd4430f11b9b2de6e3523c589dc620"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.SendMessageResult" title="SendMessageResult"><span class="n"><span class="pre">SendMessageResult</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_post_message_from_task</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="n"><span class="pre">process_id</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Message" title="Message"><span class="n"><span class="pre">Message</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">m</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_post_message_from_task" title="Link to this definition"></a><br /></dt>
+<dd><p>Post a mailbox message to a process identified by its id. Variant to be used from task drivers. </p>
+<p>This function is only used by enif_select_read/enif_select_write to post a message that is built before.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>glb</strong> – the global context (that owns the process table). </p></li>
+<li><p><strong>process_id</strong> – the local process id. </p></li>
+<li><p><strong>m</strong> – the mailbox message to send. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SEND_MESSAGE_OK if the message was sent (and ownership transfered). </p>
 </dd>
 </dl>
 </dd></dl>
@@ -705,7 +779,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.globalcontext_register_process">
-<span class="target" id="libatomvmglobalcontext_8h_1ac7ceed58fce6b272d0c133cbba7b9378"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_register_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">local_process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_register_process" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmglobalcontext_8h_1a0e0d5a00d040ac4cffb8c2bf91d39757"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_register_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">local_pid_or_port</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_register_process" title="Link to this definition"></a><br /></dt>
 <dd><p>Register a process. </p>
 <p>Register a process with a certain name (atom) so it can be easily retrieved later. </p>
 <dl class="field-list simple">
@@ -713,7 +787,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>glb</strong> – the global context, each registered process will be globally available for that context. </p></li>
 <li><p><strong>atom_index</strong> – the atom table index. </p></li>
-<li><p><strong>local_process_id</strong> – the process local id. </p></li>
+<li><p><strong>local_pid_or_port</strong> – the local pid or port </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -746,7 +820,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.globalcontext_get_registered_process">
-<span class="target" id="libatomvmglobalcontext_8h_1a1d44480f263aba90ba37dc080b9f7633"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_registered_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_get_registered_process" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmglobalcontext_8h_1a6574367bfeaac8707d4781aaf14c0c26"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_registered_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="#c.libAtomVM.globalcontext.h.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.globalcontext_get_registered_process" title="Link to this definition"></a><br /></dt>
 <dd><p>Get a registered process. </p>
 <p>Returns the local process id of a previously registered process. </p>
 <dl class="field-list simple">
@@ -757,7 +831,7 @@
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a previously registered process local id. </p>
+<dd class="field-even"><p>a previously registered process local id or UNDEFINED_ATOM </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1037,7 +1111,7 @@
 <em>#include &lt;globalcontext.h&gt;</em></div>
 <p>Collaboration diagram for RefcBinaryQueueItem:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-692b464dcd579cd4d84c90d1cc27ac531cdefe16.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-8bb00fdb7424ee8c2156b8f3927bb9377dabb55c.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -1072,6 +1146,7 @@
     &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
@@ -1123,67 +1198,68 @@
 <em>#include &lt;globalcontext.h&gt;</em></div>
 <p>Collaboration diagram for GlobalContext:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-7f951dd2e2d16934610fe0aa2357cd088a816869.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-7437962c776da322c65eb880ec87104485cd09fa.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
     edge [color=&quot;#1414CE&quot;]
     &quot;20&quot; [label=&quot;SpinLock&quot; tooltip=&quot;SpinLock&quot;]
-    &quot;14&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
+    &quot;2&quot; [label=&quot;ResourceType&quot; tooltip=&quot;ResourceType&quot;]
     &quot;15&quot; [label=&quot;Module&quot; tooltip=&quot;Module&quot;]
     &quot;4&quot; [label=&quot;ListHead&quot; tooltip=&quot;ListHead&quot;]
-    &quot;10&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
-    &quot;12&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
+    &quot;11&quot; [label=&quot;HeapFragment&quot; tooltip=&quot;HeapFragment&quot;]
+    &quot;13&quot; [label=&quot;RefcBinaryQueueItem&quot; tooltip=&quot;RefcBinaryQueueItem&quot;]
     &quot;1&quot; [label=&quot;GlobalContext&quot; tooltip=&quot;GlobalContext&quot; fillcolor=&quot;#BFBFBF&quot;]
-    &quot;2&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
-    &quot;11&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
+    &quot;5&quot; [label=&quot;Ets&quot; tooltip=&quot;Ets&quot;]
+    &quot;12&quot; [label=&quot;HNodeGroup&quot; tooltip=&quot;HNodeGroup&quot;]
     &quot;19&quot; [label=&quot;TimerList&quot; tooltip=&quot;TimerList&quot;]
     &quot;17&quot; [label=&quot;LiteralEntry&quot; tooltip=&quot;LiteralEntry&quot;]
-    &quot;6&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
-    &quot;9&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
-    &quot;5&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
+    &quot;7&quot; [label=&quot;MailboxMessage&quot; tooltip=&quot;MailboxMessage&quot;]
+    &quot;10&quot; [label=&quot;Heap&quot; tooltip=&quot;Heap&quot;]
+    &quot;6&quot; [label=&quot;MessageQueueItem&quot; tooltip=&quot;MessageQueueItem&quot;]
     &quot;18&quot; [label=&quot;AtomsHashTable&quot; tooltip=&quot;AtomsHashTable&quot;]
-    &quot;13&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
-    &quot;7&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
+    &quot;14&quot; [label=&quot;RefcBinary&quot; tooltip=&quot;RefcBinary&quot;]
+    &quot;8&quot; [label=&quot;AtomTable&quot; tooltip=&quot;AtomTable&quot;]
     &quot;16&quot; [label=&quot;ExportedFunction&quot; tooltip=&quot;ExportedFunction&quot;]
     &quot;3&quot; [label=&quot;SyncList&quot; tooltip=&quot;SyncList&quot;]
-    &quot;8&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
-    &quot;14&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;14&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; [label=&quot;HNode&quot; tooltip=&quot;HNode&quot;]
+    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;1&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;2&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;15&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;4&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;10&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;12&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;13&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;1&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;1&quot; -&gt; &quot;13&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;18&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;19&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;1&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;11&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;5&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;12&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;19&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;7&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;10&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;6&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;6&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;5&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;5&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;18&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;13&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;7&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
-    &quot;8&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;18&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;14&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
     &quot;8&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;8&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;3&quot; -&gt; &quot;4&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;9&quot; [dir=forward tooltip=&quot;usage&quot;]
+    &quot;9&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;usage&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -1342,6 +1418,26 @@
 <dl class="c var">
 <dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.GlobalContext.env_spinlock">
 <span class="target" id="libatomvmstruct_global_context_1ad6fe6e598234d0aa2a0c1e30a9145cec"></span><span class="n"><span class="pre">SpinLock</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">env_spinlock</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.GlobalContext.env_spinlock" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.GlobalContext.node_name">
+<span class="target" id="libatomvmstruct_global_context_1a2e8dd69f7af16b119c2c75798381a3ff"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">node_name</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.GlobalContext.node_name" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.GlobalContext.creation">
+<span class="target" id="libatomvmstruct_global_context_1a1d59c7dd0f876c913ef6126a24a3d0cb"></span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">creation</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.GlobalContext.creation" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.GlobalContext.dist_connection_resource_type">
+<span class="target" id="libatomvmstruct_global_context_1aae6bee9d1a7b994345721b000e7c48a8"></span><span class="n"><span class="pre">ErlNifResourceType</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">dist_connection_resource_type</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.GlobalContext.dist_connection_resource_type" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.libAtomVM.globalcontext.h.GlobalContext.dist_connections">
+<span class="target" id="libatomvmstruct_global_context_1a37c3462b8494701eeb8f7e73df5969bf"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">SyncList</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_connections</span></span></span><a class="headerlink" href="#c.libAtomVM.globalcontext.h.GlobalContext.dist_connections" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
 <dl class="c var">

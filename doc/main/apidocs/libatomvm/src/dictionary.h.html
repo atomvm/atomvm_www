@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dictionary.h &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>dictionary.h &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,13 +17,13 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/dictionary.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="erl_nif.h" href="erl_nif.h.html" />
+    <link rel="next" title="dist_nifs.c" href="dist_nifs.c.html" />
     <link rel="prev" title="dictionary.c" href="dictionary.c.html" /> 
 </head>
 
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../memory-management.html">Memory Management</a></li>
@@ -84,6 +85,8 @@
 <li class="toctree-l4"><a class="reference internal" href="defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="ets.c.html">ets.c</a></li>
@@ -191,7 +194,7 @@
 </div>
 <p>Include dependency graph for dictionary.h:</p>
 <figure class="align-default">
-<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-1576006fff45e184ea7cedb155b7797b1054729b.svg" type="image/svg+xml" class="graphviz">
+<div align="center" class="align-center"><div class="graphviz"><object data="../../../_images/graphviz-7ff6a475c57d2dc4cd2e4bf2302e957dc2bd8527.svg" type="image/svg+xml" class="graphviz">
 <p class="warning">digraph {
     graph [bgcolor=&quot;#00000000&quot;]
     node [shape=rectangle style=filled fillcolor=&quot;#FFFFFF&quot; font=Helvetica padding=2]
@@ -201,7 +204,7 @@
     &quot;13&quot; [label=&quot;assert.h&quot; tooltip=&quot;assert.h&quot;]
     &quot;1&quot; [label=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot; tooltip=&quot;/__w/AtomVM/AtomVM/src/libAtomVM/dictionary.h&quot; fillcolor=&quot;#BFBFBF&quot;]
     &quot;16&quot; [label=&quot;utils.h&quot; tooltip=&quot;utils.h&quot;]
-    &quot;20&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
+    &quot;21&quot; [label=&quot;synclist.h&quot; tooltip=&quot;synclist.h&quot;]
     &quot;2&quot; [label=&quot;list.h&quot; tooltip=&quot;list.h&quot;]
     &quot;6&quot; [label=&quot;stdint.h&quot; tooltip=&quot;stdint.h&quot;]
     &quot;8&quot; [label=&quot;stdlib.h&quot; tooltip=&quot;stdlib.h&quot;]
@@ -214,7 +217,8 @@
     &quot;5&quot; [label=&quot;sys/types.h&quot; tooltip=&quot;sys/types.h&quot;]
     &quot;9&quot; [label=&quot;string.h&quot; tooltip=&quot;string.h&quot;]
     &quot;12&quot; [label=&quot;term_typedef.h&quot; tooltip=&quot;term_typedef.h&quot;]
-    &quot;21&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;22&quot; [label=&quot;smp.h&quot; tooltip=&quot;smp.h&quot;]
+    &quot;20&quot; [label=&quot;mailbox.h&quot; tooltip=&quot;mailbox.h&quot;]
     &quot;7&quot; [label=&quot;stdio.h&quot; tooltip=&quot;stdio.h&quot;]
     &quot;15&quot; [label=&quot;inttypes.h&quot; tooltip=&quot;inttypes.h&quot;]
     &quot;18&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -226,9 +230,9 @@
     &quot;16&quot; -&gt; &quot;17&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;16&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;16&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;20&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;7&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;21&quot; -&gt; &quot;22&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;2&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;10&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -238,8 +242,9 @@
     &quot;19&quot; -&gt; &quot;8&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;11&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;19&quot; -&gt; &quot;20&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;10&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;19&quot; -&gt; &quot;21&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;5&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;4&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
@@ -255,7 +260,11 @@
     &quot;12&quot; -&gt; &quot;14&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;15&quot; [dir=forward tooltip=&quot;include&quot;]
     &quot;12&quot; -&gt; &quot;6&quot; [dir=forward tooltip=&quot;include&quot;]
-    &quot;21&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;22&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;3&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;2&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;12&quot; [dir=forward tooltip=&quot;include&quot;]
+    &quot;20&quot; -&gt; &quot;16&quot; [dir=forward tooltip=&quot;include&quot;]
 }</p></object></div>
 </div>
 </figure>
@@ -372,7 +381,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="dictionary.c.html" class="btn btn-neutral float-left" title="dictionary.c" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="erl_nif.h.html" class="btn btn-neutral float-right" title="erl_nif.h" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dist_nifs.c.html" class="btn btn-neutral float-right" title="dist_nifs.c" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

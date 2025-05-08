@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>API Reference Documentation &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>API Reference Documentation &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/api-reference-documentation.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=22e86435"></script>
+      <script src="_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="memory-management.html">Memory Management</a></li>
@@ -63,12 +64,16 @@
 <li class="toctree-l2"><a class="reference internal" href="#erlang-libraries">Erlang Libraries</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#estdlib">estdlib</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/README.html">The estdlib library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/application.html">Module application</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/base64.html">Module base64</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/binary.html">Module binary</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/calendar.html">Module calendar</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/code.html">Module code</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/crypto.html">Module crypto</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/dist_util.html">Module dist_util</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/erl_epmd.html">Module erl_epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/erlang.html">Module erlang</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/erpc.html">Module erpc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/ets.html">Module ets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/gen_event.html">Module gen_event</a></li>
@@ -80,15 +85,20 @@
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/init.html">Module init</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/io.html">Module io</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/io_lib.html">Module io_lib</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/kernel.html">Module kernel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/lists.html">Module lists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/logger.html">Module logger</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/maps.html">Module maps</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/math.html">Module math</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/net.html">Module net</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/net_kernel.html">Module net_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/net_kernel_sup.html">Module net_kernel_sup</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/proplists.html">Module proplists</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/queue.html">Module queue</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/sets.html">Module sets</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/socket.html">Module socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/socket_dist.html">Module socket_dist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/socket_dist_controller.html">Module socket_dist_controller</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/ssl.html">Module ssl</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/string.html">Module string</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/estdlib/supervisor.html">Module supervisor</a></li>
@@ -103,6 +113,7 @@
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/avm_pubsub.html">Module avm_pubsub</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/console.html">Module console</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/emscripten.html">Module emscripten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/epmd.html">Module epmd</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/esp.html">Module esp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/gpio.html">Module gpio</a></li>
@@ -110,6 +121,7 @@
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/i2c.html">Module i2c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/json_encoder.html">Module json_encoder</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/ledc.html">Module ledc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/mdns.html">Module mdns</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/network.html">Module network</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/network_fsm.html">Module network_fsm</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/pico.html">Module pico</a></li>
@@ -117,6 +129,7 @@
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/spi.html">Module spi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/timestamp_util.html">Module timestamp_util</a></li>
 <li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/uart.html">Module uart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="apidocs/erlang/eavmlib/websocket.html">Module websocket</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#alisp">alisp</a><ul>
@@ -182,12 +195,16 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/README.html">The estdlib library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/application.html">Module application</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/base64.html">Module base64</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/binary.html">Module binary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/calendar.html">Module calendar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/code.html">Module code</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/crypto.html">Module crypto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/dist_util.html">Module dist_util</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/erl_epmd.html">Module erl_epmd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/erlang.html">Module erlang</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/erpc.html">Module erpc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/erts_debug.html">Module erts_debug</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/ets.html">Module ets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/gen_event.html">Module gen_event</a></li>
@@ -199,15 +216,20 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/init.html">Module init</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/io.html">Module io</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/io_lib.html">Module io_lib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/kernel.html">Module kernel</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/lists.html">Module lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/logger.html">Module logger</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/maps.html">Module maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/math.html">Module math</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/net.html">Module net</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/net_kernel.html">Module net_kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/net_kernel_sup.html">Module net_kernel_sup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/proplists.html">Module proplists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/queue.html">Module queue</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/sets.html">Module sets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/socket.html">Module socket</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/socket_dist.html">Module socket_dist</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/socket_dist_controller.html">Module socket_dist_controller</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/ssl.html">Module ssl</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/string.html">Module string</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/estdlib/supervisor.html">Module supervisor</a></li>
@@ -226,6 +248,7 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/avm_pubsub.html">Module avm_pubsub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/console.html">Module console</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/emscripten.html">Module emscripten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/epmd.html">Module epmd</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/esp.html">Module esp</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/esp_adc.html">Module esp_adc</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/gpio.html">Module gpio</a></li>
@@ -233,6 +256,7 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/i2c.html">Module i2c</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/json_encoder.html">Module json_encoder</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/ledc.html">Module ledc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/mdns.html">Module mdns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/network.html">Module network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/network_fsm.html">Module network_fsm</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/pico.html">Module pico</a></li>
@@ -240,6 +264,7 @@
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/spi.html">Module spi</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/timestamp_util.html">Module timestamp_util</a></li>
 <li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/uart.html">Module uart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apidocs/erlang/eavmlib/websocket.html">Module websocket</a></li>
 </ul>
 </div>
 </section>

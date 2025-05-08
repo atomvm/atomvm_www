@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>Functions &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/functions.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../memory-management.html">Memory Management</a></li>
@@ -1234,7 +1235,7 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.externalterm_to_term">
-<span class="target" id="libatomvmexternalterm_8h_1aad438929de43302a6dd3698b0e4d9bc2"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermOpts</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_to_term" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmexternalterm_8h_1a2c3a1ef95a2dac7caa0a47dc3e91d61f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermFlags</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_to_term" title="Link to this definition"></a><br /></dt>
 <dd><p>Gets a term from external term data. </p>
 <p>Deserialize an external term from external format and returns a term. </p>
 <dl class="field-list simple">
@@ -1243,7 +1244,11 @@
 <li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
 <li><p><strong>size</strong> – to allocate for term. </p></li>
 <li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
-<li><p><strong>opts</strong> – if non-zero, use a heap fragment to store the generated terms. Otherwise, use the heap in the provided context. Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms. </p></li>
+<li><p><strong>flags</strong> – options to deserialize data. The following flags are supported:<ul>
+<li><p>ExternalTermToHeapFragment : use a heap fragment to store the generated terms (default is to use the heap in the provided context). Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms.</p></li>
+<li><p>ExternalTermCopy : copy (binary and atom) data. Suitable when external_term pointer is not a const literal. </p></li>
+</ul>
+</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1417,7 +1422,7 @@ terms in a heap fragment, otherwise terms are stored in the context heap.</p></l
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_get_registered_process">
-<span class="target" id="libatomvmglobalcontext_8h_1a1d44480f263aba90ba37dc080b9f7633"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_registered_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_get_registered_process" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmglobalcontext_8h_1a6574367bfeaac8707d4781aaf14c0c26"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_get_registered_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_get_registered_process" title="Link to this definition"></a><br /></dt>
 <dd><p>Get a registered process. </p>
 <p>Returns the local process id of a previously registered process. </p>
 <dl class="field-list simple">
@@ -1428,7 +1433,7 @@ terms in a heap fragment, otherwise terms are stored in the context heap.</p></l
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a previously registered process local id. </p>
+<dd class="field-even"><p>a previously registered process local id or UNDEFINED_ATOM </p>
 </dd>
 </dl>
 </dd></dl>
@@ -1643,7 +1648,7 @@ terms in a heap fragment, otherwise terms are stored in the context heap.</p></l
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.globalcontext_register_process">
-<span class="target" id="libatomvmglobalcontext_8h_1ac7ceed58fce6b272d0c133cbba7b9378"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_register_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">local_process_id</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_register_process" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmglobalcontext_8h_1a0e0d5a00d040ac4cffb8c2bf91d39757"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">globalcontext_register_process</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.GlobalContext" title="GlobalContext"><span class="n"><span class="pre">GlobalContext</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">glb</span></span>, <span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n"><span class="pre">atom_index</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">local_pid_or_port</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.globalcontext_register_process" title="Link to this definition"></a><br /></dt>
 <dd><p>Register a process. </p>
 <p>Register a process with a certain name (atom) so it can be easily retrieved later. </p>
 <dl class="field-list simple">
@@ -1651,7 +1656,7 @@ terms in a heap fragment, otherwise terms are stored in the context heap.</p></l
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>glb</strong> – the global context, each registered process will be globally available for that context. </p></li>
 <li><p><strong>atom_index</strong> – the atom table index. </p></li>
-<li><p><strong>local_process_id</strong> – the process local id. </p></li>
+<li><p><strong>local_pid_or_port</strong> – the local pid or port </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -4133,7 +4138,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 <dt class="sig sig-object c" id="c.libAtomVM.functions.term_get_size_from_boxed_header">
 <span class="target" id="libatomvmterm_8h_1aee9a7c3894db9c273dcba80f33ba378e"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_get_size_from_boxed_header</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">header</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.term_get_size_from_boxed_header" title="Link to this definition"></a><br /></dt>
 <dd><p>Returns size of a boxed term from its header. </p>
-<p>Returns the size that is stored in boxed term header most significant bits. </p>
+<p>Returns the size that is stored in boxed term header most significant bits for variable size boxed terms. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -4375,8 +4380,8 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.term_is_refc_binary">
 <span class="target" id="libatomvmterm_8h_1aa156f5e789e8ba2f137ee66c9039f191"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_is_refc_binary</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.term_is_refc_binary" title="Link to this definition"></a><br /></dt>
-<dd><p>Checks if a term is a binary. </p>
-<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a binary stored on the heap, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
+<dd><p>Checks if a term is a refc binary. </p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if a term is a ref-counted binary, otherwise <code class="docutils literal notranslate"><span class="pre">false</span></code>. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -4711,7 +4716,7 @@ This function must be implemented in otp_socket_platform.c. Platforms using lwIP
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.term_to_local_process_id">
 <span class="target" id="libatomvmterm_8h_1a20b67853b542f85c35e7f99756deb810"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">int32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">term_to_local_process_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">t</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.term_to_local_process_id" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets process table index. </p>
+<dd><p>Gets process table index for a local pid or port. </p>
 <p>Returns local process table index for given atom term. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>

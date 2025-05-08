@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>libAtomVM &mdash; AtomVM 0.7.0-dev+git.0b7a9e6a documentation</title>
+  <title>libAtomVM &mdash; AtomVM 0.7.0-dev+git.f660deda documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/index.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=22e86435"></script>
+      <script src="../../_static/documentation_options.js?v=3b2bf1ca"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -55,6 +55,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../atomvm-tooling.html">AtomVM Tooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../programmers-guide.html">Programmers Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../network-programming-guide.html">Network Programming Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../distributed-erlang.html">Distributed Erlang</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../build-instructions.html">Build Instructions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../atomvm-internals.html">AtomVM Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../memory-management.html">Memory Management</a></li>
@@ -91,6 +92,8 @@
 <li class="toctree-l4"><a class="reference internal" href="src/defaultatoms.h.html">defaultatoms.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="src/dictionary.c.html">dictionary.c</a></li>
 <li class="toctree-l4"><a class="reference internal" href="src/dictionary.h.html">dictionary.h</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src/dist_nifs.c.html">dist_nifs.c</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src/dist_nifs.h.html">dist_nifs.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="src/erl_nif.h.html">erl_nif.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="src/erl_nif_priv.h.html">erl_nif_priv.h</a></li>
 <li class="toctree-l4"><a class="reference internal" href="src/ets.c.html">ets.c</a></li>
@@ -657,6 +660,10 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.schedulers_cv"><code class="docutils literal notranslate"><span class="pre">schedulers_cv</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.scheduler_stop_all"><code class="docutils literal notranslate"><span class="pre">scheduler_stop_all</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.env_spinlock"><code class="docutils literal notranslate"><span class="pre">env_spinlock</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.node_name"><code class="docutils literal notranslate"><span class="pre">node_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.creation"><code class="docutils literal notranslate"><span class="pre">creation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.dist_connection_resource_type"><code class="docutils literal notranslate"><span class="pre">dist_connection_resource_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.dist_connections"><code class="docutils literal notranslate"><span class="pre">dist_connections</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.GlobalContext.platform_data"><code class="docutils literal notranslate"><span class="pre">platform_data</span></code></a></li>
 </ul>
 </li>
@@ -786,7 +793,7 @@
 <li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.RegisteredProcess"><code class="docutils literal notranslate"><span class="pre">RegisteredProcess</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.RegisteredProcess.registered_processes_list_head"><code class="docutils literal notranslate"><span class="pre">registered_processes_list_head</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.RegisteredProcess.atom_index"><code class="docutils literal notranslate"><span class="pre">atom_index</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.RegisteredProcess.local_process_id"><code class="docutils literal notranslate"><span class="pre">local_process_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.RegisteredProcess.local_pid_or_port"><code class="docutils literal notranslate"><span class="pre">local_pid_or_port</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.ResourceMonitor"><code class="docutils literal notranslate"><span class="pre">ResourceMonitor</span></code></a><ul>
@@ -815,6 +822,7 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.SelectEvent.close"><code class="docutils literal notranslate"><span class="pre">close</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.SelectEvent.local_pid"><code class="docutils literal notranslate"><span class="pre">local_pid</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.SelectEvent.ref_ticks"><code class="docutils literal notranslate"><span class="pre">ref_ticks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.SelectEvent.message"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.structs.SnprintfFun"><code class="docutils literal notranslate"><span class="pre">SnprintfFun</span></code></a><ul>
@@ -898,6 +906,7 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ContextFlags.Ready"><code class="docutils literal notranslate"><span class="pre">Ready</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ContextFlags.Killed"><code class="docutils literal notranslate"><span class="pre">Killed</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ContextFlags.Trap"><code class="docutils literal notranslate"><span class="pre">Trap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ContextFlags.Distribution"><code class="docutils literal notranslate"><span class="pre">Distribution</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.DictionaryFunctionResult"><code class="docutils literal notranslate"><span class="pre">DictionaryFunctionResult</span></code></a><ul>
@@ -913,11 +922,6 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_READ"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_READ</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_WRITE"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_WRITE</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ErlNifSelectFlags.ERL_NIF_SELECT_STOP"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP</span></code></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ExternalTermOpts"><code class="docutils literal notranslate"><span class="pre">ExternalTermOpts</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ExternalTermOpts.ExternalTermNoOpts"><code class="docutils literal notranslate"><span class="pre">ExternalTermNoOpts</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ExternalTermOpts.ExternalTermToHeapFragment"><code class="docutils literal notranslate"><span class="pre">ExternalTermToHeapFragment</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.ExternalTermResult"><code class="docutils literal notranslate"><span class="pre">ExternalTermResult</span></code></a><ul>
@@ -993,6 +997,7 @@
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.TrapExceptionSignal"><code class="docutils literal notranslate"><span class="pre">TrapExceptionSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.FlushMonitorSignal"><code class="docutils literal notranslate"><span class="pre">FlushMonitorSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.FlushInfoMonitorSignal"><code class="docutils literal notranslate"><span class="pre">FlushInfoMonitorSignal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.SetGroupLeaderSignal"><code class="docutils literal notranslate"><span class="pre">SetGroupLeaderSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.MonitorSignal"><code class="docutils literal notranslate"><span class="pre">MonitorSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.UnlinkIDSignal"><code class="docutils literal notranslate"><span class="pre">UnlinkIDSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="data_structures.html#c.libAtomVM.enums.MessageType.UnlinkIDAckSignal"><code class="docutils literal notranslate"><span class="pre">UnlinkIDAckSignal</span></code></a></li>
@@ -1291,6 +1296,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bitshift_op"><code class="docutils literal notranslate"><span class="pre">bitshift_op</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_registry_get_handler"><code class="docutils literal notranslate"><span class="pre">bif_registry_get_handler()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_self_0"><code class="docutils literal notranslate"><span class="pre">bif_erlang_self_0()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_node_0"><code class="docutils literal notranslate"><span class="pre">bif_erlang_node_0()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_byte_size_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_byte_size_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_bit_size_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_bit_size_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_binary_part_3"><code class="docutils literal notranslate"><span class="pre">bif_erlang_binary_part_3()</span></code></a></li>
@@ -1304,6 +1310,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_list_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_list_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_number_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_number_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_pid_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_pid_1()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_port_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_port_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_reference_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_reference_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_tuple_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_tuple_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.c.html#c.libAtomVM.bif.c.bif_erlang_is_record_2"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_record_2()</span></code></a></li>
@@ -1386,6 +1393,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.MAX_BIF_NAME_LEN"><code class="docutils literal notranslate"><span class="pre">MAX_BIF_NAME_LEN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_registry_get_handler"><code class="docutils literal notranslate"><span class="pre">bif_registry_get_handler()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_self_0"><code class="docutils literal notranslate"><span class="pre">bif_erlang_self_0()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_node_0"><code class="docutils literal notranslate"><span class="pre">bif_erlang_node_0()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_byte_size_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_byte_size_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_bit_size_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_bit_size_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_binary_part_3"><code class="docutils literal notranslate"><span class="pre">bif_erlang_binary_part_3()</span></code></a></li>
@@ -1400,6 +1408,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_list_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_list_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_number_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_number_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_pid_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_pid_1()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_port_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_port_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_reference_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_reference_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_tuple_1"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_tuple_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/bif.h.html#c.libAtomVM.bif.h.bif_erlang_is_record_2"><code class="docutils literal notranslate"><span class="pre">bif_erlang_is_record_2()</span></code></a></li>
@@ -1532,12 +1541,15 @@
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.DEFAULT_STACK_SIZE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_STACK_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.BYTES_PER_TERM"><code class="docutils literal notranslate"><span class="pre">BYTES_PER_TERM</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_monitors_handle_terminate"><code class="docutils literal notranslate"><span class="pre">context_monitors_handle_terminate()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_distribution_handle_terminate"><code class="docutils literal notranslate"><span class="pre">context_distribution_handle_terminate()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.destroy_extended_registers"><code class="docutils literal notranslate"><span class="pre">destroy_extended_registers()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_new"><code class="docutils literal notranslate"><span class="pre">context_new()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_destroy"><code class="docutils literal notranslate"><span class="pre">context_destroy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.term_pid_or_port_from_context"><code class="docutils literal notranslate"><span class="pre">term_pid_or_port_from_context()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_kill_signal"><code class="docutils literal notranslate"><span class="pre">context_process_kill_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_process_info_request_signal"><code class="docutils literal notranslate"><span class="pre">context_process_process_info_request_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_signal_trap_answer"><code class="docutils literal notranslate"><span class="pre">context_process_signal_trap_answer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_signal_set_group_leader"><code class="docutils literal notranslate"><span class="pre">context_process_signal_set_group_leader()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_flush_monitor_signal"><code class="docutils literal notranslate"><span class="pre">context_process_flush_monitor_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_link_exit_signal"><code class="docutils literal notranslate"><span class="pre">context_process_link_exit_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.c.html#c.libAtomVM.context.c.context_process_monitor_down_signal"><code class="docutils literal notranslate"><span class="pre">context_process_monitor_down_signal()</span></code></a></li>
@@ -1573,6 +1585,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.ContextFlags.Ready"><code class="docutils literal notranslate"><span class="pre">Ready</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.ContextFlags.Killed"><code class="docutils literal notranslate"><span class="pre">Killed</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.ContextFlags.Trap"><code class="docutils literal notranslate"><span class="pre">Trap</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.ContextFlags.Distribution"><code class="docutils literal notranslate"><span class="pre">Distribution</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.HeapGrowthStrategy"><code class="docutils literal notranslate"><span class="pre">HeapGrowthStrategy</span></code></a><ul>
@@ -1606,6 +1619,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_process_info_request_signal"><code class="docutils literal notranslate"><span class="pre">context_process_process_info_request_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_signal_trap_answer"><code class="docutils literal notranslate"><span class="pre">context_process_signal_trap_answer()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_flush_monitor_signal"><code class="docutils literal notranslate"><span class="pre">context_process_flush_monitor_signal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_signal_set_group_leader"><code class="docutils literal notranslate"><span class="pre">context_process_signal_set_group_leader()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_link_exit_signal"><code class="docutils literal notranslate"><span class="pre">context_process_link_exit_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_process_monitor_down_signal"><code class="docutils literal notranslate"><span class="pre">context_process_monitor_down_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/context.h.html#c.libAtomVM.context.h.context_get_process_info"><code class="docutils literal notranslate"><span class="pre">context_get_process_info()</span></code></a></li>
@@ -1752,6 +1766,96 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="src/dist_nifs.c.html">dist_nifs.c</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2"><code class="docutils literal notranslate"><span class="pre">&#64;2</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_LINK"><code class="docutils literal notranslate"><span class="pre">OPERATION_LINK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_NODE_LINK"><code class="docutils literal notranslate"><span class="pre">OPERATION_NODE_LINK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_REG_SEND"><code class="docutils literal notranslate"><span class="pre">OPERATION_REG_SEND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_GROUP_LEADER"><code class="docutils literal notranslate"><span class="pre">OPERATION_GROUP_LEADER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_REG_SEND_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_REG_SEND_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_MONITOR_P"><code class="docutils literal notranslate"><span class="pre">OPERATION_MONITOR_P</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_DEMONITOR_P"><code class="docutils literal notranslate"><span class="pre">OPERATION_DEMONITOR_P</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SEND_SENDER"><code class="docutils literal notranslate"><span class="pre">OPERATION_SEND_SENDER</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SEND_SENDER_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_SEND_SENDER_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_PAYLOAD_EXIT"><code class="docutils literal notranslate"><span class="pre">OPERATION_PAYLOAD_EXIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_PAYLOAD_EXIT_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_PAYLOAD_EXIT_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_PAYLOAD_EXIT2"><code class="docutils literal notranslate"><span class="pre">OPERATION_PAYLOAD_EXIT2</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_PAYLOAD_EXIT2_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_PAYLOAD_EXIT2_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_PAYLOAD_MONITOR_P_EXIT"><code class="docutils literal notranslate"><span class="pre">OPERATION_PAYLOAD_MONITOR_P_EXIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SPAWN_REQUEST"><code class="docutils literal notranslate"><span class="pre">OPERATION_SPAWN_REQUEST</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SPAWN_REQUEST_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_SPAWN_REQUEST_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SPAWN_REPLY"><code class="docutils literal notranslate"><span class="pre">OPERATION_SPAWN_REPLY</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_SPAWN_REPLY_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_SPAWN_REPLY_TT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_UNLINK_ID"><code class="docutils literal notranslate"><span class="pre">OPERATION_UNLINK_ID</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_UNLINK_ID_ACK"><code class="docutils literal notranslate"><span class="pre">OPERATION_UNLINK_ID_ACK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_ALIAS_SEND"><code class="docutils literal notranslate"><span class="pre">OPERATION_ALIAS_SEND</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;2.OPERATION_ALIAS_SEND_TT"><code class="docutils literal notranslate"><span class="pre">OPERATION_ALIAS_SEND_TT</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;3"><code class="docutils literal notranslate"><span class="pre">&#64;3</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;3.SPAWN_REPLY_FLAGS_LINK_CREATED"><code class="docutils literal notranslate"><span class="pre">SPAWN_REPLY_FLAGS_LINK_CREATED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.&#64;3.SPAWN_REPLY_FLAGS_MONITOR_CREATED"><code class="docutils literal notranslate"><span class="pre">SPAWN_REPLY_FLAGS_MONITOR_CREATED</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_dtor"><code class="docutils literal notranslate"><span class="pre">dist_connection_dtor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_message"><code class="docutils literal notranslate"><span class="pre">dist_enqueue_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_reg_send_message"><code class="docutils literal notranslate"><span class="pre">dist_enqueue_reg_send_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_send_sender_message"><code class="docutils literal notranslate"><span class="pre">dist_enqueue_send_sender_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_enqueue_monitor_exit_message"><code class="docutils literal notranslate"><span class="pre">dist_enqueue_monitor_exit_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_down"><code class="docutils literal notranslate"><span class="pre">dist_connection_down()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_setnode_3"><code class="docutils literal notranslate"><span class="pre">nif_erlang_setnode_3()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data_notification"><code class="docutils literal notranslate"><span class="pre">nif_erlang_dist_ctrl_get_data_notification()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_get_data"><code class="docutils literal notranslate"><span class="pre">nif_erlang_dist_ctrl_get_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_monitor"><code class="docutils literal notranslate"><span class="pre">dist_monitor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.nif_erlang_dist_ctrl_put_data"><code class="docutils literal notranslate"><span class="pre">nif_erlang_dist_ctrl_put_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_send_message"><code class="docutils literal notranslate"><span class="pre">dist_send_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_spawn_reply"><code class="docutils literal notranslate"><span class="pre">dist_spawn_reply()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_connection_resource_type_init"><code class="docutils literal notranslate"><span class="pre">dist_connection_resource_type_init</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.setnode_3_nif"><code class="docutils literal notranslate"><span class="pre">setnode_3_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_get_data_notification_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_get_data_notification_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_get_data_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_get_data_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.dist_ctrl_put_data_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_put_data_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket"><code class="docutils literal notranslate"><span class="pre">DistributionPacket</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.head"><code class="docutils literal notranslate"><span class="pre">head</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.size"><code class="docutils literal notranslate"><span class="pre">size</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistributionPacket.bytes"><code class="docutils literal notranslate"><span class="pre">bytes</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor"><code class="docutils literal notranslate"><span class="pre">RemoteMonitor</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.head"><code class="docutils literal notranslate"><span class="pre">head</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.target_proc"><code class="docutils literal notranslate"><span class="pre">target_proc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.ref_len"><code class="docutils literal notranslate"><span class="pre">ref_len</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.ref_words"><code class="docutils literal notranslate"><span class="pre">ref_words</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.pid_number"><code class="docutils literal notranslate"><span class="pre">pid_number</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.pid_serial"><code class="docutils literal notranslate"><span class="pre">pid_serial</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.RemoteMonitor.process_monitor"><code class="docutils literal notranslate"><span class="pre">process_monitor</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection"><code class="docutils literal notranslate"><span class="pre">DistConnection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.head"><code class="docutils literal notranslate"><span class="pre">head</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.node_atom_index"><code class="docutils literal notranslate"><span class="pre">node_atom_index</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.node_creation"><code class="docutils literal notranslate"><span class="pre">node_creation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.selecting_process_id"><code class="docutils literal notranslate"><span class="pre">selecting_process_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.connection_process_id"><code class="docutils literal notranslate"><span class="pre">connection_process_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.connection_process_monitor"><code class="docutils literal notranslate"><span class="pre">connection_process_monitor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.remote_monitors"><code class="docutils literal notranslate"><span class="pre">remote_monitors</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/dist_nifs.c.html#c.libAtomVM.dist_nifs.c.DistConnection.pending_packets"><code class="docutils literal notranslate"><span class="pre">pending_packets</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="src/dist_nifs.h.html">dist_nifs.h</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.DIST_OTP_RELEASE"><code class="docutils literal notranslate"><span class="pre">DIST_OTP_RELEASE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_send_message"><code class="docutils literal notranslate"><span class="pre">dist_send_message()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_monitor"><code class="docutils literal notranslate"><span class="pre">dist_monitor()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_spawn_reply"><code class="docutils literal notranslate"><span class="pre">dist_spawn_reply()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_connection_resource_type_init"><code class="docutils literal notranslate"><span class="pre">dist_connection_resource_type_init</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.setnode_3_nif"><code class="docutils literal notranslate"><span class="pre">setnode_3_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_get_data_notification_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_get_data_notification_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_get_data_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_get_data_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/dist_nifs.h.html#c.libAtomVM.dist_nifs.h.dist_ctrl_put_data_nif"><code class="docutils literal notranslate"><span class="pre">dist_ctrl_put_data_nif</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="src/erl_nif.h.html">erl_nif.h</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.ErlNifEnv"><code class="docutils literal notranslate"><span class="pre">ErlNifEnv</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.ERL_NIF_TERM"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_TERM</span></code></a></li>
@@ -1771,12 +1875,12 @@
 <li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.ErlNifSelectFlags.ERL_NIF_SELECT_STOP"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2"><code class="docutils literal notranslate"><span class="pre">&#64;2</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2.ERL_NIF_SELECT_STOP_CALLED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP_CALLED</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2.ERL_NIF_SELECT_STOP_SCHEDULED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP_SCHEDULED</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2.ERL_NIF_SELECT_INVALID_EVENT"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_INVALID_EVENT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2.ERL_NIF_SELECT_FAILED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_FAILED</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;2.ERL_NIF_SELECT_BADARG"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_BADARG</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4"><code class="docutils literal notranslate"><span class="pre">&#64;4</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4.ERL_NIF_SELECT_STOP_CALLED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP_CALLED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4.ERL_NIF_SELECT_STOP_SCHEDULED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_STOP_SCHEDULED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4.ERL_NIF_SELECT_INVALID_EVENT"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_INVALID_EVENT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4.ERL_NIF_SELECT_FAILED"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_FAILED</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.&#64;4.ERL_NIF_SELECT_BADARG"><code class="docutils literal notranslate"><span class="pre">ERL_NIF_SELECT_BADARG</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_init_resource_type"><code class="docutils literal notranslate"><span class="pre">enif_init_resource_type()</span></code></a></li>
@@ -1786,6 +1890,8 @@
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_release_resource"><code class="docutils literal notranslate"><span class="pre">enif_release_resource()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_make_resource"><code class="docutils literal notranslate"><span class="pre">enif_make_resource()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select"><code class="docutils literal notranslate"><span class="pre">enif_select()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select_read"><code class="docutils literal notranslate"><span class="pre">enif_select_read()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_select_write"><code class="docutils literal notranslate"><span class="pre">enif_select_write()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_monitor_process"><code class="docutils literal notranslate"><span class="pre">enif_monitor_process()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_demonitor_process"><code class="docutils literal notranslate"><span class="pre">enif_demonitor_process()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/erl_nif.h.html#c.libAtomVM.erl_nif.h.enif_compare_monitors"><code class="docutils literal notranslate"><span class="pre">enif_compare_monitors()</span></code></a></li>
@@ -1919,6 +2025,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_TUPLE"><code class="docutils literal notranslate"><span class="pre">LARGE_PRIME_TUPLE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_LIST"><code class="docutils literal notranslate"><span class="pre">LARGE_PRIME_LIST</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_MAP"><code class="docutils literal notranslate"><span class="pre">LARGE_PRIME_MAP</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.LARGE_PRIME_PORT"><code class="docutils literal notranslate"><span class="pre">LARGE_PRIME_PORT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_term"><code class="docutils literal notranslate"><span class="pre">hash_term()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.ets_hashtable_new"><code class="docutils literal notranslate"><span class="pre">ets_hashtable_new()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.ets_hashtable_free_node"><code class="docutils literal notranslate"><span class="pre">ets_hashtable_free_node()</span></code></a></li>
@@ -1931,8 +2038,12 @@
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_atom"><code class="docutils literal notranslate"><span class="pre">hash_atom()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_integer"><code class="docutils literal notranslate"><span class="pre">hash_integer()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_float"><code class="docutils literal notranslate"><span class="pre">hash_float()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_pid"><code class="docutils literal notranslate"><span class="pre">hash_pid()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_reference"><code class="docutils literal notranslate"><span class="pre">hash_reference()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_pid"><code class="docutils literal notranslate"><span class="pre">hash_local_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_port"><code class="docutils literal notranslate"><span class="pre">hash_local_port()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_pid"><code class="docutils literal notranslate"><span class="pre">hash_external_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_port"><code class="docutils literal notranslate"><span class="pre">hash_external_port()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_local_reference"><code class="docutils literal notranslate"><span class="pre">hash_local_reference()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_external_reference"><code class="docutils literal notranslate"><span class="pre">hash_external_reference()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_binary"><code class="docutils literal notranslate"><span class="pre">hash_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.hash_term_incr"><code class="docutils literal notranslate"><span class="pre">hash_term_incr()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/ets_hashtable.c.html#c.libAtomVM.ets_hashtable.c.HNode"><code class="docutils literal notranslate"><span class="pre">HNode</span></code></a></li>
@@ -1997,7 +2108,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.bif0_ptr"><code class="docutils literal notranslate"><span class="pre">bif0_ptr</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.bif1_ptr"><code class="docutils literal notranslate"><span class="pre">bif1_ptr</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.bif2_ptr"><code class="docutils literal notranslate"><span class="pre">bif2_ptr</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.&#64;4"><code class="docutils literal notranslate"><span class="pre">&#64;4</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Bif.&#64;6"><code class="docutils literal notranslate"><span class="pre">&#64;6</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif"><code class="docutils literal notranslate"><span class="pre">GCBif</span></code></a><ul>
@@ -2005,7 +2116,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.gcbif1_ptr"><code class="docutils literal notranslate"><span class="pre">gcbif1_ptr</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.gcbif2_ptr"><code class="docutils literal notranslate"><span class="pre">gcbif2_ptr</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.gcbif3_ptr"><code class="docutils literal notranslate"><span class="pre">gcbif3_ptr</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.&#64;6"><code class="docutils literal notranslate"><span class="pre">&#64;6</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.GCBif.&#64;8"><code class="docutils literal notranslate"><span class="pre">&#64;8</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/exportedfunction.h.html#c.libAtomVM.exportedfunction.h.Nif"><code class="docutils literal notranslate"><span class="pre">Nif</span></code></a><ul>
@@ -2030,9 +2141,12 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/externalterm.c.html">externalterm.c</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.NEW_FLOAT_EXT"><code class="docutils literal notranslate"><span class="pre">NEW_FLOAT_EXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.NEW_PID_EXT"><code class="docutils literal notranslate"><span class="pre">NEW_PID_EXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.NEWER_REFERENCE_EXT"><code class="docutils literal notranslate"><span class="pre">NEWER_REFERENCE_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.SMALL_INTEGER_EXT"><code class="docutils literal notranslate"><span class="pre">SMALL_INTEGER_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.INTEGER_EXT"><code class="docutils literal notranslate"><span class="pre">INTEGER_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.ATOM_EXT"><code class="docutils literal notranslate"><span class="pre">ATOM_EXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.PID_EXT"><code class="docutils literal notranslate"><span class="pre">PID_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.SMALL_TUPLE_EXT"><code class="docutils literal notranslate"><span class="pre">SMALL_TUPLE_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.LARGE_TUPLE_EXT"><code class="docutils literal notranslate"><span class="pre">LARGE_TUPLE_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.NIL_EXT"><code class="docutils literal notranslate"><span class="pre">NIL_EXT</span></code></a></li>
@@ -2043,6 +2157,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.EXPORT_EXT"><code class="docutils literal notranslate"><span class="pre">EXPORT_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.MAP_EXT"><code class="docutils literal notranslate"><span class="pre">MAP_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.SMALL_ATOM_UTF8_EXT"><code class="docutils literal notranslate"><span class="pre">SMALL_ATOM_UTF8_EXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.V4_PORT_EXT"><code class="docutils literal notranslate"><span class="pre">V4_PORT_EXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.INVALID_TERM_SIZE"><code class="docutils literal notranslate"><span class="pre">INVALID_TERM_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.NEW_FLOAT_EXT_SIZE"><code class="docutils literal notranslate"><span class="pre">NEW_FLOAT_EXT_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.SMALL_INTEGER_EXT_SIZE"><code class="docutils literal notranslate"><span class="pre">SMALL_INTEGER_EXT_SIZE</span></code></a></li>
@@ -2060,9 +2175,8 @@
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.compute_external_size"><code class="docutils literal notranslate"><span class="pre">compute_external_size()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_from_term"><code class="docutils literal notranslate"><span class="pre">externalterm_from_term()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.serialize_term"><code class="docutils literal notranslate"><span class="pre">serialize_term()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_internal"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term_internal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_with_roots"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term_with_roots()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_term_copy"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term_copy()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_from_binary"><code class="docutils literal notranslate"><span class="pre">externalterm_from_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.externalterm_to_binary"><code class="docutils literal notranslate"><span class="pre">externalterm_to_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.c.html#c.libAtomVM.externalterm.c.get_num_bytes"><code class="docutils literal notranslate"><span class="pre">get_num_bytes()</span></code></a></li>
@@ -2081,13 +2195,14 @@
 <li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermResult.EXTERNAL_TERM_HEAP_ALLOC"><code class="docutils literal notranslate"><span class="pre">EXTERNAL_TERM_HEAP_ALLOC</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts"><code class="docutils literal notranslate"><span class="pre">ExternalTermOpts</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermNoOpts"><code class="docutils literal notranslate"><span class="pre">ExternalTermNoOpts</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermOpts.ExternalTermToHeapFragment"><code class="docutils literal notranslate"><span class="pre">ExternalTermToHeapFragment</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags"><code class="docutils literal notranslate"><span class="pre">ExternalTermFlags</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermNoOpts"><code class="docutils literal notranslate"><span class="pre">ExternalTermNoOpts</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermToHeapFragment"><code class="docutils literal notranslate"><span class="pre">ExternalTermToHeapFragment</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.ExternalTermFlags.ExternalTermCopy"><code class="docutils literal notranslate"><span class="pre">ExternalTermCopy</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term_copy"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term_copy()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_term_with_roots"><code class="docutils literal notranslate"><span class="pre">externalterm_to_term_with_roots()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_from_binary"><code class="docutils literal notranslate"><span class="pre">externalterm_from_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_to_binary"><code class="docutils literal notranslate"><span class="pre">externalterm_to_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/externalterm.h.html#c.libAtomVM.externalterm.h.externalterm_compute_external_size_raw"><code class="docutils literal notranslate"><span class="pre">externalterm_compute_external_size_raw()</span></code></a></li>
@@ -2104,8 +2219,11 @@
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_get_process_trylock"><code class="docutils literal notranslate"><span class="pre">globalcontext_get_process_trylock()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_get_process_unlock"><code class="docutils literal notranslate"><span class="pre">globalcontext_get_process_unlock()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_process_exists"><code class="docutils literal notranslate"><span class="pre">globalcontext_process_exists()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_post_message"><code class="docutils literal notranslate"><span class="pre">globalcontext_post_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_nolock"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_nolock()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_from_task_common"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task_common()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_post_message_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_post_message_from_task()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_send_message_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_process_message_queue"><code class="docutils literal notranslate"><span class="pre">globalcontext_process_message_queue()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.globalcontext_process_refc_queue"><code class="docutils literal notranslate"><span class="pre">globalcontext_process_refc_queue()</span></code></a></li>
@@ -2127,7 +2245,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess"><code class="docutils literal notranslate"><span class="pre">RegisteredProcess</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.registered_processes_list_head"><code class="docutils literal notranslate"><span class="pre">registered_processes_list_head</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.atom_index"><code class="docutils literal notranslate"><span class="pre">atom_index</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.local_process_id"><code class="docutils literal notranslate"><span class="pre">local_process_id</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.c.html#c.libAtomVM.globalcontext.c.RegisteredProcess.local_pid_or_port"><code class="docutils literal notranslate"><span class="pre">local_pid_or_port</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -2136,6 +2254,11 @@
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.INVALID_PROCESS_ID"><code class="docutils literal notranslate"><span class="pre">INVALID_PROCESS_ID</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.TYPEDEF_MODULE"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_MODULE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.Module"><code class="docutils literal notranslate"><span class="pre">Module</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult"><code class="docutils literal notranslate"><span class="pre">SendMessageResult</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_OK"><code class="docutils literal notranslate"><span class="pre">SEND_MESSAGE_OK</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.SendMessageResult.SEND_MESSAGE_PROCESS_NOT_FOUND"><code class="docutils literal notranslate"><span class="pre">SEND_MESSAGE_PROCESS_NOT_FOUND</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_new"><code class="docutils literal notranslate"><span class="pre">globalcontext_new()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_destroy"><code class="docutils literal notranslate"><span class="pre">globalcontext_destroy()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_get_process_nolock"><code class="docutils literal notranslate"><span class="pre">globalcontext_get_process_nolock()</span></code></a></li>
@@ -2144,7 +2267,9 @@
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_process_exists"><code class="docutils literal notranslate"><span class="pre">globalcontext_process_exists()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_send_message"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_send_message_nolock"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_nolock()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_post_message"><code class="docutils literal notranslate"><span class="pre">globalcontext_post_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_send_message_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_send_message_from_task()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_post_message_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_post_message_from_task()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_refc_decrement_refcount_from_task"><code class="docutils literal notranslate"><span class="pre">globalcontext_refc_decrement_refcount_from_task()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_process_task_driver_queues"><code class="docutils literal notranslate"><span class="pre">globalcontext_process_task_driver_queues()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.globalcontext_init_process"><code class="docutils literal notranslate"><span class="pre">globalcontext_init_process()</span></code></a></li>
@@ -2208,6 +2333,10 @@
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.schedulers_cv"><code class="docutils literal notranslate"><span class="pre">schedulers_cv</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.scheduler_stop_all"><code class="docutils literal notranslate"><span class="pre">scheduler_stop_all</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.env_spinlock"><code class="docutils literal notranslate"><span class="pre">env_spinlock</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.node_name"><code class="docutils literal notranslate"><span class="pre">node_name</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.creation"><code class="docutils literal notranslate"><span class="pre">creation</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.dist_connection_resource_type"><code class="docutils literal notranslate"><span class="pre">dist_connection_resource_type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.dist_connections"><code class="docutils literal notranslate"><span class="pre">dist_connections</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/globalcontext.h.html#c.libAtomVM.globalcontext.h.GlobalContext.platform_data"><code class="docutils literal notranslate"><span class="pre">platform_data</span></code></a></li>
 </ul>
 </li>
@@ -2405,12 +2534,14 @@
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_init"><code class="docutils literal notranslate"><span class="pre">mailbox_init()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_to_heap_fragment"><code class="docutils literal notranslate"><span class="pre">mailbox_message_to_heap_fragment()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_dispose"><code class="docutils literal notranslate"><span class="pre">mailbox_message_dispose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_dispose_unsent"><code class="docutils literal notranslate"><span class="pre">mailbox_message_dispose_unsent()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_destroy"><code class="docutils literal notranslate"><span class="pre">mailbox_destroy()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_len"><code class="docutils literal notranslate"><span class="pre">mailbox_len()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_size"><code class="docutils literal notranslate"><span class="pre">mailbox_size()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_enqueue_message"><code class="docutils literal notranslate"><span class="pre">mailbox_enqueue_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_post_message"><code class="docutils literal notranslate"><span class="pre">mailbox_post_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_create_from_term"><code class="docutils literal notranslate"><span class="pre">mailbox_message_create_from_term()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_message_create_normal_message_from_term"><code class="docutils literal notranslate"><span class="pre">mailbox_message_create_normal_message_from_term()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_send"><code class="docutils literal notranslate"><span class="pre">mailbox_send()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_send_term_signal"><code class="docutils literal notranslate"><span class="pre">mailbox_send_term_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.c.html#c.libAtomVM.mailbox.c.mailbox_send_immediate_signal"><code class="docutils literal notranslate"><span class="pre">mailbox_send_immediate_signal()</span></code></a></li>
@@ -2431,9 +2562,12 @@
 <li class="toctree-l1"><a class="reference internal" href="src/mailbox.h.html">mailbox.h</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.ATOMIC"><code class="docutils literal notranslate"><span class="pre">ATOMIC</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_CONTEXT"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_CONTEXT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_GLOBALCONTEXT"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_GLOBALCONTEXT</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_HEAP"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_HEAP</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_MAILBOXMESSAGE"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_MAILBOXMESSAGE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.TYPEDEF_MESSAGE"><code class="docutils literal notranslate"><span class="pre">TYPEDEF_MESSAGE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Context"><code class="docutils literal notranslate"><span class="pre">Context</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.GlobalContext"><code class="docutils literal notranslate"><span class="pre">GlobalContext</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Heap"><code class="docutils literal notranslate"><span class="pre">Heap</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage"><code class="docutils literal notranslate"><span class="pre">MailboxMessage</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
@@ -2446,6 +2580,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.TrapExceptionSignal"><code class="docutils literal notranslate"><span class="pre">TrapExceptionSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.FlushMonitorSignal"><code class="docutils literal notranslate"><span class="pre">FlushMonitorSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.FlushInfoMonitorSignal"><code class="docutils literal notranslate"><span class="pre">FlushInfoMonitorSignal</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.SetGroupLeaderSignal"><code class="docutils literal notranslate"><span class="pre">SetGroupLeaderSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.MonitorSignal"><code class="docutils literal notranslate"><span class="pre">MonitorSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.UnlinkIDSignal"><code class="docutils literal notranslate"><span class="pre">UnlinkIDSignal</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MessageType.UnlinkIDAckSignal"><code class="docutils literal notranslate"><span class="pre">UnlinkIDAckSignal</span></code></a></li>
@@ -2466,6 +2601,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_send_immediate_ref_signal"><code class="docutils literal notranslate"><span class="pre">mailbox_send_immediate_ref_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_send_monitor_signal"><code class="docutils literal notranslate"><span class="pre">mailbox_send_monitor_signal()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_send_empty_body_signal"><code class="docutils literal notranslate"><span class="pre">mailbox_send_empty_body_signal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_post_message"><code class="docutils literal notranslate"><span class="pre">mailbox_post_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_enqueue_message"><code class="docutils literal notranslate"><span class="pre">mailbox_enqueue_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_reset"><code class="docutils literal notranslate"><span class="pre">mailbox_reset()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_next"><code class="docutils literal notranslate"><span class="pre">mailbox_next()</span></code></a></li>
@@ -2476,12 +2612,14 @@
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_destroy"><code class="docutils literal notranslate"><span class="pre">mailbox_destroy()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_create_from_term"><code class="docutils literal notranslate"><span class="pre">mailbox_message_create_from_term()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_dispose"><code class="docutils literal notranslate"><span class="pre">mailbox_message_dispose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_create_normal_message_from_term"><code class="docutils literal notranslate"><span class="pre">mailbox_message_create_normal_message_from_term()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_message_dispose_unsent"><code class="docutils literal notranslate"><span class="pre">mailbox_message_dispose_unsent()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_remove_message"><code class="docutils literal notranslate"><span class="pre">mailbox_remove_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.mailbox_crashdump"><code class="docutils literal notranslate"><span class="pre">mailbox_crashdump()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.next"><code class="docutils literal notranslate"><span class="pre">next</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.heap_fragment_end"><code class="docutils literal notranslate"><span class="pre">heap_fragment_end</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.&#64;8"><code class="docutils literal notranslate"><span class="pre">&#64;8</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.MailboxMessage.&#64;10"><code class="docutils literal notranslate"><span class="pre">&#64;10</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Message.base"><code class="docutils literal notranslate"><span class="pre">base</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Message.message"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/mailbox.h.html#c.libAtomVM.mailbox.h.Message.heap_end"><code class="docutils literal notranslate"><span class="pre">heap_end</span></code></a></li>
@@ -2606,7 +2744,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.next"><code class="docutils literal notranslate"><span class="pre">next</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.mso_list"><code class="docutils literal notranslate"><span class="pre">mso_list</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.heap_end"><code class="docutils literal notranslate"><span class="pre">heap_end</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.&#64;10"><code class="docutils literal notranslate"><span class="pre">&#64;10</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.&#64;12"><code class="docutils literal notranslate"><span class="pre">&#64;12</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.HeapFragment.storage"><code class="docutils literal notranslate"><span class="pre">storage</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.Heap.root"><code class="docutils literal notranslate"><span class="pre">root</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/memory.h.html#c.libAtomVM.memory.h.Heap.heap_start"><code class="docutils literal notranslate"><span class="pre">heap_start</span></code></a></li>
@@ -2738,6 +2876,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.DECLARE_MATH_NIF_FUN"><code class="docutils literal notranslate"><span class="pre">DECLARE_MATH_NIF_FUN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.DEFINE_MATH_NIF"><code class="docutils literal notranslate"><span class="pre">DEFINE_MATH_NIF</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_OPEN_CLOSE"><code class="docutils literal notranslate"><span class="pre">IF_HAVE_OPEN_CLOSE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_EXECVE"><code class="docutils literal notranslate"><span class="pre">IF_HAVE_EXECVE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_MKFIFO"><code class="docutils literal notranslate"><span class="pre">IF_HAVE_MKFIFO</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_UNLINK"><code class="docutils literal notranslate"><span class="pre">IF_HAVE_UNLINK</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY"><code class="docutils literal notranslate"><span class="pre">IF_HAVE_CLOCK_SETTIME_OR_SETTIMEOFDAY</span></code></a></li>
@@ -2793,7 +2932,6 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_unregister_1"><code class="docutils literal notranslate"><span class="pre">nif_erlang_unregister_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_send_2"><code class="docutils literal notranslate"><span class="pre">nif_erlang_send_2()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_setelement_3"><code class="docutils literal notranslate"><span class="pre">nif_erlang_setelement_3()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_spawn_opt"><code class="docutils literal notranslate"><span class="pre">nif_erlang_spawn_opt()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_spawn_fun_opt"><code class="docutils literal notranslate"><span class="pre">nif_erlang_spawn_fun_opt()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_whereis_1"><code class="docutils literal notranslate"><span class="pre">nif_erlang_whereis_1()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_system_time_1"><code class="docutils literal notranslate"><span class="pre">nif_erlang_system_time_1()</span></code></a></li>
@@ -2813,6 +2951,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_system_flag"><code class="docutils literal notranslate"><span class="pre">nif_erlang_system_flag()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_binary_to_term"><code class="docutils literal notranslate"><span class="pre">nif_erlang_binary_to_term()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_term_to_binary"><code class="docutils literal notranslate"><span class="pre">nif_erlang_term_to_binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_split_binary"><code class="docutils literal notranslate"><span class="pre">nif_erlang_split_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_throw"><code class="docutils literal notranslate"><span class="pre">nif_erlang_throw()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_raise"><code class="docutils literal notranslate"><span class="pre">nif_erlang_raise()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_ets_new"><code class="docutils literal notranslate"><span class="pre">nif_ets_new()</span></code></a></li>
@@ -2822,12 +2961,14 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_ets_delete"><code class="docutils literal notranslate"><span class="pre">nif_ets_delete()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_ets_update_counter"><code class="docutils literal notranslate"><span class="pre">nif_ets_update_counter()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_pid_to_list"><code class="docutils literal notranslate"><span class="pre">nif_erlang_pid_to_list()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_port_to_list"><code class="docutils literal notranslate"><span class="pre">nif_erlang_port_to_list()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_ref_to_list"><code class="docutils literal notranslate"><span class="pre">nif_erlang_ref_to_list()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_fun_to_list"><code class="docutils literal notranslate"><span class="pre">nif_erlang_fun_to_list()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_function_exported"><code class="docutils literal notranslate"><span class="pre">nif_erlang_function_exported()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_garbage_collect"><code class="docutils literal notranslate"><span class="pre">nif_erlang_garbage_collect()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_group_leader"><code class="docutils literal notranslate"><span class="pre">nif_erlang_group_leader()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_get_module_info"><code class="docutils literal notranslate"><span class="pre">nif_erlang_get_module_info()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_setnode_2"><code class="docutils literal notranslate"><span class="pre">nif_erlang_setnode_2()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_memory"><code class="docutils literal notranslate"><span class="pre">nif_erlang_memory()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_monitor"><code class="docutils literal notranslate"><span class="pre">nif_erlang_monitor()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_demonitor"><code class="docutils literal notranslate"><span class="pre">nif_erlang_demonitor()</span></code></a></li>
@@ -2837,6 +2978,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_close_avm_pack"><code class="docutils literal notranslate"><span class="pre">nif_atomvm_close_avm_pack()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_get_start_beam"><code class="docutils literal notranslate"><span class="pre">nif_atomvm_get_start_beam()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_read_priv"><code class="docutils literal notranslate"><span class="pre">nif_atomvm_read_priv()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_atomvm_get_creation"><code class="docutils literal notranslate"><span class="pre">nif_atomvm_get_creation()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_console_print"><code class="docutils literal notranslate"><span class="pre">nif_console_print()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_base64_encode"><code class="docutils literal notranslate"><span class="pre">nif_base64_encode()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_base64_decode"><code class="docutils literal notranslate"><span class="pre">nif_base64_decode()</span></code></a></li>
@@ -2880,6 +3022,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.is_tagged_tuple"><code class="docutils literal notranslate"><span class="pre">is_tagged_tuple()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.process_console_message"><code class="docutils literal notranslate"><span class="pre">process_console_message()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.do_spawn"><code class="docutils literal notranslate"><span class="pre">do_spawn()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.nif_erlang_spawn_opt"><code class="docutils literal notranslate"><span class="pre">nif_erlang_spawn_opt()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.build_datetime_from_tm"><code class="docutils literal notranslate"><span class="pre">build_datetime_from_tm()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.is_valid_float_string"><code class="docutils literal notranslate"><span class="pre">is_valid_float_string()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.parse_float"><code class="docutils literal notranslate"><span class="pre">parse_float()</span></code></a></li>
@@ -2989,8 +3132,10 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.system_flag_nif"><code class="docutils literal notranslate"><span class="pre">system_flag_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.binary_to_term_nif"><code class="docutils literal notranslate"><span class="pre">binary_to_term_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.term_to_binary_nif"><code class="docutils literal notranslate"><span class="pre">term_to_binary_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.split_binary_nif"><code class="docutils literal notranslate"><span class="pre">split_binary_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.throw_nif"><code class="docutils literal notranslate"><span class="pre">throw_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.pid_to_list_nif"><code class="docutils literal notranslate"><span class="pre">pid_to_list_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.port_to_list_nif"><code class="docutils literal notranslate"><span class="pre">port_to_list_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.ref_to_list_nif"><code class="docutils literal notranslate"><span class="pre">ref_to_list_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.fun_to_list_nif"><code class="docutils literal notranslate"><span class="pre">fun_to_list_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.function_exported_nif"><code class="docutils literal notranslate"><span class="pre">function_exported_nif</span></code></a></li>
@@ -3003,6 +3148,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.unlink_nif"><code class="docutils literal notranslate"><span class="pre">unlink_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.group_leader_nif"><code class="docutils literal notranslate"><span class="pre">group_leader_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.get_module_info_nif"><code class="docutils literal notranslate"><span class="pre">get_module_info_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.setnode_2_nif"><code class="docutils literal notranslate"><span class="pre">setnode_2_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.raise_nif"><code class="docutils literal notranslate"><span class="pre">raise_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.ets_new_nif"><code class="docutils literal notranslate"><span class="pre">ets_new_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.ets_insert_nif"><code class="docutils literal notranslate"><span class="pre">ets_insert_nif</span></code></a></li>
@@ -3015,6 +3161,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_close_avm_pack_nif"><code class="docutils literal notranslate"><span class="pre">atomvm_close_avm_pack_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_get_start_beam_nif"><code class="docutils literal notranslate"><span class="pre">atomvm_get_start_beam_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_read_priv_nif"><code class="docutils literal notranslate"><span class="pre">atomvm_read_priv_nif</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.atomvm_get_creation_nif"><code class="docutils literal notranslate"><span class="pre">atomvm_get_creation_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.console_print_nif"><code class="docutils literal notranslate"><span class="pre">console_print_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.base64_encode_nif"><code class="docutils literal notranslate"><span class="pre">base64_encode_nif</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.c.html#c.libAtomVM.nifs.c.base64_decode_nif"><code class="docutils literal notranslate"><span class="pre">base64_decode_nif</span></code></a></li>
@@ -3078,6 +3225,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.h.html#c.libAtomVM.nifs.h.VALIDATE_VALUE"><code class="docutils literal notranslate"><span class="pre">VALIDATE_VALUE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.h.html#c.libAtomVM.nifs.h.RAISE_ERROR"><code class="docutils literal notranslate"><span class="pre">RAISE_ERROR</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/nifs.h.html#c.libAtomVM.nifs.h.nifs_get"><code class="docutils literal notranslate"><span class="pre">nifs_get()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/nifs.h.html#c.libAtomVM.nifs.h.nif_erlang_spawn_opt"><code class="docutils literal notranslate"><span class="pre">nif_erlang_spawn_opt()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/opcodes.h.html">opcodes.h</a><ul>
@@ -3301,6 +3449,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.RECV_ATOM"><code class="docutils literal notranslate"><span class="pre">RECV_ATOM</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.DEFAULT_BUFFER_SIZE"><code class="docutils literal notranslate"><span class="pre">DEFAULT_BUFFER_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.MIN"><code class="docutils literal notranslate"><span class="pre">MIN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SOCKET_MAKE_SELECT_NOTIFICATION_SIZE"><code class="docutils literal notranslate"><span class="pre">SOCKET_MAKE_SELECT_NOTIFICATION_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.ShutdownHow"><code class="docutils literal notranslate"><span class="pre">ShutdownHow</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.ShutdownHow.SHUT_RD"><code class="docutils literal notranslate"><span class="pre">SHUT_RD</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.ShutdownHow.SHUT_WR"><code class="docutils literal notranslate"><span class="pre">SHUT_WR</span></code></a></li>
@@ -3349,10 +3498,12 @@
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketInvalidSetoptLevel"><code class="docutils literal notranslate"><span class="pre">OtpSocketInvalidSetoptLevel</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelSocket"><code class="docutils literal notranslate"><span class="pre">OtpSocketSetoptLevelSocket</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelOTP"><code class="docutils literal notranslate"><span class="pre">OtpSocketSetoptLevelOTP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.otp_socket_setopt_level.OtpSocketSetoptLevelIP"><code class="docutils literal notranslate"><span class="pre">OtpSocketSetoptLevelIP</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.tcp_recv_cb"><code class="docutils literal notranslate"><span class="pre">tcp_recv_cb()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.udp_recv_cb"><code class="docutils literal notranslate"><span class="pre">udp_recv_cb()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_make_select_notification"><code class="docutils literal notranslate"><span class="pre">socket_make_select_notification()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_dtor"><code class="docutils literal notranslate"><span class="pre">socket_dtor()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_down"><code class="docutils literal notranslate"><span class="pre">socket_down()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.select_event_send_notification_from_nif"><code class="docutils literal notranslate"><span class="pre">select_event_send_notification_from_nif()</span></code></a></li>
@@ -3413,6 +3564,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.rcvbuf_atom"><code class="docutils literal notranslate"><span class="pre">rcvbuf_atom</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.reuseaddr_atom"><code class="docutils literal notranslate"><span class="pre">reuseaddr_atom</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.type_atom"><code class="docutils literal notranslate"><span class="pre">type_atom</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.add_membership_atom"><code class="docutils literal notranslate"><span class="pre">add_membership_atom</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_resource_type"><code class="docutils literal notranslate"><span class="pre">socket_resource_type</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResourceTypeInit"><code class="docutils literal notranslate"><span class="pre">SocketResourceTypeInit</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.socket_open_nif"><code class="docutils literal notranslate"><span class="pre">socket_open_nif</span></code></a></li>
@@ -3454,8 +3606,9 @@
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.socket_state"><code class="docutils literal notranslate"><span class="pre">socket_state</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.tcp_pcb"><code class="docutils literal notranslate"><span class="pre">tcp_pcb</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.udp_pcb"><code class="docutils literal notranslate"><span class="pre">udp_pcb</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.&#64;12"><code class="docutils literal notranslate"><span class="pre">&#64;12</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.ref_ticks"><code class="docutils literal notranslate"><span class="pre">ref_ticks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.&#64;14"><code class="docutils literal notranslate"><span class="pre">&#64;14</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.socket_ref_ticks"><code class="docutils literal notranslate"><span class="pre">socket_ref_ticks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.select_ref_ticks"><code class="docutils literal notranslate"><span class="pre">select_ref_ticks</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.selecting_process_id"><code class="docutils literal notranslate"><span class="pre">selecting_process_id</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.selecting_process_monitor"><code class="docutils literal notranslate"><span class="pre">selecting_process_monitor</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.c.html#c.libAtomVM.otp_socket.c.SocketResource.linger_on"><code class="docutils literal notranslate"><span class="pre">linger_on</span></code></a></li>
@@ -3502,7 +3655,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.callback_arg"><code class="docutils literal notranslate"><span class="pre">callback_arg</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.success"><code class="docutils literal notranslate"><span class="pre">success</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.dns_gethostbyname"><code class="docutils literal notranslate"><span class="pre">dns_gethostbyname</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.&#64;14"><code class="docutils literal notranslate"><span class="pre">&#64;14</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/otp_socket.h.html#c.libAtomVM.otp_socket.h.LWIPEvent.&#64;16"><code class="docutils literal notranslate"><span class="pre">&#64;16</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -3711,6 +3864,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/posix_nifs.c.html">posix_nifs.c</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.posix_errno_to_term"><code class="docutils literal notranslate"><span class="pre">posix_errno_to_term()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.error_tuple_maybe_gc"><code class="docutils literal notranslate"><span class="pre">error_tuple_maybe_gc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/posix_nifs.c.html#c.libAtomVM.posix_nifs.c.errno_to_error_tuple_maybe_gc"><code class="docutils literal notranslate"><span class="pre">errno_to_error_tuple_maybe_gc()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/posix_nifs.h.html">posix_nifs.h</a><ul>
@@ -3756,7 +3911,10 @@
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_keep_resource"><code class="docutils literal notranslate"><span class="pre">enif_keep_resource()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_release_resource"><code class="docutils literal notranslate"><span class="pre">enif_release_resource()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_make_resource"><code class="docutils literal notranslate"><span class="pre">enif_make_resource()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_select_event_message_dispose"><code class="docutils literal notranslate"><span class="pre">enif_select_event_message_dispose()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_select_common"><code class="docutils literal notranslate"><span class="pre">enif_select_common()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_select"><code class="docutils literal notranslate"><span class="pre">enif_select()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.enif_select_read"><code class="docutils literal notranslate"><span class="pre">enif_select_read()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.select_event_make_notification"><code class="docutils literal notranslate"><span class="pre">select_event_make_notification()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.select_event_send_notification"><code class="docutils literal notranslate"><span class="pre">select_event_send_notification()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/resources.c.html#c.libAtomVM.resources.c.select_event_notify"><code class="docutils literal notranslate"><span class="pre">select_event_notify()</span></code></a></li>
@@ -3805,6 +3963,7 @@
 <li class="toctree-l3"><a class="reference internal" href="src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.close"><code class="docutils literal notranslate"><span class="pre">close</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.local_pid"><code class="docutils literal notranslate"><span class="pre">local_pid</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.ref_ticks"><code class="docutils literal notranslate"><span class="pre">ref_ticks</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/resources.h.html#c.libAtomVM.resources.h.SelectEvent.message"><code class="docutils literal notranslate"><span class="pre">message</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -3907,9 +4066,9 @@
 <li class="toctree-l1"><a class="reference internal" href="src/sys.h.html">sys.h</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.EventListener"><code class="docutils literal notranslate"><span class="pre">EventListener</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.event_handler_t"><code class="docutils literal notranslate"><span class="pre">event_handler_t</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;22"><code class="docutils literal notranslate"><span class="pre">&#64;22</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;22.SYS_POLL_EVENTS_DO_NOT_WAIT"><code class="docutils literal notranslate"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></code></a></li>
-<li class="toctree-l3"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;22.SYS_POLL_EVENTS_WAIT_FOREVER"><code class="docutils literal notranslate"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;24"><code class="docutils literal notranslate"><span class="pre">&#64;24</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;24.SYS_POLL_EVENTS_DO_NOT_WAIT"><code class="docutils literal notranslate"><span class="pre">SYS_POLL_EVENTS_DO_NOT_WAIT</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.&#64;24.SYS_POLL_EVENTS_WAIT_FOREVER"><code class="docutils literal notranslate"><span class="pre">SYS_POLL_EVENTS_WAIT_FOREVER</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="src/sys.h.html#c.libAtomVM.sys.h.OpenAVMResult"><code class="docutils literal notranslate"><span class="pre">OpenAVMResult</span></code></a><ul>
@@ -3982,8 +4141,10 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src/term.h.html">term.h</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_VALUE_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_VALUE_TAG</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_IMMED_TAG_MASK"><code class="docutils literal notranslate"><span class="pre">TERM_IMMED_TAG_MASK</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_PID_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_PID_TAG</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_PORT_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_PORT_TAG</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_INTEGER_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_INTEGER_TAG</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_CATCH_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_CATCH_TAG</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_TAG_MASK"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_TAG_MASK</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_TUPLE"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_TUPLE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_BIN_MATCH_STATE"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_BIN_MATCH_STATE</span></code></a></li>
@@ -3991,10 +4152,15 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_REF"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_REF</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_FUN"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_FUN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_FLOAT"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_FLOAT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_CATCH_TAG"><code class="docutils literal notranslate"><span class="pre">TERM_CATCH_TAG</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_REFC_BINARY"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_REFC_BINARY</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_HEAP_BINARY"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_HEAP_BINARY</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_MAP"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_MAP</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_SUB_BINARY"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_SUB_BINARY</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_MAP"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_MAP</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_THING"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_EXTERNAL_THING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PID"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_EXTERNAL_PID</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_PORT"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_EXTERNAL_PORT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_EXTERNAL_REF"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_EXTERNAL_REF</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_UNUSED"><code class="docutils literal notranslate"><span class="pre">TERM_UNUSED</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_RESERVED_MARKER"><code class="docutils literal notranslate"><span class="pre">TERM_RESERVED_MARKER</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_REFC_BINARY_SIZE"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_REFC_BINARY_SIZE</span></code></a></li>
@@ -4003,6 +4169,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_BOXED_RESOURCE_SIZE"><code class="docutils literal notranslate"><span class="pre">TERM_BOXED_RESOURCE_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.REFC_BINARY_MIN"><code class="docutils literal notranslate"><span class="pre">REFC_BINARY_MIN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.SUB_BINARY_MIN"><code class="docutils literal notranslate"><span class="pre">SUB_BINARY_MIN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_MAX_LOCAL_PROCESS_ID"><code class="docutils literal notranslate"><span class="pre">TERM_MAX_LOCAL_PROCESS_ID</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.BINARY_HEADER_SIZE"><code class="docutils literal notranslate"><span class="pre">BINARY_HEADER_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.FUNCTION_REFERENCE_SIZE"><code class="docutils literal notranslate"><span class="pre">FUNCTION_REFERENCE_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.BOXED_INT_SIZE"><code class="docutils literal notranslate"><span class="pre">BOXED_INT_SIZE</span></code></a></li>
@@ -4010,6 +4177,9 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.BOXED_FUN_SIZE"><code class="docutils literal notranslate"><span class="pre">BOXED_FUN_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.FLOAT_SIZE"><code class="docutils literal notranslate"><span class="pre">FLOAT_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.REF_SIZE"><code class="docutils literal notranslate"><span class="pre">REF_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.EXTERNAL_PID_SIZE"><code class="docutils literal notranslate"><span class="pre">EXTERNAL_PID_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.EXTERNAL_PORT_SIZE"><code class="docutils literal notranslate"><span class="pre">EXTERNAL_PORT_SIZE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.EXTERNAL_REF_SIZE"><code class="docutils literal notranslate"><span class="pre">EXTERNAL_REF_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TUPLE_SIZE"><code class="docutils literal notranslate"><span class="pre">TUPLE_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.CONS_SIZE"><code class="docutils literal notranslate"><span class="pre">CONS_SIZE</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.REFC_BINARY_CONS_OFFSET"><code class="docutils literal notranslate"><span class="pre">REFC_BINARY_CONS_OFFSET</span></code></a></li>
@@ -4025,6 +4195,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_FROM_ATOM_INDEX"><code class="docutils literal notranslate"><span class="pre">TERM_FROM_ATOM_INDEX</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.REF_AS_CSTRING_LEN"><code class="docutils literal notranslate"><span class="pre">REF_AS_CSTRING_LEN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.PID_AS_CSTRING_LEN"><code class="docutils literal notranslate"><span class="pre">PID_AS_CSTRING_LEN</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.PORT_AS_CSTRING_LEN"><code class="docutils literal notranslate"><span class="pre">PORT_AS_CSTRING_LEN</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_MAP_NOT_FOUND"><code class="docutils literal notranslate"><span class="pre">TERM_MAP_NOT_FOUND</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.TERM_MAP_MEMORY_ALLOC_FAIL"><code class="docutils literal notranslate"><span class="pre">TERM_MAP_MEMORY_ALLOC_FAIL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.PrinterFun"><code class="docutils literal notranslate"><span class="pre">PrinterFun</span></code></a></li>
@@ -4062,6 +4233,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_boxed_size"><code class="docutils literal notranslate"><span class="pre">term_boxed_size()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_binary"><code class="docutils literal notranslate"><span class="pre">term_is_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_refc_binary"><code class="docutils literal notranslate"><span class="pre">term_is_refc_binary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_heap_binary"><code class="docutils literal notranslate"><span class="pre">term_is_heap_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_refc_binary_is_const"><code class="docutils literal notranslate"><span class="pre">term_refc_binary_is_const()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_sub_binary"><code class="docutils literal notranslate"><span class="pre">term_is_sub_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_integer"><code class="docutils literal notranslate"><span class="pre">term_is_integer()</span></code></a></li>
@@ -4069,8 +4241,17 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_boxed_integer"><code class="docutils literal notranslate"><span class="pre">term_is_boxed_integer()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_any_integer"><code class="docutils literal notranslate"><span class="pre">term_is_any_integer()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_catch_label"><code class="docutils literal notranslate"><span class="pre">term_is_catch_label()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_local_pid"><code class="docutils literal notranslate"><span class="pre">term_is_local_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_external_pid"><code class="docutils literal notranslate"><span class="pre">term_is_external_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_external"><code class="docutils literal notranslate"><span class="pre">term_is_external()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_pid"><code class="docutils literal notranslate"><span class="pre">term_is_pid()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_local_port"><code class="docutils literal notranslate"><span class="pre">term_is_local_port()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_external_port"><code class="docutils literal notranslate"><span class="pre">term_is_external_port()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_port"><code class="docutils literal notranslate"><span class="pre">term_is_port()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_local_pid_or_port"><code class="docutils literal notranslate"><span class="pre">term_is_local_pid_or_port()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_tuple"><code class="docutils literal notranslate"><span class="pre">term_is_tuple()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_local_reference"><code class="docutils literal notranslate"><span class="pre">term_is_local_reference()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_external_reference"><code class="docutils literal notranslate"><span class="pre">term_is_external_reference()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_reference"><code class="docutils literal notranslate"><span class="pre">term_is_reference()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_function"><code class="docutils literal notranslate"><span class="pre">term_is_function()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_is_fun"><code class="docutils literal notranslate"><span class="pre">term_is_fun()</span></code></a></li>
@@ -4100,6 +4281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_boxed_integer_size"><code class="docutils literal notranslate"><span class="pre">term_boxed_integer_size()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_from_catch_label"><code class="docutils literal notranslate"><span class="pre">term_from_catch_label()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_from_local_process_id"><code class="docutils literal notranslate"><span class="pre">term_from_local_process_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_port_from_local_process_id"><code class="docutils literal notranslate"><span class="pre">term_port_from_local_process_id()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_binary_size_is_heap_binary"><code class="docutils literal notranslate"><span class="pre">term_binary_size_is_heap_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_binary_data_size_in_terms"><code class="docutils literal notranslate"><span class="pre">term_binary_data_size_in_terms()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_binary_heap_size"><code class="docutils literal notranslate"><span class="pre">term_binary_heap_size()</span></code></a></li>
@@ -4119,6 +4301,16 @@
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_bs_insert_binary"><code class="docutils literal notranslate"><span class="pre">term_bs_insert_binary()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_from_ref_ticks"><code class="docutils literal notranslate"><span class="pre">term_from_ref_ticks()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_to_ref_ticks"><code class="docutils literal notranslate"><span class="pre">term_to_ref_ticks()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_make_external_process_id"><code class="docutils literal notranslate"><span class="pre">term_make_external_process_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_make_external_port_number"><code class="docutils literal notranslate"><span class="pre">term_make_external_port_number()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_node"><code class="docutils literal notranslate"><span class="pre">term_get_external_node()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_node_creation"><code class="docutils literal notranslate"><span class="pre">term_get_external_node_creation()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_pid_process_id"><code class="docutils literal notranslate"><span class="pre">term_get_external_pid_process_id()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_pid_serial"><code class="docutils literal notranslate"><span class="pre">term_get_external_pid_serial()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_port_number"><code class="docutils literal notranslate"><span class="pre">term_get_external_port_number()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_make_external_reference"><code class="docutils literal notranslate"><span class="pre">term_make_external_reference()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_reference_len"><code class="docutils literal notranslate"><span class="pre">term_get_external_reference_len()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_external_reference_words"><code class="docutils literal notranslate"><span class="pre">term_get_external_reference_words()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_alloc_tuple"><code class="docutils literal notranslate"><span class="pre">term_alloc_tuple()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_put_tuple_element"><code class="docutils literal notranslate"><span class="pre">term_put_tuple_element()</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="src/term.h.html#c.libAtomVM.term.h.term_get_tuple_element"><code class="docutils literal notranslate"><span class="pre">term_get_tuple_element()</span></code></a></li>
