@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Build Instructions &mdash; AtomVM 0.6.6+git.29943ee7 documentation</title>
+  <title>Build Instructions &mdash; AtomVM 0.6.6+git.02c52740 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/build-instructions.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=f383cf3d"></script>
+      <script src="_static/documentation_options.js?v=4c23e565"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -689,8 +689,8 @@ documentation.</p>
 </div>
 <p>The instructions for adding custom Nifs and ports differ in slight detail, but are otherwise quite similar.  In general, they involve:</p>
 <ol class="arabic simple">
-<li><p>Adding the custom Nif or Port to the <code class="docutils literal notranslate"><span class="pre">components</span></code> directory of the AtomVM source tree;</p></li>
-<li><p>Adding the component to the corresponding <code class="docutils literal notranslate"><span class="pre">main/component_nifs.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">main/component_ports.txt</span></code> files;</p></li>
+<li><p>Adding the custom Nif or Port to the <code class="docutils literal notranslate"><span class="pre">components</span></code> directory of the AtomVM source tree.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">reconfigure</span></code> to pick up any menuconfig options, many extra drivers have an option to disable them (they are enabled by default). Optionally use <code class="docutils literal notranslate"><span class="pre">idf.py</span> <span class="pre">menuconfig</span></code> and confirm the driver is enabled and save when quitting.</p></li>
 <li><p>Building the AtomVM binary.</p></li>
 </ol>
 <div class="admonition attention">
@@ -729,12 +729,12 @@ Example:</p></li>
 </li>
 </ul>
 </li>
-<li><p>Add your <code class="docutils literal notranslate"><span class="pre">&lt;moniker&gt;</span></code> to the <code class="docutils literal notranslate"><span class="pre">main/component_nifs.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code> directory.</p></li>
-</ul>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">main/component_nifs.txt</span></code> file will not exist until after the first clean build.</p>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">REGISTER_NIF_COLLECTION</span></code> using the parameters <code class="docutils literal notranslate"><span class="pre">NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_CB</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROY_CB</span></code>, <code class="docutils literal notranslate"><span class="pre">RESOLVE_NIF_CB</span></code> macro to the end of your nif code. Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">REGISTER_NIF_COLLECTION</span><span class="p">(</span><span class="n">my_nif</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">my_nif_get_nif</span><span class="p">);</span>
+</pre></div>
 </div>
+</li>
+</ul>
 </section>
 <section id="adding-a-custom-atomvm-port">
 <h4>Adding a custom AtomVM Port<a class="headerlink" href="#adding-a-custom-atomvm-port" title="Link to this heading"></a></h4>
@@ -764,12 +764,12 @@ Example:</p></li>
 </li>
 </ul>
 </li>
-<li><p>Add your <code class="docutils literal notranslate"><span class="pre">&lt;moniker&gt;</span></code> to the <code class="docutils literal notranslate"><span class="pre">main/component_ports.txt</span></code> file in the <code class="docutils literal notranslate"><span class="pre">src/platforms/esp32</span></code> directory.</p></li>
-</ul>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">main/component_ports.txt</span></code> file will not exist until after the first clean build.</p>
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">REGISTER_PORT_COLLECTION</span></code> using the parameters <code class="docutils literal notranslate"><span class="pre">NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">INIT_CB</span></code>, <code class="docutils literal notranslate"><span class="pre">DESTROY_CB</span></code>, <code class="docutils literal notranslate"><span class="pre">RESOLVE_NIF_CB</span></code> macro to the end of your nif code. Example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">REGISTER_PORT_COLLECTION</span><span class="p">(</span><span class="n">my_port</span><span class="p">,</span><span class="w"> </span><span class="n">my_port_init</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">my_port_create_port</span><span class="p">);</span>
+</pre></div>
 </div>
+</li>
+</ul>
 </section>
 </section>
 </section>
