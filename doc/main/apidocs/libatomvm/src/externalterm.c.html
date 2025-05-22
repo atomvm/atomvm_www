@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>externalterm.c &mdash; AtomVM 0.7.0-dev+git.bd16d64e documentation</title>
+  <title>externalterm.c &mdash; AtomVM 0.7.0-dev+git.011a8df2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/externalterm.c.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=ab23d4b7"></script>
+      <script src="../../../_static/documentation_options.js?v=004b3561"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -508,43 +508,38 @@
 <dd></dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.c.externalterm_to_term_with_roots">
-<span class="target" id="libatomvmexternalterm_8c_1a111858521e98b8234f0a23534a55b1e4"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term_with_roots</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermFlags</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_roots</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">roots</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_to_term_with_roots" title="Link to this definition"></a><br /></dt>
-<dd><p>Create a term from external term data. This variant is meant to be used for distribution or in cases where the number of bytes read is important. </p>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.c.externalterm_from_binary_with_roots">
+<span class="target" id="libatomvmexternalterm_8c_1a03599be20b9663e6b569edac9221f23a"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary_with_roots</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">binary_ix</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">offset</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">num_roots</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">roots</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_from_binary_with_roots" title="Link to this definition"></a><br /></dt>
+<dd><p>Create a term from a binary. </p>
+<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>external_term</strong> – buffer containing external term </p></li>
-<li><p><strong>size</strong> – size of the external_term </p></li>
-<li><p><strong>ctx</strong> – current context in which terms may be stored </p></li>
-<li><p><strong>flags</strong> – additional flags (see above) </p></li>
-<li><p><strong>bytes_read</strong> – the number of bytes read off external_term in order to yield a term </p></li>
-<li><p><strong>num_roots</strong> – number of roots when invoking GC </p></li>
-<li><p><strong>roots</strong> – roots to preserve when invoking GC </p></li>
+<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
+<li><p><strong>binary_ix</strong> – offset of the binary in roots </p></li>
+<li><p><strong>offset</strong> – offset in the binary </p></li>
+<li><p><strong>bytes_read</strong> – the number of bytes read from the input binary. </p></li>
+<li><p><strong>num_roots</strong> – number of roots to preserve in case of GC </p></li>
+<li><p><strong>roots</strong> – roots to preserve in case of GC </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>the parsed term </p>
+<dd class="field-even"><p>the term deserialized from the input term, or an invalid term, if deserialization fails. </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.externalterm.c.externalterm_to_term">
-<span class="target" id="libatomvmexternalterm_8c_1a2c3a1ef95a2dac7caa0a47dc3e91d61f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermFlags</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_to_term" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a term from external term data. </p>
-<p>Deserialize an external term from external format and returns a term. </p>
+<dt class="sig sig-object c" id="c.libAtomVM.externalterm.c.externalterm_from_const_literal">
+<span class="target" id="libatomvmexternalterm_8c_1ae061de8ff9914947147c9dadda86d331"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_const_literal</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_from_const_literal" title="Link to this definition"></a><br /></dt>
+<dd><p>Gets a term from a const literal (module in flash). </p>
+<p>Deserialize an external term from external format and returns a term. Use a heap fragment to store the generated terms. The heap fragment is appended to the context heap. Atoms and binaries are not copied. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
+<li><p><strong>external_term</strong> – the const literal buffer that will be deserialized </p></li>
 <li><p><strong>size</strong> – to allocate for term. </p></li>
 <li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
-<li><p><strong>flags</strong> – options to deserialize data. The following flags are supported:<ul>
-<li><p>ExternalTermToHeapFragment : use a heap fragment to store the generated terms (default is to use the heap in the provided context). Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms.</p></li>
-<li><p>ExternalTermCopy : copy (binary and atom) data. Suitable when external_term pointer is not a const literal. </p></li>
-</ul>
-</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -555,9 +550,9 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.externalterm.c.externalterm_from_binary">
-<span class="target" id="libatomvmexternalterm_8c_1a5af48d46cb956f28521530a58010e876"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ExternalTermResult</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_from_binary" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmexternalterm_8c_1acd5e5a654d7a73f7e97f3ab6a225702c"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.externalterm.c.externalterm_from_binary" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a term from a binary. </p>
-<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p>
+<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. See externalterm_from_binary_with_roots </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

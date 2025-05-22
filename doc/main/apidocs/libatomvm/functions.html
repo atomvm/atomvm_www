@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Functions &mdash; AtomVM 0.7.0-dev+git.bd16d64e documentation</title>
+  <title>Functions &mdash; AtomVM 0.7.0-dev+git.011a8df2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/functions.html" />
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=ab23d4b7"></script>
+      <script src="../../_static/documentation_options.js?v=004b3561"></script>
       <script src="../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -1197,9 +1197,9 @@
 
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.externalterm_from_binary">
-<span class="target" id="libatomvmexternalterm_8h_1a5af48d46cb956f28521530a58010e876"></span><span class="k"><span class="pre">enum</span></span><span class="w"> </span><span class="n"><span class="pre">ExternalTermResult</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dst</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_from_binary" title="Link to this definition"></a><br /></dt>
+<span class="target" id="libatomvmexternalterm_8h_1acd5e5a654d7a73f7e97f3ab6a225702c"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_from_binary</span></span></span><span class="sig-paren">(</span><a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">binary</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_from_binary" title="Link to this definition"></a><br /></dt>
 <dd><p>Create a term from a binary. </p>
-<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. </p>
+<p>Deserialize a binary term that stores term data in Erlang external term format, and instantiate the serialized terms. The heap from the context will be used to allocate the instantiated terms. This function is the complement of externalterm_to_binary. WARNING: This function may call the GC, which may render the input binary invalid. See externalterm_from_binary_with_roots </p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1233,30 +1233,10 @@
 </dl>
 </dd></dl>
 
-<dl class="c function">
-<dt class="sig sig-object c" id="c.libAtomVM.functions.externalterm_to_term">
-<span class="target" id="libatomvmexternalterm_8h_1a2c3a1ef95a2dac7caa0a47dc3e91d61f"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermFlags</span></span><span class="w"> </span><span class="n"><span class="pre">flags</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_to_term" title="Link to this definition"></a><br /></dt>
-<dd><p>Gets a term from external term data. </p>
-<p>Deserialize an external term from external format and returns a term. </p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>external_term</strong> – the external term that will be deserialized. </p></li>
-<li><p><strong>size</strong> – to allocate for term. </p></li>
-<li><p><strong>ctx</strong> – the context that owns the memory that will be allocated. </p></li>
-<li><p><strong>flags</strong> – options to deserialize data. The following flags are supported:<ul>
-<li><p>ExternalTermToHeapFragment : use a heap fragment to store the generated terms (default is to use the heap in the provided context). Note that when using the context heap, this function may call the GC, if there is insufficient space to store the generated terms.</p></li>
-<li><p>ExternalTermCopy : copy (binary and atom) data. Suitable when external_term pointer is not a const literal. </p></li>
-</ul>
-</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>a term. </p>
-</dd>
-</dl>
-</dd></dl>
-
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>doxygenfunction: Cannot find function “externalterm_to_term” in doxygen xml output for project “libatomvm” from directory: /__w/AtomVM/AtomVM/build/doc/xml/</p>
+</div>
 <dl class="c function">
 <dt class="sig sig-object c" id="c.libAtomVM.functions.externalterm_to_term_internal">
 <span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">externalterm_to_term_internal</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">external_term</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="n"><span class="pre">size</span></span>, <a class="reference internal" href="../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span>, <span class="n"><span class="pre">ExternalTermOpts</span></span><span class="w"> </span><span class="n"><span class="pre">opts</span></span>, <span class="n"><span class="pre">size_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">bytes_read</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n"><span class="pre">copy</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.functions.externalterm_to_term_internal" title="Link to this definition"></a><br /></dt>

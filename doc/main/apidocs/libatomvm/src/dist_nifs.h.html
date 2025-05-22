@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dist_nifs.h &mdash; AtomVM 0.7.0-dev+git.bd16d64e documentation</title>
+  <title>dist_nifs.h &mdash; AtomVM 0.7.0-dev+git.011a8df2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/apidocs/libatomvm/src/dist_nifs.h.html" />
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=ab23d4b7"></script>
+      <script src="../../../_static/documentation_options.js?v=004b3561"></script>
       <script src="../../../_static/doctools.js?v=9a2dae69"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -373,6 +373,71 @@
 <li><p><strong>link</strong> – if a link was created </p></li>
 <li><p><strong>monitor</strong> – if a monitor was created </p></li>
 <li><p><strong>result</strong> – pid of the spawned process or atom for an error </p></li>
+<li><p><strong>ctx</strong> – context for memory allocation </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.dist_nifs.h.dist_send_payload_exit">
+<span class="target" id="libatomvmdist__nifs_8h_1ab04989dee8dd45e28eabd263c37ae927"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_send_payload_exit</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="n"><span class="pre">LinkRemoteMonitor</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">monitor</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">reason</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.dist_nifs.h.dist_send_payload_exit" title="Link to this definition"></a><br /></dt>
+<dd><p>&#64;doc Send a link exit signal (PAYLOAD_EXIT) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>monitor</strong> – structure with node, process_id, serial and creation </p></li>
+<li><p><strong>reason</strong> – reason to send as the payload </p></li>
+<li><p><strong>ctx</strong> – process that is exiting. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.dist_nifs.h.dist_send_link">
+<span class="target" id="libatomvmdist__nifs_8h_1a211fd5ebc722a0f33578d2c49fc6fc73"></span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_send_link</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">from_pid</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">to_pid</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.dist_nifs.h.dist_send_link" title="Link to this definition"></a><br /></dt>
+<dd><p>&#64;doc Send a link signal (LINK) </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>from_pid</strong> – the pid linking to </p></li>
+<li><p><strong>to_pid</strong> – the (remote) pid to link to </p></li>
+<li><p><strong>ctx</strong> – context for memory allocation </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>true if the link message was sent or queued, or term_invalid if an error occurred (e.g. noproc or oom) </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.dist_nifs.h.dist_send_unlink_id">
+<span class="target" id="libatomvmdist__nifs_8h_1ac7cc1544263746245b5dc353b6ba0f44"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_send_unlink_id</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">unlink_id</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">from_pid</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">to_pid</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.dist_nifs.h.dist_send_unlink_id" title="Link to this definition"></a><br /></dt>
+<dd><p>&#64;doc Send an unlink id signal (UNLINK_ID), silently do nothing if node is not connected </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unlink_id</strong> – unique id of the unlink operation </p></li>
+<li><p><strong>from_pid</strong> – the pid linking to </p></li>
+<li><p><strong>to_pid</strong> – the (remote) pid to link to </p></li>
+<li><p><strong>ctx</strong> – context for memory allocation </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.libAtomVM.dist_nifs.h.dist_send_unlink_id_ack">
+<span class="target" id="libatomvmdist__nifs_8h_1a38c80d0f651cb37fea1dc5c954070f64"></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dist_send_unlink_id_ack</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">uint64_t</span></span><span class="w"> </span><span class="n"><span class="pre">unlink_id</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">from_pid</span></span>, <span class="n"><span class="pre">term</span></span><span class="w"> </span><span class="n"><span class="pre">to_pid</span></span>, <a class="reference internal" href="../../../atomvm-internals.html#c.Context" title="Context"><span class="n"><span class="pre">Context</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.libAtomVM.dist_nifs.h.dist_send_unlink_id_ack" title="Link to this definition"></a><br /></dt>
+<dd><p>&#64;doc Send an unlink id ack signal (UNLINK_ID_ACK), silently do nothing if node is not connected </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>unlink_id</strong> – unique id of the unlink operation </p></li>
+<li><p><strong>from_pid</strong> – the pid linking to </p></li>
+<li><p><strong>to_pid</strong> – the (remote) pid to link to </p></li>
 <li><p><strong>ctx</strong> – context for memory allocation </p></li>
 </ul>
 </dd>
