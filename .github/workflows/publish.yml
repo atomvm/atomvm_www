@@ -28,7 +28,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: gem-cache
         with:
           path: /home/runner/.local/share/gem
@@ -38,7 +38,7 @@ jobs:
         if: steps.cache.outputs.gem-cache-hit != 'true'
         run: gem install bundler --user-install
 
-      - uses: actions/cache@v1
+      - uses: actions/cache@v4
         id: bundler-cache
         with:
           path: /home/runner/.local/vendor/bundle
