@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtomVM Tooling &mdash; AtomVM 0.6.6+git.02c52740 documentation</title>
+  <title>AtomVM Tooling &mdash; AtomVM 0.6.6+git.78f8c139 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=fd3f3429" />
@@ -17,7 +17,7 @@
     <link rel="canonical" href="https://atomvm.net/doc/atomvm-tooling.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=4c23e565"></script>
+      <script src="_static/documentation_options.js?v=648b222d"></script>
       <script src="_static/doctools.js?v=9a2dae69"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -399,7 +399,7 @@ remote:<span class="w"> </span>Total<span class="w"> </span><span class="m">17</
 origin/HEAD<span class="w"> </span><span class="nb">set</span><span class="w"> </span>to<span class="w"> </span>main
 </pre></div>
 </div>
-<p>You can now use the <code class="docutils literal notranslate"><span class="pre">atomvm.packbeam</span></code> target to create a packbeam (ending in <code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file:</p>
+<p>You can now use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.packbeam</span></code> task to create a packbeam (ending in <code class="docutils literal notranslate"><span class="pre">.avm</span></code>) file:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mix<span class="w"> </span>atomvm.packbeam
 <span class="o">==</span>&gt;<span class="w"> </span>exatomvm
 Compiling<span class="w"> </span><span class="m">5</span><span class="w"> </span>files<span class="w"> </span><span class="o">(</span>.ex<span class="o">)</span>
@@ -420,7 +420,7 @@ partition.
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>See the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> page for more detailed instructions about how to use the
-<code class="docutils literal notranslate"><span class="pre">atomvm.packbeam</span></code> target.</p>
+<code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.packbeam</span></code> task.</p>
 </div>
 </section>
 <section id="running-on-the-generic-unix-platform">
@@ -438,10 +438,10 @@ Return<span class="w"> </span>value:<span class="w"> </span>ok
 <p>The <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> plugin supports flash targets for various device types.  These targets are described in more detail below.</p>
 <section id="esp32-flash-task">
 <h4>ESP32 flash task<a class="headerlink" href="#esp32-flash-task" title="Link to this heading"></a></h4>
-<p>To flash AtomVM packbeam file to an ESP32 device, use the <code class="docutils literal notranslate"><span class="pre">mix.esp32.flash</span></code> target.  Users will typically specify the device port and baud rate as command-line options to this target.</p>
+<p>To flash AtomVM packbeam file to an ESP32 device, use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.esp32.flash</span></code> task.  Users will typically specify the device port and baud rate as command-line options to this target.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>In order to use the <code class="docutils literal notranslate"><span class="pre">mix.esp32.flash</span></code> target, you will need to install the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p>
+<p>In order to use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.esp32.flash</span></code> task, you will need to install the <a class="reference external" href="https://github.com/espressif/esptool"><code class="docutils literal notranslate"><span class="pre">esptool</span></code></a> program.</p>
 </div>
 <p>For example:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mix<span class="w"> </span>atomvm.esp32.flash<span class="w"> </span>--port<span class="w"> </span>/dev/ttyUSB0<span class="w"> </span>--baud<span class="w"> </span><span class="m">921600</span>
@@ -449,14 +449,9 @@ Return<span class="w"> </span>value:<span class="w"> </span>ok
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>A baud rate of 921600 works well for most ESP32 devices, some can work reliably at higher rates of 1500000, or even
-2000000, but some devices (especially those with a 26Mhz crystal frequency, rather than the more common 40 Mhz
-crystal) may need to use a slower baud rate such as 115200.</p>
+<p>A baud rate of 921600 works well for most ESP32 devices, some can work reliably at higher rates of 1500000, or even 2000000, but some devices (especially those with a 26Mhz crystal frequency, rather than the more common 40 Mhz crystal) may need to use a slower baud rate such as 115200.</p>
 </div>
-<blockquote>
-<div><p>Note.  A baud rate of 921600 works well for most ESP32 devices, some can work reliably at higher rates of 1500000, or even 2000000, but some devices (especially those with a 26Mhz crystal frequency, rather than the more common 40 Mhz crystal) may need to use a slower baud rate such as 115200.</p>
-</div></blockquote>
-<p>See the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">mix.esp32.flash</span></code> target.</p>
+<p>See the <a class="reference external" href="https://github.com/atomvm/ExAtomVM"><code class="docutils literal notranslate"><span class="pre">ExAtomVM</span></code></a> page for more detailed instructions about how to use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.esp32.flash</span></code> task.</p>
 <p>You can now use a serial console program such as <a class="reference external" href="https://en.wikipedia.org/wiki/Minicom">minicom</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Screen">screen</a> to view console output from a device.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ###########################################################
 
@@ -491,10 +486,10 @@ I (972) AtomVM: AtomVM application terminated.  Going to sleep forever ...
 </section>
 <section id="stm32-flash-task">
 <h4>STM32 flash task<a class="headerlink" href="#stm32-flash-task" title="Link to this heading"></a></h4>
-<p>To flash AtomVM packbeam file to an STM32 device, use the <code class="docutils literal notranslate"><span class="pre">atomvm.stm32.flash</span></code> mix target.</p>
+<p>To flash AtomVM packbeam file to an STM32 device, use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.stm32.flash</span></code> task.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
-<p>In order to use the <code class="docutils literal notranslate"><span class="pre">mix.stm32.flash</span></code> target, you will need to install the  <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> tool from the open source
+<p>In order to use the <code class="docutils literal notranslate"><span class="pre">mix</span> <span class="pre">atomvm.stm32.flash</span></code> task, you will need to install the  <code class="docutils literal notranslate"><span class="pre">st-flash</span></code> tool from the open source
 (bsd-3 licensed) <a class="reference external" href="https://github.com/stlink-org/stlink">stlink</a> suite of stm32 utilities.</p>
 </div>
 <p>For example:</p>
