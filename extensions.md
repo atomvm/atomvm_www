@@ -9,7 +9,6 @@ Several users in the AtomVM community have provided extensions to AtomVM to supp
 * [`atomvm_rebar3_plugin`](https://github.com/atomvm/atomvm_rebar3_plugin) A Rebar3 plugin for streamlining the development of AtomVM applications written in Erlang
 * [`ExAtomVM`](https://github.com/atomvm/ExAtomVM) A Mix plugin for streamlining the development of AtomVM applications written in Elixir
 * [`atomvm_packbeam`](https://github.com/atomvm/atomvm_packbeam) Purerlang version of AtomVM PackBeam utility
-* [`atomvm_adc`](https://github.com/atomvm/atomvm_adc) AtomVM Nif providing access to the ESP32 ADC
 * [`atomvm_dht`](https://github.com/atomvm/atomvm_dht) DHT11 and DHT12 drivers for AtomVM
 * [`atomvm_esp32cam`](https://github.com/atomvm/atomvm_esp32cam) An AtomVM Nif for interfacing with cameras connected to the ESP32
 * [`atomvm_gps`](https://github.com/atomvm/atomvm_gps) Support for GPS device integration (using UART/NMEA) on AtomVM
