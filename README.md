@@ -48,4 +48,4 @@ If you are posting a long article you can tell where to cut off the introduction
 
 `<!--more-->`
 
-All content following the above line will only be included in the full article, content before will be displayed as a description on the `atomvm.net/news` page.
+All content following the above line will only be included in the full article, content before will be displayed as a description on the `atomvm.org/news` page.

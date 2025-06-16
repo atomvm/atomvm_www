@@ -11,4 +11,4 @@ We also hang out on the [AtomVM Discord](https://discord.gg/QA7fNjm9Nw) channel.
 
 Drop in and say hello!
 
-For direct inquiries, please write to us at `help` -at- `atomvm.net`.
+For direct inquiries, please write to us at `info` -at- `atomvm.org`.
